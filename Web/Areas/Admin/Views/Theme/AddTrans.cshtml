@@ -1,0 +1,98 @@
+﻿@using Web.Model
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    var languages = (List<tbl_Languages>)TempData["Languages"];
+}
+<script src="~/AppJs/theme.js"></script>
+@model Theme
+@using (Ajax.BeginForm("AddTrans", "Theme", null,
+    new AjaxOptions
+    {
+        HttpMethod = "POST",
+        OnSuccess = "Theme.onAddSuccess"
+    },
+    new { @id = "frmData", @class = "form-horizontal" }))
+{
+    @Html.HiddenFor(x => x.Image)
+    @Html.HiddenFor(x => x.ParentID)
+    @Html.HiddenFor(x => x.GroupID)
+    <div class="form-group">
+        <label class="col-md-2 control-label">Ngôn ngữ<span class="asterisk"> (*)</span></label>
+        <div class="col-md-6">
+            <select class="form-control" id="LangCode" name="LangCode" onchange="Theme.getMenuTransByLang(this.value)">
+                <option value="">--- Chọn ---</option>
+                @foreach (var item in languages)
+                {
+                    <option value="@item.LangCode">@item.LangName</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Menu<span class="asterisk"> (*)</span></label>
+        <div class="col-md-6">
+            <select class="form-control" name="LinkSeo" id="slMenuHome">
+                <option value="">--- Chọn ---</option>
+
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Ảnh</label>
+        <div class="col-md-10">
+            <img style="width:150px" src="@Model.Image" id="prevImages">
+            <span class="error" id="spImg"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Tiêu đề<span class="asterisk"> (*)</span></label>
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Title, new { @class = "form-control", @placeholder = "Nhập tiêu đề" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Mô tả</label>
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.Description, new { @class = "form-control", @placeholder = "Nhập mô tả" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Nội dung</label>
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.Contents, new { @class = "form-control", @placeholder = "Nhập nội dung" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-2 text-right"><a href="/admin/theme" class="btn btn-primary"><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay trở lại</a></div>
+        <div class="col-md-10 text-center">
+            <button type="submit" class="btn btn-primary waves-effect waves-light">Thêm mới</button>
+        </div>
+    </div>
+}
+<script>
+    $(document).ready(function () {
+        $("#frmData").validate({
+            rules:
+            {
+                Title:
+                {
+                    required: true,
+                    maxlength: 250
+                }
+            },
+            messages:
+            {
+                Title:
+                {
+                    required: "Vui lòng nhập tiêu đề"
+                }
+            },
+            highlight: function (element) {
+                jQuery(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+            },
+            success: function (element) {
+                jQuery(element).closest('.form-group').removeClass('has-error');
+            }
+        });
+    });
+</script>

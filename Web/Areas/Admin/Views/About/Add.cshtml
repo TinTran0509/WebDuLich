@@ -1,0 +1,131 @@
+﻿@using Web.Model
+@model  About
+@{
+    ViewBag.Title = "Thêm mới";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    var languages = (List<tbl_Languages>)TempData["Languages"];
+}
+<script src="~/AppJs/about.js?v=1.0.1"></script>
+@using (Ajax.BeginForm("Add", "About", null,
+                new AjaxOptions
+                {
+                    HttpMethod = "POST",
+                    OnSuccess = "about.onAddSuccess"
+                },
+                new { @id = "frmData", @class = "form-horizontal" }))
+{
+    <input type="hidden" name="close" id="close" value="" />
+    @Html.HiddenFor(x => x.LinkSeo)
+    <div class="form-group">
+        <label class="col-md-2 control-label">Ngôn ngữ<span class="asterisk"> (*)</span></label>
+        <div class="col-md-6">
+            <select class="form-control" id="LangCode" name="LangCode">
+                <option value="">--- Chọn ---</option>
+                @foreach (var item in languages)
+                {
+                    <option value="@item.LangCode">@item.LangName</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-1">Tiêu đề<span class="asterisk"> *</span></label>
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Title, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Ảnh</label>
+        <div class="col-md-10">
+            <div class="col-md-2">
+                @{ Html.RenderAction("UploadImage", "UploadFile", new { controlName = "Image" });}
+            </div>
+            <img style="width:100px" src="" id="prevImages">
+            <span class="error" id="spImg"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Mô tả</label>
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.Description, new { @class = "form-control", @placeholder = "Nhập mô tả" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-1">Nội dung<span class="asterisk"> *</span></label>
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.Contents, new { @class = "form-control" })
+            <span class="error" id="spcontent"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-3 col-md-9">
+            <a href="/admin/about" class="btn btn-primary"><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay trở lại</a>
+            <button type="submit" class="btn btn-primary">Lưu</button>
+        </div>
+    </div>
+}
+<script src="~/Content/plugins/jquery-tag-it/js/jquery-ui.min.js"></script>
+<script src="~/Content/plugins/ckeditor/ckeditor.js"></script>
+<script src="~/Content/plugins/ckfinder/ckfinder.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#Title').on('blur', function () {
+            let link = $('#MetaTitle').val();
+            let linkSeo = RemoveMarkStr(link);
+            $('#LinkSeo').val(linkSeo);
+        })
+        $("#frmData").validate({
+            rules:
+            {
+                MetaTitle:
+                {
+                    required: true
+                },
+                Contents:
+                {
+                    required: true
+                }
+            },
+            messages:
+            {
+                MetaTitle:
+                {
+                    required: "Vui lòng nhập tiêu đề"
+                },
+                Contents:
+                {
+                    required: "Vui lòng nhập nội dung"
+                }
+            },
+            highlight: function (element) {
+                jQuery(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+            },
+            success: function (element) {
+                jQuery(element).closest('.form-group').removeClass('has-error');
+            }
+        });
+    })
+    var editor = CKEDITOR.replace('Contents', {
+        height: '800px',
+        startupFocus: true,
+        language: 'vi',
+        filebrowserBrowseUrl: "/Content/plugins/ckfinder/ckfinder.html",
+        filebrowserImageBrowseUrl: '/Content/plugins/ckfinder/ckfinder.html?Type=Images',
+        filebrowserFlashBrowseUrl: '/Content/plugins/ckfinder/ckfinder.html?Type=Flash',
+        filebrowserUploadUrl: '/Scripts/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Files',
+        filebrowserImageUploadUrl: '/Scripts/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Images',
+        filebrowserFlashUploadUrl: '/Scripts/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Flash'
+    });
+    editor.on('change', function () {
+        $("#spcontent").text('');
+    })
+    function checkAdd(state) {
+        $('#close').val(state);
+        var messageLength = CKEDITOR.instances['Contents'].getData().replace(/<[^>]*>/gi, '').length;
+        if (!messageLength) {
+            $("#spcontent").text("Vui lòng thêm nội dung bài viết");
+            return false;
+        }
+    }
+
+</script>

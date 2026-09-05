@@ -1,0 +1,93 @@
+﻿
+@{
+    TempData["PathName"] = "Trang cá nhân";
+    Layout = "~/Views/Shared/_Layout3.cshtml";
+}
+@section js{
+<script>
+    var btn = $('#profile').attr('loaddata', '');
+    console.log(btn);
+    $('#profile').ready(function () {
+        var id = btn.data('id');
+    $.ajax({
+        url: '/User/GetDetail',
+        data: {
+            id: id
+        },
+        type: 'GET',
+        dataType: 'json',
+        success: function (response) {
+            var data = response.data;
+            $('#txtname').val(data.FullName);
+            $('#txtemail').val(data.Email);
+            $('#txtphone').val(data.Phone);
+            
+        }
+    })
+    });
+</script>
+    }
+<div class="col-xs-12 col-sm-3 col-md-3 panel-chung-danh-muc">
+    <ul>
+        <li>
+            <a href="#">Thông tin tài khoản</a>
+        </li>
+        <li>
+            <a href="#">Quản lý đơn hàng</a>
+        </li>
+    </ul>
+</div>
+<div class="col-xs-12 col-sm-9 col-md-9 panel-chung-san-pham">
+    <div>
+        <h4>Thông tin tài khoản</h4>
+    </div>
+    <div>
+        <div style="display:flex">
+            <div class="col-md-3">
+                <label>Họ tên</label>
+            </div>
+            <div class="col-md-9">
+                <input class="form-control" type="text" id="txtname" name="txtname" value="" />
+            </div>
+        </div>
+        <div style="display:flex">
+            <div class="col-md-3">
+                <label>Số điện thoại</label>
+            </div>
+            <div class="col-md-9">
+                <input class="form-control" type="text" name="txtphone" id="txtphone" value="" />
+            </div>
+        </div>
+    </div>
+
+    <div style="display:flex">
+        <div class="col-md-3">
+            <label>Email</label>
+        </div>
+        <div class="col-md-9">
+            <input class="form-control" type="text" name="txtemail" id="txtemail" value="" />
+        </div>
+    </div>
+    <div style="display:flex">
+        <div class="col-md-3">
+            <label>Giới tính</label>
+        </div>
+        <div class="col-md-9">
+            <select class="" id=""></select>
+        </div>
+    </div>
+    <div style="display:flex">
+        <div class="col-md-3">
+            <label>Ngày sinh</label>
+        </div>
+        <div id="datepicker" class="input-group date col-md-9" data-date-format="dd/mm/yyyy">
+            <input class="form-control" type="text"> <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+        </div>
+    </div>
+    <div>
+        <button class="btn btn-warning" type="submit">Cập nhật</button>
+    </div>
+
+</div>
+
+

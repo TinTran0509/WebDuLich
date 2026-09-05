@@ -1,0 +1,109 @@
+﻿@using Web.Model
+@model  News
+@{
+    ViewBag.Title = "Thêm mới";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<script src="~/AppJs/about.js?v=1.0.1"></script>
+@using (Ajax.BeginForm("Add", "About", null,
+                new AjaxOptions
+                {
+                    HttpMethod = "POST",
+                    OnSuccess = "about.onAddSuccess"
+                },
+                new { @id = "frmData", @class = "form-horizontal" }))
+{
+    <input type="hidden" name="close" id="close" value="" />
+    @Html.HiddenFor(x => x.LinkSeo)
+<div class="form-group">
+    <label style="opacity:0" class="control-label col-md-1">abc</label>
+    <div class="col-md-10">
+        <span style="font-style:italic">Lưu ý: </span><span>Các trường có dấu (<span style="color:red">*</span>) là yêu cầu bắt buộc</span>
+    </div>
+</div>
+    <div class="form-group">
+        <label class="control-label col-md-1">Tiêu đề<span class="asterisk"> *</span></label>
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.MetaTitle, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-1">Nội dung<span class="asterisk"> *</span></label>
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.Contents, new { @class = "form-control" })
+            <span class="error" id="spcontent"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-3 col-md-9">
+            <a href="/admin/about" class="btn btn-primary"><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay trở lại</a>
+            <button type="submit" onclick="checkAdd('close')" id="btnsaveadd" class="btn btn-primary">Lưu và đóng</button>
+            <button type="submit" onclick="checkAdd('continue')" id="btnsavecontinue" class="btn btn-primary">Lưu và thêm tiếp</button>
+        </div>
+    </div>
+}
+<script src="~/Content/plugins/jquery-tag-it/js/jquery-ui.min.js"></script>
+<script src="~/Content/plugins/ckeditor/ckeditor.js"></script>
+<script src="~/Content/plugins/ckfinder/ckfinder.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#MetaTitle').on('blur', function () {
+            let link = $('#MetaTitle').val();
+            let linkSeo = RemoveMarkStr(link);
+            $('#LinkSeo').val(linkSeo);
+        })
+        $("#frmData").validate({
+            rules:
+            {
+                MetaTitle:
+                {
+                    required: true
+                },
+                Contents:
+                {
+                    required: true
+                }
+            },
+            messages:
+            {
+                MetaTitle:
+                {
+                    required: "Vui lòng nhập tiêu đề"
+                },
+                Contents:
+                {
+                    required: "Vui lòng nhập nội dung"
+                }
+            },
+            highlight: function (element) {
+                jQuery(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+            },
+            success: function (element) {
+                jQuery(element).closest('.form-group').removeClass('has-error');
+            }
+        });
+    })
+    var editor = CKEDITOR.replace('Contents', {
+        height: '800px',
+        startupFocus: true,
+        language: 'vi',
+        filebrowserBrowseUrl: "/Content/plugins/ckfinder/ckfinder.html",
+        filebrowserImageBrowseUrl: '/Content/plugins/ckfinder/ckfinder.html?Type=Images',
+        filebrowserFlashBrowseUrl: '/Content/plugins/ckfinder/ckfinder.html?Type=Flash',
+        filebrowserUploadUrl: '/Scripts/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Files',
+        filebrowserImageUploadUrl: '/Scripts/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Images',
+        filebrowserFlashUploadUrl: '/Scripts/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Flash'
+    });
+    editor.on('change', function () {
+        $("#spcontent").text('');
+    })
+    function checkAdd(state) {
+        $('#close').val(state);
+        var messageLength = CKEDITOR.instances['Contents'].getData().replace(/<[^>]*>/gi, '').length;
+        if (!messageLength) {
+            $("#spcontent").text("Vui lòng thêm nội dung bài viết");
+            return false;
+        }
+    }
+
+</script>

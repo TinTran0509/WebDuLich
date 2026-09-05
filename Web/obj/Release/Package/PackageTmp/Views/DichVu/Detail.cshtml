@@ -1,0 +1,160 @@
+﻿@model Web.Model.News
+@{
+    TempData["Title"] = ViewBag.MetaTitle;
+    TempData["Url"] = ViewBag.Link;
+    TempData["Description"] = ViewBag.Description;
+    TempData["UrlImage"] = "http://khonggianxanhvn.vn" + ViewBag.UrlImage;
+    Layout = "~/Views/Shared/_LayoutNews.cshtml";
+    var relateds = ViewBag.Relateds;
+    var lstNews = ViewBag.LstNews;
+}
+}
+
+<div id="content" class="blog-wrapper blog-single page-wrapper">
+    <div class="row row-large row-divided ">
+        <div class="large-9 col">
+            <article id="post-5996" class="post-5996 post type-post status-publish format-standard has-post-thumbnail hentry category-tin-tuc">
+                <div class="article-inner ">
+                    <header class="entry-header">
+                        <div class="entry-header-text entry-header-text-top text-left">
+                            <nav aria-label="breadcrumbs" class="rank-math-breadcrumb">
+                                <p><a href="/">Home</a><span class="separator"> » </span><a href="/tin-tuc">Tin tức</a><span class="separator"> » </span><span class="last">@Model.MetaTitle</span></p>
+                            </nav>
+                            <h1 class="entry-title">@Model.MetaTitle</h1>
+                            <div class="entry-divider is-divider small"></div>
+                            <div class="thong-tin-meta">
+                                <span class="tac-gia"><i class="fa fa-user-circle-o"></i> Đăng bởi: admin</span> <span class="luot-xem">
+                                    <i class="fa fa-eye" aria-hidden="true"></i> 548 lượt xem
+                                </span><span class="ngay-dang-bai"><i class="fa fa-clock-o" aria-hidden="true"></i> Đăng ngày @Model.CreatedDate.Day Tháng @Model.CreatedDate.Month, @Model.CreatedDate.Year</span>
+                            </div>
+                        </div>
+                    </header>
+                    <div class="entry-content single-page">
+                        @Html.Raw(Model.Contents)
+                        <div class="blog-share text-center">
+                            <div class="is-divider medium"></div>
+                            <div class="social-icons share-icons share-row relative">
+                                <a href="whatsapp://send?text=Gi%E1%BA%B7t%20th%E1%BA%A3m%20H%C3%B3c%20M%C3%B4n%20gi%C3%A1%20r%E1%BA%BB%2C%20cam%20k%E1%BA%BFt%20chu%E1%BA%A9n%20s%E1%BA%A1ch%20100%25%20%7C%20Vua%20V%E1%BB%87%20Sinh -" data-action="share/whatsapp/share" class="icon button circle is-outline tooltip whatsapp show-for-medium" title="Share on WhatsApp" aria-label="Share on WhatsApp"><i class="icon-whatsapp"></i></a>
+                                <a href="https://www.facebook.com/sharer.php?u=" data-label="Facebook" onclick="window.open(this.href,this.title,'width=500,height=500,top=300px,left=300px');  return false;" rel="noopener noreferrer nofollow" target="_blank" class="icon button circle is-outline tooltip facebook" title="Share on Facebook" aria-label="Share on Facebook"><i class="icon-facebook"></i></a><a href="https://twitter.com/share?url=" onclick="window.open(this.href,this.title,'width=500,height=500,top=300px,left=300px');  return false;" rel="noopener noreferrer nofollow" target="_blank" class="icon button circle is-outline tooltip twitter" title="Share on Twitter" aria-label="Share on Twitter"><i class="icon-twitter"></i></a>
+                                <a href="mailto:enteryour@addresshere.com?subject=Gi%E1%BA%B7t%20th%E1%BA%A3m%20H%C3%B3c%20M%C3%B4n%20gi%C3%A1%20r%E1%BA%BB%2C%20cam%20k%E1%BA%BFt%20chu%E1%BA%A9n%20s%E1%BA%A1ch%20100%25%20%7C%20Vua%20V%E1%BB%87%20Sinh&amp;body=Check%20this%20out:%20https://" rel="nofollow" class="icon button circle is-outline tooltip email" title="Email to a Friend" aria-label="Email to a Friend"><i class="icon-envelop"></i></a><a href="https://pinterest.com/pin/create/button/?url=https://vuavesinh.vn/giat-tham-hoc-mon/&amp;media=https:/03/giat-tham-hoc-mon-3.jpg?v=1680167344&amp;description=Gi%E1%BA%B7t%20th%E1%BA%A3m%20H%C3%B3c%20M%C3%B4n%20gi%C3%A1%20r%E1%BA%BB%2C%20cam%20k%E1%BA%BFt%20chu%E1%BA%A9n%20s%E1%BA%A1ch%20100%25%20%7C%20Vua%20V%E1%BB%87%20Sinh" onclick="window.open(this.href,this.title,'width=500,height=500,top=300px,left=300px');  return false;" rel="noopener noreferrer nofollow" target="_blank" class="icon button circle is-outline tooltip pinterest" title="Pin on Pinterest" aria-label="Pin on Pinterest"><i class="icon-pinterest"></i></a>
+                                <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https/&amp;title=Gi%E1%BA%B7t%20th%E1%BA%A3m%20H%C3%B3c%20M%C3%B4n%20gi%C3%A1%20r%E1%BA%BB%2C%20cam%20k%E1%BA%BFt%20chu%E1%BA%A9n%20s%E1%BA%A1ch%20100%25%20%7C%20Vua%20V%E1%BB%87%20Sinh" onclick="window.open(this.href,this.title,'width=500,height=500,top=300px,left=300px');  return false;" rel="noopener noreferrer nofollow" target="_blank" class="icon button circle is-outline tooltip linkedin" title="Share on LinkedIn" aria-label="Share on LinkedIn"><i class="icon-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+        <div class="post-sidebar large-3 col">
+            <div id="secondary" class="widget-area " role="complementary">
+                <aside id="flatsome_recent_posts-2" class="widget flatsome_recent_posts">
+                    <span class="widget-title "><span>Bài viết mới cập nhật</span></span>
+                    <div class="is-divider small"></div>
+                    <ul>
+                        @if (lstNews != null)
+                        {
+                            foreach (var item in lstNews)
+                            {
+                                <li class="recent-blog-posts-li">
+                                    <div class="flex-row recent-blog-posts align-top pt-half pb-half">
+                                        <div class="flex-col mr-half">
+                                            <div class="badge post-date  badge-outline">
+                                                <div class="badge-inner bg-fill" style="background: url(@item.Image); border:0;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex-col flex-grow">
+                                            <a href="/dich-vu/@item.LinkSeo" title="@item.MetaTitle">@item.MetaTitle</a>
+                                            <span class="post_comments op-7 block is-xsmall"><a href="/dich-vu/@item.LinkSeo"></a></span>
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+                        }
+                    </ul>
+                </aside>
+                <aside id="custom_html-2" class="widget_text widget widget_custom_html">
+                    <div class="textwidget custom-html-widget">
+                        <div class="wpcf7 js" id="wpcf7-f5079-o1" lang="vi" dir="ltr" data-wpcf7-id="5079">
+                            <div class="screen-reader-response">
+                                <p role="status" aria-live="polite" aria-atomic="true"></p>
+                                <ul></ul>
+                            </div>
+                            <form action="" method="post" class="wpcf7-form init" aria-label="Form liên hệ" novalidate="novalidate" data-status="init">
+                                <div style="display: none;">
+                                    <input type="hidden" name="_wpcf7" value="5079">
+                                    <input type="hidden" name="_wpcf7_version" value="6.0.4">
+                                    <input type="hidden" name="_wpcf7_locale" value="vi">
+                                    <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f5079-o1">
+                                    <input type="hidden" name="_wpcf7_container_post" value="0">
+                                    <input type="hidden" name="_wpcf7_posted_data_hash" value="">
+                                </div>
+                                <div class="form-dang-ky">
+                                    <h3>
+                                        Đăng ký tư vấn dịch vụ
+                                    </h3>
+                                    <p>
+                                        <span class="wpcf7-form-control-wrap" data-name="text-894"><input size="40" maxlength="400" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="Họ và tên" value="" type="text" name="text-894"></span><br>
+                                        <span class="wpcf7-form-control-wrap" data-name="tel-995"><input size="40" maxlength="400" class="wpcf7-form-control wpcf7-tel wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-tel" aria-required="true" aria-invalid="false" placeholder="Số điện thoại" value="" type="tel" name="tel-995"></span><br>
+                                        <span class="wpcf7-form-control-wrap" data-name="text-895"><input size="40" maxlength="400" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="Địa chỉ của bạn..." value="" type="text" name="text-895"></span><br>
+                                        <span class="wpcf7-form-control-wrap" data-name="menu-687">
+                                            <select class="wpcf7-form-control wpcf7-select wpcf7-validates-as-required" aria-required="true" aria-invalid="false" name="menu-687">
+                                                <option value="Dịch vụ cần tư vấn">Dịch vụ cần tư vấn</option>
+                                                <option value="Giặt thảm">Giặt thảm</option>
+                                                <option value="Giặt sofa">Giặt sofa</option>
+                                                <option value="Giặt nệm">Giặt nệm</option>
+                                                <option value="Giặt rèm cửa">Giặt rèm cửa</option>
+                                                <option value="Vệ sinh nhà cửa">Vệ sinh nhà cửa</option>
+                                                <option value="Vệ sinh nhà xưởng">Vệ sinh nhà xưởng</option>
+                                                <option value="Vệ sinh chung cư">Vệ sinh chung cư</option>
+                                                <option value="Lau kính công trình">Lau kính công trình</option>
+                                            </select>
+                                        </span>
+                                        <br>
+                                        <span class="wpcf7-form-control-wrap" data-name="textarea-589"><textarea cols="40" rows="10" maxlength="2000" class="wpcf7-form-control wpcf7-textarea" aria-invalid="false" placeholder="Ghi chú" name="textarea-589"></textarea></span><br>
+                                        <input class="wpcf7-form-control wpcf7-submit has-spinner" type="submit" value="Đăng ký tư vấn"><span class="wpcf7-spinner"></span>
+                                    </p>
+                                    <div>
+                                    </div>
+                                </div>
+                                <div class="wpcf7-response-output" aria-hidden="true"></div>
+                            </form>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+    <div class="box-bvlq">
+        <div class="container">
+            <div class="bai-viet-lien-quan">
+                <h3>Bài viết cùng chủ đề:</h3>
+                <ul class="list-bai-viet">
+                    @if (relateds != null)
+                    {
+                        foreach (var item in relateds)
+                        {
+                            <li>
+                                <div class="box-image">
+                                    <a href="/dich-vu/@item.LinkSeo"><img width="600" height="400" src="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20600%20400%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E" data-src="@item.Image" class="lazy-load attachment-large size-large wp-post-image" alt="@item.MetaTitle" decoding="async" srcset="" data-srcset="@item.Image 600w, @item.Image 300w" sizes="auto, (max-width: 600px) 100vw, 600px"></a>
+                                </div>
+                                <a href="/dich-vu/@item.LinkSeo">
+                                    <h4 class="tieu-de-bai-viet">@item.MetaTitle</h4>
+                                </a>
+                                <div class="thong-tin-meta">
+                                    <span class="luot-xem">
+                                        <i class="fa fa-eye" aria-hidden="true"></i> 1538 lượt xem
+                                    </span><span class="ngay-dang-bai"><i class="fa fa-clock-o" aria-hidden="true"></i> 15 Tháng 6, 2023</span>
+                                </div>
+                            </li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    let elment = document.getElementById('menu-item-9');
+    elment.classList.add("active");
+</script>
+

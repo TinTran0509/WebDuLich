@@ -1,0 +1,21 @@
+body {
+  /*  background-image: url('../../images/background.jpg');*/
+    background-image: url('../../images/backgroundvesinh.jpg');
+    /* Full height */
+    height: 100%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-size: 14px;
+}
+
+.transbox{
+  padding: 15px;
+  border-radius: 10px;
+  background-color:#FFF;
+}
+
+.loginColumns {
+  max-width: 425px;
+}

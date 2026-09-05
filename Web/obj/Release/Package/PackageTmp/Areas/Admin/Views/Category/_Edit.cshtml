@@ -1,0 +1,93 @@
+﻿@model Web.Model.Category
+@{
+    var categories = (List<Web.Model.Category>)TempData["Categories"];
+    var lstPosition = (Dictionary<string, string>)TempData["Positions"];
+    var lstIcon = (Dictionary<string, string>)TempData["Icons"];
+}
+@using (Ajax.BeginForm("Edit", "Category",
+                new AjaxOptions
+                {
+                    HttpMethod = "POST",
+                    OnSuccess = "Category.onEditSuccess"
+                },
+                new { @id = "frmData", @class = "form-horizontal" }))
+{
+    @Html.HiddenFor(x => x.ID)
+    @Html.HiddenFor(x => x.LinkSeo)
+    <div class="form-group">
+        <label class="control-label col-md-2">Tên danh mục<span class="asterisk">(*)</span></label>
+        <div class="col-md-9">
+            @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+        </div>
+    </div>  
+    <div class="form-group" id="dv-category">
+        <label class="col-md-2 control-label">Danh mục cha</label>
+        <div class="col-md-9">
+            <select class="form-control select2" id="ParentID" name="ParentID">
+                <option value="0">--- Chọn cha ---</option>
+                @foreach (var item in categories)
+                {
+                    int level = (int)item.Level - 1;
+                    <option value="@item.ID">@Html.Raw(string.Concat(Enumerable.Repeat("--", level)) + "&nbsp" + item.Name)</option>
+                }
+            </select>
+        </div>
+    </div>  
+    <div class="form-group">
+        <label class="control-label col-md-2">Thứ tự <span class="asterisk">(*)</span></label>
+        <div class="col-md-2 lockchar">
+            @Html.TextBoxFor(model => model.Ordering, new { @class = "form-control", @type = "number" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="text-center">
+            <button type="submit" onclick="validate()" class="btn btn-primary">Cập nhật</button>
+        </div>
+    </div>
+    <input id="LinkSeo" type="hidden" name="LinkSeo" value="@Model.LinkSeo" />
+}
+<script> 
+    $(document).ready(function () {
+        $('#Name').on('blur', function () {
+            let link = $('#Name').val();
+            let linkSeo = RemoveMarkStr(link);
+            $('#LinkSeo').val(linkSeo);
+        });
+        $('.lockchar').on("keypress", function (e) {
+            return e.charCode >= 48 && e.charCode <= 57
+        })
+        $('#ParentID').val(@Model.ParentID); 
+         
+        $("#frmData").validate({
+            rules:
+            {
+                Name:
+                {
+                    required: true,
+                    maxlength: 250
+                },
+                Ordering:
+                {
+                    required: true
+                }
+            },
+            messages:
+            {
+                Name:
+                {
+                    required: "Vui lòng nhập tên danh mục"
+                },
+                Ordering:
+                   {
+                       required: "Vui lòng nhập thứ tự"
+                   }
+            },
+            highlight: function (element) {
+                jQuery(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+            },
+            success: function (element) {
+                jQuery(element).closest('.form-group').removeClass('has-error');
+            }
+        });
+    })
+</script>

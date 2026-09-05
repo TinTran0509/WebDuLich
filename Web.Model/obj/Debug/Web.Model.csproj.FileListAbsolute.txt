@@ -1,0 +1,170 @@
+E:\New folder\LedQuaTang\Web.Model\bin\Debug\Web.Model.dll.config
+E:\New folder\LedQuaTang\Web.Model\bin\Debug\Web.Model.dll
+E:\New folder\LedQuaTang\Web.Model\bin\Debug\Web.Model.pdb
+E:\New folder\LedQuaTang\Web.Model\bin\Debug\EntityFramework.dll
+E:\New folder\LedQuaTang\Web.Model\bin\Debug\EntityFramework.SqlServer.dll
+E:\New folder\LedQuaTang\Web.Model\bin\Debug\Microsoft.Web.Infrastructure.dll
+E:\New folder\LedQuaTang\Web.Model\bin\Debug\Web.Core.dll
+E:\New folder\LedQuaTang\Web.Model\bin\Debug\EntityFramework.xml
+E:\New folder\LedQuaTang\Web.Model\bin\Debug\EntityFramework.SqlServer.xml
+E:\New folder\LedQuaTang\Web.Model\bin\Debug\Web.Core.pdb
+E:\New folder\LedQuaTang\Web.Model\obj\Debug\Web.Model.csprojAssemblyReference.cache
+E:\New folder\LedQuaTang\Web.Model\obj\Debug\Web.Model.csproj.CoreCompileInputs.cache
+E:\New folder\LedQuaTang\Web.Model\obj\Debug\Web.Model.csproj.CopyComplete
+E:\New folder\LedQuaTang\Web.Model\obj\Debug\Web.Model.dll
+E:\New folder\LedQuaTang\Web.Model\obj\Debug\Web.Model.pdb
+D:\đồ án\LedQuaTang\Web.Model\bin\Debug\Web.Model.dll.config
+D:\đồ án\LedQuaTang\Web.Model\bin\Debug\Web.Model.dll
+D:\đồ án\LedQuaTang\Web.Model\bin\Debug\Web.Model.pdb
+D:\đồ án\LedQuaTang\Web.Model\bin\Debug\EntityFramework.dll
+D:\đồ án\LedQuaTang\Web.Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\đồ án\LedQuaTang\Web.Model\bin\Debug\Microsoft.Web.Infrastructure.dll
+D:\đồ án\LedQuaTang\Web.Model\bin\Debug\Web.Core.dll
+D:\đồ án\LedQuaTang\Web.Model\bin\Debug\EntityFramework.xml
+D:\đồ án\LedQuaTang\Web.Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\đồ án\LedQuaTang\Web.Model\bin\Debug\Web.Core.pdb
+D:\đồ án\LedQuaTang\Web.Model\obj\Debug\Web.Model.csprojAssemblyReference.cache
+D:\đồ án\LedQuaTang\Web.Model\obj\Debug\Web.Model.csproj.CoreCompileInputs.cache
+D:\đồ án\LedQuaTang\Web.Model\obj\Debug\Web.Model.csproj.CopyComplete
+D:\đồ án\LedQuaTang\Web.Model\obj\Debug\Web.Model.dll
+D:\đồ án\LedQuaTang\Web.Model\obj\Debug\Web.Model.pdb
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Model\bin\Debug\Web.Model.dll.config
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Model\bin\Debug\Web.Model.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Model\bin\Debug\Web.Model.pdb
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Model\bin\Debug\EntityFramework.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Model\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Model\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Model\bin\Debug\Web.Core.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Model\bin\Debug\EntityFramework.xml
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Model\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Model\bin\Debug\Web.Core.pdb
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Model\obj\Debug\Web.Model.csprojResolveAssemblyReference.cache
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Model\obj\Debug\Web.Model.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Model\obj\Debug\Web.Model.pdb
+E:\BearShop\Web.Model\bin\Debug\Web.Model.dll.config
+E:\BearShop\Web.Model\bin\Debug\Web.Model.dll
+E:\BearShop\Web.Model\bin\Debug\Web.Model.pdb
+E:\BearShop\Web.Model\bin\Debug\EntityFramework.dll
+E:\BearShop\Web.Model\bin\Debug\EntityFramework.SqlServer.dll
+E:\BearShop\Web.Model\bin\Debug\Microsoft.Web.Infrastructure.dll
+E:\BearShop\Web.Model\bin\Debug\Web.Core.dll
+E:\BearShop\Web.Model\bin\Debug\EntityFramework.xml
+E:\BearShop\Web.Model\bin\Debug\EntityFramework.SqlServer.xml
+E:\BearShop\Web.Model\bin\Debug\Web.Core.pdb
+E:\BearShop\Web.Model\obj\Debug\Web.Model.csprojResolveAssemblyReference.cache
+E:\BearShop\Web.Model\obj\Debug\Web.Model.dll
+E:\BearShop\Web.Model\obj\Debug\Web.Model.pdb
+D:\PROJECTMORE\BearShop\Web.Model\bin\Debug\Web.Model.dll.config
+D:\PROJECTMORE\BearShop\Web.Model\bin\Debug\Web.Model.dll
+D:\PROJECTMORE\BearShop\Web.Model\bin\Debug\Web.Model.pdb
+D:\PROJECTMORE\BearShop\Web.Model\bin\Debug\EntityFramework.dll
+D:\PROJECTMORE\BearShop\Web.Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\PROJECTMORE\BearShop\Web.Model\bin\Debug\Microsoft.Web.Infrastructure.dll
+D:\PROJECTMORE\BearShop\Web.Model\bin\Debug\Web.Core.dll
+D:\PROJECTMORE\BearShop\Web.Model\bin\Debug\EntityFramework.xml
+D:\PROJECTMORE\BearShop\Web.Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\PROJECTMORE\BearShop\Web.Model\bin\Debug\Web.Core.pdb
+D:\PROJECTMORE\BearShop\Web.Model\obj\Debug\Web.Model.csproj.AssemblyReference.cache
+D:\PROJECTMORE\BearShop\Web.Model\obj\Debug\Web.Model.csproj.CoreCompileInputs.cache
+D:\PROJECTMORE\BearShop\Web.Model\obj\Debug\Web.Model.csproj.Up2Date
+D:\PROJECTMORE\BearShop\Web.Model\obj\Debug\Web.Model.dll
+D:\PROJECTMORE\BearShop\Web.Model\obj\Debug\Web.Model.pdb
+G:\BearShop\Web.Model\bin\Debug\Web.Model.dll.config
+G:\BearShop\Web.Model\bin\Debug\Web.Model.dll
+G:\BearShop\Web.Model\bin\Debug\Web.Model.pdb
+G:\BearShop\Web.Model\bin\Debug\EntityFramework.dll
+G:\BearShop\Web.Model\bin\Debug\EntityFramework.SqlServer.dll
+G:\BearShop\Web.Model\bin\Debug\Microsoft.Web.Infrastructure.dll
+G:\BearShop\Web.Model\bin\Debug\Web.Core.dll
+G:\BearShop\Web.Model\bin\Debug\EntityFramework.xml
+G:\BearShop\Web.Model\bin\Debug\EntityFramework.SqlServer.xml
+G:\BearShop\Web.Model\bin\Debug\Web.Core.pdb
+G:\BearShop\Web.Model\obj\Debug\Web.Model.csproj.AssemblyReference.cache
+G:\BearShop\Web.Model\obj\Debug\Web.Model.csproj.CoreCompileInputs.cache
+G:\BearShop\Web.Model\obj\Debug\Web.Model.csproj.CopyComplete
+G:\BearShop\Web.Model\obj\Debug\Web.Model.dll
+G:\BearShop\Web.Model\obj\Debug\Web.Model.pdb
+G:\SaoVangJSC\SaoVangJSC\Web.Model\bin\Debug\Web.Model.dll.config
+G:\SaoVangJSC\SaoVangJSC\Web.Model\bin\Debug\Web.Model.dll
+G:\SaoVangJSC\SaoVangJSC\Web.Model\bin\Debug\Web.Model.pdb
+G:\SaoVangJSC\SaoVangJSC\Web.Model\bin\Debug\EntityFramework.dll
+G:\SaoVangJSC\SaoVangJSC\Web.Model\bin\Debug\EntityFramework.SqlServer.dll
+G:\SaoVangJSC\SaoVangJSC\Web.Model\bin\Debug\Microsoft.Web.Infrastructure.dll
+G:\SaoVangJSC\SaoVangJSC\Web.Model\bin\Debug\Web.Core.dll
+G:\SaoVangJSC\SaoVangJSC\Web.Model\bin\Debug\EntityFramework.xml
+G:\SaoVangJSC\SaoVangJSC\Web.Model\bin\Debug\EntityFramework.SqlServer.xml
+G:\SaoVangJSC\SaoVangJSC\Web.Model\bin\Debug\Web.Core.pdb
+G:\SaoVangJSC\SaoVangJSC\Web.Model\obj\Debug\Web.Model.csproj.AssemblyReference.cache
+G:\SaoVangJSC\SaoVangJSC\Web.Model\obj\Debug\Web.Model.csproj.CoreCompileInputs.cache
+G:\SaoVangJSC\SaoVangJSC\Web.Model\obj\Debug\Web.Model.csproj.CopyComplete
+G:\SaoVangJSC\SaoVangJSC\Web.Model\obj\Debug\Web.Model.dll
+G:\SaoVangJSC\SaoVangJSC\Web.Model\obj\Debug\Web.Model.pdb
+D:\WebDuLich\Web\Web.Model\bin\Debug\Web.Model.dll.config
+D:\WebDuLich\Web\Web.Model\bin\Debug\Web.Model.dll
+D:\WebDuLich\Web\Web.Model\bin\Debug\Web.Model.pdb
+D:\WebDuLich\Web\Web.Model\bin\Debug\EntityFramework.dll
+D:\WebDuLich\Web\Web.Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\WebDuLich\Web\Web.Model\bin\Debug\Microsoft.Web.Infrastructure.dll
+D:\WebDuLich\Web\Web.Model\bin\Debug\Web.Core.dll
+D:\WebDuLich\Web\Web.Model\bin\Debug\EntityFramework.xml
+D:\WebDuLich\Web\Web.Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\WebDuLich\Web\Web.Model\bin\Debug\Web.Core.pdb
+D:\WebDuLich\Web\Web.Model\obj\Debug\Web.Model.csproj.AssemblyReference.cache
+D:\WebDuLich\Web\Web.Model\obj\Debug\Web.Model.csproj.CoreCompileInputs.cache
+D:\WebDuLich\Web\Web.Model\obj\Debug\Web.Model.csproj.CopyComplete
+D:\WebDuLich\Web\Web.Model\obj\Debug\Web.Model.dll
+D:\WebDuLich\Web\Web.Model\obj\Debug\Web.Model.pdb
+D:\WebDuLich\Lummia\Web\Web.Model\bin\Debug\Web.Model.dll.config
+D:\WebDuLich\Lummia\Web\Web.Model\bin\Debug\Web.Model.dll
+D:\WebDuLich\Lummia\Web\Web.Model\bin\Debug\Web.Model.pdb
+D:\WebDuLich\Lummia\Web\Web.Model\bin\Debug\EntityFramework.dll
+D:\WebDuLich\Lummia\Web\Web.Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\WebDuLich\Lummia\Web\Web.Model\bin\Debug\Microsoft.Web.Infrastructure.dll
+D:\WebDuLich\Lummia\Web\Web.Model\bin\Debug\Web.Core.dll
+D:\WebDuLich\Lummia\Web\Web.Model\bin\Debug\EntityFramework.xml
+D:\WebDuLich\Lummia\Web\Web.Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\WebDuLich\Lummia\Web\Web.Model\bin\Debug\Web.Core.pdb
+D:\WebDuLich\Lummia\Web\Web.Model\obj\Debug\Web.Model.csproj.AssemblyReference.cache
+D:\WebDuLich\Lummia\Web\Web.Model\obj\Debug\Web.Model.csproj.CoreCompileInputs.cache
+D:\WebDuLich\Lummia\Web\Web.Model\obj\Debug\Web.Model.csproj.CopyComplete
+D:\WebDuLich\Lummia\Web\Web.Model\obj\Debug\Web.Model.dll
+D:\WebDuLich\Lummia\Web\Web.Model\obj\Debug\Web.Model.pdb
+D:\PROJECTMORE\Lummia\Web\Web.Model\bin\Debug\Web.Model.dll.config
+D:\PROJECTMORE\Lummia\Web\Web.Model\bin\Debug\Web.Model.dll
+D:\PROJECTMORE\Lummia\Web\Web.Model\bin\Debug\Web.Model.pdb
+D:\PROJECTMORE\Lummia\Web\Web.Model\bin\Debug\EntityFramework.dll
+D:\PROJECTMORE\Lummia\Web\Web.Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\PROJECTMORE\Lummia\Web\Web.Model\bin\Debug\Microsoft.Web.Infrastructure.dll
+D:\PROJECTMORE\Lummia\Web\Web.Model\bin\Debug\System.Web.Helpers.dll
+D:\PROJECTMORE\Lummia\Web\Web.Model\bin\Debug\System.Web.Mvc.dll
+D:\PROJECTMORE\Lummia\Web\Web.Model\bin\Debug\System.Web.Razor.dll
+D:\PROJECTMORE\Lummia\Web\Web.Model\bin\Debug\System.Web.WebPages.Deployment.dll
+D:\PROJECTMORE\Lummia\Web\Web.Model\bin\Debug\System.Web.WebPages.dll
+D:\PROJECTMORE\Lummia\Web\Web.Model\bin\Debug\System.Web.WebPages.Razor.dll
+D:\PROJECTMORE\Lummia\Web\Web.Model\bin\Debug\Web.Core.dll
+D:\PROJECTMORE\Lummia\Web\Web.Model\bin\Debug\EntityFramework.xml
+D:\PROJECTMORE\Lummia\Web\Web.Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\PROJECTMORE\Lummia\Web\Web.Model\bin\Debug\System.Web.Helpers.xml
+D:\PROJECTMORE\Lummia\Web\Web.Model\bin\Debug\System.Web.Mvc.xml
+D:\PROJECTMORE\Lummia\Web\Web.Model\bin\Debug\System.Web.Razor.xml
+D:\PROJECTMORE\Lummia\Web\Web.Model\bin\Debug\System.Web.WebPages.xml
+D:\PROJECTMORE\Lummia\Web\Web.Model\bin\Debug\System.Web.WebPages.Deployment.xml
+D:\PROJECTMORE\Lummia\Web\Web.Model\bin\Debug\System.Web.WebPages.Razor.xml
+D:\PROJECTMORE\Lummia\Web\Web.Model\bin\Debug\Web.Core.pdb
+D:\PROJECTMORE\Lummia\Web\Web.Model\obj\Debug\Web.Model.csproj.AssemblyReference.cache
+D:\PROJECTMORE\Lummia\Web\Web.Model\obj\Debug\Web.Model.csproj.CoreCompileInputs.cache
+D:\PROJECTMORE\Lummia\Web\Web.Model\obj\Debug\Web.Model.csproj.Up2Date
+D:\PROJECTMORE\Lummia\Web\Web.Model\obj\Debug\Web.Model.dll
+D:\PROJECTMORE\Lummia\Web\Web.Model\obj\Debug\Web.Model.pdb
+D:\WebDuLich\Lummia\Web\Web.Model\bin\Debug\System.Web.Helpers.dll
+D:\WebDuLich\Lummia\Web\Web.Model\bin\Debug\System.Web.Mvc.dll
+D:\WebDuLich\Lummia\Web\Web.Model\bin\Debug\System.Web.Razor.dll
+D:\WebDuLich\Lummia\Web\Web.Model\bin\Debug\System.Web.WebPages.Deployment.dll
+D:\WebDuLich\Lummia\Web\Web.Model\bin\Debug\System.Web.WebPages.dll
+D:\WebDuLich\Lummia\Web\Web.Model\bin\Debug\System.Web.WebPages.Razor.dll
+D:\WebDuLich\Lummia\Web\Web.Model\bin\Debug\System.Web.Helpers.xml
+D:\WebDuLich\Lummia\Web\Web.Model\bin\Debug\System.Web.Mvc.xml
+D:\WebDuLich\Lummia\Web\Web.Model\bin\Debug\System.Web.Razor.xml
+D:\WebDuLich\Lummia\Web\Web.Model\bin\Debug\System.Web.WebPages.xml
+D:\WebDuLich\Lummia\Web\Web.Model\bin\Debug\System.Web.WebPages.Deployment.xml
+D:\WebDuLich\Lummia\Web\Web.Model\bin\Debug\System.Web.WebPages.Razor.xml

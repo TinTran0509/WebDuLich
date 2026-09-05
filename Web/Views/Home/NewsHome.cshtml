@@ -1,0 +1,66 @@
+﻿@model List<Web.Model.News>
+<section class="section section8" id="section_2030597486">
+    <div class="bg section-bg fill bg-fill  bg-loaded">
+    </div>
+    <div class="section-content relative">
+        <div class="row" id="row-1670051361">
+            <div id="col-807157290" class="col small-12 large-12">
+                <div class="col-inner">
+                    <h2 style="text-align: center;">
+                        <span style="font-size: 120%;">KIẾN THỨC <span style="color: #008000;">VỆ SINH</span></span>
+                    </h2>
+                    <div id="gap-2072651151" class="gap-element clearfix" style="display:block; height:auto;">
+                        <style>
+                            #gap-2072651151 {
+                                padding-top: 15px;
+                            }
+                        </style>
+                    </div>
+                    <div class="row list-post large-columns-4 medium-columns-1 small-columns-1 row-small">
+                        @foreach (var item in Model)
+                        {
+                            <div class="col post-item">
+                                <div class="col-inner">
+                                    <a href="/tin-tuc/@item.LinkSeo" class="plain">
+                                        <div class="box box-vertical box-text-bottom box-blog-post has-hover">
+                                            <div class="box-image" style="width:41%;">
+                                                <div class="image-cover" style="padding-top:75%;">
+                                                    <img loading="lazy" decoding="async" width="750" height="422" src="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20750%20422%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E" data-src="@item.Image"
+                                                         class="lazy-load attachment-original size-original wp-post-image" alt="@item.MetaTitle" srcset="" data-srcset="@item.Image 750w, @item.Image 300w, @item.Image 600w"
+                                                         sizes="auto, (max-width: 750px) 100vw, 750px" />
+                                                </div>
+                                            </div>
+                                            <div class="box-text text-left">
+                                                <div class="box-text-inner blog-post-inner">
+                                                    <h5 class="post-title is-large ">@item.MetaTitle</h5>
+                                                    <div class="is-divider"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        } 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        #section_2030597486 {
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+
+            #section_2030597486 .ux-shape-divider--top svg {
+                height: 150px;
+                --divider-top-width: 100%;
+            }
+
+            #section_2030597486 .ux-shape-divider--bottom svg {
+                height: 150px;
+                --divider-width: 100%;
+            }
+    </style>
+</section>
+

@@ -1,0 +1,65 @@
+﻿@using Web.Model.Domain;
+@{
+    Layout = null;
+}
+@model List<Web.Model.MenuHome>
+
+<div class="container">
+    <div class="d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center gap-70">
+            <div class="mw-90">
+                <div class="oc-heading-logo">
+                    <a href="/"> 
+                        <img class="oc-logo" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt="Pasoseatour" data-lazy-src="/Content/images/logo-nobg.png" />
+                        <noscript>
+                            <img class="oc-logo" src="/Content/images/logo-nobg.png" alt="Pasoseatour" />
+                        </noscript>
+                    </a>
+                </div>
+            </div>
+            <div class="main-nav">
+                <ul id="menu-espanol" class="">
+                    @if (Model != null && Model.Count > 0)
+                    {
+                        var lstParent = Model.Where(g => g.ParentID == 0).OrderBy(g => g.Ordering).ToList();
+                        foreach (var level0 in lstParent)
+                        {
+                            var level1 = Model.Where(g => g.ParentID == level0.ID).ToList();
+                            if (level1.Count > 0)
+                            {
+                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-34239">
+                                    <a href="#"><span class="oc-link-inner">@level0.Name</span></a>
+                                    <ul class="sub-menu">
+                                        @foreach (var item in level1)
+                                        {
+                                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-34269"><a href="sobre-mundo-asia/index.html"><span class="oc-link-inner">@item.Name</span></a></li>
+                                        }
+                                    </ul>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-34239">
+                                    <a href="#"><span class="oc-link-inner">@level0.Name</span></a>
+                                </li>
+                            }
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+        <div>
+            <a href="solicitar-viaje/index.html" class="btn-style md-d-none">
+                SOLICITAR CONSULTA
+            </a>
+            <span class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </span>
+        </div>
+    </div>
+</div>
+
+
+

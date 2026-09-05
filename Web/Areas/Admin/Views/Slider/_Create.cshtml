@@ -1,0 +1,92 @@
+﻿<script src="~/Content/Admin/assets/ckfinder/ckfinder.js"></script>
+@using Web
+@using Web.Model
+@model Slider
+@using (Ajax.BeginForm("Add", "Slider", null,
+    new AjaxOptions
+    {
+        HttpMethod = "POST",
+        OnSuccess = "slider.onAddSuccess"
+    },
+    new { @id = "basicForm", @class = "form-horizontal" }))
+{
+    <div class="form-group">
+        <label class="col-md-2 control-label">Tên ảnh</label>
+        <div class="col-md-10">
+            @Html.TextBoxFor(g => g.Title, new { @class = "form-control", placeholder = "Tên ảnh" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Đường dẫn</label>
+        <div class="col-md-10">
+            @Html.TextBoxFor(g => g.Link, new { @class = "form-control", placeholder = "http://" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Hình ảnh <span class="asterisk">(*)</span></label>
+        <div class="col-md-10">
+            <div class="col-md-2">
+                @{ Html.RenderAction("UploadImage", "UploadFile", new { controlName = "Image" });}
+            </div>
+            <img src="" id="prevImages">
+            <span class="error" id="spImg"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Thứ tự hiển thị</label>
+        <div class="col-md-2 lockChar">
+            @Html.TextBoxFor(g => g.DisplayOrder, new { @class = "form-control", Value = 1 })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-10 pull-right">
+            <div class="checkbox checkbox-primary">
+                <input id="Status" name="Status" type="checkbox" checked="" value="true">
+                <label for="Status">
+                    Kích hoạt
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="text-center">
+        <button type="submit" onclick="return validate();" class="btn btn-primary waves-effect waves-light">Thêm mới</button>
+    </div>
+}
+<script>
+    // Basic Form
+    $(document).ready(function () {
+        $('.lockChar').on("keypress", function (event) {
+            return event.charCode >= 48 && event.charCode <= 57
+        })
+        $("#Browser").click(function () {
+            var ckfinder = new CKFinder();
+            ckfinder.selectActionFunction = function (fileUrl) {
+                $("#previewthumbnail").html('<img src="' + fileUrl + '" width=150 />');
+                $("#Image").val(fileUrl);
+            }
+            ckfinder.popup();
+        });
+        $("#basicForm #LangCode").change(function () {
+            $.get("/PageElement/GetAllByLangCode?LangCode=" + $(this).val(), function (res) {
+                var html = "";
+                for (var i = 0; i < res.length; i++) {
+                    html += '<option value="' + res[i].ID + '">' + res[i].Name + '</option>';
+                }
+                $("#basicForm #PageElementId").html(html);
+            });
+        });
+        slider.initcheckall();
+        slider.initcheckall2();
+    });
+    var validate = function () {
+        if ($("#Images").val() == "") {
+            alertmsg.error("Bạn chưa chọn ảnh");
+            return false;
+        }
+        if ($("#typeslide").val() == "") {
+            alertmsg.error("Bạn chưa chọn loại slider");
+            return false;
+        }
+        return true;
+    }
+</script>

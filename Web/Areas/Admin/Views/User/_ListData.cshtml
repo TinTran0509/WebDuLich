@@ -1,0 +1,65 @@
+﻿@using Web.Model 
+@model List<Web.Model.CustomModel.UserModel>
+ 
+<table class="table table-striped cabn_datatable">
+    <thead>
+        <tr> 
+            <th>Avatar</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Điện thoại</th>
+            <th>Ngôn ngữ hỗ trợ</th>
+            <th>Trạng thái</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr> 
+                <td style="vertical-align: middle;">
+                    <img src="@item.Photo" style="width: 50px;" />
+                </td>
+                <td>
+                    @item.FullName
+                </td>
+                <td>
+                    @item.Email
+                </td>
+                <td>
+                    @item.Phone
+                </td>
+                <td>
+                    @item.LangName
+                </td>
+                <td style="vertical-align: middle;">@Html.Raw((bool)item.Active ? "<span style='color:green'>Active</span>" : "<span style='color:red'>Inactive</span>")</td>
+                <td style="vertical-align: middle;">
+                    <div class="btn-list pull-right mr5">
+                        <a href="#" class="btn btn-primary btn-bordered" onclick="User.loadfrmUserTrans(@item.ID) " title="Bản dịch">
+                            <i class="fa fa-plus"></i>
+                        </a>
+                        <a href="#" class="btn btn-primary btn-bordered" onclick="User.loadfrmEdit(@item.ID) " title="Sửa">
+                            <i class=" glyphicon glyphicon-pencil"></i>
+                        </a>
+                        <a href="#" class="btn btn-danger btn-bordered" onclick="User.ondelete(@item.ID) " title="Xóa">
+                            <i class="glyphicon glyphicon-trash"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script>
+    $(document).ready(function () {
+        InitClickCheckAllInTable("chkall", function (res) {
+            $("#hdfID").val(res);
+        });
+        $('.cabn_datatable').dataTable(
+       {
+           "oLanguage": {
+               "sUrl": "/Content/Vietnamese.json"
+           }
+       });
+    });
+</script>

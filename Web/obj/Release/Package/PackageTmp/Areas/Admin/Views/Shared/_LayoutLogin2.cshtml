@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Đăng nhập hệ thống</title>
+    <link href="~/Content/Admin/login/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="~/Content/Admin/libs/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/Admin/libs/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/Admin/libs/soap-icons/css/soap-icon.css" rel="stylesheet"/>
+    <link href="~/Content/Admin/login/css/animate.css" rel="stylesheet" />
+    <link href="~/Content/Admin/login/css/style.css?v=1.0.1" rel="stylesheet" />
+    <link href="~/Content/Admin/libs/jquery-loading/jquery.loading.min.css" rel="stylesheet" />
+    <link href="~/Content/Admin/login/css/site.css" rel="stylesheet" />
+    <link href="~/Content/Admin/login/css/login.css" rel="stylesheet" />
+
+    <style>
+        ::-webkit-input-placeholder {
+            font-style: italic;
+        }
+
+        :-moz-placeholder {
+            font-style: italic;
+        }
+
+        ::-moz-placeholder {
+            font-style: italic;
+        }
+
+        :-ms-input-placeholder {
+            font-style: italic;
+        }
+
+        .asterisk {
+            font-weight: normal;
+            color: red
+        }
+
+        #basicForm label {
+            font-weight: 600;
+            margin-left: 3px;
+        }
+
+        .row {
+            margin-bottom: 5px
+        }
+    </style>
+</head>
+<body class="gray-bg">
+    @RenderBody()
+    <!-- Section for main scripts render -->
+    <script src="~/Content/Admin/libs/jquery/dist/jquery.js"></script>
+    <script src="~/Content/Admin/libs/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/Content/Admin/libs/jquery-loading/jquery.loading.min.js" type="text/javascript"></script>
+    <script src="~/Content/Admin/libs/jquery.validate/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="~/Content/Admin/login/js/script.js"></script>
+    <script src="~/Content/Admin/login/js/skin.config.js"></script>
+    <script src="~/Content/Admin/login/js/site.js" type="text/javascript"></script>
+    <!-- Handler for local scripts -->
+    @*@if (IsSectionDefined("Scripts"))
+        {
+            RenderSection("Scripts", true);
+        }*@
+    @RenderSection("Scripts", required: false);
+</body>
+</html>

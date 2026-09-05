@@ -1,0 +1,52 @@
+﻿@{
+    Layout = null;
+    var currentUrl = HttpContext.Current.Request.UrlReferrer.AbsolutePath;
+}
+@model List<Web.Model.AdminMenu>
+
+<script src="/AppJs/adminmenu.js"></script>
+<ul>
+    @*<li class="active">        
+        <a href="/admin" class="waves-effect @(currentUrl == "/Admin" ? "active" : "")"><i class="md md-home"></i><span> Trang chủ </span></a>
+    </li>*@
+    @foreach (var parent in Model.Where(g => g.ParentID == 0).OrderBy(g => g.Ordering))
+    {
+        var lstChild = Model.Where(g => g.ParentID == parent.ID);
+
+        if (lstChild.Any())
+        {
+
+            <li id="adminmenu" class="has_sub active">
+                <a class='waves-effect @(lstChild.Any(g => g.Url == currentUrl) ? "active" : "")'>
+                    <i class="@parent.Icon"></i><span> @parent.Name </span>
+                    <span class="pull-right"><i class="md md-add"></i></span>
+                </a>
+                <ul class="list-unstyled">
+                    @foreach (var child in lstChild.OrderBy(g => g.Ordering))
+                    {
+                        <li class="active">
+                            <a style='font-weight: @(currentUrl == child.Url ? "bold" : "normal"); cursor: pointer;' onclick='InitCookies(@child.ID,"@(child.Url)")' >@child.Name</a>
+                        </li>
+                    }
+                </ul>
+            </li>
+        }
+        else
+        {
+            <li class="nav-item  active">
+                <a onclick='InitCookies(@parent.ID,"@(parent.Url)")' class="waves-effect"><i class="@parent.Icon"></i><span> @parent.Name </span></a>
+            </li>
+        }
+    }
+</ul>
+<div class="clearfix"></div>
+<script>  
+    var InitCookies = function (id,href) {        
+        AddCookies("chucnangid", id, href);
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        adminmenu.initmenu();
+    })
+</script>

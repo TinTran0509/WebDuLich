@@ -1,0 +1,61 @@
+﻿@{
+    var lstAction = (List<int>)HttpContext.Current.Session["Action"];
+}
+@using Web.Model.CustomModel
+@model List<Web.Model.tbl_Order>
+<table class="table table-striped cabn_datatable">
+    <thead>
+        <tr>
+            <th>Tên sản phẩm</th>
+            <th>Tên người mua</th>
+            <th>Số điện thoại</th>
+            <th>Email</th>
+            <th>Địa chỉ</th>
+            <th>Ngày đặt hàng</th>
+            <th>Trạng thái</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            string status = string.Empty;
+            switch (item.Status)
+            {
+                case 1:
+                    status = "Chưa giao hàng";
+                    break;  
+                case 2:
+                    status = "Đã giao hàng";
+                    break;
+                case 3:
+                    status = "Hủy giao hàng";
+                    break;
+                
+            }
+            <tr>
+                <td style="vertical-align: middle;cursor:pointer">@(item.Product != null ? item.Product.Name : "")</td>
+                <td style="vertical-align: middle;cursor:pointer">@item.CustomerName</td>
+                <td style="vertical-align: middle;cursor:pointer">@item.CustomerPhone</td>
+                <td style="vertical-align: middle;cursor:pointer">@item.CustomerEmail</td>
+                <td style="vertical-align: middle;cursor:pointer">@item.CustomerAddress</td>
+                <td style="vertical-align: middle;cursor:pointer">@string.Format("{0:dd/MM/yyyy HH:mm}", item.CreatedDate)</td>
+                <td style="vertical-align: middle;cursor:pointer">@status</td>
+                <td style="vertical-align: middle;">
+                    <div class="btn-list pull-right mr5">
+                        @if (item.Status != 2 && item.Status != 3)
+                        {
+                            <a href="#" class="btn btn-primary btn-bordered" onclick="Order.loadfrmEdit(@item.ID) "><i class="glyphicon glyphicon-pencil"></i></a>
+                        }
+                        @if (lstAction != null && lstAction.Contains((int)EnumHelper.Action.Delete))
+                        {
+                            <a href="#" class="btn btn-danger btn-bordered" onclick="Order.ondelete(@item.ID) ">
+                                <i class="glyphicon glyphicon-trash"></i>
+                            </a>
+                        }
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

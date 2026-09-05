@@ -1,0 +1,99 @@
+﻿@using Web.Model
+@model Menu
+@{
+    var lstMenu = (List<Menu>)TempData["Menus"];
+}
+@helper RenderMenu(Menu parent, List<Menu> listfull)
+{
+    var lstChilds = listfull.Where(g => g.ParentID == parent.ID);
+    <option value="@parent.ID">@(new String('-', ((int)parent.Level - 1) * 2))@parent.Name</option>
+    foreach (var child in lstChilds)
+    {
+        @RenderMenu(child, listfull);
+    }
+}
+@using (Ajax.BeginForm("Edit", "Menu", null,
+                new AjaxOptions
+                {
+                    HttpMethod = "POST",
+                    OnSuccess = "Menu.onEditSuccess"
+                },
+                new { @id = "frmData", @class = "form-horizontal" }))
+{
+    @Html.HiddenFor(x => x.ID)
+    <div class="form-group">
+        <label class="control-label col-md-2">Menu cha</label>
+        <div class="col-md-6">
+            <select class="form-control" name="ParentID" id="selParentId">
+                <option value="0">--- Chọn ---</option>
+                @foreach (var parent in lstMenu.Where(g => g.ParentID == 0))
+                {
+                    @RenderMenu(parent, lstMenu);
+                }
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Tên menu</label>
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @placeholder = "Nhập tên menu"})
+        </div>
+    </div>
+    @*<div class="form-group">
+        <label class="col-md-2 control-label">Ảnh nền </label>
+        <div class="col-md-10">
+            <div class="col-md-2">
+                @{ Html.RenderAction("UploadImage", "UploadFile", new { controlName = "Image" });}
+            </div>
+            <img src="@Model.Image" style="width:100px" id="prevImages">
+            <span class="error" id="spImg"></span>
+        </div>
+    </div>*@
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Thứ tự <span class="asterisk"> (*)</span></label>
+        <div class="col-sm-2 lockChar">
+            @Html.TextBoxFor(g => g.Ordering, new { @class = "form-control", @type = "number", placeholder = "Thứ tự..."})
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-12 text-center">
+            <button type="submit" class="btn btn-primary waves-effect waves-light">Cập nhật</button>
+        </div>
+    </div>
+} 
+<script> 
+    $(document).ready(function () {
+        $('#selParentId').val(@Model.ParentID);
+        $("#frmData").validate({
+            rules:
+            {
+                Name:
+                {
+                    required: true,
+                    maxlength: 250
+                },
+                Ordering:
+                {
+                    required: true
+                }
+            },
+            messages:
+            {
+                Name:
+                {
+                    required: "Vui lòng nhập tên menu"
+                },
+                Ordering:
+                {
+                    required: "Vui lòng nhập thứ tự"
+                }
+            },
+            highlight: function (element) {
+                jQuery(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+            },
+            success: function (element) {
+                jQuery(element).closest('.form-group').removeClass('has-error');
+            }
+        });
+    });
+</script>

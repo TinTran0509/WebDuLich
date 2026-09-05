@@ -1,0 +1,168 @@
+﻿@using Web.Model
+@{
+    ViewBag.Title = "Sửa lời tựa";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    var languages = (List<tbl_Languages>)TempData["Languages"];
+}
+<style>
+    .check-radio {
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+        margin-right: 20px;
+        padding-top: 5px;
+    }
+
+        .check-radio input {
+            display: none;
+        }
+
+        .check-radio span {
+            position: relative;
+            padding-left: 28px;
+            font-weight: 500;
+        }
+
+            .check-radio span::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 18px;
+                height: 18px;
+                border: 1px solid #999;
+                border-radius: 3px; /* ô vuông giống checkbox */
+                background: #fff;
+            }
+
+        .check-radio input:checked + span::before {
+            background: #007bff;
+            border-color: #007bff;
+        }
+
+        .check-radio input:checked + span::after {
+            content: "✓";
+            position: absolute;
+            left: 4px;
+            top: 50%;
+            transform: translateY(-55%);
+            color: white;
+            font-size: 13px;
+            font-weight: bold;
+        }
+</style>
+@model  Web.Model.CustomModel.IntroductionCreateViewModel
+<script src="~/AppJs/introduction.js"></script>
+@using (Ajax.BeginForm("Edit", "Introduction", null,
+                new AjaxOptions
+                {
+                    HttpMethod = "POST",
+                    OnSuccess = "Introduction.onEditSuccess"
+                },
+                new { @id = "frmData", @class = "form-horizontal" }))
+{
+    @Html.HiddenFor(x => x.ID)
+    @Html.HiddenFor(x => x.CreatedDate)
+    <div class="article-create">
+        <div class="form-group">
+            <div class="col-md-2 text-left">
+                <a href="/admin/roduct" class=""><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay trở lại</a>
+            </div>
+            <div class="col-md-6">
+                <h4>Cập nhật sản phẩm</h4>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-1 control-label">Ảnh <span class="asterisk"> (*)</span></label>
+            <div class="col-md-10">
+                <div class="col-md-2">
+                    @{ Html.RenderAction("UploadImage", "UploadFile", new { controlName = "Image" });}
+                </div>
+                <img style="width:150px" src="@Model.Image" id="prevImages">
+                <span class="error" id="spImg"></span>
+            </div>
+        </div>
+        <ul class="nav nav-tabs lang-tabs">
+            @for (int i = 0; i < Model.Languages.Count; i++)
+            {
+                <li class="@(i == 0 ? "active" : "")">
+                    <a href="#lang-@Model.Languages[i].LangCode"
+                       data-toggle="tab">
+                        @Model.Languages[i].LangName
+                    </a>
+                </li>
+            }
+        </ul>
+        <div class="tab-content">
+            @for (int i = 0; i < Model.Languages.Count; i++)
+            {
+                var lang = Model.Languages[i];
+                <div id="lang-@lang.LangCode"
+                     class="tab-pane @(i == 0 ? "active" : "")">
+                    <div class="form-group">
+                        <label>Tiêu đề</label>
+                        @Html.TextBoxFor(m => m.Languages[i].Title, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label>Mô tả</label>
+                        @Html.TextAreaFor(m => m.Languages[i].Description, new { @class = "form-control article-description" })
+                    </div>
+                    <div class="form-group">
+                        <label>Nội dung <span class="asterisk"> (*)</span></label>
+                        @Html.TextAreaFor(m => m.Languages[i].Contents, new { @class = "form-control article-content" })
+                    </div>
+                    @Html.HiddenFor(m => m.Languages[i].ID)
+                    @Html.HiddenFor(m => m.Languages[i].LangCode)
+                    @Html.HiddenFor(m => m.Languages[i].LangName)
+                </div>
+            }
+        </div>
+        <div class="form-group">
+            <div class="col-md-2 text-left"><a href="/admin/introduction" class=""><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay trở lại</a></div>
+            <div class="col-md-7 text-center">
+                <button type="submit" class="btn btn-primary waves-effect waves-light">Cập nhật</button>
+            </div>
+        </div>
+    </div>
+
+}
+<script src="~/Content/plugins/ckeditor/ckeditor.js"></script>
+<script src="~/Content/plugins/ckfinder/ckfinder.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#Title').on('blur', function () {
+            let link = $('#Title').val();
+            let linkSeo = RemoveMarkStr(link);
+            $('#LinkSeo').val(linkSeo);
+        })
+    });
+    $('.article-description').each(function () {
+        var textareaId = $(this).attr('id');
+        var editor = CKEDITOR.replace(textareaId, {
+            height: '200px',
+            startupFocus: true,
+            language: 'vi',
+            filebrowserBrowseUrl: "/Content/plugins/ckfinder/ckfinder.html",
+            filebrowserImageBrowseUrl: '/Content/plugins/ckfinder/ckfinder.html?Type=Images',
+            filebrowserFlashBrowseUrl: '/Content/plugins/ckfinder/ckfinder.html?Type=Flash',
+            filebrowserUploadUrl: '/Scripts/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Files',
+            filebrowserImageUploadUrl: '/Scripts/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Images',
+            filebrowserFlashUploadUrl: '/Scripts/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Flash'
+        });
+    })
+    $('.article-content').each(function () {
+        var textareaId = $(this).attr('id');
+        var editor = CKEDITOR.replace(textareaId, {
+            height: '500px',
+            startupFocus: true,
+            language: 'vi',
+            filebrowserBrowseUrl: "/Content/plugins/ckfinder/ckfinder.html",
+            filebrowserImageBrowseUrl: '/Content/plugins/ckfinder/ckfinder.html?Type=Images',
+            filebrowserFlashBrowseUrl: '/Content/plugins/ckfinder/ckfinder.html?Type=Flash',
+            filebrowserUploadUrl: '/Scripts/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Files',
+            filebrowserImageUploadUrl: '/Scripts/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Images',
+            filebrowserFlashUploadUrl: '/Scripts/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Flash'
+        });
+    })
+</script>

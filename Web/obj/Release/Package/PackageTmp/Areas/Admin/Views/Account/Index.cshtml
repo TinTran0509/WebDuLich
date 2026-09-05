@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Quản lý người dùng";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    var lstAction = (List<int>)HttpContext.Current.Session["Action"];
+}
+@using Web.Model.CustomModel
+@model List<Web.Model.User>
+<script src="~/AppJs/account.js"></script> 
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Người dùng</h3>
+                <div style="top: 8px;position: absolute; right: 40px;" class="pull-right">
+                    @if (lstAction != null && lstAction.Contains((int)EnumHelper.Action.Add))
+                    {
+                        <button type="button" class="btn btn-primary waves-effect waves-light" onclick=" account.loadfrmAdd() "><i class="fa fa-plus"></i> Thêm mới</button>
+                    } 
+                    @if (lstAction != null && lstAction.Contains((int)EnumHelper.Action.Delete))
+                    {
+                        <button type="button" class="btn btn-danger waves-effect waves-light" onclick=" account.onmultidelete() "><i class="fa fa-trash-o"></i> Xóa nhiều</button>
+                    }
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="table-responsive" id="gridData">
+
+                        </div>
+                        <div class="col-md-12" id="paginationholder">
+                            <ul id="pagination" class="pagination"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        account.loadData(1);
+    });
+</script>

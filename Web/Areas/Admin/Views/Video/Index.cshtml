@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "Quản lý video";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    var lstAction = (List<int>)HttpContext.Current.Session["Action"];
+}
+@using Web.Model.CustomModel
+@model List<Web.Model.Video>
+<script src="~/AppJs/video.js"></script>
+ 
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" id="Name" name="Name" placeholder="Tên video">
+                        <span id="searchclear" class="glyphicon glyphicon-remove-circle"></span>
+                    </div>
+                    <div class="col-md-4">
+                        <button type="submit" id="btnSearch" class="btn btn-purple waves-effect waves-light">Tìm kiếm</button>
+                    </div>
+                    <div class="col-md-4">
+                        @if (lstAction != null && lstAction.Contains((int)EnumHelper.Action.Add))
+                        {
+                            <button style="float:right" type="button" class="btn btn-primary waves-effect waves-light" onclick="video.loadfrmAdd() "><i class="fa fa-plus"></i> Thêm mới</button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div id="gridData">
+
+                        </div>
+                        <div class="col-md-12" id="paginationholder">
+                            <ul id="pagination" class="pagination"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.getElementById('searchclear').onclick = function () {
+        document.getElementById('Name').value = '';
+        video.loadData(1);
+    }
+    $(document).ready(function () {
+        video.loadData(1);
+    });
+</script>
+
+

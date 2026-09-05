@@ -1,0 +1,84 @@
+﻿@{
+    var lstAction = (List<int>)HttpContext.Current.Session["Action"];
+}
+@using Web.Model.CustomModel
+@model List<Web.Model.AdminMenu>
+<table class="table table-striped cabn_datatable">
+        <thead>
+            <tr>
+                <th>
+                    <input type="hidden" id="hdfID" />
+                    <div class="checkbox">
+                        <input id="chkall" type="checkbox">
+                        <label for="chkall"></label>
+                    </div>
+                </th>
+                <th>Tên menu</th>
+                <th>Icon</th>
+                <th>Menu cha</th>
+                <th>Đường dẫn</th>
+                <th>Thứ tự</th>
+                <th>Trạng thái</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td style="vertical-align: middle;">
+                        <div class="checkbox">
+                            <input type="checkbox" value="@item.ID" id="chk'@item.ID'">
+                            <label for="chk'@item.ID'"></label>
+                        </div>
+                    </td>
+                    <td style="vertical-align: middle;">@Html.Raw(string.Concat(Enumerable.Repeat("--", item.Level)) + "&nbsp" + item.Name)</td>
+                    <td style="vertical-align: middle;"><i class="@item.Icon" style="font-size: 20px;"></i></td>
+                    <td style="vertical-align: middle;">@item.ParentName</td>
+                    <td style="vertical-align: middle;">@item.Url</td>
+                    <td style="vertical-align: middle;">
+                        @Html.HiddenFor(g => item.ID,new { @class= "item_ID" })
+                        @Html.TextBoxFor(g => item.Ordering, new { @class = "form-control width50 text-center"})
+                    </td>
+                    <td style="vertical-align: middle;">@Html.Raw(item.Active == true ? "<span style='color:green'>Kích hoạt</span>" : "<span style='color:red'>Vô hiệu</span>")</td>
+                    <td>
+                        <div class="btn-list pull-right mr5">
+                            @if (lstAction != null && lstAction.Contains((int)EnumHelper.Action.Edit))
+                            {
+                                <a href="#" class="btn btn-primary btn-bordered" onclick="adminmenu.loadfrmEdit(@item.ID) "><i class="glyphicon glyphicon-pencil"></i></a>
+                            }
+                            @if (lstAction != null && lstAction.Contains((int)EnumHelper.Action.Edit))
+                            {
+                                <a href="#" class="btn btn-success btn-bordered" onclick="adminmenu.active(@item.ID) " title="@(item.Active ? "Vô hiệu" : "Kích hoạt" )">
+                                    <i class="fa fa-power-off"></i>
+                                </a>
+                            }
+                            @if (lstAction != null && lstAction.Contains((int)EnumHelper.Action.Delete))
+                            {
+                                <a href="#" class="btn btn-danger btn-bordered" onclick="adminmenu.ondelete(@item.ID) ">
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </a>
+                            }
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+<script>
+    $(document).ready(function () {
+        $('.width50').on("keypress", function () {
+            return event.charCode >= 48 && event.charCode <= 57
+        })
+        InitClickCheckAllInTable("chkall", function(res) {
+            $("#hdfID").val(res);
+        });
+        $('.cabn_datatable').dataTable(
+            {
+                "oLanguage": {
+                    "sUrl": "/Content/Vietnamese.json"
+                },
+            }
+        );
+    });
+</script>

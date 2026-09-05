@@ -1,0 +1,89 @@
+﻿@using Web.Model
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    var languages = (List<tbl_Languages>)TempData["Languages"];
+}
+<script src="~/AppJs/topic.js"></script>
+@model TopicTran
+@using (Ajax.BeginForm("AddTrans", "Topic", null,
+    new AjaxOptions
+    {
+        HttpMethod = "POST",
+        OnSuccess = "Topic.onAddTopicTransSuccess"
+    },
+    new { @id = "frmData", @class = "form-horizontal" }))
+{
+    @Html.HiddenFor(x => x.TopicID)
+    <div class="form-group">
+        <label class="col-md-2 control-label">Ngôn ngữ<span class="asterisk"> (*)</span></label>
+        <div class="col-md-6">
+            <select class="form-control select2" id="LangCode" name="LangCode" onchange="Topic.getMenuTransByLang(this.value)">
+                <option value="">--- Chọn ---</option>
+                @foreach (var item in languages)
+                {
+                    <option value="@item.LangCode">@item.LangName</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Chủ đề<span class="asterisk"> (*)</span></label>
+        <div class="col-md-6">
+            <select class="form-control select2" name="LinkSeo" id="slMenuTrans">
+                <option value="">--- Chọn ---</option>
+
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Tiêu đề<span class="asterisk"> (*)</span></label>
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Title, new { @class = "form-control", @placeholder = "Nhập tiêu đề" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Mô tả</label>
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.Description, new { @class = "form-control", @placeholder = "Nhập mô tả" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Nội dung</label>
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.Content, new { @class = "form-control", @placeholder = "Nhập nội dung" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-12 text-center">
+            <a href="/admin/topic" class="btn btn-primary"><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay trở lại</a>
+            <button type="submit" class="btn btn-primary waves-effect waves-light">Thêm mới</button> 
+        </div>
+    </div>
+}
+<script>
+    $(document).ready(function () {
+        $("#frmData").validate({
+            rules:
+            {
+                Title:
+                {
+                    required: true,
+                    maxlength: 250
+                }
+            },
+            messages:
+            {
+                Title:
+                {
+                    required: "Vui lòng nhập tiêu đề"
+                }
+            },
+            highlight: function (element) {
+                jQuery(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+            },
+            success: function (element) {
+                jQuery(element).closest('.form-group').removeClass('has-error');
+            }
+        });
+    });
+</script>

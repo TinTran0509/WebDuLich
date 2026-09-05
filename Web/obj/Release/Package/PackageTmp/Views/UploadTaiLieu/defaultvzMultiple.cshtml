@@ -1,0 +1,62 @@
+﻿@{
+    Layout = null;
+    var namefield = ViewBag.namefield;
+}
+<div class="pull-left pleftvz">
+    <span>
+        <input id="@namefield" type="file" name="@namefield" style="display:none" multiple="multiple">
+        <label id="fi_@namefield" class="btn btn-primary margin-bottom control-label">Chọn file</label>
+    </span>
+    <div id="Miss_@namefield" style="margin-top:10px;"></div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        //------custom button upload-------
+        $('#fi_@namefield').click(function () {
+            $("#@namefield").click();
+        });
+        //------/custom button upload-------
+
+        //------ upload file-------
+        $("#@namefield").on('change', function () {
+            debugger;
+            var fup = $(this).get(0).files.length;
+            if (fup < 1) return false;
+            $('#Miss_@namefield').html("");
+            var i;
+            var html = "<div id='rh_@namefield' style='margin-top:0'><a class='x-button-red' onclick='remove_rowvz(\"@namefield\")' style='padding-left:42px; border-bottom:1px solid; cursor:pointer;'><i class='fa fa-times'></i>Xóa</a>";
+            for(i=0; i<fup; i++) {
+                var arrtype = $(this).get(0).files[i].name.split(".");
+                var filetype = arrtype[arrtype.length - 1].toLowerCase();
+                if ($(this).get(0).files[i].size > 5242880) {
+                    $('#Miss_@namefield').html("<div class='message_filevz'>File đính kèm không được vượt quá 5 MB</div>").fadeIn().delay(5000).fadeOut();
+                    return false;
+                }
+                else if (filetype != 'jpg' && filetype != 'gif' && filetype != 'png' && filetype != 'jpeg' && filetype != 'doc' && filetype != 'docx' && filetype != 'pdf' && filetype != 'xls' && filetype != 'xlsx' && filetype != 'rar' && filetype != 'zip') {
+                    $('#Miss_@namefield').html("<div class='message_filevz'>File không đúng định dạng</div>").fadeIn().delay(5000).fadeOut();
+                    return false;
+                }
+                else {
+                    var filenamett = $(this).get(0).files[i].name;
+                    html += "<div style='margin-top:5px'>" + filenamett + "</div>";
+                }
+            }
+            html += "</div>";
+            $('#Miss_@namefield').append(html);
+        });
+    });
+    function remove_rowvz(namefield) {
+        $("#" + namefield).val("");
+        $("#rh_" + namefield).hide();
+    }
+    //function remove_rowvz(namefield, i, filenamett) {
+    //   debugger;
+    //    $("#rh_" + i + "_" + namefield).hide();
+    //    var arrFile = $("#@namefield").val().split("|");
+    //    arrFile = jQuery.grep(arrFile, function (a) {return a != filenamett;});
+    //    var strFile = arrFile.join('|');
+    //    $("#@namefield").val(strFile);
+    //}
+</script>
+
+

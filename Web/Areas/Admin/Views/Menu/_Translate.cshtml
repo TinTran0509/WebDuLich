@@ -1,0 +1,41 @@
+﻿@using Web.Model
+@model List<MenuTran>
+ <style>
+     .panel-body {
+         padding-top: 0px !important
+     }
+     .row-add {
+         border: 1px dashed #1e88e5;
+     }
+ </style> 
+<button style="float:right" type="button" class="btn btn-primary waves-effect waves-light" onclick="Menu.addRowTrans() "><i class="fa fa-plus"></i> Thêm bản dịch</button>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Tên menu</th>
+            <th>Ngôn ngữ</th> 
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="tbl-trans">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="vertical-align: middle;width:65%">
+                    @item.Name
+                </td>
+                <td style="vertical-align: middle;">@item.Language</td>
+                <td style="text-align: right;">
+                    @*<a href="javascript:void(0)" class="btn-bordered" onclick="Menu.deleteMenuTrans(@item.ID) " title="Sửa">
+            Sửa
+        </a>
+        |*@
+                    <a style="color:red" href="javascript:void(0)" class="btn-bordered" onclick="Menu.deleteMenuTrans(@item.ID, this) " title="Xóa">
+                        Xóa
+                    </a>
+                </td>
+            </tr> 
+         }
+    </tbody>
+</table> 
+ 

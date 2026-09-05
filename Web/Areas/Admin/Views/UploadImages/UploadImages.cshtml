@@ -1,0 +1,55 @@
+﻿
+<div class="form-inline">
+    <input type="file" id="fileUpload" accept="image/*" name="fileUpload" style="display:none;" />
+    <input type="button" id="btnUpload" value="Thêm ảnh" class="btn btn-success" />
+</div>
+<input type="hidden"  id="urlImage" value="" />
+
+<script>
+        $(function () {
+            $("#urlImage").val($("#prevImages").attr("src"));
+            $('#btnUpload').click(function () {
+                $('#fileUpload').trigger('click');
+            });
+            $('#fileUpload').change(function () {
+                if (window.FormData !== undefined) {
+                    var fileUpload = $("#fileUpload").get(0);
+                    var files = fileUpload.files;
+                    var fileData = new FormData();
+                    for (var i = 0; i < files.length; i++) {
+                        fileData.append(files[i].name, files[i]);
+                    }
+                    fileData.append('username', 'Manas');
+                    $.ajax({
+                        url: '/Admin/UploadImages/ProcessUpload/',
+                        type: "POST",
+                        contentType: false,
+                        processData: false,
+                        data: fileData,
+                        success: function (result) {
+                            $('#loadImg').append('<div style="margin-bottom:2px"><img style="width:100px;" src="' + result + '"/><a href="#" data-img="' + result + '" style="color:red" class="btnDeleteImg"><i class="fa fa-times"></i></a></div>')
+                            //$("#urlImage").val(result);
+                            //$("#prevImages").attr("src", result);
+                            //$("#prevImages").css('width','100px')
+                            $('.btnDeleteImg').off('click').on('click', function (e) {
+                                e.preventDefault();
+                                $(this).parent().remove();
+                                let imgSrc = $(this).data("img");
+                                $.get("/Admin/UploadImages/DeleteImg", { fileImg: imgSrc }, function (res) {
+
+                                });
+                            });
+                        },
+                        error: function (err) {
+                            alert(err.statusText);
+                        }
+                    });
+                } else {
+                    alert("FormData is not supported.");
+                }
+            });
+        });
+       
+</script>
+
+

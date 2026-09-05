@@ -1,0 +1,74 @@
+﻿@using Web.Model 
+@model IEnumerable<tbl_Languages>
+ 
+<table class="table table-striped cabn_datatable">
+    <thead>
+        <tr>
+            <th>
+                <input type="hidden" id="hdfID" />
+                <div class="checkbox">
+                    <input id="chkall" type="checkbox">
+                    <label for="chkall"></label>
+                </div>
+            </th>
+            <th>Mã</th>
+            <th>Tên</th>
+            <th>Quốc kỳ</th>
+            <th>Thứ tự hiển thị</th>
+            <th>Trạng thái</th>
+            <th>Ngôn ngữ mặc định</th>
+            <th>Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="vertical-align: middle;">
+                    <div class="checkbox">
+                        <input type="checkbox" value="@item.ID" id="chk'@item.ID'">
+                        <label for="chk'@item.ID'"></label>
+                    </div>
+                </td>
+                <td style="vertical-align: middle;">
+                    @item.LangCode
+                </td>
+                <td style="vertical-align: middle;">
+                    @item.LangName
+                </td>
+                <td style="vertical-align: middle;">
+                    <img src="@item.Icon" style="width: 50px;" />
+                </td>
+                <td style="vertical-align: middle;">
+                    @item.Ordering
+                </td>
+                <td style="vertical-align: middle;">@Html.Raw((bool)item.Active ? "<span style='color:green'>Active</span>" : "<span style='color:red'>Inactive</span>")</td>
+                <td style="vertical-align: middle;">@Html.Raw((bool)item.IsDefault ? "<span style='color:green'>Có</span>" : "<span style='color:red'>Không</span>")</td>
+                <td style="vertical-align: middle;">
+                    <div class="btn-list pull-right mr5">
+                        <a href="#" class="btn btn-primary btn-bordered" onclick="Language.loadfrmEdit(@item.ID) " title="Sửa"><i class=" glyphicon glyphicon-pencil"></i></a>
+                        @*<a href="#" class="btn btn-success btn-bordered" onclick="Language.active(@item.ID) " title="@((bool)item.Active ? "Vô hiệu" : "Kích hoạt" )">
+                            <i class="fa fa-power-off"></i>
+                        </a>*@
+                        <a href="#" class="btn btn-danger btn-bordered" onclick="Language.ondelete(@item.ID) " title="Xóa">
+                            <i class="glyphicon glyphicon-trash"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script>
+    $(document).ready(function () {
+        InitClickCheckAllInTable("chkall", function (res) {
+            $("#hdfID").val(res);
+        });
+        $('.cabn_datatable').dataTable(
+       {
+           "oLanguage": {
+               "sUrl": "/Content/Vietnamese.json"
+           }
+       });
+    });
+</script>

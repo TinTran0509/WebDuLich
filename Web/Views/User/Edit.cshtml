@@ -1,0 +1,94 @@
+﻿@using Web.Model;
+@using Web.Areas.Admin.Controllers
+@{
+    ViewBag.Title = "Cập nhật thông tin";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutLogin.cshtml";
+    var lstdonvi = (List<tbl_DMChung>)TempData["donvi"];
+    lstdonvi.ForEach(g => g.Ten = string.Concat(Enumerable.Repeat("--", g.Level)) + " " + g.Ten);
+    var lstchucvu = (List<tbl_ChucVu>)TempData["chucvu"];
+}
+@model Web.Model.tbl_User
+<script src="/Scripts/jquery.validate.min.js"></script>
+<div class="panel panel-color panel-primary panel-pages" style="box-shadow: 1px 30px 48px 5px rgba(142, 142, 142, 0.71); ">
+    <div class="panel-heading bg-img toplogin">
+        <img src="/Content/Admin/images/logo.png" />
+        <h3 class="text-center m-t-10 text-white">@ConfigTextController.GetValueCFT("user_edit") <br> @ConfigTextController.GetValueCFT("login_title")</h3>
+    </div>
+    <div class="panel-body">
+        @using (Html.BeginForm("Edit", "User", FormMethod.Post, new { id = "frmDKThanhVien", @class = "form-horizontal" }))
+        {
+            <div class="form-group ">
+                <div class="col-xs-12"><b>@ConfigTextController.GetValueCFT("tendangnhap"): </b>@Model.UserName</div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-12"><b>@ConfigTextController.GetValueCFT("lienhe_email"): </b>@Model.Email</div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-12"><b>@ConfigTextController.GetValueCFT("lienhe_hovaten")</b></div>
+                <div class="col-xs-12">
+                    @Html.TextBoxFor(g=>g.FullName, new {@class="form-control input-lg", placeholder= @ConfigTextController.GetValueCFT("lienhe_hovaten") })
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <div class="col-xs-12"><b>@ConfigTextController.GetValueCFT("cd_diachi")</b></div>
+                <div class="col-xs-12">
+                    @Html.TextBoxFor(g => g.Address, new { @class = "form-control input-lg", placeholder = @ConfigTextController.GetValueCFT("cd_diachi") })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-12"><b>@ConfigTextController.GetValueCFT("cd_tendonvi")</b></div>
+                <div class="col-xs-12">
+                    @Html.DropDownListFor(x => x.DonviId, new SelectList(lstdonvi, "Id", "Ten"), "--"+@ConfigTextController.GetValueCFT("cd_tendonvi")+"--", new { @class = "form-control input-lg" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-12"><b>@ConfigTextController.GetValueCFT("register_chucvu")</b></div>
+                <div class="col-xs-12">
+                    @Html.DropDownListFor(x => x.ChucVuId, new SelectList(lstchucvu, "ID", "Name"), "--"+ @ConfigTextController.GetValueCFT("register_chucvu") + "--", new { @class = "form-control input-lg" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-12"><b>@ConfigTextController.GetValueCFT("register_dtban")</b></div>
+                <div class="col-xs-12">
+                    @Html.TextBoxFor(g => g.Telephone, new { @class = "form-control input-lg", placeholder = @ConfigTextController.GetValueCFT("register_dtban") })
+                </div>
+            </div>
+            <div class="form-group ">
+                <div class="col-xs-12"><b>@ConfigTextController.GetValueCFT("register_sodd")</b></div>
+                <div class="col-xs-12">
+                    @Html.TextBoxFor(g => g.Phone, new { @class = "form-control input-lg", placeholder = @ConfigTextController.GetValueCFT("register_sodd") })
+                </div>
+            </div>
+            <div class="form-group text-center m-t-40">
+                <div class="col-xs-12">
+                    <button class="btn btn-primary waves-effect waves-light btn-lg w-lg" type="submit">@ConfigTextController.GetValueCFT("edit")</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<script>
+    // Basic Form
+    $(document).ready(function () {
+        $("#frmDKThanhVien").validate({
+            rules:
+            {
+                FullName:
+                {
+                    required: true
+                },
+            },
+            messages:
+            {
+                FullName:
+                {
+                    required: "@ConfigTextController.GetValueCFT("edit_validatehoten")"
+                }
+            }
+        });
+    });
+</script>
+<style>
+    label{font-weight:normal}
+</style>

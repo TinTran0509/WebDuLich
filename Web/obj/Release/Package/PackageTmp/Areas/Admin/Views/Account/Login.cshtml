@@ -1,0 +1,83 @@
+﻿@{
+    ViewBag.Title = "Đăng nhập tới quản trị"; 
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutLogin2.cshtml";
+}
+@model Web.Model.User 
+
+<div class="animated fadeInDown loginColumns">
+    <div class="transbox">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-center"> 
+                    <img src="~/DucThang/images/logo/logo.png" width="30%" />
+                </div>
+                <h2 class="font-bold text-center">
+                    KHÔNG GIAN XANH VIỆT NAM
+                </h2>
+                <div class="m-t-lg"></div>
+                <p class="text-center" style="color:red">@TempData["Errors"]</p>
+                <div class="">
+                    @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { id = "frm", @class = "form-horizontal m-t-20" }))
+                    {
+                        <div class="form-group" style="margin-bottom:10px">
+                            @Html.TextBoxFor(g => g.UserName, new { @class = "form-control", placeholder = "Tên đăng nhập", required = "" })
+                        </div>
+                        <div class="form-group" style="margin-bottom:20px">
+                            @Html.PasswordFor(g => g.Password, new { @class = "form-control", placeholder = "Mật khẩu", required = "" })
+                            <i onclick="showPass()" style="margin-top:-23px;float: right;margin-right: 10px;cursor:pointer;color:#404040" class="fa fa-eye searchclear" aria-hidden="true"></i>
+                        </div>
+                        <button class="block btn btn-success full-width m-b" type="submit">
+                            <i class="fa fa-unlock"></i>
+                            Login
+                        </button>
+                    } 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script type="text/javascript">
+        $(document).on("keydown", function (e) {
+            var keyCode = e.which || e.keyCode;
+            if (keyCode == 13) // enter key code
+            {
+                $("#login-form").submit();
+            }
+        });
+        function showPass() {
+            let pass = $('#Password');
+            let type = pass.attr('type');
+            if (type == 'text')
+                pass.get(0).type = 'password';
+            else
+                pass.get(0).type = 'text';
+        }
+        $(document).ready(function () {
+            $("#login-form").validate({
+                rules:
+                {
+                    UserName:
+                    {
+                        required: true
+                    },
+                    Password:
+                    {
+                        required: true
+                    }
+                },
+                messages:
+                {
+                    UserName:
+                    {
+                        required: "Vui lòng nhập tên đăng nhập"
+                    },
+                    Password:
+                    {
+                        required: "Vui lòng nhập mật khẩu"
+                    }
+                }
+            });
+        });
+    </script>
+}

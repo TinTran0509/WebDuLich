@@ -1,0 +1,122 @@
+﻿@model List<Web.Model.Slider>
+<div class="slider-wrapper relative slider-section show-for-small" id="slider-1352820333">
+    <div class="slider slider-nav-dots-simple slider-nav-simple slider-nav-normal slider-nav-dark slider-style-normal" data-flickity-options='{
+         "cellAlign": "center",
+         "imagesLoaded": true,
+         "lazyLoad": 1,
+         "freeScroll": false,
+         "wrapAround": true,
+         "autoPlay": 6000,
+         "pauseAutoPlayOnHover" : true,
+         "prevNextButtons": true,
+         "contain" : true,
+         "adaptiveHeight" : true,
+         "dragThreshold" : 10,
+         "percentPosition": true,
+         "pageDots": true,
+         "rightToLeft": false,
+         "draggable": true,
+         "selectedAttraction": 0.1,
+         "parallax" : 0,
+         "friction": 0.6        }'>
+        @foreach (var item in Model)
+        {
+            <div style="width: 100%" class="img has-hover x md-x lg-x y md-y lg-y">
+                <div class="img-inner image-cover dark" style="padding-top:65%;">
+                    <img fetchpriority="high" decoding="async" width="1920" height="432" src="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%201920%20432%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E" data-src="@item.Image"
+                         class="lazy-load attachment-original size-original" alt="Không gian xanh Việt Nam" srcset="" data-srcset="@item.Image 1920w, @item.Image 300w, @item.Image 1024w, @item.Image 768w, @item.Image 1536w"
+                         sizes="(max-width: 1920px) 100vw, 1920px" />
+                </div>
+                @*<style>
+                    #image_@item.ID {
+                        width: 100%;
+                    }
+                </style>*@
+            </div>
+        } 
+    </div>
+    <div class="loading-spin dark large centered"></div>
+</div>
+<div class="slider-wrapper relative slider-section hide-for-small" id="slider-1453538404">
+    <div class="slider slider-nav-dots-simple slider-nav-simple slider-nav-normal slider-nav-dark slider-style-normal" data-flickity-options='{
+         "cellAlign": "center",
+         "imagesLoaded": true,
+         "lazyLoad": 1,
+         "freeScroll": false,
+         "wrapAround": true,
+         "autoPlay": 6000,
+         "pauseAutoPlayOnHover" : true,
+         "prevNextButtons": true,
+         "contain" : true,
+         "adaptiveHeight" : true,
+         "dragThreshold" : 10,
+         "percentPosition": true,
+         "pageDots": true,
+         "rightToLeft": false,
+         "draggable": true,
+         "selectedAttraction": 0.1,
+         "parallax" : 0,
+         "friction": 0.6        }'>
+        @foreach (var item in Model)
+        {
+            <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_@item.ID">
+                <div class="img-inner dark">
+                    <img decoding="async" width="1919" height="433" src="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%201919%20433%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E" data-src="@item.Image"
+                         class="lazy-load attachment-original size-original" alt="Không gian xanh Việt Nam" srcset="" data-srcset="@item.Image 1919w, @item.Image 300w, @item.Image 1024w, @item.Image 768w, @item.Image 1536w"
+                         sizes="auto, (max-width: 1919px) 100vw, 1919px" />
+                </div>
+                <style>
+                    #image_@item.ID {
+                        width: 100%;
+                    }
+                </style>
+            </div>
+        } 
+    </div>
+    <div class="loading-spin dark large centered"></div>
+</div>
+
+@*<div class="row row-small" id="row-556068391">
+        <div id="col-1049700566" class="col small-12 large-12">
+            <div class="col-inner">
+                <div class="slider-wrapper relative" id="slider-2130930400">
+                    <div class="slider slider-type-fade slider-nav-circle slider-nav-large slider-nav-light slider-style-normal" data-flickity-options='{
+    "cellAlign": "center",
+    "imagesLoaded": true,
+    "lazyLoad": 1,
+    "freeScroll": false,
+    "wrapAround": true,
+    "autoPlay": 3000,
+    "pauseAutoPlayOnHover" : false,
+    "prevNextButtons": true,
+    "contain" : true,
+    "adaptiveHeight" : true,
+    "dragThreshold" : 10,
+    "percentPosition": true,
+    "pageDots": false,
+    "rightToLeft": false,
+    "draggable": true,
+    "selectedAttraction": 0.1,
+    "parallax" : 0,
+    "friction": 0.6        }'>
+                        @foreach (var item in Model)
+                        {
+                            <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_2093927353">
+                                <div class="img-inner dark">
+                                    <img width="1200" height="450" src="@item.Image" class="attachment-original size-original" alt="Công ty dịch vụ bảo vệ uy tín chuyên nghiệp tại Việt Nam" decoding="async"
+                                         srcset="@item.Image 1200w, @item.Image 800w, @item.Image 768w"
+                                         sizes="(max-width: 1200px) 100vw, 1200px">
+                                </div>
+                                <style>
+                                    #image_2093927353 {
+                                        width: 100%;
+                                    }
+                                </style>
+                            </div>
+                        }
+                    </div>
+                    <div class="loading-spin dark large centered"></div>
+                </div>
+            </div>
+        </div>
+    </div>*@

@@ -1,0 +1,171 @@
+﻿@{
+    Layout = null;
+}
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="/Assets/js/jquery-file-upload/css/jquery.fileupload.css" rel="stylesheet" />
+<link href="/Assets/js/jquery-file-upload/css/jquery.fileupload-ui.css" rel="stylesheet" />
+<script src="/Assets/js/jquery-file-upload/js/vendor/jquery.ui.widget.js"></script>
+<script src="/Assets/js/jquery-file-upload/js/vendor/tmpl.min.js"></script>
+<script src="/Assets/js/jquery-file-upload/js/vendor/load-image.min.js"></script>
+<script src="/Assets/js/jquery-file-upload/js/vendor/canvas-to-blob.min.js"></script>
+<script src="/Assets/js/jquery-file-upload/js/jquery.iframe-transport.js"></script>
+<script src="/Assets/js/jquery-file-upload/js/jquery.fileupload.js"></script>
+<script src="/Assets/js/jquery-file-upload/js/jquery.fileupload-process.js"></script>
+<script src="/Assets/js/jquery-file-upload/js/jquery.fileupload-image.js"></script>
+<script src="/Assets/js/jquery-file-upload/js/jquery.fileupload-audio.js"></script>
+<script src="/Assets/js/jquery-file-upload/js/jquery.fileupload-video.js"></script>
+<script src="/Assets/js/jquery-file-upload/js/jquery.fileupload-validate.js"></script>
+<script src="/Assets/js/jquery-file-upload/js/jquery.fileupload-ui.js"></script>
+<script type="text/javascript" src="/Assets/js/jquery-file-upload/js/main.js"></script>
+
+<div class="row">
+    <div class="col-lg-12 col-md-12">
+        <span>
+            <input id="FileUpload" type="file" name="files[]" style="display:none">
+
+            <label id="falseinput" class="btn btn-primary margin-bottom control-label">Chọn file</label>
+        </span>
+    </div>
+</div>
+
+<div id="url_File">
+    @{ int asc = 0; foreach (var item in ViewBag.lstFiles)
+        {
+            var divname = "f" + asc.ToString(); var filelink = "file" + asc.ToString(); var filename = "namefile" + asc.ToString();
+            <div class="row" style="margin-top:10px" id="file_attact_@asc.ToString()">
+                <div class="col-lg-4 col-md-4 ">
+                    <div id='@divname'>
+                        <img width='25px' height='25px' src='@CMS.Repository.Entity.Utilities.GetThumbnail(item.LinkFile)' />
+                        <a href='@item.LinkFile' target='_BLANK'>@item.NameFile</a> &nbsp;
+
+                        <input type='hidden' id='@filelink' name='@filelink' value='@item.LinkFile' />
+                        <input type='hidden' id='@filename' name='@filename' value='@item.NameFile' />
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 ">
+                    <input type="text" name="replace_name_@asc.ToString()" class="form-control" value="@item.ReplaceName" />
+                </div>
+                <div>
+                    <a class="x-button-red" onclick="remove_row(@asc)">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+            </div>
+            asc++;
+        }
+    }
+</div>
+
+<input type="hidden" id="NumFile" name="NumFile" value="@ViewBag.so" />
+<div id="ListFile">
+
+</div>
+<div id="MissFile"></div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        //------custom button upload-------
+        $('#falseinput').click(function () {
+            $("#FileUpload").click();
+        });
+        //------/custom button upload-------
+
+        //------ upload file-------
+        $("#FileUpload").on('change', function () {
+            // Checking whether FormData is available in browser  .
+            debugger;
+            var arrtype = $(this).get(0).files[0].name.split(".");
+            var filetype = arrtype[arrtype.length - 1].toLowerCase();
+            $('#MissFile').html("");
+            if ($(this).get(0).files[0].size > 5242880) {
+                $('#MissFile').html("<div class='message_filevz'>File đính kèm không được vượt quá 5 MB</div>").fadeIn().delay(5000).fadeOut();
+                return false;
+            }
+            else if (filetype != 'jpg' && filetype != 'gif' && filetype != 'png' && filetype != 'jpeg' && filetype != 'doc' && filetype != 'docx' && filetype != 'pdf' && filetype != 'xls' && filetype != 'xlsx' && filetype != 'rar' && filetype != 'zip') {
+                $('#MissFile').html("<div class='message_filevz'>File không đúng định dạng</div>").fadeIn().delay(5000).fadeOut();
+                return false;
+            }
+            else {
+                if (window.FormData !== undefined) {
+                    var fileUpload = $(this).get(0);
+                    var files = fileUpload.files;
+                    // Create FormData object
+                    var fileData = new FormData();
+                    // Looping over all files and add it to FormData object
+                    for (var i = 0; i < files.length; i++) {
+                        fileData.append(files[i].name, files[i]);
+                    }
+                    $.ajax({
+                        url: '/UploadFile/UploadFileCreate',
+                        type: "POST",
+                        contentType: false, // Not to set any content header
+                        processData: false, // Not to process data
+                        data: fileData,
+                        success: function (data) {
+                            debugger;
+                            console.log(data);
+                            var NumFile = $("#NumFile").val();
+                            var IDFile = "f" + NumFile;
+                            var index_file = NumFile;
+                            var html = "";
+                            /*html += "<div class='row' id='file_attact_" + index_file + "'>";
+                            html += "<div class='col-lg-6 col-md-6'>";
+                            html += "<div id='" + IDFile + "'>"
+                            html += "<img width='25px' height='25px' src= '" + data[0].Img + "' /><a href=" + decodeURIComponent(data[0].Url) + " target='_BLANK'>";
+                            html += data[0].Name;
+                            html += "</a>";
+                            html += "&nbsp;";
+                            html += "<a class='x-button-red' onclick=\"remove_row(" + index_file + ")\">";
+                            html += "<i class='fa fa-times'></i>";
+                            html += "</a>";
+                            html += "<input type='hidden'  name='file" + index_file + "' value='" + data[0].Name + "|" + decodeURIComponent(data[0].Url) + "' />";
+                            html += "</div>";
+                            html += "</div>";
+                            html += '<div class="col-lg-6 col-md-6 ">';
+                            html += '<label for="replacename" class="col-lg-6 col-md-6">Tên hiển thị:</label>';
+                            html += '<div class="col-lg-6 col-md-6 ">';
+                            html += ' <input type="text" name="replace_name_' + index_file + '" value="' + data[0].replace_name + '" />';
+                            html += '</div>';
+                            html += '</div>';
+                            html += '</div>';*/
+
+                            html += '<div class="row" style="margin-top:10px" id="file_attact_' + index_file + '"><div class="col-lg-4 col-md-4 "><div id="' + IDFile + '"><img width="25px" height="25px" src="' + data[0].Img + '" style="margin-right:5px;" /><a href="' + decodeURIComponent(data[0].Url) + '">' + data[0].Name + '</a> &nbsp;<input type="hidden" id="file' + index_file + '" name="file' + index_file + '" value="' + decodeURIComponent(data[0].Url) + '" /><input type="hidden" id="namefile' + index_file + '" name="namefile' + index_file + '" value="' + data[0].Name + '" /></div></div><div class="col-lg-6 col-md-6 "><input type="text" name="replace_name_' + index_file + '" class="form-control" value="' + data[0].replace_name + '" /></div><div><a class="x-button-red" onclick="remove_row(' + index_file + ')"><i class="fa fa-times"></i></a></div></div>';
+                            $('#url_File').append(html);
+                            $("#NumFile").val(NumFile * 1 + 1);
+                        }
+                    });
+                }
+            }
+        }).on('fileuploadprogressall', function (e, data) {
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $('.progress .progress-bar').css('width', progress + '%');
+        });
+    });
+    function SetFileUpload(name, url) {
+        var NumFile = $("#NumFile").val();
+        var IDFile = "f" + NumFile;
+        var NameFile = "file" + NumFile;
+        var NewNumFile = parseInt(NumFile) + 1;
+        var ValFile = name + "|" + url;
+        $('#' + IDFile).append("<input type='hidden' id='" + NameFile + "' name='" + NameFile + "' value='" + ValFile + "'/>");
+        $("#NumFile").val(NewNumFile);
+    }
+    function Check() {
+        var NumFile = $("#file0").val();
+        alert(NumFile);
+    }
+    function remove(idfile) {
+        alert(idfile);
+        $("#" + idfile).remove();
+        $("#Listfile").remove("#" + idfile);
+    }
+
+    function remove_row(id) {
+        var check = confirm("xác nhận xóa?");
+        if (check == true) {
+            $('#file_attact_' + id).remove();
+            var NumFile = $("#NumFile").val();
+        }
+
+    }
+</script>
+

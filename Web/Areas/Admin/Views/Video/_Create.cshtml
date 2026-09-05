@@ -1,0 +1,179 @@
+﻿<script src="~/Content/Admin/assets/ckfinder/ckfinder.js"></script>
+@model Web.Model.Video
+@using (Ajax.BeginForm("Add", "Video", null,
+    new AjaxOptions
+    {
+        HttpMethod = "POST",
+        OnSuccess = "video.onAddSuccess"
+    },
+    new { @id = "basicForm", @class = "form-horizontal" }))
+{
+    <div class="form-group">
+        <label class="col-md-2 control-label">Tên video</label>
+        <div class="col-md-10">
+            @Html.TextBoxFor(g => g.Name, new { @class = "form-control", placeholder = "Tên video" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Chọn nguồn</label>
+        <div class="col-md-4">
+           <select class="form-control" id="Type" name="Type" onchange="changeTypeVideo(this.value)">
+               <option value="1">Từ youtube</option>
+               <option value="2">Từ máy tính</option>
+           </select>
+        </div>
+    </div>
+    <div   id="youtobe">
+        <div class="form-group indirect">
+            <label class="col-md-2 control-label">Url</label>
+            <div class="col-md-10">
+                <input type="text" id="urlyoutube"  class="form-control" placeholder="https://www.youtube.com/watch?v=id" />
+                <div class="wrap-thumb-video" id="iframeyoutube">
+                    <input type="hidden"  name="Images" id="img_youtube"/>
+                    <input type="hidden" name="Url" id="url_youtube" />
+                    <img id="imgShow" src="/Content/Site/images/noimage.png" width="320" height="240" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="upload_video">
+        <div class="form-group">
+            <label class="col-md-2 control-label">Tải video</label>
+            <div class="col-md-10">
+                @{ Html.RenderAction("UploadVideo", "UploadVideo", new { controlName = "Url" });}
+                <video width="240"  id="video_name" height="180" controls><source  type="video/mp4"></video>
+                <div id="bl_remove"><span id="link_video" style="margin-right:10px"></span><i style="color:red" id="remove_video" class="fa fa-times"></i></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">Ảnh đại diện</label>
+            <div class="col-md-10">
+                @{ Html.RenderAction("UploadImage", "UploadFile", new { controlName = "Images" });}
+                <img src="" id="prevImages">
+                <span class="error" id="spImg"></span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-10 pull-right">
+            <div class="checkbox checkbox-primary">
+                <input id="Status" name="Status" type="checkbox" checked="" value="true">
+                <label for="Status">
+                    Kích hoạt
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-10 pull-right">
+            <div class="checkbox checkbox-primary">
+                <input id="IsShowPlay" name="IsShowPlay" type="checkbox" checked="" value="true">
+                <label for="Status">
+                    Hiển thị bên trái trang
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Thứ tự</label>
+        <div class="col-md-3">
+            @Html.TextBoxFor(g => g.Ordering, new { @class = "form-control", Value = 0 })
+        </div>
+    </div>
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary waves-effect waves-light">Thêm mới</button>
+    </div>
+}
+<script>   
+    function changeTypeVideo(type) {
+        if (type == 2) {
+            $('#youtobe').css('display', 'none');
+            $('#upload_video').css('display', 'block');
+            $('#img_youtube').removeAttr('name');
+            $('#url_youtube').removeAttr('name');
+            $('#urlImage').attr('name', 'Images');
+            $('#urlVideo').attr('name', 'Url');
+        } else {
+            $('#youtobe').css('display', 'block');
+            $('#upload_video').css('display', 'none');
+            $('#urlVideo').removeAttr('name');
+            $('#urlImage').removeAttr('name');
+            $('#img_youtube').attr('name', 'Images');
+            $('#url_youtube').attr('name', 'Url');
+        }
+    }
+    $(document).ready(function () {
+        $('#bl_remove').css('display', 'none');
+        let type = $('#Type').val();
+        if (type == 1) {
+            $('#upload_video').css('display', 'none');
+            $('#urlVideo').removeAttr('name');
+            $('#urlImage').removeAttr('name');
+        }
+        $("#urlyoutube").change(function () {
+            var img = video.jYoutube($(this).val(), 320);
+            $("#imgShow").attr('src', img);
+            $("#img_youtube").val(img);
+            $("#url_youtube").val($("#urlyoutube").val());
+        });
+        $('#remove_video').click(function () {
+            let link = $('#link_video').text();
+            $.ajax({
+                url: '/Admin/Video/RemoveVideo',
+                type: 'GET',
+                dataType: 'json',
+                data: { link:JSON.stringify(link)},
+                success: function (res) {
+                    if(res.Success){
+                        alertmsg.success(res.Message);
+                        $('#link_video').text('');
+                        $('#bl_remove').css('display', 'none');
+                    }  
+                    else
+                        alertmsg.error(res.Message);
+                }
+            })
+        })
+        $("#basicForm").validate({
+            rules:
+            {
+                Name:
+                {
+                    required: true
+                },
+                Url:
+                {
+                    required: true,
+                    url:true
+                },
+            },
+            messages:
+            {
+                Name:
+                {
+                    required: "Bạn chưa nhập tiêu đề"
+                },
+                Url: {
+                    required: "Bạn chưa nhập Url",
+                    url:"Bạn nhập sai định dạng"
+                },
+            }
+        });
+    });
+</script>
+<style>
+    .wrap-thumb-video {
+        position: relative;
+    }
+
+    .thumb-video {
+        position: absolute;
+    }
+
+    .playvideo {
+        position: absolute;
+        width: 40px;
+        left: 38px;
+        top: 33px;
+    }
+</style>

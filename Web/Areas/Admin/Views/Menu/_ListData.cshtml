@@ -1,0 +1,58 @@
+﻿@{
+    var lstAction = (List<int>)HttpContext.Current.Session["Action"];
+    int id = 0;
+}
+@using Web.Model.CustomModel
+@model List<MenuTranModel>
+<table class="table table-striped">
+    <thead>
+        <tr> 
+            <th>Tên menu</th> 
+            <th>Thứ tự</th>
+            <th>Ngôn ngữ</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        { 
+            int level = (int)item.Level - 1;
+            <tr>
+                <td style="vertical-align: middle;">
+                     @Html.Raw(string.Concat(Enumerable.Repeat("--", level)) + "&nbsp" + item.Name)
+                </td>
+                <td style="vertical-align: middle;"> @Html.Raw(string.Concat(Enumerable.Repeat("--", level)) + "&nbsp" + item.Ordering)</td>
+                <td>@item.LangName</td>
+                <td>
+                    @if(id != item.MenuID)
+                        {
+                            <div class="btn-list pull-right mr5">
+                                @if (lstAction != null && lstAction.Contains((int)EnumHelper.Action.Edit))
+                                {
+                                    <a href="/admin/menu/edit/@item.MenuID" class="btn btn-primary btn-bordered" title="Sửa"><i class="glyphicon glyphicon-pencil"></i></a>
+                                }
+                                @if (lstAction != null && lstAction.Contains((int)EnumHelper.Action.Delete))
+                                {
+                                    <a href="#" class="btn btn-danger btn-bordered" onclick="Menu.ondelete(@item.ID) " title="Xóa">
+                                        <i class="glyphicon glyphicon-trash"></i>
+                                    </a>
+                                }
+                            </div>
+                        }
+                    
+                </td>
+            </tr>
+            id = item.ID;
+        }
+    </tbody>
+</table>
+<script>
+    $(document).ready(function () {
+        $('.width50').on("keypress", function () {
+            return event.charCode >= 48 && event.charCode <= 57
+        })
+        InitClickCheckAllInTable("chkall", function (res) {
+            $("#hdfID").val(res);
+        });
+    });
+</script>

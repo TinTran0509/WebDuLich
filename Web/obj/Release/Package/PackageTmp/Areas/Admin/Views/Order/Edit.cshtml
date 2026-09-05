@@ -1,0 +1,63 @@
+﻿@model Web.Model.tbl_Order
+@using (Ajax.BeginForm("Edit", "Order", null,
+    new AjaxOptions
+    {
+        HttpMethod = "POST",
+        OnSuccess = "Order.onEditSuccess"
+    }, new { id = "frmData", @class = "form-horizontal" }))
+{
+    <div class="form-group">
+        <label class="col-md-3 control-label">Trạng thái đơn hàng:</label>
+        <div class="col-md-4">
+            <select class="form-control" name="Status" onchange="changeStatus(this.value)" id="Status">
+                <option value="1">Chưa giao hàng</option>
+                <option value="2">Đã giao hàng</option>
+                <option value="3">Hủy giao hàng</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="text-center">
+            <button type="submit" class="btn btn-success">Cập nhật</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+        </div>
+    </div>
+} 
+<script>
+    $(document).ready(function () {
+        $('#Status').val(@Model.Status);
+    });
+    function changeStatus(status) {
+        debugger
+        if (status === '2') {
+            swal({
+                title: "Xác nhận đã giao hàng",
+                text: "Khi xác nhận đã giao hàng, đơn hàng sẽ không cập nhật được trạng thái trở lại",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Có",
+                cancelButtonText: "không",
+            }, function (isConfirm) {
+                if (!isConfirm) {
+                    $('#Status').val(@Model.Status);
+                }
+            });
+        }
+        if(status === '3') {
+            swal({
+                title: "Xác nhận đã hủy giao hàng",
+                text: "Khi xác nhận đã hủy giao hàng, đơn hàng sẽ không cập nhật được trạng thái trở lại",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Có",
+                cancelButtonText: "không",
+            }, function (isConfirm) {
+                if (!isConfirm) {
+                    $('#Status').val(@Model.Status);
+                }  
+            });
+        }
+    }
+</script>

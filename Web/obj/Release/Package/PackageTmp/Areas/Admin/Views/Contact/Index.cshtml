@@ -1,0 +1,38 @@
+﻿@using Web.Model.CustomModel
+@{
+    ViewBag.Title = "Liên hệ";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    var lstAction = (List<int>)HttpContext.Current.Session["Action"]; 
+ }
+ 
+<script src="~/AppJs/contact.js"></script>
+<div class="page-content-wrapper ">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-primary">
+                    <div class="panel-body">
+                        <h4 class="m-b-30 m-t-0">Liên hệ</h4>
+                        <div class="row" style="margin-bottom:10px">  
+                            @if (lstAction != null && lstAction.Contains((int)EnumHelper.Action.Add))
+                            {
+                                <div class="col-md-12">
+                                    <a style="float:right" href="/Admin/contact/Add" class="btn btn-primary">Thêm mới</a>
+                                </div>
+                            }
+                        </div>
+                        <div id="gridData" class="row table-responsive">
+
+                        </div>
+                        <div class="col-md-12"> 
+                            <div style=" width: 50%;margin: 0 auto;" id="paginationholder">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+

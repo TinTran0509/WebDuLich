@@ -1,0 +1,134 @@
+E:\New folder\LedQuaTang\Web.Repository\bin\Debug\Web.Repository.dll
+E:\New folder\LedQuaTang\Web.Repository\bin\Debug\Web.Repository.pdb
+E:\New folder\LedQuaTang\Web.Repository\bin\Debug\Web.Core.dll
+E:\New folder\LedQuaTang\Web.Repository\bin\Debug\Web.Model.dll
+E:\New folder\LedQuaTang\Web.Repository\bin\Debug\EntityFramework.dll
+E:\New folder\LedQuaTang\Web.Repository\bin\Debug\Web.Core.pdb
+E:\New folder\LedQuaTang\Web.Repository\bin\Debug\Web.Model.pdb
+E:\New folder\LedQuaTang\Web.Repository\bin\Debug\Web.Model.dll.config
+E:\New folder\LedQuaTang\Web.Repository\bin\Debug\EntityFramework.xml
+E:\New folder\LedQuaTang\Web.Repository\obj\Debug\Web.Repository.csprojAssemblyReference.cache
+E:\New folder\LedQuaTang\Web.Repository\obj\Debug\Web.Repository.csproj.CoreCompileInputs.cache
+E:\New folder\LedQuaTang\Web.Repository\obj\Debug\Web.Repository.csproj.CopyComplete
+E:\New folder\LedQuaTang\Web.Repository\obj\Debug\Web.Repository.dll
+E:\New folder\LedQuaTang\Web.Repository\obj\Debug\Web.Repository.pdb
+D:\đồ án\LedQuaTang\Web.Repository\bin\Debug\Web.Repository.dll
+D:\đồ án\LedQuaTang\Web.Repository\bin\Debug\Web.Repository.pdb
+D:\đồ án\LedQuaTang\Web.Repository\bin\Debug\Web.Core.dll
+D:\đồ án\LedQuaTang\Web.Repository\bin\Debug\Web.Model.dll
+D:\đồ án\LedQuaTang\Web.Repository\bin\Debug\EntityFramework.dll
+D:\đồ án\LedQuaTang\Web.Repository\bin\Debug\Web.Core.pdb
+D:\đồ án\LedQuaTang\Web.Repository\bin\Debug\Web.Model.pdb
+D:\đồ án\LedQuaTang\Web.Repository\bin\Debug\Web.Model.dll.config
+D:\đồ án\LedQuaTang\Web.Repository\bin\Debug\EntityFramework.xml
+D:\đồ án\LedQuaTang\Web.Repository\obj\Debug\Web.Repository.csprojAssemblyReference.cache
+D:\đồ án\LedQuaTang\Web.Repository\obj\Debug\Web.Repository.csproj.CoreCompileInputs.cache
+D:\đồ án\LedQuaTang\Web.Repository\obj\Debug\Web.Repository.csproj.CopyComplete
+D:\đồ án\LedQuaTang\Web.Repository\obj\Debug\Web.Repository.dll
+D:\đồ án\LedQuaTang\Web.Repository\obj\Debug\Web.Repository.pdb
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Repository\bin\Debug\Web.Repository.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Repository\bin\Debug\Web.Repository.pdb
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Repository\bin\Debug\Web.Core.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Repository\bin\Debug\Web.Model.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Repository\bin\Debug\EntityFramework.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Repository\bin\Debug\Web.Core.pdb
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Repository\bin\Debug\Web.Model.pdb
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Repository\bin\Debug\EntityFramework.xml
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Repository\obj\Debug\Web.Repository.csprojResolveAssemblyReference.cache
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Repository\obj\Debug\Web.Repository.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Repository\obj\Debug\Web.Repository.pdb
+E:\BearShop\Web.Repository\bin\Debug\Web.Repository.dll
+E:\BearShop\Web.Repository\bin\Debug\Web.Repository.pdb
+E:\BearShop\Web.Repository\bin\Debug\Web.Core.dll
+E:\BearShop\Web.Repository\bin\Debug\Web.Model.dll
+E:\BearShop\Web.Repository\bin\Debug\EntityFramework.dll
+E:\BearShop\Web.Repository\bin\Debug\Web.Core.pdb
+E:\BearShop\Web.Repository\bin\Debug\Web.Model.pdb
+E:\BearShop\Web.Repository\bin\Debug\EntityFramework.xml
+E:\BearShop\Web.Repository\obj\Debug\Web.Repository.csprojResolveAssemblyReference.cache
+E:\BearShop\Web.Repository\obj\Debug\Web.Repository.dll
+E:\BearShop\Web.Repository\obj\Debug\Web.Repository.pdb
+D:\PROJECTMORE\BearShop\Web.Repository\bin\Debug\Web.Repository.dll
+D:\PROJECTMORE\BearShop\Web.Repository\bin\Debug\Web.Repository.pdb
+D:\PROJECTMORE\BearShop\Web.Repository\bin\Debug\Web.Core.dll
+D:\PROJECTMORE\BearShop\Web.Repository\bin\Debug\Web.Model.dll
+D:\PROJECTMORE\BearShop\Web.Repository\bin\Debug\EntityFramework.dll
+D:\PROJECTMORE\BearShop\Web.Repository\bin\Debug\Web.Core.pdb
+D:\PROJECTMORE\BearShop\Web.Repository\bin\Debug\Web.Model.pdb
+D:\PROJECTMORE\BearShop\Web.Repository\bin\Debug\Web.Model.dll.config
+D:\PROJECTMORE\BearShop\Web.Repository\bin\Debug\EntityFramework.xml
+D:\PROJECTMORE\BearShop\Web.Repository\obj\Debug\Web.Repository.csproj.AssemblyReference.cache
+D:\PROJECTMORE\BearShop\Web.Repository\obj\Debug\Web.Repository.csproj.CoreCompileInputs.cache
+D:\PROJECTMORE\BearShop\Web.Repository\obj\Debug\Web.Repo.49DEB4A1.Up2Date
+D:\PROJECTMORE\BearShop\Web.Repository\obj\Debug\Web.Repository.dll
+D:\PROJECTMORE\BearShop\Web.Repository\obj\Debug\Web.Repository.pdb
+G:\BearShop\Web.Repository\bin\Debug\Web.Repository.dll
+G:\BearShop\Web.Repository\bin\Debug\Web.Repository.pdb
+G:\BearShop\Web.Repository\bin\Debug\Web.Core.dll
+G:\BearShop\Web.Repository\bin\Debug\Web.Model.dll
+G:\BearShop\Web.Repository\bin\Debug\EntityFramework.dll
+G:\BearShop\Web.Repository\bin\Debug\Web.Core.pdb
+G:\BearShop\Web.Repository\bin\Debug\Web.Model.pdb
+G:\BearShop\Web.Repository\bin\Debug\Web.Model.dll.config
+G:\BearShop\Web.Repository\bin\Debug\EntityFramework.xml
+G:\BearShop\Web.Repository\obj\Debug\Web.Repository.csproj.AssemblyReference.cache
+G:\BearShop\Web.Repository\obj\Debug\Web.Repository.csproj.CoreCompileInputs.cache
+G:\BearShop\Web.Repository\obj\Debug\Web.Repository.csproj.CopyComplete
+G:\BearShop\Web.Repository\obj\Debug\Web.Repository.dll
+G:\BearShop\Web.Repository\obj\Debug\Web.Repository.pdb
+G:\SaoVangJSC\SaoVangJSC\Web.Repository\obj\Debug\Web.Repository.csproj.AssemblyReference.cache
+G:\SaoVangJSC\SaoVangJSC\Web.Repository\obj\Debug\Web.Repository.csproj.CoreCompileInputs.cache
+G:\SaoVangJSC\SaoVangJSC\Web.Repository\bin\Debug\Web.Repository.dll
+G:\SaoVangJSC\SaoVangJSC\Web.Repository\bin\Debug\Web.Repository.pdb
+G:\SaoVangJSC\SaoVangJSC\Web.Repository\bin\Debug\Web.Core.dll
+G:\SaoVangJSC\SaoVangJSC\Web.Repository\bin\Debug\Web.Model.dll
+G:\SaoVangJSC\SaoVangJSC\Web.Repository\bin\Debug\EntityFramework.dll
+G:\SaoVangJSC\SaoVangJSC\Web.Repository\bin\Debug\Web.Core.pdb
+G:\SaoVangJSC\SaoVangJSC\Web.Repository\bin\Debug\Web.Model.pdb
+G:\SaoVangJSC\SaoVangJSC\Web.Repository\bin\Debug\Web.Model.dll.config
+G:\SaoVangJSC\SaoVangJSC\Web.Repository\bin\Debug\EntityFramework.xml
+G:\SaoVangJSC\SaoVangJSC\Web.Repository\obj\Debug\Web.Repository.csproj.CopyComplete
+G:\SaoVangJSC\SaoVangJSC\Web.Repository\obj\Debug\Web.Repository.dll
+G:\SaoVangJSC\SaoVangJSC\Web.Repository\obj\Debug\Web.Repository.pdb
+D:\WebDuLich\Web\Web.Repository\bin\Debug\Web.Repository.dll
+D:\WebDuLich\Web\Web.Repository\bin\Debug\Web.Repository.pdb
+D:\WebDuLich\Web\Web.Repository\bin\Debug\Web.Core.dll
+D:\WebDuLich\Web\Web.Repository\bin\Debug\Web.Model.dll
+D:\WebDuLich\Web\Web.Repository\bin\Debug\EntityFramework.dll
+D:\WebDuLich\Web\Web.Repository\bin\Debug\Web.Core.pdb
+D:\WebDuLich\Web\Web.Repository\bin\Debug\Web.Model.pdb
+D:\WebDuLich\Web\Web.Repository\bin\Debug\Web.Model.dll.config
+D:\WebDuLich\Web\Web.Repository\bin\Debug\EntityFramework.xml
+D:\WebDuLich\Web\Web.Repository\obj\Debug\Web.Repository.csproj.AssemblyReference.cache
+D:\WebDuLich\Web\Web.Repository\obj\Debug\Web.Repository.csproj.CoreCompileInputs.cache
+D:\WebDuLich\Web\Web.Repository\obj\Debug\Web.Repository.csproj.CopyComplete
+D:\WebDuLich\Web\Web.Repository\obj\Debug\Web.Repository.dll
+D:\WebDuLich\Web\Web.Repository\obj\Debug\Web.Repository.pdb
+D:\WebDuLich\Lummia\Web\Web.Repository\bin\Debug\Web.Repository.dll
+D:\WebDuLich\Lummia\Web\Web.Repository\bin\Debug\Web.Repository.pdb
+D:\WebDuLich\Lummia\Web\Web.Repository\bin\Debug\Web.Core.dll
+D:\WebDuLich\Lummia\Web\Web.Repository\bin\Debug\Web.Model.dll
+D:\WebDuLich\Lummia\Web\Web.Repository\bin\Debug\EntityFramework.dll
+D:\WebDuLich\Lummia\Web\Web.Repository\bin\Debug\Web.Core.pdb
+D:\WebDuLich\Lummia\Web\Web.Repository\bin\Debug\Web.Model.pdb
+D:\WebDuLich\Lummia\Web\Web.Repository\bin\Debug\Web.Model.dll.config
+D:\WebDuLich\Lummia\Web\Web.Repository\bin\Debug\EntityFramework.xml
+D:\WebDuLich\Lummia\Web\Web.Repository\obj\Debug\Web.Repository.csproj.AssemblyReference.cache
+D:\WebDuLich\Lummia\Web\Web.Repository\obj\Debug\Web.Repository.csproj.CoreCompileInputs.cache
+D:\WebDuLich\Lummia\Web\Web.Repository\obj\Debug\Web.Repository.csproj.CopyComplete
+D:\WebDuLich\Lummia\Web\Web.Repository\obj\Debug\Web.Repository.dll
+D:\WebDuLich\Lummia\Web\Web.Repository\obj\Debug\Web.Repository.pdb
+D:\PROJECTMORE\Lummia\Web\Web.Repository\bin\Debug\Web.Repository.dll
+D:\PROJECTMORE\Lummia\Web\Web.Repository\bin\Debug\Web.Repository.pdb
+D:\PROJECTMORE\Lummia\Web\Web.Repository\bin\Debug\Web.Core.dll
+D:\PROJECTMORE\Lummia\Web\Web.Repository\bin\Debug\Web.Model.dll
+D:\PROJECTMORE\Lummia\Web\Web.Repository\bin\Debug\EntityFramework.dll
+D:\PROJECTMORE\Lummia\Web\Web.Repository\bin\Debug\Web.Core.pdb
+D:\PROJECTMORE\Lummia\Web\Web.Repository\bin\Debug\Web.Model.pdb
+D:\PROJECTMORE\Lummia\Web\Web.Repository\bin\Debug\Web.Model.dll.config
+D:\PROJECTMORE\Lummia\Web\Web.Repository\bin\Debug\EntityFramework.xml
+D:\PROJECTMORE\Lummia\Web\Web.Repository\obj\Debug\Web.Repository.csproj.AssemblyReference.cache
+D:\PROJECTMORE\Lummia\Web\Web.Repository\obj\Debug\Web.Repository.csproj.CoreCompileInputs.cache
+D:\PROJECTMORE\Lummia\Web\Web.Repository\obj\Debug\Web.Repo.49DEB4A1.Up2Date
+D:\PROJECTMORE\Lummia\Web\Web.Repository\obj\Debug\Web.Repository.dll
+D:\PROJECTMORE\Lummia\Web\Web.Repository\obj\Debug\Web.Repository.pdb

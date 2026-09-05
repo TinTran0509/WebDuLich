@@ -1,0 +1,76 @@
+﻿@{
+    ViewBag.Title = "Dịch vụ vệ sinh công nghiệp,vệ sinh tòa nhà,vệ sinh sau xây dựng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model List<Web.Model.News>
+
+    <section class="section section2" id="section_1503420160">
+        <div class="bg section-bg fill bg-fill  bg-loaded">
+        </div>
+        <div class="section-content relative">
+            <div class="row" id="row-1584906332">
+                <div id="col-785597718" class="col small-12 large-12">
+                    <div class="col-inner">
+                        <div id="text-4171502413" class="text">
+                            <h2 style="text-align: center;">
+                                <span style="font-size: 120%;">DỊCH VỤ VỆ SINH CÔNG NGHIỆP NỔI BẬT CỦA <span class="text-red" style="color: #008000;">KHÔNG GIAN XANH VIỆT NAM</span></span>
+                            </h2>
+                            <p style="text-align: center;">Không Gian Xanh Việt Nam có đa dạng các dịch vụ giúp bạn dọn dẹp nhà cửa sạch sẽ, dọn dẹp từ nhà riêng tới văn phòng và công xưởng mọi lúc mọi nơi!</p>
+                            <style>
+                                #text-4171502413 {
+                                    text-align: center;
+                                }
+                            </style>
+                        </div>
+                    </div>
+                </div>
+                @foreach (var item in Model)
+                {
+                    <div class="col medium-4 small-12 large-4">
+                        <div class="col-inner">
+                            <div class="box has-hover   has-hover box-text-bottom">
+                                <div class="box-image">
+                                    <a href="/dich-vu/@item.LinkSeo">
+                                        <div class="image-zoom">
+                                            <img decoding="async" width="800" height="440" src="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20800%20440%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E" data-src="@item.Image"
+                                                 class="lazy-load attachment-original size-original" alt="@item.MetaTitle" srcset="" data-srcset="@item.Image 800w, @item.Image 300w, @item.Image 768w, @item.Image 600w"
+                                                 sizes="auto, (max-width: 800px) 100vw, 800px" />
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="box-text text-left">
+                                    <div class="box-text-inner">
+                                        <h3><strong><a style="font-family: ui-sans-serif;" href="/dich-vu/@item.LinkSeo">@item.MetaTitle</a></strong></h3>
+                                        <a href="/dich-vu/@item.LinkSeo" target="_self" class="button primary is-link lowercase nut-xem-chi-tiet3">
+                                            <span>Xem chi tiết</span>
+                                            <i class="icon-angle-right" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <style>
+            #section_1503420160 {
+                padding-top: 0px;
+                padding-bottom: 0px;
+            }
+
+                #section_1503420160 .ux-shape-divider--top svg {
+                    height: 150px;
+                    --divider-top-width: 100%;
+                }
+
+                #section_1503420160 .ux-shape-divider--bottom svg {
+                    height: 150px;
+                    --divider-width: 100%;
+                }
+        </style>
+    </section>
+    <script>
+        let elment = document.getElementById('menu-item-7');
+        elment.classList.add("active");
+    </script>

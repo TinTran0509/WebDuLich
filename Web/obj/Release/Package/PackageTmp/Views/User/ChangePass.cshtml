@@ -1,0 +1,94 @@
+﻿@{
+    ViewBag.Title = "Đổi mật khẩu";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutLogin.cshtml";
+}
+@using Web.Areas.Admin.Controllers
+@model Web.Model.tbl_User
+<script src="/Scripts/jquery.validate.min.js"></script>
+<div class="panel panel-color panel-primary panel-pages" style="box-shadow: 1px 30px 48px 5px rgba(142, 142, 142, 0.71); ">
+    <div class="panel-heading bg-img toplogin" style="background-color:#09699c !important">
+        <img src="~/Content/Admin/images/logo.png" />
+       
+        <h3 class="text-center m-t-10 text-white">@ConfigTextController.GetValueCFT("hmenu_changepass") <br> @ConfigTextController.GetValueCFT("login_title")</h3>
+    </div>
+    <div class="panel-body">
+        @using (Html.BeginForm("ChangePass", "User", FormMethod.Post, new { id = "frmDKThanhVien", @class = "form-horizontal" }))
+        {
+            if (ViewBag.wrongpass == 1)
+            {
+                <div class="form-group">
+                    <div class="col-xs-12 text-danger">@ConfigTextController.GetValueCFT("wrongpass")</div>
+                </div>
+            }
+            <div class="form-group">
+                <div class="col-xs-12">
+                    @Html.PasswordFor(g => g.Password, new { @class = "form-control input-lg", required = "", placeholder = @ConfigTextController.GetValueCFT("oldpass") })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-12">
+                    @Html.Password("NewPassword","", new { @class = "form-control input-lg", required = "", placeholder = @ConfigTextController.GetValueCFT("newpass") })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-12">
+                    @Html.Password("ReNewPassword","", new { @class = "form-control input-lg", required = "", placeholder = @ConfigTextController.GetValueCFT("resetnewpass") })
+                </div>
+            </div>
+            <div class="form-group text-center m-t-40">
+                <div class="col-xs-12">
+                    <button class="btn btn-primary waves-effect waves-light btn-lg w-lg" type="submit">@ConfigTextController.GetValueCFT("hmenu_changepass")</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<script>
+    // Basic Form
+    $(document).ready(function () {
+        $("#frmDKThanhVien").validate({
+            rules:
+            {
+                Password:
+                {
+                    required: true,
+                    minlength: 6,
+                },
+                NewPassword:
+                {
+                    required: true,
+                    minlength: 6,
+                },
+                ReNewPassword:
+                {
+                    required: true,
+                    minlength: 6,
+                    equalTo: "#NewPassword"
+                }
+            },
+            messages:
+            {
+                Password:
+                {
+                    required: "@ConfigTextController.GetValueCFT("pass_validpass")",
+                    minlength: "@ConfigTextController.GetValueCFT("pass_minlength")"
+                },
+                NewPassword:
+                {
+                    required: "@ConfigTextController.GetValueCFT("pass_validnew")",
+                    minlength: "@ConfigTextController.GetValueCFT("pass_minlength")",
+                   
+                },
+                ReNewPassword:
+                {
+                    required: "@ConfigTextController.GetValueCFT("pass_validrenew")",
+                    minlength: "@ConfigTextController.GetValueCFT("pass_minlength")",
+                    equalTo: "@ConfigTextController.GetValueCFT("pass_validequal")"
+                },
+            }
+        });
+    });
+</script>
+<style>
+    label{font-weight:normal}
+</style>

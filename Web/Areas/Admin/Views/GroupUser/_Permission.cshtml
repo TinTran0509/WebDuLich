@@ -1,0 +1,108 @@
+﻿@model List<AdminMenu>
+@{
+    ViewBag.Title = "Phân quyền người dùng";
+    var objGroupUser = (tbl_GroupUser)TempData["GroupUser"];
+    var lstAdminMenu = HelperXml.DeserializeXml2List<Permission>(objGroupUser.Permission);
+}
+@using Web.Core
+@using Web.Model;
+@using System.Linq;
+@using Web.Model.CustomModel;
+<input type="hidden" id="groupuserId" name="groupuserId" value="@objGroupUser.ID" />
+<table class="table mb30" id="lstAdminmenu">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Tên chức năng</th>
+            <th>Chọn tất</th>
+            <th>Xem</th>
+            <th>Thêm</th>
+            <th>Sửa</th>
+            <th>Xóa</th>
+            <th>Duyệt</th>
+            <th>In</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ var index = 0;}
+        @foreach (var item in Model)
+        {
+            index++;
+
+            string[] arrAction;
+            var checkView = "";
+            var checkAdd = "";
+            var checkEdit = "";
+            var checkDelete = "";
+            var checkApproved = "";
+            var checkPrint = "";
+            var objmenuAdmin = lstAdminMenu.FirstOrDefault(g => g.AdminMenuId == item.ID);
+            if (objmenuAdmin != null && objmenuAdmin.Roles != null)
+            {
+                arrAction = objmenuAdmin.Roles.Split(',');
+                checkView = (arrAction.Contains(((int)EnumHelper.Action.View).ToString())) ? "checked" : "";
+                checkAdd = (arrAction.Contains(((int)EnumHelper.Action.Add).ToString())) ? "checked" : "";
+                checkEdit = (arrAction.Contains(((int)EnumHelper.Action.Edit).ToString())) ? "checked" : "";
+                checkDelete = (arrAction.Contains(((int)EnumHelper.Action.Delete).ToString())) ? "checked" : "";
+                checkApproved = (arrAction.Contains(((int)EnumHelper.Action.Approved).ToString())) ? "checked" : "";
+                checkPrint = (arrAction.Contains(((int)EnumHelper.Action.Print).ToString())) ? "checked" : "";
+            }
+
+            <tr>
+                @Html.HiddenFor(g => item.ID, new { @class = "hdfAdminMenu" })
+                <td>@index</td>
+                <td>@Html.Raw(string.Concat(Enumerable.Repeat("--", item.Level)) + "&nbsp;" + item.Name)</td>
+                <td>
+                    <div class="checkbox checkbox-primary">
+                        <input type="checkbox" id="chkall_@(item.ID)" class="chkall">
+                        <label for="chkall_@(item.ID)"></label>
+                    </div>
+                </td>
+                <td>
+                    <div class="checkbox checkbox-primary">
+                        <input type="checkbox" value="@((int)EnumHelper.Action.View)" id="view_@((int)EnumHelper.Action.View)@item.ID" @checkView>
+                        <label for="view_@((int)EnumHelper.Action.View)@item.ID"></label>
+                    </div>
+                </td>
+                <td>
+                    <div class="checkbox checkbox-primary">
+                        <input type="checkbox" value="@((int)EnumHelper.Action.Add)" id="add_@((int)EnumHelper.Action.Add)@item.ID" @checkAdd>
+                        <label for="add_@((int)EnumHelper.Action.Add)@item.ID"></label>
+                    </div>
+                </td>
+                <td>
+                    <div class="checkbox checkbox-primary">
+                        <input type="checkbox" value="@((int)EnumHelper.Action.Edit)" id="edit_@((int)EnumHelper.Action.Edit)@item.ID" @checkEdit>
+                        <label for="edit_@((int)EnumHelper.Action.Edit)@item.ID"></label>
+                    </div>
+                </td>
+                <td>
+                    <div class="checkbox checkbox-primary">
+                        <input type="checkbox" value="@((int)EnumHelper.Action.Delete)" id="delete_@((int)EnumHelper.Action.Delete)@item.ID" @checkDelete>
+                        <label for="delete_@((int)EnumHelper.Action.Delete)@item.ID"></label>
+                    </div>
+                </td>
+                <td>
+                    <div class="checkbox checkbox-primary">
+                        <input type="checkbox" value="@((int)EnumHelper.Action.Approved)" id="approved_@((int)EnumHelper.Action.Approved)@item.ID" @checkApproved>
+                        <label for="approved_@((int)EnumHelper.Action.Approved)@item.ID"></label>
+                    </div>
+                </td>
+
+                <td>
+                    <div class="checkbox checkbox-primary">
+                        <input type="checkbox" value="@((int)EnumHelper.Action.Print)" id="print_@((int)EnumHelper.Action.Print)@item.ID" @checkPrint>
+                        <label for="print_@((int)EnumHelper.Action.Print)@item.ID"></label>
+                    </div>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+<script>
+    $(document).ready(function () {
+        groupuser.onupdatepermission(0);
+    });
+</script>

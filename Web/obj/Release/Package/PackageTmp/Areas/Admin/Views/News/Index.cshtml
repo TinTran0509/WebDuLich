@@ -1,0 +1,51 @@
+﻿@using Web.Model.CustomModel
+@{
+    ViewBag.Title = "Tin tức";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    var lstAction = (List<int>)HttpContext.Current.Session["Action"]; 
+}
+
+<script src="~/AppJs/news.js"></script>
+<div class="page-content-wrapper ">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-primary">
+                    <div class="panel-body">
+                        <h4 class="m-b-30 m-t-0">Danh sách tin tức</h4>
+                        <div class="row" style="margin-bottom:10px"> 
+                            <div class="col-md-4">
+                                <input type="text" id="txtSearch" class="form-control" placeholder="Nhập tiêu đề tin tức" />
+                                <span id="searchclear" class="glyphicon glyphicon-remove-circle"></span>
+                            </div>
+                            <div class="col-md-4">
+                                <button id="btnSearch" onclick="News.loadData()" class="btn btn-primary">Tìm kiếm</button>
+                            </div>
+                            @if (lstAction != null && lstAction.Contains((int)EnumHelper.Action.Add))
+                            {
+                                <div class="col-md-4">
+                                    <a style="float:right" href="/Admin/News/Add" class="btn btn-primary">Thêm mới</a>
+                                </div>
+                            }
+                        </div>
+                        <div id="loadData" class="row table-responsive">
+
+                        </div>
+                        <div class="col-md-12">
+                            <div style=" width: 50%;margin: 0 auto;" id="paginationholder">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.getElementById('searchclear').onclick = function () {
+        document.getElementById('txtSearch').value = '';
+        News.loadData();
+    }
+</script>
+

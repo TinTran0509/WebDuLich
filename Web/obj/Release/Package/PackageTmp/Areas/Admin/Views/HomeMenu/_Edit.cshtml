@@ -1,0 +1,107 @@
+﻿@using Web.Model
+@model HomeMenu
+@{
+    var lstMenu = (List<HomeMenu>)TempData["MenuHome"];
+}
+@helper RenderMenu(HomeMenu parent, List<HomeMenu> listfull)
+{
+var lstChilds = listfull.Where(g => g.ParentId == parent.ID);
+    <option value="@parent.ID">@(new String('-', ((int)parent.Level - 1) * 2))@parent.Name</option>
+foreach (var child in lstChilds)
+{
+        @RenderMenu(child, listfull);
+    }
+}
+@using (Ajax.BeginForm("Edit", "HomeMenu", null,
+                new AjaxOptions
+                {
+                    HttpMethod = "POST",
+                    OnSuccess = "homemenu.onEditSuccess"
+                },
+                new { @id = "frmData", @class = "form-horizontal" }))
+{
+    @Html.HiddenFor(x=>x.ID)
+    <div class="form-group">
+        <label class="col-md-2 control-label">Tên menu</label>
+        <div class="col-md-10">
+          @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @placeholder = "Nhập tên menu", onchange = "getLinkSeo()"})
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Menu cha</label>
+        <div class="col-md-6">
+            <select class="form-control" name="ParentId" id="selParentId">
+                <option value="0">--Chọn Menu cha--</option>
+                @foreach (var parent in lstMenu.Where(g => g.ParentId == 0))
+                {
+                    @RenderMenu(parent, lstMenu);
+                }
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Đường dẫn</label>
+        <div class="col-md-10">
+            @Html.TextBoxFor(g => g.Link, new { @class = "form-control"})
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Icon </label>
+        <div class="col-md-10">
+            @Html.TextBoxFor(g => g.Icon, new { @class = "form-control"})
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Thứ tự</label>
+        <div class="col-sm-3">
+            @Html.TextBoxFor(g => g.Ordering, new { @class = "form-control"})
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-12 text-center">
+            <button type="submit" class="btn btn-primary waves-effect waves-light">Cập nhật</button>
+        </div>
+    </div>
+}
+<script src="~/Scripts/common.js"></script>
+<script>
+    function getLinkSeo() {
+        let name = $('#Name').val();
+        $('#LinkSeo').val(RemoveMarkStr(name));
+    }
+    $(document).ready(function () {
+        $("#frmData").validate({
+            rules:
+            {
+                Name:
+                {
+                    required: true,
+                    maxlength: 250
+                }
+                ,
+                DisplayOrder:
+                {
+                    required: true
+                }
+            },
+            messages:
+            {
+                Name:
+                {
+                    required: "Vui lòng nhập tên menu"
+                }
+                ,
+                DisplayOrder:
+                {
+                    required: "Vui lòng nhập thứ tự"
+                }
+            },
+            highlight: function (element) {
+                jQuery(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+            },
+            success: function (element) {
+                jQuery(element).closest('.form-group').removeClass('has-error');
+            }
+        });
+    });
+</script>

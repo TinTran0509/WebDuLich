@@ -1,0 +1,89 @@
+﻿@using Web.Core
+@using Web.Model
+@using Web.Model.CustomModel
+@model IEnumerable<VideoModel>
+@{
+    var lstAction = (List<int>)HttpContext.Current.Session["Action"];
+}
+<link href="/Content/Admin/assets/fancybox/source/jquery.fancybox.css" rel="stylesheet" />
+<link href="/Content/Admin/assets/fancybox/source/helpers/jquery.fancybox-buttons.css" rel="stylesheet" />
+<link href="/Content/Admin/assets/fancybox/source/helpers/jquery.fancybox-thumbs.css" rel="stylesheet" />
+<script src="/Content/Admin/assets/fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
+<script src="/Content/Admin/assets/fancybox/source/jquery.fancybox.js"></script>
+<script src="/Content/Admin/assets/fancybox/source/helpers/jquery.fancybox-buttons.js"></script>
+<script src="/Content/Admin/assets/fancybox/source/helpers/jquery.fancybox-thumbs.js"></script>
+<script src="/Content/Admin/assets/fancybox/source/helpers/jquery.fancybox-media.js"></script>
+<style>
+    #img_video:hover {
+        background-image: url('/Upload/Images/playvideo.jpg');
+    }
+</style>
+<div class="row port">
+    <div class="portfolioContainer" style="position: relative; height: 792px;">
+        @{ 
+            var i = 0;
+            string domainName = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority);
+            string domain  = domainName.Split(new string[] { "//" }, StringSplitOptions.None)[1];
+         }
+        @foreach (var item in Model)
+        {
+            string url = "http://" + domain + item.Url;
+            string img = "http://" + domain + item.Images;
+            if (i % 4 == 0)
+            {
+                <div class="row"></div>
+            }
+            i++;
+            <div class="col-md-3 pull-left">
+                <div class="gal-detail thumb">
+                    <a class="fancybox" href="#boxvideo-@item.ID" title="@item.Name" style="text-decoration: none;">
+                        <div style="pointer-events: none;">
+                            @if (item.Type == 1)
+                            {
+                                <img id="imgyoutube" src="@(item.Images??"Content/Site/images/noimage.png")" width="240" height="180" />
+                            }
+                            else
+                            {
+                                <img id="img_video" src="@(item.Images??"Content/Site/images/noimage.png")" width="240" height="180" />
+                            }
+                        </div>
+                        <p  style="margin-top: 0; height: 35px; overflow: hidden;"><b>@item.Name</b></p>
+                    </a>
+                    <div id="boxvideo-@item.ID" style="display: none;width: 100%;height: 100%;">
+                        @if (item.Type == 1)
+                        {
+                            var urlyoutube = new Uri(item.Url);
+                            var idyoutube = HttpUtility.ParseQueryString(urlyoutube.Query).Get("v");
+                            <iframe width="640" height="480" src="https://www.youtube.com/embed/@idyoutube" frameborder="0" allowfullscreen></iframe>
+                        }
+                        else
+                        {
+                            <video width="640" height="480" controls><source src="@url" type="video/mp4"></video>
+                        }
+                    </div>                    
+                    <p>
+                        <span style="color: #757373">Đăng bởi: @item.FullName</span> <span style="float: right; color: #757373">@HelperDateTime.TimeAgo(item.CreatedDate)</span>
+                    </p>
+                    <p style="margin-top: 0;">
+                        @if (lstAction != null && lstAction.Contains((int)EnumHelper.Action.Edit))
+                        {
+                            <a href="#" onclick="video.loadfrmedit(@item.ID) "><i class="glyphicon glyphicon-pencil"></i></a>
+                        }
+                        @if (lstAction != null && lstAction.Contains((int)EnumHelper.Action.Delete))
+                        {
+                            <a href="#" onclick="video.ondelete(@item.ID) ">
+                                <i class="glyphicon glyphicon-trash"></i>
+                            </a>
+                        }
+                        @Html.Raw(item.Status ? "<span style='color:green;float:right;'>Kích hoạt</span>" : "<span style='color:red;float:right'>Vô hiệu</span>")
+                    </p>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $(".fancybox").fancybox();
+    });
+</script>

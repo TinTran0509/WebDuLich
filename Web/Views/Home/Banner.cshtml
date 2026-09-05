@@ -1,0 +1,79 @@
+﻿@using Web.Model.CustomModel
+@{
+    Layout = null;
+    UserModel user = ViewBag.UserModel;
+}
+
+@model IntroductionViewModel
+@if (Model != null)
+{
+    <style>
+        .banner-des-list ul, .banner-des-list p {
+            margin: 0;
+            padding: 0 15px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 3px 28px;
+            color: #fff;
+            position: absolute;
+            bottom: 35px;
+            left: 0;
+            right: 0;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: .3px;
+        }
+        .container table, th, td {
+            width: 100% !important;
+            border: none
+        }
+        .align-items-center table tr td:first-child {
+            padding-right: 25px !important
+        }
+    </style>
+    <div class="page-banner">
+        <picture>
+            <source media="(max-width: 480px)" data-lazy-srcset="@Model.Image">
+            <source media="(min-width: 481px)" data-lazy-srcset="@Model.Image">
+            <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E"
+                 alt="@Model.Title"
+                 fetchpriority="high"
+                 decoding="async"
+                 class="banner-image"
+                 data-lazy-src="@Model.Image" />
+            <noscript>
+                <img src="@Model.Image"
+                     alt="@Model.Title"
+                     fetchpriority="high"
+                     decoding="async"
+                     class="banner-image" />
+            </noscript>
+        </picture>
+        <h1 class="banner-title">@Model.Title</h1>
+        <div class="banner-des-list">
+                @Html.Raw(Model.Description)
+         </div>
+        @*<ul class="banner-text-list">
+            <li>Grupos y viajes privados</li>
+            <li>Agencia directa en Asia</li>
+            <li>México, Argentina, Colombia, EE. UU, Brasil</li>
+        </ul>*@
+    </div>
+    <div class="pt-45 border-edeae5">
+        <div class="container">
+            <div class="row align-items-center">
+                @Html.Raw(Model.Contents)
+            </div>
+        </div>
+    </div>
+}
+
+
+
+
+
+
+
+
+

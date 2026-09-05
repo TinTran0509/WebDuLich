@@ -1,0 +1,11 @@
+﻿@model List<Web.Model.Category>
+  
+<div class="col-inner">
+    <p><span style="font-size: 115%;"><strong>Dịch vụ</strong></span></p>
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li><a href="/@item.LinkSeo"><span style="font-size: 95%;">@item.Name</span></a></li>
+        } 
+    </ul>
+</div>

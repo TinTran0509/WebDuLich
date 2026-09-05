@@ -1,0 +1,157 @@
+﻿@using Web.Model
+@using Web.Model.CustomModel
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    var languages = (List<tbl_Languages>)TempData["Languages"];
+    var lstMenu = (List<MenuTranModel>)TempData["Menus"];
+}
+<script src="~/AppJs/menu.js"></script>
+@helper RenderMenu(MenuTranModel parent, List<MenuTranModel> listfull)
+{
+    var lstChilds = listfull.Where(g => g.ParentID == parent.ID);
+    <option data-menuid="@parent.MenuID" value="@parent.ID">@(new String('-', ((int)parent.Level - 1) * 2))@parent.Name</option>
+    foreach (var child in lstChilds)
+    {
+        @RenderMenu(child, listfull);
+    }
+}
+@model MenuCreateViewModel
+@using (Ajax.BeginForm("Add", "Menu", null,
+    new AjaxOptions
+    {
+        HttpMethod = "POST",
+        OnSuccess = "Menu.onAddSuccess"
+    },
+    new { @id = "frmData", @class = "form-horizontal" }))
+{
+    @Html.HiddenFor(m => m.MenuID)
+    <div class="article-create">
+        <h4>Thêm mới menu</h4>
+        <div class="form-group">
+            <label class="control-label col-md-1">Menu cha</label>
+            <div class="col-md-4">
+                <select class="form-control" name="ParentID" onchange="getMenuId()">
+                    <option data-menuid="0" value="0">--- Chọn ---</option>
+                    @foreach (var parent in lstMenu.Where(g => g.ParentID == 0))
+                    {
+                        @RenderMenu(parent, lstMenu);
+                    }
+                </select>
+            </div>
+        </div>
+        <ul class="nav nav-tabs lang-tabs">
+            @for (int i = 0; i < Model.Languages.Count; i++)
+            {
+                <li class="@(i == 0 ? "active" : "")" onclick="Menu.getMenuTransByLang('@Model.Languages[i].LangCode')">
+                    <a href="#lang-@Model.Languages[i].LangCode"
+                       data-toggle="tab">
+                        @Model.Languages[i].LangName
+                    </a>
+                </li>
+            }
+        </ul>
+        <div class="tab-content">
+            @for (int i = 0; i < Model.Languages.Count; i++)
+            {
+                var lang = Model.Languages[i];
+                <div id="lang-@lang.LangCode"
+                     class="tab-pane @(i == 0 ? "active" : "")">
+                    <div class="form-group">
+                        <label class="col-md-1 control-label">Tên <span class="asterisk"> (*)</span></label>
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(m => m.Languages[i].Title, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    @*<div class="form-group menu-trans">
+                        <label>Mô tả</label>
+                        @Html.TextBoxFor(m => m.Languages[i].Description, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group menu-trans">
+                        <label>Nội dung</label>
+                        @Html.TextAreaFor(m => m.Languages[i].Contents, new { @class = "form-control article-content", rows = 10 })
+                    </div>*@
+                    @Html.HiddenFor(m => m.Languages[i].LangCode)
+                    @Html.HiddenFor(m => m.Languages[i].LangName)
+                </div>
+            }
+        </div>
+        <div class="form-group menu-trans">
+            <label class="col-md-1 control-label">Ảnh <span class="asterisk"> (*)</span></label>
+            <div class="col-md-10">
+                <div class="col-md-2">
+                    @{ Html.RenderAction("UploadImage", "UploadFile", new { controlName = "Image" });}
+                </div>
+                <img style="width:100px" src="" id="prevImages">
+                <span class="error" id="spImg"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-1 control-label">Thứ tự <span class="asterisk"> (*)</span></label>
+            <div class="col-sm-1 lockChar">
+                @Html.TextBoxFor(g => g.Ordering, new { @class = "form-control", @type = "number", placeholder = "Thứ tự...", Value = "0" })
+            </div>
+        </div>
+        <hr />
+        <div class="form-group">
+            <div class="col-md-1 text-right"><a href="/admin/menu" class=""><i class="fa fa-arrow-left" aria-hidden="true"></i> Trở lại</a></div>
+            <div class="col-md-8 text-center">
+                <button type="submit" class="btn btn-primary waves-effect waves-light">Thêm mới</button>
+            </div>
+        </div>
+    </div>
+}
+<script>
+    function getMenuId() { 
+        let menuid = $("select[name='ParentID'] option:selected").data('menuid');
+        $('#MenuID').val(menuid);
+    }
+    $(document).ready(function () {
+        $('.lockChar').on("keypress", function (e) {
+            return e.charCode >= 48 && e.charCode <= 57
+        })
+        $('.menu-trans').css('display', 'none');
+        $('#Title').on('change', function () {
+            let link = $('#Title').val();
+            let linkSeo = RemoveMarkStr(link);
+            $('#LinkSeo').val(linkSeo);
+        })
+        $("#frmData").validate({
+            rules:
+            {
+                Title:
+                {
+                    required: true,
+                    maxlength: 250
+                }
+            },
+            messages:
+            {
+                Title:
+                {
+                    required: "Vui lòng nhập tiêu đề"
+                }
+            },
+            highlight: function (element) {
+                jQuery(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+            },
+            success: function (element) {
+                jQuery(element).closest('.form-group').removeClass('has-error');
+            }
+        });
+    });
+    //$('.article-content').each(function () {
+    //    var textareaId = $(this).attr('id');
+    //    var editor = CKEDITOR.replace(textareaId, {
+    //        height: '500px',
+    //        startupFocus: true,
+    //        language: 'vi',
+    //        filebrowserBrowseUrl: "/Content/plugins/ckfinder/ckfinder.html",
+    //        filebrowserImageBrowseUrl: '/Content/plugins/ckfinder/ckfinder.html?Type=Images',
+    //        filebrowserFlashBrowseUrl: '/Content/plugins/ckfinder/ckfinder.html?Type=Flash',
+    //        filebrowserUploadUrl: '/Scripts/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Files',
+    //        filebrowserImageUploadUrl: '/Scripts/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Images',
+    //        filebrowserFlashUploadUrl: '/Scripts/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Flash'
+    //    });
+    //})
+
+</script>

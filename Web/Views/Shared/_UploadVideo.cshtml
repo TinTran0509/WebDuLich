@@ -1,0 +1,31 @@
+﻿@model Web.Model.tbl_Video
+<script src="/Content/Admin/assets/notifications/notify.min.js"></script>
+<script src="/Content/Admin/assets/notifications/notify-metro.js"></script>
+<script src="/Content/Admin/assets/notifications/notifications.js"></script>
+<script src="/Content/Admin/assets/sweet-alert/sweet-alert.min.js"></script>
+<script src="/Content/Admin/assets/sweet-alert/sweet-alert.init.js"></script>
+<input type="file" id="btn-upload-video" class="btn btn-success btn-flat browser-image hidden" value="Chọn file văn bản">
+<div class="upload-ajax">
+    <a href="javascript:void(0)" type="button" id="Upload" class="btn btn-info" onclick="$('#btn-upload-video').click()"><i class="md-file-upload"></i> Upload video </a>
+    <i class="ion-loading-a loading-ajax" style="display: none;"></i>
+</div>
+<div id="fileupload" class="fileupload">
+    @if (Model != null && Model.Type == 1)
+    {
+        <video width="320" height="240" controls>
+            <source src="@Model.Url" type="video/mp4">
+        </video>
+    }
+</div>
+<script>
+    $(document).ready(function () {
+        $("#btn-upload-video").uploadvideo(".loading-ajax", function (res) {
+            var htmlvideo = '<video width="320" height="240" controls>\
+        <source src="' + res.file.FileName + '" type="video/mp4">\
+    </video>';
+            $("#fileupload").html(htmlvideo);
+            $("#Url").val(res.file.FileName);
+            $(".loading-ajax").hide();
+        });
+    });
+</script>

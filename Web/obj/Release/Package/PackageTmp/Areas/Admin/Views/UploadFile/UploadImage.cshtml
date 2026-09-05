@@ -1,0 +1,44 @@
+﻿
+<div class="form-inline">
+    <input type="file" id="fileUpload" accept="image/*" name="fileUpload" style="display:none;" />
+    <input type="button" id="btnUpload" value="Thêm ảnh" class="btn btn-success" />
+</div>
+<input type="hidden" name="@(ViewBag.ControlName)" id="urlImage" value="@(ViewBag.ControlValue)"/>
+
+    <script>
+        $(function () {
+            $("#urlImage").val($("#prevImages").attr("src"));
+            $('#btnUpload').click(function () {
+                $('#fileUpload').trigger('click');
+            });
+            $('#fileUpload').change(function () {
+                if (window.FormData !== undefined) {
+                    var fileUpload = $("#fileUpload").get(0);
+                    var files = fileUpload.files;
+                    var fileData = new FormData();
+                    for (var i = 0; i < files.length; i++) {
+                        fileData.append(files[i].name, files[i]);
+                    } 
+                    fileData.append('username', 'Manas');
+                    $.ajax({
+                        url: '/Admin/UploadFile/ProcessUpload',
+                        type: "POST",
+                        contentType: false,  
+                        processData: false,  
+                        data: fileData,
+                        success: function (result) {
+                            $("#urlImage").val(result);
+                            $("#prevImages").attr("src", result);
+                            $("#prevImages").css('width','100px')
+                        },
+                        error: function (err) {
+                            alert(err.statusText);
+                        }
+                    });
+                } else {
+                    alert("FormData is not supported.");
+                }  
+            });
+        });
+    </script>
+

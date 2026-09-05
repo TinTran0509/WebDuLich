@@ -1,0 +1,190 @@
+﻿body {
+  color: #000;
+  font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+@media (min-width: 768px) {
+  .navbar-static-side {
+    width: 280px;
+  }
+
+  #page-wrapper {
+    margin: 0 0 0 280px;
+  }
+}
+
+.form-horizontal .control-label {
+  text-align: left;
+}
+
+.ibox-title {
+  min-height: 60px !important;
+}
+
+.ibox-tools a {
+  color: #FFF !important;
+}
+
+.select2-selection__choice {
+  background-color: #1c84c6 !important;
+  border: 0 !important;
+  color: #FFF;
+  font-size: 14px;
+}
+
+.table {
+  width: 100% !important;
+}
+
+.table > thead > tr > th {
+  vertical-align: middle;
+  border-bottom: none;
+  text-align: center;
+}
+
+.table > tbody > tr > td {
+  vertical-align: middle;
+  text-overflow: ellipsis;
+}
+
+.table > tbody > tr > th {
+  text-align: left;
+  vertical-align: middle;
+}
+
+.table > tfoot > tr > th {
+  border-bottom: none;
+}
+
+.table-bordered {
+  border-top: none;
+  border-bottom: none;
+  border-left: 1px solid #EBEBEB;
+  border-right: 1px solid #EBEBEB;
+  /*border: none;*/
+}
+
+table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > td:first-child:before,
+table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > th:first-child:before {
+  top: auto;
+  height: auto;
+  width: auto;
+  display: block;
+  position: absolute;
+  color: black;
+  text-align: center;
+  text-indent: 0;
+  line-height: unset;
+  content: "+";
+  background-color: transparent;
+  border: 0;
+  box-shadow: none;
+  border-radius: unset;
+  vertical-align: middle;
+}
+
+table.dataTable.dtr-inline.collapsed > tbody > tr > td.dtr-control:before,
+table.dataTable.dtr-inline.collapsed > tbody > tr > th.dtr-control:before {
+  top: 50%;
+  left: 5px;
+  height: 1em;
+  width: 1em;
+  margin-top: -9px;
+  display: block;
+  position: absolute;
+  color: #000000;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  box-sizing: content-box;
+  text-align: center;
+  text-indent: 0 !important;
+  font-family: "Courier New", Courier, monospace;
+  line-height: 1em;
+  content: "+";
+  background-color: transparent;
+}
+
+table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before,
+table.dataTable.dtr-inline.collapsed > tbody > tr.parent > th:first-child:before {
+  content: "-";
+  background-color: transparent;
+}
+
+.table-bordered > thead > tr > th,
+.table-bordered > thead > tr > td {
+  background-color: transparent !important;
+}
+
+.groupFilter {
+  position: relative;
+  text-align: left;
+}
+
+@media (max-width: 767px) {
+  .groupFilter {
+    width: 100%;
+  }
+}
+
+.groupFilter .collapse {
+  position: absolute !important;
+  right: 0;
+  width: 300px;
+  top: 100%;
+  display: none;
+}
+
+.groupFilter .collapse.show {
+  display: block;
+}
+
+.vcbFilterContent {
+  position: absolute;
+  padding-top: 10px;
+  right: 0;
+  top: 50%;
+  width: 330px;
+  background-color: #fff;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vcbFilterContent {
+    transition: none;
+  }
+}
+
+@media (max-width: 575px) {
+  .vcbFilterContent {
+    width: 300px;
+  }
+}
+
+.vcbFilterContent.active {
+  top: 100%;
+  opacity: 1;
+  visibility: visible;
+}
+
+.vcbFilterContent-top {
+  top: auto;
+  bottom: 0;
+}
+
+.vcbFilterContent-top.active {
+  top: auto;
+  bottom: 100%;
+}
+
+.vcbFilterContent label {
+  font-weight: 700;
+}
+
+.vcbFilterContent button {
+  font-size: 14px;
+}

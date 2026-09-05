@@ -1,0 +1,51 @@
+﻿@using Web.Model.Domain;
+@{
+    Layout = null;
+}
+@model List<Web.Model.Category>
+
+
+<div class="flex-col hide-for-medium flex-center">
+    <ul class="nav header-nav header-bottom-nav nav-center  nav-size-large nav-spacing-xlarge nav-uppercase">
+        <li id="menu-item-7" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-7 menu-item-design-default"><a href="/" aria-current="page" class="nav-top-link">Trang chủ</a></li>
+        <li id="menu-item-214" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-214 menu-item-design-default"><a href="/gioi-thieu" class="nav-top-link">Giới thiệu</a></li>
+        <li id="menu-item-9" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-9 menu-item-design-default has-dropdown">
+            <a href="/dich-vu" class="nav-top-link" aria-expanded="false" aria-haspopup="menu">Dịch vụ<i class="icon-angle-down"></i></a>
+            <ul class="sub-menu nav-dropdown nav-dropdown-simple">
+                @foreach (var item in Model)
+                {
+                    <li id="menu-item-@item.ID" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5173"><a href="/@item.LinkSeo">@item.Name</a></li>
+                } 
+            </ul>
+        </li>
+        <li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12 menu-item-design-default"><a href="/tin-tuc" class="nav-top-link">Tin tức</a></li>
+        <li id="menu-item-525" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-525 menu-item-design-default"><a href="/lien-he" class="nav-top-link">Liên hệ</a></li>
+        <li class="header-search header-search-dropdown has-icon has-dropdown menu-item-has-children">
+            <a href="#" aria-label="Search" class="is-small"><i class="icon-search"></i></a>
+            <ul class="nav-dropdown nav-dropdown-simple">
+                <li class="header-search-form search-form html relative has-icon">
+                    <div class="header-search-form-wrapper">
+                        <div class="searchform-wrapper ux-search-box relative is-normal">
+                            <form method="get" class="searchform" action="/" role="search">
+                                <div class="flex-row relative">
+                                    <div class="flex-col flex-grow">
+                                        <input type="search" class="search-field mb-0" name="s" value="" id="s" placeholder="Search&hellip;" />
+                                    </div>
+                                    <div class="flex-col">
+                                        <button type="submit" class="ux-search-submit submit-button secondary button icon mb-0" aria-label="Submit">
+                                            <i class="icon-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="live-search-results text-left z-top"></div>
+                            </form>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+ 
+
+

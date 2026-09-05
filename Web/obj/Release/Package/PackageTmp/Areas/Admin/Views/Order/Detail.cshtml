@@ -1,0 +1,88 @@
+﻿@model List<Web.Model.CustomModel.OrderModel>
+@{ 
+    int i = 0;
+    var money = 0.0;
+    var customer = (Web.Model.tbl_Order)TempData["Customer"];
+    var bill =string.Empty;
+    if(customer.ID < 10)
+    {
+        bill = "00" + customer.ID;
+    }
+    else if(customer.ID < 100)
+    {
+        bill = "0" + customer.ID;
+    }
+    else
+    {
+        bill = customer.ID.ToString();
+    }
+}
+<div class="text-width">
+    <div class="title">
+        <h5 data-selector="lblSchoolName"></h5>
+    </div>
+    <div class="text-center text-top">
+        <h5>ĐƠN ĐẶT HÀNG</h5>
+    </div>
+    <div class="number">
+        <div class="bs-row">
+            <div class="bs-col md-50 sm-50 xs-50">
+                <p>Mã phiếu: <b>@bill</b></p>
+                <p>Người mua: <b>@customer.CustomerName</b></p>
+                <p>Ngày đặt: <span>@string.Format("{0:dd/MM/yyyy HH:mm}", customer.CreatedDate)</span></p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="table-popup">
+    <div class="table-responsive">
+        <table class="table table-condensed">
+            <thead>
+                <tr>
+                    <th>TT</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Mã sản phẩm</th>
+                    <th>Số lượng</th>
+                    <th>Đơn giá</th>
+                    <th>Thành tiền</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    i++;
+                <tr>
+                    <td>@i</td>
+                    <td>@item.ProductName</td>
+                    <td>@item.ProductCode</td>
+                    <td>@item.Quantity</td>
+                    @if (item.Price == null && item.Sale == null)
+                    {
+                        <td><input placeholder="Liên hệ" class="form-control" style="width:100px" /></td>
+                        money += 0;
+                    }
+                    @if (item.Price != null && item.Sale == null)
+                    {
+                        money += (double)(item.Price * item.Quantity);
+                        <td>@String.Format("{0:0,0}", item.Price)</td>
+                        <td>@String.Format("{0:0,0}", (item.Price * item.Quantity))</td>
+                    }
+                    @if ((item.Price == null && item.Sale != null)|| (item.Price != null && item.Sale != null))
+                    {
+                        money += (double)(item.Sale * item.Quantity);
+                        <td>@String.Format("{0:0,0}", item.Sale)</td>
+                        <td>@String.Format("{0:0,0}", (item.Sale * item.Quantity))</td>
+                    }
+                </tr>
+                }
+                <tr>
+                    <td colspan="5" align="center"><b>Tổng tiền</b></td>
+                    <td><b>@String.Format("{0:0,0}", (money)) VNĐ</b></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="text-center">
+    <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+</div>

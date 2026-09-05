@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="75945e16007c42e9a8fae5c04f29cc4a" Name="Diagram1">
+        <EntityTypeShape EntityType="WebDuLichModel.AdminMenu" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebDuLichModel.Category" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebDuLichModel.Contact" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebDuLichModel.Header" Width="1.5" PointX="4.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebDuLichModel.News" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebDuLichModel.Slider" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebDuLichModel.tbl_GroupUser" Width="1.5" PointX="8.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebDuLichModel.tbl_Login" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebDuLichModel.tbl_PageElement" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebDuLichModel.UserAdmin" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="WebDuLichModel.FK__News__CategoryId__6B24EA82" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="WebDuLichModel.Topic" Width="1.5" PointX="12.375" PointY="0.75" />
+        <EntityTypeShape EntityType="WebDuLichModel.UserTran" Width="1.5" PointX="13.375" PointY="3.75" />
+        <EntityTypeShape EntityType="WebDuLichModel.tbl_User" Width="1.5" PointX="9.375" PointY="12.75" />
+        <EntityTypeShape EntityType="WebDuLichModel.MenuHome" Width="1.5" PointX="3.375" PointY="13.75" />
+        <EntityTypeShape EntityType="WebDuLichModel.tbl_Languages" Width="1.5" PointX="7.375" PointY="7.75" />
+        <EntityTypeShape EntityType="WebDuLichModel.Theme" Width="1.5" PointX="11.375" PointY="13.75" />
+        <EntityTypeShape EntityType="WebDuLichModel.About" Width="1.5" PointX="13.375" PointY="13.75" />
+        <EntityTypeShape EntityType="WebDuLichModel.TopicTran" Width="1.5" PointX="12.375" PointY="9.75" />
+        <EntityTypeShape EntityType="WebDuLichModel.Menu" Width="1.5" PointX="9.375" PointY="9.75" />
+        <EntityTypeShape EntityType="WebDuLichModel.MenuTran" Width="1.5" PointX="5.375" PointY="11.75" />
+        <EntityTypeShape EntityType="WebDuLichModel.BannerTran" Width="1.5" PointX="14.375" PointY="9.75" />
+        <EntityTypeShape EntityType="WebDuLichModel.Banner" Width="1.5" PointX="13.375" PointY="6.75" />
+        <EntityTypeShape EntityType="WebDuLichModel.ProductTran" Width="1.5" PointX="15.375" PointY="3.75" />
+        <EntityTypeShape EntityType="WebDuLichModel.Introduction" Width="1.5" PointX="0.75" PointY="14.75" />
+        <EntityTypeShape EntityType="WebDuLichModel.IntroductionTran" Width="1.5" PointX="5.75" PointY="15.75" />
+        <EntityTypeShape EntityType="WebDuLichModel.Product" Width="1.5" PointX="15.375" PointY="13.75" />
+        <EntityTypeShape EntityType="WebDuLichModel.Country" Width="1.5" PointX="16.375" PointY="0.75" />
+        <EntityTypeShape EntityType="WebDuLichModel.CountryTran" Width="1.5" PointX="16.375" PointY="7.75" />
+        <EntityTypeShape EntityType="WebDuLichModel.Location" Width="1.5" PointX="8.375" PointY="16.75" />
+        <EntityTypeShape EntityType="WebDuLichModel.LocationTran" Width="1.5" PointX="16.375" PointY="10.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

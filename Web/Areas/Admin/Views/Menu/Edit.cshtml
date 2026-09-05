@@ -1,0 +1,123 @@
+﻿@using Web.Model
+@using Web.Model.CustomModel
+@model MenuCreateViewModel
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    var lstMenu = (List<MenuTranModel>)TempData["Menus"];
+}
+<script src="~/AppJs/menu.js"></script>
+@helper RenderMenu(MenuTranModel parent, List<MenuTranModel> listfull)
+{
+    var lstChilds = listfull.Where(g => g.ParentID == parent.ID);
+    <option data-menuid="@parent.MenuID" value="@parent.ID">@(new String('-', ((int)parent.Level - 1) * 2))@parent.Name</option>
+    foreach (var child in lstChilds)
+    {
+        @RenderMenu(child, listfull);
+    }
+}
+@using (Ajax.BeginForm("Edit", "Menu", null,
+                new AjaxOptions
+                {
+                    HttpMethod = "POST",
+                    OnSuccess = "Menu.onEditSuccess"
+                },
+                new { @id = "frmData", @class = "form-horizontal" }))
+{
+    @Html.HiddenFor(m => m.MenuID)
+    <div class="article-create">
+        <div class="form-group">
+            <label class="control-label col-md-1">Menu cha</label>
+            <div class="col-md-4">
+                <select class="form-control" name="ParentID" id="selParentId" onchange="getMenuId()">
+                    <option data-menuid="0" value="0">--- Chọn ---</option>
+                    @foreach (var parent in lstMenu.Where(g => g.ParentID == 0))
+                    {
+                        @RenderMenu(parent, lstMenu);
+                    }
+                </select>
+            </div>
+        </div>
+        <ul class="nav nav-tabs lang-tabs">
+            @for (int i = 0; i < Model.Languages.Count; i++)
+            {
+                <li class="@(i == 0 ? "active" : "")" onclick="Menu.getMenuTransByLang('@Model.Languages[i].LangCode')">
+                    <a href="#lang-@Model.Languages[i].LangCode"
+                       data-toggle="tab">
+                        @Model.Languages[i].LangName
+                    </a>
+                </li>
+            }
+        </ul>
+        <div class="tab-content">
+            @for (int i = 0; i < Model.Languages.Count; i++)
+            {
+                var lang = Model.Languages[i];
+                <div id="lang-@lang.LangCode"
+                     class="tab-pane @(i == 0 ? "active" : "")">
+                    <div class="form-group">
+                        <label class="col-md-1 control-label">Tên <span class="asterisk"> (*)</span></label>
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(m => m.Languages[i].Title, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    @Html.HiddenFor(m => m.Languages[i].ID)
+                    @Html.HiddenFor(m => m.Languages[i].LangCode)
+                    @Html.HiddenFor(m => m.Languages[i].LangName)
+                </div>
+            }
+        </div>
+        <div class="form-group">
+            <label class="col-sm-1 control-label">Thứ tự <span class="asterisk"> (*)</span></label>
+            <div class="col-sm-1 lockChar">
+                @Html.TextBoxFor(g => g.Ordering, new { @class = "form-control", @type = "number", placeholder = "Thứ tự..." })
+            </div>
+        </div>
+        <hr />
+        <div class="form-group">
+            <div class="col-md-2 text-right"><a href="/admin/menu" class=""><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay lại</a></div>
+            <div class="col-md-7 text-center">
+                <button type="submit" class="btn btn-primary waves-effect waves-light">Cập nhật</button>
+            </div>
+        </div>
+    </div>
+}
+<script>
+    function getMenuId() {
+        let menuid = $("select[name='ParentID'] option:selected").data('menuid');
+        $('#MenuID').val(menuid);
+    }
+    $(document).ready(function () {
+        $('#selParentId').val(@Model.ParentID);
+        $("#frmData").validate({
+            rules:
+            {
+                Name:
+                {
+                    required: true,
+                    maxlength: 250
+                },
+                Ordering:
+                {
+                    required: true
+                }
+            },
+            messages:
+            {
+                Name:
+                {
+                    required: "Vui lòng nhập tên menu"
+                },
+                Ordering:
+                {
+                    required: "Vui lòng nhập thứ tự"
+                }
+            },
+            highlight: function (element) {
+                jQuery(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+            },
+            success: function (element) {
+                jQuery(element).closest('.form-group').removeClass('has-error');
+            }
+        });
+    });
+</script>

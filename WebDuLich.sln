@@ -1,0 +1,68 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.572
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{96A634A6-3406-49DA-875A-0FDD5A29112F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{844E2603-CF17-4581-858D-13A3B3A61088} = {844E2603-CF17-4581-858D-13A3B3A61088}
+		{7D0B6E16-9534-4FC2-9FCE-1FAEA142BD31} = {7D0B6E16-9534-4FC2-9FCE-1FAEA142BD31}
+		{74EA7220-24BA-4C21-A243-2ABC6703E908} = {74EA7220-24BA-4C21-A243-2ABC6703E908}
+		{D0436499-F74C-4776-AF8C-3E76AD2C8869} = {D0436499-F74C-4776-AF8C-3E76AD2C8869}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.Model", "Web.Model\Web.Model.csproj", "{74EA7220-24BA-4C21-A243-2ABC6703E908}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7D0B6E16-9534-4FC2-9FCE-1FAEA142BD31} = {7D0B6E16-9534-4FC2-9FCE-1FAEA142BD31}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.Repository", "Web.Repository\Web.Repository.csproj", "{D0436499-F74C-4776-AF8C-3E76AD2C8869}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7D0B6E16-9534-4FC2-9FCE-1FAEA142BD31} = {7D0B6E16-9534-4FC2-9FCE-1FAEA142BD31}
+		{74EA7220-24BA-4C21-A243-2ABC6703E908} = {74EA7220-24BA-4C21-A243-2ABC6703E908}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.Repository.Entity", "Web.Repository.Entity\Web.Repository.Entity.csproj", "{844E2603-CF17-4581-858D-13A3B3A61088}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7D0B6E16-9534-4FC2-9FCE-1FAEA142BD31} = {7D0B6E16-9534-4FC2-9FCE-1FAEA142BD31}
+		{74EA7220-24BA-4C21-A243-2ABC6703E908} = {74EA7220-24BA-4C21-A243-2ABC6703E908}
+		{D0436499-F74C-4776-AF8C-3E76AD2C8869} = {D0436499-F74C-4776-AF8C-3E76AD2C8869}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.Core", "Web.Core\Web.Core.csproj", "{7D0B6E16-9534-4FC2-9FCE-1FAEA142BD31}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{96A634A6-3406-49DA-875A-0FDD5A29112F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96A634A6-3406-49DA-875A-0FDD5A29112F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96A634A6-3406-49DA-875A-0FDD5A29112F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96A634A6-3406-49DA-875A-0FDD5A29112F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74EA7220-24BA-4C21-A243-2ABC6703E908}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74EA7220-24BA-4C21-A243-2ABC6703E908}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74EA7220-24BA-4C21-A243-2ABC6703E908}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74EA7220-24BA-4C21-A243-2ABC6703E908}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0436499-F74C-4776-AF8C-3E76AD2C8869}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0436499-F74C-4776-AF8C-3E76AD2C8869}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0436499-F74C-4776-AF8C-3E76AD2C8869}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0436499-F74C-4776-AF8C-3E76AD2C8869}.Release|Any CPU.Build.0 = Release|Any CPU
+		{844E2603-CF17-4581-858D-13A3B3A61088}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{844E2603-CF17-4581-858D-13A3B3A61088}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{844E2603-CF17-4581-858D-13A3B3A61088}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{844E2603-CF17-4581-858D-13A3B3A61088}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D0B6E16-9534-4FC2-9FCE-1FAEA142BD31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D0B6E16-9534-4FC2-9FCE-1FAEA142BD31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D0B6E16-9534-4FC2-9FCE-1FAEA142BD31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D0B6E16-9534-4FC2-9FCE-1FAEA142BD31}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		VisualSVNWorkingCopyRoot = .
+		SolutionGuid = {79730B7B-9C12-468C-8081-77F7EAC1258F}
+	EndGlobalSection
+EndGlobal

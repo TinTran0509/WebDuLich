@@ -1,0 +1,125 @@
+﻿@{
+    var obj = Model.GetType();
+    var name = obj.GetProperty("Name").GetValue(Model, null);
+    var multiple = obj.GetProperty("Multiple").GetValue(Model, null);
+    var value = obj.GetProperty("Value") == null ? "" : obj.GetProperty("Value").GetValue(Model, null);
+}
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="/Assets/js/jquery-file-upload/css/jquery.fileupload.css" rel="stylesheet" />
+<link href="/Assets/js/jquery-file-upload/css/jquery.fileupload-ui.css" rel="stylesheet" />
+<script src="/Assets/js/jquery-file-upload/js/vendor/jquery.ui.widget.js"></script>
+<script src="/Assets/js/jquery-file-upload/js/vendor/tmpl.min.js"></script>
+<script src="/Assets/js/jquery-file-upload/js/vendor/load-image.min.js"></script>
+<script src="/Assets/js/jquery-file-upload/js/vendor/canvas-to-blob.min.js"></script>
+<script src="/Assets/js/jquery-file-upload/js/jquery.iframe-transport.js"></script>
+<script src="/Assets/js/jquery-file-upload/js/jquery.fileupload.js"></script>
+<script src="/Assets/js/jquery-file-upload/js/jquery.fileupload-process.js"></script>
+<script src="/Assets/js/jquery-file-upload/js/jquery.fileupload-image.js"></script>
+<script src="/Assets/js/jquery-file-upload/js/jquery.fileupload-audio.js"></script>
+<script src="/Assets/js/jquery-file-upload/js/jquery.fileupload-video.js"></script>
+<script src="/Assets/js/jquery-file-upload/js/jquery.fileupload-validate.js"></script>
+<script src="/Assets/js/jquery-file-upload/js/jquery.fileupload-ui.js"></script>
+<script type="text/javascript" src="/Assets/js/jquery-file-upload/js/main.js"></script>
+<script src="/Content/Admin/assets/notifications/notify.min.js"></script>
+<script src="/Content/Admin/assets/notifications/notify-metro.js"></script>
+<script src="/Content/Admin/assets/notifications/notifications.js"></script>
+<script src="/Content/Admin/assets/sweet-alert/sweet-alert.min.js"></script>
+<script src="/Content/Admin/assets/sweet-alert/sweet-alert.init.js"></script>
+<script src="~/Scripts/common.js"></script>
+@if (value != null)
+{
+    <input type="hidden" id="@name" name="@name" value="@value" />
+}
+else
+{
+    <input type="hidden" id="@name" name="@name" />
+}
+@if (multiple == true)
+{
+    <input type="file" multiple id="btn-upload-ajax-@name" class="btn btn-primary btn-flat browser-image hidden" value="Chọn file văn bản">
+}
+else
+{
+    <input type="file" id="btn-upload-ajax-@name" class="btn btn-primary btn-flat browser-image hidden" value="Chọn file văn bản">
+}
+<div style="float:left"  class="upload-ajax">
+    <a href="javascript:void(0)" type="button" id="Upload" class="btn btn-primary" onclick="$('#btn-upload-ajax-@name').click()"><i style="color:white" class="glyphicon glyphicon-paperclip"></i> Chọn File </a>
+    <i class="ion-loading-a loading-ajax-@name" style="display: none;"></i>
+</div>
+<div id="infoUpfile" style="float:left;margin-left:60px">
+    <span style="margin-left:75px">Dung lượng file tối đa không quá 200Mb</span>
+</div>
+<div style="clear:both"></div>
+<div id="fileupload-@name" class="fileupload"></div>
+<div id="MissFile"></div>
+<script>
+    $(document).ready(function () {
+       
+        var arrFiles = [];
+
+        var strFiles = "";
+      
+        //Bind 2 Edit
+        if ($("#@name").val() != "") {
+
+            arrFiles = $("#@name").val().split("|");
+            for (var i = 0; i < arrFiles.length; i++) {
+                strFiles += '<p style="width:200px" class="completed" id="f' + i + '"><span class="fileName">' + arrFiles[i].split('/')[arrFiles[i].split('/').length - 1] + '</span>';
+                strFiles += "<a title='Xóa file' class='clsclick' onclick=\"$(this).parent().remove();removeFile('" + arrFiles[i] + "')\"><i class='fa fa-times removefile' style='margin-left:10px;color:red;cursor: pointer;line-height:20px;'></i></a></p>";
+            }
+            $("#fileupload-@name").html(strFile);
+        }
+        $("#btn-upload-ajax-@name").uploadajax(".loading-ajax-@name", function (res) {
+            if (res.status == true) {
+                strFiles = $("#fileupload-@name").html();
+                if ($("#@name").val() != "" && "@multiple" == "True") {
+                    arrFiles = $("#@name").val().split("|");
+                } else {
+                    arrFiles = [];
+                    strFiles = "";
+                }
+                for (var i = 0; i < res.files.length; i++) {
+                    strFiles += '<p style="width:100%" class="completed" id="f' + i + '"><span class="fileName">' + res.files[i].FileNameOriginal + '</span>';
+                    strFiles += "<a style='margin-left:22px' title='Xóa file' id='remofile' class='clsclick' onclick=\"$(this).parent().remove();removeFile('" + res.files[i].FileName + "')\"><i class='fa fa-times removefile' style='margin-left:10px;color:red;cursor: pointer;line-height:20px;'></i></a></p>";
+                    arrFiles.push(res.files[i].FileName);
+                }
+               
+                $("#@name").val(arrFiles.join("|"));
+              
+                $("#fileupload-@name").html(strFiles);
+                $('#infoUpfile').hide();
+                alertmsg.success(res.msg);
+            } else {
+                alertmsg.error(res.msg);
+            }
+            $(".loading-ajax-@name").hide();
+        });
+    });
+    var removeFile = function (filename) {
+        var arrFile = $("#@name").val().split("|");
+        arrFile = jQuery.grep(arrFile, function (a) {
+            return a != filename;
+        });
+        var strFile = arrFile.join('|');
+        $("#@name").val(strFile);
+    }
+
+</script>
+<style>
+    .fileupload {
+        margin-top: 3px;
+        width: 100%;
+    }
+    .completed {
+        padding: 5px;
+        background: rgba(221, 221, 221, 0.61);
+        box-shadow: 1px 1px #ccc;
+        margin-bottom: 2px;
+        position: relative;
+    }
+
+    .removefile {
+        position: absolute;
+        right: 10px;
+    }
+</style>

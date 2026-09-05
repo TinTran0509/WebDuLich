@@ -1,0 +1,30 @@
+﻿
+@model List<Web.Model.News>
+<div class="main-posts post-list">
+    @foreach (var item in Model)
+    {
+        <div class="post-layout ">
+            <div class="post-thumb">
+                <div class="image" style="width:300px">
+                    @if (!string.IsNullOrEmpty(item.Image))
+                    {
+                        <span class="p-date p-date-image">@item.CreatedDate.Day <i>thg @item.CreatedDate.Month</i></span>
+                        <a href="/blog/@item.LinkSeo">
+                            <img src="@item.Image" srcset="@item.Image 1x, @item.Image 2x" width="300" height="225" alt="@item.MetaTitle" title="@item.MetaTitle" class="img-responsive" />
+                        </a>
+                    }
+                </div>
+                <div class="caption">
+                    <div class="name"><a href="/blog/@item.LinkSeo">@item.MetaTitle</a></div>
+                    <div class="description">@item.Description</div>
+                    <div class="button-group">
+                        <a class="btn btn-read-more" href="/blog/@item.LinkSeo">
+                            <span class="btn-text">Xem thêm</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

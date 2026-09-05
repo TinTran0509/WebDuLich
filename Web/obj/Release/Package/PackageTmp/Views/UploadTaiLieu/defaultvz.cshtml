@@ -1,0 +1,46 @@
+﻿@{
+    Layout = null;
+    var namefield = ViewBag.namefield;
+}
+<div class="pull-left pleftvz">
+    <span>
+        <input id="@namefield" type="file" name="@namefield" style="display:none">
+        <label id="fi_@namefield" class="btn btn-primary margin-bottom control-label">Chọn file</label>
+    </span>
+    <div id="Miss_@namefield" style="margin-top:10px;"></div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        //------custom button upload-------
+        $('#fi_@namefield').click(function () {
+            $("#@namefield").click();
+        });
+        //------/custom button upload-------
+
+        //------ upload file-------
+        $("#@namefield").on('change', function () {
+            debugger;
+            var arrtype = $(this).get(0).files[0].name.split(".");
+            var filetype = arrtype[arrtype.length - 1].toLowerCase();
+            $('#Miss_@namefield').html("");
+            if ($(this).get(0).files[0].size > 5242880) {
+                $('#Miss_@namefield').html("<div class='message_filevz'>File đính kèm không được vượt quá 5 MB</div>").fadeIn().delay(5000).fadeOut();
+                return false;
+            }
+            else if (filetype != 'jpg' && filetype != 'gif' && filetype != 'png' && filetype != 'jpeg' && filetype != 'doc' && filetype != 'docx' && filetype != 'pdf' && filetype != 'xls' && filetype != 'xlsx' && filetype != 'rar' && filetype != 'zip') {
+                $('#Miss_@namefield').html("<div class='message_filevz'>File không đúng định dạng</div>").fadeIn().delay(5000).fadeOut();
+                return false;
+            }
+            else {
+                var html = "<div id='rh_@namefield'><span>" + $(this).get(0).files[0].name + "</span><a class='x-button-red' onclick='remove_rowvz(\"@namefield\")'><i class='fa fa-times marleft5'></i></a></div></div>";
+                $('#Miss_@namefield').html(html);
+            }
+        });
+    });
+    function remove_rowvz(namefield) {
+        $("#" + namefield).val("");
+        $("#rh_" + namefield).hide();
+    }
+</script>
+
+

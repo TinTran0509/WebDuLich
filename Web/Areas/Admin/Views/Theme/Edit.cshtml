@@ -1,0 +1,109 @@
+﻿@using Web.Model
+@{
+    ViewBag.Title = "Sửa chủ đề";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    var languages = (List<tbl_Languages>)TempData["Languages"];
+    var lstMenu = (List<MenuHome>)TempData["Menus"];
+}
+@using Web.Model
+@model Theme
+<script src="~/AppJs/theme.js"></script>
+@using (Ajax.BeginForm("Edit", "Theme", null,
+                new AjaxOptions
+                {
+                    HttpMethod = "POST",
+                    OnSuccess = "Theme.onEditSuccess"
+                },
+                new { @id = "frmData", @class = "form-horizontal" }))
+{
+    @Html.HiddenFor(x => x.ID)
+    @Html.HiddenFor(x => x.ParentID)
+    @Html.HiddenFor(x => x.Active)
+    @Html.HiddenFor(x => x.CreatedDate)
+    @Html.HiddenFor(x => x.GroupID)
+    @helper RenderMenu(MenuHome parent, List<MenuHome> listfull)
+    {
+        var lstChilds = listfull.Where(g => g.ParentID == parent.ID);
+        <option value="@parent.LinkSeo">@(new String('-', ((int)parent.Level - 1) * 2)) @parent.Name</option>
+        foreach (var child in lstChilds)
+        {
+            @RenderMenu(child, listfull);
+        }
+    }
+    <div class="form-group">
+        <label class="col-md-2 control-label">Ngôn ngữ<span class="asterisk"> (*)</span></label>
+        <div class="col-md-6">
+            <select class="form-control" id="LangCode" name="LangCode" onchange="Topic.getMenuTransByLang(this.value)">
+                <option value="">--- Chọn ---</option>
+                @foreach (var item in languages)
+                {
+                    <option value="@item.LangCode">@item.LangName</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Menu<span class="asterisk"> (*)</span></label>
+        <div class="col-md-6">
+            <select class="form-control" name="LinkSeo" id="slMenuHome">
+                <option value="">--- Chọn ---</option>
+                @foreach (var parent in lstMenu.Where(g => g.ParentID == 0))
+                {
+                    @RenderMenu(parent, lstMenu);
+                }
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Tiêu đề<span class="asterisk"> (*)</span></label>
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Title, new { @class = "form-control", @placeholder = "Nhập tiêu đề" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Ảnh<span class="asterisk"> (*)</span></label>
+        <div class="col-md-10">
+            <div class="col-md-2">
+                @{ Html.RenderAction("UploadImage", "UploadFile", new { controlName = "Image" });}
+            </div>
+            <img src="@Model.Image" style="width:100px" id="prevImages">
+            <span class="error" id="spImg"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Mô tả</label>
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.Description, new { @class = "form-control", @placeholder = "Nhập mô tả" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Nội dung</label>
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.Contents, new { @class = "form-control", @placeholder = "Nhập nội dung" })
+        </div>
+    </div>
+    @*<div class="form-group">
+            <div class="col-sm-10 pull-right">
+                <div class="checkbox checkbox-primary">
+                    <input id="Active" name="Active" type="checkbox" @(Model.Active ? "checked=''" : "") value="true">
+                    <label for="Active">
+                        Active
+                    </label>
+                </div>
+            </div>
+        </div>*@
+    <div class="form-group">
+        <div class="col-md-2 text-right">
+            <a href="/admin/theme" class="btn btn-primary"><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay trở lại</a>
+        </div>
+        <div class="col-md-10 text-center">
+            <button type="submit" class="btn btn-primary waves-effect waves-light">Cập nhật</button>
+        </div>
+    </div>
+}
+<script>
+    $(document).ready(function () {
+         $('#LangCode').val('@Model.LangCode');
+        $('#slMenuHome').val('@Model.LinkSeo');
+    });
+</script>

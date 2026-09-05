@@ -1,0 +1,1651 @@
+E:\New folder\LedQuaTang\Web\bin\Web.dll.config
+E:\New folder\LedQuaTang\Web\bin\Web.dll
+E:\New folder\LedQuaTang\Web\bin\Web.pdb
+E:\New folder\LedQuaTang\Web\bin\Antlr3.Runtime.dll
+E:\New folder\LedQuaTang\Web\bin\AttributeRouting.dll
+E:\New folder\LedQuaTang\Web\bin\AttributeRouting.Web.dll
+E:\New folder\LedQuaTang\Web\bin\AttributeRouting.Web.Mvc.dll
+E:\New folder\LedQuaTang\Web\bin\CKFinder.dll
+E:\New folder\LedQuaTang\Web\bin\EntityFramework.dll
+E:\New folder\LedQuaTang\Web\bin\EntityFramework.SqlServer.dll
+E:\New folder\LedQuaTang\Web\bin\EPPlus.dll
+E:\New folder\LedQuaTang\Web\bin\Excel.dll
+E:\New folder\LedQuaTang\Web\bin\Microsoft.Data.Edm.dll
+E:\New folder\LedQuaTang\Web\bin\Microsoft.Data.OData.dll
+E:\New folder\LedQuaTang\Web\bin\Microsoft.Web.Infrastructure.dll
+E:\New folder\LedQuaTang\Web\bin\Microsoft.Web.Mvc.dll
+E:\New folder\LedQuaTang\Web\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+E:\New folder\LedQuaTang\Web\bin\Newtonsoft.Json.dll
+E:\New folder\LedQuaTang\Web\bin\PagedList.dll
+E:\New folder\LedQuaTang\Web\bin\PagedList.Mvc.dll
+E:\New folder\LedQuaTang\Web\bin\System.Net.Http.Formatting.dll
+E:\New folder\LedQuaTang\Web\bin\System.Spatial.dll
+E:\New folder\LedQuaTang\Web\bin\System.Web.Helpers.dll
+E:\New folder\LedQuaTang\Web\bin\System.Web.Http.dll
+E:\New folder\LedQuaTang\Web\bin\System.Web.Http.OData.dll
+E:\New folder\LedQuaTang\Web\bin\System.Web.Http.Tracing.dll
+E:\New folder\LedQuaTang\Web\bin\System.Web.Http.WebHost.dll
+E:\New folder\LedQuaTang\Web\bin\System.Web.Mvc.dll
+E:\New folder\LedQuaTang\Web\bin\System.Web.Optimization.dll
+E:\New folder\LedQuaTang\Web\bin\System.Web.Providers.dll
+E:\New folder\LedQuaTang\Web\bin\System.Web.Razor.dll
+E:\New folder\LedQuaTang\Web\bin\System.Web.WebPages.Deployment.dll
+E:\New folder\LedQuaTang\Web\bin\System.Web.WebPages.dll
+E:\New folder\LedQuaTang\Web\bin\System.Web.WebPages.Razor.dll
+E:\New folder\LedQuaTang\Web\bin\Web.Core.dll
+E:\New folder\LedQuaTang\Web\bin\Web.Model.dll
+E:\New folder\LedQuaTang\Web\bin\Web.Repository.dll
+E:\New folder\LedQuaTang\Web\bin\Web.Repository.Entity.dll
+E:\New folder\LedQuaTang\Web\bin\WebActivator.dll
+E:\New folder\LedQuaTang\Web\bin\WebGrease.dll
+E:\New folder\LedQuaTang\Web\bin\Web.Repository.Entity.pdb
+E:\New folder\LedQuaTang\Web\bin\Web.Repository.pdb
+E:\New folder\LedQuaTang\Web\bin\Antlr3.Runtime.pdb
+E:\New folder\LedQuaTang\Web\bin\AttributeRouting.xml
+E:\New folder\LedQuaTang\Web\bin\AttributeRouting.Web.xml
+E:\New folder\LedQuaTang\Web\bin\AttributeRouting.Web.Mvc.xml
+E:\New folder\LedQuaTang\Web\bin\EntityFramework.xml
+E:\New folder\LedQuaTang\Web\bin\EntityFramework.SqlServer.xml
+E:\New folder\LedQuaTang\Web\bin\Newtonsoft.Json.xml
+E:\New folder\LedQuaTang\Web\bin\PagedList.xml
+E:\New folder\LedQuaTang\Web\bin\PagedList.Mvc.xml
+E:\New folder\LedQuaTang\Web\bin\System.Net.Http.Formatting.xml
+E:\New folder\LedQuaTang\Web\bin\System.Web.Helpers.xml
+E:\New folder\LedQuaTang\Web\bin\System.Web.Http.xml
+E:\New folder\LedQuaTang\Web\bin\System.Web.Http.WebHost.xml
+E:\New folder\LedQuaTang\Web\bin\System.Web.Mvc.xml
+E:\New folder\LedQuaTang\Web\bin\System.Web.Optimization.xml
+E:\New folder\LedQuaTang\Web\bin\System.Web.Razor.xml
+E:\New folder\LedQuaTang\Web\bin\System.Web.WebPages.xml
+E:\New folder\LedQuaTang\Web\bin\System.Web.WebPages.Deployment.xml
+E:\New folder\LedQuaTang\Web\bin\System.Web.WebPages.Razor.xml
+E:\New folder\LedQuaTang\Web\bin\System.Web.Http.Tracing.xml
+E:\New folder\LedQuaTang\Web\bin\System.Web.Http.OData.xml
+E:\New folder\LedQuaTang\Web\bin\Microsoft.Data.Edm.xml
+E:\New folder\LedQuaTang\Web\bin\Microsoft.Data.OData.xml
+E:\New folder\LedQuaTang\Web\bin\System.Spatial.xml
+E:\New folder\LedQuaTang\Web\bin\Web.Core.pdb
+E:\New folder\LedQuaTang\Web\bin\Web.Model.pdb
+E:\New folder\LedQuaTang\Web\bin\Web.Model.dll.config
+E:\New folder\LedQuaTang\Web\bin\WebActivator.pdb
+E:\New folder\LedQuaTang\Web\bin\de\Microsoft.Data.Edm.resources.dll
+E:\New folder\LedQuaTang\Web\bin\es\Microsoft.Data.Edm.resources.dll
+E:\New folder\LedQuaTang\Web\bin\fr\Microsoft.Data.Edm.resources.dll
+E:\New folder\LedQuaTang\Web\bin\it\Microsoft.Data.Edm.resources.dll
+E:\New folder\LedQuaTang\Web\bin\ja\Microsoft.Data.Edm.resources.dll
+E:\New folder\LedQuaTang\Web\bin\ko\Microsoft.Data.Edm.resources.dll
+E:\New folder\LedQuaTang\Web\bin\ru\Microsoft.Data.Edm.resources.dll
+E:\New folder\LedQuaTang\Web\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+E:\New folder\LedQuaTang\Web\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+E:\New folder\LedQuaTang\Web\bin\de\Microsoft.Data.OData.resources.dll
+E:\New folder\LedQuaTang\Web\bin\es\Microsoft.Data.OData.resources.dll
+E:\New folder\LedQuaTang\Web\bin\fr\Microsoft.Data.OData.resources.dll
+E:\New folder\LedQuaTang\Web\bin\it\Microsoft.Data.OData.resources.dll
+E:\New folder\LedQuaTang\Web\bin\ja\Microsoft.Data.OData.resources.dll
+E:\New folder\LedQuaTang\Web\bin\ko\Microsoft.Data.OData.resources.dll
+E:\New folder\LedQuaTang\Web\bin\ru\Microsoft.Data.OData.resources.dll
+E:\New folder\LedQuaTang\Web\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+E:\New folder\LedQuaTang\Web\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+E:\New folder\LedQuaTang\Web\bin\de\System.Spatial.resources.dll
+E:\New folder\LedQuaTang\Web\bin\es\System.Spatial.resources.dll
+E:\New folder\LedQuaTang\Web\bin\fr\System.Spatial.resources.dll
+E:\New folder\LedQuaTang\Web\bin\it\System.Spatial.resources.dll
+E:\New folder\LedQuaTang\Web\bin\ja\System.Spatial.resources.dll
+E:\New folder\LedQuaTang\Web\bin\ko\System.Spatial.resources.dll
+E:\New folder\LedQuaTang\Web\bin\ru\System.Spatial.resources.dll
+E:\New folder\LedQuaTang\Web\bin\zh-Hans\System.Spatial.resources.dll
+E:\New folder\LedQuaTang\Web\bin\zh-Hant\System.Spatial.resources.dll
+E:\New folder\LedQuaTang\Web\obj\Debug\Web.csprojAssemblyReference.cache
+E:\New folder\LedQuaTang\Web\obj\Debug\Web.csproj.CoreCompileInputs.cache
+E:\New folder\LedQuaTang\Web\obj\Debug\Web.csproj.CopyComplete
+E:\New folder\LedQuaTang\Web\obj\Debug\Web.dll
+E:\New folder\LedQuaTang\Web\obj\Debug\Web.pdb
+D:\đồ án\LedQuaTang\Web\bin\Web.dll.config
+D:\đồ án\LedQuaTang\Web\bin\Web.dll
+D:\đồ án\LedQuaTang\Web\bin\Web.pdb
+D:\đồ án\LedQuaTang\Web\bin\Antlr3.Runtime.dll
+D:\đồ án\LedQuaTang\Web\bin\AttributeRouting.dll
+D:\đồ án\LedQuaTang\Web\bin\AttributeRouting.Web.dll
+D:\đồ án\LedQuaTang\Web\bin\AttributeRouting.Web.Mvc.dll
+D:\đồ án\LedQuaTang\Web\bin\CKFinder.dll
+D:\đồ án\LedQuaTang\Web\bin\EntityFramework.dll
+D:\đồ án\LedQuaTang\Web\bin\EntityFramework.SqlServer.dll
+D:\đồ án\LedQuaTang\Web\bin\EPPlus.dll
+D:\đồ án\LedQuaTang\Web\bin\Excel.dll
+D:\đồ án\LedQuaTang\Web\bin\Microsoft.Data.Edm.dll
+D:\đồ án\LedQuaTang\Web\bin\Microsoft.Data.OData.dll
+D:\đồ án\LedQuaTang\Web\bin\Microsoft.Web.Infrastructure.dll
+D:\đồ án\LedQuaTang\Web\bin\Microsoft.Web.Mvc.dll
+D:\đồ án\LedQuaTang\Web\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+D:\đồ án\LedQuaTang\Web\bin\Newtonsoft.Json.dll
+D:\đồ án\LedQuaTang\Web\bin\PagedList.dll
+D:\đồ án\LedQuaTang\Web\bin\PagedList.Mvc.dll
+D:\đồ án\LedQuaTang\Web\bin\System.Net.Http.Formatting.dll
+D:\đồ án\LedQuaTang\Web\bin\System.Spatial.dll
+D:\đồ án\LedQuaTang\Web\bin\System.Web.Helpers.dll
+D:\đồ án\LedQuaTang\Web\bin\System.Web.Http.dll
+D:\đồ án\LedQuaTang\Web\bin\System.Web.Http.OData.dll
+D:\đồ án\LedQuaTang\Web\bin\System.Web.Http.Tracing.dll
+D:\đồ án\LedQuaTang\Web\bin\System.Web.Http.WebHost.dll
+D:\đồ án\LedQuaTang\Web\bin\System.Web.Mvc.dll
+D:\đồ án\LedQuaTang\Web\bin\System.Web.Optimization.dll
+D:\đồ án\LedQuaTang\Web\bin\System.Web.Providers.dll
+D:\đồ án\LedQuaTang\Web\bin\System.Web.Razor.dll
+D:\đồ án\LedQuaTang\Web\bin\System.Web.WebPages.Deployment.dll
+D:\đồ án\LedQuaTang\Web\bin\System.Web.WebPages.dll
+D:\đồ án\LedQuaTang\Web\bin\System.Web.WebPages.Razor.dll
+D:\đồ án\LedQuaTang\Web\bin\Web.Core.dll
+D:\đồ án\LedQuaTang\Web\bin\Web.Model.dll
+D:\đồ án\LedQuaTang\Web\bin\Web.Repository.dll
+D:\đồ án\LedQuaTang\Web\bin\Web.Repository.Entity.dll
+D:\đồ án\LedQuaTang\Web\bin\WebActivator.dll
+D:\đồ án\LedQuaTang\Web\bin\WebGrease.dll
+D:\đồ án\LedQuaTang\Web\bin\Web.Repository.Entity.pdb
+D:\đồ án\LedQuaTang\Web\bin\Web.Repository.pdb
+D:\đồ án\LedQuaTang\Web\bin\Antlr3.Runtime.pdb
+D:\đồ án\LedQuaTang\Web\bin\AttributeRouting.xml
+D:\đồ án\LedQuaTang\Web\bin\AttributeRouting.Web.xml
+D:\đồ án\LedQuaTang\Web\bin\AttributeRouting.Web.Mvc.xml
+D:\đồ án\LedQuaTang\Web\bin\EntityFramework.xml
+D:\đồ án\LedQuaTang\Web\bin\EntityFramework.SqlServer.xml
+D:\đồ án\LedQuaTang\Web\bin\Newtonsoft.Json.xml
+D:\đồ án\LedQuaTang\Web\bin\PagedList.xml
+D:\đồ án\LedQuaTang\Web\bin\PagedList.Mvc.xml
+D:\đồ án\LedQuaTang\Web\bin\System.Net.Http.Formatting.xml
+D:\đồ án\LedQuaTang\Web\bin\System.Web.Helpers.xml
+D:\đồ án\LedQuaTang\Web\bin\System.Web.Http.xml
+D:\đồ án\LedQuaTang\Web\bin\System.Web.Http.WebHost.xml
+D:\đồ án\LedQuaTang\Web\bin\System.Web.Mvc.xml
+D:\đồ án\LedQuaTang\Web\bin\System.Web.Optimization.xml
+D:\đồ án\LedQuaTang\Web\bin\System.Web.Razor.xml
+D:\đồ án\LedQuaTang\Web\bin\System.Web.WebPages.xml
+D:\đồ án\LedQuaTang\Web\bin\System.Web.WebPages.Deployment.xml
+D:\đồ án\LedQuaTang\Web\bin\System.Web.WebPages.Razor.xml
+D:\đồ án\LedQuaTang\Web\bin\System.Web.Http.Tracing.xml
+D:\đồ án\LedQuaTang\Web\bin\System.Web.Http.OData.xml
+D:\đồ án\LedQuaTang\Web\bin\Microsoft.Data.Edm.xml
+D:\đồ án\LedQuaTang\Web\bin\Microsoft.Data.OData.xml
+D:\đồ án\LedQuaTang\Web\bin\System.Spatial.xml
+D:\đồ án\LedQuaTang\Web\bin\Web.Core.pdb
+D:\đồ án\LedQuaTang\Web\bin\Web.Model.pdb
+D:\đồ án\LedQuaTang\Web\bin\Web.Model.dll.config
+D:\đồ án\LedQuaTang\Web\bin\WebActivator.pdb
+D:\đồ án\LedQuaTang\Web\bin\de\Microsoft.Data.Edm.resources.dll
+D:\đồ án\LedQuaTang\Web\bin\es\Microsoft.Data.Edm.resources.dll
+D:\đồ án\LedQuaTang\Web\bin\fr\Microsoft.Data.Edm.resources.dll
+D:\đồ án\LedQuaTang\Web\bin\it\Microsoft.Data.Edm.resources.dll
+D:\đồ án\LedQuaTang\Web\bin\ja\Microsoft.Data.Edm.resources.dll
+D:\đồ án\LedQuaTang\Web\bin\ko\Microsoft.Data.Edm.resources.dll
+D:\đồ án\LedQuaTang\Web\bin\ru\Microsoft.Data.Edm.resources.dll
+D:\đồ án\LedQuaTang\Web\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+D:\đồ án\LedQuaTang\Web\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+D:\đồ án\LedQuaTang\Web\bin\de\Microsoft.Data.OData.resources.dll
+D:\đồ án\LedQuaTang\Web\bin\es\Microsoft.Data.OData.resources.dll
+D:\đồ án\LedQuaTang\Web\bin\fr\Microsoft.Data.OData.resources.dll
+D:\đồ án\LedQuaTang\Web\bin\it\Microsoft.Data.OData.resources.dll
+D:\đồ án\LedQuaTang\Web\bin\ja\Microsoft.Data.OData.resources.dll
+D:\đồ án\LedQuaTang\Web\bin\ko\Microsoft.Data.OData.resources.dll
+D:\đồ án\LedQuaTang\Web\bin\ru\Microsoft.Data.OData.resources.dll
+D:\đồ án\LedQuaTang\Web\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+D:\đồ án\LedQuaTang\Web\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+D:\đồ án\LedQuaTang\Web\bin\de\System.Spatial.resources.dll
+D:\đồ án\LedQuaTang\Web\bin\es\System.Spatial.resources.dll
+D:\đồ án\LedQuaTang\Web\bin\fr\System.Spatial.resources.dll
+D:\đồ án\LedQuaTang\Web\bin\it\System.Spatial.resources.dll
+D:\đồ án\LedQuaTang\Web\bin\ja\System.Spatial.resources.dll
+D:\đồ án\LedQuaTang\Web\bin\ko\System.Spatial.resources.dll
+D:\đồ án\LedQuaTang\Web\bin\ru\System.Spatial.resources.dll
+D:\đồ án\LedQuaTang\Web\bin\zh-Hans\System.Spatial.resources.dll
+D:\đồ án\LedQuaTang\Web\bin\zh-Hant\System.Spatial.resources.dll
+D:\đồ án\LedQuaTang\Web\obj\Debug\Web.csprojAssemblyReference.cache
+D:\đồ án\LedQuaTang\Web\obj\Debug\Web.csproj.CoreCompileInputs.cache
+D:\đồ án\LedQuaTang\Web\obj\Debug\Web.csproj.CopyComplete
+D:\đồ án\LedQuaTang\Web\obj\Debug\Web.dll
+D:\đồ án\LedQuaTang\Web\obj\Debug\Web.pdb
+D:\doan\LedQuaTang\Web\bin\Web.dll.config
+D:\doan\LedQuaTang\Web\bin\Web.dll
+D:\doan\LedQuaTang\Web\bin\Web.pdb
+D:\doan\LedQuaTang\Web\bin\Antlr3.Runtime.dll
+D:\doan\LedQuaTang\Web\bin\AttributeRouting.dll
+D:\doan\LedQuaTang\Web\bin\AttributeRouting.Web.dll
+D:\doan\LedQuaTang\Web\bin\AttributeRouting.Web.Mvc.dll
+D:\doan\LedQuaTang\Web\bin\CKFinder.dll
+D:\doan\LedQuaTang\Web\bin\EntityFramework.dll
+D:\doan\LedQuaTang\Web\bin\EntityFramework.SqlServer.dll
+D:\doan\LedQuaTang\Web\bin\EPPlus.dll
+D:\doan\LedQuaTang\Web\bin\Excel.dll
+D:\doan\LedQuaTang\Web\bin\Microsoft.Data.Edm.dll
+D:\doan\LedQuaTang\Web\bin\Microsoft.Data.OData.dll
+D:\doan\LedQuaTang\Web\bin\Microsoft.Web.Infrastructure.dll
+D:\doan\LedQuaTang\Web\bin\Microsoft.Web.Mvc.dll
+D:\doan\LedQuaTang\Web\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+D:\doan\LedQuaTang\Web\bin\Newtonsoft.Json.dll
+D:\doan\LedQuaTang\Web\bin\PagedList.dll
+D:\doan\LedQuaTang\Web\bin\PagedList.Mvc.dll
+D:\doan\LedQuaTang\Web\bin\System.Net.Http.Formatting.dll
+D:\doan\LedQuaTang\Web\bin\System.Spatial.dll
+D:\doan\LedQuaTang\Web\bin\System.Web.Helpers.dll
+D:\doan\LedQuaTang\Web\bin\System.Web.Http.dll
+D:\doan\LedQuaTang\Web\bin\System.Web.Http.OData.dll
+D:\doan\LedQuaTang\Web\bin\System.Web.Http.Tracing.dll
+D:\doan\LedQuaTang\Web\bin\System.Web.Http.WebHost.dll
+D:\doan\LedQuaTang\Web\bin\System.Web.Mvc.dll
+D:\doan\LedQuaTang\Web\bin\System.Web.Optimization.dll
+D:\doan\LedQuaTang\Web\bin\System.Web.Providers.dll
+D:\doan\LedQuaTang\Web\bin\System.Web.Razor.dll
+D:\doan\LedQuaTang\Web\bin\System.Web.WebPages.Deployment.dll
+D:\doan\LedQuaTang\Web\bin\System.Web.WebPages.dll
+D:\doan\LedQuaTang\Web\bin\System.Web.WebPages.Razor.dll
+D:\doan\LedQuaTang\Web\bin\Web.Core.dll
+D:\doan\LedQuaTang\Web\bin\Web.Model.dll
+D:\doan\LedQuaTang\Web\bin\Web.Repository.dll
+D:\doan\LedQuaTang\Web\bin\Web.Repository.Entity.dll
+D:\doan\LedQuaTang\Web\bin\WebActivator.dll
+D:\doan\LedQuaTang\Web\bin\WebGrease.dll
+D:\doan\LedQuaTang\Web\bin\Web.Repository.Entity.pdb
+D:\doan\LedQuaTang\Web\bin\Web.Repository.pdb
+D:\doan\LedQuaTang\Web\bin\Antlr3.Runtime.pdb
+D:\doan\LedQuaTang\Web\bin\AttributeRouting.xml
+D:\doan\LedQuaTang\Web\bin\AttributeRouting.Web.xml
+D:\doan\LedQuaTang\Web\bin\AttributeRouting.Web.Mvc.xml
+D:\doan\LedQuaTang\Web\bin\EntityFramework.xml
+D:\doan\LedQuaTang\Web\bin\EntityFramework.SqlServer.xml
+D:\doan\LedQuaTang\Web\bin\Newtonsoft.Json.xml
+D:\doan\LedQuaTang\Web\bin\PagedList.xml
+D:\doan\LedQuaTang\Web\bin\PagedList.Mvc.xml
+D:\doan\LedQuaTang\Web\bin\System.Net.Http.Formatting.xml
+D:\doan\LedQuaTang\Web\bin\System.Web.Helpers.xml
+D:\doan\LedQuaTang\Web\bin\System.Web.Http.xml
+D:\doan\LedQuaTang\Web\bin\System.Web.Http.WebHost.xml
+D:\doan\LedQuaTang\Web\bin\System.Web.Mvc.xml
+D:\doan\LedQuaTang\Web\bin\System.Web.Optimization.xml
+D:\doan\LedQuaTang\Web\bin\System.Web.Razor.xml
+D:\doan\LedQuaTang\Web\bin\System.Web.WebPages.xml
+D:\doan\LedQuaTang\Web\bin\System.Web.WebPages.Deployment.xml
+D:\doan\LedQuaTang\Web\bin\System.Web.WebPages.Razor.xml
+D:\doan\LedQuaTang\Web\bin\System.Web.Http.Tracing.xml
+D:\doan\LedQuaTang\Web\bin\System.Web.Http.OData.xml
+D:\doan\LedQuaTang\Web\bin\Microsoft.Data.Edm.xml
+D:\doan\LedQuaTang\Web\bin\Microsoft.Data.OData.xml
+D:\doan\LedQuaTang\Web\bin\System.Spatial.xml
+D:\doan\LedQuaTang\Web\bin\Web.Core.pdb
+D:\doan\LedQuaTang\Web\bin\Web.Model.pdb
+D:\doan\LedQuaTang\Web\bin\Web.Model.dll.config
+D:\doan\LedQuaTang\Web\bin\WebActivator.pdb
+D:\doan\LedQuaTang\Web\bin\de\Microsoft.Data.Edm.resources.dll
+D:\doan\LedQuaTang\Web\bin\es\Microsoft.Data.Edm.resources.dll
+D:\doan\LedQuaTang\Web\bin\fr\Microsoft.Data.Edm.resources.dll
+D:\doan\LedQuaTang\Web\bin\it\Microsoft.Data.Edm.resources.dll
+D:\doan\LedQuaTang\Web\bin\ja\Microsoft.Data.Edm.resources.dll
+D:\doan\LedQuaTang\Web\bin\ko\Microsoft.Data.Edm.resources.dll
+D:\doan\LedQuaTang\Web\bin\ru\Microsoft.Data.Edm.resources.dll
+D:\doan\LedQuaTang\Web\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+D:\doan\LedQuaTang\Web\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+D:\doan\LedQuaTang\Web\bin\de\Microsoft.Data.OData.resources.dll
+D:\doan\LedQuaTang\Web\bin\es\Microsoft.Data.OData.resources.dll
+D:\doan\LedQuaTang\Web\bin\fr\Microsoft.Data.OData.resources.dll
+D:\doan\LedQuaTang\Web\bin\it\Microsoft.Data.OData.resources.dll
+D:\doan\LedQuaTang\Web\bin\ja\Microsoft.Data.OData.resources.dll
+D:\doan\LedQuaTang\Web\bin\ko\Microsoft.Data.OData.resources.dll
+D:\doan\LedQuaTang\Web\bin\ru\Microsoft.Data.OData.resources.dll
+D:\doan\LedQuaTang\Web\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+D:\doan\LedQuaTang\Web\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+D:\doan\LedQuaTang\Web\bin\de\System.Spatial.resources.dll
+D:\doan\LedQuaTang\Web\bin\es\System.Spatial.resources.dll
+D:\doan\LedQuaTang\Web\bin\fr\System.Spatial.resources.dll
+D:\doan\LedQuaTang\Web\bin\it\System.Spatial.resources.dll
+D:\doan\LedQuaTang\Web\bin\ja\System.Spatial.resources.dll
+D:\doan\LedQuaTang\Web\bin\ko\System.Spatial.resources.dll
+D:\doan\LedQuaTang\Web\bin\ru\System.Spatial.resources.dll
+D:\doan\LedQuaTang\Web\bin\zh-Hans\System.Spatial.resources.dll
+D:\doan\LedQuaTang\Web\bin\zh-Hant\System.Spatial.resources.dll
+D:\doan\LedQuaTang\Web\obj\Debug\Web.csprojAssemblyReference.cache
+D:\doan\LedQuaTang\Web\obj\Debug\Web.csproj.CoreCompileInputs.cache
+D:\doan\LedQuaTang\Web\obj\Debug\Web.csproj.CopyComplete
+D:\doan\LedQuaTang\Web\obj\Debug\Web.dll
+D:\doan\LedQuaTang\Web\obj\Debug\Web.pdb
+E:\doan\LedQuaTang\Web\bin\Web.dll.config
+E:\doan\LedQuaTang\Web\bin\Web.dll
+E:\doan\LedQuaTang\Web\bin\Web.pdb
+E:\doan\LedQuaTang\Web\bin\Antlr3.Runtime.dll
+E:\doan\LedQuaTang\Web\bin\AttributeRouting.dll
+E:\doan\LedQuaTang\Web\bin\AttributeRouting.Web.dll
+E:\doan\LedQuaTang\Web\bin\AttributeRouting.Web.Mvc.dll
+E:\doan\LedQuaTang\Web\bin\CKFinder.dll
+E:\doan\LedQuaTang\Web\bin\EntityFramework.dll
+E:\doan\LedQuaTang\Web\bin\EntityFramework.SqlServer.dll
+E:\doan\LedQuaTang\Web\bin\EPPlus.dll
+E:\doan\LedQuaTang\Web\bin\Excel.dll
+E:\doan\LedQuaTang\Web\bin\Microsoft.Data.Edm.dll
+E:\doan\LedQuaTang\Web\bin\Microsoft.Data.OData.dll
+E:\doan\LedQuaTang\Web\bin\Microsoft.Web.Infrastructure.dll
+E:\doan\LedQuaTang\Web\bin\Microsoft.Web.Mvc.dll
+E:\doan\LedQuaTang\Web\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+E:\doan\LedQuaTang\Web\bin\Newtonsoft.Json.dll
+E:\doan\LedQuaTang\Web\bin\PagedList.dll
+E:\doan\LedQuaTang\Web\bin\PagedList.Mvc.dll
+E:\doan\LedQuaTang\Web\bin\System.Net.Http.Formatting.dll
+E:\doan\LedQuaTang\Web\bin\System.Spatial.dll
+E:\doan\LedQuaTang\Web\bin\System.Web.Helpers.dll
+E:\doan\LedQuaTang\Web\bin\System.Web.Http.dll
+E:\doan\LedQuaTang\Web\bin\System.Web.Http.OData.dll
+E:\doan\LedQuaTang\Web\bin\System.Web.Http.Tracing.dll
+E:\doan\LedQuaTang\Web\bin\System.Web.Http.WebHost.dll
+E:\doan\LedQuaTang\Web\bin\System.Web.Mvc.dll
+E:\doan\LedQuaTang\Web\bin\System.Web.Optimization.dll
+E:\doan\LedQuaTang\Web\bin\System.Web.Providers.dll
+E:\doan\LedQuaTang\Web\bin\System.Web.Razor.dll
+E:\doan\LedQuaTang\Web\bin\System.Web.WebPages.Deployment.dll
+E:\doan\LedQuaTang\Web\bin\System.Web.WebPages.dll
+E:\doan\LedQuaTang\Web\bin\System.Web.WebPages.Razor.dll
+E:\doan\LedQuaTang\Web\bin\Web.Core.dll
+E:\doan\LedQuaTang\Web\bin\Web.Model.dll
+E:\doan\LedQuaTang\Web\bin\Web.Repository.dll
+E:\doan\LedQuaTang\Web\bin\Web.Repository.Entity.dll
+E:\doan\LedQuaTang\Web\bin\WebActivator.dll
+E:\doan\LedQuaTang\Web\bin\WebGrease.dll
+E:\doan\LedQuaTang\Web\bin\Web.Repository.Entity.pdb
+E:\doan\LedQuaTang\Web\bin\Web.Repository.pdb
+E:\doan\LedQuaTang\Web\bin\Antlr3.Runtime.pdb
+E:\doan\LedQuaTang\Web\bin\AttributeRouting.xml
+E:\doan\LedQuaTang\Web\bin\AttributeRouting.Web.xml
+E:\doan\LedQuaTang\Web\bin\AttributeRouting.Web.Mvc.xml
+E:\doan\LedQuaTang\Web\bin\EntityFramework.xml
+E:\doan\LedQuaTang\Web\bin\EntityFramework.SqlServer.xml
+E:\doan\LedQuaTang\Web\bin\Newtonsoft.Json.xml
+E:\doan\LedQuaTang\Web\bin\PagedList.xml
+E:\doan\LedQuaTang\Web\bin\PagedList.Mvc.xml
+E:\doan\LedQuaTang\Web\bin\System.Net.Http.Formatting.xml
+E:\doan\LedQuaTang\Web\bin\System.Web.Helpers.xml
+E:\doan\LedQuaTang\Web\bin\System.Web.Http.xml
+E:\doan\LedQuaTang\Web\bin\System.Web.Http.WebHost.xml
+E:\doan\LedQuaTang\Web\bin\System.Web.Mvc.xml
+E:\doan\LedQuaTang\Web\bin\System.Web.Optimization.xml
+E:\doan\LedQuaTang\Web\bin\System.Web.Razor.xml
+E:\doan\LedQuaTang\Web\bin\System.Web.WebPages.xml
+E:\doan\LedQuaTang\Web\bin\System.Web.WebPages.Deployment.xml
+E:\doan\LedQuaTang\Web\bin\System.Web.WebPages.Razor.xml
+E:\doan\LedQuaTang\Web\bin\System.Web.Http.Tracing.xml
+E:\doan\LedQuaTang\Web\bin\System.Web.Http.OData.xml
+E:\doan\LedQuaTang\Web\bin\Microsoft.Data.Edm.xml
+E:\doan\LedQuaTang\Web\bin\Microsoft.Data.OData.xml
+E:\doan\LedQuaTang\Web\bin\System.Spatial.xml
+E:\doan\LedQuaTang\Web\bin\Web.Core.pdb
+E:\doan\LedQuaTang\Web\bin\Web.Model.pdb
+E:\doan\LedQuaTang\Web\bin\Web.Model.dll.config
+E:\doan\LedQuaTang\Web\bin\WebActivator.pdb
+E:\doan\LedQuaTang\Web\bin\de\Microsoft.Data.Edm.resources.dll
+E:\doan\LedQuaTang\Web\bin\es\Microsoft.Data.Edm.resources.dll
+E:\doan\LedQuaTang\Web\bin\fr\Microsoft.Data.Edm.resources.dll
+E:\doan\LedQuaTang\Web\bin\it\Microsoft.Data.Edm.resources.dll
+E:\doan\LedQuaTang\Web\bin\ja\Microsoft.Data.Edm.resources.dll
+E:\doan\LedQuaTang\Web\bin\ko\Microsoft.Data.Edm.resources.dll
+E:\doan\LedQuaTang\Web\bin\ru\Microsoft.Data.Edm.resources.dll
+E:\doan\LedQuaTang\Web\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+E:\doan\LedQuaTang\Web\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+E:\doan\LedQuaTang\Web\bin\de\Microsoft.Data.OData.resources.dll
+E:\doan\LedQuaTang\Web\bin\es\Microsoft.Data.OData.resources.dll
+E:\doan\LedQuaTang\Web\bin\fr\Microsoft.Data.OData.resources.dll
+E:\doan\LedQuaTang\Web\bin\it\Microsoft.Data.OData.resources.dll
+E:\doan\LedQuaTang\Web\bin\ja\Microsoft.Data.OData.resources.dll
+E:\doan\LedQuaTang\Web\bin\ko\Microsoft.Data.OData.resources.dll
+E:\doan\LedQuaTang\Web\bin\ru\Microsoft.Data.OData.resources.dll
+E:\doan\LedQuaTang\Web\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+E:\doan\LedQuaTang\Web\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+E:\doan\LedQuaTang\Web\bin\de\System.Spatial.resources.dll
+E:\doan\LedQuaTang\Web\bin\es\System.Spatial.resources.dll
+E:\doan\LedQuaTang\Web\bin\fr\System.Spatial.resources.dll
+E:\doan\LedQuaTang\Web\bin\it\System.Spatial.resources.dll
+E:\doan\LedQuaTang\Web\bin\ja\System.Spatial.resources.dll
+E:\doan\LedQuaTang\Web\bin\ko\System.Spatial.resources.dll
+E:\doan\LedQuaTang\Web\bin\ru\System.Spatial.resources.dll
+E:\doan\LedQuaTang\Web\bin\zh-Hans\System.Spatial.resources.dll
+E:\doan\LedQuaTang\Web\bin\zh-Hant\System.Spatial.resources.dll
+E:\doan\LedQuaTang\Web\obj\Debug\Web.csprojAssemblyReference.cache
+E:\doan\LedQuaTang\Web\obj\Debug\Web.csproj.CoreCompileInputs.cache
+E:\doan\LedQuaTang\Web\obj\Debug\Web.csproj.CopyComplete
+E:\doan\LedQuaTang\Web\obj\Debug\Web.dll
+E:\doan\LedQuaTang\Web\obj\Debug\Web.pdb
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\Web.dll.config
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\Web.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\Web.pdb
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\Antlr3.Runtime.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\AttributeRouting.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\AttributeRouting.Web.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\AttributeRouting.Web.Mvc.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\CKFinder.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\EntityFramework.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\EntityFramework.SqlServer.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\EPPlus.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\Excel.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\Microsoft.Data.Edm.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\Microsoft.Data.OData.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\Microsoft.Web.Mvc.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\Newtonsoft.Json.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\PagedList.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\PagedList.Mvc.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\System.Net.Http.Formatting.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\System.Spatial.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\System.Web.Helpers.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\System.Web.Http.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\System.Web.Http.OData.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\System.Web.Http.Tracing.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\System.Web.Http.WebHost.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\System.Web.Mvc.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\System.Web.Optimization.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\System.Web.Providers.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\System.Web.Razor.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\System.Web.WebPages.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\System.Web.WebPages.Razor.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\Web.Core.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\Web.Model.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\Web.Repository.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\Web.Repository.Entity.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\WebActivator.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\WebGrease.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\Web.Repository.Entity.pdb
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\Web.Repository.pdb
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\Antlr3.Runtime.pdb
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\AttributeRouting.xml
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\AttributeRouting.Web.xml
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\AttributeRouting.Web.Mvc.xml
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\EntityFramework.xml
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\EntityFramework.SqlServer.xml
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\Newtonsoft.Json.xml
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\PagedList.xml
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\PagedList.Mvc.xml
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\System.Net.Http.Formatting.xml
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\System.Web.Helpers.xml
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\System.Web.Http.xml
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\System.Web.Http.WebHost.xml
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\System.Web.Mvc.xml
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\System.Web.Optimization.xml
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\System.Web.Razor.xml
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\System.Web.WebPages.xml
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\System.Web.WebPages.Razor.xml
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\System.Web.Http.Tracing.xml
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\System.Web.Http.OData.xml
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\Microsoft.Data.Edm.xml
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\Microsoft.Data.OData.xml
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\System.Spatial.xml
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\Web.Core.pdb
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\Web.Model.pdb
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\WebActivator.pdb
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\de\Microsoft.Data.Edm.resources.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\es\Microsoft.Data.Edm.resources.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\fr\Microsoft.Data.Edm.resources.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\it\Microsoft.Data.Edm.resources.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\ja\Microsoft.Data.Edm.resources.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\ko\Microsoft.Data.Edm.resources.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\ru\Microsoft.Data.Edm.resources.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\de\Microsoft.Data.OData.resources.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\es\Microsoft.Data.OData.resources.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\fr\Microsoft.Data.OData.resources.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\it\Microsoft.Data.OData.resources.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\ja\Microsoft.Data.OData.resources.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\ko\Microsoft.Data.OData.resources.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\ru\Microsoft.Data.OData.resources.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\de\System.Spatial.resources.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\es\System.Spatial.resources.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\fr\System.Spatial.resources.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\it\System.Spatial.resources.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\ja\System.Spatial.resources.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\ko\System.Spatial.resources.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\ru\System.Spatial.resources.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\zh-Hans\System.Spatial.resources.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\bin\zh-Hant\System.Spatial.resources.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\obj\Debug\Web.csprojResolveAssemblyReference.cache
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\obj\Debug\Web.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web\obj\Debug\Web.pdb
+E:\BearShop\Web\bin\Web.dll.config
+E:\BearShop\Web\bin\Web.dll
+E:\BearShop\Web\bin\Web.pdb
+E:\BearShop\Web\bin\Antlr3.Runtime.dll
+E:\BearShop\Web\bin\AttributeRouting.dll
+E:\BearShop\Web\bin\AttributeRouting.Web.dll
+E:\BearShop\Web\bin\AttributeRouting.Web.Mvc.dll
+E:\BearShop\Web\bin\CKFinder.dll
+E:\BearShop\Web\bin\EntityFramework.dll
+E:\BearShop\Web\bin\EntityFramework.SqlServer.dll
+E:\BearShop\Web\bin\EPPlus.dll
+E:\BearShop\Web\bin\Excel.dll
+E:\BearShop\Web\bin\Microsoft.Data.Edm.dll
+E:\BearShop\Web\bin\Microsoft.Data.OData.dll
+E:\BearShop\Web\bin\Microsoft.Web.Infrastructure.dll
+E:\BearShop\Web\bin\Microsoft.Web.Mvc.dll
+E:\BearShop\Web\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+E:\BearShop\Web\bin\Newtonsoft.Json.dll
+E:\BearShop\Web\bin\PagedList.dll
+E:\BearShop\Web\bin\PagedList.Mvc.dll
+E:\BearShop\Web\bin\System.Net.Http.Formatting.dll
+E:\BearShop\Web\bin\System.Spatial.dll
+E:\BearShop\Web\bin\System.Web.Helpers.dll
+E:\BearShop\Web\bin\System.Web.Http.dll
+E:\BearShop\Web\bin\System.Web.Http.OData.dll
+E:\BearShop\Web\bin\System.Web.Http.Tracing.dll
+E:\BearShop\Web\bin\System.Web.Http.WebHost.dll
+E:\BearShop\Web\bin\System.Web.Mvc.dll
+E:\BearShop\Web\bin\System.Web.Optimization.dll
+E:\BearShop\Web\bin\System.Web.Providers.dll
+E:\BearShop\Web\bin\System.Web.Razor.dll
+E:\BearShop\Web\bin\System.Web.WebPages.Deployment.dll
+E:\BearShop\Web\bin\System.Web.WebPages.dll
+E:\BearShop\Web\bin\System.Web.WebPages.Razor.dll
+E:\BearShop\Web\bin\Web.Core.dll
+E:\BearShop\Web\bin\Web.Model.dll
+E:\BearShop\Web\bin\Web.Repository.dll
+E:\BearShop\Web\bin\Web.Repository.Entity.dll
+E:\BearShop\Web\bin\WebActivator.dll
+E:\BearShop\Web\bin\WebGrease.dll
+E:\BearShop\Web\bin\Web.Repository.Entity.pdb
+E:\BearShop\Web\bin\Web.Repository.pdb
+E:\BearShop\Web\bin\Antlr3.Runtime.pdb
+E:\BearShop\Web\bin\AttributeRouting.xml
+E:\BearShop\Web\bin\AttributeRouting.Web.xml
+E:\BearShop\Web\bin\AttributeRouting.Web.Mvc.xml
+E:\BearShop\Web\bin\EntityFramework.xml
+E:\BearShop\Web\bin\EntityFramework.SqlServer.xml
+E:\BearShop\Web\bin\Newtonsoft.Json.xml
+E:\BearShop\Web\bin\PagedList.xml
+E:\BearShop\Web\bin\PagedList.Mvc.xml
+E:\BearShop\Web\bin\System.Net.Http.Formatting.xml
+E:\BearShop\Web\bin\System.Web.Helpers.xml
+E:\BearShop\Web\bin\System.Web.Http.xml
+E:\BearShop\Web\bin\System.Web.Http.WebHost.xml
+E:\BearShop\Web\bin\System.Web.Mvc.xml
+E:\BearShop\Web\bin\System.Web.Optimization.xml
+E:\BearShop\Web\bin\System.Web.Razor.xml
+E:\BearShop\Web\bin\System.Web.WebPages.xml
+E:\BearShop\Web\bin\System.Web.WebPages.Deployment.xml
+E:\BearShop\Web\bin\System.Web.WebPages.Razor.xml
+E:\BearShop\Web\bin\System.Web.Http.Tracing.xml
+E:\BearShop\Web\bin\System.Web.Http.OData.xml
+E:\BearShop\Web\bin\Microsoft.Data.Edm.xml
+E:\BearShop\Web\bin\Microsoft.Data.OData.xml
+E:\BearShop\Web\bin\System.Spatial.xml
+E:\BearShop\Web\bin\Web.Core.pdb
+E:\BearShop\Web\bin\Web.Model.pdb
+E:\BearShop\Web\bin\WebActivator.pdb
+E:\BearShop\Web\bin\de\Microsoft.Data.Edm.resources.dll
+E:\BearShop\Web\bin\es\Microsoft.Data.Edm.resources.dll
+E:\BearShop\Web\bin\fr\Microsoft.Data.Edm.resources.dll
+E:\BearShop\Web\bin\it\Microsoft.Data.Edm.resources.dll
+E:\BearShop\Web\bin\ja\Microsoft.Data.Edm.resources.dll
+E:\BearShop\Web\bin\ko\Microsoft.Data.Edm.resources.dll
+E:\BearShop\Web\bin\ru\Microsoft.Data.Edm.resources.dll
+E:\BearShop\Web\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+E:\BearShop\Web\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+E:\BearShop\Web\bin\de\Microsoft.Data.OData.resources.dll
+E:\BearShop\Web\bin\es\Microsoft.Data.OData.resources.dll
+E:\BearShop\Web\bin\fr\Microsoft.Data.OData.resources.dll
+E:\BearShop\Web\bin\it\Microsoft.Data.OData.resources.dll
+E:\BearShop\Web\bin\ja\Microsoft.Data.OData.resources.dll
+E:\BearShop\Web\bin\ko\Microsoft.Data.OData.resources.dll
+E:\BearShop\Web\bin\ru\Microsoft.Data.OData.resources.dll
+E:\BearShop\Web\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+E:\BearShop\Web\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+E:\BearShop\Web\bin\de\System.Spatial.resources.dll
+E:\BearShop\Web\bin\es\System.Spatial.resources.dll
+E:\BearShop\Web\bin\fr\System.Spatial.resources.dll
+E:\BearShop\Web\bin\it\System.Spatial.resources.dll
+E:\BearShop\Web\bin\ja\System.Spatial.resources.dll
+E:\BearShop\Web\bin\ko\System.Spatial.resources.dll
+E:\BearShop\Web\bin\ru\System.Spatial.resources.dll
+E:\BearShop\Web\bin\zh-Hans\System.Spatial.resources.dll
+E:\BearShop\Web\bin\zh-Hant\System.Spatial.resources.dll
+E:\BearShop\Web\obj\Debug\Web.csprojResolveAssemblyReference.cache
+E:\BearShop\Web\obj\Debug\Web.dll
+E:\BearShop\Web\obj\Debug\Web.pdb
+D:\PROJECTMORE\BearShop\Web\bin\Web.dll.config
+D:\PROJECTMORE\BearShop\Web\bin\Web.dll
+D:\PROJECTMORE\BearShop\Web\bin\Web.pdb
+D:\PROJECTMORE\BearShop\Web\bin\Antlr3.Runtime.dll
+D:\PROJECTMORE\BearShop\Web\bin\AttributeRouting.dll
+D:\PROJECTMORE\BearShop\Web\bin\AttributeRouting.Web.dll
+D:\PROJECTMORE\BearShop\Web\bin\AttributeRouting.Web.Mvc.dll
+D:\PROJECTMORE\BearShop\Web\bin\CKFinder.dll
+D:\PROJECTMORE\BearShop\Web\bin\EntityFramework.dll
+D:\PROJECTMORE\BearShop\Web\bin\EntityFramework.SqlServer.dll
+D:\PROJECTMORE\BearShop\Web\bin\EPPlus.dll
+D:\PROJECTMORE\BearShop\Web\bin\Excel.dll
+D:\PROJECTMORE\BearShop\Web\bin\Microsoft.Data.Edm.dll
+D:\PROJECTMORE\BearShop\Web\bin\Microsoft.Data.OData.dll
+D:\PROJECTMORE\BearShop\Web\bin\Microsoft.Web.Infrastructure.dll
+D:\PROJECTMORE\BearShop\Web\bin\Microsoft.Web.Mvc.dll
+D:\PROJECTMORE\BearShop\Web\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+D:\PROJECTMORE\BearShop\Web\bin\Newtonsoft.Json.dll
+D:\PROJECTMORE\BearShop\Web\bin\PagedList.dll
+D:\PROJECTMORE\BearShop\Web\bin\PagedList.Mvc.dll
+D:\PROJECTMORE\BearShop\Web\bin\System.Net.Http.Formatting.dll
+D:\PROJECTMORE\BearShop\Web\bin\System.Spatial.dll
+D:\PROJECTMORE\BearShop\Web\bin\System.Web.Helpers.dll
+D:\PROJECTMORE\BearShop\Web\bin\System.Web.Http.dll
+D:\PROJECTMORE\BearShop\Web\bin\System.Web.Http.OData.dll
+D:\PROJECTMORE\BearShop\Web\bin\System.Web.Http.Tracing.dll
+D:\PROJECTMORE\BearShop\Web\bin\System.Web.Http.WebHost.dll
+D:\PROJECTMORE\BearShop\Web\bin\System.Web.Mvc.dll
+D:\PROJECTMORE\BearShop\Web\bin\System.Web.Optimization.dll
+D:\PROJECTMORE\BearShop\Web\bin\System.Web.Providers.dll
+D:\PROJECTMORE\BearShop\Web\bin\System.Web.Razor.dll
+D:\PROJECTMORE\BearShop\Web\bin\System.Web.WebPages.Deployment.dll
+D:\PROJECTMORE\BearShop\Web\bin\System.Web.WebPages.dll
+D:\PROJECTMORE\BearShop\Web\bin\System.Web.WebPages.Razor.dll
+D:\PROJECTMORE\BearShop\Web\bin\Web.Core.dll
+D:\PROJECTMORE\BearShop\Web\bin\Web.Model.dll
+D:\PROJECTMORE\BearShop\Web\bin\Web.Repository.dll
+D:\PROJECTMORE\BearShop\Web\bin\Web.Repository.Entity.dll
+D:\PROJECTMORE\BearShop\Web\bin\WebActivator.dll
+D:\PROJECTMORE\BearShop\Web\bin\WebGrease.dll
+D:\PROJECTMORE\BearShop\Web\bin\Web.Repository.Entity.pdb
+D:\PROJECTMORE\BearShop\Web\bin\Web.Repository.pdb
+D:\PROJECTMORE\BearShop\Web\bin\Antlr3.Runtime.pdb
+D:\PROJECTMORE\BearShop\Web\bin\AttributeRouting.xml
+D:\PROJECTMORE\BearShop\Web\bin\AttributeRouting.Web.xml
+D:\PROJECTMORE\BearShop\Web\bin\AttributeRouting.Web.Mvc.xml
+D:\PROJECTMORE\BearShop\Web\bin\EntityFramework.xml
+D:\PROJECTMORE\BearShop\Web\bin\EntityFramework.SqlServer.xml
+D:\PROJECTMORE\BearShop\Web\bin\Newtonsoft.Json.xml
+D:\PROJECTMORE\BearShop\Web\bin\PagedList.xml
+D:\PROJECTMORE\BearShop\Web\bin\PagedList.Mvc.xml
+D:\PROJECTMORE\BearShop\Web\bin\System.Net.Http.Formatting.xml
+D:\PROJECTMORE\BearShop\Web\bin\System.Web.Helpers.xml
+D:\PROJECTMORE\BearShop\Web\bin\System.Web.Http.xml
+D:\PROJECTMORE\BearShop\Web\bin\System.Web.Http.WebHost.xml
+D:\PROJECTMORE\BearShop\Web\bin\System.Web.Mvc.xml
+D:\PROJECTMORE\BearShop\Web\bin\System.Web.Optimization.xml
+D:\PROJECTMORE\BearShop\Web\bin\System.Web.Razor.xml
+D:\PROJECTMORE\BearShop\Web\bin\System.Web.WebPages.xml
+D:\PROJECTMORE\BearShop\Web\bin\System.Web.WebPages.Deployment.xml
+D:\PROJECTMORE\BearShop\Web\bin\System.Web.WebPages.Razor.xml
+D:\PROJECTMORE\BearShop\Web\bin\System.Web.Http.Tracing.xml
+D:\PROJECTMORE\BearShop\Web\bin\System.Web.Http.OData.xml
+D:\PROJECTMORE\BearShop\Web\bin\Microsoft.Data.Edm.xml
+D:\PROJECTMORE\BearShop\Web\bin\Microsoft.Data.OData.xml
+D:\PROJECTMORE\BearShop\Web\bin\System.Spatial.xml
+D:\PROJECTMORE\BearShop\Web\bin\Web.Core.pdb
+D:\PROJECTMORE\BearShop\Web\bin\Web.Model.pdb
+D:\PROJECTMORE\BearShop\Web\bin\Web.Model.dll.config
+D:\PROJECTMORE\BearShop\Web\bin\WebActivator.pdb
+D:\PROJECTMORE\BearShop\Web\bin\de\Microsoft.Data.Edm.resources.dll
+D:\PROJECTMORE\BearShop\Web\bin\es\Microsoft.Data.Edm.resources.dll
+D:\PROJECTMORE\BearShop\Web\bin\fr\Microsoft.Data.Edm.resources.dll
+D:\PROJECTMORE\BearShop\Web\bin\it\Microsoft.Data.Edm.resources.dll
+D:\PROJECTMORE\BearShop\Web\bin\ja\Microsoft.Data.Edm.resources.dll
+D:\PROJECTMORE\BearShop\Web\bin\ko\Microsoft.Data.Edm.resources.dll
+D:\PROJECTMORE\BearShop\Web\bin\ru\Microsoft.Data.Edm.resources.dll
+D:\PROJECTMORE\BearShop\Web\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+D:\PROJECTMORE\BearShop\Web\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+D:\PROJECTMORE\BearShop\Web\bin\de\Microsoft.Data.OData.resources.dll
+D:\PROJECTMORE\BearShop\Web\bin\es\Microsoft.Data.OData.resources.dll
+D:\PROJECTMORE\BearShop\Web\bin\fr\Microsoft.Data.OData.resources.dll
+D:\PROJECTMORE\BearShop\Web\bin\it\Microsoft.Data.OData.resources.dll
+D:\PROJECTMORE\BearShop\Web\bin\ja\Microsoft.Data.OData.resources.dll
+D:\PROJECTMORE\BearShop\Web\bin\ko\Microsoft.Data.OData.resources.dll
+D:\PROJECTMORE\BearShop\Web\bin\ru\Microsoft.Data.OData.resources.dll
+D:\PROJECTMORE\BearShop\Web\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+D:\PROJECTMORE\BearShop\Web\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+D:\PROJECTMORE\BearShop\Web\bin\de\System.Spatial.resources.dll
+D:\PROJECTMORE\BearShop\Web\bin\es\System.Spatial.resources.dll
+D:\PROJECTMORE\BearShop\Web\bin\fr\System.Spatial.resources.dll
+D:\PROJECTMORE\BearShop\Web\bin\it\System.Spatial.resources.dll
+D:\PROJECTMORE\BearShop\Web\bin\ja\System.Spatial.resources.dll
+D:\PROJECTMORE\BearShop\Web\bin\ko\System.Spatial.resources.dll
+D:\PROJECTMORE\BearShop\Web\bin\ru\System.Spatial.resources.dll
+D:\PROJECTMORE\BearShop\Web\bin\zh-Hans\System.Spatial.resources.dll
+D:\PROJECTMORE\BearShop\Web\bin\zh-Hant\System.Spatial.resources.dll
+D:\PROJECTMORE\BearShop\Web\obj\Debug\Web.csproj.AssemblyReference.cache
+D:\PROJECTMORE\BearShop\Web\obj\Debug\Web.csproj.CoreCompileInputs.cache
+D:\PROJECTMORE\BearShop\Web\obj\Debug\Web.csproj.Up2Date
+D:\PROJECTMORE\BearShop\Web\obj\Debug\Web.dll
+D:\PROJECTMORE\BearShop\Web\obj\Debug\Web.pdb
+G:\BearShop\Web\obj\Debug\Web.csproj.AssemblyReference.cache
+G:\BearShop\Web\obj\Debug\Web.csproj.CoreCompileInputs.cache
+G:\BearShop\Web\bin\Web.dll.config
+G:\BearShop\Web\bin\Web.dll
+G:\BearShop\Web\bin\Web.pdb
+G:\BearShop\Web\bin\Antlr3.Runtime.dll
+G:\BearShop\Web\bin\AttributeRouting.dll
+G:\BearShop\Web\bin\AttributeRouting.Web.dll
+G:\BearShop\Web\bin\AttributeRouting.Web.Mvc.dll
+G:\BearShop\Web\bin\CKFinder.dll
+G:\BearShop\Web\bin\EntityFramework.dll
+G:\BearShop\Web\bin\EntityFramework.SqlServer.dll
+G:\BearShop\Web\bin\EPPlus.dll
+G:\BearShop\Web\bin\Excel.dll
+G:\BearShop\Web\bin\Microsoft.Data.Edm.dll
+G:\BearShop\Web\bin\Microsoft.Data.OData.dll
+G:\BearShop\Web\bin\Microsoft.Web.Infrastructure.dll
+G:\BearShop\Web\bin\Microsoft.Web.Mvc.dll
+G:\BearShop\Web\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+G:\BearShop\Web\bin\Newtonsoft.Json.dll
+G:\BearShop\Web\bin\PagedList.dll
+G:\BearShop\Web\bin\PagedList.Mvc.dll
+G:\BearShop\Web\bin\System.Net.Http.Formatting.dll
+G:\BearShop\Web\bin\System.Spatial.dll
+G:\BearShop\Web\bin\System.Web.Helpers.dll
+G:\BearShop\Web\bin\System.Web.Http.dll
+G:\BearShop\Web\bin\System.Web.Http.OData.dll
+G:\BearShop\Web\bin\System.Web.Http.Tracing.dll
+G:\BearShop\Web\bin\System.Web.Http.WebHost.dll
+G:\BearShop\Web\bin\System.Web.Mvc.dll
+G:\BearShop\Web\bin\System.Web.Optimization.dll
+G:\BearShop\Web\bin\System.Web.Providers.dll
+G:\BearShop\Web\bin\System.Web.Razor.dll
+G:\BearShop\Web\bin\System.Web.WebPages.Deployment.dll
+G:\BearShop\Web\bin\System.Web.WebPages.dll
+G:\BearShop\Web\bin\System.Web.WebPages.Razor.dll
+G:\BearShop\Web\bin\Web.Core.dll
+G:\BearShop\Web\bin\Web.Model.dll
+G:\BearShop\Web\bin\Web.Repository.dll
+G:\BearShop\Web\bin\Web.Repository.Entity.dll
+G:\BearShop\Web\bin\WebActivator.dll
+G:\BearShop\Web\bin\WebGrease.dll
+G:\BearShop\Web\bin\Web.Repository.Entity.pdb
+G:\BearShop\Web\bin\Web.Repository.pdb
+G:\BearShop\Web\bin\Antlr3.Runtime.pdb
+G:\BearShop\Web\bin\AttributeRouting.xml
+G:\BearShop\Web\bin\AttributeRouting.Web.xml
+G:\BearShop\Web\bin\AttributeRouting.Web.Mvc.xml
+G:\BearShop\Web\bin\EntityFramework.xml
+G:\BearShop\Web\bin\EntityFramework.SqlServer.xml
+G:\BearShop\Web\bin\Newtonsoft.Json.xml
+G:\BearShop\Web\bin\PagedList.xml
+G:\BearShop\Web\bin\PagedList.Mvc.xml
+G:\BearShop\Web\bin\System.Net.Http.Formatting.xml
+G:\BearShop\Web\bin\System.Web.Helpers.xml
+G:\BearShop\Web\bin\System.Web.Http.xml
+G:\BearShop\Web\bin\System.Web.Http.WebHost.xml
+G:\BearShop\Web\bin\System.Web.Mvc.xml
+G:\BearShop\Web\bin\System.Web.Optimization.xml
+G:\BearShop\Web\bin\System.Web.Razor.xml
+G:\BearShop\Web\bin\System.Web.WebPages.xml
+G:\BearShop\Web\bin\System.Web.WebPages.Deployment.xml
+G:\BearShop\Web\bin\System.Web.WebPages.Razor.xml
+G:\BearShop\Web\bin\System.Web.Http.Tracing.xml
+G:\BearShop\Web\bin\System.Web.Http.OData.xml
+G:\BearShop\Web\bin\Microsoft.Data.Edm.xml
+G:\BearShop\Web\bin\Microsoft.Data.OData.xml
+G:\BearShop\Web\bin\System.Spatial.xml
+G:\BearShop\Web\bin\Web.Core.pdb
+G:\BearShop\Web\bin\Web.Model.pdb
+G:\BearShop\Web\bin\Web.Model.dll.config
+G:\BearShop\Web\bin\WebActivator.pdb
+G:\BearShop\Web\bin\de\Microsoft.Data.Edm.resources.dll
+G:\BearShop\Web\bin\es\Microsoft.Data.Edm.resources.dll
+G:\BearShop\Web\bin\fr\Microsoft.Data.Edm.resources.dll
+G:\BearShop\Web\bin\it\Microsoft.Data.Edm.resources.dll
+G:\BearShop\Web\bin\ja\Microsoft.Data.Edm.resources.dll
+G:\BearShop\Web\bin\ko\Microsoft.Data.Edm.resources.dll
+G:\BearShop\Web\bin\ru\Microsoft.Data.Edm.resources.dll
+G:\BearShop\Web\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+G:\BearShop\Web\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+G:\BearShop\Web\bin\de\Microsoft.Data.OData.resources.dll
+G:\BearShop\Web\bin\es\Microsoft.Data.OData.resources.dll
+G:\BearShop\Web\bin\fr\Microsoft.Data.OData.resources.dll
+G:\BearShop\Web\bin\it\Microsoft.Data.OData.resources.dll
+G:\BearShop\Web\bin\ja\Microsoft.Data.OData.resources.dll
+G:\BearShop\Web\bin\ko\Microsoft.Data.OData.resources.dll
+G:\BearShop\Web\bin\ru\Microsoft.Data.OData.resources.dll
+G:\BearShop\Web\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+G:\BearShop\Web\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+G:\BearShop\Web\bin\de\System.Spatial.resources.dll
+G:\BearShop\Web\bin\es\System.Spatial.resources.dll
+G:\BearShop\Web\bin\fr\System.Spatial.resources.dll
+G:\BearShop\Web\bin\it\System.Spatial.resources.dll
+G:\BearShop\Web\bin\ja\System.Spatial.resources.dll
+G:\BearShop\Web\bin\ko\System.Spatial.resources.dll
+G:\BearShop\Web\bin\ru\System.Spatial.resources.dll
+G:\BearShop\Web\bin\zh-Hans\System.Spatial.resources.dll
+G:\BearShop\Web\bin\zh-Hant\System.Spatial.resources.dll
+G:\BearShop\Web\obj\Debug\Web.csproj.CopyComplete
+G:\BearShop\Web\obj\Debug\Web.dll
+G:\BearShop\Web\obj\Debug\Web.pdb
+G:\SaoVangJSC\SaoVangJSC\Web\obj\Debug\Web.csproj.AssemblyReference.cache
+G:\SaoVangJSC\SaoVangJSC\Web\obj\Debug\Web.csproj.CoreCompileInputs.cache
+G:\SaoVangJSC\SaoVangJSC\Web\bin\Web.dll.config
+G:\SaoVangJSC\SaoVangJSC\Web\bin\Web.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\Web.pdb
+G:\SaoVangJSC\SaoVangJSC\Web\bin\Antlr3.Runtime.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\AttributeRouting.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\AttributeRouting.Web.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\AttributeRouting.Web.Mvc.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\CKFinder.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\EntityFramework.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\EntityFramework.SqlServer.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\EPPlus.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\Excel.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\Microsoft.Data.Edm.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\Microsoft.Data.OData.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\Microsoft.Web.Infrastructure.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\Microsoft.Web.Mvc.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\Newtonsoft.Json.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\PagedList.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\PagedList.Mvc.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\System.Net.Http.Formatting.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\System.Spatial.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\System.Web.Helpers.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\System.Web.Http.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\System.Web.Http.OData.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\System.Web.Http.Tracing.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\System.Web.Http.WebHost.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\System.Web.Mvc.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\System.Web.Optimization.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\System.Web.Providers.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\System.Web.Razor.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\System.Web.WebPages.Deployment.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\System.Web.WebPages.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\System.Web.WebPages.Razor.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\Web.Core.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\Web.Model.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\Web.Repository.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\Web.Repository.Entity.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\WebActivator.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\WebGrease.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\Web.Repository.Entity.pdb
+G:\SaoVangJSC\SaoVangJSC\Web\bin\Web.Repository.pdb
+G:\SaoVangJSC\SaoVangJSC\Web\bin\Antlr3.Runtime.pdb
+G:\SaoVangJSC\SaoVangJSC\Web\bin\AttributeRouting.xml
+G:\SaoVangJSC\SaoVangJSC\Web\bin\AttributeRouting.Web.xml
+G:\SaoVangJSC\SaoVangJSC\Web\bin\AttributeRouting.Web.Mvc.xml
+G:\SaoVangJSC\SaoVangJSC\Web\bin\EntityFramework.xml
+G:\SaoVangJSC\SaoVangJSC\Web\bin\EntityFramework.SqlServer.xml
+G:\SaoVangJSC\SaoVangJSC\Web\bin\Newtonsoft.Json.xml
+G:\SaoVangJSC\SaoVangJSC\Web\bin\PagedList.xml
+G:\SaoVangJSC\SaoVangJSC\Web\bin\PagedList.Mvc.xml
+G:\SaoVangJSC\SaoVangJSC\Web\bin\System.Net.Http.Formatting.xml
+G:\SaoVangJSC\SaoVangJSC\Web\bin\System.Web.Helpers.xml
+G:\SaoVangJSC\SaoVangJSC\Web\bin\System.Web.Http.xml
+G:\SaoVangJSC\SaoVangJSC\Web\bin\System.Web.Http.WebHost.xml
+G:\SaoVangJSC\SaoVangJSC\Web\bin\System.Web.Mvc.xml
+G:\SaoVangJSC\SaoVangJSC\Web\bin\System.Web.Optimization.xml
+G:\SaoVangJSC\SaoVangJSC\Web\bin\System.Web.Razor.xml
+G:\SaoVangJSC\SaoVangJSC\Web\bin\System.Web.WebPages.xml
+G:\SaoVangJSC\SaoVangJSC\Web\bin\System.Web.WebPages.Deployment.xml
+G:\SaoVangJSC\SaoVangJSC\Web\bin\System.Web.WebPages.Razor.xml
+G:\SaoVangJSC\SaoVangJSC\Web\bin\System.Web.Http.Tracing.xml
+G:\SaoVangJSC\SaoVangJSC\Web\bin\System.Web.Http.OData.xml
+G:\SaoVangJSC\SaoVangJSC\Web\bin\Microsoft.Data.Edm.xml
+G:\SaoVangJSC\SaoVangJSC\Web\bin\Microsoft.Data.OData.xml
+G:\SaoVangJSC\SaoVangJSC\Web\bin\System.Spatial.xml
+G:\SaoVangJSC\SaoVangJSC\Web\bin\Web.Core.pdb
+G:\SaoVangJSC\SaoVangJSC\Web\bin\Web.Model.pdb
+G:\SaoVangJSC\SaoVangJSC\Web\bin\Web.Model.dll.config
+G:\SaoVangJSC\SaoVangJSC\Web\bin\WebActivator.pdb
+G:\SaoVangJSC\SaoVangJSC\Web\bin\de\Microsoft.Data.Edm.resources.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\es\Microsoft.Data.Edm.resources.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\fr\Microsoft.Data.Edm.resources.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\it\Microsoft.Data.Edm.resources.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\ja\Microsoft.Data.Edm.resources.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\ko\Microsoft.Data.Edm.resources.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\ru\Microsoft.Data.Edm.resources.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\de\Microsoft.Data.OData.resources.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\es\Microsoft.Data.OData.resources.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\fr\Microsoft.Data.OData.resources.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\it\Microsoft.Data.OData.resources.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\ja\Microsoft.Data.OData.resources.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\ko\Microsoft.Data.OData.resources.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\ru\Microsoft.Data.OData.resources.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\de\System.Spatial.resources.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\es\System.Spatial.resources.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\fr\System.Spatial.resources.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\it\System.Spatial.resources.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\ja\System.Spatial.resources.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\ko\System.Spatial.resources.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\ru\System.Spatial.resources.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\zh-Hans\System.Spatial.resources.dll
+G:\SaoVangJSC\SaoVangJSC\Web\bin\zh-Hant\System.Spatial.resources.dll
+G:\SaoVangJSC\SaoVangJSC\Web\obj\Debug\Web.csproj.CopyComplete
+G:\SaoVangJSC\SaoVangJSC\Web\obj\Debug\Web.dll
+G:\SaoVangJSC\SaoVangJSC\Web\obj\Debug\Web.pdb
+D:\PROJECTMORE\SaoVangJSC\Web\bin\Web.dll.config
+D:\PROJECTMORE\SaoVangJSC\Web\bin\Web.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\Web.pdb
+D:\PROJECTMORE\SaoVangJSC\Web\bin\Antlr3.Runtime.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\AttributeRouting.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\AttributeRouting.Web.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\AttributeRouting.Web.Mvc.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\CKFinder.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\EntityFramework.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\EntityFramework.SqlServer.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\EPPlus.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\Excel.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\Microsoft.Data.Edm.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\Microsoft.Data.OData.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\Microsoft.Web.Infrastructure.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\Microsoft.Web.Mvc.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\Newtonsoft.Json.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\PagedList.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\PagedList.Mvc.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\System.Net.Http.Formatting.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\System.Spatial.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\System.Web.Helpers.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\System.Web.Http.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\System.Web.Http.OData.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\System.Web.Http.Tracing.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\System.Web.Http.WebHost.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\System.Web.Mvc.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\System.Web.Optimization.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\System.Web.Providers.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\System.Web.Razor.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\System.Web.WebPages.Deployment.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\System.Web.WebPages.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\System.Web.WebPages.Razor.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\Web.Core.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\Web.Model.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\Web.Repository.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\Web.Repository.Entity.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\WebActivator.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\WebGrease.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\Web.Repository.Entity.pdb
+D:\PROJECTMORE\SaoVangJSC\Web\bin\Web.Repository.pdb
+D:\PROJECTMORE\SaoVangJSC\Web\bin\Antlr3.Runtime.pdb
+D:\PROJECTMORE\SaoVangJSC\Web\bin\AttributeRouting.xml
+D:\PROJECTMORE\SaoVangJSC\Web\bin\AttributeRouting.Web.xml
+D:\PROJECTMORE\SaoVangJSC\Web\bin\AttributeRouting.Web.Mvc.xml
+D:\PROJECTMORE\SaoVangJSC\Web\bin\EntityFramework.xml
+D:\PROJECTMORE\SaoVangJSC\Web\bin\EntityFramework.SqlServer.xml
+D:\PROJECTMORE\SaoVangJSC\Web\bin\Newtonsoft.Json.xml
+D:\PROJECTMORE\SaoVangJSC\Web\bin\PagedList.xml
+D:\PROJECTMORE\SaoVangJSC\Web\bin\PagedList.Mvc.xml
+D:\PROJECTMORE\SaoVangJSC\Web\bin\System.Net.Http.Formatting.xml
+D:\PROJECTMORE\SaoVangJSC\Web\bin\System.Web.Helpers.xml
+D:\PROJECTMORE\SaoVangJSC\Web\bin\System.Web.Http.xml
+D:\PROJECTMORE\SaoVangJSC\Web\bin\System.Web.Http.WebHost.xml
+D:\PROJECTMORE\SaoVangJSC\Web\bin\System.Web.Mvc.xml
+D:\PROJECTMORE\SaoVangJSC\Web\bin\System.Web.Optimization.xml
+D:\PROJECTMORE\SaoVangJSC\Web\bin\System.Web.Razor.xml
+D:\PROJECTMORE\SaoVangJSC\Web\bin\System.Web.WebPages.xml
+D:\PROJECTMORE\SaoVangJSC\Web\bin\System.Web.WebPages.Deployment.xml
+D:\PROJECTMORE\SaoVangJSC\Web\bin\System.Web.WebPages.Razor.xml
+D:\PROJECTMORE\SaoVangJSC\Web\bin\System.Web.Http.Tracing.xml
+D:\PROJECTMORE\SaoVangJSC\Web\bin\System.Web.Http.OData.xml
+D:\PROJECTMORE\SaoVangJSC\Web\bin\Microsoft.Data.Edm.xml
+D:\PROJECTMORE\SaoVangJSC\Web\bin\Microsoft.Data.OData.xml
+D:\PROJECTMORE\SaoVangJSC\Web\bin\System.Spatial.xml
+D:\PROJECTMORE\SaoVangJSC\Web\bin\Web.Core.pdb
+D:\PROJECTMORE\SaoVangJSC\Web\bin\Web.Model.pdb
+D:\PROJECTMORE\SaoVangJSC\Web\bin\Web.Model.dll.config
+D:\PROJECTMORE\SaoVangJSC\Web\bin\WebActivator.pdb
+D:\PROJECTMORE\SaoVangJSC\Web\bin\de\Microsoft.Data.Edm.resources.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\es\Microsoft.Data.Edm.resources.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\fr\Microsoft.Data.Edm.resources.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\it\Microsoft.Data.Edm.resources.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\ja\Microsoft.Data.Edm.resources.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\ko\Microsoft.Data.Edm.resources.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\ru\Microsoft.Data.Edm.resources.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\de\Microsoft.Data.OData.resources.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\es\Microsoft.Data.OData.resources.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\fr\Microsoft.Data.OData.resources.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\it\Microsoft.Data.OData.resources.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\ja\Microsoft.Data.OData.resources.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\ko\Microsoft.Data.OData.resources.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\ru\Microsoft.Data.OData.resources.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\de\System.Spatial.resources.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\es\System.Spatial.resources.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\fr\System.Spatial.resources.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\it\System.Spatial.resources.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\ja\System.Spatial.resources.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\ko\System.Spatial.resources.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\ru\System.Spatial.resources.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\zh-Hans\System.Spatial.resources.dll
+D:\PROJECTMORE\SaoVangJSC\Web\bin\zh-Hant\System.Spatial.resources.dll
+D:\PROJECTMORE\SaoVangJSC\Web\obj\Debug\Web.csproj.AssemblyReference.cache
+D:\PROJECTMORE\SaoVangJSC\Web\obj\Debug\Web.csproj.CoreCompileInputs.cache
+D:\PROJECTMORE\SaoVangJSC\Web\obj\Debug\Web.csproj.Up2Date
+D:\PROJECTMORE\SaoVangJSC\Web\obj\Debug\Web.dll
+D:\PROJECTMORE\SaoVangJSC\Web\obj\Debug\Web.pdb
+D:\PROJECT\SaoVangJSC\Web\bin\Web.dll.config
+D:\PROJECT\SaoVangJSC\Web\bin\Web.dll
+D:\PROJECT\SaoVangJSC\Web\bin\Web.pdb
+D:\PROJECT\SaoVangJSC\Web\bin\Antlr3.Runtime.dll
+D:\PROJECT\SaoVangJSC\Web\bin\AttributeRouting.dll
+D:\PROJECT\SaoVangJSC\Web\bin\AttributeRouting.Web.dll
+D:\PROJECT\SaoVangJSC\Web\bin\AttributeRouting.Web.Mvc.dll
+D:\PROJECT\SaoVangJSC\Web\bin\CKFinder.dll
+D:\PROJECT\SaoVangJSC\Web\bin\EntityFramework.dll
+D:\PROJECT\SaoVangJSC\Web\bin\EntityFramework.SqlServer.dll
+D:\PROJECT\SaoVangJSC\Web\bin\EPPlus.dll
+D:\PROJECT\SaoVangJSC\Web\bin\Excel.dll
+D:\PROJECT\SaoVangJSC\Web\bin\Microsoft.Data.Edm.dll
+D:\PROJECT\SaoVangJSC\Web\bin\Microsoft.Data.OData.dll
+D:\PROJECT\SaoVangJSC\Web\bin\Microsoft.Web.Infrastructure.dll
+D:\PROJECT\SaoVangJSC\Web\bin\Microsoft.Web.Mvc.dll
+D:\PROJECT\SaoVangJSC\Web\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+D:\PROJECT\SaoVangJSC\Web\bin\Newtonsoft.Json.dll
+D:\PROJECT\SaoVangJSC\Web\bin\PagedList.dll
+D:\PROJECT\SaoVangJSC\Web\bin\PagedList.Mvc.dll
+D:\PROJECT\SaoVangJSC\Web\bin\System.Net.Http.Formatting.dll
+D:\PROJECT\SaoVangJSC\Web\bin\System.Spatial.dll
+D:\PROJECT\SaoVangJSC\Web\bin\System.Web.Helpers.dll
+D:\PROJECT\SaoVangJSC\Web\bin\System.Web.Http.dll
+D:\PROJECT\SaoVangJSC\Web\bin\System.Web.Http.OData.dll
+D:\PROJECT\SaoVangJSC\Web\bin\System.Web.Http.Tracing.dll
+D:\PROJECT\SaoVangJSC\Web\bin\System.Web.Http.WebHost.dll
+D:\PROJECT\SaoVangJSC\Web\bin\System.Web.Mvc.dll
+D:\PROJECT\SaoVangJSC\Web\bin\System.Web.Optimization.dll
+D:\PROJECT\SaoVangJSC\Web\bin\System.Web.Providers.dll
+D:\PROJECT\SaoVangJSC\Web\bin\System.Web.Razor.dll
+D:\PROJECT\SaoVangJSC\Web\bin\System.Web.WebPages.Deployment.dll
+D:\PROJECT\SaoVangJSC\Web\bin\System.Web.WebPages.dll
+D:\PROJECT\SaoVangJSC\Web\bin\System.Web.WebPages.Razor.dll
+D:\PROJECT\SaoVangJSC\Web\bin\Web.Core.dll
+D:\PROJECT\SaoVangJSC\Web\bin\Web.Model.dll
+D:\PROJECT\SaoVangJSC\Web\bin\Web.Repository.dll
+D:\PROJECT\SaoVangJSC\Web\bin\Web.Repository.Entity.dll
+D:\PROJECT\SaoVangJSC\Web\bin\WebActivator.dll
+D:\PROJECT\SaoVangJSC\Web\bin\WebGrease.dll
+D:\PROJECT\SaoVangJSC\Web\bin\Web.Repository.Entity.pdb
+D:\PROJECT\SaoVangJSC\Web\bin\Web.Repository.pdb
+D:\PROJECT\SaoVangJSC\Web\bin\Antlr3.Runtime.pdb
+D:\PROJECT\SaoVangJSC\Web\bin\AttributeRouting.xml
+D:\PROJECT\SaoVangJSC\Web\bin\AttributeRouting.Web.xml
+D:\PROJECT\SaoVangJSC\Web\bin\AttributeRouting.Web.Mvc.xml
+D:\PROJECT\SaoVangJSC\Web\bin\EntityFramework.xml
+D:\PROJECT\SaoVangJSC\Web\bin\EntityFramework.SqlServer.xml
+D:\PROJECT\SaoVangJSC\Web\bin\Newtonsoft.Json.xml
+D:\PROJECT\SaoVangJSC\Web\bin\PagedList.xml
+D:\PROJECT\SaoVangJSC\Web\bin\PagedList.Mvc.xml
+D:\PROJECT\SaoVangJSC\Web\bin\System.Net.Http.Formatting.xml
+D:\PROJECT\SaoVangJSC\Web\bin\System.Web.Helpers.xml
+D:\PROJECT\SaoVangJSC\Web\bin\System.Web.Http.xml
+D:\PROJECT\SaoVangJSC\Web\bin\System.Web.Http.WebHost.xml
+D:\PROJECT\SaoVangJSC\Web\bin\System.Web.Mvc.xml
+D:\PROJECT\SaoVangJSC\Web\bin\System.Web.Optimization.xml
+D:\PROJECT\SaoVangJSC\Web\bin\System.Web.Razor.xml
+D:\PROJECT\SaoVangJSC\Web\bin\System.Web.WebPages.xml
+D:\PROJECT\SaoVangJSC\Web\bin\System.Web.WebPages.Deployment.xml
+D:\PROJECT\SaoVangJSC\Web\bin\System.Web.WebPages.Razor.xml
+D:\PROJECT\SaoVangJSC\Web\bin\System.Web.Http.Tracing.xml
+D:\PROJECT\SaoVangJSC\Web\bin\System.Web.Http.OData.xml
+D:\PROJECT\SaoVangJSC\Web\bin\Microsoft.Data.Edm.xml
+D:\PROJECT\SaoVangJSC\Web\bin\Microsoft.Data.OData.xml
+D:\PROJECT\SaoVangJSC\Web\bin\System.Spatial.xml
+D:\PROJECT\SaoVangJSC\Web\bin\Web.Core.pdb
+D:\PROJECT\SaoVangJSC\Web\bin\Web.Model.pdb
+D:\PROJECT\SaoVangJSC\Web\bin\Web.Model.dll.config
+D:\PROJECT\SaoVangJSC\Web\bin\WebActivator.pdb
+D:\PROJECT\SaoVangJSC\Web\bin\de\Microsoft.Data.Edm.resources.dll
+D:\PROJECT\SaoVangJSC\Web\bin\es\Microsoft.Data.Edm.resources.dll
+D:\PROJECT\SaoVangJSC\Web\bin\fr\Microsoft.Data.Edm.resources.dll
+D:\PROJECT\SaoVangJSC\Web\bin\it\Microsoft.Data.Edm.resources.dll
+D:\PROJECT\SaoVangJSC\Web\bin\ja\Microsoft.Data.Edm.resources.dll
+D:\PROJECT\SaoVangJSC\Web\bin\ko\Microsoft.Data.Edm.resources.dll
+D:\PROJECT\SaoVangJSC\Web\bin\ru\Microsoft.Data.Edm.resources.dll
+D:\PROJECT\SaoVangJSC\Web\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+D:\PROJECT\SaoVangJSC\Web\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+D:\PROJECT\SaoVangJSC\Web\bin\de\Microsoft.Data.OData.resources.dll
+D:\PROJECT\SaoVangJSC\Web\bin\es\Microsoft.Data.OData.resources.dll
+D:\PROJECT\SaoVangJSC\Web\bin\fr\Microsoft.Data.OData.resources.dll
+D:\PROJECT\SaoVangJSC\Web\bin\it\Microsoft.Data.OData.resources.dll
+D:\PROJECT\SaoVangJSC\Web\bin\ja\Microsoft.Data.OData.resources.dll
+D:\PROJECT\SaoVangJSC\Web\bin\ko\Microsoft.Data.OData.resources.dll
+D:\PROJECT\SaoVangJSC\Web\bin\ru\Microsoft.Data.OData.resources.dll
+D:\PROJECT\SaoVangJSC\Web\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+D:\PROJECT\SaoVangJSC\Web\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+D:\PROJECT\SaoVangJSC\Web\bin\de\System.Spatial.resources.dll
+D:\PROJECT\SaoVangJSC\Web\bin\es\System.Spatial.resources.dll
+D:\PROJECT\SaoVangJSC\Web\bin\fr\System.Spatial.resources.dll
+D:\PROJECT\SaoVangJSC\Web\bin\it\System.Spatial.resources.dll
+D:\PROJECT\SaoVangJSC\Web\bin\ja\System.Spatial.resources.dll
+D:\PROJECT\SaoVangJSC\Web\bin\ko\System.Spatial.resources.dll
+D:\PROJECT\SaoVangJSC\Web\bin\ru\System.Spatial.resources.dll
+D:\PROJECT\SaoVangJSC\Web\bin\zh-Hans\System.Spatial.resources.dll
+D:\PROJECT\SaoVangJSC\Web\bin\zh-Hant\System.Spatial.resources.dll
+D:\PROJECT\SaoVangJSC\Web\obj\Debug\Web.csproj.AssemblyReference.cache
+D:\PROJECT\SaoVangJSC\Web\obj\Debug\Web.csproj.CoreCompileInputs.cache
+D:\PROJECT\SaoVangJSC\Web\obj\Debug\Web.csproj.Up2Date
+D:\PROJECT\SaoVangJSC\Web\obj\Debug\Web.dll
+D:\PROJECT\SaoVangJSC\Web\obj\Debug\Web.pdb
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\Web.dll.config
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\Web.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\Web.pdb
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\Antlr3.Runtime.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\AttributeRouting.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\AttributeRouting.Web.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\AttributeRouting.Web.Mvc.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\CKFinder.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\EntityFramework.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\EntityFramework.SqlServer.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\EPPlus.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\Excel.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\Microsoft.Data.Edm.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\Microsoft.Data.OData.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\Microsoft.Web.Mvc.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\Newtonsoft.Json.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\PagedList.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\PagedList.Mvc.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\System.Net.Http.Formatting.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\System.Spatial.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\System.Web.Helpers.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\System.Web.Http.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\System.Web.Http.OData.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\System.Web.Http.Tracing.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\System.Web.Http.WebHost.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\System.Web.Mvc.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\System.Web.Optimization.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\System.Web.Providers.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\System.Web.Razor.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\System.Web.WebPages.Deployment.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\System.Web.WebPages.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\System.Web.WebPages.Razor.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\Web.Core.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\Web.Model.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\Web.Repository.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\Web.Repository.Entity.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\WebActivator.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\WebGrease.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\Web.Repository.Entity.pdb
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\Web.Repository.pdb
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\Antlr3.Runtime.pdb
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\AttributeRouting.xml
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\AttributeRouting.Web.xml
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\AttributeRouting.Web.Mvc.xml
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\EntityFramework.xml
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\EntityFramework.SqlServer.xml
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\Newtonsoft.Json.xml
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\PagedList.xml
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\PagedList.Mvc.xml
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\System.Net.Http.Formatting.xml
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\System.Web.Helpers.xml
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\System.Web.Http.xml
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\System.Web.Http.WebHost.xml
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\System.Web.Mvc.xml
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\System.Web.Optimization.xml
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\System.Web.Razor.xml
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\System.Web.WebPages.xml
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\System.Web.WebPages.Deployment.xml
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\System.Web.WebPages.Razor.xml
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\System.Web.Http.Tracing.xml
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\System.Web.Http.OData.xml
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\Microsoft.Data.Edm.xml
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\Microsoft.Data.OData.xml
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\System.Spatial.xml
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\Web.Core.pdb
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\Web.Model.pdb
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\Web.Model.dll.config
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\WebActivator.pdb
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\de\Microsoft.Data.Edm.resources.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\es\Microsoft.Data.Edm.resources.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\fr\Microsoft.Data.Edm.resources.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\it\Microsoft.Data.Edm.resources.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\ja\Microsoft.Data.Edm.resources.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\ko\Microsoft.Data.Edm.resources.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\ru\Microsoft.Data.Edm.resources.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\de\Microsoft.Data.OData.resources.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\es\Microsoft.Data.OData.resources.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\fr\Microsoft.Data.OData.resources.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\it\Microsoft.Data.OData.resources.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\ja\Microsoft.Data.OData.resources.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\ko\Microsoft.Data.OData.resources.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\ru\Microsoft.Data.OData.resources.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\de\System.Spatial.resources.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\es\System.Spatial.resources.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\fr\System.Spatial.resources.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\it\System.Spatial.resources.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\ja\System.Spatial.resources.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\ko\System.Spatial.resources.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\ru\System.Spatial.resources.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\zh-Hans\System.Spatial.resources.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\bin\zh-Hant\System.Spatial.resources.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\obj\Debug\Web.csproj.AssemblyReference.cache
+C:\Users\admin\Downloads\SaoVangJSC\Web\obj\Debug\Web.csproj.CoreCompileInputs.cache
+C:\Users\admin\Downloads\SaoVangJSC\Web\obj\Debug\Web.csproj.CopyComplete
+C:\Users\admin\Downloads\SaoVangJSC\Web\obj\Debug\Web.dll
+C:\Users\admin\Downloads\SaoVangJSC\Web\obj\Debug\Web.pdb
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\Web.dll.config
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\Web.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\Web.pdb
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\Antlr3.Runtime.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\AttributeRouting.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\AttributeRouting.Web.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\AttributeRouting.Web.Mvc.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\CKFinder.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\EntityFramework.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\EntityFramework.SqlServer.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\EPPlus.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\Excel.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\Microsoft.Data.Edm.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\Microsoft.Data.OData.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\Microsoft.Web.Infrastructure.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\Microsoft.Web.Mvc.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\Newtonsoft.Json.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\PagedList.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\PagedList.Mvc.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\System.Net.Http.Formatting.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\System.Spatial.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\System.Web.Helpers.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\System.Web.Http.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\System.Web.Http.OData.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\System.Web.Http.Tracing.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\System.Web.Http.WebHost.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\System.Web.Mvc.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\System.Web.Optimization.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\System.Web.Providers.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\System.Web.Razor.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\System.Web.WebPages.Deployment.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\System.Web.WebPages.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\System.Web.WebPages.Razor.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\Web.Core.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\Web.Model.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\Web.Repository.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\Web.Repository.Entity.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\WebActivator.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\WebGrease.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\Web.Repository.Entity.pdb
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\Web.Repository.pdb
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\Antlr3.Runtime.pdb
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\AttributeRouting.xml
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\AttributeRouting.Web.xml
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\AttributeRouting.Web.Mvc.xml
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\EntityFramework.xml
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\EntityFramework.SqlServer.xml
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\Newtonsoft.Json.xml
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\PagedList.xml
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\PagedList.Mvc.xml
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\System.Net.Http.Formatting.xml
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\System.Web.Helpers.xml
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\System.Web.Http.xml
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\System.Web.Http.WebHost.xml
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\System.Web.Mvc.xml
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\System.Web.Optimization.xml
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\System.Web.Razor.xml
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\System.Web.WebPages.xml
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\System.Web.WebPages.Deployment.xml
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\System.Web.WebPages.Razor.xml
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\System.Web.Http.Tracing.xml
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\System.Web.Http.OData.xml
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\Microsoft.Data.Edm.xml
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\Microsoft.Data.OData.xml
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\System.Spatial.xml
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\Web.Core.pdb
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\Web.Model.pdb
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\Web.Model.dll.config
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\WebActivator.pdb
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\de\Microsoft.Data.Edm.resources.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\es\Microsoft.Data.Edm.resources.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\fr\Microsoft.Data.Edm.resources.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\it\Microsoft.Data.Edm.resources.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\ja\Microsoft.Data.Edm.resources.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\ko\Microsoft.Data.Edm.resources.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\ru\Microsoft.Data.Edm.resources.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\de\Microsoft.Data.OData.resources.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\es\Microsoft.Data.OData.resources.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\fr\Microsoft.Data.OData.resources.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\it\Microsoft.Data.OData.resources.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\ja\Microsoft.Data.OData.resources.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\ko\Microsoft.Data.OData.resources.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\ru\Microsoft.Data.OData.resources.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\de\System.Spatial.resources.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\es\System.Spatial.resources.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\fr\System.Spatial.resources.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\it\System.Spatial.resources.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\ja\System.Spatial.resources.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\ko\System.Spatial.resources.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\ru\System.Spatial.resources.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\zh-Hans\System.Spatial.resources.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\bin\zh-Hant\System.Spatial.resources.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\obj\Debug\Web.csproj.AssemblyReference.cache
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\obj\Debug\Web.csproj.CoreCompileInputs.cache
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\obj\Debug\Web.csproj.CopyComplete
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\obj\Debug\Web.dll
+G:\KhongGianXanhVN\KhongGianXanhVn\Web\obj\Debug\Web.pdb
+D:\WebDuLich\Web\Web\obj\Debug\Web.csproj.AssemblyReference.cache
+D:\WebDuLich\Web\Web\obj\Debug\Web.csproj.CoreCompileInputs.cache
+D:\WebDuLich\Web\Web\bin\Web.dll.config
+D:\WebDuLich\Web\Web\bin\Web.dll
+D:\WebDuLich\Web\Web\bin\Web.pdb
+D:\WebDuLich\Web\Web\bin\Antlr3.Runtime.dll
+D:\WebDuLich\Web\Web\bin\AttributeRouting.dll
+D:\WebDuLich\Web\Web\bin\AttributeRouting.Web.dll
+D:\WebDuLich\Web\Web\bin\AttributeRouting.Web.Mvc.dll
+D:\WebDuLich\Web\Web\bin\CKFinder.dll
+D:\WebDuLich\Web\Web\bin\EntityFramework.dll
+D:\WebDuLich\Web\Web\bin\EntityFramework.SqlServer.dll
+D:\WebDuLich\Web\Web\bin\EPPlus.dll
+D:\WebDuLich\Web\Web\bin\Excel.dll
+D:\WebDuLich\Web\Web\bin\Microsoft.Data.Edm.dll
+D:\WebDuLich\Web\Web\bin\Microsoft.Data.OData.dll
+D:\WebDuLich\Web\Web\bin\Microsoft.Web.Infrastructure.dll
+D:\WebDuLich\Web\Web\bin\Microsoft.Web.Mvc.dll
+D:\WebDuLich\Web\Web\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+D:\WebDuLich\Web\Web\bin\Newtonsoft.Json.dll
+D:\WebDuLich\Web\Web\bin\PagedList.dll
+D:\WebDuLich\Web\Web\bin\PagedList.Mvc.dll
+D:\WebDuLich\Web\Web\bin\System.Net.Http.Formatting.dll
+D:\WebDuLich\Web\Web\bin\System.Spatial.dll
+D:\WebDuLich\Web\Web\bin\System.Web.Helpers.dll
+D:\WebDuLich\Web\Web\bin\System.Web.Http.dll
+D:\WebDuLich\Web\Web\bin\System.Web.Http.OData.dll
+D:\WebDuLich\Web\Web\bin\System.Web.Http.Tracing.dll
+D:\WebDuLich\Web\Web\bin\System.Web.Http.WebHost.dll
+D:\WebDuLich\Web\Web\bin\System.Web.Mvc.dll
+D:\WebDuLich\Web\Web\bin\System.Web.Optimization.dll
+D:\WebDuLich\Web\Web\bin\System.Web.Providers.dll
+D:\WebDuLich\Web\Web\bin\System.Web.Razor.dll
+D:\WebDuLich\Web\Web\bin\System.Web.WebPages.Deployment.dll
+D:\WebDuLich\Web\Web\bin\System.Web.WebPages.dll
+D:\WebDuLich\Web\Web\bin\System.Web.WebPages.Razor.dll
+D:\WebDuLich\Web\Web\bin\Web.Core.dll
+D:\WebDuLich\Web\Web\bin\Web.Model.dll
+D:\WebDuLich\Web\Web\bin\Web.Repository.dll
+D:\WebDuLich\Web\Web\bin\Web.Repository.Entity.dll
+D:\WebDuLich\Web\Web\bin\WebActivator.dll
+D:\WebDuLich\Web\Web\bin\WebGrease.dll
+D:\WebDuLich\Web\Web\bin\Web.Repository.Entity.pdb
+D:\WebDuLich\Web\Web\bin\Web.Repository.pdb
+D:\WebDuLich\Web\Web\bin\Antlr3.Runtime.pdb
+D:\WebDuLich\Web\Web\bin\AttributeRouting.xml
+D:\WebDuLich\Web\Web\bin\AttributeRouting.Web.xml
+D:\WebDuLich\Web\Web\bin\AttributeRouting.Web.Mvc.xml
+D:\WebDuLich\Web\Web\bin\EntityFramework.xml
+D:\WebDuLich\Web\Web\bin\EntityFramework.SqlServer.xml
+D:\WebDuLich\Web\Web\bin\Newtonsoft.Json.xml
+D:\WebDuLich\Web\Web\bin\PagedList.xml
+D:\WebDuLich\Web\Web\bin\PagedList.Mvc.xml
+D:\WebDuLich\Web\Web\bin\System.Net.Http.Formatting.xml
+D:\WebDuLich\Web\Web\bin\System.Web.Helpers.xml
+D:\WebDuLich\Web\Web\bin\System.Web.Http.xml
+D:\WebDuLich\Web\Web\bin\System.Web.Http.WebHost.xml
+D:\WebDuLich\Web\Web\bin\System.Web.Mvc.xml
+D:\WebDuLich\Web\Web\bin\System.Web.Optimization.xml
+D:\WebDuLich\Web\Web\bin\System.Web.Razor.xml
+D:\WebDuLich\Web\Web\bin\System.Web.WebPages.xml
+D:\WebDuLich\Web\Web\bin\System.Web.WebPages.Deployment.xml
+D:\WebDuLich\Web\Web\bin\System.Web.WebPages.Razor.xml
+D:\WebDuLich\Web\Web\bin\System.Web.Http.Tracing.xml
+D:\WebDuLich\Web\Web\bin\System.Web.Http.OData.xml
+D:\WebDuLich\Web\Web\bin\Microsoft.Data.Edm.xml
+D:\WebDuLich\Web\Web\bin\Microsoft.Data.OData.xml
+D:\WebDuLich\Web\Web\bin\System.Spatial.xml
+D:\WebDuLich\Web\Web\bin\Web.Core.pdb
+D:\WebDuLich\Web\Web\bin\Web.Model.pdb
+D:\WebDuLich\Web\Web\bin\Web.Model.dll.config
+D:\WebDuLich\Web\Web\bin\WebActivator.pdb
+D:\WebDuLich\Web\Web\bin\de\Microsoft.Data.Edm.resources.dll
+D:\WebDuLich\Web\Web\bin\es\Microsoft.Data.Edm.resources.dll
+D:\WebDuLich\Web\Web\bin\fr\Microsoft.Data.Edm.resources.dll
+D:\WebDuLich\Web\Web\bin\it\Microsoft.Data.Edm.resources.dll
+D:\WebDuLich\Web\Web\bin\ja\Microsoft.Data.Edm.resources.dll
+D:\WebDuLich\Web\Web\bin\ko\Microsoft.Data.Edm.resources.dll
+D:\WebDuLich\Web\Web\bin\ru\Microsoft.Data.Edm.resources.dll
+D:\WebDuLich\Web\Web\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+D:\WebDuLich\Web\Web\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+D:\WebDuLich\Web\Web\bin\de\Microsoft.Data.OData.resources.dll
+D:\WebDuLich\Web\Web\bin\es\Microsoft.Data.OData.resources.dll
+D:\WebDuLich\Web\Web\bin\fr\Microsoft.Data.OData.resources.dll
+D:\WebDuLich\Web\Web\bin\it\Microsoft.Data.OData.resources.dll
+D:\WebDuLich\Web\Web\bin\ja\Microsoft.Data.OData.resources.dll
+D:\WebDuLich\Web\Web\bin\ko\Microsoft.Data.OData.resources.dll
+D:\WebDuLich\Web\Web\bin\ru\Microsoft.Data.OData.resources.dll
+D:\WebDuLich\Web\Web\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+D:\WebDuLich\Web\Web\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+D:\WebDuLich\Web\Web\bin\de\System.Spatial.resources.dll
+D:\WebDuLich\Web\Web\bin\es\System.Spatial.resources.dll
+D:\WebDuLich\Web\Web\bin\fr\System.Spatial.resources.dll
+D:\WebDuLich\Web\Web\bin\it\System.Spatial.resources.dll
+D:\WebDuLich\Web\Web\bin\ja\System.Spatial.resources.dll
+D:\WebDuLich\Web\Web\bin\ko\System.Spatial.resources.dll
+D:\WebDuLich\Web\Web\bin\ru\System.Spatial.resources.dll
+D:\WebDuLich\Web\Web\bin\zh-Hans\System.Spatial.resources.dll
+D:\WebDuLich\Web\Web\bin\zh-Hant\System.Spatial.resources.dll
+D:\WebDuLich\Web\Web\obj\Debug\Web.csproj.CopyComplete
+D:\WebDuLich\Web\Web\obj\Debug\Web.dll
+D:\WebDuLich\Web\Web\obj\Debug\Web.pdb
+D:\WebDuLich\Web\Web\bin\Web.Repository.Entity.dll.config
+D:\WebDuLich\Web\Web\bin\Dapper.dll
+D:\WebDuLich\Web\Web\bin\Microsoft.Bcl.AsyncInterfaces.dll
+D:\WebDuLich\Web\Web\bin\System.Threading.Tasks.Extensions.dll
+D:\WebDuLich\Web\Web\bin\System.Runtime.CompilerServices.Unsafe.dll
+D:\WebDuLich\Web\Web\bin\Dapper.xml
+D:\WebDuLich\Web\Web\bin\Microsoft.Bcl.AsyncInterfaces.xml
+D:\WebDuLich\Web\Web\bin\System.Threading.Tasks.Extensions.xml
+D:\WebDuLich\Web\Web\bin\System.Runtime.CompilerServices.Unsafe.xml
+D:\PROJECTMORE\Lummia\Web\Web\bin\System.Web.Http.WebHost.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\System.Web.Optimization.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\System.Web.Providers.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\System.Web.Razor.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\System.Web.WebPages.Deployment.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\System.Web.WebPages.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\System.Web.WebPages.Razor.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\Web.Core.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\Web.Model.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\Web.Repository.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\WebActivator.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\WebGrease.dll
+D:\WebDuLich\Lummia\Web\Web\bin\Web.dll.config
+D:\WebDuLich\Lummia\Web\Web\bin\Web.dll
+D:\WebDuLich\Lummia\Web\Web\bin\Web.pdb
+D:\WebDuLich\Lummia\Web\Web\bin\Antlr3.Runtime.dll
+D:\WebDuLich\Lummia\Web\Web\bin\AttributeRouting.dll
+D:\WebDuLich\Lummia\Web\Web\bin\AttributeRouting.Web.dll
+D:\WebDuLich\Lummia\Web\Web\bin\AttributeRouting.Web.Mvc.dll
+D:\WebDuLich\Lummia\Web\Web\bin\EntityFramework.dll
+D:\WebDuLich\Lummia\Web\Web\bin\EntityFramework.SqlServer.dll
+D:\WebDuLich\Lummia\Web\Web\bin\EPPlus.dll
+D:\WebDuLich\Lummia\Web\Web\bin\Excel.dll
+D:\WebDuLich\Lummia\Web\Web\bin\Microsoft.Data.Edm.dll
+D:\WebDuLich\Lummia\Web\Web\bin\Microsoft.Data.OData.dll
+D:\WebDuLich\Lummia\Web\Web\bin\Microsoft.Web.Infrastructure.dll
+D:\WebDuLich\Lummia\Web\Web\bin\Microsoft.Web.Mvc.dll
+D:\WebDuLich\Lummia\Web\Web\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+D:\WebDuLich\Lummia\Web\Web\bin\Newtonsoft.Json.dll
+D:\WebDuLich\Lummia\Web\Web\bin\PagedList.dll
+D:\WebDuLich\Lummia\Web\Web\bin\PagedList.Mvc.dll
+D:\WebDuLich\Lummia\Web\Web\bin\System.Net.Http.Formatting.dll
+D:\WebDuLich\Lummia\Web\Web\bin\System.Spatial.dll
+D:\WebDuLich\Lummia\Web\Web\bin\System.Web.Helpers.dll
+D:\WebDuLich\Lummia\Web\Web\bin\System.Web.Http.dll
+D:\WebDuLich\Lummia\Web\Web\bin\System.Web.Http.OData.dll
+D:\WebDuLich\Lummia\Web\Web\bin\System.Web.Http.Tracing.dll
+D:\WebDuLich\Lummia\Web\Web\bin\System.Web.Http.WebHost.dll
+D:\WebDuLich\Lummia\Web\Web\bin\System.Web.Mvc.dll
+D:\WebDuLich\Lummia\Web\Web\bin\System.Web.Optimization.dll
+D:\WebDuLich\Lummia\Web\Web\bin\System.Web.Providers.dll
+D:\WebDuLich\Lummia\Web\Web\bin\System.Web.Razor.dll
+D:\WebDuLich\Lummia\Web\Web\bin\System.Web.WebPages.Deployment.dll
+D:\WebDuLich\Lummia\Web\Web\bin\System.Web.WebPages.dll
+D:\WebDuLich\Lummia\Web\Web\bin\System.Web.WebPages.Razor.dll
+D:\WebDuLich\Lummia\Web\Web\bin\Web.Core.dll
+D:\WebDuLich\Lummia\Web\Web\bin\Web.Model.dll
+D:\WebDuLich\Lummia\Web\Web\bin\Web.Repository.dll
+D:\WebDuLich\Lummia\Web\Web\bin\Web.Repository.Entity.dll
+D:\WebDuLich\Lummia\Web\Web\bin\WebActivator.dll
+D:\WebDuLich\Lummia\Web\Web\bin\WebGrease.dll
+D:\WebDuLich\Lummia\Web\Web\bin\Dapper.dll
+D:\WebDuLich\Lummia\Web\Web\bin\Microsoft.Bcl.AsyncInterfaces.dll
+D:\WebDuLich\Lummia\Web\Web\bin\System.Threading.Tasks.Extensions.dll
+D:\WebDuLich\Lummia\Web\Web\bin\System.Runtime.CompilerServices.Unsafe.dll
+D:\WebDuLich\Lummia\Web\Web\bin\Web.Repository.Entity.pdb
+D:\WebDuLich\Lummia\Web\Web\bin\Web.Repository.Entity.dll.config
+D:\WebDuLich\Lummia\Web\Web\bin\Web.Repository.pdb
+D:\WebDuLich\Lummia\Web\Web\bin\Antlr3.Runtime.pdb
+D:\WebDuLich\Lummia\Web\Web\bin\AttributeRouting.xml
+D:\WebDuLich\Lummia\Web\Web\bin\AttributeRouting.Web.xml
+D:\WebDuLich\Lummia\Web\Web\bin\AttributeRouting.Web.Mvc.xml
+D:\WebDuLich\Lummia\Web\Web\bin\EntityFramework.xml
+D:\WebDuLich\Lummia\Web\Web\bin\EntityFramework.SqlServer.xml
+D:\WebDuLich\Lummia\Web\Web\bin\Newtonsoft.Json.xml
+D:\WebDuLich\Lummia\Web\Web\bin\PagedList.xml
+D:\WebDuLich\Lummia\Web\Web\bin\PagedList.Mvc.xml
+D:\WebDuLich\Lummia\Web\Web\bin\System.Net.Http.Formatting.xml
+D:\WebDuLich\Lummia\Web\Web\bin\System.Web.Helpers.xml
+D:\WebDuLich\Lummia\Web\Web\bin\System.Web.Http.xml
+D:\WebDuLich\Lummia\Web\Web\bin\System.Web.Http.WebHost.xml
+D:\WebDuLich\Lummia\Web\Web\bin\System.Web.Mvc.xml
+D:\WebDuLich\Lummia\Web\Web\bin\System.Web.Optimization.xml
+D:\WebDuLich\Lummia\Web\Web\bin\System.Web.Razor.xml
+D:\WebDuLich\Lummia\Web\Web\bin\System.Web.WebPages.xml
+D:\WebDuLich\Lummia\Web\Web\bin\System.Web.WebPages.Deployment.xml
+D:\WebDuLich\Lummia\Web\Web\bin\System.Web.WebPages.Razor.xml
+D:\WebDuLich\Lummia\Web\Web\bin\System.Web.Http.Tracing.xml
+D:\WebDuLich\Lummia\Web\Web\bin\System.Web.Http.OData.xml
+D:\WebDuLich\Lummia\Web\Web\bin\Microsoft.Data.Edm.xml
+D:\WebDuLich\Lummia\Web\Web\bin\Microsoft.Data.OData.xml
+D:\WebDuLich\Lummia\Web\Web\bin\System.Spatial.xml
+D:\WebDuLich\Lummia\Web\Web\bin\Web.Core.pdb
+D:\WebDuLich\Lummia\Web\Web\bin\Web.Model.pdb
+D:\WebDuLich\Lummia\Web\Web\bin\WebActivator.pdb
+D:\WebDuLich\Lummia\Web\Web\bin\Dapper.xml
+D:\WebDuLich\Lummia\Web\Web\bin\Microsoft.Bcl.AsyncInterfaces.xml
+D:\WebDuLich\Lummia\Web\Web\bin\System.Threading.Tasks.Extensions.xml
+D:\WebDuLich\Lummia\Web\Web\bin\System.Runtime.CompilerServices.Unsafe.xml
+D:\WebDuLich\Lummia\Web\Web\bin\de\Microsoft.Data.Edm.resources.dll
+D:\WebDuLich\Lummia\Web\Web\bin\es\Microsoft.Data.Edm.resources.dll
+D:\WebDuLich\Lummia\Web\Web\bin\fr\Microsoft.Data.Edm.resources.dll
+D:\WebDuLich\Lummia\Web\Web\bin\it\Microsoft.Data.Edm.resources.dll
+D:\WebDuLich\Lummia\Web\Web\bin\ja\Microsoft.Data.Edm.resources.dll
+D:\WebDuLich\Lummia\Web\Web\bin\ko\Microsoft.Data.Edm.resources.dll
+D:\WebDuLich\Lummia\Web\Web\bin\ru\Microsoft.Data.Edm.resources.dll
+D:\WebDuLich\Lummia\Web\Web\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+D:\WebDuLich\Lummia\Web\Web\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+D:\WebDuLich\Lummia\Web\Web\bin\de\Microsoft.Data.OData.resources.dll
+D:\WebDuLich\Lummia\Web\Web\bin\es\Microsoft.Data.OData.resources.dll
+D:\WebDuLich\Lummia\Web\Web\bin\fr\Microsoft.Data.OData.resources.dll
+D:\WebDuLich\Lummia\Web\Web\bin\it\Microsoft.Data.OData.resources.dll
+D:\WebDuLich\Lummia\Web\Web\bin\ja\Microsoft.Data.OData.resources.dll
+D:\WebDuLich\Lummia\Web\Web\bin\ko\Microsoft.Data.OData.resources.dll
+D:\WebDuLich\Lummia\Web\Web\bin\ru\Microsoft.Data.OData.resources.dll
+D:\WebDuLich\Lummia\Web\Web\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+D:\WebDuLich\Lummia\Web\Web\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+D:\WebDuLich\Lummia\Web\Web\bin\de\System.Spatial.resources.dll
+D:\WebDuLich\Lummia\Web\Web\bin\es\System.Spatial.resources.dll
+D:\WebDuLich\Lummia\Web\Web\bin\fr\System.Spatial.resources.dll
+D:\WebDuLich\Lummia\Web\Web\bin\it\System.Spatial.resources.dll
+D:\WebDuLich\Lummia\Web\Web\bin\ja\System.Spatial.resources.dll
+D:\WebDuLich\Lummia\Web\Web\bin\ko\System.Spatial.resources.dll
+D:\WebDuLich\Lummia\Web\Web\bin\ru\System.Spatial.resources.dll
+D:\WebDuLich\Lummia\Web\Web\bin\zh-Hans\System.Spatial.resources.dll
+D:\WebDuLich\Lummia\Web\Web\bin\zh-Hant\System.Spatial.resources.dll
+D:\WebDuLich\Lummia\Web\Web\obj\Debug\Web.csproj.AssemblyReference.cache
+D:\WebDuLich\Lummia\Web\Web\obj\Debug\Web.csproj.CoreCompileInputs.cache
+D:\WebDuLich\Lummia\Web\Web\obj\Debug\Web.csproj.CopyComplete
+D:\WebDuLich\Lummia\Web\Web\obj\Debug\Web.dll
+D:\WebDuLich\Lummia\Web\Web\obj\Debug\Web.pdb
+D:\WebDuLich\Lummia\Web\Web\bin\CKFinder.dll
+D:\PROJECTMORE\Lummia\Web\Web\obj\Debug\Web.csproj.AssemblyReference.cache
+D:\PROJECTMORE\Lummia\Web\Web\obj\Debug\Web.csproj.CoreCompileInputs.cache
+D:\PROJECTMORE\Lummia\Web\Web\bin\Web.dll.config
+D:\PROJECTMORE\Lummia\Web\Web\bin\Web.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\Web.pdb
+D:\PROJECTMORE\Lummia\Web\Web\bin\Antlr3.Runtime.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\AttributeRouting.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\AttributeRouting.Web.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\AttributeRouting.Web.Mvc.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\CKFinder.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\EntityFramework.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\EntityFramework.SqlServer.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\EPPlus.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\Excel.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\Microsoft.Data.Edm.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\Microsoft.Data.OData.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\Microsoft.Web.Infrastructure.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\Microsoft.Web.Mvc.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\Newtonsoft.Json.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\PagedList.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\PagedList.Mvc.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\System.Net.Http.Formatting.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\System.Spatial.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\System.Web.Helpers.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\System.Web.Http.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\System.Web.Http.OData.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\System.Web.Http.Tracing.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\System.Web.Mvc.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\Web.Repository.Entity.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\Dapper.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\Microsoft.Bcl.AsyncInterfaces.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\System.Threading.Tasks.Extensions.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\System.Runtime.CompilerServices.Unsafe.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\Web.Repository.Entity.pdb
+D:\PROJECTMORE\Lummia\Web\Web\bin\Web.Repository.Entity.dll.config
+D:\PROJECTMORE\Lummia\Web\Web\bin\Web.Repository.pdb
+D:\PROJECTMORE\Lummia\Web\Web\bin\Antlr3.Runtime.pdb
+D:\PROJECTMORE\Lummia\Web\Web\bin\AttributeRouting.xml
+D:\PROJECTMORE\Lummia\Web\Web\bin\AttributeRouting.Web.xml
+D:\PROJECTMORE\Lummia\Web\Web\bin\AttributeRouting.Web.Mvc.xml
+D:\PROJECTMORE\Lummia\Web\Web\bin\EntityFramework.xml
+D:\PROJECTMORE\Lummia\Web\Web\bin\EntityFramework.SqlServer.xml
+D:\PROJECTMORE\Lummia\Web\Web\bin\Newtonsoft.Json.xml
+D:\PROJECTMORE\Lummia\Web\Web\bin\PagedList.xml
+D:\PROJECTMORE\Lummia\Web\Web\bin\PagedList.Mvc.xml
+D:\PROJECTMORE\Lummia\Web\Web\bin\System.Net.Http.Formatting.xml
+D:\PROJECTMORE\Lummia\Web\Web\bin\System.Web.Helpers.xml
+D:\PROJECTMORE\Lummia\Web\Web\bin\System.Web.Http.xml
+D:\PROJECTMORE\Lummia\Web\Web\bin\System.Web.Http.WebHost.xml
+D:\PROJECTMORE\Lummia\Web\Web\bin\System.Web.Mvc.xml
+D:\PROJECTMORE\Lummia\Web\Web\bin\System.Web.Optimization.xml
+D:\PROJECTMORE\Lummia\Web\Web\bin\System.Web.Razor.xml
+D:\PROJECTMORE\Lummia\Web\Web\bin\System.Web.WebPages.xml
+D:\PROJECTMORE\Lummia\Web\Web\bin\System.Web.WebPages.Deployment.xml
+D:\PROJECTMORE\Lummia\Web\Web\bin\System.Web.WebPages.Razor.xml
+D:\PROJECTMORE\Lummia\Web\Web\bin\System.Web.Http.Tracing.xml
+D:\PROJECTMORE\Lummia\Web\Web\bin\System.Web.Http.OData.xml
+D:\PROJECTMORE\Lummia\Web\Web\bin\Microsoft.Data.Edm.xml
+D:\PROJECTMORE\Lummia\Web\Web\bin\Microsoft.Data.OData.xml
+D:\PROJECTMORE\Lummia\Web\Web\bin\System.Spatial.xml
+D:\PROJECTMORE\Lummia\Web\Web\bin\Web.Core.pdb
+D:\PROJECTMORE\Lummia\Web\Web\bin\Web.Model.pdb
+D:\PROJECTMORE\Lummia\Web\Web\bin\WebActivator.pdb
+D:\PROJECTMORE\Lummia\Web\Web\bin\Dapper.xml
+D:\PROJECTMORE\Lummia\Web\Web\bin\Microsoft.Bcl.AsyncInterfaces.xml
+D:\PROJECTMORE\Lummia\Web\Web\bin\System.Threading.Tasks.Extensions.xml
+D:\PROJECTMORE\Lummia\Web\Web\bin\System.Runtime.CompilerServices.Unsafe.xml
+D:\PROJECTMORE\Lummia\Web\Web\bin\de\Microsoft.Data.Edm.resources.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\es\Microsoft.Data.Edm.resources.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\fr\Microsoft.Data.Edm.resources.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\it\Microsoft.Data.Edm.resources.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\ja\Microsoft.Data.Edm.resources.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\ko\Microsoft.Data.Edm.resources.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\ru\Microsoft.Data.Edm.resources.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\de\Microsoft.Data.OData.resources.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\es\Microsoft.Data.OData.resources.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\fr\Microsoft.Data.OData.resources.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\it\Microsoft.Data.OData.resources.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\ja\Microsoft.Data.OData.resources.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\ko\Microsoft.Data.OData.resources.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\ru\Microsoft.Data.OData.resources.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\de\System.Spatial.resources.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\es\System.Spatial.resources.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\fr\System.Spatial.resources.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\it\System.Spatial.resources.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\ja\System.Spatial.resources.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\ko\System.Spatial.resources.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\ru\System.Spatial.resources.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\zh-Hans\System.Spatial.resources.dll
+D:\PROJECTMORE\Lummia\Web\Web\bin\zh-Hant\System.Spatial.resources.dll
+D:\PROJECTMORE\Lummia\Web\Web\obj\Debug\Web.csproj.Up2Date
+D:\PROJECTMORE\Lummia\Web\Web\obj\Debug\Web.dll
+D:\PROJECTMORE\Lummia\Web\Web\obj\Debug\Web.pdb

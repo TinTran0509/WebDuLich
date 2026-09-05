@@ -1,0 +1,54 @@
+﻿@{
+    Layout = null;
+    Web.Model.CustomModel.UserModel user = ViewBag.UserModel;
+}
+<style>
+    .circle-image {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+    .news-item {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+    }
+        .news-item img {
+            width: 18px;
+            height: 12px;
+            margin-right: 4px;
+            margin-top: -2px;
+        }
+</style>
+@model IEnumerable<Web.Model.tbl_Languages>
+<ul>
+    @foreach (var item in Model)
+    { 
+        <li class="news-item" id="lang_@item.LangCode.ToLower()">
+           <a href="http://localhost:1111/@item.LangCode.ToLower()/index.html">
+              <img alt="" src="@item.Icon" /><span>@item.LangName</span>
+           </a>
+        </li>
+    }
+</ul>
+@if (user != null)
+{
+    <div class="top-header-contact sm-d-none">
+        <img class="circle-image" src="@user.Photo" alt="@user.FullName" width="40" height="40" data-lazy-src="@user.Photo">
+        <noscript>
+            <img src="@user.Photo" alt="@user.FullName" width="40" height="40">
+        </noscript>
+        <span>
+            <strong>@user.Description</strong>
+            <br>
+            @user.FullName
+        </span>
+    </div>
+} 
+
+
+
+
+
+

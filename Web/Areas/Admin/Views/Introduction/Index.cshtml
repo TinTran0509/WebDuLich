@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Lời tựa";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    var lstAction = (List<int>)HttpContext.Current.Session["Action"];
+}
+@using Web.Model.CustomModel 
+<script src="~/AppJs/introduction.js"></script>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Lời tựa</h3>
+                <div style="top: 8px;position: absolute; right: 40px;" class="pull-right">
+                    @*@if (lstAction != null && lstAction.Contains((int)EnumHelper.Action.Add))
+                    {
+                        <div class="col-md-12">
+                            <a style="float:right" href="/Admin/Introduction/Add" class="btn btn-primary">Thêm mới</a>
+                        </div>
+                    }*@
+                </div> 
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="table-responsive" id="gridData">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        Introduction.loadData(1);
+    });
+</script>

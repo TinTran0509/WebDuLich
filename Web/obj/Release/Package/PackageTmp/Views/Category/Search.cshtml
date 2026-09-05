@@ -1,0 +1,160 @@
+﻿ 
+@using Web.Model.Domain
+@using Web.Core
+
+@{
+    int type = ViewBag.CateType;
+    TempData["BreadCrumb"] = ViewBag.BreadCrumb;
+    TempData["Title"] = ViewBag.Title;
+    TempData["Url"] = ViewBag.Link;
+    TempData["Description"] = ViewBag.Description;
+    TempData["UrlImage"] = "http://daichien.vn" + ViewBag.UrlImage;
+    Layout = "~/Views/Shared/_Layout4.cshtml";
+    var lstNews = ViewBag.ListNews;
+    var lstProducts = ViewBag.ListProducts;
+}
+
+<div id="content">
+    @if (type == (int)CategoryType.BaiViet)
+    {
+        <div id="gridData">
+
+        </div>
+        <div class="main-posts post-list">
+            @foreach (var item in lstNews)
+            {
+                <div class="post-layout ">
+                    <div class="post-thumb">
+                        <div class="image">
+                            <span class="p-date p-date-image">@item.CreatedDate.Day <i>thg @item.CreatedDate.Month</i></span>
+                            <a onclick="getInfoCategory()" href="/blog/@item.LinkSeo">
+                                <img src="@item.Image" srcset="@item.Image 1x, @item.Image 2x" width="300" height="225" alt="@item.MetaTitle" title="@item.MetaTitle" class="img-responsive" />
+                            </a>
+                        </div>
+                        <div class="caption">
+                            <div class="name"><a onclick="getInfoCategory()" href="/blog/@item.LinkSeo">@item.MetaTitle</a></div>
+                            <div class="description">@item.Description</div>
+                            <div class="button-group">
+                                <a class="btn btn-read-more" href="/blog/@item.LinkSeo">
+                                    <span class="btn-text">Xem thêm</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="row pagination-results">
+            <div class="text-center">
+                <ul class="pagination">
+                    <li class="active"><span>1</span></li>
+                    <li><a href="https://hailongpc.com/blog?page=2">2</a></li>
+                    <li><a href="https://hailongpc.com/blog?page=3">3</a></li>
+                    <li><a href="https://hailongpc.com/blog?page=4">4</a></li>
+                    <li><a href="https://hailongpc.com/blog?page=5">5</a></li>
+                    <li><a href="https://hailongpc.com/blog?page=6">6</a></li>
+                    <li><a href="https://hailongpc.com/blog?page=7">7</a></li>
+                    <li><a href="https://hailongpc.com/blog?page=8">8</a></li>
+                    <li><a href="https://hailongpc.com/blog?page=9">9</a></li>
+                    <li><a href="https://hailongpc.com/blog?page=2" class="next">&gt;</a></li>
+                    <li><a href="https://hailongpc.com/blog?page=27">&gt;|</a></li>
+                </ul>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="main-products-wrapper">
+            <div class="products-filter">
+                <div class="grid-list" style="margin-left:15px">
+                    <button id="btn-grid-view" class="view-btn active" data-toggle="tooltip" title="Lưới sản phẩm" data-view="grid"></button>
+                    <button id="btn-list-view" class="view-btn " data-toggle="tooltip" title="Danh sách" data-view="list"></button>
+                </div>
+                <div class="select-group" style="padding-right:15px">
+                    <div class="input-group input-group-sm sort-by">
+                        <label class="input-group-addon" for="input-sort">Sắp xếp theo:</label>
+                        <select id="input-sort" class="form-control" onchange="location = this.value;">
+                            <option value="/@ViewBag.Link?sort=p.sortorder&amp;order=ASC">Mặc định</option>
+                            <option value="/@ViewBag.Link?sort=p.name&amp;order=ASC">Tên (A - Z)</option>
+                            <option value="/@ViewBag.Link?sort=p.name&amp;order=DESC">Tên (Z - A)</option>
+                            <option value="/@ViewBag.Link?sort=p.price&amp;order=ASC" selected="selected">Giá (Thấp &gt; Cao)</option>
+                            <option value="/@ViewBag.Link?sort=p.price&amp;order=DESC">Giá (Cao &gt; Thấp)</option>
+                        </select>
+                    </div>
+                    <div class="input-group input-group-sm per-page">
+                        <label class="input-group-addon" for="input-limit">Hiển thị:</label>
+                        <select id="input-limit" class="form-control" onchange="location = this.value;">
+                            <option value="/@ViewBag.Link?limit=24" selected="selected">24</option>
+                            <option value="/@ViewBag.Link?limit=25">25</option>
+                            <option value="/@ViewBag.Link?limit=50">50</option>
+                            <option value="/@ViewBag.Link?limit=75">75</option>
+                            <option value="/@ViewBag.Link?limit=100">100</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="main-products product-grid">
+
+                @foreach (var item in lstProducts)
+                {
+                    <div class="product-layout  has-extra-button">
+                        <div class="product-thumb">
+                            <div class="image">
+                                <div class="quickview-button">
+                                    <a class="btn btn-quickview" data-toggle="tooltip" data-tooltip-class="product-grid quickview-tooltip" data-placement="top" title="Quickview" onclick="quickview('78')"><span class="btn-text">Quickview</span></a>
+                                </div>
+                                <a href="/product/@item.LinkSeo" class="product-img ">
+                                    <div>
+                                        <img src="@item.Image" srcset="@item.Image 1x, @item.Image 2x"
+                                             width="250" height="250" alt="/@item.Name" title="/@item.Name" class="img-responsive img-first" />
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="caption">
+                                <div class="stats">
+                                    <span class="stat-1"><span class="stats-label">Hãng:</span> <span><a href="#">@item.Brand</a></span></span>
+                                    <span class="stat-2"><span class="stats-label">Mã:</span> <span>@item.Code</span></span>
+                                </div>
+                                <div class="name"><a href="/product/@item.LinkSeo">@item.Name</a></div>
+                                <div class="description">..</div>
+                                <div class="price">
+                                    <div>
+                                        @if (item.Price == null)
+                                        {
+                                            <span class="price-normal">Giá: <span style="color:red">Liên hệ</span></span>
+                                        }
+                                        else
+                                        {
+                                            <div class="product-normal">Giá: @string.Format("{0:0,0}", item.Price).Replace(",", ".")đ</div>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="rating no-rating ">
+                                    <div class="rating-stars">
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                    </div>
+                                </div>
+                                <div class="extra-group">
+                                    <div>
+                                        <a class="btn btn-extra btn-extra-93" href="javascript:open_popup(@item.ID)" data-product_id="@item.ID" data-product_url="/@item.LinkSeo" data-loading-text="<span class='btn-text'>đặt hàng</span>">
+                                            <span class="btn-text">đặt hàng</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+            <div class="row pagination-results">
+                <div class="col-sm-6 text-left"></div>
+                <div class="col-sm-6 text-right">Hiển thị 1 đến 4 trong tổng số 4 (1 Trang)</div>
+            </div>
+        </div>
+    }
+</div>  

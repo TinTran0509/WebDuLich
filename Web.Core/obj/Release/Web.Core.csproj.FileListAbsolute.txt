@@ -1,0 +1,6 @@
+G:\BearShop\Web.Core\bin\Release\Web.Core.dll
+G:\BearShop\Web.Core\bin\Release\Web.Core.pdb
+G:\BearShop\Web.Core\obj\Release\Web.Core.csproj.AssemblyReference.cache
+G:\BearShop\Web.Core\obj\Release\Web.Core.csproj.CoreCompileInputs.cache
+G:\BearShop\Web.Core\obj\Release\Web.Core.dll
+G:\BearShop\Web.Core\obj\Release\Web.Core.pdb

@@ -1,0 +1,12 @@
+﻿@using Web.Model
+@model List<News>
+@{
+    ViewBag.Title = "Hệ thống quản trị tin bài và sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    var rowUser = (UserAdmin)ViewBag.rowUser;
+}
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="pull-left page-title">Xin chào, @rowUser.FullName !</h4> 
+    </div>
+</div>

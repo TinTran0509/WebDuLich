@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Quản lý danh mục";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml"; 
+} 
+@model List<Web.Model.Category >
+<script src="~/AppJs/category.js"></script> 
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Quản lý danh mục</h3> 
+                <div style="top: 8px;position: absolute; right: 40px;" class="pull-right">
+                    <button type="button" class="btn btn-primary waves-effect waves-light" onclick="Category.loadfrmAdd() "><i class="fa fa-plus"></i> Thêm mới</button>
+                    <button type="button" class="btn btn-danger waves-effect waves-light" onclick="Category.onmultidelete() "><i class="fa fa-trash-o"></i> Xóa nhiều</button>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="table-responsive" id="gridData">
+
+                        </div>
+                        <div class="col-md-12" id="paginationholder">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

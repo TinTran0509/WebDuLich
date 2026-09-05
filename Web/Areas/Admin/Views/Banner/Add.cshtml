@@ -1,0 +1,104 @@
+﻿@using Web.Model
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    var languages = (List<tbl_Languages>)TempData["Languages"];
+}
+<script src="~/AppJs/banner.js"></script>
+@model Web.Model.CustomModel.BannerCreateViewModel
+@using (Ajax.BeginForm("Add", "Banner", null,
+    new AjaxOptions
+    {
+        HttpMethod = "POST",
+        OnSuccess = "Banner.onAddSuccess"
+    },
+    new { @id = "frmData", @class = "form-horizontal" }))
+ { 
+    <div class="article-create">
+        <h4>Thêm mới menu</h4>
+        <ul class="nav nav-tabs lang-tabs">
+            @for (int i = 0; i < Model.Languages.Count; i++)
+            {
+                <li class="@(i == 0 ? "active" : "")" onclick="Menu.getMenuTransByLang('@Model.Languages[i].LangCode')">
+                    <a href="#lang-@Model.Languages[i].LangCode"
+                       data-toggle="tab">
+                        @Model.Languages[i].LangName
+                    </a>
+                </li>
+            }
+        </ul>
+        <div class="tab-content">
+            @for (int i = 0; i < Model.Languages.Count; i++)
+            {
+                var lang = Model.Languages[i];
+                <div id="lang-@lang.LangCode"
+                     class="tab-pane @(i == 0 ? "active" : "")">
+                    <div class="form-group">
+                        <label class="col-md-1 control-label">Tên <span class="asterisk"> (*)</span></label>
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(m => m.Languages[i].Title, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group menu-trans">
+                        <label>Mô tả</label>
+                        @Html.TextBoxFor(m => m.Languages[i].Description, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group menu-trans">
+                        <label>Nội dung</label>
+                        @Html.TextAreaFor(m => m.Languages[i].Contents, new { @class = "form-control article-content", rows = 10 })
+                    </div>
+                    @Html.HiddenFor(m => m.Languages[i].LangCode)
+                    @Html.HiddenFor(m => m.Languages[i].LangName)
+                </div>
+            }
+        </div>
+        <div class="form-group menu-trans">
+            <label class="col-md-1 control-label">Ảnh <span class="asterisk"> (*)</span></label>
+            <div class="col-md-10">
+                <div class="col-md-2">
+                    @{ Html.RenderAction("UploadImage", "UploadFile", new { controlName = "Image" });}
+                </div>
+                <img style="width:100px" src="" id="prevImages">
+                <span class="error" id="spImg"></span>
+            </div>
+        </div> 
+        <hr />
+        <div class="form-group">
+            <div class="col-md-1 text-right"><a href="/admin/banner" class=""><i class="fa fa-arrow-left" aria-hidden="true"></i> Trở lại</a></div>
+            <div class="col-md-8 text-center">
+                <button type="submit" class="btn btn-primary waves-effect waves-light">Thêm mới</button>
+            </div>
+        </div>
+    </div>
+}
+<script>
+    $(document).ready(function () {
+        $('#Title').on('change', function () {
+            let link = $('#Title').val();
+            let linkSeo = RemoveMarkStr(link);
+            $('#LinkSeo').val(linkSeo);
+        })
+        $("#frmData").validate({
+            rules:
+            {
+                Title:
+                {
+                    required: true,
+                    maxlength: 250
+                }
+            },
+            messages:
+            {
+                Title:
+                {
+                    required: "Vui lòng nhập tiêu đề"
+                }
+            },
+            highlight: function (element) {
+                jQuery(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+            },
+            success: function (element) {
+                jQuery(element).closest('.form-group').removeClass('has-error');
+            }
+        });
+    });
+</script>

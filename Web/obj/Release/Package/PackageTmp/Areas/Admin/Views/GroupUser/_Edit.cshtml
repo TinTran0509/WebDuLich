@@ -1,0 +1,58 @@
+﻿
+<link rel="stylesheet" href="/Content/Admin/assets/colorpicker/css/colorpicker.css" type="text/css" />
+<script type="text/javascript" src="/Content/Admin/assets/colorpicker/js/colorpicker.js"></script>
+<script src="/Content/Admin/assets/ckfinder/ckfinder.js"></script>
+
+@using Web.Model
+@model tbl_GroupUser
+@using (Ajax.BeginForm("Edit", "GroupUser", null,
+    new AjaxOptions
+    {
+        HttpMethod = "POST",
+        OnSuccess = "groupuser.onEditSuccess"
+    },
+    new { @id = "basicForm", @class = "form-horizontal" }))
+{
+    @Html.HiddenFor(g=>g.ID)
+    <div class="form-group">
+        <label class="col-md-2 control-label">Tên nhóm</label>
+        <div class="col-md-10">
+            @Html.TextBoxFor(g => g.Name, new { @class = "form-control", placeholder = "Tên nhóm người dùng" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-10 pull-right">
+            <div class="checkbox checkbox-primary">
+                @{ var chkStatus = @Model.Status ? "checked" : "";}
+                <input id="Status" name="Status" type="checkbox" @chkStatus value="true">
+                <label for="Status">
+                    Kích hoạt
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-10 pull-right pl0">
+        <button type="submit" class="btn btn-primary waves-effect waves-light">Cập nhật</button>
+    </div>
+}
+<script>
+    // Basic Form
+    $(document).ready(function () {
+        $("#basicForm").validate({
+            rules:
+        {
+            Name:
+            {
+                required: true
+            }
+        },
+            messages:
+            {
+                Name:
+                {
+                    required: "Chưa nhập tên nhóm người dùng"
+                }
+            }
+        });
+    });
+</script>

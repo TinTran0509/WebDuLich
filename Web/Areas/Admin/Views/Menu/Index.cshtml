@@ -1,0 +1,91 @@
+﻿@{
+    ViewBag.Title = "Quản lý menu trang chủ";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    var lstAction = (List<int>)HttpContext.Current.Session["Action"];
+    var languages = (List<Web.Model.tbl_Languages>)TempData["Languages"];
+}
+<style>
+    .tab-buttons {
+        display: flex;
+        border-bottom: 1px solid #ddd;
+        gap: 5px;
+    }
+
+    .tab-button {
+        border: none;
+        background: #f5f5f5;
+        padding: 5px 15px;
+        cursor: pointer;
+    }
+
+    .tab-button.active {
+        background: #0d6efd;
+        color: white;
+    }
+
+    .tab-panel {
+        display: none;
+        padding: 20px;
+    }
+
+    .tab-panel.active {
+        display: block;
+    }
+</style>
+@using Web.Model.CustomModel 
+<script src="~/AppJs/menu.js"></script>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Quản lý Menu</h3>
+                <div class="tabs"> 
+                    <div class="tab-buttons">
+                        @foreach (var item in languages)
+                        {
+                            string acv = "";
+                            if (item.IsDefault)
+                            {
+                                acv = "active";
+                            }
+                            <button data-langcode="@item.LangCode" type="button" class="tab-button @acv" data-tab="tab-vi">@item.LangName</button>
+                        } 
+                    </div>
+                </div>
+                <div style="top: 8px;position: absolute; right: 40px;" class="pull-right">
+                    @if (lstAction != null && lstAction.Contains((int)EnumHelper.Action.Add))
+                    {
+                        <a href="/admin/menu/add" class="btn btn-primary waves-effect waves-light"><i class="fa fa-plus"></i> Thêm mới</a>
+                    }
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="table-responsive" id="gridData">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('.tab-button').on('click', function () {
+
+            $('.tab-button').removeClass('active');
+            $('.tab-panel').removeClass('active');
+
+            $(this).addClass('active');
+
+            const tabId = $(this).data('tab');
+
+            $('#' + tabId).addClass('active');
+
+            Menu.loadData(1);
+        });
+        Menu.loadData(1);
+    });
+</script>

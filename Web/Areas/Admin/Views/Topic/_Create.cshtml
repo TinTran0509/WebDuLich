@@ -1,0 +1,70 @@
+﻿@using Web.Model
+
+@model Topic
+@using (Ajax.BeginForm("Add", "Topic", null,
+    new AjaxOptions
+    {
+        HttpMethod = "POST",
+        OnSuccess = "Topic.onAddSuccess"
+    },
+    new { @id = "frmData", @class = "form-horizontal" }))
+{
+    <div class="form-group">
+        <label class="col-md-2 control-label">Tên<span class="asterisk"> (*)</span></label>
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Title, new { @class = "form-control", @placeholder = "Nhập tiêu đề" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Ảnh<span class="asterisk"> (*)</span></label>
+        <div class="col-md-10">
+            <div class="col-md-2">
+                @{ Html.RenderAction("UploadImage", "UploadFile", new { controlName = "Image" });}
+            </div>
+            <img src="" id="prevImages">
+            <span class="error" id="spImg"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-10 pull-right">
+            <div class="checkbox checkbox-primary">
+                <input id="Active" name="Active" type="checkbox" checked="" value="true">
+                <label for="Active">
+                    Active
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-12 text-center">
+            <button type="submit" class="btn btn-primary waves-effect waves-light">Thêm mới</button>
+        </div>
+    </div>
+}
+<script>
+    $(document).ready(function () {
+        $("#frmData").validate({
+            rules:
+            {
+                Title:
+                {
+                    required: true,
+                    maxlength: 250
+                }
+            },
+            messages:
+            {
+                Title:
+                {
+                    required: "Vui lòng nhập tiêu đề"
+                }
+            },
+            highlight: function (element) {
+                jQuery(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+            },
+            success: function (element) {
+                jQuery(element).closest('.form-group').removeClass('has-error');
+            }
+        });
+    });
+</script>

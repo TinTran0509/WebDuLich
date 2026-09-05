@@ -1,0 +1,87 @@
+﻿@{ Layout = null;
+    var obj = Model.GetType();
+    var multiple = obj.GetProperty("Multiple").GetValue(Model, null);
+    var type = obj.GetProperty("type") == null ? "document" : obj.GetProperty("type").GetValue(Model, null);
+}
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="/Assets/js/jquery-file-upload/css/jquery.fileupload.css" rel="stylesheet" />
+<link href="/Assets/js/jquery-file-upload/css/jquery.fileupload-ui.css" rel="stylesheet" />
+<script src="/Assets/js/jquery-file-upload/js/vendor/jquery.ui.widget.js"></script>
+<script src="/Assets/js/jquery-file-upload/js/vendor/tmpl.min.js"></script>
+<script src="/Assets/js/jquery-file-upload/js/vendor/load-image.min.js"></script>
+<script src="/Assets/js/jquery-file-upload/js/vendor/canvas-to-blob.min.js"></script>
+<script src="/Assets/js/jquery-file-upload/js/jquery.iframe-transport.js"></script>
+<script src="/Assets/js/jquery-file-upload/js/jquery.fileupload.js"></script>
+<script src="/Assets/js/jquery-file-upload/js/jquery.fileupload-process.js"></script>
+<script src="/Assets/js/jquery-file-upload/js/jquery.fileupload-image.js"></script>
+<script src="/Assets/js/jquery-file-upload/js/jquery.fileupload-audio.js"></script>
+<script src="/Assets/js/jquery-file-upload/js/jquery.fileupload-video.js"></script>
+<script src="/Assets/js/jquery-file-upload/js/jquery.fileupload-validate.js"></script>
+<script src="/Assets/js/jquery-file-upload/js/jquery.fileupload-ui.js"></script>
+<script type="text/javascript" src="/Assets/js/jquery-file-upload/js/main.js"></script>
+
+<script>
+    jQuery(document).ready(function () {
+        FormFileUpload.init("@multiple", "@type");
+    });
+</script>
+
+<div class="pull-left">
+    <div id="url_File"></div>
+    @if (multiple == false)
+    {
+        <span>
+            <input id="FileUpload" type="file" name="files[]" style="display:none">
+            <label id="falseinput" class="btn btn-primary margin-bottom control-label">Chọn file</label>
+        </span>
+    }
+</div>
+<input type="hidden" id="NumFile" name="NumFile" value="0" />
+<input type="hidden" id="nameoffile" name="nameoffile" value="@ViewBag.name" />
+<div id="ListFile">
+
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        //------custom button upload-------
+        $('#falseinput').click(function () {
+            $("#FileUpload").click();
+        });
+        //------/custom button upload-------
+
+        //------ upload file-------
+        $('#FileUpload').fileupload({
+            dataType: 'json',
+            url: '/UploadFile/UploadFileCreate',
+            autoUpload: true,
+            done: function (e, data) {
+                var namefile = $('#nameoffile').val();
+                //alert(namefile);
+                $("#f" + namefile).remove();
+                $('#url_File').append("<div id='f" + namefile + "'><img width='25px' height='25px' src= '" + data.result[0].Img + "' /><a href=" + decodeURIComponent(data.result[0].Url) + " target='_BLANK'>" + data.result[0].Name + " <a onclick=\"$('#f" + namefile + "').remove();\"><i class='icon_close_alt bs_ttip'></i></a></div>");
+                SetFileUpload(data.result[0].Name, decodeURIComponent(data.result[0].Url));
+            }
+        }).on('fileuploadprogressall', function (e, data) {
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $('.progress .progress-bar').css('width', progress + '%');
+        });
+
+        //------ /upload file-------
+    });
+    function SetFileUpload(name, url) {
+        var ValFile = name + "|" + url;
+        var namefile = $('#nameoffile').val();
+        $('#f' + namefile).append("<input type='hidden' id='" + namefile + "' name='" + namefile + "' value='" + ValFile + "'/>");
+    }
+    function Check() {
+        var NumFile = $("#CMT").val();
+        alert(NumFile);
+    }
+    function remove(idfile) {
+        alert(idfile);
+        $("#" + idfile).remove();
+        $("#Listfile").remove("#" + idfile);
+    }
+</script>
+
+

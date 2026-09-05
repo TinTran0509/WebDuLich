@@ -1,0 +1,149 @@
+﻿@using Web.Model;
+@{
+    ViewBag.Title = "Đăng ký";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutLogin.cshtml";
+    var lstdonvi = (List<tbl_DMChung>)TempData["donvi"];
+    lstdonvi.ForEach(g => g.Ten = string.Concat(Enumerable.Repeat("--", g.Level)) + " " + g.Ten);
+    var lstchucvu = (List<tbl_ChucVu>)TempData["chucvu"];
+}
+@using Web.Areas.Admin.Controllers
+@model Web.Model.tbl_User
+<script src="/Scripts/jquery.validate.min.js"></script>
+<div class="panel panel-color panel-primary panel-pages" style="box-shadow: 1px 30px 48px 5px rgba(142, 142, 142, 0.71); ">
+    <div class="panel-heading bg-img toplogin">
+        <img src="/Content/Admin/images/logo.png" />
+        <h3 class="text-center m-t-10 text-white">@ConfigTextController.GetValueCFT("register_taomoi") <br> @ConfigTextController.GetValueCFT("login_title")</h3>
+    </div>
+    <div class="panel-body">
+        @using (Html.BeginForm("Register", "User", FormMethod.Post, new { id = "frmDKThanhVien", @class = "form-horizontal" }))
+        {
+            if (ViewBag.existUser == 1)
+            {
+                <div class="form-group">
+                    <div class="col-xs-12 text-danger">Tên đăng nhập đã tồn tại !</div>
+                </div>
+            }
+            <div class="form-group ">
+                <div class="col-xs-12">
+                    @Html.TextBoxFor(g => g.UserName, new { @class = "form-control input-lg", required = "", placeholder = @ConfigTextController.GetValueCFT("tendangnhap") })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-12">
+                    @Html.PasswordFor(g => g.Password, new { @class = "form-control input-lg", required = "", placeholder = @ConfigTextController.GetValueCFT("matkhau") })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-12">
+                    @Html.TextBoxFor(g => g.FullName, new { @class = "form-control input-lg", placeholder = @ConfigTextController.GetValueCFT("lienhe_hovaten") })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-12">
+                    @Html.TextBoxFor(g => g.Email, new { @class = "form-control input-lg", type = "email", required = "", placeholder = @ConfigTextController.GetValueCFT("lienhe_email") })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-12">
+                   @Html.DropDownListFor(x => x.DonviId, new SelectList(lstdonvi, "Id", "Ten"), "--"+@ConfigTextController.GetValueCFT("register_donvi")+"--", new { @class = "form-control input-lg" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-12">
+                    @Html.DropDownListFor(x => x.ChucVuId, new SelectList(lstchucvu, "ID", "Name"), "--"+@ConfigTextController.GetValueCFT("register_chucvu")+"--", new { @class = "form-control input-lg" })
+                </div>
+            </div>
+            <div class="form-group ">
+                <div class="col-xs-12">
+                    @Html.TextBoxFor(g => g.Telephone, new { @class = "form-control input-lg", placeholder = @ConfigTextController.GetValueCFT("register_dtban") })
+                </div>
+            </div>
+            <div class="form-group ">
+                <div class="col-xs-12">
+                    @Html.TextBoxFor(g => g.Phone, new { @class = "form-control input-lg", placeholder = @ConfigTextController.GetValueCFT("register_sodd") })
+                </div>
+            </div>
+            <div class="form-group text-center m-t-40">
+                <div class="col-xs-12">
+                    <button class="btn btn-primary waves-effect waves-light btn-lg w-lg submitbtn" type="submit">@ConfigTextController.GetValueCFT("register")</button>
+                </div>
+            </div>
+
+            <div class="form-group m-t-30">
+                <div class="col-sm-12 text-center">
+                    @Html.ActionLink(@ConfigTextController.GetValueCFT("register_exist"), "Login")
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<script>
+    // Basic Form
+    $(document).ready(function () {
+        $.validator.addMethod("regex", function (value, element, regexpr) {
+            return regexpr.test(value);
+        }, "Please enter a valid pasword.");
+        $("#frmDKThanhVien").validate({
+            rules:
+            {
+                UserName:
+                {
+                    required: true,
+                    regex: /^[a-zA-Z0-9_-]+$/
+                },
+                Password:
+                {
+                    required: true,
+                    minlength: 6,
+                },
+                FullName:
+                {
+                    required: true
+                },
+                Email:
+                {
+                    email: true,
+                    required: true
+                },
+                Phone:
+                {
+                    required: true,
+                    minlength: 10,
+                    maxlength: 14,
+                },
+            },
+            messages:
+            {
+                UserName:
+                {
+                    required: "@ConfigTextController.GetValueCFT("register_validten")",
+                    regex: "@ConfigTextController.GetValueCFT("register_regexUserName")"
+                },
+                Password:
+                {
+                    required: "@ConfigTextController.GetValueCFT("pass_validpass")",
+                    minlength: "@ConfigTextController.GetValueCFT("pass_minlength")"
+                },
+                FullName:
+                {
+                    required: "@ConfigTextController.GetValueCFT("edit_validatehoten")"
+                },
+                Email:
+                {
+                    email: "@ConfigTextController.GetValueCFT("lienhe_validatEmail")",
+                    required: "@ConfigTextController.GetValueCFT("register_validemail")"
+                },
+                Phone: {
+                    required: "@ConfigTextController.GetValueCFT("register_validphone")",
+                    minlength: "@ConfigTextController.GetValueCFT("register_validphonemin")",
+                    maxlength: "@ConfigTextController.GetValueCFT("register_validphonemax")",
+                }
+            }
+        });
+    });
+</script>
+<style>
+    label {
+        font-weight: normal;
+    }
+</style>

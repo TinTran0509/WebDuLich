@@ -1,0 +1,28 @@
+﻿@{ 
+    string pathName = (string)TempData["PathName"];
+    string path = ViewBag.Path;
+    string linkpath = ViewBag.LinkPath;
+}
+@if (!string.IsNullOrEmpty(path))
+{
+    <div class="breadcrumb-svn">
+        <ul>
+            <li><a href="/">Trang chủ</a></li>
+            <i class="fa fa-angle-right" aria-hidden="true"></i>
+            <li><a href="/@linkpath">@path</a></li>
+            <i class="fa fa-angle-right" aria-hidden="true"></i>
+            <li class="active" ><a href="javasrcipt:void(0)" id="pathway"></a></li>
+        </ul>
+    </div>
+}
+else
+{
+    <div class="breadcrumb-svn">
+        <ul>
+            <li><a href="/">Trang chủ</a></li>
+            <i class="fa fa-angle-right" aria-hidden="true"></i>
+            <li class="active"><a href="javasrcipt:void(0)">@pathName</a></li>
+        </ul>
+    </div>
+}
+ 

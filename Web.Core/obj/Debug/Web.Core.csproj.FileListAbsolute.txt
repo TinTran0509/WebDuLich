@@ -1,0 +1,57 @@
+E:\New folder\LedQuaTang\Web.Core\bin\Debug\Web.Core.dll
+E:\New folder\LedQuaTang\Web.Core\bin\Debug\Web.Core.pdb
+E:\New folder\LedQuaTang\Web.Core\obj\Debug\Web.Core.csproj.CoreCompileInputs.cache
+E:\New folder\LedQuaTang\Web.Core\obj\Debug\Web.Core.dll
+E:\New folder\LedQuaTang\Web.Core\obj\Debug\Web.Core.pdb
+E:\New folder\LedQuaTang\Web.Core\obj\Debug\Web.Core.csprojAssemblyReference.cache
+D:\đồ án\LedQuaTang\Web.Core\bin\Debug\Web.Core.dll
+D:\đồ án\LedQuaTang\Web.Core\bin\Debug\Web.Core.pdb
+D:\đồ án\LedQuaTang\Web.Core\obj\Debug\Web.Core.csprojAssemblyReference.cache
+D:\đồ án\LedQuaTang\Web.Core\obj\Debug\Web.Core.csproj.CoreCompileInputs.cache
+D:\đồ án\LedQuaTang\Web.Core\obj\Debug\Web.Core.dll
+D:\đồ án\LedQuaTang\Web.Core\obj\Debug\Web.Core.pdb
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Core\bin\Debug\Web.Core.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Core\bin\Debug\Web.Core.pdb
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Core\obj\Debug\Web.Core.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Core\obj\Debug\Web.Core.pdb
+E:\BearShop\Web.Core\bin\Debug\Web.Core.dll
+E:\BearShop\Web.Core\bin\Debug\Web.Core.pdb
+E:\BearShop\Web.Core\obj\Debug\Web.Core.dll
+E:\BearShop\Web.Core\obj\Debug\Web.Core.pdb
+E:\BearShop\Web.Core\obj\Debug\Web.Core.csprojResolveAssemblyReference.cache
+D:\PROJECTMORE\BearShop\Web.Core\bin\Debug\Web.Core.dll
+D:\PROJECTMORE\BearShop\Web.Core\bin\Debug\Web.Core.pdb
+D:\PROJECTMORE\BearShop\Web.Core\obj\Debug\Web.Core.csproj.AssemblyReference.cache
+D:\PROJECTMORE\BearShop\Web.Core\obj\Debug\Web.Core.csproj.CoreCompileInputs.cache
+D:\PROJECTMORE\BearShop\Web.Core\obj\Debug\Web.Core.dll
+D:\PROJECTMORE\BearShop\Web.Core\obj\Debug\Web.Core.pdb
+G:\BearShop\Web.Core\bin\Debug\Web.Core.dll
+G:\BearShop\Web.Core\bin\Debug\Web.Core.pdb
+G:\BearShop\Web.Core\obj\Debug\Web.Core.csproj.AssemblyReference.cache
+G:\BearShop\Web.Core\obj\Debug\Web.Core.csproj.CoreCompileInputs.cache
+G:\BearShop\Web.Core\obj\Debug\Web.Core.dll
+G:\BearShop\Web.Core\obj\Debug\Web.Core.pdb
+G:\SaoVangJSC\SaoVangJSC\Web.Core\bin\Debug\Web.Core.dll
+G:\SaoVangJSC\SaoVangJSC\Web.Core\bin\Debug\Web.Core.pdb
+G:\SaoVangJSC\SaoVangJSC\Web.Core\obj\Debug\Web.Core.csproj.AssemblyReference.cache
+G:\SaoVangJSC\SaoVangJSC\Web.Core\obj\Debug\Web.Core.csproj.CoreCompileInputs.cache
+G:\SaoVangJSC\SaoVangJSC\Web.Core\obj\Debug\Web.Core.dll
+G:\SaoVangJSC\SaoVangJSC\Web.Core\obj\Debug\Web.Core.pdb
+D:\WebDuLich\Web\Web.Core\bin\Debug\Web.Core.dll
+D:\WebDuLich\Web\Web.Core\bin\Debug\Web.Core.pdb
+D:\WebDuLich\Web\Web.Core\obj\Debug\Web.Core.csproj.AssemblyReference.cache
+D:\WebDuLich\Web\Web.Core\obj\Debug\Web.Core.csproj.CoreCompileInputs.cache
+D:\WebDuLich\Web\Web.Core\obj\Debug\Web.Core.dll
+D:\WebDuLich\Web\Web.Core\obj\Debug\Web.Core.pdb
+D:\PROJECTMORE\Lummia\Web\Web.Core\bin\Debug\Web.Core.dll
+D:\PROJECTMORE\Lummia\Web\Web.Core\bin\Debug\Web.Core.pdb
+D:\PROJECTMORE\Lummia\Web\Web.Core\obj\Debug\Web.Core.csproj.AssemblyReference.cache
+D:\PROJECTMORE\Lummia\Web\Web.Core\obj\Debug\Web.Core.csproj.CoreCompileInputs.cache
+D:\PROJECTMORE\Lummia\Web\Web.Core\obj\Debug\Web.Core.dll
+D:\PROJECTMORE\Lummia\Web\Web.Core\obj\Debug\Web.Core.pdb
+D:\WebDuLich\Lummia\Web\Web.Core\bin\Debug\Web.Core.dll
+D:\WebDuLich\Lummia\Web\Web.Core\bin\Debug\Web.Core.pdb
+D:\WebDuLich\Lummia\Web\Web.Core\obj\Debug\Web.Core.csproj.AssemblyReference.cache
+D:\WebDuLich\Lummia\Web\Web.Core\obj\Debug\Web.Core.csproj.CoreCompileInputs.cache
+D:\WebDuLich\Lummia\Web\Web.Core\obj\Debug\Web.Core.dll
+D:\WebDuLich\Lummia\Web\Web.Core\obj\Debug\Web.Core.pdb

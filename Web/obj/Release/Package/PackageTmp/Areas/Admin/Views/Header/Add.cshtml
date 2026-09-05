@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+@model Web.Model.Header
+ <div class="page-content-wrapper ">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-primary">
+                    <div class="panel-body">
+                        <h4 class="m-b-30 m-t-0">Cấu hình đầu trang</h4>
+                        <div id="loadData" class="row">
+                            <form id = "frmData" class = "form-horizontal">
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">Mạng xã hội<span class="asterisk"> (*)</span></label>
+                                    <div class="col-md-10">
+                                        <textarea id="Social" name="Social" rows="10" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">Hot Line <span class="asterisk"> (*)</span></label>
+                                    <div class="col-md-10">
+                                        <textarea id="HotLine" name="HotLine"  class="form-control"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-offset-3 col-md-9">
+                                        <button type="button" onclick="saveFooter()" id="btnsaveadd" class="btn btn-primary">Lưu lại</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@if (Model != null)
+{
+    <input type="hidden" id="headerId" value="@Model.ID" />
+    <input type="hidden" id="headerContent" value="@Model.Contents" />
+}
+<script>
+    function saveFooter() {
+        let contentFooter = [];
+        contentFooter.push({
+            Key: "Social",
+            Value: $("#Social").val()
+        });
+        contentFooter.push({
+            Key: "HotLine",
+            Value: $("#HotLine").val()
+        });
+        let id = $('#headerId').val();
+        if (id == undefined)
+            id = 0;
+        $.ajax({
+            type: "POST",
+            url: "/Admin/Header/Add",
+            data: { id: id ,content: JSON.stringify(contentFooter)},
+            success: function (res) {
+                for (var i = 0; i < res.length; i++) {
+                    $("#" + res[i].Key).val(res[i].Value);
+                }
+                alertmsg.success(res.Message);
+            },
+            dataType: "json"
+        });
+    }
+    let content = $('#headerContent').val();
+    var lstdata = JSON.parse(content);
+    for (var i = 0; i < lstdata.length; i++) {
+        $("#" + lstdata[i].Key).val(lstdata[i].Value);
+    }
+</script>
+
+
+ 
