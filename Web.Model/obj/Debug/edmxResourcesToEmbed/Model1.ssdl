@@ -90,10 +90,10 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="nvarchar" MaxLength="100" />
     <Property Name="LangCode" Type="varchar" MaxLength="10" />
-    <Property Name="CountryID" Type="int" Nullable="false" />
+    <Property Name="CountryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
   <EntityType Name="Header">
     <Key>
@@ -122,6 +122,24 @@
     <Property Name="Description" Type="nvarchar" MaxLength="500" />
     <Property Name="Contents" Type="nvarchar(max)" />
     <Property Name="IntroductionID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Location">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Image" Type="varchar" MaxLength="250" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LocationTrans">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="LangCode" Type="varchar" MaxLength="10" />
+    <Property Name="LocationID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Menu">
     <Key>
@@ -401,6 +419,8 @@
     <EntitySet Name="Header" EntityType="Self.Header" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Introduction" EntityType="Self.Introduction" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="IntroductionTrans" EntityType="Self.IntroductionTrans" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LocationTrans" EntityType="Self.LocationTrans" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MenuHome" EntityType="Self.MenuHome" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MenuTrans" EntityType="Self.MenuTrans" Schema="dbo" store:Type="Tables" />

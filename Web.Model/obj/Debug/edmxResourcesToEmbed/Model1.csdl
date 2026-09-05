@@ -228,6 +228,8 @@
     <EntitySet Name="Products" EntityType="WebDuLichModel.Product" />
     <EntitySet Name="Countries" EntityType="WebDuLichModel.Country" />
     <EntitySet Name="CountryTrans" EntityType="WebDuLichModel.CountryTran" />
+    <EntitySet Name="Locations" EntityType="WebDuLichModel.Location" />
+    <EntitySet Name="LocationTrans" EntityType="WebDuLichModel.LocationTran" />
   </EntityContainer>
   <ComplexType Name="Sp_News_GetByLinkSeo_Result">
     <Property Type="Int32" Name="ID" Nullable="false" />
@@ -469,5 +471,23 @@
     <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="LangCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="CountryID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Location">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Image" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LocationTran">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="LangCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="LocationID" Type="Int32" Nullable="false" />
   </EntityType>
 </Schema>

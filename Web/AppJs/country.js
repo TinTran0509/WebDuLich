@@ -1,7 +1,7 @@
 ﻿var Country = function () {
     return {
         init: function () { 
-            Country.loadData(1);
+           
         },
         loadData: function (page) {
             $("#loading").show();

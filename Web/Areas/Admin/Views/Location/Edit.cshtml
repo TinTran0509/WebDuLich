@@ -1,0 +1,88 @@
+﻿@using Web.Model
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml"; 
+}
+ 
+<script src="~/AppJs/location.js"></script>
+@model Web.Model.CustomModel.LocationCreateViewModel
+@using (Ajax.BeginForm("Edit", "Location", null,
+                new AjaxOptions
+                {
+                    HttpMethod = "POST",
+                    OnSuccess = "Location.onEditSuccess"
+                },
+                new { @id = "frmData", @class = "form-horizontal" }))
+ {
+    @Html.HiddenFor(x => x.ID)
+<div class="article-create">
+    <div class="form-group">
+        <div class="col-md-2 text-left">
+            <a href="/admin/location" class=""><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay trở lại</a>
+        </div>
+        <div class="col-md-6"> 
+        </div>
+    </div> 
+    <div class="form-group">
+        <label class="col-md-1 control-label">Ảnh <span class="asterisk"> (*)</span></label>
+        <div class="col-md-10">
+            <div class="col-md-2">
+                @{ Html.RenderAction("UploadImage", "UploadFile", new { controlName = "Image" });}
+            </div>
+            <img style="width:150px" src="@Model.Image" id="prevImages">
+            <span class="error" id="spImg"></span>
+        </div>
+    </div>
+    <ul class="nav nav-tabs lang-tabs">
+        @for (int i = 0; i < Model.Languages.Count; i++)
+        {
+            <li class="@(i == 0 ? "active" : "")">
+                <a href="#lang-@Model.Languages[i].LangCode"
+                   data-toggle="tab">
+                    @Model.Languages[i].LangName
+                </a>
+            </li>
+        }
+    </ul>
+    <div class="tab-content">
+        @for (int i = 0; i < Model.Languages.Count; i++)
+        {
+            var lang = Model.Languages[i];
+            <div id="lang-@lang.LangCode"
+                 class="tab-pane @(i == 0 ? "active" : "")">
+                <div class="form-group">
+                    <label>Tên<span class="asterisk"> (*)</span></label>
+                    @Html.TextBoxFor(m => m.Languages[i].Name, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Mô tả <span style="font-style:italic; font-weight:normal"> (Không quá 500 ký tự)</span></label>
+                    @Html.TextAreaFor(m => m.Languages[i].Description, new { @class = "form-control", @spellcheck = "false", @rows = 10 })
+                </div>
+                @Html.HiddenFor(m => m.Languages[i].ID)
+                @Html.HiddenFor(m => m.Languages[i].LangCode)
+                @Html.HiddenFor(m => m.Languages[i].LangName)
+            </div>
+        }
+    </div>
+    <div class="form-group">
+        <div class="col-sm-12 pull-right">
+            <div class="checkbox checkbox-primary">
+                <input id="Active" name="Active" type="checkbox" @(Model.Active ? "checked=''" : "") value="true">
+                <label for="Active">
+                    Active
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-2 text-left"><a href="/admin/location" class=""><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay trở lại</a></div>
+        <div class="col-md-7 text-center">
+            <button type="submit" class="btn btn-primary waves-effect waves-light">Cập nhật</button>
+        </div>
+    </div>
+</div>
+} 
+<script> 
+    $(document).ready(function () {
+       
+    }); 
+</script>

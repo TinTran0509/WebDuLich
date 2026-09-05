@@ -212,6 +212,7 @@
     <Compile Include="App_Start\SubDomainRoute.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\LocationController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContactController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
@@ -262,6 +263,7 @@
     <Compile Include="Webconfig.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AppJs\location.js" />
     <Content Include="AppJs\product.js" />
     <Content Include="AppJs\menuhome.js" />
     <Content Include="AppJs\introduction.js" />
@@ -17304,6 +17306,10 @@
     <Content Include="Areas\Admin\Views\Product\Add.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Location\_ListData.cshtml" />
+    <Content Include="Areas\Admin\Views\Location\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Location\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Location\Index.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Images\IconFile\ExcelIcon.png" />

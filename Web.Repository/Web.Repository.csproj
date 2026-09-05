@@ -46,6 +46,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ILocationRepository.cs" />
     <Compile Include="IntroductionTransRepository.cs" />
     <Compile Include="IProductTransRepository.cs" />
     <Compile Include="IProductRepository.cs" />
