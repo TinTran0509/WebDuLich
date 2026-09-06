@@ -3,6 +3,7 @@
     ViewBag.Title = "Cập nhật sản phẩm";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
     var menus = (List<MenuTran>)TempData["Menus"];
+    var locations = (List<LocationTran>)TempData["Location"];
 }
 <style>
     .check-radio {
@@ -74,13 +75,31 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-1 control-label">Mã<span class="asterisk"> (*)</span></label>
+        <label class="col-md-2 control-label">Mã<span class="asterisk"> (*)</span></label>
         <div class="col-md-3">
             @Html.TextBoxFor(model => model.ProductCode, new { @class = "form-control" })
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-1 control-label">Loại<span class="asterisk"> (*)</span></label>
+        <label class="col-md-2 control-label">Giá<span class="asterisk"> (*)</span></label>
+        <div class="col-md-3 lockchar">
+            @Html.TextBoxFor(model => model.Price, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Số người</label>
+        <div class="col-md-1 lockchar">
+            @Html.TextBoxFor(model => model.Size, new { @class = "form-control", @type = "number" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Số ngày đi</label>
+        <div class="col-md-1 lockchar">
+            @Html.TextBoxFor(model => model.DayNumber, new { @class = "form-control", @type = "number" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Loại hình<span class="asterisk"> (*)</span></label>
         <div class="col-md-3">
             <select class="form-control" name="Type" id="Type">
                 <option value="0">--- Chọn loại hình ---</option>
@@ -90,8 +109,19 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-1 control-label">Chủ đề <span class="asterisk"> (*)</span></label>
-        <div class="col-md-11">
+        <label class="col-md-2 control-label">Điểm đến<span class="asterisk"> (*)</span></label>
+        <div class="col-md-8">
+            <select class="form-control select2" multiple name="LocationID" id="LocationID">
+                @foreach (var item in locations)
+                {
+                    <option value="@item.ID">@item.Name</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Chủ đề <span class="asterisk"> (*)</span></label>
+        <div class="col-md-10">
             @foreach (var item in menus)
             {
                 <label class="check-radio">
@@ -102,7 +132,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-1 control-label">Ảnh <span class="asterisk"> (*)</span></label>
+        <label class="col-md-2 control-label">Ảnh <span class="asterisk"> (*)</span></label>
         <div class="col-md-10">
             <div class="col-md-2">
                 @{ Html.RenderAction("UploadImage", "UploadFile", new { controlName = "Image" });}
@@ -168,6 +198,8 @@
             let linkSeo = RemoveMarkStr(link);
             $('#LinkSeo').val(linkSeo);
         });
+        var values = '@ViewBag.SelectedLocation'.split(';');
+        $('#LocationID').val(values).trigger('change');
         $("#frmData").validate({
             rules:
             {

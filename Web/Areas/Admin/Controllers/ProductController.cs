@@ -1,6 +1,8 @@
 ﻿using Excel.Log.Logger;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -23,6 +25,7 @@ namespace Web.Areas.Admin.Controllers
         readonly ILanguageRepository languageRepository = new LanguageRepository();
         readonly IMenuTransRepository menuTransRepository = new MenuTransRepository(); 
         readonly IProductTransRepository productTransRepository = new ProductTransRepository();
+        readonly ILocationRepository locationRepository = new LocationRepository();
         //
 
         [Authorize(Roles = "Index")]
@@ -58,8 +61,10 @@ namespace Web.Areas.Admin.Controllers
             {
                 TempData["Menus"] = menuTransRepository.GetAll().
                     Where(x => x.ParentID != 0 && x.LangCode.Equals(language.LangCode)).ToList();
-            }
-           
+
+                TempData["Location"] = locationRepository.GetAllLocationTrans().Where(x => x.LangCode.Equals(language.LangCode)).ToList();
+            } 
+
             List<tbl_Languages> tbl_Languages = languageRepository.GetByActive().ToList();
             List<ProductLanguageViewModel> productLanguageViewModels = new List<ProductLanguageViewModel>();
           
@@ -167,6 +172,10 @@ namespace Web.Areas.Admin.Controllers
                     Image = model.Image,
                     MenuID = model.MenuID,
                     Type = model.Type,
+                    Price = model.Price,
+                    Size = model.Size, 
+                    LocationID = string.Join(";", model.LocationID),
+                    DayNumber = model.DayNumber,
                     Active = true
                 };
 
@@ -201,6 +210,8 @@ namespace Web.Areas.Admin.Controllers
             tbl_Languages tbl_Language = tbl_Languages.FirstOrDefault(x => x.IsDefault);
             TempData["Menus"] = menuTransRepository.GetAll().Where(x => x.ParentID != 0 && x.LangCode.Equals(tbl_Language.LangCode)).ToList();
 
+            TempData["Location"] = locationRepository.GetAllLocationTrans().Where(x => x.LangCode.Equals(tbl_Language.LangCode)).ToList();
+
             List<ProductTran> lstProductTrans = productTransRepository.GetAll().Where(x => x.ProductID == id).ToList();
 
             Product product = productRepository.Find(id);
@@ -232,10 +243,25 @@ namespace Web.Areas.Admin.Controllers
                 MenuID = product.MenuID,
                 Active = product.Active,
                 Image = product.Image,
+                Price = (double)product.Price,
+                Size = (int)product.Size,
+                DayNumber = (int)product.DayNumber,
                 CreatedDate = product.CreatedDate,
                 Languages = productLanguageViewModels
             };
-
+            if (!string.IsNullOrEmpty(product.LocationID))
+            {
+                List<LocationTran> locationTrans = locationRepository.GetByLocationID(product.LocationID.Replace(';',','), tbl_Language.LangCode).ToList();
+                if(locationTrans != null)
+                {
+                    string locationTransIDs = string.Empty;
+                    foreach (var item in locationTrans)
+                    {
+                        locationTransIDs += !string.IsNullOrEmpty(locationTransIDs) ? ";" + item.ID : item.ID + "";
+                    }
+                    ViewBag.SelectedLocation = locationTransIDs;
+                } 
+            } 
             return View(model);
         }
 

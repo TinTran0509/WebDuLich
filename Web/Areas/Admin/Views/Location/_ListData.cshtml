@@ -1,6 +1,6 @@
 ﻿@{
     var lstAction = (List<int>)HttpContext.Current.Session["Action"];
-    int id = 0, bannerID = 0;
+    int id = 0, locationID = 0;
 }
 @using Web.Core
 @using Web.Model.CustomModel
@@ -20,7 +20,7 @@
             @foreach (var item in Model)
             {
                 string group = "group-banner";
-                if(bannerID != item.LocationID)
+                if(locationID != item.LocationID)
                 {
                     group = "";
                 }
@@ -51,7 +51,7 @@
                     }
                 </tr>
                 id = item.ID;
-                bannerID = item.LocationID;
+                locationID = item.LocationID;
             }
         </tbody>
     </table>

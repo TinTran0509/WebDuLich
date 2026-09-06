@@ -14,6 +14,10 @@ namespace Web.Model.CustomModel
         public bool Active { get; set; }
         public int MenuID { get; set; }
         public int Type { get; set; }
+        public double Price { get; set; }
+        public int Size { get; set; }
+        public int DayNumber { get; set; }
+        public List<int> LocationID { get; set; }
         public DateTime CreatedDate { get; set; }
         public List<ProductLanguageViewModel> Languages { get; set; }
     }

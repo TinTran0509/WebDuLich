@@ -31,11 +31,13 @@
         <EntityTypeShape EntityType="WebDuLichModel.ProductTran" Width="1.5" PointX="15.375" PointY="3.75" />
         <EntityTypeShape EntityType="WebDuLichModel.Introduction" Width="1.5" PointX="0.75" PointY="14.75" />
         <EntityTypeShape EntityType="WebDuLichModel.IntroductionTran" Width="1.5" PointX="5.75" PointY="15.75" />
-        <EntityTypeShape EntityType="WebDuLichModel.Product" Width="1.5" PointX="15.375" PointY="13.75" />
         <EntityTypeShape EntityType="WebDuLichModel.Country" Width="1.5" PointX="16.375" PointY="0.75" />
         <EntityTypeShape EntityType="WebDuLichModel.CountryTran" Width="1.5" PointX="16.375" PointY="7.75" />
         <EntityTypeShape EntityType="WebDuLichModel.Location" Width="1.5" PointX="8.375" PointY="16.75" />
         <EntityTypeShape EntityType="WebDuLichModel.LocationTran" Width="1.5" PointX="16.375" PointY="10.75" />
+        <EntityTypeShape EntityType="WebDuLichModel.Hotel" Width="1.5" PointX="0.75" PointY="17.75" />
+        <EntityTypeShape EntityType="WebDuLichModel.HotelTran" Width="1.5" PointX="2.75" PointY="17.75" />
+        <EntityTypeShape EntityType="WebDuLichModel.Product" Width="1.5" PointX="15.375" PointY="13.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

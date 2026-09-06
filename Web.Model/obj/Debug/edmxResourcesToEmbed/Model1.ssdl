@@ -103,6 +103,25 @@
     <Property Name="Contents" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Language" Type="varchar" MaxLength="2" />
   </EntityType>
+  <EntityType Name="Hotel">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Image" Type="varchar" MaxLength="250" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="Rating" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HotelTrans">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="LangCode" Type="varchar" MaxLength="10" />
+    <Property Name="HotelID" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="Introduction">
     <Key>
       <PropertyRef Name="ID" />
@@ -205,6 +224,10 @@
     <Property Name="Active" Type="bit" Nullable="false" />
     <Property Name="MenuID" Type="int" Nullable="false" />
     <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="Price" Type="float" />
+    <Property Name="Size" Type="int" />
+    <Property Name="DayNumber" Type="int" />
+    <Property Name="LocationID" Type="varchar" MaxLength="100" />
     <Property Name="CreatedDate" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="ProductTrans">
@@ -417,6 +440,8 @@
     <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CountryTrans" EntityType="Self.CountryTrans" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Header" EntityType="Self.Header" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Hotel" EntityType="Self.Hotel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HotelTrans" EntityType="Self.HotelTrans" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Introduction" EntityType="Self.Introduction" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="IntroductionTrans" EntityType="Self.IntroductionTrans" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />

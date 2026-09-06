@@ -34,6 +34,10 @@ namespace Web.Repository.Entity
                     parameters.Add("MenuID", obj.MenuID);
                     parameters.Add("Active", obj.Active);
                     parameters.Add("Type", obj.Type);
+                    parameters.Add("Price", obj.Price);
+                    parameters.Add("Size", obj.Size);
+                    parameters.Add("DayNumber", obj.DayNumber);
+                    parameters.Add("LocationID", obj.LocationID);
                     parameters.Add("ID", dbType: DbType.Int32, direction: ParameterDirection.Output);
                     conn.Execute("Sp_Product_Insert",
                         parameters,
@@ -62,7 +66,11 @@ namespace Web.Repository.Entity
                     parameters.Add("Image", obj.Image);
                     parameters.Add("MenuID", obj.MenuID);
                     parameters.Add("Active", obj.Active);
-                    parameters.Add("Type", obj.Type); 
+                    parameters.Add("Type", obj.Type);
+                    parameters.Add("Price", obj.Price);
+                    parameters.Add("Size", obj.Size);
+                    parameters.Add("DayNumber", obj.DayNumber);
+                    parameters.Add("LocationID", obj.LocationID);
                     connection.Execute("Sp_Product_Update",
                         parameters,
                         commandType: CommandType.StoredProcedure,

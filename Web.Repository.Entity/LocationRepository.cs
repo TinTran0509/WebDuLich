@@ -134,13 +134,36 @@ namespace Web.Repository.Entity
                 using (var conn = new SqlConnection(_connectString))
                 {
                     StringBuilder sb = new StringBuilder();
-                    sb.Append("SELECT lc.*,lt.Name,lt.Description,l.LangName FROM Location lc ");
+                    sb.Append("SELECT lc.*,lt.Name,lt.Description,lt.LocationID,l.LangName FROM Location lc ");
                     sb.Append("JOIN LocationTrans lt ON lt.LocationID = lc.ID ");
                     sb.Append("JOIN tbl_Languages l ON l.LangCode = lt.LangCode");
 
                     return conn.Query<LocationViewModel>(
                         sb.ToString(),
                         null,
+                        commandType: CommandType.Text);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public IEnumerable<LocationTran> GetByLocationID(string locationIDs, string langCode)
+        {
+            try
+            {
+                using (var conn = new SqlConnection(_connectString))
+                { 
+                    string sql = $"SELECT * FROM LocationTrans WHERE LocationID IN ({locationIDs}) AND LangCode = @LangCode";
+                   
+                    DynamicParameters parameters = new DynamicParameters(); 
+                    parameters.Add("LangCode", langCode);
+
+                    return conn.Query<LocationTran>(
+                        sql,
+                        parameters,
                         commandType: CommandType.Text);
                 }
             }

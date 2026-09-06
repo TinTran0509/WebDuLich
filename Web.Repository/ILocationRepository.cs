@@ -17,6 +17,7 @@ namespace Web.Repository
         void Delete(int id);
         Location Find(int id);
         void Edit(Location model);
-        void Update(LocationTran obj); 
+        void Update(LocationTran obj);
+        IEnumerable<LocationTran> GetByLocationID(string locationIDs, string langCode);
     }
 }
