@@ -36,8 +36,9 @@ namespace Web.Repository.Entity
                 {
                     DynamicParameters parameters = new DynamicParameters();
                     parameters.Add("Code", model.Code);
-                    parameters.Add("Flag", model.Flag);
+                    parameters.Add("Image", model.Image);
                     parameters.Add("Active", model.Active);
+                    parameters.Add("Ordering", model.Ordering);
                     parameters.Add("ID", dbType: DbType.Int32, direction: ParameterDirection.Output);
                     conn.Execute("Sp_Country_Insert",
                         parameters,
@@ -73,7 +74,7 @@ namespace Web.Repository.Entity
                 using (var conn = new SqlConnection(_connectString))
                 {
                     StringBuilder sb = new StringBuilder();
-                    sb.Append("UPDATE CountryTran ");
+                    sb.Append("UPDATE CountryTrans ");
                     sb.Append("SET Name = @Name "); 
                     sb.Append("WHERE ID = @ID");
 
@@ -85,7 +86,7 @@ namespace Web.Repository.Entity
                         commandType: CommandType.Text);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw;
             }
@@ -103,13 +104,85 @@ namespace Web.Repository.Entity
                 using (var conn = new SqlConnection(_connectString))
                 {
                     StringBuilder sb = new StringBuilder();
-                    sb.Append("SELECT c.*,ct.Name,l.LangName FROM Country c ");
+                    sb.Append("SELECT c.*,ct.Name,ct.CountryID,l.LangName FROM Country c ");
                     sb.Append("JOIN CountryTrans ct ON ct.CountryID = c.ID ");
                     sb.Append("JOIN tbl_Languages l ON l.LangCode = ct.LangCode");
 
                     return conn.Query<CountryViewModel>(
                         sb.ToString(),
                         null,
+                        commandType: CommandType.Text);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public IEnumerable<CountryTran> GetCountryTranByLangCode(string langCode)
+        {
+            try
+            {
+                using (var conn = new SqlConnection(_connectString))
+                { 
+                    string sql = "SELECT ct.* FROM CountryTrans ct WHERE ct.LangCode = @LangCode";
+                  
+                    DynamicParameters parameters = new DynamicParameters();
+                    parameters.Add("LangCode", langCode); 
+
+                    return conn.Query<CountryTran>(
+                        sql,
+                        parameters,
+                        commandType: CommandType.Text);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public IEnumerable<CountryViewModel> GetCountryViewModelByLangCode(string langCode)
+        {
+            try
+            {
+                using (var conn = new SqlConnection(_connectString))
+                {
+                    StringBuilder sb = new StringBuilder();
+                    sb.Append("SELECT c.Image, ct.* FROM CountryTrans ct ");
+                    sb.Append("JOIN Country c ON c.ID = ct.CountryID ");
+                    sb.Append("WHERE ct.LangCode = @LangCode"); 
+
+                    DynamicParameters parameters = new DynamicParameters();
+                    parameters.Add("LangCode", langCode);
+
+                    return conn.Query<CountryViewModel>(
+                        sb.ToString(),
+                        parameters,
+                        commandType: CommandType.Text);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public IEnumerable<CountryTran> GetCountryTranByCountryID(int countryID)
+        {
+            try
+            {
+                using (var conn = new SqlConnection(_connectString))
+                {
+                    string sql = "SELECT ct.* FROM CountryTrans ct WHERE ct.CountryID = @CountryID";
+
+                    DynamicParameters parameters = new DynamicParameters();
+                    parameters.Add("CountryID", countryID);
+
+                    return conn.Query<CountryTran>(
+                        sql,
+                        parameters,
                         commandType: CommandType.Text);
                 }
             }

@@ -41,7 +41,6 @@ namespace Web.Model
         public virtual DbSet<UserTran> UserTrans { get; set; }
         public virtual DbSet<tbl_User> tbl_User { get; set; }
         public virtual DbSet<MenuHome> MenuHomes { get; set; }
-        public virtual DbSet<tbl_Languages> tbl_Languages { get; set; }
         public virtual DbSet<Theme> Themes { get; set; }
         public virtual DbSet<About> Abouts { get; set; }
         public virtual DbSet<TopicTran> TopicTrans { get; set; }
@@ -52,13 +51,14 @@ namespace Web.Model
         public virtual DbSet<ProductTran> ProductTrans { get; set; }
         public virtual DbSet<Introduction> Introductions { get; set; }
         public virtual DbSet<IntroductionTran> IntroductionTrans { get; set; }
-        public virtual DbSet<Country> Countries { get; set; }
-        public virtual DbSet<CountryTran> CountryTrans { get; set; }
-        public virtual DbSet<Location> Locations { get; set; }
         public virtual DbSet<LocationTran> LocationTrans { get; set; }
         public virtual DbSet<Hotel> Hotels { get; set; }
         public virtual DbSet<HotelTran> HotelTrans { get; set; }
+        public virtual DbSet<tbl_Languages> tbl_Languages { get; set; }
+        public virtual DbSet<Location> Locations { get; set; }
+        public virtual DbSet<CountryTran> CountryTrans { get; set; }
         public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Country> Countries { get; set; }
     
         public virtual int Sp_Category_Update(Nullable<int> iD, string name, string linkSeo, Nullable<int> parentID, Nullable<int> ordering, Nullable<int> type, Nullable<int> level, string icon, Nullable<int> position, Nullable<bool> isSearch, string pathway)
         {

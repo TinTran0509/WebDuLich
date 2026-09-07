@@ -10,6 +10,7 @@ namespace Web.Model.CustomModel
     public class CountryViewModel : Country
     {
         public string Name { get; set; }
-        public string LangName { get; set; }   
+        public string LangName { get; set; }
+        public int CountryID { get; set; }
     }
 }

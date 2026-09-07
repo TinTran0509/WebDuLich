@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using System.Web.UI;
+using System.Web.UI.WebControls;
 using Web.BaseSecurity;
 using Web.Core;
 using Web.Model;
@@ -15,6 +16,7 @@ using Web.Model.CustomModel;
 using Web.Models;
 using Web.Repository;
 using Web.Repository.Entity;
+using Web.Resources;
 
 namespace Web.Areas.Admin.Controllers
 {
@@ -26,6 +28,7 @@ namespace Web.Areas.Admin.Controllers
         readonly IMenuTransRepository menuTransRepository = new MenuTransRepository(); 
         readonly IProductTransRepository productTransRepository = new ProductTransRepository();
         readonly ILocationRepository locationRepository = new LocationRepository();
+        readonly ICountryRepository countryRepository = new CountryRepository();
         //
 
         [Authorize(Roles = "Index")]
@@ -62,7 +65,9 @@ namespace Web.Areas.Admin.Controllers
                 TempData["Menus"] = menuTransRepository.GetAll().
                     Where(x => x.ParentID != 0 && x.LangCode.Equals(language.LangCode)).ToList();
 
-                TempData["Location"] = locationRepository.GetAllLocationTrans().Where(x => x.LangCode.Equals(language.LangCode)).ToList();
+                //TempData["Location"] = locationRepository.GetAllLocationTrans().Where(x => x.LangCode.Equals(language.LangCode)).ToList();
+
+                TempData["CountryTrans"] = countryRepository.GetCountryTranByLangCode(language.LangCode).ToList();
             } 
 
             List<tbl_Languages> tbl_Languages = languageRepository.GetByActive().ToList();
@@ -99,7 +104,7 @@ namespace Web.Areas.Admin.Controllers
                         IsSuccess = false,
                         Messenger = "Vui lòng nhập mã sản phẩm",
                     }, JsonRequestBehavior.AllowGet);
-                }
+                } 
 
                 model.ProductCode = model.ProductCode.ToUpper();
 
@@ -123,12 +128,30 @@ namespace Web.Areas.Admin.Controllers
                     }, JsonRequestBehavior.AllowGet);
                 }
 
+                if (model.CountryID == 0)
+                {
+                    return Json(new
+                    {
+                        IsSuccess = false,
+                        Messenger = "Vui lòng chọn quốc gia",
+                    }, JsonRequestBehavior.AllowGet);
+                }
+
                 if (model.MenuID == 0)
                 {
                     return Json(new
                     {
                         IsSuccess = false,
                         Messenger = "Vui lòng chọn chủ đề",
+                    }, JsonRequestBehavior.AllowGet);
+                }
+
+                if (!model.LocationID.Any())
+                {
+                    return Json(new
+                    {
+                        IsSuccess = false,
+                        Messenger = "Vui lòng chọn điểm đến",
                     }, JsonRequestBehavior.AllowGet);
                 }
 
@@ -173,8 +196,9 @@ namespace Web.Areas.Admin.Controllers
                     MenuID = model.MenuID,
                     Type = model.Type,
                     Price = model.Price,
-                    Size = model.Size, 
-                    LocationID = string.Join(";", model.LocationID),
+                    Size = model.Size,
+                    CountryID = model.CountryID,
+                    LocationID = string.Join(",", model.LocationID),
                     DayNumber = model.DayNumber,
                     Active = true
                 };
@@ -206,16 +230,26 @@ namespace Web.Areas.Admin.Controllers
         [Authorize(Roles = "Edit")]
         public ActionResult Edit(int id)
         {
+            Product product = productRepository.Find(id);
+
             List<tbl_Languages> tbl_Languages = languageRepository.GetByActive().ToList();
             tbl_Languages tbl_Language = tbl_Languages.FirstOrDefault(x => x.IsDefault);
             TempData["Menus"] = menuTransRepository.GetAll().Where(x => x.ParentID != 0 && x.LangCode.Equals(tbl_Language.LangCode)).ToList();
 
-            TempData["Location"] = locationRepository.GetAllLocationTrans().Where(x => x.LangCode.Equals(tbl_Language.LangCode)).ToList();
+            int countryId = product.CountryID != null ? (int)product.CountryID : 0;
+            if(countryId == 0)
+            {
+                TempData["Location"] = locationRepository.GetAllLocationTrans().Where(x=>x.LangCode.Equals(tbl_Language.LangCode)).ToList();
+            }
+            else
+            {
+                TempData["Location"] = locationRepository.GetLocationTranByCoutryID(tbl_Language.LangCode, countryId).ToList();
+            } 
+
+            TempData["CountryTrans"] = countryRepository.GetCountryTranByLangCode(tbl_Language.LangCode).ToList();
 
             List<ProductTran> lstProductTrans = productTransRepository.GetAll().Where(x => x.ProductID == id).ToList();
-
-            Product product = productRepository.Find(id);
-
+              
             List<ProductLanguageViewModel> productLanguageViewModels = new List<ProductLanguageViewModel>();
             foreach (var lang in tbl_Languages)
             {
@@ -243,15 +277,16 @@ namespace Web.Areas.Admin.Controllers
                 MenuID = product.MenuID,
                 Active = product.Active,
                 Image = product.Image,
-                Price = (double)product.Price,
-                Size = (int)product.Size,
-                DayNumber = (int)product.DayNumber,
+                Price = product.Price != null ? (double)product.Price : 0,
+                Size = product.Size != null ? (int)product.Size : 0,
+                DayNumber = product.DayNumber != null ? (int)product.DayNumber : 0,
+                CountryID = product.CountryID != null ? (int)product.CountryID : 0,
                 CreatedDate = product.CreatedDate,
                 Languages = productLanguageViewModels
             };
             if (!string.IsNullOrEmpty(product.LocationID))
             {
-                List<LocationTran> locationTrans = locationRepository.GetByLocationID(product.LocationID.Replace(';',','), tbl_Language.LangCode).ToList();
+                List<LocationTran> locationTrans = locationRepository.GetByLocationID(product.LocationID, tbl_Language.LangCode).ToList();
                 if(locationTrans != null)
                 {
                     string locationTransIDs = string.Empty;
@@ -326,7 +361,12 @@ namespace Web.Areas.Admin.Controllers
                     Image = model.Image,
                     MenuID = model.MenuID,
                     Active = true,
-                    Type = model.Type
+                    Type = model.Type,
+                    Price = model.Price,
+                    Size = model.Size,
+                    DayNumber = model.DayNumber,
+                    CountryID = model.CountryID,
+                    LocationID = string.Join(",", model.LocationID)
                 };
 
                 productRepository.Edit(product, productTrans);
@@ -369,6 +409,27 @@ namespace Web.Areas.Admin.Controllers
                 IsSuccess = true,
                 Messenger = "Xóa thành công",
             }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetLocationByCountry(int id)
+        {
+            try
+            {
+                var locationTrans = locationRepository.GetLocationTranByCoutryID("EN", id).ToList(); 
+
+                return Json(new
+                {
+                    Data = locationTrans
+                }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception)
+            { 
+                return Json(new
+                {
+                    Messager ="Lấy dữ liệu thất bại"
+                }, JsonRequestBehavior.AllowGet); ;
+            }
+           
         }
     }
 }

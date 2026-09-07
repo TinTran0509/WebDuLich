@@ -9,6 +9,7 @@ using Web.Model;
 using Web.Model.CustomModel;
 using Web.Repository;
 using Web.Repository.Entity;
+using Web.Resources;
 
 namespace Web.Areas.Admin.Controllers
 {
@@ -16,6 +17,7 @@ namespace Web.Areas.Admin.Controllers
     {
         readonly ILocationRepository locationRepository = new LocationRepository();
         readonly ILanguageRepository languageRepository = new LanguageRepository();
+        readonly ICountryRepository countryRepository = new CountryRepository();
 
         [Authorize(Roles = "Index")]
         public ActionResult Index()
@@ -41,6 +43,10 @@ namespace Web.Areas.Admin.Controllers
         public ActionResult Add()
         {
             List<tbl_Languages> tbl_Languages = languageRepository.GetByActive().ToList();
+
+            tbl_Languages language = languageRepository.GetAll().FirstOrDefault(x => x.IsDefault);
+
+            TempData["CountryTrans"] = countryRepository.GetCountryTranByLangCode(language.LangCode).ToList();
 
             List<LocationLanguageViewModel> locationLanguageViewModels = new List<LocationLanguageViewModel>();
 
@@ -68,6 +74,15 @@ namespace Web.Areas.Admin.Controllers
             try
             { 
                 List<LocationTran> locationTrans = new List<LocationTran>();
+                 
+                if (string.IsNullOrEmpty(model.Image))
+                {
+                    return Json(new
+                    {
+                        IsSuccess = false,
+                        Messenger = "Vui lòng thêm ảnh",
+                    }, JsonRequestBehavior.AllowGet);
+                }
 
                 foreach (var lang in model.Languages)
                 {
@@ -93,7 +108,8 @@ namespace Web.Areas.Admin.Controllers
                 Location location = new Location
                 {
                     Image = model.Image,
-                    Active = model.Active
+                    Active = model.Active,
+                    CountryID = model.CountryID
                 }; 
                 
                 int id = locationRepository.Create(location);
@@ -121,8 +137,12 @@ namespace Web.Areas.Admin.Controllers
 
         [Authorize(Roles = "Edit")]
         public ActionResult Edit(int id)
-        {
+        { 
             List<tbl_Languages> tbl_Languages = languageRepository.GetByActive().ToList();
+
+            tbl_Languages language = languageRepository.GetAll().FirstOrDefault(x => x.IsDefault);
+
+            TempData["CountryTrans"] = countryRepository.GetCountryTranByLangCode(language.LangCode).ToList();
 
             List<LocationTran> lstLocationTrans = locationRepository.GetAllLocationTrans().Where(x => x.LocationID == id).ToList();
 
@@ -152,6 +172,7 @@ namespace Web.Areas.Admin.Controllers
                 ID = id,
                 Image = location.Image,
                 Active = location.Active,
+                CountryID = location.CountryID != null ? (int)location.CountryID : 0,
                 Languages = locationLanguageViewModels
             };
             return View(model);
@@ -189,6 +210,7 @@ namespace Web.Areas.Admin.Controllers
                 location.ID = model.ID;
                 location.Image = model.Image;
                 location.Active = model.Active;
+                location.CountryID = model.CountryID;
 
                 locationRepository.Edit(location);
 

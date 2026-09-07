@@ -3,7 +3,14 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml"; 
 }
 @using Web.Model
- 
+ <style>
+     .group-banner td {
+         border: none !important;
+     }
+     .contry-name {
+         width: 60px;
+     }
+ </style>
 <script src="~/AppJs/country.js"></script>
 <div class="row">
     <div class="col-md-12">
@@ -11,8 +18,7 @@
             <div class="panel-heading">
                 <h3 class="panel-title">Quốc gia</h3>
                 <div style="top: 8px;position: absolute; right: 40px;" class="pull-right">
-                    <button type="button" class="btn btn-primary waves-effect waves-light" onclick="Country.loadfrmAdd() "><i class="fa fa-plus"></i> Thêm mới</button>
-                    <button type="button" class="btn btn-danger waves-effect waves-light" onclick="Country.onmultidelete() "><i class="fa fa-trash-o"></i> Xóa nhiều</button>
+                    <button type="button" class="btn btn-primary waves-effect waves-light" onclick="Country.loadfrmAdd() "><i class="fa fa-plus"></i> Thêm mới</button> 
                 </div>
             </div>
             <div class="panel-body">

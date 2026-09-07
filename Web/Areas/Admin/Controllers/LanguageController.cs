@@ -48,7 +48,7 @@ namespace Web.Areas.Admin.Controllers
         {
             try
             {
-                if (string.IsNullOrEmpty(obj.LangCode))
+                if (string.IsNullOrEmpty(obj.FullCode))
                 {
                     return Json(new
                     {
@@ -64,8 +64,8 @@ namespace Web.Areas.Admin.Controllers
                         Messenger = "Vui lòng thêm tên",
                     }, JsonRequestBehavior.AllowGet);
                 }
-                obj.LangCode = obj.LangCode.ToUpper();
-                tbl_Languages languages = languageRepository.GetAll().FirstOrDefault(x=>x.LangCode.Equals(obj.LangCode));
+               
+                tbl_Languages languages = languageRepository.GetAll().FirstOrDefault(x=>x.FullCode.Equals(obj.FullCode));
                 if(languages != null)
                 {
                     return Json(new
@@ -74,6 +74,11 @@ namespace Web.Areas.Admin.Controllers
                         Messenger = "Mã đã tồn tại",
                     }, JsonRequestBehavior.AllowGet);
                 }
+
+                var arrCode = obj.FullCode.Split('-');
+
+                obj.LangCode = arrCode[0].ToUpper();
+
                 languageRepository.Add(obj);
                 return Json(new
                 {
@@ -118,7 +123,7 @@ namespace Web.Areas.Admin.Controllers
                     Messenger = "Cập nhật thành công",
                 }, JsonRequestBehavior.AllowGet);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return Json(new
                 {

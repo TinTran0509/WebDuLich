@@ -1,53 +1,53 @@
 ﻿@using Web.Model.CustomModel 
 @model IEnumerable<CountryViewModel>
- 
-<table class="table table-striped cabn_datatable">
+ @{ 
+     int id = 0, countryID = 0;
+ }
+
+<table class="table">
     <thead>
         <tr>
-            <th>
-                <input type="hidden" id="hdfID" />
-                <div class="checkbox">
-                    <input id="chkall" type="checkbox">
-                    <label for="chkall"></label>
-                </div>
-            </th>
-            <th>Quốc kỳ</th>
-            <th>Mã</th>
-            <th>Tên</th> 
+            <th>Hình ảnh</th> 
+            <th>Tên</th>
+            <th>Ngôn ngữ</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
+            string group = "group-banner";
+            if (countryID != item.CountryID)
+            {
+                group = "";
+            }
+            <tr class="@group">
                 <td style="vertical-align: middle;">
-                    <div class="checkbox">
-                        <input type="checkbox" value="@item.ID" id="chk'@item.ID'">
-                        <label for="chk'@item.ID'"></label>
-                    </div>
-                </td>
-                <td style="vertical-align: middle;">
-                    <img src="@item.Flag" style="width: 50px;" />
-                </td>
-                <td style="vertical-align: middle;">
-                    @item.Code
-                </td>
-                <td style="vertical-align: middle;">
-                    @item.Name
+                    <img src="@item.Image" style="width: 50px;" />
                 </td> 
-                <td style="vertical-align: middle;">
-                    <div class="btn-list pull-right mr5">
-                        <a href="#" class="btn btn-primary btn-bordered" onclick="Country.loadfrmEdit(@item.ID) " title="Sửa"><i class=" glyphicon glyphicon-pencil"></i></a>
-                        @*<a href="#" class="btn btn-success btn-bordered" onclick="Country.active(@item.ID) " title="@((bool)item.Active ? "Vô hiệu" : "Kích hoạt" )">
-                            <i class="fa fa-power-off"></i>
-                        </a>*@
-                        <a href="#" class="btn btn-danger btn-bordered" onclick="Country.ondelete(@item.ID) " title="Xóa">
-                            <i class="glyphicon glyphicon-trash"></i>
-                        </a>
-                    </div>
+                <td>
+                    @item.Name
                 </td>
+                <td>
+                    @item.LangName
+                </td>
+                @if (id != item.CountryID)
+                {
+                    <td rowspan="2" style="vertical-align: middle;">
+                        <div class="btn-list pull-right mr5">
+                            <a href="#" class="btn btn-primary btn-bordered" onclick="Country.loadfrmEdit(@item.ID) " title="Sửa"><i class=" glyphicon glyphicon-pencil"></i></a>
+                            @*<a href="#" class="btn btn-success btn-bordered" onclick="Country.active(@item.ID) " title="@((bool)item.Active ? "Vô hiệu" : "Kích hoạt" )">
+                                <i class="fa fa-power-off"></i>
+                            </a>*@
+                            <a href="#" class="btn btn-danger btn-bordered" onclick="Country.ondelete(@item.ID) " title="Xóa">
+                                <i class="glyphicon glyphicon-trash"></i>
+                            </a>
+                        </div>
+                    </td>
+                }
             </tr>
+            id = item.ID;
+            countryID = item.CountryID;
         }
     </tbody>
 </table>

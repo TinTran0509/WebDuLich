@@ -2,10 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Resources;
 using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -31,16 +35,19 @@ namespace Web.Controllers
         readonly IIntroductionTransRepository introductionTransRepository = new IntroductionTransRepository();
         public ActionResult Index(string langCode)
         {
+            string culture = string.Empty;
             if (!string.IsNullOrEmpty(langCode))
             {
                 tbl_Languages language = languageRepository.GetAll().FirstOrDefault(x=>x.LangCode.Equals(langCode.ToUpper()));
                 if(language != null)
                 {
                     Session["LangCode"] = language.LangCode;
+                    culture = language.FullCode;
                 }
                 else
                 {
                     Session["LangCode"] = "EN";
+                    culture = "en-US";
                 }
             }
             else
@@ -50,17 +57,33 @@ namespace Web.Controllers
                 {
                     langCode = language.LangCode;
                     Session["LangCode"] = language.LangCode;
+                    culture = language.FullCode;
                 }
                 else
                 {
                     langCode = "EN";
                     Session["LangCode"] = "EN";
+                    culture = "en-US";
                 }
             }
+
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(culture);
+
+            ViewBag.GroupTrip = Resources.Language.GroupTrip;
+            ViewBag.CustomizedTrips = Resources.Language.CustomizedTrips;
+            ViewBag.Price = Resources.Language.Price;
+            ViewBag.Days = Resources.Language.Days;
+            ViewBag.Nigths = Resources.Language.Nigths;
+            ViewBag.Detail = Resources.Language.Detail;
+            ViewBag.SeeMore = Resources.Language.SeeMore;
+
+            ViewBag.TravelDestinations = Resources.Language.TravelDestinations;
 
             TempData["GroupTour"] = productTransRepository.GetByType(1, langCode, 9);
 
             TempData["PrivateTour"] = productTransRepository.GetByType(2, langCode, 3);
+
+            TempData["Countries"] = countryRepository.GetCountryViewModelByLangCode(langCode);
 
             return View();
         } 

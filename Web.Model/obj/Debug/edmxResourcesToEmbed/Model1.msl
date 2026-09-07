@@ -244,19 +244,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tbl_Languages">
-      <EntityTypeMapping TypeName="WebDuLichModel.tbl_Languages">
-        <MappingFragment StoreEntitySet="tbl_Languages">
-          <ScalarProperty Name="Ordering" ColumnName="Ordering" />
-          <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
-          <ScalarProperty Name="Active" ColumnName="Active" />
-          <ScalarProperty Name="Icon" ColumnName="Icon" />
-          <ScalarProperty Name="LangCode" ColumnName="LangCode" />
-          <ScalarProperty Name="LangName" ColumnName="LangName" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Themes">
       <EntityTypeMapping TypeName="WebDuLichModel.Theme">
         <MappingFragment StoreEntitySet="Theme">
@@ -384,36 +371,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Countries">
-      <EntityTypeMapping TypeName="WebDuLichModel.Country">
-        <MappingFragment StoreEntitySet="Country">
-          <ScalarProperty Name="Ordering" ColumnName="Ordering" />
-          <ScalarProperty Name="Active" ColumnName="Active" />
-          <ScalarProperty Name="Flag" ColumnName="Flag" />
-          <ScalarProperty Name="Code" ColumnName="Code" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="CountryTrans">
-      <EntityTypeMapping TypeName="WebDuLichModel.CountryTran">
-        <MappingFragment StoreEntitySet="CountryTrans">
-          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
-          <ScalarProperty Name="LangCode" ColumnName="LangCode" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Locations">
-      <EntityTypeMapping TypeName="WebDuLichModel.Location">
-        <MappingFragment StoreEntitySet="Location">
-          <ScalarProperty Name="Active" ColumnName="Active" />
-          <ScalarProperty Name="Image" ColumnName="Image" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="LocationTrans">
       <EntityTypeMapping TypeName="WebDuLichModel.LocationTran">
         <MappingFragment StoreEntitySet="LocationTrans">
@@ -446,11 +403,46 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Languages">
+      <EntityTypeMapping TypeName="WebDuLichModel.tbl_Languages">
+        <MappingFragment StoreEntitySet="tbl_Languages">
+          <ScalarProperty Name="Ordering" ColumnName="Ordering" />
+          <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+          <ScalarProperty Name="LangCode" ColumnName="LangCode" />
+          <ScalarProperty Name="FullCode" ColumnName="FullCode" />
+          <ScalarProperty Name="LangName" ColumnName="LangName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Locations">
+      <EntityTypeMapping TypeName="WebDuLichModel.Location">
+        <MappingFragment StoreEntitySet="Location">
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CountryTrans">
+      <EntityTypeMapping TypeName="WebDuLichModel.CountryTran">
+        <MappingFragment StoreEntitySet="CountryTrans">
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="LangCode" ColumnName="LangCode" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Products">
       <EntityTypeMapping TypeName="WebDuLichModel.Product">
         <MappingFragment StoreEntitySet="Product">
           <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
           <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
           <ScalarProperty Name="DayNumber" ColumnName="DayNumber" />
           <ScalarProperty Name="Size" ColumnName="Size" />
           <ScalarProperty Name="Price" ColumnName="Price" />
@@ -459,6 +451,17 @@
           <ScalarProperty Name="Active" ColumnName="Active" />
           <ScalarProperty Name="Image" ColumnName="Image" />
           <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Countries">
+      <EntityTypeMapping TypeName="WebDuLichModel.Country">
+        <MappingFragment StoreEntitySet="Country">
+          <ScalarProperty Name="Ordering" ColumnName="Ordering" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>

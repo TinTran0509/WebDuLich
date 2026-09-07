@@ -65,6 +65,16 @@
                 }
                 $("#loading").hide();
             });
+        },
+        getLocationByCountry: function (id) {
+            $.get("/Admin/Product/GetLocationByCountry", { id: id }, function (res) {
+                let option = '';
+                res.Data.forEach((item, index, arr) => {
+                    option += `<option value="${item.LocationID}">${item.Name}</option>`;
+                });
+
+                $('#LocationIDs').html(option)
+            }); 
         }
     };
 }();

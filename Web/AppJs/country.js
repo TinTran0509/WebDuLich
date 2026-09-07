@@ -56,7 +56,7 @@
             });
         },
         loadfrmAdd: function () {
-            modal.Render("/Admin/Country/Add", "Thêm mới ngôn ngữ", "modal-lg");
+            modal.Render("/Admin/Country/Add", "Thêm mới quốc gia", "modal-lg");
         },
         onAddSuccess: function (res) {
             if (res.IsSuccess == true) {
@@ -69,7 +69,7 @@
             $("#loading").hide();
         },
         loadfrmEdit: function (id) {
-            modal.Render("/Admin/Country/Edit/" + id, "Cập nhật ngôn ngữ", "modal-lg");
+            modal.Render("/Admin/Country/Edit/" + id, "Cập nhật quốc gia", "modal-lg");
         },
         onEditSuccess: function (res) {
             if (res.IsSuccess == true) {

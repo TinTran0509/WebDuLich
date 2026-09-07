@@ -10,7 +10,7 @@ namespace Web.Model.CustomModel
     {
         public int ID { get; set; }
         public string Image { get; set; }
-        public DateTime CreatedDate { get; set; }
+        public DateTime CreatedDate { get; set; } 
         public List<IntroductionLanguageViewModel> Languages { get; set; }
     }
 }

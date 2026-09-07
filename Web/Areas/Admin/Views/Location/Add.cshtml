@@ -1,7 +1,56 @@
 ﻿@{
     ViewBag.Title = "Thêm mới điểm đến";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
-} 
+    var countries = (List<Web.Model.CountryTran>)TempData["CountryTrans"];
+}
+<style>
+    .check-radio {
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+        margin-right: 20px;
+        padding-top: 5px;
+    }
+
+        .check-radio input {
+            display: none;
+        }
+
+        .check-radio span {
+            position: relative;
+            padding-left: 28px;
+            font-weight: 500;
+        }
+
+            .check-radio span::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 18px;
+                height: 18px;
+                border: 1px solid #999;
+                border-radius: 3px; /* ô vuông giống checkbox */
+                background: #fff;
+            }
+
+        .check-radio input:checked + span::before {
+            background: #007bff;
+            border-color: #007bff;
+        }
+
+        .check-radio input:checked + span::after {
+            content: "✓";
+            position: absolute;
+            left: 4px;
+            top: 50%;
+            transform: translateY(-55%);
+            color: white;
+            font-size: 13px;
+            font-weight: bold;
+        }
+</style>
 <script src="~/AppJs/location.js"></script>
 @model Web.Model.CustomModel.LocationCreateViewModel
 @using (Ajax.BeginForm("Add", "Location", null,
@@ -11,7 +60,7 @@
         OnSuccess = "Location.onAddSuccess"
     },
     new { @id = "frmData", @class = "form-horizontal" }))
- { 
+{
     <div class="article-create">
         <div class="form-group">
             <div class="col-md-2 text-left">
@@ -21,7 +70,19 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-md-1 control-label">Ảnh <span class="asterisk"> (*)</span></label>
+            <label class="col-md-2 control-label">Quốc gia<span class="asterisk"> (*)</span></label>
+            <div class="col-md-10">
+                @foreach (var item in countries)
+                {
+                    <label class="check-radio">
+                        <input type="radio" name="language" onclick="getValueTopic(this.value)" value="@item.CountryID">
+                        <span>@item.Name</span>
+                    </label>
+                }
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">Ảnh <span class="asterisk"> (*)</span></label>
             <div class="col-md-10">
                 <div class="col-md-2">
                     @{ Html.RenderAction("UploadImage", "UploadFile", new { controlName = "Image" });}
@@ -61,7 +122,7 @@
             }
         </div>
         <div class="form-group">
-            <div class="col-sm-12 pull-right">
+            <div class="col-sm-11 pull-right">
                 <div class="checkbox checkbox-primary">
                     <input id="Active" name="Active" type="checkbox" checked="" value="true">
                     <label for="Active">
@@ -77,10 +138,14 @@
             </div>
         </div>
     </div>
-} 
-<script> 
+    @Html.HiddenFor(x => x.CountryID)
+}
+<script>
+    function getValueTopic(ckb) {
+        $('#CountryID').val(ckb);
+    }
     $(document).ready(function () {
-       
-    }); 
+
+    });
 
 </script>

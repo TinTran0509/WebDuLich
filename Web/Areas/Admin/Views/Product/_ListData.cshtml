@@ -9,6 +9,7 @@
         <thead>
             <tr>
                 <th>Hình ảnh</th>
+                <th>Mã</th>
                 <th>Tiêu đề</th>
                 <th>Mô tả</th>
                 <th>Nội dung</th>
@@ -25,7 +26,14 @@
                     group = "";
                 }
                 <tr class="@group">
-                    <td><img src="@item.Image" style="width: 50px;" /></td>
+                    @if (id != item.ProductID)
+                    {
+                        <td style="vertical-align: middle;" rowspan="2"><img src="@item.Image" style="width: 50px;" /></td>
+                    }
+                    @if (id != item.ProductID)
+                    {
+                        <td style="vertical-align: middle;" rowspan="2">@item.ProductCode</td>
+                    }
                     <td>@item.Title</td>
                     <td>@item.Description</td>
                     <td>@HelperString.TruncateByWord(HelperString.StripHTML(HttpUtility.HtmlDecode(item.Contents)), 110)</td>
@@ -49,8 +57,8 @@
                                 }
                             </div>
                         </td>
-                     }     
-                    </tr>
+                    }
+                </tr>
                 id = item.ID;
                 bannerID = item.ProductID;
             }

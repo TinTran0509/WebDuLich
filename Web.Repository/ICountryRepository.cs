@@ -19,5 +19,8 @@ namespace Web.Repository
         void Edit(Country model);
         void Update(CountryTran obj);
         IEnumerable<CountryUser> GetByHeader();
+        IEnumerable<CountryTran> GetCountryTranByLangCode(string langCode);
+        IEnumerable<CountryTran> GetCountryTranByCountryID(int countryID);
+        IEnumerable<CountryViewModel> GetCountryViewModelByLangCode(string langCode);
     }
 }

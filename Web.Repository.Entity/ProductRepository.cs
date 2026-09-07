@@ -37,6 +37,7 @@ namespace Web.Repository.Entity
                     parameters.Add("Price", obj.Price);
                     parameters.Add("Size", obj.Size);
                     parameters.Add("DayNumber", obj.DayNumber);
+                    parameters.Add("CountryID", obj.CountryID);
                     parameters.Add("LocationID", obj.LocationID);
                     parameters.Add("ID", dbType: DbType.Int32, direction: ParameterDirection.Output);
                     conn.Execute("Sp_Product_Insert",
@@ -70,6 +71,7 @@ namespace Web.Repository.Entity
                     parameters.Add("Price", obj.Price);
                     parameters.Add("Size", obj.Size);
                     parameters.Add("DayNumber", obj.DayNumber);
+                    parameters.Add("CountryID", obj.CountryID);
                     parameters.Add("LocationID", obj.LocationID);
                     connection.Execute("Sp_Product_Update",
                         parameters,

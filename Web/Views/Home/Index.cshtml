@@ -4,19 +4,19 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     List<ProductModel> prodGroups = (List<ProductModel>)TempData["GroupTour"];
     List<ProductModel> prodPrivate = (List<ProductModel>)TempData["PrivateTour"];
+    List<CountryViewModel> countries = (List<CountryViewModel>)TempData["Countries"];
 }
-@model List<Web.Model.News>
-
+ 
 <div class="pt-80 md-pt-60 sm-pt-30 pb-45 border-edeae5">
     <div class="container">
         <h2 class="section-title">
-            Viaje en <span>grupo</span>
-        </h2>
-
+            @ViewBag.GroupTrip
+        </h2> 
         <div class="row">
             <!-- 9 item -->
             @foreach (var item in prodGroups)
             {
+                int night = item.DayNumber - 1;
                 <div class="col-sm-6 col-lg-4 mb-30">
                     <div class="bg-color-fffdfb box-shadow-1 position-relative h-100 pb-115">
                         <div class="position-relative">
@@ -31,8 +31,7 @@
                                 </noscript>
                             </a>
                             <div class="position-absolute fw-700 color-fff text-shadow-1 left-20 bottom-18">
-                                10                        Días /
-                                9                        Noches
+                                @item.DayNumber @ViewBag.Days / @night @ViewBag.Nigths
                             </div>
                         </div>
                         <div class="pl-20 pr-20">
@@ -42,10 +41,10 @@
                                 </a>
                             </h3>
                             <div class="fw-500 color-bd1e2d">
-                                Japón
+                                @item.Countries
                             </div>
                             <div>
-                                Tokio, Kioto, Kanazawa, Gero, Osaka
+                                @item.Locations
                             </div>
                         </div>
 
@@ -56,88 +55,14 @@
                             <hr class="mt-10 mb-15">
                             <div class="d-flex justify-content-between">
                                 <div>
-                                    <span>Desde</span>
+                                    <span>@ViewBag.Price</span>
                                     <span class="fsz-18 fw-700 color-111">
-                                        USD 3680
+                                        USD @item.Price
                                     </span>
                                 </div>
                                 <div>
                                     <a href="tour/@item.LinkSeo" class="d-inline-block">
-                                        Detalle
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            } 
-        </div>
-
-        <div class="text-center">
-            <a href="tours-en-grupo/index.html" class="btn-style">
-                Ver más
-            </a>
-        </div>
-    </div>
-</div>
-
-<div class="pt-80 md-pt-60 sm-pt-30 pb-45 border-edeae5">
-    <div class="container">
-        <h2 class="section-title">
-            Viajes <span>personalizados</span>
-        </h2>
-
-        <div class="row">
-            <!-- Lấy ra 3 -->
-            @foreach (var item in prodPrivate)
-            {
-                <div class="col-sm-6 col-lg-4 mb-30">
-                    <div class="bg-color-fffdfb box-shadow-1 position-relative h-100 pb-115">
-                        <div class="position-relative">
-                            <a href="tour/@item.LinkSeo">
-                                <img class="w-100"
-                                     src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E"
-                                     alt="@item.Title" data-lazy-src="@item.Image">
-                                <noscript>
-                                    <img class="w-100"
-                                         src="@item.Image"
-                                         alt="@item.Title">
-                                </noscript>
-                            </a>
-                            <div class="position-absolute fw-700 color-fff text-shadow-1 left-20 bottom-18">
-                                12                        Días /
-                                11                        Noches
-                            </div>
-                        </div>
-                        <div class="pl-20 pr-20">
-                            <h3 class="fsz-18 mt-18 mb-12">
-                                <a href="tour/@item.LinkSeo" class="text-decoration-none">
-                                    @item.Title
-                                </a>
-                            </h3>
-                            <div class="fw-500 color-bd1e2d">
-                                Japón - Corea del Sur
-                            </div>
-                            <div>
-                                Tokio, Hakone, Kioto, Osaka, Seúl
-                            </div>
-                        </div>
-
-                        <div class="position-absolute left-0 right-0 bottom-18 ml-20 mr-20">
-                            <div class="fsz-18 color-ffa534 text-right">
-                                ★★★★
-                            </div>
-                            <hr class="mt-10 mb-15">
-                            <div class="d-flex justify-content-between">
-                                <div>
-                                    <span>Desde</span>
-                                    <span class="fsz-18 fw-700 color-111">
-                                        USD 4399
-                                    </span>
-                                </div>
-                                <div>
-                                    <a href="tour/@item.LinkSeo" class="d-inline-block">
-                                        Detalle
+                                        @ViewBag.Detail
                                     </a>
                                 </div>
                             </div>
@@ -148,8 +73,79 @@
         </div>
 
         <div class="text-center">
-            <a href="viajes-privados/index.html" class="btn-style">
-                Ver más
+            <a href="tours-en-grupo/index.html" class="btn-style">
+                @ViewBag.SeeMore
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="pt-80 md-pt-60 sm-pt-30 pb-45 border-edeae5">
+    <div class="container">
+        <h2 class="section-title">
+            @ViewBag.CustomizedTrips
+        </h2> 
+        <div class="row">
+            <!-- Lấy ra 3 -->
+            @foreach (var item in prodPrivate)
+            {
+                int night = item.DayNumber - 1;
+                <div class="col-sm-6 col-lg-4 mb-30">
+                    <div class="bg-color-fffdfb box-shadow-1 position-relative h-100 pb-115">
+                        <div class="position-relative">
+                            <a href="tour/@item.LinkSeo">
+                                <img class="w-100"
+                                     src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E"
+                                     alt="@item.Title" data-lazy-src="@item.Image">
+                                <noscript>
+                                    <img class="w-100"
+                                         src="@item.Image"
+                                         alt="@item.Title">
+                                </noscript>
+                            </a>
+                            <div class="position-absolute fw-700 color-fff text-shadow-1 left-20 bottom-18">
+                                @item.DayNumber @ViewBag.Days / @night @ViewBag.Nigths                       
+                            </div>
+                        </div>
+                        <div class="pl-20 pr-20">
+                            <h3 class="fsz-18 mt-18 mb-12">
+                                <a href="tour/@item.LinkSeo" class="text-decoration-none">
+                                    @item.Title
+                                </a>
+                            </h3>
+                            <div class="fw-500 color-bd1e2d">
+                                @item.Countries
+                            </div>
+                            <div>
+                                @item.Locations
+                            </div>
+                        </div> 
+                        <div class="position-absolute left-0 right-0 bottom-18 ml-20 mr-20">
+                            <div class="fsz-18 color-ffa534 text-right">
+                                ★★★★
+                            </div>
+                            <hr class="mt-10 mb-15">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <span>@ViewBag.Price</span>
+                                    <span class="fsz-18 fw-700 color-111">
+                                        USD @item.Price
+                                    </span>
+                                </div>
+                                <div>
+                                    <a href="tour/@item.LinkSeo" class="d-inline-block">
+                                        @ViewBag.Detail
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             } 
+        </div> 
+        <div class="text-center">
+            <a href="" class="btn-style">
+                @ViewBag.SeeMore
             </a>
         </div>
     </div>
@@ -158,187 +154,24 @@
 <div class="pt-80 md-pt-60 sm-pt-30 pb-15 border-edeae5">
     <div class="container">
         <h2 class="section-title">
-            Destinos de <span>viaje</span>
-        </h2>
-
+            @ViewBag.TravelDestinations
+        </h2> 
         <div class="row sm-ml--10 sm-mr--10">
-
-            <div class="col-6 col-sm-4 col-lg-3 mb-30 sm-mb-20 sm-pl-10 sm-pr-10">
-                <div class="position-relative text-center">
-                    <img class="w-100" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt="Tailandia" data-lazy-src="wp-content/uploads/2024/09/tailandia-270x270_c.jpg"><noscript><img class="w-100" src="wp-content/uploads/2024/09/tailandia-270x270_c.jpg" alt="Tailandia"></noscript>
-                    <h3 class="fsz-24 sm-fsz-20 m-0 middle-block">
-                        <a href="destination/visitar-tailandia/index.html" class="color-fff text-decoration-none">
-                            Tailandia
-                        </a>
-                    </h3>
+            <!-- Vòng lặp chạy ở đây -->
+            @foreach (var item in countries)
+            {
+                <div class="col-6 col-sm-4 col-lg-3 mb-30 sm-mb-20 sm-pl-10 sm-pr-10">
+                    <div class="position-relative text-center">
+                        <img class="w-100" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt="@item.Name" data-lazy-src="@item.Image"><noscript>
+                        <img class="w-100" src="@item.Image" alt="@item.Name"></noscript>
+                        <h3 class="fsz-24 sm-fsz-20 m-0 middle-block">
+                            <a href="destination/visitar-japon/index.html" class="color-fff text-decoration-none">
+                                @item.Name
+                            </a>
+                        </h3>
+                    </div>
                 </div>
-            </div>
-
-            <div class="col-6 col-sm-4 col-lg-3 mb-30 sm-mb-20 sm-pl-10 sm-pr-10">
-                <div class="position-relative text-center">
-                    <img class="w-100" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt="Japón" data-lazy-src="wp-content/uploads/2025/07/Japan-800x800-1-1-270x270_c.jpg"><noscript><img class="w-100" src="wp-content/uploads/2025/07/Japan-800x800-1-1-270x270_c.jpg" alt="Japón"></noscript>
-                    <h3 class="fsz-24 sm-fsz-20 m-0 middle-block">
-                        <a href="destination/visitar-japon/index.html" class="color-fff text-decoration-none">
-                            Japón
-                        </a>
-                    </h3>
-                </div>
-            </div>
-
-            <div class="col-6 col-sm-4 col-lg-3 mb-30 sm-mb-20 sm-pl-10 sm-pr-10">
-                <div class="position-relative text-center">
-                    <img class="w-100" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt="China" data-lazy-src="wp-content/uploads/2025/07/1-270x270_c.jpg"><noscript><img class="w-100" src="wp-content/uploads/2025/07/1-270x270_c.jpg" alt="China"></noscript>
-                    <h3 class="fsz-24 sm-fsz-20 m-0 middle-block">
-                        <a href="destination/visitar-china/index.html" class="color-fff text-decoration-none">
-                            China
-                        </a>
-                    </h3>
-                </div>
-            </div>
-
-            <div class="col-6 col-sm-4 col-lg-3 mb-30 sm-mb-20 sm-pl-10 sm-pr-10">
-                <div class="position-relative text-center">
-                    <img class="w-100" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt="Corea del Sur" data-lazy-src="wp-content/uploads/2024/07/korea-270x270_c.jpg"><noscript><img class="w-100" src="wp-content/uploads/2024/07/korea-270x270_c.jpg" alt="Corea del Sur"></noscript>
-                    <h3 class="fsz-24 sm-fsz-20 m-0 middle-block">
-                        <a href="destination/visitar-corea-del-sur/index.html" class="color-fff text-decoration-none">
-                            Corea del Sur
-                        </a>
-                    </h3>
-                </div>
-            </div>
-
-            <div class="col-6 col-sm-4 col-lg-3 mb-30 sm-mb-20 sm-pl-10 sm-pr-10">
-                <div class="position-relative text-center">
-                    <img class="w-100" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt="Vietnam" data-lazy-src="wp-content/uploads/2025/07/golden-bridge-da-nang-270x270_c.jpg"><noscript><img class="w-100" src="wp-content/uploads/2025/07/golden-bridge-da-nang-270x270_c.jpg" alt="Vietnam"></noscript>
-                    <h3 class="fsz-24 sm-fsz-20 m-0 middle-block">
-                        <a href="destination/visitar-vietnam/index.html" class="color-fff text-decoration-none">
-                            Vietnam
-                        </a>
-                    </h3>
-                </div>
-            </div>
-
-            <div class="col-6 col-sm-4 col-lg-3 mb-30 sm-mb-20 sm-pl-10 sm-pr-10">
-                <div class="position-relative text-center">
-                    <img class="w-100" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt="Camboya" data-lazy-src="wp-content/uploads/2025/07/Buddhist-monk-at-Ta-Prohm-temple-in-Angkor-Wat-1-270x270_c.jpg"><noscript><img class="w-100" src="wp-content/uploads/2025/07/Buddhist-monk-at-Ta-Prohm-temple-in-Angkor-Wat-1-270x270_c.jpg" alt="Camboya"></noscript>
-                    <h3 class="fsz-24 sm-fsz-20 m-0 middle-block">
-                        <a href="destination/visitar-camboya/index.html" class="color-fff text-decoration-none">
-                            Camboya
-                        </a>
-                    </h3>
-                </div>
-            </div>
-
-            <div class="col-6 col-sm-4 col-lg-3 mb-30 sm-mb-20 sm-pl-10 sm-pr-10">
-                <div class="position-relative text-center">
-                    <img class="w-100" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt="Singapur" data-lazy-src="wp-content/uploads/2025/07/Marina-Bay-Sands-complex-270x270_c.jpg"><noscript><img class="w-100" src="wp-content/uploads/2025/07/Marina-Bay-Sands-complex-270x270_c.jpg" alt="Singapur"></noscript>
-                    <h3 class="fsz-24 sm-fsz-20 m-0 middle-block">
-                        <a href="destination/visitar-singapur/index.html" class="color-fff text-decoration-none">
-                            Singapur
-                        </a>
-                    </h3>
-                </div>
-            </div>
-
-            <div class="col-6 col-sm-4 col-lg-3 mb-30 sm-mb-20 sm-pl-10 sm-pr-10">
-                <div class="position-relative text-center">
-                    <img class="w-100" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt="Indonesia" data-lazy-src="wp-content/uploads/2025/07/Nusa-Lembongan-and-Nusa-Penida-270x270_c.jpg"><noscript><img class="w-100" src="wp-content/uploads/2025/07/Nusa-Lembongan-and-Nusa-Penida-270x270_c.jpg" alt="Indonesia"></noscript>
-                    <h3 class="fsz-24 sm-fsz-20 m-0 middle-block">
-                        <a href="destination/visitar-indonesia/index.html" class="color-fff text-decoration-none">
-                            Indonesia
-                        </a>
-                    </h3>
-                </div>
-            </div>
-
-            <div class="col-6 col-sm-4 col-lg-3 mb-30 sm-mb-20 sm-pl-10 sm-pr-10">
-                <div class="position-relative text-center">
-                    <img class="w-100" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt="Laos" data-lazy-src="wp-content/uploads/2025/07/The-Royal-Palace-Museum-laos-1-270x270_c.jpg"><noscript><img class="w-100" src="wp-content/uploads/2025/07/The-Royal-Palace-Museum-laos-1-270x270_c.jpg" alt="Laos"></noscript>
-                    <h3 class="fsz-24 sm-fsz-20 m-0 middle-block">
-                        <a href="destination/visitar-laos/index.html" class="color-fff text-decoration-none">
-                            Laos
-                        </a>
-                    </h3>
-                </div>
-            </div>
-
-            <div class="col-6 col-sm-4 col-lg-3 mb-30 sm-mb-20 sm-pl-10 sm-pr-10">
-                <div class="position-relative text-center">
-                    <img class="w-100" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt="Malasia" data-lazy-src="wp-content/uploads/2025/07/kuala-lumpur-attraction-s21-270x270_c.jpg"><noscript><img class="w-100" src="wp-content/uploads/2025/07/kuala-lumpur-attraction-s21-270x270_c.jpg" alt="Malasia"></noscript>
-                    <h3 class="fsz-24 sm-fsz-20 m-0 middle-block">
-                        <a href="destination/visitar-malasia/index.html" class="color-fff text-decoration-none">
-                            Malasia
-                        </a>
-                    </h3>
-                </div>
-            </div>
-
-            <div class="col-6 col-sm-4 col-lg-3 mb-30 sm-mb-20 sm-pl-10 sm-pr-10">
-                <div class="position-relative text-center">
-                    <img class="w-100" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt="Filipinas" data-lazy-src="wp-content/uploads/2024/03/coron-philipine-270x270_c.jpg"><noscript><img class="w-100" src="wp-content/uploads/2024/03/coron-philipine-270x270_c.jpg" alt="Filipinas"></noscript>
-                    <h3 class="fsz-24 sm-fsz-20 m-0 middle-block">
-                        <a href="destination/visitar-filipinas/index.html" class="color-fff text-decoration-none">
-                            Filipinas
-                        </a>
-                    </h3>
-                </div>
-            </div>
-
-            <div class="col-6 col-sm-4 col-lg-3 mb-30 sm-mb-20 sm-pl-10 sm-pr-10">
-                <div class="position-relative text-center">
-                    <img class="w-100" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt="Maldivas" data-lazy-src="wp-content/uploads/2025/07/Bandos800x500-270x270_c.jpg"><noscript><img class="w-100" src="wp-content/uploads/2025/07/Bandos800x500-270x270_c.jpg" alt="Maldivas"></noscript>
-                    <h3 class="fsz-24 sm-fsz-20 m-0 middle-block">
-                        <a href="destination/visitar-maldivas/index.html" class="color-fff text-decoration-none">
-                            Maldivas
-                        </a>
-                    </h3>
-                </div>
-            </div>
-
-            <div class="col-6 col-sm-4 col-lg-3 mb-30 sm-mb-20 sm-pl-10 sm-pr-10">
-                <div class="position-relative text-center">
-                    <img class="w-100" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt="Hong Kong" data-lazy-src="wp-content/uploads/2025/07/hong-kong-attraction-s18-270x270_c.jpg"><noscript><img class="w-100" src="wp-content/uploads/2025/07/hong-kong-attraction-s18-270x270_c.jpg" alt="Hong Kong"></noscript>
-                    <h3 class="fsz-24 sm-fsz-20 m-0 middle-block">
-                        <a href="destination/visitar-hong-kong/index.html" class="color-fff text-decoration-none">
-                            Hong Kong
-                        </a>
-                    </h3>
-                </div>
-            </div>
-
-            <div class="col-6 col-sm-4 col-lg-3 mb-30 sm-mb-20 sm-pl-10 sm-pr-10">
-                <div class="position-relative text-center">
-                    <img class="w-100" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt="India" data-lazy-src="wp-content/uploads/2026/03/Agra-270x270_c.jpg"><noscript><img class="w-100" src="wp-content/uploads/2026/03/Agra-270x270_c.jpg" alt="India"></noscript>
-                    <h3 class="fsz-24 sm-fsz-20 m-0 middle-block">
-                        <a href="destination/india/index.html" class="color-fff text-decoration-none">
-                            India
-                        </a>
-                    </h3>
-                </div>
-            </div>
-
-            <div class="col-6 col-sm-4 col-lg-3 mb-30 sm-mb-20 sm-pl-10 sm-pr-10">
-                <div class="position-relative text-center">
-                    <img class="w-100" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt="Dubái" data-lazy-src="wp-content/uploads/2025/07/Bur-Dubai-old-town-800x500-1-270x270_c.jpg"><noscript><img class="w-100" src="wp-content/uploads/2025/07/Bur-Dubai-old-town-800x500-1-270x270_c.jpg" alt="Dubái"></noscript>
-                    <h3 class="fsz-24 sm-fsz-20 m-0 middle-block">
-                        <a href="destination/visitar-dubai/index.html" class="color-fff text-decoration-none">
-                            Dubái
-                        </a>
-                    </h3>
-                </div>
-            </div>
-
-            <div class="col-6 col-sm-4 col-lg-3 mb-30 sm-mb-20 sm-pl-10 sm-pr-10">
-                <div class="position-relative text-center">
-                    <img class="w-100" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt="Taiwán" data-lazy-src="wp-content/uploads/2025/07/taiwan_600x600-270x270_c.jpg"><noscript><img class="w-100" src="wp-content/uploads/2025/07/taiwan_600x600-270x270_c.jpg" alt="Taiwán"></noscript>
-                    <h3 class="fsz-24 sm-fsz-20 m-0 middle-block">
-                        <a href="destination/visitar-taiwan/index.html" class="color-fff text-decoration-none">
-                            Taiwán
-                        </a>
-                    </h3>
-                </div>
-            </div>
-
+            }  
         </div>
 
         <h2 class="section-title pt-5">

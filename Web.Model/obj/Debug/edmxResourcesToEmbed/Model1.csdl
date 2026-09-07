@@ -214,7 +214,6 @@
     <EntitySet Name="UserTrans" EntityType="WebDuLichModel.UserTran" />
     <EntitySet Name="tbl_User" EntityType="WebDuLichModel.tbl_User" />
     <EntitySet Name="MenuHomes" EntityType="WebDuLichModel.MenuHome" />
-    <EntitySet Name="tbl_Languages" EntityType="WebDuLichModel.tbl_Languages" />
     <EntitySet Name="Themes" EntityType="WebDuLichModel.Theme" />
     <EntitySet Name="Abouts" EntityType="WebDuLichModel.About" />
     <EntitySet Name="TopicTrans" EntityType="WebDuLichModel.TopicTran" />
@@ -225,13 +224,14 @@
     <EntitySet Name="ProductTrans" EntityType="WebDuLichModel.ProductTran" />
     <EntitySet Name="Introductions" EntityType="WebDuLichModel.Introduction" />
     <EntitySet Name="IntroductionTrans" EntityType="WebDuLichModel.IntroductionTran" />
-    <EntitySet Name="Countries" EntityType="WebDuLichModel.Country" />
-    <EntitySet Name="CountryTrans" EntityType="WebDuLichModel.CountryTran" />
-    <EntitySet Name="Locations" EntityType="WebDuLichModel.Location" />
     <EntitySet Name="LocationTrans" EntityType="WebDuLichModel.LocationTran" />
     <EntitySet Name="Hotels" EntityType="WebDuLichModel.Hotel" />
     <EntitySet Name="HotelTrans" EntityType="WebDuLichModel.HotelTran" />
+    <EntitySet Name="tbl_Languages" EntityType="WebDuLichModel.tbl_Languages" />
+    <EntitySet Name="Locations" EntityType="WebDuLichModel.Location" />
+    <EntitySet Name="CountryTrans" EntityType="WebDuLichModel.CountryTran" />
     <EntitySet Name="Products" EntityType="WebDuLichModel.Product" />
+    <EntitySet Name="Countries" EntityType="WebDuLichModel.Country" />
   </EntityContainer>
   <ComplexType Name="Sp_News_GetByLinkSeo_Result">
     <Property Type="Int32" Name="ID" Nullable="false" />
@@ -313,18 +313,6 @@
     <Property Name="Ordering" Type="Int32" />
     <Property Name="CreatedDate" Type="DateTime" Precision="3" />
     <Property Name="LangCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-  </EntityType>
-  <EntityType Name="tbl_Languages">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="LangName" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
-    <Property Name="LangCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="Icon" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-    <Property Name="Active" Type="Boolean" Nullable="false" />
-    <Property Name="IsDefault" Type="Boolean" Nullable="false" />
-    <Property Name="Ordering" Type="Int32" />
   </EntityType>
   <EntityType Name="Theme">
     <Key>
@@ -443,33 +431,6 @@
     <Property Name="Contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="IntroductionID" Type="Int32" Nullable="false" />
   </EntityType>
-  <EntityType Name="Country">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Code" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="Flag" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-    <Property Name="Active" Type="Boolean" Nullable="false" />
-    <Property Name="Ordering" Type="Int32" />
-  </EntityType>
-  <EntityType Name="CountryTran">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="LangCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="CountryID" Type="Int32" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Location">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Image" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-    <Property Name="Active" Type="Boolean" Nullable="false" />
-  </EntityType>
   <EntityType Name="LocationTran">
     <Key>
       <PropertyRef Name="ID" />
@@ -499,6 +460,37 @@
     <Property Name="LangCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="HotelID" Type="Int32" Nullable="false" />
   </EntityType>
+  <EntityType Name="tbl_Languages">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LangName" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="FullCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="LangCode" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Icon" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="IsDefault" Type="Boolean" Nullable="false" />
+    <Property Name="Ordering" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Location">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Image" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="CountryID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="CountryTran">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LangCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="CountryID" Type="Int32" Nullable="false" />
+  </EntityType>
   <EntityType Name="Product">
     <Key>
       <PropertyRef Name="ID" />
@@ -512,7 +504,18 @@
     <Property Name="Price" Type="Double" />
     <Property Name="Size" Type="Int32" />
     <Property Name="DayNumber" Type="Int32" />
+    <Property Name="CountryID" Type="Int32" />
     <Property Name="LocationID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Image" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="Ordering" Type="Int32" />
   </EntityType>
 </Schema>

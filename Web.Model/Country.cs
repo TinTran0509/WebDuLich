@@ -16,7 +16,7 @@ namespace Web.Model
     {
         public int ID { get; set; }
         public string Code { get; set; }
-        public string Flag { get; set; }
+        public string Image { get; set; }
         public bool Active { get; set; }
         public Nullable<int> Ordering { get; set; }
     }

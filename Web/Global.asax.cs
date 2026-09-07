@@ -84,6 +84,23 @@ namespace Web
                 };
                 HttpContext.Current.User = newUser;
             }
+
+            var culture = "vi-VN";
+
+            var cookie = Request.Cookies["culture"];
+
+            if (cookie != null &&
+                !string.IsNullOrEmpty(cookie.Value))
+            {
+                culture = cookie.Value;
+            }
+
+            var ci =
+                new System.Globalization.CultureInfo(culture);
+
+            System.Threading.Thread.CurrentThread.CurrentCulture = ci;
+
+            System.Threading.Thread.CurrentThread.CurrentUICulture = ci;
         }
     }
 }

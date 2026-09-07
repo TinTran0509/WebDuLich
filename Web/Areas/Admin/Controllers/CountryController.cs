@@ -65,7 +65,16 @@ namespace Web.Areas.Admin.Controllers
         public ActionResult Add(CountryCreateViewModel model)
         {
             try
-            { 
+            {
+                if (string.IsNullOrEmpty(model.Image))
+                {
+                    return Json(new
+                    {
+                        IsSuccess = false,
+                        Messenger = "Vui lòng thêm ảnh"
+                    }, JsonRequestBehavior.AllowGet);
+                }
+
                 List<CountryTran> countryTrans = new List<CountryTran>();
 
                 foreach (var lang in model.Languages)
@@ -91,18 +100,19 @@ namespace Web.Areas.Admin.Controllers
                 Country country = new Country
                 {
                     Code = model.Code,
-                    Flag = model.Flag,
-                    Active = true
+                    Image = model.Image,
+                    Active = true,
+                    Ordering = model.Ordering
                 };
 
-                Country checkCode = countryRepository.GetAll().FirstOrDefault(x=>x.Code.Equals(model.Code));
-                if (checkCode != null) {
-                    return Json(new
-                    {
-                        IsSuccess = false,
-                        Messenger = "Mã đã tồn tại",
-                    }, JsonRequestBehavior.AllowGet);
-                }
+                //Country checkCode = countryRepository.GetAll().FirstOrDefault(x=>x.Code.Equals(model.Code));
+                //if (checkCode != null) {
+                //    return Json(new
+                //    {
+                //        IsSuccess = false,
+                //        Messenger = "Mã đã tồn tại",
+                //    }, JsonRequestBehavior.AllowGet);
+                //}
 
                 int id = countryRepository.Create(country);
 
@@ -158,7 +168,7 @@ namespace Web.Areas.Admin.Controllers
             {
                 ID = id,
                 Code = country.Code,
-                Flag = country.Flag,
+                Image = country.Image,
                 Languages = countryLanguageViewModels
             };
             return Json(RenderViewToString("~/Areas/Admin/Views/Country/_Edit.cshtml", model), JsonRequestBehavior.AllowGet);
@@ -170,6 +180,15 @@ namespace Web.Areas.Admin.Controllers
         {
             try
             {
+                if(string.IsNullOrEmpty(model.Image))
+                {
+                    return Json(new
+                    {
+                        IsSuccess = false,
+                        Messenger = "Vui lòng thêm ảnh"
+                    }, JsonRequestBehavior.AllowGet);
+                }
+
                 List<CountryTran> countryTrans = new List<CountryTran>();
                 foreach (var lang in model.Languages)
                 {
@@ -185,25 +204,28 @@ namespace Web.Areas.Admin.Controllers
                     CountryTran countryTranEdit = new CountryTran
                     {
                         ID = lang.ID,
-                        Name = lang.Name
+                        Name = lang.Name,
+                        LangCode = lang.LangCode
                     };
                     countryTrans.Add(countryTranEdit);
                 }
 
-                Country checkCode = countryRepository.GetAll().FirstOrDefault(x => x.Code.Equals(model.Code) && x.ID != model.ID);
-                if (checkCode != null)
-                {
-                    return Json(new
-                    {
-                        IsSuccess = false,
-                        Messenger = "Mã đã tồn tại",
-                    }, JsonRequestBehavior.AllowGet);
-                }
+                //Country checkCode = countryRepository.GetAll().FirstOrDefault(x => x.Code.Equals(model.Code) && x.ID != model.ID);
+                //if (checkCode != null)
+                //{
+                //    return Json(new
+                //    {
+                //        IsSuccess = false,
+                //        Messenger = "Mã đã tồn tại",
+                //    }, JsonRequestBehavior.AllowGet);
+                //}
 
                 Country country = new Country();
                 country.ID = model.ID;
                 country.Code = model.Code;
-                country.Flag = model.Flag;
+                country.Image = model.Image;
+                country.Ordering = model.Ordering;
+                country.Active = model.Active;
 
                 countryRepository.Edit(country);
 

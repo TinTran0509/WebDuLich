@@ -4,6 +4,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
     var menus = (List<MenuTran>)TempData["Menus"];
     var locations = (List<LocationTran>)TempData["Location"];
+    var countries = (List<Web.Model.CountryTran>)TempData["CountryTrans"];
 }
 <style>
     .check-radio {
@@ -109,9 +110,21 @@
         </div>
     </div>
     <div class="form-group">
+        <label class="col-md-2 control-label">Quốc gia<span class="asterisk"> (*)</span></label>
+        <div class="col-md-3">
+            <select class="form-control select2" name="CountryID" id="CountryID" onchange="Product.getLocationByCountry(this.value)">
+                <option value="0">--- Chọn quốc gia ---</option>
+                @foreach (var item in countries)
+                {
+                    <option value="@item.CountryID">@item.Name</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
         <label class="col-md-2 control-label">Điểm đến<span class="asterisk"> (*)</span></label>
         <div class="col-md-8">
-            <select class="form-control select2" multiple name="LocationID" id="LocationID">
+            <select class="form-control select2" multiple name="LocationID" id="LocationIDs">
                 @foreach (var item in locations)
                 {
                     <option value="@item.ID">@item.Name</option>
@@ -191,15 +204,16 @@
         $('#MenuID').val(ckb);
     }
     $(document).ready(function () {
+        $('#CountryID').val(@Model.CountryID); 
         $('#Type').val(@Model.Type);
         $('input[name="language"][value="@Model.MenuID"]').prop('checked', true);
         $('#Title').on('change', function () {
             let link = $('#Title').val();
             let linkSeo = RemoveMarkStr(link);
             $('#LinkSeo').val(linkSeo);
-        });
+        }); 
         var values = '@ViewBag.SelectedLocation'.split(';');
-        $('#LocationID').val(values).trigger('change');
+        $('#LocationIDs').val(values).trigger('change');
         $("#frmData").validate({
             rules:
             {

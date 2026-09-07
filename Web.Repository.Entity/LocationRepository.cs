@@ -37,6 +37,7 @@ namespace Web.Repository.Entity
                     DynamicParameters parameters = new DynamicParameters(); 
                     parameters.Add("Image", model.Image);
                     parameters.Add("Active", model.Active);
+                    parameters.Add("CountryID", model.CountryID);
                     parameters.Add("ID", dbType: DbType.Int32, direction: ParameterDirection.Output);
                     conn.Execute("Sp_Location_Insert",
                         parameters,
@@ -176,6 +177,33 @@ namespace Web.Repository.Entity
         public IEnumerable<LocationTran> GetAllLocationTrans()
         {
             return _entities.LocationTrans;
-        } 
+        }
+
+        public IEnumerable<LocationTran> GetLocationTranByCoutryID(string langCode, int countryID)
+        {
+            try
+            {
+                using (var conn = new SqlConnection(_connectString))
+                {
+                    StringBuilder sb = new StringBuilder();
+                    sb.Append("SELECT lt.* FROM LocationTrans lt ");
+                    sb.Append("JOIN Location l ON l.ID = lt.LocationID ");
+                    sb.Append("WHERE l.CountryID = @CountryID AND lt.LangCode = @LangCode");
+
+                    DynamicParameters parameters = new DynamicParameters();
+                    parameters.Add("LangCode", langCode);
+                    parameters.Add("CountryID", countryID);
+
+                    return conn.Query<LocationTran>(
+                        sb.ToString(),
+                        parameters,
+                        commandType: CommandType.Text);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

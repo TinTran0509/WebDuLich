@@ -10,9 +10,9 @@ namespace Web.Model.CustomModel
     {
         public int ID { get; set; }
         public string Code { get; set; }
-        public string Flag { get; set; }
+        public string Image { get; set; }
         public bool Active { get; set; }
-        public int Ordering { get; set; }
+        public int Ordering { get; set; } 
         public List<CountryLanguageViewModel> Languages { get; set; }
     }
 }

@@ -16,6 +16,7 @@ namespace Web.Model
     {
         public int ID { get; set; }
         public string LangName { get; set; }
+        public string FullCode { get; set; }
         public string LangCode { get; set; }
         public string Icon { get; set; }
         public bool Active { get; set; }

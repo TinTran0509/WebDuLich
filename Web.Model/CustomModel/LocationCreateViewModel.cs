@@ -10,7 +10,8 @@ namespace Web.Model.CustomModel
     {
         public int ID { get; set; }
         public string Image { get; set; }
-        public bool Active { get; set; } 
+        public bool Active { get; set; }
+        public int CountryID { get; set; }
         public List<LocationLanguageViewModel> Languages { get; set; }
     }
 }

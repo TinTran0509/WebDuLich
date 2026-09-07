@@ -132,3 +132,17 @@ D:\PROJECTMORE\Lummia\Web\Web.Repository\obj\Debug\Web.Repository.csproj.CoreCom
 D:\PROJECTMORE\Lummia\Web\Web.Repository\obj\Debug\Web.Repo.49DEB4A1.Up2Date
 D:\PROJECTMORE\Lummia\Web\Web.Repository\obj\Debug\Web.Repository.dll
 D:\PROJECTMORE\Lummia\Web\Web.Repository\obj\Debug\Web.Repository.pdb
+D:\PROJECTMORE\Cailummia\Web.Repository\bin\Debug\Web.Repository.dll
+D:\PROJECTMORE\Cailummia\Web.Repository\bin\Debug\Web.Repository.pdb
+D:\PROJECTMORE\Cailummia\Web.Repository\bin\Debug\Web.Core.dll
+D:\PROJECTMORE\Cailummia\Web.Repository\bin\Debug\Web.Model.dll
+D:\PROJECTMORE\Cailummia\Web.Repository\bin\Debug\EntityFramework.dll
+D:\PROJECTMORE\Cailummia\Web.Repository\bin\Debug\Web.Core.pdb
+D:\PROJECTMORE\Cailummia\Web.Repository\bin\Debug\Web.Model.pdb
+D:\PROJECTMORE\Cailummia\Web.Repository\bin\Debug\Web.Model.dll.config
+D:\PROJECTMORE\Cailummia\Web.Repository\bin\Debug\EntityFramework.xml
+D:\PROJECTMORE\Cailummia\Web.Repository\obj\Debug\Web.Repository.csproj.AssemblyReference.cache
+D:\PROJECTMORE\Cailummia\Web.Repository\obj\Debug\Web.Repository.csproj.CoreCompileInputs.cache
+D:\PROJECTMORE\Cailummia\Web.Repository\obj\Debug\Web.Repo.49DEB4A1.Up2Date
+D:\PROJECTMORE\Cailummia\Web.Repository\obj\Debug\Web.Repository.dll
+D:\PROJECTMORE\Cailummia\Web.Repository\obj\Debug\Web.Repository.pdb

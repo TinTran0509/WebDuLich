@@ -20,7 +20,6 @@
         <EntityTypeShape EntityType="WebDuLichModel.UserTran" Width="1.5" PointX="13.375" PointY="3.75" />
         <EntityTypeShape EntityType="WebDuLichModel.tbl_User" Width="1.5" PointX="9.375" PointY="12.75" />
         <EntityTypeShape EntityType="WebDuLichModel.MenuHome" Width="1.5" PointX="3.375" PointY="13.75" />
-        <EntityTypeShape EntityType="WebDuLichModel.tbl_Languages" Width="1.5" PointX="7.375" PointY="7.75" />
         <EntityTypeShape EntityType="WebDuLichModel.Theme" Width="1.5" PointX="11.375" PointY="13.75" />
         <EntityTypeShape EntityType="WebDuLichModel.About" Width="1.5" PointX="13.375" PointY="13.75" />
         <EntityTypeShape EntityType="WebDuLichModel.TopicTran" Width="1.5" PointX="12.375" PointY="9.75" />
@@ -31,13 +30,14 @@
         <EntityTypeShape EntityType="WebDuLichModel.ProductTran" Width="1.5" PointX="15.375" PointY="3.75" />
         <EntityTypeShape EntityType="WebDuLichModel.Introduction" Width="1.5" PointX="0.75" PointY="14.75" />
         <EntityTypeShape EntityType="WebDuLichModel.IntroductionTran" Width="1.5" PointX="5.75" PointY="15.75" />
-        <EntityTypeShape EntityType="WebDuLichModel.Country" Width="1.5" PointX="16.375" PointY="0.75" />
-        <EntityTypeShape EntityType="WebDuLichModel.CountryTran" Width="1.5" PointX="16.375" PointY="7.75" />
-        <EntityTypeShape EntityType="WebDuLichModel.Location" Width="1.5" PointX="8.375" PointY="16.75" />
         <EntityTypeShape EntityType="WebDuLichModel.LocationTran" Width="1.5" PointX="16.375" PointY="10.75" />
         <EntityTypeShape EntityType="WebDuLichModel.Hotel" Width="1.5" PointX="0.75" PointY="17.75" />
         <EntityTypeShape EntityType="WebDuLichModel.HotelTran" Width="1.5" PointX="2.75" PointY="17.75" />
+        <EntityTypeShape EntityType="WebDuLichModel.tbl_Languages" Width="1.5" PointX="17.375" PointY="3.75" />
+        <EntityTypeShape EntityType="WebDuLichModel.Location" Width="1.5" PointX="8.375" PointY="16.75" />
+        <EntityTypeShape EntityType="WebDuLichModel.CountryTran" Width="1.5" PointX="16.375" PointY="7.75" />
         <EntityTypeShape EntityType="WebDuLichModel.Product" Width="1.5" PointX="15.375" PointY="13.75" />
+        <EntityTypeShape EntityType="WebDuLichModel.Country" Width="1.5" PointX="14.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

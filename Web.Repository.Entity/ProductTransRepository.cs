@@ -68,10 +68,10 @@ namespace Web.Repository.Entity
                 using (var conn = new SqlConnection(_connectString))
                 {
                     StringBuilder sb = new StringBuilder();
-                    sb.Append("SELECT b.ID, b.Image, bt.Title, bt. Description, bt. Contents, bt.ProductID, l.LangName FROM ProductTrans bt ");
-                    sb.Append("JOIN Product b ON b.ID = bt.ProductID ");
-                    sb.Append("JOIN tbl_Languages l ON bt.LangCode = l.LangCode ");
-                    sb.Append("WHERE bt.ProductID = @ProductID");
+                    sb.Append("SELECT p.ID, p.Image,p.ProductCode, pt.Title, pt. Description, pt. Contents, pt.ProductID, l.LangName FROM ProductTrans pt ");
+                    sb.Append("JOIN Product p ON p.ID = pt.ProductID ");
+                    sb.Append("JOIN tbl_Languages l ON pt.LangCode = l.LangCode ");
+                    sb.Append("WHERE pt.ProductID = @ProductID");
 
                     var parameters = new DynamicParameters();
                     parameters.Add("ProductID", productID);
@@ -94,7 +94,10 @@ namespace Web.Repository.Entity
                 using (var conn = new SqlConnection(_connectString))
                 {
                     StringBuilder sb = new StringBuilder();
-                    sb.Append("SELECT p.ID, p.Image, pt.Title, pt. Description, pt. Contents, pt.ProductID, l.LangName FROM ProductTrans pt ");
+                    sb.Append("SELECT p.ID, p.Image, p.DayNumber, p.Price, pt.Title, pt. Description, pt.LinkSeo,");
+                    sb.Append("(SELECT STUFF((SELECT ', ' + ct.Name FROM CountryTrans ct WHERE ct.CountryID = p.CountryID AND ct.LangCode = pt.LangCode FOR XML PATH('')), 1, 2, '')) AS Countries,");
+                    sb.Append("(SELECT STUFF((SELECT ', ' + lt.Name FROM LocationTrans lt WHERE lt.LocationID IN (1,2) AND lt.LangCode ='EN' FOR XML PATH('')), 1, 2, '')) AS Locations,");
+                    sb.Append("pt. Contents, pt.ProductID, l.LangName FROM ProductTrans pt ");
                     sb.Append("JOIN Product p ON p.ID = pt.ProductID ");
                     sb.Append("JOIN tbl_Languages l ON pt.LangCode = l.LangCode ");
                     sb.Append("WHERE p.Type = @Type AND pt.LangCode = @LangCode ");

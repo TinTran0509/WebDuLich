@@ -17,6 +17,7 @@ namespace Web.Model.CustomModel
         public double Price { get; set; }
         public int Size { get; set; }
         public int DayNumber { get; set; }
+        public int CountryID { get; set; }
         public List<int> LocationID { get; set; }
         public DateTime CreatedDate { get; set; }
         public List<ProductLanguageViewModel> Languages { get; set; }
