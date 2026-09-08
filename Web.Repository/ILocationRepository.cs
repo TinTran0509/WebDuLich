@@ -19,6 +19,6 @@ namespace Web.Repository
         void Edit(Location model);
         void Update(LocationTran obj);
         IEnumerable<LocationTran> GetByLocationID(string locationIDs, string langCode);
-        IEnumerable<LocationTran> GetLocationTranByCoutryID(string langCode, int countryID);
+        IEnumerable<LocationTran> GetLocationTranByCoutryID(string langCode, string countryIDs);
     }
 }

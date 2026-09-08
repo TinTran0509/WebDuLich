@@ -61,11 +61,29 @@ namespace Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Customized trips.
+        ///   Looks up a localized string similar to Best price guaranteed.
         /// </summary>
-        public static string CustomizedTrips {
+        public static string BestPrice {
             get {
-                return ResourceManager.GetString("CustomizedTrips", resourceCulture);
+                return ResourceManager.GetString("BestPrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Agency with no middlemen, guaranteed price parity..
+        /// </summary>
+        public static string BestPriceDescription {
+            get {
+                return ResourceManager.GetString("BestPriceDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The leading specialist in high-quality travel to Asia..
+        /// </summary>
+        public static string ChuyenGiaDuLich {
+            get {
+                return ResourceManager.GetString("ChuyenGiaDuLich", resourceCulture);
             }
         }
         
@@ -79,20 +97,20 @@ namespace Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Destination.
+        /// </summary>
+        public static string Destination {
+            get {
+                return ResourceManager.GetString("Destination", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Detail.
         /// </summary>
         public static string Detail {
             get {
                 return ResourceManager.GetString("Detail", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Group trip.
-        /// </summary>
-        public static string GroupTrip {
-            get {
-                return ResourceManager.GetString("GroupTrip", resourceCulture);
             }
         }
         
@@ -124,11 +142,74 @@ namespace Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Travel destinations.
+        ///   Looks up a localized string similar to Asian travel expert.
         /// </summary>
-        public static string TravelDestinations {
+        public static string Slogan {
             get {
-                return ResourceManager.GetString("TravelDestinations", resourceCulture);
+                return ResourceManager.GetString("Slogan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Instant support.
+        /// </summary>
+        public static string SpeedSupport {
+            get {
+                return ResourceManager.GetString("SpeedSupport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Our local experts are available to assist you 24/7..
+        /// </summary>
+        public static string SpeedSupportDesc {
+            get {
+                return ResourceManager.GetString("SpeedSupportDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Group and private tours.
+        /// </summary>
+        public static string StyleTour {
+            get {
+                return ResourceManager.GetString("StyleTour", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to High-quality group tours in Spanish across Asia and personalized trips..
+        /// </summary>
+        public static string StyleTourDesc {
+            get {
+                return ResourceManager.GetString("StyleTourDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Why Paso Sea Tour?.
+        /// </summary>
+        public static string WhyChooses {
+            get {
+                return ResourceManager.GetString("WhyChooses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enjoy the ultimate vacation..
+        /// </summary>
+        public static string YenTamDesc {
+            get {
+                return ResourceManager.GetString("YenTamDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Travel with peace of mind..
+        /// </summary>
+        public static string YenTamDuLich {
+            get {
+                return ResourceManager.GetString("YenTamDuLich", resourceCulture);
             }
         }
     }

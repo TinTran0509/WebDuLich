@@ -33,6 +33,7 @@ namespace Web.Controllers
         readonly IUserRepository userRepository = new UserRepository();
         readonly IProductTransRepository productTransRepository = new ProductTransRepository();
         readonly IIntroductionTransRepository introductionTransRepository = new IntroductionTransRepository();
+        readonly IWordRepository wordRepository = new WordRepository();
         public ActionResult Index(string langCode)
         {
             string culture = string.Empty;
@@ -69,21 +70,34 @@ namespace Web.Controllers
 
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(culture);
 
-            ViewBag.GroupTrip = Resources.Language.GroupTrip;
-            ViewBag.CustomizedTrips = Resources.Language.CustomizedTrips;
+            ViewBag.GroupTrip = wordRepository.GetValueByKey("GroupTrip", langCode);  
+            ViewBag.CustomizedTrips = wordRepository.GetValueByKey("CustomizedTrips", langCode);
             ViewBag.Price = Resources.Language.Price;
             ViewBag.Days = Resources.Language.Days;
             ViewBag.Nigths = Resources.Language.Nigths;
             ViewBag.Detail = Resources.Language.Detail;
             ViewBag.SeeMore = Resources.Language.SeeMore;
+            ViewBag.WhyChooses = Resources.Language.WhyChooses;
+            ViewBag.ChuyenGiaDuLich = Resources.Language.ChuyenGiaDuLich;
+            ViewBag.BestPrice = Resources.Language.BestPrice;
+            ViewBag.BestPriceDescription = Resources.Language.BestPriceDescription;
+            ViewBag.YenTamDuLich = Resources.Language.YenTamDuLich;
+            ViewBag.YenTamDesc = Resources.Language.YenTamDesc;
+            ViewBag.StyleTour = Resources.Language.StyleTour;
+            ViewBag.StyleTourDesc = Resources.Language.StyleTourDesc;
+            ViewBag.SpeedSupport = Resources.Language.SpeedSupport;
+            ViewBag.SpeedSupportDesc = Resources.Language.SpeedSupportDesc;
 
-            ViewBag.TravelDestinations = Resources.Language.TravelDestinations;
+            ViewBag.TravelDestinations = wordRepository.GetValueByKey("TravelDestinations", langCode);
+            ViewBag.OurSpecialists = wordRepository.GetValueByKey("OurSpecialists", langCode); 
 
             TempData["GroupTour"] = productTransRepository.GetByType(1, langCode, 9);
 
             TempData["PrivateTour"] = productTransRepository.GetByType(2, langCode, 3);
 
             TempData["Countries"] = countryRepository.GetCountryViewModelByLangCode(langCode);
+
+            TempData["UserModel"] = userRepository.GetAllByLangCode(langCode);
 
             return View();
         } 
@@ -132,8 +146,16 @@ namespace Web.Controllers
         public PartialViewResult Support()
         {
             string langCode = (string)Session["LangCode"];
+            ViewBag.MessagerWhatsApp = wordRepository.GetValueByKey("MessagerWhatsApp", langCode);
+            ViewBag.SupportNow = wordRepository.GetValueByKey("SupportNow", langCode);
             var users = userRepository.GetAllByLangCode(langCode).ToList();
             return PartialView(users);
+        }
+
+        public PartialViewResult Footer()
+        { 
+            ViewBag.Slogan = Resources.Language.Slogan; 
+            return PartialView();
         }
     }
 }

@@ -179,7 +179,7 @@ namespace Web.Repository.Entity
             return _entities.LocationTrans;
         }
 
-        public IEnumerable<LocationTran> GetLocationTranByCoutryID(string langCode, int countryID)
+        public IEnumerable<LocationTran> GetLocationTranByCoutryID(string langCode, string countryIDs)
         {
             try
             {
@@ -188,11 +188,11 @@ namespace Web.Repository.Entity
                     StringBuilder sb = new StringBuilder();
                     sb.Append("SELECT lt.* FROM LocationTrans lt ");
                     sb.Append("JOIN Location l ON l.ID = lt.LocationID ");
-                    sb.Append("WHERE l.CountryID = @CountryID AND lt.LangCode = @LangCode");
+                    sb.Append($"WHERE l.CountryID IN ({countryIDs}) AND lt.LangCode = @LangCode");
 
                     DynamicParameters parameters = new DynamicParameters();
                     parameters.Add("LangCode", langCode);
-                    parameters.Add("CountryID", countryID);
+                    //parameters.Add("CountryID", countryIDs);
 
                     return conn.Query<LocationTran>(
                         sb.ToString(),

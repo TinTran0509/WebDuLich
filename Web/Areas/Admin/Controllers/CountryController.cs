@@ -264,10 +264,8 @@ namespace Web.Areas.Admin.Controllers
         public ActionResult Delete(int id)
         {
             try
-            {
-                var obj = countryRepository.Find(id);
-                countryRepository.Delete(id);
-               
+            { 
+                countryRepository.Delete(id); 
             }
             catch (Exception)
             {

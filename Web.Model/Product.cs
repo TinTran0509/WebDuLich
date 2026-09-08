@@ -23,8 +23,10 @@ namespace Web.Model
         public Nullable<double> Price { get; set; }
         public Nullable<int> Size { get; set; }
         public Nullable<int> DayNumber { get; set; }
-        public Nullable<int> CountryID { get; set; }
+        public string CountryID { get; set; }
         public string LocationID { get; set; }
+        public string HotelID { get; set; }
+        public Nullable<int> NumberStar { get; set; }
         public System.DateTime CreatedDate { get; set; }
     }
 }

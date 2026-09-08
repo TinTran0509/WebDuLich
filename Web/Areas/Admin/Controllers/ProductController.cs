@@ -29,6 +29,7 @@ namespace Web.Areas.Admin.Controllers
         readonly IProductTransRepository productTransRepository = new ProductTransRepository();
         readonly ILocationRepository locationRepository = new LocationRepository();
         readonly ICountryRepository countryRepository = new CountryRepository();
+        readonly IHotelRepository hotelRepository = new HotelRepository();
         //
 
         [Authorize(Roles = "Index")]
@@ -68,6 +69,8 @@ namespace Web.Areas.Admin.Controllers
                 //TempData["Location"] = locationRepository.GetAllLocationTrans().Where(x => x.LangCode.Equals(language.LangCode)).ToList();
 
                 TempData["CountryTrans"] = countryRepository.GetCountryTranByLangCode(language.LangCode).ToList();
+
+                TempData["Hotels"] = hotelRepository.GetAllHotelTrans().Where(x => x.LangCode.Equals(language.LangCode)).ToList();
             } 
 
             List<tbl_Languages> tbl_Languages = languageRepository.GetByActive().ToList();
@@ -128,7 +131,7 @@ namespace Web.Areas.Admin.Controllers
                     }, JsonRequestBehavior.AllowGet);
                 }
 
-                if (model.CountryID == 0)
+                if (model.CountryID.Count == 0)
                 {
                     return Json(new
                     {
@@ -197,13 +200,14 @@ namespace Web.Areas.Admin.Controllers
                     Type = model.Type,
                     Price = model.Price,
                     Size = model.Size,
-                    CountryID = model.CountryID,
+                    CountryID = string.Join(",", model.CountryID), 
                     LocationID = string.Join(",", model.LocationID),
+                    HotelID = string.Join(",", model.HotelID),
                     DayNumber = model.DayNumber,
                     Active = true
                 };
 
-                int id = productRepository.Add(product);
+                int id = productRepository.Add(product); 
 
                 foreach (var item in productTrans)
                 {
@@ -236,14 +240,15 @@ namespace Web.Areas.Admin.Controllers
             tbl_Languages tbl_Language = tbl_Languages.FirstOrDefault(x => x.IsDefault);
             TempData["Menus"] = menuTransRepository.GetAll().Where(x => x.ParentID != 0 && x.LangCode.Equals(tbl_Language.LangCode)).ToList();
 
-            int countryId = product.CountryID != null ? (int)product.CountryID : 0;
-            if(countryId == 0)
+            //int countryId = product.CountryID != null ? (int)product.CountryID : 0;
+            int countryId = 0;
+            if (countryId == 0)
             {
                 TempData["Location"] = locationRepository.GetAllLocationTrans().Where(x=>x.LangCode.Equals(tbl_Language.LangCode)).ToList();
             }
             else
             {
-                TempData["Location"] = locationRepository.GetLocationTranByCoutryID(tbl_Language.LangCode, countryId).ToList();
+                //TempData["Location"] = locationRepository.GetLocationTranByCoutryID(tbl_Language.LangCode, countryId).ToList();
             } 
 
             TempData["CountryTrans"] = countryRepository.GetCountryTranByLangCode(tbl_Language.LangCode).ToList();
@@ -268,7 +273,8 @@ namespace Web.Areas.Admin.Controllers
                     };
                     productLanguageViewModels.Add(productLanguageViewModel);
                 }
-            }
+            } 
+
             var model = new ProductCreateViewModel
             {
                 ID = id,
@@ -280,23 +286,23 @@ namespace Web.Areas.Admin.Controllers
                 Price = product.Price != null ? (double)product.Price : 0,
                 Size = product.Size != null ? (int)product.Size : 0,
                 DayNumber = product.DayNumber != null ? (int)product.DayNumber : 0,
-                CountryID = product.CountryID != null ? (int)product.CountryID : 0,
+                //CountryID = product.CountryID != null ? (int)product.CountryID : 0,
                 CreatedDate = product.CreatedDate,
                 Languages = productLanguageViewModels
             };
-            if (!string.IsNullOrEmpty(product.LocationID))
-            {
-                List<LocationTran> locationTrans = locationRepository.GetByLocationID(product.LocationID, tbl_Language.LangCode).ToList();
-                if(locationTrans != null)
-                {
-                    string locationTransIDs = string.Empty;
-                    foreach (var item in locationTrans)
-                    {
-                        locationTransIDs += !string.IsNullOrEmpty(locationTransIDs) ? ";" + item.ID : item.ID + "";
-                    }
-                    ViewBag.SelectedLocation = locationTransIDs;
-                } 
-            } 
+            //if (!string.IsNullOrEmpty(product.LocationID))
+            //{
+            //    List<LocationTran> locationTrans = locationRepository.GetByLocationID(product.LocationID, tbl_Language.LangCode).ToList();
+            //    if(locationTrans != null)
+            //    {
+            //        string locationTransIDs = string.Empty;
+            //        foreach (var item in locationTrans)
+            //        {
+            //            locationTransIDs += !string.IsNullOrEmpty(locationTransIDs) ? ";" + item.ID : item.ID + "";
+            //        }
+            //        ViewBag.SelectedLocation = locationTransIDs;
+            //    } 
+            //} 
             return View(model);
         }
 
@@ -365,8 +371,8 @@ namespace Web.Areas.Admin.Controllers
                     Price = model.Price,
                     Size = model.Size,
                     DayNumber = model.DayNumber,
-                    CountryID = model.CountryID,
-                    LocationID = string.Join(",", model.LocationID)
+                    //CountryID = model.CountryID,
+                    //LocationID = string.Join(",", model.LocationID)
                 };
 
                 productRepository.Edit(product, productTrans);
@@ -411,11 +417,11 @@ namespace Web.Areas.Admin.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult GetLocationByCountry(int id)
+        public ActionResult GetLocationByCountry(string  ids)
         {
             try
             {
-                var locationTrans = locationRepository.GetLocationTranByCoutryID("EN", id).ToList(); 
+                var locationTrans = locationRepository.GetLocationTranByCoutryID("EN", ids).ToList(); 
 
                 return Json(new
                 {

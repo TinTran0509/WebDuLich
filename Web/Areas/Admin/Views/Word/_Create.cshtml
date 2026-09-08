@@ -1,0 +1,83 @@
+﻿
+@model Web.Model.CustomModel.WordCreateViewModel
+
+@using (Ajax.BeginForm("Add", "Word", null,
+    new AjaxOptions
+    {
+        HttpMethod = "POST",
+        OnSuccess = "Word.onAddSuccess"
+    },
+    new { @id = "basicForm", @class = "form-horizontal" }))
+{
+    <div class="form-group">
+        <label class="col-md-2 control-label">Từ khóa<span class="asterisk"> (*)</span></label>
+        <div class="col-md-8 lockChar">
+            @Html.TextBoxFor(g => g.KeyName, new { @class = "form-control"})
+        </div>
+    </div>
+    <ul class="nav nav-tabs lang-tabs">
+        @for (int i = 0; i < Model.Languages.Count; i++)
+        {
+            <li class="@(i == 0 ? "active" : "")" onclick="setActive(this)">
+                <a class="tab-lang" style="@(i == 0 ? "background-color: #f5f5f5":"")" href="#lang-@Model.Languages[i].LangCode"
+                   data-toggle="tab">
+                    @Model.Languages[i].LangName
+                </a>
+            </li>
+        }
+    </ul>
+    <div class="tab-content" style="background-color: #f5f5f5; padding-top:15px;margin-bottom:10px">
+        @for (int i = 0; i < Model.Languages.Count; i++)
+        {
+            var lang = Model.Languages[i];
+            <div id="lang-@lang.LangCode"
+                 class="tab-pane @(i == 0 ? "active" : "")">
+                <div class="form-group">
+                    <label class="col-md-1 control-label">Dịch<span class="asterisk"> (*)</span></label>
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Languages[i].Value, new { @class = "form-control" })
+                    </div>
+                </div>
+                @Html.HiddenFor(m => m.Languages[i].LangName)
+                @Html.HiddenFor(m => m.Languages[i].LangCode)
+            </div>
+        }
+    </div>  
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary waves-effect waves-light">Thêm mới</button>
+    </div>
+}
+<script>
+    function setActive(obj) {
+        $('.tab-lang').each(function (index, item) {
+            $(item).css('background-color', '#ffffff')
+        })
+        $(obj).find('a').css('background-color', '#f5f5f5');
+    }
+    // Basic Form
+    $(document).ready(function () { 
+        $("#basicForm").validate({
+            rules:
+            {
+                KeyName:
+                {
+                    required: true,
+                    maxlength: 250
+                }
+            },
+            messages:
+            {
+                KeyName:
+                {
+                    required: "Vui lòng nhập từ khóa"
+                }
+            },
+            highlight: function (element) {
+                jQuery(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+            },
+            success: function (element) {
+                jQuery(element).closest('.form-group').removeClass('has-error');
+            }
+        });
+    });
+</script>

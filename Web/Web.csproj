@@ -212,6 +212,7 @@
     <Compile Include="App_Start\SubDomainRoute.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\WordController.cs" />
     <Compile Include="Areas\Admin\Controllers\HotelController.cs" />
     <Compile Include="Areas\Admin\Controllers\LocationController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
@@ -280,6 +281,7 @@
     <Compile Include="Webconfig.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AppJs\word.js" />
     <Content Include="AppJs\hotel.js" />
     <Content Include="AppJs\location.js" />
     <Content Include="AppJs\product.js" />
@@ -1544,7 +1546,7 @@
     <Content Include="Content\Admin\css\helper.css" />
     <Content Include="Content\Admin\css\material-design-iconic-font.min.css" />
     <Content Include="Content\Admin\images\background.jpg" />
-    <Content Include="Content\Admin\images\backgroundvesinh.jpg" />
+    <Content Include="Content\Admin\images\cantho.jpg" />
     <Content Include="Content\Admin\images\staff.png" />
     <Content Include="Content\Admin\js\inputmask.numeric.extensions.js" />
     <Content Include="Content\Admin\js\jquery.inputmask.js" />
@@ -17332,6 +17334,10 @@
     <Content Include="Areas\Admin\Views\Hotel\Add.cshtml" />
     <Content Include="Areas\Admin\Views\Hotel\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Hotel\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Word\_Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Word\_Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Word\_ListData.cshtml" />
+    <Content Include="Areas\Admin\Views\Word\Index.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Images\IconFile\ExcelIcon.png" />
@@ -17485,6 +17491,7 @@
     <Content Include="Views\Home\Language.cshtml" />
     <Content Include="Views\Home\Header.cshtml" />
     <Content Include="Views\Home\Banner.cshtml" />
+    <Content Include="Views\Home\Footer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -228,8 +228,10 @@
     <Property Name="Price" Type="float" />
     <Property Name="Size" Type="int" />
     <Property Name="DayNumber" Type="int" />
-    <Property Name="CountryID" Type="int" />
-    <Property Name="LocationID" Type="varchar" MaxLength="100" />
+    <Property Name="CountryID" Type="varchar" MaxLength="100" />
+    <Property Name="LocationID" Type="varchar" MaxLength="250" />
+    <Property Name="HotelID" Type="varchar" MaxLength="100" />
+    <Property Name="NumberStar" Type="int" />
     <Property Name="CreatedDate" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="ProductTrans">
@@ -391,6 +393,23 @@
     <Property Name="UserID" Type="int" />
     <Property Name="LangCode" Type="varchar" MaxLength="10" />
   </EntityType>
+  <EntityType Name="Word">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KeyName" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WordTrans">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Value" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="LangCode" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="WordID" Type="int" Nullable="false" />
+  </EntityType>
   <Association Name="FK__News__CategoryId__6B24EA82">
     <End Role="Category" Type="Self.Category" Multiplicity="1" />
     <End Role="News" Type="Self.News" Multiplicity="*" />
@@ -466,6 +485,8 @@
     <EntitySet Name="TopicTrans" EntityType="Self.TopicTrans" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserAdmin" EntityType="Self.UserAdmin" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserTrans" EntityType="Self.UserTrans" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Word" EntityType="Self.Word" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WordTrans" EntityType="Self.WordTrans" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK__News__CategoryId__6B24EA82" Association="Self.FK__News__CategoryId__6B24EA82">
       <End Role="Category" EntitySet="Category" />
       <End Role="News" EntitySet="News" />

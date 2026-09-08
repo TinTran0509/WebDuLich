@@ -39,6 +39,7 @@ namespace Web.Repository.Entity
                     parameters.Add("DayNumber", obj.DayNumber);
                     parameters.Add("CountryID", obj.CountryID);
                     parameters.Add("LocationID", obj.LocationID);
+                    parameters.Add("HotelID", obj.HotelID);
                     parameters.Add("ID", dbType: DbType.Int32, direction: ParameterDirection.Output);
                     conn.Execute("Sp_Product_Insert",
                         parameters,
@@ -52,7 +53,7 @@ namespace Web.Repository.Entity
             {
                 throw;
             }
-        }  
+        }   
 
         public void Edit(Product obj, List<ProductTran> productTrans)
         {
@@ -73,6 +74,7 @@ namespace Web.Repository.Entity
                     parameters.Add("DayNumber", obj.DayNumber);
                     parameters.Add("CountryID", obj.CountryID);
                     parameters.Add("LocationID", obj.LocationID);
+                    parameters.Add("HotelID", obj.HotelID);
                     connection.Execute("Sp_Product_Update",
                         parameters,
                         commandType: CommandType.StoredProcedure,

@@ -75,6 +75,49 @@
 
                 $('#LocationIDs').html(option)
             }); 
+        },
+        selectCountry: function () {
+            let ids = $('input[name="country"]:checked').map(function () {
+                return this.value;
+            }).get();  
+            if (ids.length > 0) {
+                $.get("/Admin/Product/GetLocationByCountry", { ids: ids.join(',') }, function (res) {
+                    let option = '';
+                    res.Data.forEach((item, index, arr) => {
+                        option += `<option value="${item.LocationID}">${item.Name}</option>`;
+                    });
+
+                    $('#LocationIDs').html(option)
+                });  
+
+                let container = $('#countryIds'); 
+                container.empty(); 
+                ids.forEach(function (id) {
+                    container.append(
+                        $('<input>', {
+                            type: 'hidden',
+                            name: 'CountryID',
+                            value: id
+                        })
+                    );
+                });
+            }
+        },
+        selectHotel: function () {
+            let ids = $('input[name="hotel"]:checked').map(function () {
+                return this.value;
+            }).get();  
+            let container = $('#hotelIds');
+            container.empty();
+            ids.forEach(function (id) {
+                container.append(
+                    $('<input>', {
+                        type: 'hidden',
+                        name: 'HotelID',
+                        value: id
+                    })
+                );
+            });
         }
     };
 }();

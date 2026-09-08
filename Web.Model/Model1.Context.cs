@@ -57,8 +57,10 @@ namespace Web.Model
         public virtual DbSet<tbl_Languages> tbl_Languages { get; set; }
         public virtual DbSet<Location> Locations { get; set; }
         public virtual DbSet<CountryTran> CountryTrans { get; set; }
-        public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Country> Countries { get; set; }
+        public virtual DbSet<Word> Words { get; set; }
+        public virtual DbSet<WordTran> WordTrans { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
     
         public virtual int Sp_Category_Update(Nullable<int> iD, string name, string linkSeo, Nullable<int> parentID, Nullable<int> ordering, Nullable<int> type, Nullable<int> level, string icon, Nullable<int> position, Nullable<bool> isSearch, string pathway)
         {

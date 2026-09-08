@@ -46,6 +46,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IWordRepository.cs" />
     <Compile Include="IHotelRepository.cs" />
     <Compile Include="ILocationRepository.cs" />
     <Compile Include="IntroductionTransRepository.cs" />

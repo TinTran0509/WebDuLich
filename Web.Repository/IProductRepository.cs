@@ -13,7 +13,7 @@ namespace Web.Repository
         IEnumerable<ProductModel> GetByPage(int pageIndex, int pageSize, out int total);
         IEnumerable<Product> GetAll();
         Product Find(int id);
-        int Add(Product obj);
+        int Add(Product obj); 
         void Edit(Product obj, List<ProductTran> productTrans);
         void Delete(int id, List<ProductTran> productTrans);
     }

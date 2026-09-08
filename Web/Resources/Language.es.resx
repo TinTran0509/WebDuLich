@@ -117,19 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CustomizedTrips" xml:space="preserve">
-    <value>Viajes  personalizados</value>
-  </data>
   <data name="Days" xml:space="preserve">
     <value>Dias</value>
   </data>
   <data name="Detail" xml:space="preserve">
     <value>Detalle</value>
   </data>
-  <data name="GroupTrip" xml:space="preserve">
-    <value>Viaje en grupo</value>
-  </data>
-  <data name="Nights" xml:space="preserve">
+  <data name="Nigths" xml:space="preserve">
     <value>Noches</value>
   </data>
   <data name="Price" xml:space="preserve">
@@ -138,7 +132,40 @@
   <data name="SeeMore" xml:space="preserve">
     <value>Ver más</value>
   </data>
-  <data name="TravelDestinations" xml:space="preserve">
-    <value>Destinos de viaje</value>
+  <data name="Destination" xml:space="preserve">
+    <value>Destino</value>
+  </data>
+  <data name="Slogan" xml:space="preserve">
+    <value>Experto en viajes por Asia</value>
+  </data>
+  <data name="WhyChooses" xml:space="preserve">
+    <value>¿Por qué Paso Sea Tour?</value>
+  </data>
+  <data name="ChuyenGiaDuLich" xml:space="preserve">
+    <value>El mejor especialista en viajes de alta calidad por Asia.</value>
+  </data>
+  <data name="BestPrice" xml:space="preserve">
+    <value>Mejor precio garantizado</value>
+  </data>
+  <data name="BestPriceDescription" xml:space="preserve">
+    <value>Agencia sin intermediarios, garantía de igualdad de precios</value>
+  </data>
+  <data name="YenTamDuLich" xml:space="preserve">
+    <value>Viaje con tranquilidad</value>
+  </data>
+  <data name="YenTamDesc" xml:space="preserve">
+    <value>¡Disfruta de las mejores vacaciones de tu vida!</value>
+  </data>
+  <data name="StyleTour" xml:space="preserve">
+    <value>Viajes en grupo y privados</value>
+  </data>
+  <data name="StyleTourDesc" xml:space="preserve">
+    <value>Salidas grupales en español de alta calidad por toda Asia y viajes personalizados.</value>
+  </data>
+  <data name="SpeedSupport" xml:space="preserve">
+    <value>Soporte instantáneo</value>
+  </data>
+  <data name="SpeedSupportDesc" xml:space="preserve">
+    <value>Nuestros expertos locales están disponibles para ayudarle las 24 horas del día, los 7 días de la semana.</value>
   </data>
 </root>

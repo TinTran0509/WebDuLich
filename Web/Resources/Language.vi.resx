@@ -117,17 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CustomizedTrips" xml:space="preserve">
-    <value>Các chuyến đi được thiết kế riêng</value>
-  </data>
   <data name="Days" xml:space="preserve">
     <value>Ngày</value>
   </data>
   <data name="Detail" xml:space="preserve">
     <value>Chi tiết</value>
-  </data>
-  <data name="GroupTrip" xml:space="preserve">
-    <value>Chuyến đi theo nhóm</value>
   </data>
   <data name="Nigths" xml:space="preserve">
     <value>Đêm</value>
@@ -138,7 +132,40 @@
   <data name="SeeMore" xml:space="preserve">
     <value>Xem thêm</value>
   </data>
-  <data name="TravelDestinations" xml:space="preserve">
-    <value>Các điểm đến du lịch</value>
+  <data name="Destination" xml:space="preserve">
+    <value>Điểm đến</value>
+  </data>
+  <data name="Slogan" xml:space="preserve">
+    <value>Chuyên gia du lịch châu Á</value>
+  </data>
+  <data name="WhyChooses" xml:space="preserve">
+    <value>Tại sao chọn Paso Sea Tour?</value>
+  </data>
+  <data name="ChuyenGiaDuLich" xml:space="preserve">
+    <value>Chuyên gia hàng đầu về du lịch chất lượng cao đến châu Á.</value>
+  </data>
+  <data name="BestPrice" xml:space="preserve">
+    <value>Đảm bảo giá tốt nhất</value>
+  </data>
+  <data name="BestPriceDescription" xml:space="preserve">
+    <value>Đại lý không qua trung gian, đảm bảo ngang bằng về giá.</value>
+  </data>
+  <data name="YenTamDuLich" xml:space="preserve">
+    <value>An tâm du lịch</value>
+  </data>
+  <data name="YenTamDesc" xml:space="preserve">
+    <value>Tận hưởng kỳ nghỉ tuyệt vời nhất</value>
+  </data>
+  <data name="StyleTour" xml:space="preserve">
+    <value>Tour ghép đoàn và tour riêng</value>
+  </data>
+  <data name="StyleTourDesc" xml:space="preserve">
+    <value>Các tour ghép đoàn chất lượng cao sử dụng tiếng Tây Ban Nha trên khắp châu Á và các chuyến đi được thiết kế riêng.</value>
+  </data>
+  <data name="SpeedSupport" xml:space="preserve">
+    <value>Hỗ trợ tức thì</value>
+  </data>
+  <data name="SpeedSupportDesc" xml:space="preserve">
+    <value>Các chuyên gia tại địa phương của chúng tôi luôn sẵn sàng hỗ trợ bạn 24/7.</value>
   </data>
 </root>

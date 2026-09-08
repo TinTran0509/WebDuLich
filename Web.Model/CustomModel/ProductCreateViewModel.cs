@@ -16,9 +16,11 @@ namespace Web.Model.CustomModel
         public int Type { get; set; }
         public double Price { get; set; }
         public int Size { get; set; }
-        public int DayNumber { get; set; }
-        public int CountryID { get; set; }
+        public int DayNumber { get; set; } 
+        public List<int> CountryID { get; set; } 
         public List<int> LocationID { get; set; }
+        public List<int> HotelID { get; set; }
+        public int NumberStar { get; set; }
         public DateTime CreatedDate { get; set; }
         public List<ProductLanguageViewModel> Languages { get; set; }
     }

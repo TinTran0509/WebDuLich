@@ -117,17 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CustomizedTrips" xml:space="preserve">
-    <value>Customized trips</value>
-  </data>
   <data name="Days" xml:space="preserve">
     <value>Days</value>
   </data>
   <data name="Detail" xml:space="preserve">
     <value>Detail</value>
-  </data>
-  <data name="GroupTrip" xml:space="preserve">
-    <value>Group trip</value>
   </data>
   <data name="Nigths" xml:space="preserve">
     <value>Nigths</value>
@@ -138,7 +132,40 @@
   <data name="SeeMore" xml:space="preserve">
     <value>See more</value>
   </data>
-  <data name="TravelDestinations" xml:space="preserve">
-    <value>Travel destinations</value>
+  <data name="Destination" xml:space="preserve">
+    <value>Destination</value>
+  </data>
+  <data name="Slogan" xml:space="preserve">
+    <value>Asian travel expert</value>
+  </data>
+  <data name="WhyChooses" xml:space="preserve">
+    <value>Why Paso Sea Tour?</value>
+  </data>
+  <data name="ChuyenGiaDuLich" xml:space="preserve">
+    <value>The leading specialist in high-quality travel to Asia.</value>
+  </data>
+  <data name="BestPrice" xml:space="preserve">
+    <value>Best price guaranteed</value>
+  </data>
+  <data name="BestPriceDescription" xml:space="preserve">
+    <value>Agency with no middlemen, guaranteed price parity.</value>
+  </data>
+  <data name="YenTamDuLich" xml:space="preserve">
+    <value>Travel with peace of mind.</value>
+  </data>
+  <data name="YenTamDesc" xml:space="preserve">
+    <value>Enjoy the ultimate vacation.</value>
+  </data>
+  <data name="StyleTour" xml:space="preserve">
+    <value>Group and private tours</value>
+  </data>
+  <data name="StyleTourDesc" xml:space="preserve">
+    <value>High-quality group tours in Spanish across Asia and personalized trips.</value>
+  </data>
+  <data name="SpeedSupport" xml:space="preserve">
+    <value>Instant support</value>
+  </data>
+  <data name="SpeedSupportDesc" xml:space="preserve">
+    <value>Our local experts are available to assist you 24/7.</value>
   </data>
 </root>

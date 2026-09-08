@@ -5,6 +5,7 @@
     var menus = (List<MenuTran>)TempData["Menus"];
     //var locations = (List<LocationTran>)TempData["Location"];
     var countries = (List<Web.Model.CountryTran>)TempData["CountryTrans"];
+    var hotels = (List<Web.Model.HotelTran>)TempData["Hotels"];
 }
 <style>
     .check-radio {
@@ -64,7 +65,9 @@
     },
     new { @id = "frmData", @class = "form-horizontal" }))
 {
-    @Html.HiddenFor(x => x.MenuID) 
+    @Html.HiddenFor(x => x.MenuID)
+    <div id="countryIds"></div>
+    <div id="hotelIds"></div>
     <div class="article-create">
         <div class="form-group">
             <div class="col-md-2 text-left">
@@ -110,25 +113,41 @@
         </div>
         <div class="form-group">
             <label class="col-md-2 control-label">Quốc gia<span class="asterisk"> (*)</span></label>
-            <div class="col-md-3">
-                <select class="form-control select2" name="CountryID" id="CountryID" onchange="Product.getLocationByCountry(this.value)">
-                    <option value="0">--- Chọn quốc gia ---</option>
+            <div class="col-md-10">
+                @foreach (var item in countries)
+                {
+                    <label class="check-radio">
+                        <input type="checkbox" name="country" onclick="Product.selectCountry()" value="@item.CountryID">
+                        <span>@item.Name</span>
+                    </label>
+                }
+                @*<select class="form-control select2" name="CountryID" id="CountryID" onchange="Product.getLocationByCountry(this.value)">
+
                     @foreach (var item in countries)
                     {
+
                         <option value="@item.CountryID">@item.Name</option>
                     }
-                </select>
+                </select>*@
             </div>
         </div>
         <div class="form-group">
             <label class="col-md-2 control-label">Điểm đến<span class="asterisk"> (*)</span></label>
             <div class="col-md-8">
-                <select class="form-control select2" multiple name="LocationID" id="LocationIDs">
-                    @*@foreach (var item in locations)
-                    {
-                        <option value="@item.LocationID">@item.Name</option>
-                    }*@
+                <select class="form-control select2" multiple name="LocationID" id="LocationIDs"> 
                 </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">Khách sạn<span class="asterisk"> (*)</span></label>
+            <div class="col-md-10">
+                @foreach (var item in hotels)
+                {
+                    <label class="check-radio">
+                        <input type="checkbox" name="hotel" onclick="Product.selectHotel()" value="@item.HotelID">
+                        <span>@item.Name</span>
+                    </label>
+                } 
             </div>
         </div>
         <div class="form-group">

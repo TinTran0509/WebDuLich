@@ -233,8 +233,10 @@
           <Property Name="Price" Type="float" />
           <Property Name="Size" Type="int" />
           <Property Name="DayNumber" Type="int" />
-          <Property Name="CountryID" Type="int" />
-          <Property Name="LocationID" Type="varchar" MaxLength="100" />
+          <Property Name="CountryID" Type="varchar" MaxLength="100" />
+          <Property Name="LocationID" Type="varchar" MaxLength="250" />
+          <Property Name="HotelID" Type="varchar" MaxLength="100" />
+          <Property Name="NumberStar" Type="int" />
           <Property Name="CreatedDate" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductTrans">
@@ -396,6 +398,23 @@
           <Property Name="UserID" Type="int" />
           <Property Name="LangCode" Type="varchar" MaxLength="10" />
         </EntityType>
+        <EntityType Name="Word">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KeyName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WordTrans">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="LangCode" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="WordID" Type="int" Nullable="false" />
+        </EntityType>
         <Association Name="FK__News__CategoryId__6B24EA82">
           <End Role="Category" Type="Self.Category" Multiplicity="1" />
           <End Role="News" Type="Self.News" Multiplicity="*" />
@@ -471,6 +490,8 @@
           <EntitySet Name="TopicTrans" EntityType="Self.TopicTrans" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserAdmin" EntityType="Self.UserAdmin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserTrans" EntityType="Self.UserTrans" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Word" EntityType="Self.Word" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WordTrans" EntityType="Self.WordTrans" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__News__CategoryId__6B24EA82" Association="Self.FK__News__CategoryId__6B24EA82">
             <End Role="Category" EntitySet="Category" />
             <End Role="News" EntitySet="News" />
@@ -710,8 +731,10 @@
           <EntitySet Name="tbl_Languages" EntityType="WebDuLichModel.tbl_Languages" />
           <EntitySet Name="Locations" EntityType="WebDuLichModel.Location" />
           <EntitySet Name="CountryTrans" EntityType="WebDuLichModel.CountryTran" />
-          <EntitySet Name="Products" EntityType="WebDuLichModel.Product" />
           <EntitySet Name="Countries" EntityType="WebDuLichModel.Country" />
+          <EntitySet Name="Words" EntityType="WebDuLichModel.Word" />
+          <EntitySet Name="WordTrans" EntityType="WebDuLichModel.WordTran" />
+          <EntitySet Name="Products" EntityType="WebDuLichModel.Product" />
         </EntityContainer>
         <ComplexType Name="Sp_News_GetByLinkSeo_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
@@ -971,6 +994,33 @@
           <Property Name="LangCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="CountryID" Type="Int32" Nullable="false" />
         </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="Ordering" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Word">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KeyName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WordTran">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="LangCode" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="WordID" Type="Int32" Nullable="false" />
+        </EntityType>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="ID" />
@@ -984,19 +1034,11 @@
           <Property Name="Price" Type="Double" />
           <Property Name="Size" Type="Int32" />
           <Property Name="DayNumber" Type="Int32" />
-          <Property Name="CountryID" Type="Int32" />
-          <Property Name="LocationID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CountryID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LocationID" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="HotelID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NumberStar" Type="Int32" />
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-        </EntityType>
-        <EntityType Name="Country">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="Image" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="Active" Type="Boolean" Nullable="false" />
-          <Property Name="Ordering" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1440,10 +1482,42 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="WebDuLichModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="Ordering" ColumnName="Ordering" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Words">
+            <EntityTypeMapping TypeName="WebDuLichModel.Word">
+              <MappingFragment StoreEntitySet="Word">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="KeyName" ColumnName="KeyName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WordTrans">
+            <EntityTypeMapping TypeName="WebDuLichModel.WordTran">
+              <MappingFragment StoreEntitySet="WordTrans">
+                <ScalarProperty Name="WordID" ColumnName="WordID" />
+                <ScalarProperty Name="LangCode" ColumnName="LangCode" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="WebDuLichModel.Product">
               <MappingFragment StoreEntitySet="Product">
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="NumberStar" ColumnName="NumberStar" />
+                <ScalarProperty Name="HotelID" ColumnName="HotelID" />
                 <ScalarProperty Name="LocationID" ColumnName="LocationID" />
                 <ScalarProperty Name="CountryID" ColumnName="CountryID" />
                 <ScalarProperty Name="DayNumber" ColumnName="DayNumber" />
@@ -1454,17 +1528,6 @@
                 <ScalarProperty Name="Active" ColumnName="Active" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Countries">
-            <EntityTypeMapping TypeName="WebDuLichModel.Country">
-              <MappingFragment StoreEntitySet="Country">
-                <ScalarProperty Name="Ordering" ColumnName="Ordering" />
-                <ScalarProperty Name="Active" ColumnName="Active" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
