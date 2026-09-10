@@ -168,4 +168,19 @@
   <data name="SpeedSupportDesc" xml:space="preserve">
     <value>Các chuyên gia tại địa phương của chúng tôi luôn sẵn sàng hỗ trợ bạn 24/7.</value>
   </data>
+  <data name="Group" xml:space="preserve">
+    <value>Nhóm</value>
+  </data>
+  <data name="Private" xml:space="preserve">
+    <value>Riêng tư</value>
+  </data>
+  <data name="AverageSize" xml:space="preserve">
+    <value>Kích thước</value>
+  </data>
+  <data name="Duration" xml:space="preserve">
+    <value>Khoảng thời gian</value>
+  </data>
+  <data name="Hotel" xml:space="preserve">
+    <value>Khách sạn</value>
+  </data>
 </root>

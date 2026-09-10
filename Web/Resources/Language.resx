@@ -127,7 +127,7 @@
     <value>Nigths</value>
   </data>
   <data name="Price" xml:space="preserve">
-    <value>Starting price</value>
+    <value>Price</value>
   </data>
   <data name="SeeMore" xml:space="preserve">
     <value>See more</value>
@@ -167,5 +167,20 @@
   </data>
   <data name="SpeedSupportDesc" xml:space="preserve">
     <value>Our local experts are available to assist you 24/7.</value>
+  </data>
+  <data name="Group" xml:space="preserve">
+    <value>Group</value>
+  </data>
+  <data name="Private" xml:space="preserve">
+    <value>Private</value>
+  </data>
+  <data name="AverageSize" xml:space="preserve">
+    <value>Average size</value>
+  </data>
+  <data name="Duration" xml:space="preserve">
+    <value>Duration</value>
+  </data>
+  <data name="Hotel" xml:space="preserve">
+    <value>Hotel</value>
   </data>
 </root>

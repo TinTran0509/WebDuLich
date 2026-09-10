@@ -200,10 +200,11 @@ namespace Web.Areas.Admin.Controllers
                     Type = model.Type,
                     Price = model.Price,
                     Size = model.Size,
-                    CountryID = string.Join(",", model.CountryID), 
-                    LocationID = string.Join(",", model.LocationID),
-                    HotelID = string.Join(",", model.HotelID),
+                    CountryID = model.CountryID != null ? string.Join(",", model.CountryID) : null,
+                    LocationID = model.LocationID != null ? string.Join(",", model.LocationID) : null,
+                    HotelID = model.HotelID != null ? string.Join(",", model.HotelID) : null,
                     DayNumber = model.DayNumber,
+                    NumberStar = model.NumberStar,
                     Active = true
                 };
 
@@ -238,20 +239,14 @@ namespace Web.Areas.Admin.Controllers
 
             List<tbl_Languages> tbl_Languages = languageRepository.GetByActive().ToList();
             tbl_Languages tbl_Language = tbl_Languages.FirstOrDefault(x => x.IsDefault);
+
             TempData["Menus"] = menuTransRepository.GetAll().Where(x => x.ParentID != 0 && x.LangCode.Equals(tbl_Language.LangCode)).ToList();
 
-            //int countryId = product.CountryID != null ? (int)product.CountryID : 0;
-            int countryId = 0;
-            if (countryId == 0)
-            {
-                TempData["Location"] = locationRepository.GetAllLocationTrans().Where(x=>x.LangCode.Equals(tbl_Language.LangCode)).ToList();
-            }
-            else
-            {
-                //TempData["Location"] = locationRepository.GetLocationTranByCoutryID(tbl_Language.LangCode, countryId).ToList();
-            } 
-
+            TempData["Location"] = locationRepository.GetAllLocationTrans().Where(x => x.LangCode.Equals(tbl_Language.LangCode)).ToList();
+             
             TempData["CountryTrans"] = countryRepository.GetCountryTranByLangCode(tbl_Language.LangCode).ToList();
+
+            TempData["Hotels"] = hotelRepository.GetAllHotelTrans().Where(x => x.LangCode.Equals(tbl_Language.LangCode)).ToList();
 
             List<ProductTran> lstProductTrans = productTransRepository.GetAll().Where(x => x.ProductID == id).ToList();
               
@@ -284,25 +279,60 @@ namespace Web.Areas.Admin.Controllers
                 Active = product.Active,
                 Image = product.Image,
                 Price = product.Price != null ? (double)product.Price : 0,
-                Size = product.Size != null ? (int)product.Size : 0,
-                DayNumber = product.DayNumber != null ? (int)product.DayNumber : 0,
-                //CountryID = product.CountryID != null ? (int)product.CountryID : 0,
+                Size = product.Size,
+                DayNumber = product.DayNumber != null ? (int)product.DayNumber : 0, 
                 CreatedDate = product.CreatedDate,
+                NumberStar = product.NumberStar != null ? (int)product.NumberStar : 0,
                 Languages = productLanguageViewModels
             };
-            //if (!string.IsNullOrEmpty(product.LocationID))
-            //{
-            //    List<LocationTran> locationTrans = locationRepository.GetByLocationID(product.LocationID, tbl_Language.LangCode).ToList();
-            //    if(locationTrans != null)
-            //    {
-            //        string locationTransIDs = string.Empty;
-            //        foreach (var item in locationTrans)
-            //        {
-            //            locationTransIDs += !string.IsNullOrEmpty(locationTransIDs) ? ";" + item.ID : item.ID + "";
-            //        }
-            //        ViewBag.SelectedLocation = locationTransIDs;
-            //    } 
-            //} 
+            if (!string.IsNullOrEmpty(product.CountryID))
+            {
+                List<CountryTran> countryTrans = countryRepository.GetByCountryID(product.CountryID, tbl_Language.LangCode).ToList();
+                if (countryTrans != null)
+                {
+                    List<int> countryIDs = new List<int>();
+                    string sCountryTransIDs = string.Empty;
+                    foreach (var item in countryTrans)
+                    {
+                        countryIDs.Add(item.CountryID);
+                        sCountryTransIDs += !string.IsNullOrEmpty(sCountryTransIDs) ? ";" + item.ID : item.ID + "";
+                    }
+                    ViewBag.CountryIDs = countryIDs;
+                    ViewBag.SelectedCountries = sCountryTransIDs;
+                }
+            }
+            if (!string.IsNullOrEmpty(product.LocationID))
+            {
+                List<LocationTran> locationTrans = locationRepository.GetByLocationID(product.LocationID, tbl_Language.LangCode).ToList();
+                if (locationTrans != null)
+                {
+                    List<int> locationIDs = new List<int>();
+                    string locationTransIDs = string.Empty;
+                    foreach (var item in locationTrans)
+                    {
+                        locationIDs.Add(item.LocationID);
+                        locationTransIDs += !string.IsNullOrEmpty(locationTransIDs) ? ";" + item.ID : item.ID + "";
+                    }
+                    ViewBag.LocationIDs = locationIDs;
+                    ViewBag.SelectedLocation = locationTransIDs;
+                }
+            }
+            if (!string.IsNullOrEmpty(product.HotelID))
+            {
+                List<HotelTran> hotelTrans = hotelRepository.GetByHotelID(product.HotelID, tbl_Language.LangCode).ToList();
+                if (hotelTrans != null)
+                {
+                    List<int> hotelIDs = new List<int>();
+                    string sHotelTransIDs = string.Empty;
+                    foreach (var item in hotelTrans)
+                    {
+                        hotelIDs.Add(item.HotelID);
+                        sHotelTransIDs += !string.IsNullOrEmpty(sHotelTransIDs) ? ";" + item.ID : item.ID + "";
+                    }
+                    ViewBag.HotelIDs = hotelIDs;
+                    ViewBag.SelectedHotels = sHotelTransIDs;
+                }
+            }
             return View(model);
         }
 
@@ -358,7 +388,7 @@ namespace Web.Areas.Admin.Controllers
                         Contents = lang.Contents
                     };
                     productTrans.Add(productTranEdit);
-                }
+                } 
 
                 Product product = new Product
                 {
@@ -371,8 +401,10 @@ namespace Web.Areas.Admin.Controllers
                     Price = model.Price,
                     Size = model.Size,
                     DayNumber = model.DayNumber,
-                    //CountryID = model.CountryID,
-                    //LocationID = string.Join(",", model.LocationID)
+                    CountryID =  model.CountryID != null ? string.Join(",", model.CountryID) : null,
+                    LocationID = model.LocationID != null ? string.Join(",", model.LocationID) : null,
+                    HotelID = model.HotelID != null ? string.Join(",", model.HotelID) : null,
+                    NumberStar = model.NumberStar
                 };
 
                 productRepository.Edit(product, productTrans);

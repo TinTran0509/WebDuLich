@@ -531,7 +531,7 @@
     <Property Name="MenuID" Type="Int32" Nullable="false" />
     <Property Name="Type" Type="Int32" Nullable="false" />
     <Property Name="Price" Type="Double" />
-    <Property Name="Size" Type="Int32" />
+    <Property Name="Size" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="DayNumber" Type="Int32" />
     <Property Name="CountryID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="LocationID" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />

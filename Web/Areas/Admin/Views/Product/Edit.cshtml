@@ -5,6 +5,10 @@
     var menus = (List<MenuTran>)TempData["Menus"];
     var locations = (List<LocationTran>)TempData["Location"];
     var countries = (List<Web.Model.CountryTran>)TempData["CountryTrans"];
+    var hotels = (List<Web.Model.HotelTran>)TempData["Hotels"];
+    List<int> countryIds = ViewBag.CountryIDs;
+    List<int> locationIds = ViewBag.LocationIDs;
+    List<int> hotelIds = ViewBag.HotelIDs;
 }
 <style>
     .check-radio {
@@ -65,137 +69,185 @@
                 new { @id = "frmData", @class = "form-horizontal" }))
 {
     @Html.HiddenFor(x => x.ID)
-    @Html.HiddenFor(x => x.MenuID) 
-<div class="article-create">
-    <div class="form-group">
-        <div class="col-md-2 text-left">
-            <a href="/admin/product" class=""><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay trở lại</a>
-        </div>
-        <div class="col-md-6">
-            <span style="font-size:18px">Cập nhật sản phẩm</span>
-        </div>
+    @Html.HiddenFor(x => x.MenuID)
+    <div id="countryIds">
+        @if (countryIds != null)
+        {
+            foreach (var item in countryIds)
+            {
+                <input type="hidden" name="CountryID" value="@item" />
+            }
+        }
     </div>
-    <div class="form-group">
-        <label class="col-md-2 control-label">Mã<span class="asterisk"> (*)</span></label>
-        <div class="col-md-3">
-            @Html.TextBoxFor(model => model.ProductCode, new { @class = "form-control" })
-        </div>
+    <div id="hotelIds">
+        @if (hotelIds != null)
+        {
+            foreach (var item in hotelIds)
+            {
+                <input type="hidden" name="HotelID" value="@item" />
+            }
+        }
     </div>
-    <div class="form-group">
-        <label class="col-md-2 control-label">Giá<span class="asterisk"> (*)</span></label>
-        <div class="col-md-3 lockchar">
-            @Html.TextBoxFor(model => model.Price, new { @class = "form-control" })
-        </div>
+    <div id="loactionIds">
+        @if (locationIds != null)
+        {
+            foreach (var item in locationIds)
+            {
+                <input type="hidden" name="LocationID" value="@item" />
+            }
+        }
     </div>
-    <div class="form-group">
-        <label class="col-md-2 control-label">Số người</label>
-        <div class="col-md-1 lockchar">
-            @Html.TextBoxFor(model => model.Size, new { @class = "form-control", @type = "number" })
+    <div class="article-create">
+        <div class="form-group">
+            <div class="col-md-2 text-left">
+                <a href="/admin/product" class=""><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay trở lại</a>
+            </div>
+            <div class="col-md-6">
+                <span style="font-size:18px">Cập nhật sản phẩm</span>
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="col-md-2 control-label">Số ngày đi</label>
-        <div class="col-md-1 lockchar">
-            @Html.TextBoxFor(model => model.DayNumber, new { @class = "form-control", @type = "number" })
+        <div class="form-group">
+            <label class="col-md-2 control-label">Mã<span class="asterisk"> (*)</span></label>
+            <div class="col-md-2">
+                @Html.TextBoxFor(model => model.ProductCode, new { @class = "form-control" })
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="col-md-2 control-label">Loại hình<span class="asterisk"> (*)</span></label>
-        <div class="col-md-3">
-            <select class="form-control" name="Type" id="Type">
-                <option value="0">--- Chọn loại hình ---</option>
-                <option value="1">Đi theo nhóm</option>
-                <option value="2">Đi riêng</option>
-            </select>
+        <div class="form-group">
+            <label class="col-md-2 control-label">Giá<span class="asterisk"> (*)</span></label>
+            <div class="col-md-2 lockchar">
+                @Html.TextBoxFor(model => model.Price, new { @class = "form-control" })
+            </div>
+            <div class="col-md-1">
+                <span style="position:absolute; margin-top:10px">USD</span>
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="col-md-2 control-label">Quốc gia<span class="asterisk"> (*)</span></label>
-        <div class="col-md-3">
-            <select class="form-control select2" name="CountryID" id="CountryID" onchange="Product.getLocationByCountry(this.value)">
-                <option value="0">--- Chọn quốc gia ---</option>
+        <div class="form-group">
+            <label class="col-md-2 control-label">Số ngày đi</label>
+            <div class="col-md-2 lockchar">
+                @Html.TextBoxFor(model => model.DayNumber, new { @class = "form-control txtnumber", @type = "number" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">Số lượng người</label>
+            <div class="col-md-3">
+                @Html.TextBoxFor(model => model.Size, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">Loại hình<span class="asterisk"> (*)</span></label>
+            <div class="col-md-3">
+                <select class="form-control" name="Type" id="Type">
+                    <option value="0">--- Chọn loại hình ---</option>
+                    <option value="1">Đi theo nhóm</option>
+                    <option value="2">Đi riêng</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">Quốc gia<span class="asterisk"> (*)</span></label>
+            <div class="col-md-10">
                 @foreach (var item in countries)
                 {
-                    <option value="@item.CountryID">@item.Name</option>
+                    <label class="check-radio">
+                        <input type="checkbox" name="country" data-country="@item.CountryID" onclick="Product.selectCountryEdit()" value="@item.ID">
+                        <span>@item.Name</span>
+                    </label>
                 }
-            </select>
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="col-md-2 control-label">Điểm đến<span class="asterisk"> (*)</span></label>
-        <div class="col-md-8">
-            <select class="form-control select2" multiple name="LocationID" id="LocationIDs">
-                @foreach (var item in locations)
+        <div class="form-group">
+            <label class="col-md-2 control-label">Điểm đến<span class="asterisk"> (*)</span></label>
+            <div class="col-md-8">
+                <select class="form-control select2" onchange="Product.selectLocationEdit()" multiple id="LocationIDs">
+                    @foreach (var item in locations)
+                    {
+                        <option data-location="@item.LocationID" value="@item.ID">@item.Name</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">Khách sạn<span class="asterisk"> (*)</span></label>
+            <div class="col-md-10">
+                @foreach (var item in hotels)
                 {
-                    <option value="@item.ID">@item.Name</option>
+                    <label class="check-radio">
+                        <input type="checkbox" name="hotel" data-hotel="@item.HotelID" onclick="Product.selectHotelEdit()" value="@item.ID">
+                        <span>@item.Name</span>
+                    </label>
                 }
-            </select>
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="col-md-2 control-label">Chủ đề <span class="asterisk"> (*)</span></label>
-        <div class="col-md-10">
-            @foreach (var item in menus)
+        <div class="form-group">
+            <label class="col-md-2 control-label">Số sao khách sạn</label>
+            <div class="col-md-2 lockchar">
+                @Html.TextBoxFor(model => model.NumberStar, new { @class = "form-control txtnumber", @type = "number" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">Chủ đề <span class="asterisk"> (*)</span></label>
+            <div class="col-md-10">
+                @foreach (var item in menus)
+                {
+                    <label class="check-radio">
+                        <input type="radio" name="language" onclick="getValueTopic(this.value)" value="@item.MenuID">
+                        <span>@item.Name</span>
+                    </label>
+                }
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">Ảnh <span class="asterisk"> (*)</span></label>
+            <div class="col-md-10">
+                <div class="col-md-2">
+                    @{ Html.RenderAction("UploadImage", "UploadFile", new { controlName = "Image" });}
+                </div>
+                <img style="width:150px" src="@Model.Image" id="prevImages">
+                <span class="error" id="spImg"></span>
+            </div>
+        </div>
+        <ul class="nav nav-tabs lang-tabs">
+            @for (int i = 0; i < Model.Languages.Count; i++)
             {
-                <label class="check-radio">
-                    <input type="radio" name="language" onclick="getValueTopic(this.value)" value="@item.MenuID">
-                    <span>@item.Name</span>
-                </label>
+                <li class="@(i == 0 ? "active" : "")">
+                    <a href="#lang-@Model.Languages[i].LangCode"
+                       data-toggle="tab">
+                        @Model.Languages[i].LangName
+                    </a>
+                </li>
+            }
+        </ul>
+        <div class="tab-content">
+            @for (int i = 0; i < Model.Languages.Count; i++)
+            {
+                var lang = Model.Languages[i];
+                <div id="lang-@lang.LangCode"
+                     class="tab-pane @(i == 0 ? "active" : "")">
+                    <div class="form-group">
+                        <label>Tiêu đề</label>
+                        @Html.TextBoxFor(m => m.Languages[i].Title, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label>Mô tả</label>
+                        @Html.TextBoxFor(m => m.Languages[i].Description, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label>Nội dung <span class="asterisk"> (*)</span></label>
+                        @Html.TextAreaFor(m => m.Languages[i].Contents, new { @class = "form-control article-content", rows = 10 })
+                    </div>
+                    @Html.HiddenFor(m => m.Languages[i].ID)
+                    @Html.HiddenFor(m => m.Languages[i].LangCode)
+                    @Html.HiddenFor(m => m.Languages[i].LangName)
+                </div>
             }
         </div>
-    </div>
-    <div class="form-group">
-        <label class="col-md-2 control-label">Ảnh <span class="asterisk"> (*)</span></label>
-        <div class="col-md-10">
-            <div class="col-md-2">
-                @{ Html.RenderAction("UploadImage", "UploadFile", new { controlName = "Image" });}
+        <div class="form-group">
+            <div class="col-md-2 text-left"><a href="/admin/product" class=""><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay trở lại</a></div>
+            <div class="col-md-7 text-center">
+                <button type="submit" class="btn btn-primary waves-effect waves-light">Cập nhật</button>
             </div>
-            <img style="width:150px" src="@Model.Image" id="prevImages">
-            <span class="error" id="spImg"></span>
         </div>
     </div>
-    <ul class="nav nav-tabs lang-tabs">
-        @for (int i = 0; i < Model.Languages.Count; i++)
-        {
-            <li class="@(i == 0 ? "active" : "")">
-                <a href="#lang-@Model.Languages[i].LangCode"
-                   data-toggle="tab">
-                    @Model.Languages[i].LangName
-                </a>
-            </li>
-        }
-    </ul>
-    <div class="tab-content">
-        @for (int i = 0; i < Model.Languages.Count; i++)
-        {
-            var lang = Model.Languages[i];
-            <div id="lang-@lang.LangCode"
-                 class="tab-pane @(i == 0 ? "active" : "")">
-                <div class="form-group">
-                    <label>Tiêu đề</label>
-                    @Html.TextBoxFor(m => m.Languages[i].Title, new { @class = "form-control" })
-                </div>
-                <div class="form-group">
-                    <label>Mô tả</label>
-                    @Html.TextBoxFor(m => m.Languages[i].Description, new { @class = "form-control" })
-                </div>
-                <div class="form-group">
-                    <label>Nội dung <span class="asterisk"> (*)</span></label>
-                    @Html.TextAreaFor(m => m.Languages[i].Contents, new { @class = "form-control article-content", rows = 10 })
-                </div>
-                @Html.HiddenFor(m => m.Languages[i].ID)
-                @Html.HiddenFor(m => m.Languages[i].LangCode)
-                @Html.HiddenFor(m => m.Languages[i].LangName)
-            </div>
-        }
-    </div>
-    <div class="form-group">
-        <div class="col-md-2 text-left"><a href="/admin/product" class=""><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay trở lại</a></div>
-        <div class="col-md-7 text-center">
-            <button type="submit" class="btn btn-primary waves-effect waves-light">Cập nhật</button>
-        </div>
-    </div>
-</div>
 }
 <script src="~/Content/plugins/ckeditor/ckeditor.js"></script>
 <script src="~/Content/plugins/ckfinder/ckfinder.js"></script>
@@ -204,16 +256,29 @@
         $('#MenuID').val(ckb);
     }
     $(document).ready(function () {
-        $('#CountryID').val(@Model.CountryID); 
+        $('html, body').animate({ scrollTop: 0 }, 1000);
+        $('#CountryID').val(@Model.CountryID);
         $('#Type').val(@Model.Type);
         $('input[name="language"][value="@Model.MenuID"]').prop('checked', true);
         $('#Title').on('change', function () {
             let link = $('#Title').val();
             let linkSeo = RemoveMarkStr(link);
             $('#LinkSeo').val(linkSeo);
-        }); 
-        var values = '@ViewBag.SelectedLocation'.split(';');
-        $('#LocationIDs').val(values).trigger('change');
+        });
+
+        var countries = '@ViewBag.SelectedCountries'.split(';');
+        $('input[name="country"]').prop('checked', function () {
+            return countries.includes(this.value);
+        });
+
+        var locations = '@ViewBag.SelectedLocation'.split(';');
+        $('#LocationIDs').val(locations).trigger('change');
+
+        var hotels = '@ViewBag.SelectedHotels'.split(';');
+        $('input[name="hotel"]').prop('checked', function () {
+            return hotels.includes(this.value);
+        });
+
         $("#frmData").validate({
             rules:
             {

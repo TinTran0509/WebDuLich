@@ -231,7 +231,7 @@
           <Property Name="MenuID" Type="int" Nullable="false" />
           <Property Name="Type" Type="int" Nullable="false" />
           <Property Name="Price" Type="float" />
-          <Property Name="Size" Type="int" />
+          <Property Name="Size" Type="varchar" MaxLength="50" />
           <Property Name="DayNumber" Type="int" />
           <Property Name="CountryID" Type="varchar" MaxLength="100" />
           <Property Name="LocationID" Type="varchar" MaxLength="250" />
@@ -1032,7 +1032,7 @@
           <Property Name="MenuID" Type="Int32" Nullable="false" />
           <Property Name="Type" Type="Int32" Nullable="false" />
           <Property Name="Price" Type="Double" />
-          <Property Name="Size" Type="Int32" />
+          <Property Name="Size" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DayNumber" Type="Int32" />
           <Property Name="CountryID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="LocationID" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />

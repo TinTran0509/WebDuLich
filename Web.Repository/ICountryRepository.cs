@@ -22,5 +22,6 @@ namespace Web.Repository
         IEnumerable<CountryTran> GetCountryTranByLangCode(string langCode);
         IEnumerable<CountryTran> GetCountryTranByCountryID(int countryID);
         IEnumerable<CountryViewModel> GetCountryViewModelByLangCode(string langCode);
+        IEnumerable<CountryTran> GetByCountryID(string countryIDs, string langCode);
     }
 }

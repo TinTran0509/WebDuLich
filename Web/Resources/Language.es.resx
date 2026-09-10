@@ -168,4 +168,19 @@
   <data name="SpeedSupportDesc" xml:space="preserve">
     <value>Nuestros expertos locales están disponibles para ayudarle las 24 horas del día, los 7 días de la semana.</value>
   </data>
+  <data name="Group" xml:space="preserve">
+    <value>Grupo</value>
+  </data>
+  <data name="Private" xml:space="preserve">
+    <value>Privada</value>
+  </data>
+  <data name="AverageSize" xml:space="preserve">
+    <value>Tamaño promedio</value>
+  </data>
+  <data name="Duration" xml:space="preserve">
+    <value>Duración</value>
+  </data>
+  <data name="Hotel" xml:space="preserve">
+    <value>Hotel</value>
+  </data>
 </root>

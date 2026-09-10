@@ -17,6 +17,7 @@ namespace Web.Repository
         void Delete(int id);
         Hotel Find(int id);
         void Edit(Hotel model);
-        void Update(HotelTran obj); 
+        void Update(HotelTran obj);
+        IEnumerable<HotelTran> GetByHotelID(string hotelIDs, string langCode);
     }
 }

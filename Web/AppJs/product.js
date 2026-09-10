@@ -76,10 +76,19 @@
                 $('#LocationIDs').html(option)
             }); 
         },
-        selectCountry: function () {
+        selectCountryAdd: function () {
             let ids = $('input[name="country"]:checked').map(function () {
                 return this.value;
-            }).get();  
+            }).get(); 
+            Product.setDataCountry(ids);
+        },
+        selectCountryEdit: function () {
+            let ids = $('input[name="country"]:checked').map(function () {
+                return $(this).data('country');
+            }).get();
+            Product.setDataCountry(ids);
+        },
+        setDataCountry: function (ids) { 
             if (ids.length > 0) {
                 $.get("/Admin/Product/GetLocationByCountry", { ids: ids.join(',') }, function (res) {
                     let option = '';
@@ -103,10 +112,19 @@
                 });
             }
         },
-        selectHotel: function () {
+        selectHotelAdd: function () {
             let ids = $('input[name="hotel"]:checked').map(function () {
                 return this.value;
-            }).get();  
+            }).get(); 
+            Product.setDataHotel(ids);
+        },
+        selectHotelEdit: function () {
+            let ids = $('input[name="hotel"]:checked').map(function () {
+                return $(this).data('hotel');
+            }).get();
+            Product.setDataHotel(ids);
+        },
+        setDataHotel: function (ids) { 
             let container = $('#hotelIds');
             container.empty();
             ids.forEach(function (id) {
@@ -118,7 +136,21 @@
                     })
                 );
             });
-        }
+        },
+        selectLocationEdit: function () { 
+            let container = $('#loactionIds');
+            container.empty();
+            $('#LocationIDs option:selected').each(function () {
+                var id = $(this).data('location'); 
+                container.append(
+                    $('<input>', {
+                        type: 'hidden',
+                        name: 'LocationID',
+                        value: id
+                    })
+                );
+            }); 
+        } 
     };
 }();
 $(function () { Product.init(); });

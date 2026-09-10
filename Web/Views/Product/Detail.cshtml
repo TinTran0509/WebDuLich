@@ -1,0 +1,828 @@
+﻿@model Web.Model.CustomModel.ProductModel
+@{
+    Layout = "~/Views/Shared/_LayoutDetail.cshtml";
+    string star = "★";
+    for (int i = 1; i < Model.NumberStar; i++)
+    {
+        star += "★";
+    } 
+}
+
+<div class="page-banner">
+    <picture>
+        @*<source media="(max-width: 480px)" data-lazy-srcset="@Model.Image">
+        <source media="(min-width: 481px)" data-lazy-srcset="@Model.Image">*@
+        <img style="height:200px" src="@Model.Image"
+             alt=""
+             fetchpriority="high"
+             decoding="async"
+             class="banner-image"
+             data-lazy-src="@Model.Image" />
+        <noscript>
+            <img src="@Model.Image"
+                 alt=""
+                 fetchpriority="high"
+                 decoding="async"
+                 class="banner-image" />
+        </noscript>
+    </picture>
+    <h1 class="banner-title">@Model.Title</h1>
+    <ul class="oc-breadcrumbs">
+        <li><a href="/" class="home">Página de inicio</a></li>
+        <li><span>Paquete de viaje a Japón en 10 días</span></li>
+    </ul>
+</div>
+
+<div class="bg-color-fffdfb bb-ddd pt-15 pb-15 position-sticky top-0 z-index-10">
+    <div class="container">
+        <div class="d-flex align-items-center justify-content-between sm-jc-center gap-15">
+            <div class="nav-scroll fw-700 sm-d-none">
+                <a href="#overview" class="d-inline-block color-333 p-10-14 pl-0">
+                    Resumen
+                </a>
+                <a href="#highlight" class="d-inline-block color-333 p-10-14 text-decoration-none">
+                    Destacados
+                </a>
+                <a href="#itinerary" class="d-inline-block color-333 p-10-14 text-decoration-none">
+                    Itinerario
+                </a>
+                <a href="#information" class="d-inline-block color-333 p-10-14 text-decoration-none">
+                    Información
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="pt-60 sm-pt-50 pb-50 text-center" id="overview">
+    <div class="container">
+        <div class="mw-680 center-block">
+            @Html.Raw(Model.Contents)
+        </div>
+        <div class="pt-60 sm-pt-50">
+            <div>
+                ID del paquete
+            </div>
+            <div class="fw-700 pt-5">
+                @Model.ProductCode
+            </div>
+        </div>
+
+        <div class="pt-30">
+            <p>@ViewBag.Destination</p>
+            <div class="fw-700">
+                Tokio<span class="fw-400 ml-5 mr-5">➙</span>Kioto<span class="fw-400 ml-5 mr-5">➙</span>Kanazawa<span class="fw-400 ml-5 mr-5">➙</span>Gero<span class="fw-400 ml-5 mr-5">➙</span>Osaka
+            </div>
+        </div>
+
+        <div class="mw-1000 center-block">
+            <div class="row justify-content-center row-gap-30 pt-40">
+                <div class="col-6 col-md-3 col-lg-20">
+                    <div class="d-inline-block pb-5 bb-bd1e2d bw-2">
+                        @ViewBag.Duration
+                    </div>
+                    <div class="fw-700 fsz-22 pt-10">
+                        @Model.DayNumber Días
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-3 col-lg-20">
+                    <div class="d-inline-block pb-5 bb-bd1e2d bw-2">
+                        Idioma del guía
+                    </div>
+                    <div class="fw-700 fsz-22 pt-10">
+                        Español
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-3 col-lg-20">
+                    <div class="d-inline-block pb-5 bb-bd1e2d bw-2">
+                        Hotel
+                    </div>
+                    <div class="fw-700 fsz-22 pt-10 color-ffa534 ls-02">
+                        @star
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-3 col-lg-20">
+                    <div class="d-inline-block pb-5 bb-bd1e2d bw-2">
+                        Tipo de tour
+                    </div>
+                    <div class="fw-700 fsz-22 pt-10">
+                        @ViewBag.TourType
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-3 col-lg-20">
+                    <div class="d-inline-block pb-5 bb-bd1e2d bw-2">
+                        @ViewBag.AverageSize
+                    </div>
+                    <div class="fw-700 fsz-22 pt-10">@Model.Size</div>
+                </div>
+
+                <div class="col-6 col-md-3 col-lg-20">
+                    <div class="d-inline-block pb-5 bb-bd1e2d bw-2">
+                        @ViewBag.Price
+                    </div>
+                    <div class="fw-700 fsz-22 pt-10">
+                        USD @Model.Price
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center pt-40">
+            <a href="#date-price" class="btn-style">
+                Seleccione la fecha deseada
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="pt-45 bt-edeae5 overflow-hidden" id="highlight">
+    <div class="container">
+        <h2 class="section-title text-center mt-0">
+            <span>
+                Destino
+            </span>
+        </h2>
+
+        <div class="destination-slider position-relative sm-ml--50pc sm-mr--50pc">
+            <div class="swiper" data-swiper='{"loop":"true","slidesPerView":"3","spaceBetween":"20","navigation": {"nextEl": ".destination-slider .swiper-button-next", "prevEl": ".destination-slider .swiper-button-prev"},"breakpoints":{"992":{"slidesPerView":"4","spaceBetween":"30"},}}'>
+                <div class="swiper-wrapper">
+
+                    <div class="swiper-slide h-auto p-1">
+                        <div class="h-100 bg-color-fffdfb box-shadow-1 position-relative pb-50">
+                            <img class="w-100" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt="Kanazawa" data-lazy-src="../../../wp-content/uploads/2025/07/Kanazawa-350x350_c.jpg"><noscript><img class="w-100" src="../../../wp-content/uploads/2025/07/Kanazawa-350x350_c.jpg" alt="Kanazawa"></noscript>
+                            <div class="pl-20 pr-20">
+                                <h3 class="fsz-18 mt-18 mb-12">
+                                    Kanazawa
+                                </h3>
+                                <p>
+                                    Kanazawa - encanto histórico y belleza artística en cada esquina, donde la tradición y la innovación armonizan con la elegancia japonesa.
+                                </p>
+                                <div class="position-absolute left-20 bottom-30 w-35px border-bd1e2d"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="swiper-button-prev left--60"></div>
+            <div class="swiper-button-next right--60"></div>
+        </div>
+    </div>
+</div>
+
+<div class="pt-45" id="itinerary">
+    <div class="container">
+        <h2 class="section-title text-center mt-0">
+            <span>
+                Itinerario
+            </span>
+        </h2>
+
+
+        <script type="rocketlazyloadscript">
+            var json_location = [{"0":{"id":"35.5085647,139.110437","description":"","image":""},"1":{"id":"35.098312,135.389212","description":"","image":""},"curvature":"0.3"},{"0":{"id":"35.098312,135.389212","description":"","image":""},"1":{"id":"36.506266,136.5223511","description":"","image":""},"curvature":"0.3"},{"0":{"id":"36.506266,136.5223511","description":"","image":""},"1":{"id":"35.8288265,136.9375074","description":"","image":""},"curvature":"0.3"},{"0":{"id":"35.8288265,136.9375074","description":"","image":""},"1":{"id":"34.6777116,135.4036356","description":"","image":""},"curvature":"0.3"}]            </script>
+        <div id="map-canvas" class="h-450px border-ccc"></div>
+
+        <script type="rocketlazyloadscript" src='https://maps.googleapis.com/maps/api/js?key=AIzaSyAY9vw6g-x9rbuj4UbFB48wwouYqbjtShY&amp;sensor=false&amp;libraries=geometry%2Cplaces&amp;ext=.js&amp;ver=295185698' id='map_js-js' defer></script>
+
+        <div class="center-block pt-30">
+            <div class="oc-accordion oc-itinerary">
+                <div class="item">
+                    <h3 class="item-title">
+                        Día 1: Llegada a Tokio
+                    </h3>
+                    <div class="item-content">
+                        <p><p>
+                            Llegada al aeropuerto de Tokio y traslado al hotel.<br />
+                            Tiempo libre hasta el check-in en el hotel según la disponibilidad (normalmente las habitaciones están disponibles a partir de las 15.00h).<br />
+                            Alojamiento en hotel.
+                        </p>
+                        <p>
+                            Check in: No podrán entrar en su habitación hasta la hora de check-in (15:00)<br />
+                            En el primer día del programa (martes o viernes) un guía de habla española estará presente en el hotel desde las 14:00 hasta las 20:00 para dar información a los pasajeros.
+                        </p>
+                        </p>
+                        <p>
+                            Comidas:
+                            Alojamiento sin comidas
+                        </p>
+
+                        <div class="pt-15">
+                            <div class="hotel-category hotel-category-4 active hotel-category-slider-40 position-relative lg-pt-50">
+                                <div class="swiper" data-swiper='{"loop":"true","navigation": {"nextEl": ".hotel-category-slider-4 .swiper-button-next", "prevEl": ".hotel-category-slider-40 .swiper-button-prev"}}'>
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <p>
+                                                <strong>
+                                                    Alojamiento: Hotel New Otani Tokyo Garden Tower (o similar)
+                                                </strong>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <h3 class="item-title">
+                        Día 2: Tokio - Visitas
+                    </h3>
+                    <div class="item-content">
+                        <p><p>Desayuno en el hotel.</p>
+                        <p>08:20 Reunión en el lobby del hotel.</p>
+                        <p>Visita en grupo de Tokio de media jornada con un guía de habla española; conoceremos</p>
+                        <p>&#8211; Santuario Meiji, dedicado al ex-emperador Mutsuhito</p>
+                        <p>&#8211; Plaza del Palacio Imperial (No entrarán en el recintodel palacio)</p>
+                        <p>&#8211; Templo Senso-ji &amp; Calle Nakamise con hileras de tiendasde recuerdos</p>
+                        <p>13:00 El tour termina en Ginza.</p>
+                        <p><strong>Almuerzo NO está incluido</strong>. Si tienen hambre, tienen que comer algo ligero durante el tiempo libre en la Calle Nakamise en Asakusa</p>
+                        <p>Tarde libre. (El guía les explicará a los pasajeros cómo volver al hotel.)</p>
+                        </p>
+                        <p>
+                            Comidas:
+                            Desayuno
+                        </p>
+
+                        <div class="pt-15">
+                            <div class="hotel-category hotel-category-4 active hotel-category-slider-41 position-relative lg-pt-50">
+                                <div class="swiper" data-swiper='{"loop":"true","navigation": {"nextEl": ".hotel-category-slider-4 .swiper-button-next", "prevEl": ".hotel-category-slider-41 .swiper-button-prev"}}'>
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <p>
+                                                <strong>
+                                                    Alojamiento: Hotel New Otani Tokyo Garden Tower (o similar)
+                                                </strong>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <h3 class="item-title">
+                        Día 3: Tokio - Visitas a Hakone
+                    </h3>
+                    <div class="item-content">
+                        <p><p>Desayuno en el hotel.</p>
+                        <p>07:50 Reunión en el lobby</p>
+                        <p>Excursión a Hakone de jornada completa en grupo con un guía de habla española; conoceremos:</p>
+                        <p>&#8211; Lago Ashi (paseo en barco)</p>
+                        <p>En días claros podemos admirar el Mt. Fuji desde el Lago Ashi</p>
+                        <p>&#8211; Santuario Hakone-jinja (hermoso santuario sintoísta famoso por su pórtico torii construido a orillas del Lago Ashi)</p>
+                        <p>&#8211; Museo al Aire Libre de Hakone</p>
+                        <p>17:00 Regreso al hotel.</p>
+                        <p>Almuerzo en un restaurante está incluido ese día.</p>
+                        <p><strong>Notas: </strong><em>En caso de que el barco no opere a causa de fuerte lluvia y viento, visitaremos como alternativa <strong>Hakone Sekishoato </strong>(reconstrucción de un puesto de control en una carretera medieval)</em></p>
+                        </p>
+                        <p>
+                            Comidas:
+                            Desayuno, Almuerzo
+                        </p>
+
+                        <div class="pt-15">
+                            <div class="hotel-category hotel-category-4 active hotel-category-slider-42 position-relative lg-pt-50">
+                                <div class="swiper" data-swiper='{"loop":"true","navigation": {"nextEl": ".hotel-category-slider-4 .swiper-button-next", "prevEl": ".hotel-category-slider-42 .swiper-button-prev"}}'>
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <p>
+                                                <strong>
+                                                    Alojamiento: Hotel New Otani Tokyo Garden Tower (o similar)
+                                                </strong>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <h3 class="item-title">
+                        Día 4: Tokio - Traslado a Kioto - Visitas a Parque Nara
+                    </h3>
+                    <div class="item-content">
+                        <p><p>Desayuno en el hotel.</p>
+                        <p>08:00 Reunión en el lobby y traslado a la Estación de Tokio con un asistente de habla española.</p>
+                        <p>09:21 Salida desde Tokio con destino a Kioto en tren bala Nozomi #227.</p>
+                        <p>11:32 Llegada a la Estación de Kioto donde un guía de habla española los recibirá.</p>
+                        <p>Atención: El horario de tren está sujeto a cambio.</p>
+                        <p>Comienzo de la excursión a Nara en grupo (Nara está situada a una hora de distancia desde Kioto.)</p>
+                        <p>En Nara conoceremos:</p>
+                        <p>&#8211; Templo Todai-ji (estatua de Buda colosal)</p>
+                        <p>&#8211; Parque de Nara (con muchos venados)</p>
+                        <p>18:00-18:30 Llegada al hotel en Kioto y check in.</p>
+                        <p>*<strong>Almuerzo NO está incluido</strong>. Tendremos tiempo libre para almorzar</p>
+                        <p><strong>Notas</strong>: <em>Una maleta por persona será enviada aparte en camión desde el hotel en Tokio hasta el hotel en Kioto</em></p>
+                        <p><em>Cuando hay más de 40 pasajeros en una salida, fletamos un camión privado para transportar las maletas desde el hotel en Tokio al hotel en Kioto, y en este caso las maletas llegan al hotel en Kioto en la tarde del mismo día</em></p>
+                        <p><em>En la temporada baja cuando no hay suficientes pasajeros, no fletamos un camión y usamos un servicio regular de entrega, y en este caso las maletas llegan al hotel en Kioto al día siguiente, de manera que los pasajeros necesitan llevar consigo una mochila o pequeña maleta con ropa y otras cosas indispensables para pasar una noche</em></p>
+                        <p><em>El horario de tren está sujeto a cambio.</em></p>
+                        </p>
+                        <p>
+                            Comidas:
+                            Desayuno
+                        </p>
+
+                        <div class="pt-15">
+                            <div class="hotel-category hotel-category-4 active hotel-category-slider-43 position-relative lg-pt-50">
+                                <div class="swiper" data-swiper='{"loop":"true","navigation": {"nextEl": ".hotel-category-slider-4 .swiper-button-next", "prevEl": ".hotel-category-slider-43 .swiper-button-prev"}}'>
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <p>
+                                                <strong>
+                                                    Alojamiento: Kyoto Tokyu Hotel (o similar)
+                                                </strong>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <h3 class="item-title">
+                        Día 5: Kokio - Visitas
+                    </h3>
+                    <div class="item-content">
+                        <p><p>
+                            Desayuno en el hotel<br />
+                            08:20 Reunión en el vestíbulo del hotel<br />
+                            Excursión en grupo de día completo por Kioto con un guía que domina el español:
+                        </p>
+                        <ul>
+                            <li>Templo Sanjusangendo: Explore este notable templo, famoso por sus mil estatuas de Kannon, el dios de la misericordia.</li>
+                            <li>Santuario Fushimi Inari: Visite este emblemático santuario, conocido por sus miles de torii rojos que forman impresionantes pasillos.</li>
+                            <li>Templo Kinkaku-ji (Templo Dorado): Admire el impresionante Kinkaku-ji, un templo cubierto de pan de oro que se refleja en un sereno lago.</li>
+                            <li>Templo Tenryu-ji: Visite este templo histórico, famoso por su hermoso jardín japonés.</li>
+                            <li>Arboleda de bambú de Sagano: Pasee por la encantadora Arboleda de bambú de Arashiyama, una experiencia tranquila y fascinante.</li>
+                        </ul>
+                        <p>
+                            Almuerzo en un restaurante.<br />
+                            17:30 Regreso al hotel.
+                        </p>
+                        <p><strong>Notas</strong>: <em>Para aquellos que quieran visitar Gion (barrio de geishas), continuaremos inmediatamente a este barrio en autobús. El paseo por el distrito de Gion y regreso al hotel desde allí serán por cuenta de los pasajeros.</em></p>
+                        </p>
+                        <p>
+                            Comidas:
+                            Desayuno, Almuerzo
+                        </p>
+
+                        <div class="pt-15">
+                            <div class="hotel-category hotel-category-4 active hotel-category-slider-44 position-relative lg-pt-50">
+                                <div class="swiper" data-swiper='{"loop":"true","navigation": {"nextEl": ".hotel-category-slider-4 .swiper-button-next", "prevEl": ".hotel-category-slider-44 .swiper-button-prev"}}'>
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <p>
+                                                <strong>
+                                                    Alojamiento: Kyoto Tokyu Hotel (o similar)
+                                                </strong>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <h3 class="item-title">
+                        Día 6: Kioto - Dia livre
+                    </h3>
+                    <div class="item-content">
+                        <p><p>Desayuno en el hotel.</p>
+                        <p>Día libre.</p>
+                        <p>*Almuerzo NO está incluido.</p>
+                        <p><strong>Notas</strong>: <em>Los horarios de tren están sujetos a cambio</em></p>
+                        <p><em>Opcional<strong>: </strong></em><strong><em>Tour a Hiroshima &amp; Miyajima</em></strong></p>
+                        <p><em>En principio no venderemos este tour opcional en destino. Los pasajeros necesitan reservar el tour 5 semanas antes de viajar a Japón. Dependiendo de la disponibilidad, es posible que no podamos confirmar</em></p>
+                        <p><em>07:30 Reunión en el lobby del hotel con el guía de habla española. </em></p>
+                        <p><em>Traslado a la Estación de Kioto.</em></p>
+                        <p><em>08:26 Salida desde Kioto en tren bala Nozomi #3.</em></p>
+                        <p><em>10:01 Llegada a Hiroshima y comienzo de la visita. </em></p>
+                        <p><em>Si hay menos de 10 pasajeros, realizamos la visita en transporte público. Si hay 10 o más pasajeros, realizamos el tour opcional en bus privado. Conoceremos </em></p>
+                        <p><em>&#8211;</em><em> Santuario Itsukushima en la Isla Miyajima </em></p>
+                        <p><em>&#8211;</em><em> Parque y Museo de la Paz de Hiroshima </em></p>
+                        <p><em>&#8211;</em><em> Cúpula de la Bomba Atómica </em></p>
+                        <p><em>Traslado a la Estación de Hiroshima.</em></p>
+                        <p><em>17:57 Salida de Hiroshima rumbo a Kioto en tren bala Nozomi #52.</em></p>
+                        <p><em>19:37 El tour termina al llegar a la Estación de Kioto. </em></p>
+                        <p><em>De la estación al hotel, traslado por cuenta de los pasajeros en el shuttle bus del hotel o en taxi.</em></p>
+                        </p>
+                        <p>
+                            Comidas:
+                            Desayuno
+                        </p>
+
+                        <div class="pt-15">
+                            <div class="hotel-category hotel-category-4 active hotel-category-slider-45 position-relative lg-pt-50">
+                                <div class="swiper" data-swiper='{"loop":"true","navigation": {"nextEl": ".hotel-category-slider-4 .swiper-button-next", "prevEl": ".hotel-category-slider-45 .swiper-button-prev"}}'>
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <p>
+                                                <strong>
+                                                    Alojamiento: Kyoto Tokyu Hotel (o similar)
+                                                </strong>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <h3 class="item-title">
+                        Día 7: Kioto - Traslado a Kanazawa - Visitas
+                    </h3>
+                    <div class="item-content">
+                        <p><p>
+                            Desayuno en el hotel.<br />
+                            08:00 Encuentro en el lobby con un guía de habla hispana y traslado a Kanazawa en autobús privado (dependiendo del número de pasajeros, podría ser una furgoneta).<br />
+                            12:00 Llegada a Kanazawa.<br />
+                            Visita de día completo en grupo a Kanazawa, donde conocerán:
+                        </p>
+                        <ul>
+                            <li>Mercado Omicho: Mercado animado con venta de pescados, mariscos, vegetales y mucho más.</li>
+                            <li>Barrio Higashichaya: Barrio tradicional conocido por sus casas de té antiguas.</li>
+                            <li>Jardín Kenrokuen: Uno de los jardines más famosos de Japón, considerado un ejemplo perfecto de jardín paisajístico japonés.</li>
+                        </ul>
+                        <p>17:00-17:30 Traslado al hotel en Kanazawa y check-in</p>
+                        <p>*<strong>Almuerzo NO está incluido</strong>. Tendrán tiempo libre para almorzar en el Mercado Omicho.</p>
+                        <p><strong>Notas</strong>: <em>Una maleta por persona será enviada aparte en camión desde el hotel en Kioto hasta el hotel en Osaka. Lleven consigo una mochila con ropa y otras cosas indispensables para pasar una noche en Kanazawa y otra en Gero</em></p>
+                        </p>
+                        <p>
+                            Comidas:
+                            Desayuno
+                        </p>
+
+                        <div class="pt-15">
+                            <div class="hotel-category hotel-category-4 active hotel-category-slider-46 position-relative lg-pt-50">
+                                <div class="swiper" data-swiper='{"loop":"true","navigation": {"nextEl": ".hotel-category-slider-4 .swiper-button-next", "prevEl": ".hotel-category-slider-46 .swiper-button-prev"}}'>
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <p>
+                                                <strong>
+                                                    Alojamiento: Kanazawa Tokyu Hotel (o similar)
+                                                </strong>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <h3 class="item-title">
+                        Día 8: Kanazawa - Shirakawago - Takayama - Gero
+                    </h3>
+                    <div class="item-content">
+                        <p><p>
+                            Desayuno en el hotel.<br />
+                            08:15 Reunión en el lobby y salida hacia Shirakawago con un guía de habla española (en grupo); conoceremos:<br />
+                            ■ Casas al estilo Gasshozukuri: Las tradicionales casas de techos empinados, características de la región.
+                        </p>
+                        <p>
+                            Después, traslado a Takayama donde conoceremos:<br />
+                            ■ Barrio histórico Kamisannomachi con tiendas de recuerdos y bodegas de sake<br />
+                            ■ Yatai Kaikan (exposición de las carrozas para el Festival de Takayama)
+                        </p>
+                        <p>18:00 Traslado al ryokan en Gero y check-in.</p>
+                        <p>¡DISFRUTEN DE BAÑO ONSEN (DE AGUAS TERMALES)! El ryokan en Gero dispone de baños de aguas termales.</p>
+                        <p>*Hay un baño sólo para mujeres y otro baño sólo para hombres.</p>
+                        <p>*Tradicionalmente hoteles y ryokanes no permiten a personas con tatuajes llamativos utilizar baños de aguas termales, ya que los tatuajes están asociados a la Yakuza (mafia japonesa)</p>
+                        </p>
+                        <p>
+                            Comidas:
+                            Desayuno, Almuerzo, Cena
+                        </p>
+
+                        <div class="pt-15">
+                            <div class="hotel-category hotel-category-4 active hotel-category-slider-47 position-relative lg-pt-50">
+                                <div class="swiper" data-swiper='{"loop":"true","navigation": {"nextEl": ".hotel-category-slider-4 .swiper-button-next", "prevEl": ".hotel-category-slider-47 .swiper-button-prev"}}'>
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <p>
+                                                <strong>
+                                                    Alojamiento: Suimeikan (o similar)
+                                                </strong>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <h3 class="item-title">
+                        Día 9: Gero - Nagoya - Osaka
+                    </h3>
+                    <div class="item-content">
+                        <p><p>
+                            08:15 Reunión en el lobby con un guía de habla española.<br />
+                            Traslado a la Estación de Gero a pie o en el autobús del ryokan.<br />
+                            08:46 Salida desde Gero con destino a Nagoya en el tren expreso Wideview Hida #4.<br />
+                            10:34 Llegada a la Estación de Nagoya.<br />
+                            10:58 Salida desde Nagoya con destino a Shin-Osaka en el tren bala Nozomi #215.<br />
+                            11:48 Llegada a la Estación Shin-Osaka.<br />
+                            Visita de Osaka con un guía de habla española en grupo; conocerán:
+                        </p>
+                        <p>&#8211; Dotonbori (barrio muy animado con muchos restaurantescon fachadas extravagantes, por ejemplo con una figura gigante de cangrejo)</p>
+                        <p>&#8211; Castillo de Osaka (No entramos en la torre del homenaje “Tenshukaku”. Sólo visitamos el parque del castillo.)</p>
+                        <p>17:00 Traslado al hotel en Osaka y check-in.</p>
+                        <p><strong>*Almuerzo NO está incluido</strong>. Tendrán tiempo libre para almorzar en Dotonbori<strong>.</strong></p>
+                        <p><strong>Notas</strong>: <em>Los horarios de tren están sujetos a cambio</em></p>
+                        </p>
+                        <p>
+                            Comidas:
+                            Desayuno
+                        </p>
+
+                        <div class="pt-15">
+                            <div class="hotel-category hotel-category-4 active hotel-category-slider-48 position-relative lg-pt-50">
+                                <div class="swiper" data-swiper='{"loop":"true","navigation": {"nextEl": ".hotel-category-slider-4 .swiper-button-next", "prevEl": ".hotel-category-slider-48 .swiper-button-prev"}}'>
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <p>
+                                                <strong>
+                                                    Alojamiento: Sheraton Miyako Hotel Osaka (o similar)
+                                                </strong>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <h3 class="item-title">
+                        Día 10: Osaka - Vuelo de salida
+                    </h3>
+                    <div class="item-content">
+                        <p><p>Desayuno en el hotel.</p>
+                        <p>Traslado al aeropuerto de Osaka para el vuelo de salida.</p>
+                        <p><em>Si la hora de salida del hotel es temprana y los pasajeros no pueden desayunar en el hotel, el hotel proveerá desayuno sencillo para llevar</em></p>
+                        <p><strong><em>Check out</em></strong><em>: 12:00 PM. </em><em>Tendrán que desocupar sus habitaciones antes de la hora de checkout del hotel (12:00)</em></p>
+                        <p><em>Si el aeropuerto de salida es Kansai (KIX), el guía entregará a los pasajeros los billetes de autobús el día anterior.</em></p>
+                        <p><em>Si el aeropuerto de salida es Itami (ITM), los pasajeros recibirán los billetes de autobús al hacer checkout.</em></p>
+                        <p><em>En caso de que la hora de salida del vuelo es a las 08:30 a.m. o antes de las 08:30 a.m., el traslado se realizará en taxi reservado sin asistencia y se aplicará un suplemento de </em><em>1</em><em>2</em><em>0</em> <em>USD</em><em> por pasajero. (En caso de un pasajero viajando solo, el suplemento será de </em><em>2</em><em>4</em><em>0</em> <em>USD</em><em>.)</em></p>
+                        </p>
+                        <p>
+                            Comidas:
+                            Desayuno
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pt-30" id="date-price">
+            <h2 class="section-title fw-400 text-center">
+                Categoría del <span>alojamiento</span>
+            </h2>
+            <div class="row row-gap-20">
+
+                <div class="col-md-4">
+                    <label class="d-flex align-items-center justify-content-between border-000 brs-3 m-0 p-15">
+                        <div>
+                            <input type="radio" checked name="hotel-category" class="hotel-category-filter" data-class="000" data-star="4">
+                            <span class="fsz-18 ls-01 color-ffa534">
+                                ★★★★
+                            </span>
+                        </div>
+
+                        <div class="color-111">
+                            <span>
+                                Desde
+                            </span>
+                            <strong>
+                                USD 3100
+                            </strong>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <div class="pt-40">
+                <div class="hotel-category hotel-category-4 active hotel-category-slider-4000 position-relative lg-pt-50">
+                    <div class="swiper" data-swiper='{"loop":"true","navigation": {"nextEl": ".hotel-category-slider-4000 .swiper-button-next", "prevEl": ".hotel-category-slider-4000 .swiper-button-prev"}}'>
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="row row-gap-20 align-items-center">
+                                    <div class="col-md-4">
+                                        <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E"
+                                             alt="Hotel New Otani Tokyo Garden Tower" data-lazy-src="https://www.mundoasiatours.com/wp-content/uploads/2025/07/Hotel-New-Otani-Tokyo-Garden-Tower.jpg"><noscript>
+                                            <img src="../../../wp-content/uploads/2025/07/Hotel-New-Otani-Tokyo-Garden-Tower.jpg"
+                                                 alt="Hotel New Otani Tokyo Garden Tower">
+                                        </noscript>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <p>
+                                            <strong>
+                                                Hotel New Otani Tokyo Garden Tower (o similar)
+                                            </strong>
+                                        </p>
+                                        <p class="d-flex align-items-center">
+                                            <svg viewBox="0 0 384 512" fill="#bd1e2d" width="16"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"></path></svg>
+                                            <span class="ml-8">
+                                                Tokio
+                                            </span>
+
+                                            <span class="fsz-18 color-ffa534 ml-20 mr-20">★★★★</span>
+
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="16"><path d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z" /></svg>
+                                            <span class="ml-5">
+                                                3                                                                Noches
+                                            </span>
+                                        </p>
+                                        <p>
+                                        <p>El Hotel New Otani Tokyo Garden Tower goza de una práctica ubicación a solo 5 minutos a pie de la estación de metro Akasaka Mitsuke y cuenta con un jardín japonés de 400 años de antigüedad. En verano, los huéspedes pueden darse un chapuzón en una de las piscinas al aire libre más grandes de la ciudad. Hay conexión WiFi gratuita en todas las zonas.</p>
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="row row-gap-20 align-items-center">
+                                    <div class="col-md-4">
+                                        <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E"
+                                             alt="Kyoto Tokyu Hotel" data-lazy-src="https://www.mundoasiatours.com/wp-content/uploads/2025/07/Kyoto-Tokyu-Hotel.jpg"><noscript>
+                                            <img src="../../../wp-content/uploads/2025/07/Kyoto-Tokyu-Hotel.jpg"
+                                                 alt="Kyoto Tokyu Hotel">
+                                        </noscript>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <p>
+                                            <strong>
+                                                Kyoto Tokyu Hotel (o similar)
+                                            </strong>
+                                        </p>
+                                        <p class="d-flex align-items-center">
+                                            <svg viewBox="0 0 384 512" fill="#bd1e2d" width="16"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"></path></svg>
+                                            <span class="ml-8">
+                                                Kioto
+                                            </span>
+
+                                            <span class="fsz-18 color-ffa534 ml-20 mr-20">★★★★</span>
+
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="16"><path d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z" /></svg>
+                                            <span class="ml-5">
+                                                3                                                                Noches
+                                            </span>
+                                        </p>
+                                        <p>
+                                        <p>El Kyoto Tokyu Hotel está a 5 minutos de la estación de Kioto y ofrece servicio de traslado gratuito a dicha estación, 3 restaurantes, bar y centro de fitness. Las habitaciones son modernas y cuentan con TV LCD vía satélite y almohadas Tempur confortables. También hay WiFi gratuita en todas las instalaciones.</p>
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="row row-gap-20 align-items-center">
+                                    <div class="col-md-4">
+                                        <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E"
+                                             alt="Kanazawa Tokyu Hotel" data-lazy-src="https://www.mundoasiatours.com/wp-content/uploads/2025/07/Kanazawa-Tokyu-Hotel-1.jpg"><noscript>
+                                            <img src="../../../wp-content/uploads/2025/07/Kanazawa-Tokyu-Hotel-1.jpg"
+                                                 alt="Kanazawa Tokyu Hotel">
+                                        </noscript>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <p>
+                                            <strong>
+                                                Kanazawa Tokyu Hotel (o similar)
+                                            </strong>
+                                        </p>
+                                        <p class="d-flex align-items-center">
+                                            <svg viewBox="0 0 384 512" fill="#bd1e2d" width="16"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"></path></svg>
+                                            <span class="ml-8">
+                                                Kanazawa
+                                            </span>
+
+                                            <span class="fsz-18 color-ffa534 ml-20 mr-20">★★★★</span>
+
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="16"><path d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z" /></svg>
+                                            <span class="ml-5">
+                                                1                                                                Noche
+                                            </span>
+                                        </p>
+                                        <p>
+                                        <p>El Kanazawa Tokyu Hotel está situado cerca de las zonas turísticas de Kanazawa y ofrece 2 restaurantes y un servicio de masajes relajantes. Las habitaciones tienen aire acondicionado, conexión WiFi gratuita y baño privado. Las habitaciones del Tokyu Hotel Kanazawa incluyen té gratuito, té japonés, café y películas a la carta.</p>
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="row row-gap-20 align-items-center">
+                                    <div class="col-md-4">
+                                        <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E"
+                                             alt="Suimeikan" data-lazy-src="https://www.mundoasiatours.com/wp-content/uploads/2025/07/Suimeikan.jpg"><noscript>
+                                            <img src="../../../wp-content/uploads/2025/07/Suimeikan.jpg"
+                                                 alt="Suimeikan">
+                                        </noscript>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <p>
+                                            <strong>
+                                                Suimeikan (o similar)
+                                            </strong>
+                                        </p>
+                                        <p class="d-flex align-items-center">
+                                            <svg viewBox="0 0 384 512" fill="#bd1e2d" width="16"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"></path></svg>
+                                            <span class="ml-8">
+                                                Gero
+                                            </span>
+
+                                            <span class="fsz-18 color-ffa534 ml-20 mr-20">★★★★</span>
+
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="16"><path d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z" /></svg>
+                                            <span class="ml-5">
+                                                1                                                                Noche
+                                            </span>
+                                        </p>
+                                        <p>
+                                        <p>El Suimeikan, situado entre el río Hida y los Alpes japoneses, ofrece habitaciones con vistas al río. El establecimiento cuenta con 3 baños termales y un restaurante donde los huéspedes pueden disfrutar de ingredientes locales de temporada.</p>
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="row row-gap-20 align-items-center">
+                                    <div class="col-md-4">
+                                        <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E"
+                                             alt="Sheraton Miyako Hotel Osaka" data-lazy-src="https://www.mundoasiatours.com/wp-content/uploads/2025/07/Sheraton-Miyako-Hotel-Osaka-1.jpg"><noscript>
+                                            <img src="../../../wp-content/uploads/2025/07/Sheraton-Miyako-Hotel-Osaka-1.jpg"
+                                                 alt="Sheraton Miyako Hotel Osaka">
+                                        </noscript>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <p>
+                                            <strong>
+                                                Sheraton Miyako Hotel Osaka (o similar)
+                                            </strong>
+                                        </p>
+                                        <p class="d-flex align-items-center">
+                                            <svg viewBox="0 0 384 512" fill="#bd1e2d" width="16"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"></path></svg>
+                                            <span class="ml-8">
+                                                Osaka
+                                            </span>
+
+                                            <span class="fsz-18 color-ffa534 ml-20 mr-20">★★★★</span>
+
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="16"><path d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z" /></svg>
+                                            <span class="ml-5">
+                                                1                                                                Noche
+                                            </span>
+                                        </p>
+                                        <p>
+                                        <p>El Sheraton Miyako Hotel Osaka está a pocos pasos de la estación de tren de Osaka Uehonmachi y ofrece 4 opciones de comida y bebida y una piscina cubierta. Las amplias habitaciones para no fumadores incluyen WiFi gratuita.</p>
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-button-prev left--60 lg-left-0 lg-top-0 lg-m-0"></div>
+                    <div class="swiper-button-next right--60 lg-right-0 lg-top-0 lg-m-0"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pt-30">
+            <h2 class="section-title fw-400 text-center">
+                Precio <span>estimado</span>
+            </h2>
+            <div class="bg-color-fff color-333 p-15">
+                <script type="rocketlazyloadscript">
+                    let random_date_first_date  = '';
+                    let json_price_per_date = {"2026-03-03":"USD 3175","2026-03-06":"USD 3175","2026-04-10":"USD 3175","2026-04-14":"USD 3175","2026-04-17":"USD 3175","2026-04-21":"USD 3175","2026-04-24":"USD 3175","2026-04-28":"USD 3175","2026-05-01":"USD 3175","2026-05-05":"USD 3175","2026-05-12":"USD 3100","2026-05-15":"USD 3100","2026-05-19":"USD 3100","2026-05-22":"USD 3100","2026-05-26":"USD 3100","2026-06-02":"USD 3021","2026-06-05":"USD 3021","2026-06-09":"USD 3021","2026-06-12":"USD 3021","2026-06-16":"USD 3021","2026-06-19":"USD 3021","2026-06-23":"USD 3021","2026-06-26":"USD 3021","2026-06-30":"USD 3021","2026-07-03":"USD 3021","2026-07-07":"USD 3021","2026-07-10":"USD 3100","2026-07-14":"USD 3100","2026-07-17":"USD 3100","2026-07-21":"USD 3100","2026-07-24":"USD 3100","2026-07-28":"USD 3100","2026-07-31":"USD 3100","2026-08-04":"USD 3100","2026-08-07":"USD 3100","2026-08-11":"USD 3100","2026-08-14":"USD 3100","2026-08-18":"USD 3100","2026-08-21":"USD 3100","2026-08-25":"USD 3100","2026-08-28":"USD 3100","2026-09-01":"USD 3100","2026-09-04":"USD 3100","2026-09-08":"USD 3100","2026-09-25":"USD 3175","2026-09-29":"USD 3175","2026-10-02":"USD 3335","2026-10-06":"USD 3335","2026-10-09":"USD 3335","2026-10-13":"USD 3175","2026-10-16":"USD 3335","2026-10-20":"USD 3175","2026-10-23":"USD 3335","2026-10-27":"USD 3175","2026-10-30":"USD 3335","2026-11-03":"USD 3175","2026-11-06":"USD 3335","2026-11-10":"USD 3335","2026-11-17":"USD 3413","2026-11-24":"USD 3335","2026-12-01":"USD 3100","2026-12-08":"USD 3021","2026-12-11":"USD 3021","2026-12-15":"USD 3021","2026-12-18":"USD 3021","2026-12-22":"USD 3021","2026-12-25":"USD 3021","2026-12-29":"USD 3021","2027-01-01":"USD 3021","2027-01-05":"USD 3021","2027-01-08":"USD 3021","2027-01-12":"USD 3021","2027-01-15":"USD 3021","2027-01-19":"USD 3021","2027-01-22":"USD 3021","2027-01-26":"USD 3021","2027-01-29":"USD 3021","2027-02-02":"USD 3021","2027-02-05":"USD 3021","2027-02-09":"USD 3021","2027-02-12":"USD 3021","2027-02-16":"USD 3021","2027-02-19":"USD 3021","2027-02-23":"USD 3021","2027-02-26":"USD 3021","2027-03-02":"USD 3100","2027-03-05":"USD 3175","2027-03-09":"USD 3175","2027-03-12":"USD 3175","2027-03-16":"USD 3335","2027-03-19":"USD 3413","2027-03-23":"USD 3413","2027-03-26":"USD 3413","2027-03-30":"USD 3413"};
+                    let current_language = 'lt';
+                </script>
+                <div class="calendar-container" id="calendarContainer"></div>
+            </div>
+        </div>
+
+        <div class="pt-50 text-center">
+            <a href="javascript:void(0)" class="btn-style btn-redirect-booking"
+               data-date=""
+               data-url="../../reserva-de-salidas-garantizadas/index3416.html?type=group-tour&amp;tour_id=113324">
+                Solicitar cotización
+            </a>
+        </div>
+    </div>
+</div>
+
+
+

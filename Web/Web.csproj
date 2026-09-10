@@ -252,7 +252,7 @@
     <Compile Include="Areas\Admin\Controllers\GroupUserController.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\DichVuController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
@@ -17466,7 +17466,7 @@
     <Content Include="Views\UploadTaiLieu\defaultvzMultiple.cshtml" />
     <Content Include="Views\UploadTaiLieu\Edit.cshtml" />
     <Content Include="Views\UploadTaiLieu\Index.cshtml" />
-    <Content Include="Views\Shared\_LayoutNews.cshtml" />
+    <Content Include="Views\Shared\_LayoutDetail.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Menu.cshtml" />
     <Content Include="Views\Home\Slider.cshtml" />
@@ -17492,6 +17492,9 @@
     <Content Include="Views\Home\Header.cshtml" />
     <Content Include="Views\Home\Banner.cshtml" />
     <Content Include="Views\Home\Footer.cshtml" />
+    <Content Include="Views\Product\Detail.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Product\ListData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

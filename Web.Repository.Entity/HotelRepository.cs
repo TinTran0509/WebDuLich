@@ -154,6 +154,29 @@ namespace Web.Repository.Entity
         public IEnumerable<HotelTran> GetAllHotelTrans()
         {
             return _entities.HotelTrans;
-        } 
+        }
+
+        public IEnumerable<HotelTran> GetByHotelID(string hotelIDs, string langCode)
+        {
+            try
+            {
+                using (var conn = new SqlConnection(_connectString))
+                {
+                    string sql = $"SELECT * FROM HotelTrans WHERE HotelID IN ({hotelIDs}) AND LangCode = @LangCode";
+
+                    DynamicParameters parameters = new DynamicParameters();
+                    parameters.Add("LangCode", langCode);
+
+                    return conn.Query<HotelTran>(
+                        sql,
+                        parameters,
+                        commandType: CommandType.Text);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

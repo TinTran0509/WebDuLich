@@ -226,7 +226,7 @@
     <Property Name="MenuID" Type="int" Nullable="false" />
     <Property Name="Type" Type="int" Nullable="false" />
     <Property Name="Price" Type="float" />
-    <Property Name="Size" Type="int" />
+    <Property Name="Size" Type="varchar" MaxLength="50" />
     <Property Name="DayNumber" Type="int" />
     <Property Name="CountryID" Type="varchar" MaxLength="100" />
     <Property Name="LocationID" Type="varchar" MaxLength="250" />

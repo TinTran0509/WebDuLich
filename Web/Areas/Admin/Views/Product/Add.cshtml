@@ -79,26 +79,29 @@
         </div>
         <div class="form-group">
             <label class="col-md-2 control-label">Mã<span class="asterisk"> (*)</span></label>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 @Html.TextBoxFor(model => model.ProductCode, new { @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
             <label class="col-md-2 control-label">Giá<span class="asterisk"> (*)</span></label>
-            <div class="col-md-3 lockchar">
+            <div class="col-md-2 lockchar">
                 @Html.TextBoxFor(model => model.Price, new { @class = "form-control" })
             </div>
-        </div>
-        <div class="form-group">
-            <label class="col-md-2 control-label">Số người</label>
-            <div class="col-md-2 lockchar">
-                @Html.TextBoxFor(model => model.Size, new { @class = "form-control", @type = "number" })
+            <div class="col-md-1">
+                <span style="position:absolute; margin-top:10px">USD</span>
             </div>
         </div>
         <div class="form-group">
             <label class="col-md-2 control-label">Số ngày đi</label>
             <div class="col-md-2 lockchar">
-                @Html.TextBoxFor(model => model.DayNumber, new { @class = "form-control", @type = "number" })
+                @Html.TextBoxFor(model => model.DayNumber, new { @class = "form-control txtnumber", @type = "number" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">Số lượng người</label>
+            <div class="col-md-3">
+                @Html.TextBoxFor(model => model.Size, new { @class = "form-control"})
             </div>
         </div>
         <div class="form-group">
@@ -117,7 +120,7 @@
                 @foreach (var item in countries)
                 {
                     <label class="check-radio">
-                        <input type="checkbox" name="country" onclick="Product.selectCountry()" value="@item.CountryID">
+                        <input type="checkbox" name="country" onclick="Product.selectCountryAdd()" value="@item.CountryID">
                         <span>@item.Name</span>
                     </label>
                 }
@@ -134,7 +137,7 @@
         <div class="form-group">
             <label class="col-md-2 control-label">Điểm đến<span class="asterisk"> (*)</span></label>
             <div class="col-md-8">
-                <select class="form-control select2" multiple name="LocationID" id="LocationIDs"> 
+                <select class="form-control select2" multiple name="LocationID" id="LocationIDs">
                 </select>
             </div>
         </div>
@@ -144,10 +147,16 @@
                 @foreach (var item in hotels)
                 {
                     <label class="check-radio">
-                        <input type="checkbox" name="hotel" onclick="Product.selectHotel()" value="@item.HotelID">
+                        <input type="checkbox" name="hotel" onclick="Product.selectHotelAdd()" value="@item.HotelID">
                         <span>@item.Name</span>
                     </label>
-                } 
+                }
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">Số sao khách sạn</label>
+            <div class="col-md-2 lockchar">
+                @Html.TextBoxFor(model => model.NumberStar, new { @class = "form-control txtnumber", @type = "number", Value = "4" })
             </div>
         </div>
         <div class="form-group">
@@ -221,6 +230,7 @@
         $('#MenuID').val(ckb);
     }
     $(document).ready(function () {
+        $('html, body').animate({ scrollTop: 0 }, 500);
         $('.lockchar').on("keypress", function (e) {
             return e.charCode >= 48 && e.charCode <= 57
         })

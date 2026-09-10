@@ -15,7 +15,7 @@ namespace Web.Model.CustomModel
         public int MenuID { get; set; }
         public int Type { get; set; }
         public double Price { get; set; }
-        public int Size { get; set; }
+        public string Size { get; set; }
         public int DayNumber { get; set; } 
         public List<int> CountryID { get; set; } 
         public List<int> LocationID { get; set; }

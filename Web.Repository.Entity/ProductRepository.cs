@@ -40,6 +40,7 @@ namespace Web.Repository.Entity
                     parameters.Add("CountryID", obj.CountryID);
                     parameters.Add("LocationID", obj.LocationID);
                     parameters.Add("HotelID", obj.HotelID);
+                    parameters.Add("NumberStar", obj.NumberStar);
                     parameters.Add("ID", dbType: DbType.Int32, direction: ParameterDirection.Output);
                     conn.Execute("Sp_Product_Insert",
                         parameters,
@@ -75,6 +76,7 @@ namespace Web.Repository.Entity
                     parameters.Add("CountryID", obj.CountryID);
                     parameters.Add("LocationID", obj.LocationID);
                     parameters.Add("HotelID", obj.HotelID);
+                    parameters.Add("NumberStar", obj.NumberStar);
                     connection.Execute("Sp_Product_Update",
                         parameters,
                         commandType: CommandType.StoredProcedure,
@@ -158,6 +160,32 @@ namespace Web.Repository.Entity
                     var pageAdminMenu = lst.ToList();
                     total = pageAdminMenu.Any() ? pageAdminMenu.FirstOrDefault().TotalCount : 0;
                     return pageAdminMenu;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public ProductModel GetByLinkSeo(string linkSeo)
+        {
+            try
+            {
+                using (var conn = new SqlConnection(_connectString))
+                {
+                    StringBuilder sb = new StringBuilder();
+                    sb.Append("SELECT p.ProductCode,p.Image,p.Type,p.Price,p.Size,p.DayNumber,p.NumberStar,");
+                    sb.Append("p.LocationID,pt.Title, pt.Contents,pt.Description,pt.LinkSeo FROM Product p ");
+                    sb.Append("JOIN ProductTrans pt ON pt.ProductID = p.ID ");
+                    sb.Append("WHERE pt.LinkSeo = @LinkSeo");
+
+                    var parameters = new DynamicParameters();
+                    parameters.Add("LinkSeo", linkSeo);
+                    return conn.Query<ProductModel>(
+                        sb.ToString(),
+                        parameters,
+                        commandType: CommandType.Text).FirstOrDefault();
                 }
             }
             catch (Exception)

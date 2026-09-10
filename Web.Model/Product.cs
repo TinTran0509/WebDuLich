@@ -21,7 +21,7 @@ namespace Web.Model
         public int MenuID { get; set; }
         public int Type { get; set; }
         public Nullable<double> Price { get; set; }
-        public Nullable<int> Size { get; set; }
+        public string Size { get; set; }
         public Nullable<int> DayNumber { get; set; }
         public string CountryID { get; set; }
         public string LocationID { get; set; }

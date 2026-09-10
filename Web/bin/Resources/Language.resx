@@ -168,4 +168,10 @@
   <data name="SpeedSupportDesc" xml:space="preserve">
     <value>Our local experts are available to assist you 24/7.</value>
   </data>
+  <data name="Group" xml:space="preserve">
+    <value>Group</value>
+  </data>
+  <data name="Private" xml:space="preserve">
+    <value>Private</value>
+  </data>
 </root>

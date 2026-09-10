@@ -201,5 +201,28 @@ namespace Web.Repository.Entity
         {
             return _entities.Database.SqlQuery<CountryUser>("Sp_Countries_Users");
         }
+
+        public IEnumerable<CountryTran> GetByCountryID(string countryIDs, string langCode)
+        {
+            try
+            {
+                using (var conn = new SqlConnection(_connectString))
+                {
+                    string sql = $"SELECT * FROM CountryTrans WHERE CountryID IN ({countryIDs}) AND LangCode = @LangCode";
+
+                    DynamicParameters parameters = new DynamicParameters();
+                    parameters.Add("LangCode", langCode);
+
+                    return conn.Query<CountryTran>(
+                        sql,
+                        parameters,
+                        commandType: CommandType.Text);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

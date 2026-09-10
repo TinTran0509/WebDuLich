@@ -16,5 +16,6 @@ namespace Web.Repository
         int Add(Product obj); 
         void Edit(Product obj, List<ProductTran> productTrans);
         void Delete(int id, List<ProductTran> productTrans);
+        ProductModel GetByLinkSeo(string linkSeo);
     }
 }
