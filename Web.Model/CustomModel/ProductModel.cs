@@ -19,6 +19,7 @@ namespace Web.Model.CustomModel
         public double Price { get; set; }
         public int TotalCount { get; set; }
         public string Countries { get; set; }
+        public string LocationID { get; set; }
         public string Locations { get; set; }
     }
 }

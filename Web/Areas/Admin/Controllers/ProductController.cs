@@ -303,7 +303,7 @@ namespace Web.Areas.Admin.Controllers
             }
             if (!string.IsNullOrEmpty(product.LocationID))
             {
-                List<LocationTran> locationTrans = locationRepository.GetByLocationID(product.LocationID, tbl_Language.LangCode).ToList();
+                List<LocationViewModel> locationTrans = locationRepository.GetByLocationIDs(product.LocationID, tbl_Language.LangCode).ToList();
                 if (locationTrans != null)
                 {
                     List<int> locationIDs = new List<int>();

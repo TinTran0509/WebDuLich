@@ -26,7 +26,7 @@
                 <div class="col-sm-6 col-lg-4 mb-30">
                     <div class="bg-color-fffdfb box-shadow-1 position-relative h-100 pb-115">
                         <div class="position-relative">
-                            <a href="tour/@item.LinkSeo">
+                            <a href="/@item.LangCode.ToLower()/tour/@item.LinkSeo">
                                 <img class="w-100"
                                      src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E"
                                      alt="@item.Title" data-lazy-src="@item.Image">
@@ -42,7 +42,7 @@
                         </div>
                         <div class="pl-20 pr-20">
                             <h3 class="fsz-18 mt-18 mb-12">
-                                <a href="tour/@item.LinkSeo" class="text-decoration-none">
+                                <a href="/@item.LangCode.ToLower()/tour/@item.LinkSeo" class="text-decoration-none">
                                     @item.Title
                                 </a>
                             </h3>
@@ -67,7 +67,7 @@
                                     </span>
                                 </div>
                                 <div>
-                                    <a href="tour/@item.LinkSeo" class="d-inline-block">
+                                    <a href="/@item.LangCode.ToLower()/tour/@item.LinkSeo" class="d-inline-block">
                                         @ViewBag.Detail
                                     </a>
                                 </div>
@@ -79,7 +79,7 @@
         </div>
 
         <div class="text-center">
-            <a href="tours-en-grupo/index.html" class="btn-style">
+            <a href="#" class="btn-style">
                 @ViewBag.SeeMore
             </a>
         </div>
@@ -99,7 +99,7 @@
                 <div class="col-sm-6 col-lg-4 mb-30">
                     <div class="bg-color-fffdfb box-shadow-1 position-relative h-100 pb-115">
                         <div class="position-relative">
-                            <a href="tour/@item.LinkSeo">
+                            <a href="/@item.LangCode.ToLower()/tour/@item.LinkSeo">
                                 <img class="w-100"
                                      src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E"
                                      alt="@item.Title" data-lazy-src="@item.Image">
@@ -115,7 +115,7 @@
                         </div>
                         <div class="pl-20 pr-20">
                             <h3 class="fsz-18 mt-18 mb-12">
-                                <a href="tour/@item.LinkSeo" class="text-decoration-none">
+                                <a href="/@item.LangCode.ToLower()/tour/@item.LinkSeo" class="text-decoration-none">
                                     @item.Title
                                 </a>
                             </h3>
@@ -139,7 +139,7 @@
                                     </span>
                                 </div>
                                 <div>
-                                    <a href="tour/@item.LinkSeo" class="d-inline-block">
+                                    <a href="/@item.LangCode.ToLower()/tour/@item.LinkSeo" class="d-inline-block">
                                         @ViewBag.Detail
                                     </a>
                                 </div>
@@ -269,51 +269,4 @@
     </div>
 </div>*@
 
-<div class="pt-60 sm-pt-30 pb-45 sm-pb-25 bg-color-bc2129 text-center">
-    <div class="container">
-        <div class="section-title color-fff font-bold">
-            @ViewBag.WhyChooses
-        </div>
-        <p class="fsz-18 color-fff mb-18">
-            @ViewBag.ChuyenGiaDuLich
-        </p>
-        <div class="row">
-            <div class="col-sm-6 col-lg-3 mb-30">
-                <div class="h-100 bg-color-fffdfb box-shadow-1 p-50-20">
-                    <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt="" data-lazy-src="wp-content/uploads/2025/04/affordable-icon.png"><noscript><img src="wp-content/uploads/2025/04/affordable-icon.png" alt=""></noscript>
-                    <div class="fsz-16 color-bd1e2d mt-20 mb-15 font-bold">
-                        @ViewBag.BestPrice
-                    </div>
-                    <p>@ViewBag.BestPriceDescription</p>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-3 mb-30">
-                <div class="h-100 bg-color-fffdfb box-shadow-1 p-50-20">
-                    <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt="" data-lazy-src="wp-content/uploads/2025/04/safe-icon.png"><noscript><img src="wp-content/uploads/2025/04/safe-icon.png" alt=""></noscript>
-                    <div class="fsz-16 color-bd1e2d mt-20 mb-15 font-bold">
-                        @ViewBag.YenTamDuLich
-                    </div>
-                    <p>@ViewBag.YenTamDesc</p>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-3 mb-30">
-                <div class="h-100 bg-color-fffdfb box-shadow-1 p-50-20">
-                    <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt="" data-lazy-src="wp-content/uploads/2025/04/authentic-icon.png"><noscript><img src="wp-content/uploads/2025/04/authentic-icon.png" alt=""></noscript>
-                    <div class="fsz-16 color-bd1e2d mt-20 mb-15 font-bold">
-                        @ViewBag.StyleTour
-                    </div>
-                    <p>@ViewBag.StyleTourDesc</p>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-3 mb-30">
-                <div class="h-100 bg-color-fffdfb box-shadow-1 p-50-20">
-                    <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt="" data-lazy-src="wp-content/uploads/2025/04/instant-icon.png"><noscript><img src="wp-content/uploads/2025/04/instant-icon.png" alt=""></noscript>
-                    <div class="fsz-16 color-bd1e2d mt-20 mb-15 font-bold">
-                        @ViewBag.SpeedSupport
-                    </div>
-                    <p>@ViewBag.SpeedSupportDesc</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+

@@ -1,16 +1,6 @@
 ﻿<!doctype html>
 <html lang="es" prefix="og: https://ogp.me/ns#"> 
-<head>
-    <script>
-        (function (w, i, g) { w[g] = w[g] || []; if (typeof w[g].push == 'function') w[g].push(i) })
-            (window, 'GTM-NBHFFWN', 'google_tags_first_party');</script>
-    <script>
-        (function (w, d, s, l) {
-            w[l] = w[l] || []; (function () { w[l].push(arguments); })('set', 'developer_id.dY2E1Nz', true);
-            var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s); j.async = true; j.src = '../../../dz42/index.html';
-            f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer');</script>
+<head> 
     <meta charset="UTF-8" />
     <script type="8f09b9d066fed1c56d1c98fb-text/javascript">if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script>
     <script type="8f09b9d066fed1c56d1c98fb-text/javascript">class RocketLazyLoadScripts{constructor(){this.triggerEvents=["keydown","mousedown","mousemove","touchmove","touchstart","touchend","wheel"],this.userEventHandler=this._triggerListener.bind(this),this.touchStartHandler=this._onTouchStart.bind(this),this.touchMoveHandler=this._onTouchMove.bind(this),this.touchEndHandler=this._onTouchEnd.bind(this),this.clickHandler=this._onClick.bind(this),this.interceptedClicks=[],window.addEventListener("pageshow",(e=>{this.persisted=e.persisted})),window.addEventListener("DOMContentLoaded",(()=>{this._preconnect3rdParties()})),this.delayedScripts={normal:[],async:[],defer:[]},this.allJQueries=[]}_addUserInteractionListener(e){document.hidden?e._triggerListener():(this.triggerEvents.forEach((t=>window.addEventListener(t,e.userEventHandler,{passive:!0}))),window.addEventListener("touchstart",e.touchStartHandler,{passive:!0}),window.addEventListener("mousedown",e.touchStartHandler),document.addEventListener("visibilitychange",e.userEventHandler))}_removeUserInteractionListener(){this.triggerEvents.forEach((e=>window.removeEventListener(e,this.userEventHandler,{passive:!0}))),document.removeEventListener("visibilitychange",this.userEventHandler)}_onTouchStart(e){"HTML"!==e.target.tagName&&(window.addEventListener("touchend",this.touchEndHandler),window.addEventListener("mouseup",this.touchEndHandler),window.addEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.addEventListener("mousemove",this.touchMoveHandler),e.target.addEventListener("click",this.clickHandler),this._renameDOMAttribute(e.target,"onclick","rocket-onclick"))}_onTouchMove(e){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler),e.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(e.target,"rocket-onclick","onclick")}_onTouchEnd(e){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler)}_onClick(e){e.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(e.target,"rocket-onclick","onclick"),this.interceptedClicks.push(e),e.preventDefault(),e.stopPropagation(),e.stopImmediatePropagation()}_replayClicks(){window.removeEventListener("touchstart",this.touchStartHandler,{passive:!0}),window.removeEventListener("mousedown",this.touchStartHandler),this.interceptedClicks.forEach((e=>{e.target.dispatchEvent(new MouseEvent("click",{view:e.view,bubbles:!0,cancelable:!0}))}))}_renameDOMAttribute(e,t,n){e.hasAttribute&&e.hasAttribute(t)&&(event.target.setAttribute(n,event.target.getAttribute(t)),event.target.removeAttribute(t))}_triggerListener(){this._removeUserInteractionListener(this),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",this._loadEverythingNow.bind(this)):this._loadEverythingNow()}_preconnect3rdParties(){let e=[];document.querySelectorAll("script[type=rocketlazyloadscript]").forEach((t=>{if(t.hasAttribute("src")){const n=new URL(t.html).origin;n!==location.origin&&e.push({src:n,crossOrigin:t.crossOrigin||"module"===t.getAttribute("data-rocket-type")})}})),e=[...new Map(e.map((e=>[JSON.stringify(e),e]))).values()],this._batchInjectResourceHints(e,"preconnect")}async _loadEverythingNow(){this.lastBreath=Date.now(),this._delayEventListeners(),this._delayJQueryReady(this),this._handleDocumentWrite(),this._registerAllDelayedScripts(),this._preloadAllScripts(),await this._loadScriptsFromList(this.delayedScripts.normal),await this._loadScriptsFromList(this.delayedScripts.defer),await this._loadScriptsFromList(this.delayedScripts.async);try{await this._triggerDOMContentLoaded(),await this._triggerWindowLoad()}catch(e){}window.dispatchEvent(new Event("rocket-allScriptsLoaded")),this._replayClicks()}_registerAllDelayedScripts(){document.querySelectorAll("script[type=rocketlazyloadscript]").forEach((e=>{e.hasAttribute("src")?e.hasAttribute("async")&&!1!==e.async?this.delayedScripts.async.push(e):e.hasAttribute("defer")&&!1!==e.defer||"module"===e.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(e):this.delayedScripts.normal.push(e):this.delayedScripts.normal.push(e)}))}async _transformScript(e){return await this._littleBreath(),new Promise((t=>{const n=document.createElement("script");[...e.attributes].forEach((e=>{let t=e.nodeName;"type"!==t&&("data-rocket-type"===t&&(t="type"),n.setAttribute(t,e.nodeValue))})),e.hasAttribute("src")?(n.addEventListener("load",t),n.addEventListener("error",t)):(n.text=e.text,t());try{e.parentNode.replaceChild(n,e)}catch(e){t()}}))}async _loadScriptsFromList(e){const t=e.shift();return t?(await this._transformScript(t),this._loadScriptsFromList(e)):Promise.resolve()}_preloadAllScripts(){this._batchInjectResourceHints([...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async],"preload")}_batchInjectResourceHints(e,t){var n=document.createDocumentFragment();e.forEach((e=>{if(e.src){const i=document.createElement("link");i.href=e.src,i.rel=t,"preconnect"!==t&&(i.as="script"),e.getAttribute&&"module"===e.getAttribute("data-rocket-type")&&(i.crossOrigin=!0),e.crossOrigin&&(i.crossOrigin=e.crossOrigin),n.appendChild(i)}})),document.head.appendChild(n)}_delayEventListeners(){let e={};function t(t,n){!function(t){function n(n){return e[t].eventsToRewrite.indexOf(n)>=0?"rocket-"+n:n}e[t]||(e[t]={originalFunctions:{add:t.addEventListener,remove:t.removeEventListener},eventsToRewrite:[]},t.addEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.add.apply(t,arguments)},t.removeEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.remove.apply(t,arguments)})}(t),e[t].eventsToRewrite.push(n)}function n(e,t){let n=e[t];Object.defineProperty(e,t,{get:()=>n||function(){},set(i){e["rocket"+t]=n=i}})}t(document,"DOMContentLoaded"),t(window,"DOMContentLoaded"),t(window,"load"),t(window,"pageshow"),t(document,"readystatechange"),n(document,"onreadystatechange"),n(window,"onload"),n(window,"onpageshow")}_delayJQueryReady(e){let t=window.jQuery;Object.defineProperty(window,"jQuery",{get:()=>t,set(n){if(n&&n.fn&&!e.allJQueries.includes(n)){n.fn.ready=n.fn.init.prototype.ready=function(t){e.domReadyFired?t.bind(document)(n):document.addEventListener("rocket-DOMContentLoaded",(()=>t.bind(document)(n)))};const t=n.fn.on;n.fn.on=n.fn.init.prototype.on=function(){if(this[0]===window){function e(e){return e.split(" ").map((e=>"load"===e||0===e.indexOf("load.")?"rocket-jquery-load":e)).join(" ")}"string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=e(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach((t=>{delete Object.assign(arguments[0],{[e(t)]:arguments[0][t]})[t]}))}return t.apply(this,arguments),this},e.allJQueries.push(n)}t=n}})}async _triggerDOMContentLoaded(){this.domReadyFired=!0,await this._littleBreath(),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),window.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),document.dispatchEvent(new Event("rocket-readystatechange")),await this._littleBreath(),document.rocketonreadystatechange&&document.rocketonreadystatechange()}async _triggerWindowLoad(){await this._littleBreath(),window.dispatchEvent(new Event("rocket-load")),await this._littleBreath(),window.rocketonload&&window.rocketonload(),await this._littleBreath(),this.allJQueries.forEach((e=>e(window).trigger("rocket-jquery-load"))),await this._littleBreath();const e=new Event("rocket-pageshow");e.persisted=this.persisted,window.dispatchEvent(e),await this._littleBreath(),window.rocketonpageshow&&window.rocketonpageshow({persisted:this.persisted})}_handleDocumentWrite(){const e=new Map;document.write=document.writeln=function(t){const n=document.currentScript,i=document.createRange(),r=n.parentElement;let o=e.get(n);void 0===o&&(o=n.nextSibling,e.set(n,o));const s=document.createDocumentFragment();i.setStart(s,0),s.appendChild(i.createContextualFragment(t)),r.insertBefore(s,o)}}async _littleBreath(){Date.now()-this.lastBreath>45&&(await this._requestAnimFrame(),this.lastBreath=Date.now())}async _requestAnimFrame(){return document.hidden?new Promise((e=>setTimeout(e))):new Promise((e=>requestAnimationFrame(e)))}static run(){const e=new RocketLazyLoadScripts;e._addUserInteractionListener(e)}}RocketLazyLoadScripts.run();</script>
@@ -618,19 +608,7 @@
         .has-x-large-font-size {
             font-size: var(--wp--preset--font-size--x-large) !important;
         } 
-    </style>  
-    <script type="rocketlazyloadscript">
-        !function(f,b,e,v,n,t,s)
-        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f.fbq)f.fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window,document,'script',
-        '../../../../connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '825160882434280');
-        fbq('track', 'PageView');
-    </script>   
+    </style>    
     <link rel="icon" href="~/Content/wp-content/wp-content/uploads/2025/09/cropped-favicon-32x32.png" sizes="32x32" />
     <link rel="icon" href="~/Content/wp-content/wp-content/uploads/2025/09/cropped-favicon-192x192.png" sizes="192x192" />
     <link rel="apple-touch-icon" href="~/Content/wp-content/wp-content/uploads/2025/09/cropped-favicon-180x180.png" />
@@ -661,225 +639,8 @@
             @{ Html.RenderAction("Menu", "Home");}
         </header>
         <div id="content" class="site-content">
-            @RenderBody()
-
-            <div class="pt-60 sm-pt-30 pb-50 sm-pb-25 bt-edeae5 bb-edeae5">
-                <div class="container">
-                    <h2 class="section-title">
-                        <span>
-                            Más itinerarios
-                        </span>
-                    </h2>
-                    <div class="row">
-                        <div class="col-sm-6 col-lg-4 mb-30">
-                            <div class="bg-color-fffdfb box-shadow-1 position-relative h-100 pb-115">
-                                <div class="position-relative">
-                                    <a href="../viaje-a-corea-del-sur-y-japon/index.html">
-                                        <img class="w-100"
-                                             src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E"
-                                             alt="Viaje a Corea del Sur y Japón" data-lazy-src="../../../wp-content/uploads/2025/07/Gyeongju-1-450x281_c.jpg"><noscript>
-                                            <img class="w-100"
-                                                 src="../../../wp-content/uploads/2025/07/Gyeongju-1-450x281_c.jpg"
-                                                 alt="Viaje a Corea del Sur y Japón">
-                                        </noscript>
-                                    </a>
-                                    <div class="position-absolute fw-700 color-fff text-shadow-1 left-20 bottom-18">
-                                        15                        Días /
-                                        14                        Noches
-                                    </div>
-                                </div>
-                                <div class="pl-20 pr-20">
-                                    <h3 class="fsz-18 mt-18 mb-12">
-                                        <a href="../viaje-a-corea-del-sur-y-japon/index.html" class="text-decoration-none">
-                                            Viaje a Corea del Sur y Japón
-                                        </a>
-                                    </h3>
-                                    <div class="fw-500 color-bd1e2d">
-                                        Corea del Sur - Japón
-                                    </div>
-                                    <div>
-                                        Seúl, Busan, Yeosu, Tokio, Kioto, Osaka
-                                    </div>
-                                </div>
-
-                                <div class="position-absolute left-0 right-0 bottom-18 ml-20 mr-20">
-                                    <div class="fsz-18 color-ffa534 text-right">
-                                        ★★★★
-                                    </div>
-                                    <hr class="mt-10 mb-15">
-                                    <div class="d-flex justify-content-between">
-                                        <div>
-                                            <span>Desde</span>
-                                            <span class="fsz-18 fw-700 color-111">
-                                                USD 5994
-                                            </span>
-                                        </div>
-                                        <div>
-                                            <a href="../viaje-a-corea-del-sur-y-japon/index.html" class="d-inline-block">
-                                                Detalle
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-lg-4 mb-30">
-                            <div class="bg-color-fffdfb box-shadow-1 position-relative h-100 pb-115">
-                                <div class="position-relative">
-                                    <a href="../viaje-a-japon-y-corea-del-sur-en-espanol/index.html">
-                                        <img class="w-100"
-                                             src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E"
-                                             alt="Viaje a Japón y Corea del Sur en español" data-lazy-src="../../../wp-content/uploads/2025/07/Seoul_800x5002-450x281_c.jpg"><noscript>
-                                            <img class="w-100"
-                                                 src="../../../wp-content/uploads/2025/07/Seoul_800x5002-450x281_c.jpg"
-                                                 alt="Viaje a Japón y Corea del Sur en español">
-                                        </noscript>
-                                    </a>
-                                    <div class="position-absolute fw-700 color-fff text-shadow-1 left-20 bottom-18">
-                                        13                        Días /
-                                        12                        Noches
-                                    </div>
-                                </div>
-                                <div class="pl-20 pr-20">
-                                    <h3 class="fsz-18 mt-18 mb-12">
-                                        <a href="../viaje-a-japon-y-corea-del-sur-en-espanol/index.html" class="text-decoration-none">
-                                            Viaje a Japón y Corea del Sur en español
-                                        </a>
-                                    </h3>
-                                    <div class="fw-500 color-bd1e2d">
-                                        Japón - Corea del Sur
-                                    </div>
-                                    <div>
-                                        Tokio, Kioto, Seúl, Busan
-                                    </div>
-                                </div>
-
-                                <div class="position-absolute left-0 right-0 bottom-18 ml-20 mr-20">
-                                    <div class="fsz-18 color-ffa534 text-right">
-                                        ★★★★
-                                    </div>
-                                    <hr class="mt-10 mb-15">
-                                    <div class="d-flex justify-content-between">
-                                        <div>
-                                            <span>Desde</span>
-                                            <span class="fsz-18 fw-700 color-111">
-                                                USD 4570
-                                            </span>
-                                        </div>
-                                        <div>
-                                            <a href="../viaje-a-japon-y-corea-del-sur-en-espanol/index.html" class="d-inline-block">
-                                                Detalle
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-lg-4 mb-30">
-                            <div class="bg-color-fffdfb box-shadow-1 position-relative h-100 pb-115">
-                                <div class="position-relative">
-                                    <a href="../paquete-de-viaje-a-japon-en-10-dias-en-grupo-reducido-en-espanol/index.html">
-                                        <img class="w-100"
-                                             src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E"
-                                             alt="Paquete de viaje a Japón en 10 días, grupo en español." data-lazy-src="../../../wp-content/uploads/2025/12/Kinkakuji-temple-kyoto-450x281_c.jpg"><noscript>
-                                            <img class="w-100"
-                                                 src="../../../wp-content/uploads/2025/12/Kinkakuji-temple-kyoto-450x281_c.jpg"
-                                                 alt="Paquete de viaje a Japón en 10 días, grupo en español.">
-                                        </noscript>
-                                    </a>
-                                    <div class="position-absolute fw-700 color-fff text-shadow-1 left-20 bottom-18">
-                                        10                        Días /
-                                        9                        Noches
-                                    </div>
-                                </div>
-                                <div class="pl-20 pr-20">
-                                    <h3 class="fsz-18 mt-18 mb-12">
-                                        <a href="../paquete-de-viaje-a-japon-en-10-dias-en-grupo-reducido-en-espanol/index.html" class="text-decoration-none">
-                                            Paquete de viaje a Japón en 10 días, grupo en español.
-                                        </a>
-                                    </h3>
-                                    <div class="fw-500 color-bd1e2d">
-                                        Japón
-                                    </div>
-                                    <div>
-                                        Tokio, Kioto, Kanazawa, Gero, Osaka
-                                    </div>
-                                </div>
-
-                                <div class="position-absolute left-0 right-0 bottom-18 ml-20 mr-20">
-                                    <div class="fsz-18 color-ffa534 text-right">
-                                        ★★★★
-                                    </div>
-                                    <hr class="mt-10 mb-15">
-                                    <div class="d-flex justify-content-between">
-                                        <div>
-                                            <span>Desde</span>
-                                            <span class="fsz-18 fw-700 color-111">
-                                                USD 3188
-                                            </span>
-                                        </div>
-                                        <div>
-                                            <a href="../paquete-de-viaje-a-japon-en-10-dias-en-grupo-reducido-en-espanol/index.html" class="d-inline-block">
-                                                Detalle
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="pt-60 sm-pt-30 pb-45 sm-pb-25 bg-color-bc2129 text-center">
-                <div class="container">
-                    <div class="section-title color-fff font-bold">
-                        ¿Por qué Mundo Asia Tours?
-                    </div>
-                    <p class="fsz-18 color-fff mb-18">
-                        El mejor especialista en viajes de alta calidad por Asia para viajeros latinoamericanos
-                    </p>
-                    <div class="row">
-                        <div class="col-sm-6 col-lg-3 mb-30">
-                            <div class="h-100 bg-color-fffdfb box-shadow-1 p-50-20">
-                                <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt="" data-lazy-src="../../../wp-content/uploads/2025/04/affordable-icon.png"><noscript><img src="../../../wp-content/uploads/2025/04/affordable-icon.png" alt=""></noscript>
-                                <div class="fsz-16 color-bd1e2d mt-20 mb-15 font-bold">
-                                    Mejor precio garantizado
-                                </div>
-                                <p>Agencia sin intermediarios, garantía de igualdad de precios</p>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-lg-3 mb-30">
-                            <div class="h-100 bg-color-fffdfb box-shadow-1 p-50-20">
-                                <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt="" data-lazy-src="../../../wp-content/uploads/2025/04/safe-icon.png"><noscript><img src="../../../wp-content/uploads/2025/04/safe-icon.png" alt=""></noscript>
-                                <div class="fsz-16 color-bd1e2d mt-20 mb-15 font-bold">
-                                    Viaje con tranquilidad
-                                </div>
-                                <p>Asesoras en México, Argentina, Colombia, USA, Perú, España y Brasil</p>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-lg-3 mb-30">
-                            <div class="h-100 bg-color-fffdfb box-shadow-1 p-50-20">
-                                <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt="" data-lazy-src="../../../wp-content/uploads/2025/04/authentic-icon.png"><noscript><img src="../../../wp-content/uploads/2025/04/authentic-icon.png" alt=""></noscript>
-                                <div class="fsz-16 color-bd1e2d mt-20 mb-15 font-bold">
-                                    Viajes en grupo y privados
-                                </div>
-                                <p>Salidas grupales en español de alta calidad por toda Asia y viajes personalizados</p>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-lg-3 mb-30">
-                            <div class="h-100 bg-color-fffdfb box-shadow-1 p-50-20">
-                                <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt="" data-lazy-src="../../../wp-content/uploads/2025/04/instant-icon.png"><noscript><img src="../../../wp-content/uploads/2025/04/instant-icon.png" alt=""></noscript>
-                                <div class="fsz-16 color-bd1e2d mt-20 mb-15 font-bold">
-                                    Soporte instantáneo
-                                </div>
-                                <p>Nuestros expertos locales ofrecen soporte 24/7 en español</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @RenderBody() 
+            @{ Html.RenderAction("QuangCao", "Home");}
         </div>
 
         <footer class="oc-footer">
@@ -1104,39 +865,11 @@
             // Trang load lại sau này, nếu đã accept all thì tự load tracking
             document.addEventListener('DOMContentLoaded', loadTrackingScripts);
         })();
-    </script>
-
-    <script type="rocketlazyloadscript" id="pll_cookie_script-js-after">
-        (function() {
-                        var expirationDate = new Date();
-                        expirationDate.setTime( expirationDate.getTime() + 31536000 * 1000 );
-                        document.cookie = "pll_language=lt; expires=" + expirationDate.toUTCString() + "; path=/; secure; SameSite=Lax";
-                    }());
-
-        //# sourceURL=pll_cookie_script-js-after
-    </script>
-    <script type="rocketlazyloadscript" id="rocket-browser-checker-js-after">
-        "use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
-        //# sourceURL=rocket-browser-checker-js-after
-    </script>
-    <script id="rocket-preload-links-js-extra" type="8f09b9d066fed1c56d1c98fb-text/javascript">
-        var RocketPreloadLinksConfig = {"excludeUris":"/(?:.+/)?feed(?:/(?:.+/?)?)?$|/(?:.+/)?embed/|/(index\\.php/)?wp\\-json(/.*|$)|/dang-nhap/|/wp-admin/|/logout/|/dang-nhap/|/refer/|/go/|/recommend/|/recommends/","usesTrailingSlash":"1","imageExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif","fileExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|php|pdf|html|htm","siteUrl":"https://www.mundoasiatours.com","onHoverDelay":"100","rateThrottle":"3"};
-        //# sourceURL=rocket-preload-links-js-extra
-    </script>
-    <script type="rocketlazyloadscript" id="rocket-preload-links-js-after">
-        (function() {
-        "use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("../../../index.html")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("../../../index.html")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
-        }());
-
-        //# sourceURL=rocket-preload-links-js-after
-    </script>
+    </script> 
     <script type="rocketlazyloadscript" id="swiper-js" src="~/Content/wp-content/themes/ocanus/js/vendors/swiper-bundle.min8a54.js?ver=1.0.0" defer></script>
     <script type="rocketlazyloadscript" data-minify="1" id="ocanus-accordion-js" src="~/Content/wp-content/cache/min/1/wp-content/themes/ocanus/js/accordionc1ca.js?ver=1787318654" defer></script>
     <script type="rocketlazyloadscript" data-minify="1" id="ocanus-base-js" src="~/Content/wp-content/cache/min/1/wp-content/themes/ocanus/js/basee7a7.js?ver=1787318650" defer></script>
-    <script id="ocanus-script-js-extra" type="8f09b9d066fed1c56d1c98fb-text/javascript">
-        var ocanus_script = {"ajax_url":"https://www.mundoasiatours.com/wp-admin/admin-ajax.php","site_url":"https://www.mundoasiatours.com/lt/"};
-        //# sourceURL=ocanus-script-js-extra
-    </script>
+     
     <script type="rocketlazyloadscript" data-minify="1" id="ocanus-script-js" src="~/Content/wp-content/cache/min/1/wp-content/themes/ocanus/js/scripte7a7.js?ver=1787318650" defer></script>
     <script type="rocketlazyloadscript" data-minify="1" id="ocanus-utm-js" src="~/Content/wp-content/cache/min/1/wp-content/themes/ocanus/js/utme7a7.js?ver=1787318650" defer></script>
     <script type="rocketlazyloadscript" data-minify="1" id="infobox-js" src="~/Content/wp-content/cache/min/1/wp-content/themes/ocanus/js/vendors/infoboxc1ca.js?ver=1787318654" defer></script>
@@ -1147,7 +880,7 @@
         if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
         images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
         if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script>
-    <script data-no-minify="1" async src="~/Content/plugins/wp-rocket/assets/js/lazyload/17.5/lazyload.min.js" type="8f09b9d066fed1c56d1c98fb-text/javascript"></script>
+    <script data-no-minify="1" async src="~/Content/wp-content/plugins/wp-rocket/assets/js/lazyload/17.5/lazyload.min.js" type="8f09b9d066fed1c56d1c98fb-text/javascript"></script>
     <script src="~/Content/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="8f09b9d066fed1c56d1c98fb-|49" defer></script>
 </body> 
 </html>

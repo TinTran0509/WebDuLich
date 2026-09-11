@@ -3,7 +3,7 @@
     ViewBag.Title = "Cập nhật sản phẩm";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
     var menus = (List<MenuTran>)TempData["Menus"];
-    var locations = (List<LocationTran>)TempData["Location"];
+    var locations = (List<Web.Model.CustomModel.LocationViewModel>)TempData["Location"];
     var countries = (List<Web.Model.CountryTran>)TempData["CountryTrans"];
     var hotels = (List<Web.Model.HotelTran>)TempData["Hotels"];
     List<int> countryIds = ViewBag.CountryIDs;

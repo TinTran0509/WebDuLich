@@ -175,9 +175,10 @@ namespace Web.Repository.Entity
                 using (var conn = new SqlConnection(_connectString))
                 {
                     StringBuilder sb = new StringBuilder();
-                    sb.Append("SELECT p.ProductCode,p.Image,p.Type,p.Price,p.Size,p.DayNumber,p.NumberStar,");
+                    sb.Append("SELECT p.ProductCode,p.MenuID,p.Image,p.Type,p.Price,p.Size,p.DayNumber,p.NumberStar,p.LocationID,pt.LangCode,lg.LangName,");
                     sb.Append("p.LocationID,pt.Title, pt.Contents,pt.Description,pt.LinkSeo FROM Product p ");
                     sb.Append("JOIN ProductTrans pt ON pt.ProductID = p.ID ");
+                    sb.Append("JOIN tbl_Languages lg ON lg.LangCode = pt.LangCode ");
                     sb.Append("WHERE pt.LinkSeo = @LinkSeo");
 
                     var parameters = new DynamicParameters();
@@ -186,6 +187,40 @@ namespace Web.Repository.Entity
                         sb.ToString(),
                         parameters,
                         commandType: CommandType.Text).FirstOrDefault();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public IEnumerable<ProductModel> GetRelate(int menuId, string langCode, int takeRow)
+        {
+            try
+            {
+                using (var conn = new SqlConnection(_connectString))
+                {
+                    StringBuilder sb = new StringBuilder();
+                    sb.Append($"SELECT TOP {takeRow} p.ID, p.Image, p.DayNumber, p.Price, p.NumberStar, pt.Title, pt. Description, pt.LinkSeo,");
+                    sb.Append("(SELECT STUFF((SELECT ' - ' + ct.Name FROM CountryTrans ct WHERE ct.CountryID IN (SELECT CAST(value AS INT) FROM STRING_SPLIT(p.CountryID, ',')) AND ct.LangCode = pt.LangCode FOR XML PATH('')), 1, 2, '')) AS Countries,");
+                    sb.Append("(SELECT STUFF((SELECT ', ' + lt.Name FROM LocationTrans lt WHERE lt.LocationID IN (SELECT CAST(value AS INT) FROM STRING_SPLIT(p.LocationID, ',')) AND lt.LangCode ='EN' FOR XML PATH('')), 1, 2, '')) AS Locations,");
+                    sb.Append("pt. Contents, pt.ProductID, l.LangName FROM ProductTrans pt ");
+                    sb.Append("JOIN Product p ON p.ID = pt.ProductID ");
+                    sb.Append("JOIN tbl_Languages l ON pt.LangCode = l.LangCode ");
+                    sb.Append("WHERE p.MenuID = @MenuID AND pt.LangCode = @LangCode ");
+                    sb.Append("ORDER BY p.CreatedDate DESC ");
+
+                    var parameters = new DynamicParameters();
+                    parameters.Add("MenuID", menuId);
+                    parameters.Add("LangCode", langCode);
+
+                    string sql = sb.ToString();
+
+                    return conn.Query<ProductModel>(
+                        sb.ToString(),
+                        parameters,
+                        commandType: CommandType.Text);
                 }
             }
             catch (Exception)

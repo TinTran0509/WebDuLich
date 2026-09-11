@@ -15,8 +15,9 @@ namespace Web.Controllers
     public class ProductController : BaseController
     {
         readonly  IProductRepository productRepository = new ProductRepository();
+        readonly ILocationRepository locationRepository = new LocationRepository();
         // GET: News
-        public ActionResult Index()
+        public ActionResult Index(string linkseo)
         { 
             return View();
         } 
@@ -30,11 +31,31 @@ namespace Web.Controllers
                     ViewBag.TourType = Resources.Language.Group;
                 else
                     ViewBag.TourType = Resources.Language.Private;
+
+                var locationViewModels = locationRepository.GetByLocationIDs(model.LocationID, model.LangCode);
+
+                TempData["Locations"] = locationRepository.GetByLocationIDs(model.LocationID, model.LangCode);
+
+                ViewBag.LangName = model.LangName;
+
+                TempData["Relates"] = productRepository.GetRelate(model.MenuID, model.LangCode, 3);
             }
             ViewBag.Destination = Resources.Language.Destination;
             ViewBag.Duration = Resources.Language.Duration;
             ViewBag.AverageSize = Resources.Language.AverageSize;
             ViewBag.Price = Resources.Language.Price;
+            ViewBag.GuideLang = Resources.Language.GuideLang;
+            ViewBag.ProductCode = Resources.Language.ProductCode;
+            ViewBag.TourTypeDes = Resources.Language.TourType;
+            ViewBag.HomePage = Resources.Language.HomePage;
+            ViewBag.SelectDate = Resources.Language.SelectDate;
+            ViewBag.YeuCauBaoGia = Resources.Language.YeuCauBaoGia;
+            ViewBag.ThemLichTrinh = Resources.Language.ThemLichTrinh;
+            ViewBag.Days = Resources.Language.Days;
+            ViewBag.Nigths = Resources.Language.Nigths;
+            ViewBag.From = Resources.Language.From;
+            ViewBag.Detail = Resources.Language.Detail;
+
             return View(model);
         }
     }

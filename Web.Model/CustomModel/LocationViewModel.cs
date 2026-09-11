@@ -12,6 +12,7 @@ namespace Web.Model.CustomModel
         public string Name { get; set; }
         public string LangName { get; set; }
         public string Description { get; set; }
+        public string Image { get; set; }
         public int LocationID { get; set; }
     }
 }

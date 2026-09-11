@@ -20,13 +20,12 @@ namespace Web
             routes.MapRoute("LienHe", "lien-he", new { controller = "Contact", action = "Index", id = UrlParameter.Optional }, namespaces: new[] { "Web.Controllers" });
             routes.MapRoute("ListBlog", "danhsachblog", new { controller = "Blog", action = "LoadData", id = UrlParameter.Optional }, namespaces: new[] { "Web.Controllers" });
             routes.MapRoute("ListService", "danhsachdichvu", new { controller = "Category", action = "ListCate" }, namespaces: new[] { "Web.Controllers" }); 
-      
-            routes.MapRoute("Category", "{linkseo}", new { controller = "Category", action = "Index", id = UrlParameter.Optional }, namespaces: new[] { "Web.Controllers" });
+ 
             routes.MapRoute("NewsDetail", "tin-tuc/{linkseo}", new { controller = "News", action = "Detail", id = UrlParameter.Optional }, namespaces: new[] { "Web.Controllers" });
-            routes.MapRoute("ServiceDetail", "dich-vu/{linkseo}", new { controller = "DichVu", action = "Detail", id = UrlParameter.Optional }, namespaces: new[] { "Web.Controllers" });
-            routes.MapRoute("ProductDetail", "tour/{linkseo}", new { controller = "Product", action = "Detail", id = UrlParameter.Optional }, namespaces: new[] { "Web.Controllers" });
+            routes.MapRoute("ProductList", "{langcode}/{linkseo}", new { controller = "Product", action = "Index", id = UrlParameter.Optional }, namespaces: new[] { "Web.Controllers" });
+            routes.MapRoute("ProductDetail", "{langcode}/tour/{linkseo}", new { controller = "Product", action = "Detail", id = UrlParameter.Optional }, namespaces: new[] { "Web.Controllers" });
             routes.MapRoute("dangnhap", "dang-nhap.html", new { controller = "Login", action = "Index", id = UrlParameter.Optional }, namespaces: new[] { "Web.Controllers" });
-            routes.MapRoute("TrangChu", "{langCode}/index.html", new { controller = "Home", action = "Index", id = UrlParameter.Optional }, namespaces: new[] { "Web.Controllers" });
+            routes.MapRoute("TrangChu", "{langCode}/", new { controller = "Home", action = "Index", id = UrlParameter.Optional }, namespaces: new[] { "Web.Controllers" });
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

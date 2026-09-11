@@ -2503,6 +2503,10 @@
     <Content Include="Content\cdn-cgi\l\email-protection.html" />
     <Content Include="Content\cdn-cgi\scripts\5c5dd728\cloudflare-static\email-decode.min.js" />
     <Content Include="Content\cdn-cgi\scripts\7d0fa10a\cloudflare-static\rocket-loader.min.js" />
+    <Content Include="Content\images\icon\affordable-icon.png" />
+    <Content Include="Content\images\icon\authentic-icon.png" />
+    <Content Include="Content\images\icon\instant-icon.png" />
+    <Content Include="Content\images\icon\safe-icon.png" />
     <Content Include="Content\images\logo-nobg.png" />
     <Content Include="Content\images\logo.jpg" />
     <Content Include="Content\plugins\ckeditor\adapters\jquery.js" />
@@ -17495,6 +17499,7 @@
     <Content Include="Views\Product\Detail.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Product\ListData.cshtml" />
+    <Content Include="Views\Home\QuangCao.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

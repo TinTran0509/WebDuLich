@@ -94,7 +94,7 @@ namespace Web.Repository.Entity
                 using (var conn = new SqlConnection(_connectString))
                 {
                     StringBuilder sb = new StringBuilder();
-                    sb.Append($"SELECT TOP {takeRow} p.ID, p.Image, p.DayNumber, p.Price, p.NumberStar, pt.Title, pt. Description, pt.LinkSeo,");
+                    sb.Append($"SELECT TOP {takeRow} p.ID, p.Image, p.DayNumber, p.Price, p.NumberStar, pt.Title, pt. Description,pt.LangCode, pt.LinkSeo,");
                     sb.Append("(SELECT STUFF((SELECT ' - ' + ct.Name FROM CountryTrans ct WHERE ct.CountryID IN (SELECT CAST(value AS INT) FROM STRING_SPLIT(p.CountryID, ',')) AND ct.LangCode = pt.LangCode FOR XML PATH('')), 1, 2, '')) AS Countries,");
                     sb.Append("(SELECT STUFF((SELECT ', ' + lt.Name FROM LocationTrans lt WHERE lt.LocationID IN (SELECT CAST(value AS INT) FROM STRING_SPLIT(p.LocationID, ',')) AND lt.LangCode ='EN' FOR XML PATH('')), 1, 2, '')) AS Locations,");
                     sb.Append("pt. Contents, pt.ProductID, l.LangName FROM ProductTrans pt ");
@@ -119,6 +119,6 @@ namespace Web.Repository.Entity
             {
                 throw;
             }
-        }
+        } 
     }
 }

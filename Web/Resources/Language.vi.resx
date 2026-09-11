@@ -183,4 +183,31 @@
   <data name="Hotel" xml:space="preserve">
     <value>Khách sạn</value>
   </data>
+  <data name="GuideLang" xml:space="preserve">
+    <value>Ngôn ngữ của hướng dẫn viên</value>
+  </data>
+  <data name="ProductCode" xml:space="preserve">
+    <value>của gói hàng</value>
+  </data>
+  <data name="TourType" xml:space="preserve">
+    <value>Loại hình tour</value>
+  </data>
+  <data name="SelectDate" xml:space="preserve">
+    <value>Chọn ngày mong muốn</value>
+  </data>
+  <data name="HomePage" xml:space="preserve">
+    <value>Trang chủ</value>
+  </data>
+  <data name="YeuCauBaoGia" xml:space="preserve">
+    <value>Yêu cầu báo giá</value>
+  </data>
+  <data name="ThemLichTrinh" xml:space="preserve">
+    <value>Thêm lịch trình</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>Từ</value>
+  </data>
+  <data name="YeuCauTuVan" xml:space="preserve">
+    <value>Yêu cầu tư vấn</value>
+  </data>
 </root>

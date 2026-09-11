@@ -183,4 +183,31 @@
   <data name="Hotel" xml:space="preserve">
     <value>Hotel</value>
   </data>
+  <data name="GuideLang" xml:space="preserve">
+    <value>Guide's language</value>
+  </data>
+  <data name="ProductCode" xml:space="preserve">
+    <value>of the package</value>
+  </data>
+  <data name="TourType" xml:space="preserve">
+    <value>Tour type</value>
+  </data>
+  <data name="SelectDate" xml:space="preserve">
+    <value>Select the desired date</value>
+  </data>
+  <data name="HomePage" xml:space="preserve">
+    <value>Home page</value>
+  </data>
+  <data name="YeuCauBaoGia" xml:space="preserve">
+    <value>Request a quote</value>
+  </data>
+  <data name="ThemLichTrinh" xml:space="preserve">
+    <value>More itineraries</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="YeuCauTuVan" xml:space="preserve">
+    <value>Request a consultation</value>
+  </data>
 </root>

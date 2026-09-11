@@ -32,7 +32,7 @@
                                     <ul class="sub-menu">
                                         @foreach (var item in level1)
                                         {
-                                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-34269"><a href="sobre-mundo-asia/index.html"><span class="oc-link-inner">@item.Name</span></a></li>
+                                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-34269"><a href="/@item.LangCode.ToLower()/@item.LinkSeo"><span class="oc-link-inner">@item.Name</span></a></li>
                                         }
                                     </ul>
                                 </li>
@@ -49,8 +49,8 @@
             </div>
         </div>
         <div>
-            <a href="solicitar-viaje/index.html" class="btn-style md-d-none">
-                SOLICITAR CONSULTA
+            <a href="#" class="btn-style md-d-none">
+                @ViewBag.YeuCauTuVan
             </a>
             <span class="mobile-menu-toggle">
                 <span></span>

@@ -76,18 +76,7 @@ namespace Web.Controllers
             ViewBag.Days = Resources.Language.Days;
             ViewBag.Nigths = Resources.Language.Nigths;
             ViewBag.Detail = Resources.Language.Detail;
-            ViewBag.SeeMore = Resources.Language.SeeMore;
-            ViewBag.WhyChooses = Resources.Language.WhyChooses;
-            ViewBag.ChuyenGiaDuLich = Resources.Language.ChuyenGiaDuLich;
-            ViewBag.BestPrice = Resources.Language.BestPrice;
-            ViewBag.BestPriceDescription = Resources.Language.BestPriceDescription;
-            ViewBag.YenTamDuLich = Resources.Language.YenTamDuLich;
-            ViewBag.YenTamDesc = Resources.Language.YenTamDesc;
-            ViewBag.StyleTour = Resources.Language.StyleTour;
-            ViewBag.StyleTourDesc = Resources.Language.StyleTourDesc;
-            ViewBag.SpeedSupport = Resources.Language.SpeedSupport;
-            ViewBag.SpeedSupportDesc = Resources.Language.SpeedSupportDesc;
-
+            ViewBag.SeeMore = Resources.Language.SeeMore;  
             ViewBag.TravelDestinations = wordRepository.GetValueByKey("TravelDestinations", langCode);
             ViewBag.OurSpecialists = wordRepository.GetValueByKey("OurSpecialists", langCode); 
 
@@ -110,6 +99,8 @@ namespace Web.Controllers
                 langCode = "EN";
             } 
             var menus = menuRepository.GetByLangCode(langCode).ToList();
+            ViewBag.YeuCauTuVan = Resources.Language.YeuCauTuVan;
+
             return PartialView(menus);
         } 
 
@@ -150,6 +141,21 @@ namespace Web.Controllers
             ViewBag.SupportNow = wordRepository.GetValueByKey("SupportNow", langCode);
             var users = userRepository.GetAllByLangCode(langCode).ToList();
             return PartialView(users);
+        }
+
+        public PartialViewResult QuangCao()
+        {
+            ViewBag.WhyChooses = Resources.Language.WhyChooses;
+            ViewBag.ChuyenGiaDuLich = Resources.Language.ChuyenGiaDuLich;
+            ViewBag.BestPrice = Resources.Language.BestPrice;
+            ViewBag.BestPriceDescription = Resources.Language.BestPriceDescription;
+            ViewBag.YenTamDuLich = Resources.Language.YenTamDuLich;
+            ViewBag.YenTamDesc = Resources.Language.YenTamDesc;
+            ViewBag.StyleTour = Resources.Language.StyleTour;
+            ViewBag.StyleTourDesc = Resources.Language.StyleTourDesc;
+            ViewBag.SpeedSupport = Resources.Language.SpeedSupport;
+            ViewBag.SpeedSupportDesc = Resources.Language.SpeedSupportDesc;
+            return PartialView();
         }
 
         public PartialViewResult Footer()

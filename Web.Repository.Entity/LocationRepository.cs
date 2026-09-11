@@ -151,18 +151,23 @@ namespace Web.Repository.Entity
             }
         }
 
-        public IEnumerable<LocationTran> GetByLocationID(string locationIDs, string langCode)
+        public IEnumerable<LocationViewModel> GetByLocationIDs(string locationIDs, string langCode)
         {
             try
             {
                 using (var conn = new SqlConnection(_connectString))
                 { 
-                    string sql = $"SELECT * FROM LocationTrans WHERE LocationID IN ({locationIDs}) AND LangCode = @LangCode";
-                   
+                    StringBuilder sb = new StringBuilder();
+                    sb.Append("SELECT lt.*,l.Image FROM LocationTrans lt ");
+                    sb.Append("JOIN Location l ON l.ID = lt.LocationID ");
+                    sb.Append($"WHERE lt.LocationID IN ({locationIDs}) AND lt.LangCode = @LangCode"); 
+
+                    string sql = sb.ToString();
+                      
                     DynamicParameters parameters = new DynamicParameters(); 
                     parameters.Add("LangCode", langCode);
 
-                    return conn.Query<LocationTran>(
+                    return conn.Query<LocationViewModel>(
                         sql,
                         parameters,
                         commandType: CommandType.Text);

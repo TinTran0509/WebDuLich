@@ -55,3 +55,9 @@ D:\WebDuLich\Lummia\Web\Web.Core\obj\Debug\Web.Core.csproj.AssemblyReference.cac
 D:\WebDuLich\Lummia\Web\Web.Core\obj\Debug\Web.Core.csproj.CoreCompileInputs.cache
 D:\WebDuLich\Lummia\Web\Web.Core\obj\Debug\Web.Core.dll
 D:\WebDuLich\Lummia\Web\Web.Core\obj\Debug\Web.Core.pdb
+D:\PROJECTMORE\Cailummia\Web.Core\bin\Debug\Web.Core.dll
+D:\PROJECTMORE\Cailummia\Web.Core\bin\Debug\Web.Core.pdb
+D:\PROJECTMORE\Cailummia\Web.Core\obj\Debug\Web.Core.csproj.AssemblyReference.cache
+D:\PROJECTMORE\Cailummia\Web.Core\obj\Debug\Web.Core.csproj.CoreCompileInputs.cache
+D:\PROJECTMORE\Cailummia\Web.Core\obj\Debug\Web.Core.dll
+D:\PROJECTMORE\Cailummia\Web.Core\obj\Debug\Web.Core.pdb
