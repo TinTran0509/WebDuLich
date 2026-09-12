@@ -176,13 +176,40 @@ namespace Web.Repository.Entity
                 {
                     StringBuilder sb = new StringBuilder();
                     sb.Append("SELECT p.ProductCode,p.MenuID,p.Image,p.Type,p.Price,p.Size,p.DayNumber,p.NumberStar,p.LocationID,pt.LangCode,lg.LangName,");
-                    sb.Append("p.LocationID,pt.Title, pt.Contents,pt.Description,pt.LinkSeo FROM Product p ");
+                    sb.Append("p.LocationID,pt.Title, pt.Contents,pt.Description,pt.LinkSeo,pt.ProductID FROM Product p ");
                     sb.Append("JOIN ProductTrans pt ON pt.ProductID = p.ID ");
                     sb.Append("JOIN tbl_Languages lg ON lg.LangCode = pt.LangCode ");
                     sb.Append("WHERE pt.LinkSeo = @LinkSeo");
 
                     var parameters = new DynamicParameters();
                     parameters.Add("LinkSeo", linkSeo);
+                    return conn.Query<ProductModel>(
+                        sb.ToString(),
+                        parameters,
+                        commandType: CommandType.Text).FirstOrDefault();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public ProductModel GetById(int id)
+        {
+            try
+            {
+                using (var conn = new SqlConnection(_connectString))
+                {
+                    StringBuilder sb = new StringBuilder();
+                    sb.Append("SELECT p.ProductCode,p.MenuID,p.Image,p.Type,p.Price,p.Size,p.DayNumber,p.NumberStar,p.LocationID,pt.LangCode,lg.LangName,");
+                    sb.Append("p.LocationID,pt.Title, pt.Contents,pt.Description,pt.LinkSeo,pt.ProductID FROM Product p ");
+                    sb.Append("JOIN ProductTrans pt ON pt.ProductID = p.ID ");
+                    sb.Append("JOIN tbl_Languages lg ON lg.LangCode = pt.LangCode ");
+                    sb.Append("WHERE p.ID = @ID");
+
+                    var parameters = new DynamicParameters();
+                    parameters.Add("ID", id);
                     return conn.Query<ProductModel>(
                         sb.ToString(),
                         parameters,

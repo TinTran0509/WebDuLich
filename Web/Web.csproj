@@ -252,6 +252,7 @@
     <Compile Include="Areas\Admin\Controllers\GroupUserController.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\BookingController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -17478,18 +17479,14 @@
     <Content Include="Views\News\Detail.cshtml" />
     <Content Include="Views\News\Index.cshtml" />
     <Content Include="Views\User\Profiled.cshtml" />
-    <Content Include="Views\Shared\_Footer.cshtml" />
-    <Content Include="Views\Shared\_Logo.cshtml" />
     <Content Include="Views\Home\NewsHome.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Category\Index.cshtml" />
     <Content Include="Views\News\ListData.cshtml" />
     <Content Include="Views\Category\Search.cshtml" />
     <Content Include="Views\Category\ListNews.cshtml" />
-    <Content Include="Views\Home\MenuMobile.cshtml" />
     <Content Include="Views\Home\Support.cshtml" />
     <Content Include="Views\Home\ThuVienAnh.cshtml" />
-    <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\About\Index.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Home\Language.cshtml" />
@@ -17500,6 +17497,8 @@
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Product\ListData.cshtml" />
     <Content Include="Views\Home\QuangCao.cshtml" />
+    <Content Include="Views\Booking\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutBooking.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

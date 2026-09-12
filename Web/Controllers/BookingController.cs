@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json; 
+﻿using Newtonsoft.Json;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.Text;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,22 +14,58 @@ using Web.Repository.Entity;
 
 namespace Web.Controllers
 {
-    public class ProductController : BaseController
+    public class BookingController : BaseController
     {
         private readonly  IProductRepository productRepository = new ProductRepository();
         private readonly ILocationRepository locationRepository = new LocationRepository();
         private readonly IWordRepository wordRepository = new WordRepository();
         // GET: News
-        public ActionResult Index(string linkseo)
-        {   
-            if (linkseo == "index.html")
+        public ActionResult Index()
+        {
+            string productId = Request.QueryString["tour_id"];
+            int id = 0;
+            int.TryParse(productId, out id);
+
+            ProductModel model = productRepository.GetById(id);
+
+            ViewBag.BookingNow = Resources.Language.BookingNow;
+            ViewBag.HomePage = Resources.Language.HomePage;
+            ViewBag.ThankYouRequest = Resources.Language.ThankYouRequest;
+            ViewBag.Note = Resources.Language.Note;//Passenger
+            ViewBag.ArrivalDate = Resources.Language.ArrivalDate;
+            ViewBag.Itinerary = Resources.Language.Itinerary;
+            ViewBag.Destination = Resources.Language.Destination;
+            ViewBag.StartingPoint = Resources.Language.StartingPoint;
+            ViewBag.HotelCategory = Resources.Language.HotelCategory;
+            ViewBag.LangName = model.LangName;
+            ViewBag.Journey = Resources.Language.Journey;
+            ViewBag.Passenger = Resources.Language.Passenger;
+            ViewBag.UocTinhTrenNguoi = Resources.Language.UocTinhTrenNguoi;
+            ViewBag.Adult = Resources.Language.Adult;
+            ViewBag.Child = Resources.Language.Child;
+            ViewBag.Baby = Resources.Language.Baby;
+            ViewBag.Select = Resources.Language.Select;
+            ViewBag.Continue = Resources.Language.Continue;
+            ViewBag.PhuPhi = Resources.Language.PhuPhi;
+            ViewBag.TongUocTinh = Resources.Language.TongUocTinh;
+            ViewBag.Title = Resources.Language.Title;
+            ViewBag.Name = Resources.Language.Name; //LastName
+            ViewBag.LastName = Resources.Language.LastName;
+            ViewBag.PlaceTel = Resources.Language.PlaceTel;
+            ViewBag.NgonNguUuTien = Resources.Language.NgonNguUuTien;
+            ViewBag.DepartureCity = Resources.Language.DepartureCity;
+            ViewBag.NotesAnd = Resources.Language.NotesAnd;
+            ViewBag.PlaceNotes = Resources.Language.PlaceNotes;
+            ViewBag.YCBaoGia = Resources.Language.YCBaoGia;
+
+            string sLocation = string.Empty;
+            List<LocationViewModel> locations = locationRepository.GetByLocationIDs(model.LocationID, model.LangCode).ToList();
+            foreach (var item in locations)
             {
-                return RedirectToAction("Index", "Home");
+                sLocation += sLocation == string.Empty ? item.Name : "," + item.Name;
             }
-            else
-            {
-                return View();
-            }
+            ViewBag.Location = sLocation;
+            return View(model);
         } 
         
         public ActionResult Detail(string linkseo)

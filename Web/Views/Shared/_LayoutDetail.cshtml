@@ -1,38 +1,38 @@
 ﻿<!doctype html>
 <html lang="es" prefix="og: https://ogp.me/ns#"> 
-<head> 
+<head>
     <meta charset="UTF-8" />
     <script type="8f09b9d066fed1c56d1c98fb-text/javascript">if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script>
     <script type="8f09b9d066fed1c56d1c98fb-text/javascript">class RocketLazyLoadScripts{constructor(){this.triggerEvents=["keydown","mousedown","mousemove","touchmove","touchstart","touchend","wheel"],this.userEventHandler=this._triggerListener.bind(this),this.touchStartHandler=this._onTouchStart.bind(this),this.touchMoveHandler=this._onTouchMove.bind(this),this.touchEndHandler=this._onTouchEnd.bind(this),this.clickHandler=this._onClick.bind(this),this.interceptedClicks=[],window.addEventListener("pageshow",(e=>{this.persisted=e.persisted})),window.addEventListener("DOMContentLoaded",(()=>{this._preconnect3rdParties()})),this.delayedScripts={normal:[],async:[],defer:[]},this.allJQueries=[]}_addUserInteractionListener(e){document.hidden?e._triggerListener():(this.triggerEvents.forEach((t=>window.addEventListener(t,e.userEventHandler,{passive:!0}))),window.addEventListener("touchstart",e.touchStartHandler,{passive:!0}),window.addEventListener("mousedown",e.touchStartHandler),document.addEventListener("visibilitychange",e.userEventHandler))}_removeUserInteractionListener(){this.triggerEvents.forEach((e=>window.removeEventListener(e,this.userEventHandler,{passive:!0}))),document.removeEventListener("visibilitychange",this.userEventHandler)}_onTouchStart(e){"HTML"!==e.target.tagName&&(window.addEventListener("touchend",this.touchEndHandler),window.addEventListener("mouseup",this.touchEndHandler),window.addEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.addEventListener("mousemove",this.touchMoveHandler),e.target.addEventListener("click",this.clickHandler),this._renameDOMAttribute(e.target,"onclick","rocket-onclick"))}_onTouchMove(e){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler),e.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(e.target,"rocket-onclick","onclick")}_onTouchEnd(e){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler)}_onClick(e){e.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(e.target,"rocket-onclick","onclick"),this.interceptedClicks.push(e),e.preventDefault(),e.stopPropagation(),e.stopImmediatePropagation()}_replayClicks(){window.removeEventListener("touchstart",this.touchStartHandler,{passive:!0}),window.removeEventListener("mousedown",this.touchStartHandler),this.interceptedClicks.forEach((e=>{e.target.dispatchEvent(new MouseEvent("click",{view:e.view,bubbles:!0,cancelable:!0}))}))}_renameDOMAttribute(e,t,n){e.hasAttribute&&e.hasAttribute(t)&&(event.target.setAttribute(n,event.target.getAttribute(t)),event.target.removeAttribute(t))}_triggerListener(){this._removeUserInteractionListener(this),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",this._loadEverythingNow.bind(this)):this._loadEverythingNow()}_preconnect3rdParties(){let e=[];document.querySelectorAll("script[type=rocketlazyloadscript]").forEach((t=>{if(t.hasAttribute("src")){const n=new URL(t.html).origin;n!==location.origin&&e.push({src:n,crossOrigin:t.crossOrigin||"module"===t.getAttribute("data-rocket-type")})}})),e=[...new Map(e.map((e=>[JSON.stringify(e),e]))).values()],this._batchInjectResourceHints(e,"preconnect")}async _loadEverythingNow(){this.lastBreath=Date.now(),this._delayEventListeners(),this._delayJQueryReady(this),this._handleDocumentWrite(),this._registerAllDelayedScripts(),this._preloadAllScripts(),await this._loadScriptsFromList(this.delayedScripts.normal),await this._loadScriptsFromList(this.delayedScripts.defer),await this._loadScriptsFromList(this.delayedScripts.async);try{await this._triggerDOMContentLoaded(),await this._triggerWindowLoad()}catch(e){}window.dispatchEvent(new Event("rocket-allScriptsLoaded")),this._replayClicks()}_registerAllDelayedScripts(){document.querySelectorAll("script[type=rocketlazyloadscript]").forEach((e=>{e.hasAttribute("src")?e.hasAttribute("async")&&!1!==e.async?this.delayedScripts.async.push(e):e.hasAttribute("defer")&&!1!==e.defer||"module"===e.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(e):this.delayedScripts.normal.push(e):this.delayedScripts.normal.push(e)}))}async _transformScript(e){return await this._littleBreath(),new Promise((t=>{const n=document.createElement("script");[...e.attributes].forEach((e=>{let t=e.nodeName;"type"!==t&&("data-rocket-type"===t&&(t="type"),n.setAttribute(t,e.nodeValue))})),e.hasAttribute("src")?(n.addEventListener("load",t),n.addEventListener("error",t)):(n.text=e.text,t());try{e.parentNode.replaceChild(n,e)}catch(e){t()}}))}async _loadScriptsFromList(e){const t=e.shift();return t?(await this._transformScript(t),this._loadScriptsFromList(e)):Promise.resolve()}_preloadAllScripts(){this._batchInjectResourceHints([...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async],"preload")}_batchInjectResourceHints(e,t){var n=document.createDocumentFragment();e.forEach((e=>{if(e.src){const i=document.createElement("link");i.href=e.src,i.rel=t,"preconnect"!==t&&(i.as="script"),e.getAttribute&&"module"===e.getAttribute("data-rocket-type")&&(i.crossOrigin=!0),e.crossOrigin&&(i.crossOrigin=e.crossOrigin),n.appendChild(i)}})),document.head.appendChild(n)}_delayEventListeners(){let e={};function t(t,n){!function(t){function n(n){return e[t].eventsToRewrite.indexOf(n)>=0?"rocket-"+n:n}e[t]||(e[t]={originalFunctions:{add:t.addEventListener,remove:t.removeEventListener},eventsToRewrite:[]},t.addEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.add.apply(t,arguments)},t.removeEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.remove.apply(t,arguments)})}(t),e[t].eventsToRewrite.push(n)}function n(e,t){let n=e[t];Object.defineProperty(e,t,{get:()=>n||function(){},set(i){e["rocket"+t]=n=i}})}t(document,"DOMContentLoaded"),t(window,"DOMContentLoaded"),t(window,"load"),t(window,"pageshow"),t(document,"readystatechange"),n(document,"onreadystatechange"),n(window,"onload"),n(window,"onpageshow")}_delayJQueryReady(e){let t=window.jQuery;Object.defineProperty(window,"jQuery",{get:()=>t,set(n){if(n&&n.fn&&!e.allJQueries.includes(n)){n.fn.ready=n.fn.init.prototype.ready=function(t){e.domReadyFired?t.bind(document)(n):document.addEventListener("rocket-DOMContentLoaded",(()=>t.bind(document)(n)))};const t=n.fn.on;n.fn.on=n.fn.init.prototype.on=function(){if(this[0]===window){function e(e){return e.split(" ").map((e=>"load"===e||0===e.indexOf("load.")?"rocket-jquery-load":e)).join(" ")}"string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=e(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach((t=>{delete Object.assign(arguments[0],{[e(t)]:arguments[0][t]})[t]}))}return t.apply(this,arguments),this},e.allJQueries.push(n)}t=n}})}async _triggerDOMContentLoaded(){this.domReadyFired=!0,await this._littleBreath(),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),window.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),document.dispatchEvent(new Event("rocket-readystatechange")),await this._littleBreath(),document.rocketonreadystatechange&&document.rocketonreadystatechange()}async _triggerWindowLoad(){await this._littleBreath(),window.dispatchEvent(new Event("rocket-load")),await this._littleBreath(),window.rocketonload&&window.rocketonload(),await this._littleBreath(),this.allJQueries.forEach((e=>e(window).trigger("rocket-jquery-load"))),await this._littleBreath();const e=new Event("rocket-pageshow");e.persisted=this.persisted,window.dispatchEvent(e),await this._littleBreath(),window.rocketonpageshow&&window.rocketonpageshow({persisted:this.persisted})}_handleDocumentWrite(){const e=new Map;document.write=document.writeln=function(t){const n=document.currentScript,i=document.createRange(),r=n.parentElement;let o=e.get(n);void 0===o&&(o=n.nextSibling,e.set(n,o));const s=document.createDocumentFragment();i.setStart(s,0),s.appendChild(i.createContextualFragment(t)),r.insertBefore(s,o)}}async _littleBreath(){Date.now()-this.lastBreath>45&&(await this._requestAnimFrame(),this.lastBreath=Date.now())}async _requestAnimFrame(){return document.hidden?new Promise((e=>setTimeout(e))):new Promise((e=>requestAnimationFrame(e)))}static run(){const e=new RocketLazyLoadScripts;e._addUserInteractionListener(e)}}RocketLazyLoadScripts.run();</script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-   
+
     <title>@ViewBag.Title</title>
     <link rel="stylesheet" href="~/Content/wp-content/cache/min/1/3bd1988a8f8f931afbade934ba862982.css" media="all" data-minify="1" />
     <meta name="robots" content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large" />
-    <link rel="canonical" href="index.html" />
+    <link rel="canonical" href="" />
     <meta property="og:locale" content="es_ES" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="Paquete de viaje a Japón en 10 días - Mundo Asia" />
-    <meta property="og:url" content="https://www.mundoasiatours.com/lt/tour/paquete-de-viaje-a-japon-en-10-dias/" />
-    <meta property="og:site_name" content="Mundo" />
+    <meta property="og:title" content="@ViewBag.Title" />
+    <meta property="og:url" content="@ViewBag.Url" />
+    <meta property="og:site_name" content="Paso sea tour" />
     <meta property="og:updated_time" content="2026-08-07T11:36:27+07:00" />
-    <meta property="og:image" content="https://www.mundoasiatours.com/wp-content/uploads/2025/12/Kinkakuji-temple-kyoto.jpg" />
-    <meta property="og:image:secure_url" content="https://www.mundoasiatours.com/wp-content/uploads/2025/12/Kinkakuji-temple-kyoto.jpg" />
+    <meta property="og:image" content="@ViewBag.Image" />
+    <meta property="og:image:secure_url" content="@ViewBag.Image" />
     <meta property="og:image:width" content="800" />
     <meta property="og:image:height" content="500" />
-    <meta property="og:image:alt" content="Kinkakuji temple kyoto" />
+    <meta property="og:image:alt" content="@ViewBag.Title" />
     <meta property="og:image:type" content="image/jpeg" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Paquete de viaje a Japón en 10 días - Mundo Asia" />
-    <meta name="twitter:image" content="https://www.mundoasiatours.com/wp-content/uploads/2025/12/Kinkakuji-temple-kyoto.jpg" />
-     
+    <meta name="twitter:title" content="@ViewBag.Title" />
+    <meta name="twitter:image" content="@ViewBag.Image" />
+
     <style id="wp-img-auto-sizes-contain-inline-css">
         img:is([sizes=auto i],[sizes^="auto," i]) {
             contain-intrinsic-size: 3000px 1500px
-        } 
+        }
     </style>
-    <style id="wp-emoji-styles-inline-css">  
+    <style id="wp-emoji-styles-inline-css">
         img.wp-smiley, img.emoji {
             display: inline !important;
             border: none !important;
@@ -267,7 +267,7 @@
             }
         }
     </style>
-    <style id="classic-theme-styles-inline-css"> 
+    <style id="classic-theme-styles-inline-css">
         .wp-block-button__link {
             color: #fff;
             background-color: #32373c;
@@ -282,7 +282,7 @@
             background: #32373c;
             color: #fff;
             text-decoration: none
-        } 
+        }
     </style>
 
     <style id="global-styles-inline-css">
@@ -607,12 +607,10 @@
 
         .has-x-large-font-size {
             font-size: var(--wp--preset--font-size--x-large) !important;
-        } 
-    </style>    
-    <link rel="icon" href="~/Content/wp-content/wp-content/uploads/2025/09/cropped-favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" href="~/Content/wp-content/wp-content/uploads/2025/09/cropped-favicon-192x192.png" sizes="192x192" />
-    <link rel="apple-touch-icon" href="~/Content/wp-content/wp-content/uploads/2025/09/cropped-favicon-180x180.png" />
-    <meta name="msapplication-TileImage" content="https://www.mundoasiatours.com/wp-content/uploads/2025/09/cropped-favicon-270x270.png" />
+        }
+    </style> 
+    <link rel="icon" href="~/Content/images/logo-nobg.png" sizes="32x32" />
+    <link rel="icon" href="~/Content/images/logo-nobg.png" sizes="192x192" />
     <noscript>
         <style id="rocket-lazyload-nojs-css">
             .rll-youtube-player, [data-lazy-src] {
@@ -622,7 +620,7 @@
     </noscript>
 </head>
 <body data-rsssl=1 class="wp-singular group-tour-template-default single single-group-tour postid-113324 wp-theme-ocanus">
- 
+
     <noscript>
         <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NBHFFWN"
                 height="0" width="0" style="display:none;visibility:hidden"></iframe>
@@ -639,13 +637,13 @@
             @{ Html.RenderAction("Menu", "Home");}
         </header>
         <div id="content" class="site-content">
-            @RenderBody() 
+            @RenderBody()
             @{ Html.RenderAction("QuangCao", "Home");}
         </div>
 
         <footer class="oc-footer">
-            @{ Html.RenderAction("Footer", "Home");} 
-        </footer> 
+            @{ Html.RenderAction("Footer", "Home");}
+        </footer>
         @{ Html.RenderAction("Support", "Home");}
     </div>
     <script type="speculationrules">
@@ -712,6 +710,7 @@
             box-sizing: border-box;
             font-family: inherit;
         }
+
         #my-cookie-banner {
             background: #ffffff;
             border-radius: 8px;
@@ -719,43 +718,51 @@
             padding: 16px 18px 14px;
             border: 1px solid #eee;
         }
-        #my-cookie-banner h4 {
-            margin: 0 0 8px;
-            font-size: 16px;
-            font-weight: 600;
-        }
-        #my-cookie-banner p {
-            margin: 0 0 14px;
-            font-size: 13px;
-            line-height: 1.4;
-        }
+
+            #my-cookie-banner h4 {
+                margin: 0 0 8px;
+                font-size: 16px;
+                font-weight: 600;
+            }
+
+            #my-cookie-banner p {
+                margin: 0 0 14px;
+                font-size: 13px;
+                line-height: 1.4;
+            }
+
         #my-cookie-banner-buttons {
             display: flex;
             justify-content: flex-end;
             gap: 8px;
             flex-wrap: wrap;
         }
-        #my-cookie-banner-buttons button {
-            cursor: pointer;
-            border-radius: 4px;
-            padding: 7px 14px;
-            font-size: 13px;
-            border: 1px solid #bd1e2d;
-            background: #ffffff;
-            color: #bd1e2d;
-            transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
-        }
-        #my-cookie-banner-buttons button#cookie-accept-all {
-            background: #bd1e2d;
-            color: #ffffff;
-        }
-        #my-cookie-banner-buttons button#cookie-accept-all:hover {
-            background: #a01524;
-            border-color: #a01524;
-        }
-        #my-cookie-banner-buttons button:hover:not(#cookie-accept-all) {
-            background: #fbe9eb;
-        }
+
+            #my-cookie-banner-buttons button {
+                cursor: pointer;
+                border-radius: 4px;
+                padding: 7px 14px;
+                font-size: 13px;
+                border: 1px solid #bd1e2d;
+                background: #ffffff;
+                color: #bd1e2d;
+                transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+            }
+
+                #my-cookie-banner-buttons button#cookie-accept-all {
+                    background: #bd1e2d;
+                    color: #ffffff;
+                }
+
+                    #my-cookie-banner-buttons button#cookie-accept-all:hover {
+                        background: #a01524;
+                        border-color: #a01524;
+                    }
+
+                #my-cookie-banner-buttons button:hover:not(#cookie-accept-all) {
+                    background: #fbe9eb;
+                }
+
         @@media (max-width: 480px) {
             #my-cookie-banner-wrapper {
                 left: 10px;
@@ -777,7 +784,24 @@
             </div>
         </div>
     </div>
-
+    <script type="text/javascript">
+        (function () {
+            //let url = window.location.pathname;
+            //if (url.includes("/")) {
+            //    let arr = url.split('/');
+            //    if (arr.length > 1) {
+            //        let langcode = arr[1];
+            //        if (langcode == '') {
+            //            document.getElementById('lang_en').classList.add("active");
+            //        } else {
+            //            document.getElementById('lang_' + langcode).classList.add("active");
+            //        }
+            //    }
+            //} 
+            let _langcode = document.getElementById('lang-code').value;
+            document.getElementById('lang_' + _langcode.toLowerCase()).classList.add("active");
+        })();
+    </script>
     <script type="rocketlazyloadscript">
         (function(){
             function setCookie(name, value, days) {
@@ -865,11 +889,11 @@
             // Trang load lại sau này, nếu đã accept all thì tự load tracking
             document.addEventListener('DOMContentLoaded', loadTrackingScripts);
         })();
-    </script> 
+    </script>
     <script type="rocketlazyloadscript" id="swiper-js" src="~/Content/wp-content/themes/ocanus/js/vendors/swiper-bundle.min8a54.js?ver=1.0.0" defer></script>
     <script type="rocketlazyloadscript" data-minify="1" id="ocanus-accordion-js" src="~/Content/wp-content/cache/min/1/wp-content/themes/ocanus/js/accordionc1ca.js?ver=1787318654" defer></script>
     <script type="rocketlazyloadscript" data-minify="1" id="ocanus-base-js" src="~/Content/wp-content/cache/min/1/wp-content/themes/ocanus/js/basee7a7.js?ver=1787318650" defer></script>
-     
+
     <script type="rocketlazyloadscript" data-minify="1" id="ocanus-script-js" src="~/Content/wp-content/cache/min/1/wp-content/themes/ocanus/js/scripte7a7.js?ver=1787318650" defer></script>
     <script type="rocketlazyloadscript" data-minify="1" id="ocanus-utm-js" src="~/Content/wp-content/cache/min/1/wp-content/themes/ocanus/js/utme7a7.js?ver=1787318650" defer></script>
     <script type="rocketlazyloadscript" data-minify="1" id="infobox-js" src="~/Content/wp-content/cache/min/1/wp-content/themes/ocanus/js/vendors/infoboxc1ca.js?ver=1787318654" defer></script>

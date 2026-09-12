@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Web.Model.CustomModel
 {
     public class ProductModel : ProductTran  
-    {
+    { 
         public string Image { get; set; }
         public string ProductCode { get; set; }
         public string LangName { get; set; }

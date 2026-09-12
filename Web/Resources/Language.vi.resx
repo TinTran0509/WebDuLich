@@ -210,4 +210,82 @@
   <data name="YeuCauTuVan" xml:space="preserve">
     <value>Yêu cầu tư vấn</value>
   </data>
+  <data name="BookingNow" xml:space="preserve">
+    <value>Đặt chỗ cam kết khởi hành</value>
+  </data>
+  <data name="Adult" xml:space="preserve">
+    <value>Người lớn</value>
+  </data>
+  <data name="ArrivalDate" xml:space="preserve">
+    <value>Ngày đến</value>
+  </data>
+  <data name="Baby" xml:space="preserve">
+    <value>Bú sữa</value>
+  </data>
+  <data name="Child" xml:space="preserve">
+    <value>Trẻ em</value>
+  </data>
+  <data name="Continue" xml:space="preserve">
+    <value>Tiếp tục</value>
+  </data>
+  <data name="DepartureCity" xml:space="preserve">
+    <value>Thành phố khởi hành</value>
+  </data>
+  <data name="HotelCategory" xml:space="preserve">
+    <value>Hạng khách sạn</value>
+  </data>
+  <data name="Itinerary" xml:space="preserve">
+    <value>Lịch trình</value>
+  </data>
+  <data name="Journey" xml:space="preserve">
+    <value>Hành trình</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Tên họ</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Tên</value>
+  </data>
+  <data name="NgonNguUuTien" xml:space="preserve">
+    <value>Ngôn ngữ ưu tiên</value>
+  </data>
+  <data name="Note" xml:space="preserve">
+    <value>Vui lòng điền đầy đủ thông tin được yêu cầu bên dưới, và chúng tôi sẽ liên hệ với bạn trong vòng 24 đến 48 giờ. Các trường có dấu sao (*) là bắt buộc. Xin lưu ý rằng các chuyến bay liên lục địa không được bao gồm và sẽ được báo giá riêng.</value>
+  </data>
+  <data name="NotesAnd" xml:space="preserve">
+    <value>Ghi chú và tùy chọn</value>
+  </data>
+  <data name="Passenger" xml:space="preserve">
+    <value>Hành khách</value>
+  </data>
+  <data name="PhuPhi" xml:space="preserve">
+    <value>Phụ phí phòng đơn</value>
+  </data>
+  <data name="PlaceNotes" xml:space="preserve">
+    <value>Đíu bít</value>
+  </data>
+  <data name="PlaceTel" xml:space="preserve">
+    <value>Vui lòng nhập mã quốc gia</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Lựa chọn</value>
+  </data>
+  <data name="StartingPoint" xml:space="preserve">
+    <value>Điểm xuất phát</value>
+  </data>
+  <data name="ThankYouRequest" xml:space="preserve">
+    <value>Gracias por la solicitud!</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Tiêu đề</value>
+  </data>
+  <data name="TongUocTinh" xml:space="preserve">
+    <value>Tổng</value>
+  </data>
+  <data name="UocTinhTrenNguoi" xml:space="preserve">
+    <value>Ước tính trên người</value>
+  </data>
+  <data name="YCBaoGia" xml:space="preserve">
+    <value>Yêu cầu báo giá</value>
+  </data>
 </root>

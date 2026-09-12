@@ -61,11 +61,38 @@ namespace Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adult.
+        /// </summary>
+        public static string Adult {
+            get {
+                return ResourceManager.GetString("Adult", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Arrival date.
+        /// </summary>
+        public static string ArrivalDate {
+            get {
+                return ResourceManager.GetString("ArrivalDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Average size.
         /// </summary>
         public static string AverageSize {
             get {
                 return ResourceManager.GetString("AverageSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Baby.
+        /// </summary>
+        public static string Baby {
+            get {
+                return ResourceManager.GetString("Baby", resourceCulture);
             }
         }
         
@@ -88,6 +115,24 @@ namespace Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Guaranteed departure booking.
+        /// </summary>
+        public static string BookingNow {
+            get {
+                return ResourceManager.GetString("BookingNow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Child.
+        /// </summary>
+        public static string Child {
+            get {
+                return ResourceManager.GetString("Child", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The leading specialist in high-quality travel to Asia..
         /// </summary>
         public static string ChuyenGiaDuLich {
@@ -97,11 +142,29 @@ namespace Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Continue.
+        /// </summary>
+        public static string Continue {
+            get {
+                return ResourceManager.GetString("Continue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Days.
         /// </summary>
         public static string Days {
             get {
                 return ResourceManager.GetString("Days", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Departure city.
+        /// </summary>
+        public static string DepartureCity {
+            get {
+                return ResourceManager.GetString("DepartureCity", resourceCulture);
             }
         }
         
@@ -178,11 +241,119 @@ namespace Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hotel category.
+        /// </summary>
+        public static string HotelCategory {
+            get {
+                return ResourceManager.GetString("HotelCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Itinerary.
+        /// </summary>
+        public static string Itinerary {
+            get {
+                return ResourceManager.GetString("Itinerary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Journey.
+        /// </summary>
+        public static string Journey {
+            get {
+                return ResourceManager.GetString("Journey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last name.
+        /// </summary>
+        public static string LastName {
+            get {
+                return ResourceManager.GetString("LastName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preferred language.
+        /// </summary>
+        public static string NgonNguUuTien {
+            get {
+                return ResourceManager.GetString("NgonNguUuTien", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nigths.
         /// </summary>
         public static string Nigths {
             get {
                 return ResourceManager.GetString("Nigths", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please complete the details requested below, and we will contact you within 24 to 48 hours. Fields marked with an asterisk (*) are mandatory. Please note that intercontinental flights are not included and are quoted separately..
+        /// </summary>
+        public static string Note {
+            get {
+                return ResourceManager.GetString("Note", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Notes and preferences.
+        /// </summary>
+        public static string NotesAnd {
+            get {
+                return ResourceManager.GetString("NotesAnd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Passenger.
+        /// </summary>
+        public static string Passenger {
+            get {
+                return ResourceManager.GetString("Passenger", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Single supplement.
+        /// </summary>
+        public static string PhuPhi {
+            get {
+                return ResourceManager.GetString("PhuPhi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tell us about your ideal trip: hotel category, dining preferences, interests, travel companions, and preferences regarding flights and attractions. The more details you provide, the better we can personalize it for you..
+        /// </summary>
+        public static string PlaceNotes {
+            get {
+                return ResourceManager.GetString("PlaceNotes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter the country code..
+        /// </summary>
+        public static string PlaceTel {
+            get {
+                return ResourceManager.GetString("PlaceTel", resourceCulture);
             }
         }
         
@@ -223,6 +394,15 @@ namespace Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select.
+        /// </summary>
+        public static string Select {
+            get {
+                return ResourceManager.GetString("Select", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select the desired date.
         /// </summary>
         public static string SelectDate {
@@ -259,6 +439,15 @@ namespace Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Starting point.
+        /// </summary>
+        public static string StartingPoint {
+            get {
+                return ResourceManager.GetString("StartingPoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Group and private tours.
         /// </summary>
         public static string StyleTour {
@@ -277,11 +466,38 @@ namespace Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Thanks for the request!.
+        /// </summary>
+        public static string ThankYouRequest {
+            get {
+                return ResourceManager.GetString("ThankYouRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to More itineraries.
         /// </summary>
         public static string ThemLichTrinh {
             get {
                 return ResourceManager.GetString("ThemLichTrinh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title.
+        /// </summary>
+        public static string Title {
+            get {
+                return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Estimated total.
+        /// </summary>
+        public static string TongUocTinh {
+            get {
+                return ResourceManager.GetString("TongUocTinh", resourceCulture);
             }
         }
         
@@ -295,11 +511,29 @@ namespace Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Estimated per person.
+        /// </summary>
+        public static string UocTinhTrenNguoi {
+            get {
+                return ResourceManager.GetString("UocTinhTrenNguoi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Why Paso Sea Tour?.
         /// </summary>
         public static string WhyChooses {
             get {
                 return ResourceManager.GetString("WhyChooses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Request a quote.
+        /// </summary>
+        public static string YCBaoGia {
+            get {
+                return ResourceManager.GetString("YCBaoGia", resourceCulture);
             }
         }
         

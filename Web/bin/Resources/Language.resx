@@ -210,4 +210,82 @@
   <data name="YeuCauTuVan" xml:space="preserve">
     <value>Request a consultation</value>
   </data>
+  <data name="BookingNow" xml:space="preserve">
+    <value>Guaranteed departure booking</value>
+  </data>
+  <data name="Adult" xml:space="preserve">
+    <value>Adult</value>
+  </data>
+  <data name="ArrivalDate" xml:space="preserve">
+    <value>Arrival date</value>
+  </data>
+  <data name="Baby" xml:space="preserve">
+    <value>Baby</value>
+  </data>
+  <data name="Child" xml:space="preserve">
+    <value>Child</value>
+  </data>
+  <data name="Continue" xml:space="preserve">
+    <value>Continue</value>
+  </data>
+  <data name="DepartureCity" xml:space="preserve">
+    <value>Departure city</value>
+  </data>
+  <data name="HotelCategory" xml:space="preserve">
+    <value>Hotel category</value>
+  </data>
+  <data name="Itinerary" xml:space="preserve">
+    <value>Itinerary</value>
+  </data>
+  <data name="Journey" xml:space="preserve">
+    <value>Journey</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Last name</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="NgonNguUuTien" xml:space="preserve">
+    <value>Preferred language</value>
+  </data>
+  <data name="Note" xml:space="preserve">
+    <value>Please complete the details requested below, and we will contact you within 24 to 48 hours. Fields marked with an asterisk (*) are mandatory. Please note that intercontinental flights are not included and are quoted separately.</value>
+  </data>
+  <data name="NotesAnd" xml:space="preserve">
+    <value>Notes and preferences</value>
+  </data>
+  <data name="Passenger" xml:space="preserve">
+    <value>Passenger</value>
+  </data>
+  <data name="PhuPhi" xml:space="preserve">
+    <value>Single supplement</value>
+  </data>
+  <data name="PlaceNotes" xml:space="preserve">
+    <value>Tell us about your ideal trip: hotel category, dining preferences, interests, travel companions, and preferences regarding flights and attractions. The more details you provide, the better we can personalize it for you.</value>
+  </data>
+  <data name="PlaceTel" xml:space="preserve">
+    <value>Please enter the country code.</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="StartingPoint" xml:space="preserve">
+    <value>Starting point</value>
+  </data>
+  <data name="ThankYouRequest" xml:space="preserve">
+    <value>Thanks for the request!</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="TongUocTinh" xml:space="preserve">
+    <value>Estimated total</value>
+  </data>
+  <data name="UocTinhTrenNguoi" xml:space="preserve">
+    <value>Estimated per person</value>
+  </data>
+  <data name="YCBaoGia" xml:space="preserve">
+    <value>Request a quote</value>
+  </data>
 </root>

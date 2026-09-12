@@ -1,0 +1,287 @@
+﻿@{
+    TempData["Title"] = ViewBag.BookingNow;
+    Layout = "~/Views/Shared/_LayoutBooking.cshtml";
+    string star = "★";
+    for (int i = 1; i < Model.NumberStar; i++)
+    {
+        star += "★";
+    }
+    string adults = ViewBag.Adult + "s";
+    string child = ViewBag.Child + "s";
+    string baby = ViewBag.Baby + "s";
+}
+@model Web.Model.CustomModel.ProductModel
+
+<div class="page-banner">
+    <picture>
+        <source media="(max-width: 480px)" srcset="../wp-content/uploads/2025/07/tonle-sap-lake-1-8-500x500_c.jpg">
+        <source media="(min-width: 481px)" srcset="../wp-content/uploads/2025/07/tonle-sap-lake-banner-182.jpg">
+        <img src="../wp-content/uploads/2025/07/tonle-sap-lake-banner-182.jpg"
+             alt=""
+             fetchpriority="high"
+             decoding="async"
+             class="banner-image" />
+    </picture>
+    <h1 class="banner-title">@Model.Title</h1>
+    <ul class="oc-breadcrumbs">
+        <li>
+            <a href="/" class="home">@ViewBag.HomePage</a>
+        </li>
+        <li>
+            <span>@ViewBag.BookingNow</span>
+        </li>
+    </ul> 
+</div>
+<div class="pt-60 sm-pt-50 pb-50 bb-ddd page- page-payment-">
+    <div class="container mw-710">
+        <div class="text-center">
+            <h3 class="color-bd1e2d mt-0 mb-20">
+                @ViewBag.ThankYouRequest
+            </h3>
+            <p>@ViewBag.Note</p>
+
+            <h3 class="mb-20">
+                @Model.Title
+            </h3>
+            <p>
+                ID @ViewBag.ProductCode:
+                @Model.ProductCode
+            </p>
+            <div class="w-75px h-3px bg-color-bd1e2d mt-30 center-block"></div>
+        </div>
+        <form method="POST" id="booking-form" class="js-show-loading-on-submit" action="">
+            <div class="pt-30">
+                <div class="form-booking">
+                    <div class="row"> 
+                        <div class="col-md-6">
+                            <div class="item departure-date">
+                                <label><span class="asterisk">*</span> @ViewBag.ArrivalDate:</label>
+                                <div class="item-value fcwp-container">
+                                    <input type="text" id="datepicker" name="date_of_sale" class="datepicker" required
+                                           value=""
+                                           placeholder="Seleccionar"
+                                           data-select="Seleccionar"
+                                           readonly data-start="" data-end="+2y" />
+                                </div>
+                            </div>
+                            <div class="item">
+                                <label>@ViewBag.Itinerary:</label>
+                                <div class="item-value">
+                                    16 Días /
+                                    15 Noches
+                                </div>
+                            </div>
+                            <div class="item">
+                                <label>@ViewBag.Destination:</label>
+                                <div class="item-value">
+                                    @ViewBag.Location
+                                </div>
+                            </div>
+                            <div class="item">
+                                <label>@ViewBag.StartingPoint:</label>
+                                <div class="item-value">
+                                    Ciudad de Singapur
+                                </div>
+                            </div>
+                            <div class="item">
+                                <label>@ViewBag.Journey:</label>
+                                <div class="item-value">
+                                    En grupo
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="item">
+                                <label>@ViewBag.GuideLang:</label>
+                                <div class="item-value">
+                                    @ViewBag.LangName
+                                </div>
+                            </div>
+                            <div class="item">
+                                <label>@ViewBag.HotelCategory:</label>
+                                <div class="item-value color-ffa534">
+                                    @star
+                                </div>
+                            </div>
+                            <div class="item">
+                                <label><span class="asterisk">*</span> @ViewBag.Passenger:</label>
+                                <div class="cc-item-value participants" id="participants">
+                                    <div class="participants-info">
+                                        <span class="input-val padult">
+                                            <span class="count">0</span>
+                                            <span class="singular">@ViewBag.Adult</span>
+                                            <span class="plural">@adults</span>
+                                        </span>
+                                        <span class="input-val pchildren">
+                                            <span class="count">0</span>
+                                            <span class="singular">@ViewBag.Child</span>
+                                            <span class="plural">@child</span>
+                                        </span>
+                                        <span class="input-val pinfant">
+                                            <span class="count">0</span>
+                                            <span class="singular">@ViewBag.Baby</span>
+                                            <span class="plural">@baby</span>
+                                        </span>
+                                        <div class="placeholder-select">
+                                            @ViewBag.Select
+                                        </div>
+                                        <span class="select-arrow"></span>
+                                    </div>
+                                    <div class="excursion-choose-dropdown">
+                                        <div class="participants-input ">
+                                            <div>
+                                                <b>@adults</b>
+                                                <span>(Age > 11) </span>
+                                            </div>
+                                            <div>
+                                                <a class="btn-minus">-</a>
+                                                <input type="text" size="1" readonly="" name="adult" value="0" id="adult" class="participant-adult" required />
+                                                <a class="btn-plus">+</a>
+                                            </div>
+                                        </div>
+
+                                        <div class="participants-input">
+                                            <div>
+                                                <b>@child</b>
+                                                <span>(Age 2 - 11)</span>
+                                            </div>
+                                            <div>
+                                                <a class="btn-minus">-</a>
+                                                <input type="text" size="1" readonly="" name="children" value="0" class="participant-children" />
+                                                <a class="btn-plus">+</a>
+                                            </div>
+                                        </div>
+
+                                        <div class="participants-input">
+                                            <div>
+                                                <b>@baby</b>
+                                                <span>(Age < 2)</span>
+                                            </div>
+                                            <div>
+                                                <a class="btn-minus">-</a>
+                                                <input type="text" size="1" readonly="" name="infant" value="0" class="participant-baby" />
+                                                <a class="btn-plus">+</a>
+                                            </div>
+                                        </div>
+
+                                        <div class="text-center">
+                                            <span class="btn-close btn-participants-action"
+                                                  data-tour-type="group-tour"
+                                                  data-tour-id="24120"
+                                                  data-price="3129">
+                                                @ViewBag.Continue
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <label>@ViewBag.UocTinhTrenNguoi:</label>
+                                <div class="item-value person-est">
+                                    USD @Model.Price
+                                </div>
+                            </div> 
+                            <div class="item">
+                                <label>@ViewBag.PhuPhi:</label>
+                                <div class="item-value extra-est">
+                                    USD 0
+                                </div>
+                            </div> 
+                            <div class="item">
+                                <label>@ViewBag.TongUocTinh:</label>
+                                <div class="item-value total-est">
+                                    USD 0
+                                </div>
+                            </div> 
+                        </div> 
+                    </div>
+                </div>
+            </div> 
+            <div class="pt-30">
+                <div class="w-75px h-3px bg-color-bd1e2d center-block mb-30"></div>
+                <div class="row">
+                    <div class="col-md-3 col-4 mb-20 pr-0">
+                        <label><span class="asterisk">*</span> @ViewBag.Title</label>
+                        <select name="forms_of_address" required>
+                            <option value="">@ViewBag.Select</option>
+                            <option value="1">
+                                Sr.
+                            </option>
+                            <option value="2">
+                                Sra.
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-md-3 col-8 mb-20">
+                        <label><span class="asterisk">*</span> @ViewBag.Name</label>
+                        <input type="text" name="lm_first_name" required />
+                    </div>
+                    <div class="col-md-6 mb-20">
+                        <label><span class="asterisk">*</span> @ViewBag.LastName (s)</label>
+                        <input type="text" name="lm_last_name" required />
+                    </div>
+                    <div class="col-md-6 mb-20">
+                        <label><span class="asterisk">*</span> Email</label>
+                        <input type="email" name="lm_email" required />
+                    </div>
+                    <div class="col-md-6 mb-20">
+                        <label><span class="asterisk">*</span> WhatsApp/Tel (ej.:  123456789)</label>
+                        <input type="text" name="lm_phone" pattern="[0-9]+" placeholder="* @ViewBag.PlaceTel." required />
+
+                    </div>
+                    <div class="col-md-6 mb-20">
+                        <label><span class="asterisk">*</span> @ViewBag.NgonNguUuTien</label>
+                        <select name="language" required>
+                            <option value="">@ViewBag.Select</option>
+                            <option value="0">
+                                Português
+                            </option>
+                            <option value="1">
+                                Español
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 mb-20">
+                        <label>@ViewBag.DepartureCity</label>
+                        <input type="text" name="departure_city" />
+                    </div>
+                    <div class="col-md-12 mb-20">
+                        <label>@ViewBag.NotesAnd</label>
+                        <textarea name="note" placeholder="* @ViewBag.PlaceNotes" required></textarea>
+                    </div>
+                </div>
+                <div id="payment-section">
+                </div>
+                <div class="text-center pt-15 d-flex justify-content-center align-items-center section-action">
+                    <input type="hidden" id="_wpnonce" name="_wpnonce" value="42b09ed278" />
+                    <input type="hidden" name="_wp_http_referer" value="/reserva-de-salidas-garantizadas/?type=group-tour&#038;tour_id=24120" />
+                    <input type="hidden" name="action" value="process_booking" />
+                    <input type="hidden" name="type" value="group-tour" />
+                    <input type="hidden" name="tour_id" value="24120" />
+                    <input type="hidden" name="booking_type" value="normal" />
+                    <input type="hidden" name="page_id" value="94879" />
+                    <input type="hidden" name="total_est" class="total-est-input" value="" />
+                    <input type="hidden" name="extra_est" class="extra-est-input" value="" />
+                    <input type="hidden" name="deposit_est" class="deposit-est-input" value="" />
+                    <input type="hidden" name="lang" value="es" />
+                    <input type="text" name="lm_tour" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute; left:-9999px;" />
+                    <input type="hidden" name="form_start_time" value="1787366857">
+                    <input type="hidden" name="utm_source" id="utm_source">
+                    <input type="hidden" name="utm_campaign" id="utm_campaign">
+                    <input type="hidden" name="utm_location" id="utm_location">
+                    <input type="hidden" name="utm_adgroup" id="utm_adgroup">
+                    <div class="btn-step btn-step-1">
+                        <button type="submit" class="btn-style btn-has-loading">
+                            @ViewBag.YCBaoGia <span class="oc-spinner"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
