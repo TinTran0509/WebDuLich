@@ -26,3 +26,17 @@ G:\KhongGianXanhVN\KhongGianXanhVn\Web.Repository\obj\Release\Web.Repository.csp
 G:\KhongGianXanhVN\KhongGianXanhVn\Web.Repository\obj\Release\Web.Repository.csproj.CopyComplete
 G:\KhongGianXanhVN\KhongGianXanhVn\Web.Repository\obj\Release\Web.Repository.dll
 G:\KhongGianXanhVN\KhongGianXanhVn\Web.Repository\obj\Release\Web.Repository.pdb
+D:\WebDuLich\Lummia\Web\Web.Repository\bin\Release\Web.Repository.dll
+D:\WebDuLich\Lummia\Web\Web.Repository\bin\Release\Web.Repository.pdb
+D:\WebDuLich\Lummia\Web\Web.Repository\bin\Release\Web.Core.dll
+D:\WebDuLich\Lummia\Web\Web.Repository\bin\Release\Web.Model.dll
+D:\WebDuLich\Lummia\Web\Web.Repository\bin\Release\EntityFramework.dll
+D:\WebDuLich\Lummia\Web\Web.Repository\bin\Release\Web.Core.pdb
+D:\WebDuLich\Lummia\Web\Web.Repository\bin\Release\Web.Model.pdb
+D:\WebDuLich\Lummia\Web\Web.Repository\bin\Release\Web.Model.dll.config
+D:\WebDuLich\Lummia\Web\Web.Repository\bin\Release\EntityFramework.xml
+D:\WebDuLich\Lummia\Web\Web.Repository\obj\Release\Web.Repository.csproj.AssemblyReference.cache
+D:\WebDuLich\Lummia\Web\Web.Repository\obj\Release\Web.Repository.csproj.CoreCompileInputs.cache
+D:\WebDuLich\Lummia\Web\Web.Repository\obj\Release\Web.Repository.csproj.CopyComplete
+D:\WebDuLich\Lummia\Web\Web.Repository\obj\Release\Web.Repository.dll
+D:\WebDuLich\Lummia\Web\Web.Repository\obj\Release\Web.Repository.pdb

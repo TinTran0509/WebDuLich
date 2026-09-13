@@ -210,5 +210,33 @@ namespace Web.Repository.Entity
                 throw;
             }
         }
+
+        public IEnumerable<LocationViewModel> GetLocationTranByCoutryName(string langCode, string name)
+        {
+            try
+            {
+                using (var conn = new SqlConnection(_connectString))
+                {
+                    StringBuilder sb = new StringBuilder();
+                    sb.Append("SELECT DISTINCT l.Image,lc.Name,lc.Description FROM CountryTrans ct ");
+                    sb.Append("JOIN Location l ON l.CountryID = ct.CountryID ");
+                    sb.Append("JOIN LocationTrans lc ON lc.LocationID = l.ID ");
+                    sb.Append("WHERE LOWER(ct.Name) = @Name AND lc.LangCode = @LangCode");
+
+                    DynamicParameters parameters = new DynamicParameters();
+                    parameters.Add("LangCode", langCode);
+                    parameters.Add("Name", name);
+
+                    return conn.Query<LocationViewModel>(
+                        sb.ToString(),
+                        parameters,
+                        commandType: CommandType.Text);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

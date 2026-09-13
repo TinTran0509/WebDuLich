@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -32,7 +35,9 @@ namespace Web.Areas.Admin.Controllers
                         fname = file.FileName;
                     }
                     fname = Path.Combine(Server.MapPath("~/Upload/Images/"), fname);
-                    file.SaveAs(fname);
+                    string fileOptimize = string.Empty;
+                    ResizeAndCompress(fname, fileOptimize, 500);
+                    file.SaveAs(fileOptimize);
                     return "/Upload/Images/" + file.FileName;
                 }
             }
@@ -46,6 +51,42 @@ namespace Web.Areas.Admin.Controllers
             var fileName = arr[arr.Length - 1];
             string fname = Path.Combine(Server.MapPath("~/Upload/Images/"), fileName);
             System.IO.File.Delete(fname);
+        }
+
+        public static void ResizeAndCompress(string sourcePath, string outputPath, int height, long quality = 80)
+        {
+            using (var source = Image.FromFile(sourcePath))
+            {
+                int width = (int)(source.Width * ((float)height / source.Height));
+
+                using (var bitmap = new Bitmap(width, height))
+                {
+                    using (var graphics = Graphics.FromImage(bitmap))
+                    {
+                        graphics.CompositingQuality = CompositingQuality.HighQuality;
+
+                        graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+
+                        graphics.SmoothingMode = SmoothingMode.HighQuality;
+
+                        graphics.DrawImage(source,0,0,width,height);
+                    }
+
+                    var encoder = GetJpegEncoder();
+
+                    using (var parameters = new EncoderParameters(1))
+                    {
+                        parameters.Param[0] = new EncoderParameter(Encoder.Quality, quality);
+                        bitmap.Save(outputPath,encoder,parameters);
+                    }
+                }
+            }
+        }
+
+        private static ImageCodecInfo GetJpegEncoder()
+        {
+            return ImageCodecInfo.GetImageEncoders()
+                .First(x => x.MimeType == "image/jpeg");
         }
     }
 }

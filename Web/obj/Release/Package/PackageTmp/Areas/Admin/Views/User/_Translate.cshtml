@@ -1,0 +1,36 @@
+﻿@using Web.Model.CustomModel
+@model List<UserModel>
+ <style>
+     .panel-body {
+         padding-top: 0px !important
+     }
+     .row-add {
+         border: 1px dashed #1e88e5;
+     }
+ </style> 
+<button style="float:right" type="button" class="btn btn-primary waves-effect waves-light" onclick="User.addRowTrans() "><i class="fa fa-plus"></i> Thêm mô tả</button>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Mô tả ngắn</th>
+            <th>Translation</th> 
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="tbl-trans">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="vertical-align: middle; width: 65%">@item.Description</td>
+                <td style="vertical-align: middle;">@item.Language</td> 
+                <td style="text-align: right;">
+                    <a style="color:red" href="javascript:void(0)" class="btn-bordered" onclick="User.deleteUserTrans(@item.ID, this) " title="Xóa">
+                        Xóa
+                    </a>
+                </td>
+            </tr>
+
+        } 
+    </tbody>
+</table> 
+ 

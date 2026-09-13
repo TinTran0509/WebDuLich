@@ -1,0 +1,38 @@
+﻿@using Web.Core
+@model List<Web.Model.TopicTran>
+
+    <style>
+        .modal-dialog {
+            width: 85% !important
+        }
+    </style>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Language</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Content</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="tbl-trans">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td style="vertical-align: middle;">@item.LangCode</td>
+                    <td style="vertical-align: middle;">
+                        @item.Title
+                    </td>
+                    <td>@item.Description</td>
+                    <td>@HelperString.TruncateByWord(HelperString.StripHTML(HttpUtility.HtmlDecode(item.Content)), 110)</td>
+                    <td style="text-align: right;">
+                        <a href="/Admin/Topic/EditTrans/@item.ID" class="btn-bordered" title="Sửa">Sửa</a>
+                        |
+                        <a style="color:red" href="javascript:void(0)" class="btn-bordered" onclick="Topic.deleteTopicTrans(@item.ID, this) " title="Xóa">Xóa</a>
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>

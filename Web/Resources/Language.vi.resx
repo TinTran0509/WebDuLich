@@ -288,4 +288,22 @@
   <data name="YCBaoGia" xml:space="preserve">
     <value>Yêu cầu báo giá</value>
   </data>
+  <data name="Description" xml:space="preserve">
+    <value>Một công ty du lịch chuyên tạo ra những trải nghiệm độc đáo và khó quên cho du khách muốn khám phá châu Á.</value>
+  </data>
+  <data name="DanhXung" xml:space="preserve">
+    <value>Danh xưng</value>
+  </data>
+  <data name="Summary" xml:space="preserve">
+    <value>Tóm tắt</value>
+  </data>
+  <data name="Gallery" xml:space="preserve">
+    <value>Thư viện ảnh</value>
+  </data>
+  <data name="Highlights" xml:space="preserve">
+    <value>Điểm nổi bật</value>
+  </data>
+  <data name="OurExpert" xml:space="preserve">
+    <value>Chuyên gia của chúng tôi</value>
+  </data>
 </root>

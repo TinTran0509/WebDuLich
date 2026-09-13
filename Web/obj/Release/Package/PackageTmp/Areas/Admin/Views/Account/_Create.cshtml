@@ -2,7 +2,7 @@
 <script type="text/javascript" src="/Content/Admin/assets/colorpicker/js/colorpicker.js"></script>
 <script src="/Content/Admin/assets/ckfinder/ckfinder.js"></script>
 @using Web.Model
-@model Web.Model.User
+@model Web.Model.UserAdmin
 @{
     var lstPageElements = (List<tbl_PageElement>)TempData["PageElement"];
     var lstGroupUser = (List<tbl_GroupUser>)TempData["lstGroupUser"];
@@ -51,7 +51,7 @@
             <div class="checkbox checkbox-primary">
                 <input id="isAdmin" name="isAdmin" type="checkbox" value="true">
                 <label for="isAdmin">
-                    Quản trị tối cao
+                    Quản trị full quyền
                 </label>
             </div>
         </div>

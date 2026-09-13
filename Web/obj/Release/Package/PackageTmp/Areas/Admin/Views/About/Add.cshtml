@@ -1,8 +1,9 @@
 ﻿@using Web.Model
-@model  News
+@model  About
 @{
     ViewBag.Title = "Thêm mới";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    var languages = (List<tbl_Languages>)TempData["Languages"];
 }
 <script src="~/AppJs/about.js?v=1.0.1"></script>
 @using (Ajax.BeginForm("Add", "About", null,
@@ -15,16 +16,38 @@
 {
     <input type="hidden" name="close" id="close" value="" />
     @Html.HiddenFor(x => x.LinkSeo)
-<div class="form-group">
-    <label style="opacity:0" class="control-label col-md-1">abc</label>
-    <div class="col-md-10">
-        <span style="font-style:italic">Lưu ý: </span><span>Các trường có dấu (<span style="color:red">*</span>) là yêu cầu bắt buộc</span>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Ngôn ngữ<span class="asterisk"> (*)</span></label>
+        <div class="col-md-6">
+            <select class="form-control" id="LangCode" name="LangCode">
+                <option value="">--- Chọn ---</option>
+                @foreach (var item in languages)
+                {
+                    <option value="@item.LangCode">@item.LangName</option>
+                }
+            </select>
+        </div>
     </div>
-</div>
     <div class="form-group">
         <label class="control-label col-md-1">Tiêu đề<span class="asterisk"> *</span></label>
         <div class="col-md-10">
-            @Html.TextBoxFor(model => model.MetaTitle, new { @class = "form-control" })
+            @Html.TextBoxFor(model => model.Title, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Ảnh</label>
+        <div class="col-md-10">
+            <div class="col-md-2">
+                @{ Html.RenderAction("UploadImage", "UploadFile", new { controlName = "Image" });}
+            </div>
+            <img style="width:100px" src="" id="prevImages">
+            <span class="error" id="spImg"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Mô tả</label>
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.Description, new { @class = "form-control", @placeholder = "Nhập mô tả" })
         </div>
     </div>
     <div class="form-group">
@@ -37,8 +60,7 @@
     <div class="form-group">
         <div class="col-md-offset-3 col-md-9">
             <a href="/admin/about" class="btn btn-primary"><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay trở lại</a>
-            <button type="submit" onclick="checkAdd('close')" id="btnsaveadd" class="btn btn-primary">Lưu và đóng</button>
-            <button type="submit" onclick="checkAdd('continue')" id="btnsavecontinue" class="btn btn-primary">Lưu và thêm tiếp</button>
+            <button type="submit" class="btn btn-primary">Lưu</button>
         </div>
     </div>
 }
@@ -47,7 +69,7 @@
 <script src="~/Content/plugins/ckfinder/ckfinder.js"></script>
 <script>
     $(document).ready(function () {
-        $('#MetaTitle').on('blur', function () {
+        $('#Title').on('blur', function () {
             let link = $('#MetaTitle').val();
             let linkSeo = RemoveMarkStr(link);
             $('#LinkSeo').val(linkSeo);

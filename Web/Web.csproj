@@ -2504,6 +2504,11 @@
     <Content Include="Content\cdn-cgi\l\email-protection.html" />
     <Content Include="Content\cdn-cgi\scripts\5c5dd728\cloudflare-static\email-decode.min.js" />
     <Content Include="Content\cdn-cgi\scripts\7d0fa10a\cloudflare-static\rocket-loader.min.js" />
+    <Content Include="Content\images\gallery\9-4.jpg" />
+    <Content Include="Content\images\gallery\angkor-wat-1.jpg" />
+    <Content Include="Content\images\gallery\bai-dinh-16.jpg" />
+    <Content Include="Content\images\gallery\Ha-long.jpg" />
+    <Content Include="Content\images\gallery\demo.jpg" />
     <Content Include="Content\images\icon\affordable-icon.png" />
     <Content Include="Content\images\icon\authentic-icon.png" />
     <Content Include="Content\images\icon\instant-icon.png" />
@@ -17499,6 +17504,7 @@
     <Content Include="Views\Home\QuangCao.cshtml" />
     <Content Include="Views\Booking\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutBooking.cshtml" />
+    <Content Include="Views\Shared\_LayoutList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

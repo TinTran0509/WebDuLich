@@ -14,6 +14,9 @@ namespace Web.Repository
         void Add(ProductTran obj);
         void Edit(ProductTran obj); 
         IEnumerable<ProductModel> GetByProductID(int productID);
-        IEnumerable<ProductModel> GetByType(int type, string langCode, int takeRow); 
+        IEnumerable<ProductModel> GetByType(int type, string langCode, int productId, int takeRow);
+        ProductModel GetByLinkSeo(string linkSeo);
+        ProductModel GetByProductTransId(int id);
+        IEnumerable<ProductModel> GetRelate(int prodId, int menuId, string langCode,  int takeRow);
     }
 }

@@ -11,8 +11,9 @@
         <thead>
             <tr>
                 <th>Tiêu đề</th>  
+                <th>Mô tả</th>
                 <th>Nội dung</th> 
-                <th>Ngày tạo</th> 
+                <th>Ngôn ngữ</th> 
                 <th>Thao tác</th>
             </tr>
         </thead>
@@ -20,10 +21,11 @@
             @foreach (var item in Model)
             {
                 <tr>
-                    <td>@item.MetaTitle</td> 
-                    <td>@HelperString.TruncateByWord(HelperString.StripHTML(HttpUtility.HtmlDecode(item.Contents)), 120)</td> 
-                    <td>@string.Format("{0:dd/MM/yyyy HH:mm}",item.CreatedDate)</td>
-                    <td style="width:100px"> 
+                    <td>@item.MetaTitle</td>
+                    <td>@item.Description</td>
+                    <td>@HelperString.TruncateByWord(HelperString.StripHTML(HttpUtility.HtmlDecode(item.Contents)), 120)</td>
+                    <td>@string.Format("{0:dd/MM/yyyy HH:mm}", item.CreatedDate)</td>
+                    <td style="width:100px">
                         @if (lstAction != null && lstAction.Contains((int)EnumHelper.Action.Edit))
                         {
                             <a href="/Admin/About/Edit/@item.ID" class="btn btn-success btn-bordered" title="Sửa">

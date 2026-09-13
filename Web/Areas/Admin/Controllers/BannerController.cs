@@ -237,6 +237,13 @@ namespace Web.Areas.Admin.Controllers
                     bannerTrans.Add(bannerTranEdit);
                 }
 
+                Banner banner = new Banner();
+                banner.ID = model.ID;
+                banner.MenuID = model.MenuID;
+                banner.Image = model.Image;
+
+                bannerRepository.Edit(banner);
+
                 foreach (var item in bannerTrans)
                 { 
                     bannerTransRepository.Edit(item);

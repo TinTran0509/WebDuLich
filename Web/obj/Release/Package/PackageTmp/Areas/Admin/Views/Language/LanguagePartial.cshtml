@@ -1,0 +1,21 @@
+﻿@{
+    Layout = null;
+}
+@model IEnumerable<Web.Model.tbl_Languages>
+
+<div class="form-group">
+    <label class="col-md-2 control-label">Ngôn ngữ<span class="asterisk"> (*)</span></label>
+    <div class="col-md-6">
+        <select class="form-control select2" id="LangCode" name="LangCode">
+            <option value="0">--- Chọn ---</option>
+            @foreach (var item in Model)
+            {
+                <option value="@item.LangCode">@item.LangName</option>
+            }
+        </select>
+    </div>
+</div>
+
+
+
+

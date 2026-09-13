@@ -1,0 +1,24 @@
+﻿
+@{
+    Layout = null;
+}
+@model IEnumerable<Web.Model.tbl_Languages>
+
+<ul>
+    @foreach (var item in Model)
+    {
+        if (item.Active == true)
+        {
+            <li class="active"><a href="index.html">@item.Name</a></li>
+        }
+        else
+        {
+            <li><a href="pt/index.html">@item.Name</a></li>
+        }
+
+    }
+</ul>
+
+
+
+

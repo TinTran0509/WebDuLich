@@ -159,8 +159,10 @@
 
                     if ($("#wrapper").hasClass("enlarged")) {
                         $(".left ul").removeAttr("style");
-                    } else {
+                        $('.txtlogo').hide();
+                    } else { 
                         $(".subdrop").siblings("ul:first").show();
+                        $('.txtlogo').show();
                     }
 
                     toggle_slimscroll(".slimscrollleft");

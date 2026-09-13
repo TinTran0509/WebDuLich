@@ -288,4 +288,25 @@
   <data name="YCBaoGia" xml:space="preserve">
     <value>Request a quote</value>
   </data>
+  <data name="Description" xml:space="preserve">
+    <value>A travel agency specializing in creating unique and unforgettable experiences for travelers who wish to explore Asia.</value>
+  </data>
+  <data name="DanhXung" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="Gallery" xml:space="preserve">
+    <value>Gallery</value>
+  </data>
+  <data name="Highlights" xml:space="preserve">
+    <value>Highlights</value>
+  </data>
+  <data name="OurExpert" xml:space="preserve">
+    <value>Our expert</value>
+  </data>
+  <data name="Summary" xml:space="preserve">
+    <value>Summary</value>
+  </data>
+  <data name="TitlePage" xml:space="preserve">
+    <value>Pasosea - Asia Travel Expert</value>
+  </data>
 </root>

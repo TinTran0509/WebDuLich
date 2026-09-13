@@ -2,17 +2,17 @@
     ViewBag.Title = "Đăng nhập tới quản trị"; 
     Layout = "~/Areas/Admin/Views/Shared/_LayoutLogin2.cshtml";
 }
-@model Web.Model.User 
+@model Web.Model.UserAdmin 
 
 <div class="animated fadeInDown loginColumns">
     <div class="transbox">
         <div class="row">
             <div class="col-md-12">
                 <div class="text-center"> 
-                    <img src="~/DucThang/images/logo/logo.png" width="30%" />
+                    <img src="~/Content/images/logo-nobg.png" width="30%" />
                 </div>
                 <h2 class="font-bold text-center">
-                    KHÔNG GIAN XANH VIỆT NAM
+                    Đăng nhập quản trị
                 </h2>
                 <div class="m-t-lg"></div>
                 <p class="text-center" style="color:red">@TempData["Errors"]</p>
@@ -42,7 +42,7 @@
             var keyCode = e.which || e.keyCode;
             if (keyCode == 13) // enter key code
             {
-                $("#login-form").submit();
+                $("#frm").submit();
             }
         });
         function showPass() {

@@ -70,6 +70,8 @@ namespace Web.Controllers
 
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(culture);
 
+            ViewBag.Title = Resources.Language.TitlePage;
+            ViewBag.Description = Resources.Language.Description;
             ViewBag.GroupTrip = wordRepository.GetValueByKey("GroupTrip", langCode);  
             ViewBag.CustomizedTrips = wordRepository.GetValueByKey("CustomizedTrips", langCode);
             ViewBag.Price = Resources.Language.Price;
@@ -80,9 +82,9 @@ namespace Web.Controllers
             ViewBag.TravelDestinations = wordRepository.GetValueByKey("TravelDestinations", langCode);
             ViewBag.OurSpecialists = wordRepository.GetValueByKey("OurSpecialists", langCode); 
 
-            TempData["GroupTour"] = productTransRepository.GetByType(1, langCode, 9);
+            TempData["GroupTour"] = productTransRepository.GetByType(1, langCode, 0, 9);
 
-            TempData["PrivateTour"] = productTransRepository.GetByType(2, langCode, 3);
+            TempData["PrivateTour"] = productTransRepository.GetByType(2, langCode, 0, 3);
 
             TempData["Countries"] = countryRepository.GetCountryViewModelByLangCode(langCode);
 

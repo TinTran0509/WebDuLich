@@ -14,6 +14,7 @@ namespace Web.Repository
         MenuTran Find(int id);
         IEnumerable<MenuTran> GetByMenuId(int id);
         IEnumerable<MenuTranModel> GetByLangCode(string langCode);
+        MenuTranModel GetByLinkSeo(string linhSeo);
         void Add(MenuTran obj);
         void Create(MenuTran obj);
         void Edit(MenuTran obj);

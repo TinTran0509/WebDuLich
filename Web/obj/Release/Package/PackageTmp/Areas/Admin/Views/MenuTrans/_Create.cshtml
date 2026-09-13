@@ -1,0 +1,83 @@
+﻿@using Web.Model
+@{
+    var lstMenu = (List<Menu>)TempData["Menus"];
+}
+@helper RenderMenu(Menu parent, List<Menu> listfull)
+{
+    var lstChilds = listfull.Where(g => g.ParentID == parent.ID);
+    <option value="@parent.ID">@(new String('-', ((int)parent.Level - 1) * 2))@parent.Name</option>
+    foreach (var child in lstChilds)
+    {
+        @RenderMenu(child, listfull);
+    }
+}
+@model MenuTran
+@using (Ajax.BeginForm("Add", "MenuTrans", null,
+    new AjaxOptions
+    {
+        HttpMethod = "POST",
+        OnSuccess = "MenuTrans.onAddSuccess"
+    },
+    new { @id = "frmData", @class = "form-horizontal" }))
+{
+    @Html.HiddenFor(x => x.LinkSeo)
+
+    Html.RenderAction("LanguagePartial", "Language");
+    <div class="form-group">
+        <label class="control-label col-md-2">Menu gốc <span class="asterisk"> (*)</span></label>
+        <div class="col-md-6">
+            <select class="form-control" name="MenuID" id="MenuID">
+                <option value="0">--- Chọn ---</option>
+                @foreach (var parent in lstMenu.Where(g => g.ParentID == 0))
+                {
+                    @RenderMenu(parent, lstMenu);
+                }
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Tên menu <span class="asterisk"> (*)</span></label>
+        <div class="col-md-6">
+            @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @placeholder = "Nhập tên menu", onchange = "getLinkSeo()" })
+        </div>
+    </div>  
+    <div class="form-group">
+        <div class="col-md-12 text-center">
+            <button type="submit" class="btn btn-primary waves-effect waves-light">Thêm mới</button>
+        </div>
+    </div>
+}
+<script>
+    function getLinkSeo() {
+        let name = $('#Name').val();
+        $('#LinkSeo').val(RemoveMarkStr(name));
+    }
+    $(document).ready(function () {
+        $('.lockChar').on("keypress", function (e) {
+            return e.charCode >= 48 && e.charCode <= 57
+        })
+        $("#frmData").validate({
+            rules:
+            {
+                Name:
+                {
+                    required: true,
+                    maxlength: 250
+                } 
+            },
+            messages:
+            {
+                Name:
+                {
+                    required: "Vui lòng nhập tên menu"
+                } 
+            },
+            highlight: function (element) {
+                jQuery(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+            },
+            success: function (element) {
+                jQuery(element).closest('.form-group').removeClass('has-error');
+            }
+        });
+    });
+</script>

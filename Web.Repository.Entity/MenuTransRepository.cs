@@ -50,7 +50,6 @@ namespace Web.Repository.Entity
                 throw;
             }
         }
-
         public void Delete(int id)
         {
             var obj = Find(id);
@@ -131,6 +130,32 @@ namespace Web.Repository.Entity
                         sb.ToString(),
                         parameters,
                         commandType: CommandType.Text);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public MenuTranModel GetByLinkSeo(string linhSeo)
+        {
+            try
+            {
+                using (var conn = new SqlConnection(_connectString))
+                {
+                    StringBuilder sb = new StringBuilder();
+                    sb.Append("SELECT p.ID AS ProductID,mt.Name,mt.LangCode, b.Image,bt.Title,bt.Description,bt.Contents FROM Product p ");
+                    sb.Append("JOIN MenuTrans mt ON mt.MenuID = p.MenuID ");
+                    sb.Append("JOIN Banner b ON b.MenuID = p.MenuID ");
+                    sb.Append("JOIN BannerTrans bt ON bt.BannerID = b.ID ");
+                    sb.Append("WHERE mt.LinkSeo = @LinkSeo");
+                    var parameters = new DynamicParameters();
+                    parameters.Add("LinkSeo", linhSeo);
+                    return conn.Query<MenuTranModel>(
+                        sb.ToString(),
+                        parameters,
+                        commandType: CommandType.Text).FirstOrDefault();
                 }
             }
             catch (Exception)

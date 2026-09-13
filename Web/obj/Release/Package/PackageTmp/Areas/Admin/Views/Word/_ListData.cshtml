@@ -1,0 +1,56 @@
+﻿@using Web.Model.CustomModel 
+@model IEnumerable<WordViewModel>
+ @{ 
+     int id = 0, wordID = 0;
+ }
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Từ khóa</th> 
+            <th>Bản dịch</th>
+            <th>Ngôn ngữ</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            string group = "group-banner";
+            if (wordID != item.WordID)
+            {
+                group = "";
+            }
+            <tr class="@group">
+                @if (id != item.WordID)
+                {
+                    <td rowspan="2">@item.KeyName</td>
+                } 
+                <td>@item.Value</td>
+                <td>@item.LangName</td>
+                @if (id != item.WordID)
+                {
+                    <td rowspan="2" style="vertical-align: middle;">
+                        <div class="btn-list pull-right mr5">
+                            <a href="#" class="btn btn-primary btn-bordered" onclick="Word.loadfrmEdit(@item.ID) " title="Sửa">
+                                <i class=" glyphicon glyphicon-pencil"></i>
+                            </a>
+                            <a href="#" class="btn btn-danger btn-bordered" onclick="Word.ondelete(@item.ID) " title="Xóa">
+                                <i class="glyphicon glyphicon-trash"></i>
+                            </a>
+                        </div>
+                    </td>
+                }
+            </tr>
+            id = item.ID;
+            wordID = item.WordID;
+        }
+    </tbody>
+</table>
+<script>
+    $(document).ready(function () {
+        InitClickCheckAllInTable("chkall", function (res) {
+            $("#hdfID").val(res);
+        }); 
+    });
+</script>

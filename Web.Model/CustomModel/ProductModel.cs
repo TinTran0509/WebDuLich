@@ -11,6 +11,7 @@ namespace Web.Model.CustomModel
         public string Image { get; set; }
         public string ProductCode { get; set; }
         public string LangName { get; set; }
+        public string Culture { get; set; }
         public int MenuID { get; set; }
         public int DayNumber { get; set; }
         public int NumberStar { get; set; }

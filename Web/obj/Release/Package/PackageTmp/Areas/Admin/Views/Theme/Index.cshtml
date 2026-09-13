@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Quản lý chủ đề";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    var lstAction = (List<int>)HttpContext.Current.Session["Action"];
+}
+@using Web.Model.CustomModel
+ 
+<script src="~/AppJs/theme.js"></script>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Chủ đề</h3>
+                <div class="row" style="margin-bottom:10px">
+                    <div class="col-md-4">
+                        <input type="text" id="txtSearch" class="form-control" placeholder="Nhập tiêu đề" />
+                        <span id="searchclear" class="glyphicon glyphicon-remove-circle"></span>
+                    </div>
+                    <div class="col-md-4">
+                        <button id="btnSearch" onclick="News.loadData()" class="btn btn-primary">Tìm kiếm</button>
+                    </div>
+                    @if (lstAction != null && lstAction.Contains((int)EnumHelper.Action.Add))
+                    {
+                        <div class="col-md-4">
+                            <a style="float:right" href="/Admin/Theme/Add" class="btn btn-primary">Thêm mới</a>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="table-responsive" id="gridData">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        Theme.loadData(1);
+    });
+</script>

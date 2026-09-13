@@ -151,6 +151,15 @@ namespace Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Title.
+        /// </summary>
+        public static string DanhXung {
+            get {
+                return ResourceManager.GetString("DanhXung", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Days.
         /// </summary>
         public static string Days {
@@ -165,6 +174,15 @@ namespace Web.Resources {
         public static string DepartureCity {
             get {
                 return ResourceManager.GetString("DepartureCity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A travel agency specializing in creating unique and unforgettable experiences for travelers who wish to explore Asia..
+        /// </summary>
+        public static string Description {
+            get {
+                return ResourceManager.GetString("Description", resourceCulture);
             }
         }
         
@@ -205,6 +223,15 @@ namespace Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Gallery.
+        /// </summary>
+        public static string Gallery {
+            get {
+                return ResourceManager.GetString("Gallery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Group.
         /// </summary>
         public static string Group {
@@ -219,6 +246,15 @@ namespace Web.Resources {
         public static string GuideLang {
             get {
                 return ResourceManager.GetString("GuideLang", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Highlights.
+        /// </summary>
+        public static string Highlights {
+            get {
+                return ResourceManager.GetString("Highlights", resourceCulture);
             }
         }
         
@@ -318,6 +354,15 @@ namespace Web.Resources {
         public static string NotesAnd {
             get {
                 return ResourceManager.GetString("NotesAnd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Our expert.
+        /// </summary>
+        public static string OurExpert {
+            get {
+                return ResourceManager.GetString("OurExpert", resourceCulture);
             }
         }
         
@@ -466,6 +511,15 @@ namespace Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Summary.
+        /// </summary>
+        public static string Summary {
+            get {
+                return ResourceManager.GetString("Summary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Thanks for the request!.
         /// </summary>
         public static string ThankYouRequest {
@@ -489,6 +543,15 @@ namespace Web.Resources {
         public static string Title {
             get {
                 return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pasosea - Asia Travel Expert.
+        /// </summary>
+        public static string TitlePage {
+            get {
+                return ResourceManager.GetString("TitlePage", resourceCulture);
             }
         }
         

@@ -110,9 +110,28 @@ namespace Web.Repository.Entity
 
         public void Edit(Banner obj)
         {
-            HelperCache.RemoveCache(KeyCache);
-            _entities.Entry(obj).State = EntityState.Modified;
-            _entities.SaveChanges();
+            try
+            {
+                using (var connection = new SqlConnection(_connectString))
+                {
+                    using (var conn = new SqlConnection(_connectString))
+                    {
+                        string sql = "UPDATE Banner SET Image = @Image , MenuID = @MenuID WHERE ID = @ID";
+                        DynamicParameters parameters = new DynamicParameters();
+                        parameters.Add("Image", obj.Image); 
+                        parameters.Add("MenuID", obj.MenuID);
+                        parameters.Add("ID", obj.ID); 
+                        conn.Execute(sql,
+                            parameters,
+                            commandType: CommandType.Text);
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public Banner Find(int id)

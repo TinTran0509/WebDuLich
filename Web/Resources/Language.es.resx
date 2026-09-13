@@ -288,4 +288,25 @@
   <data name="YCBaoGia" xml:space="preserve">
     <value>Solicitar cotización</value>
   </data>
+  <data name="Description" xml:space="preserve">
+    <value>Una agencia de viajes especializada en crear experiencias únicas e inolvidables para viajeros que desean explorar Asia.</value>
+  </data>
+  <data name="DanhXung" xml:space="preserve">
+    <value>Título</value>
+  </data>
+  <data name="Gallery" xml:space="preserve">
+    <value>Galería</value>
+  </data>
+  <data name="Highlights" xml:space="preserve">
+    <value>Destacados</value>
+  </data>
+  <data name="OurExpert" xml:space="preserve">
+    <value>Nuestro experto</value>
+  </data>
+  <data name="Summary" xml:space="preserve">
+    <value>Resumen</value>
+  </data>
+  <data name="TitlePage" xml:space="preserve">
+    <value>Pasosea - Experto en viajes por Asia</value>
+  </data>
 </root>
