@@ -2,16 +2,20 @@
     ViewBag.Title = "Quản lý danh mục";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml"; 
 } 
-@model List<Web.Model.Category >
-<script src="~/AppJs/category.js"></script> 
+@model List<Web.Model.Category>
+<script src="~/AppJs/category.js"></script>
+<style>
+    .group-banner td {
+        border: none !important; 
+    }
+</style>
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Quản lý danh mục</h3> 
+                <h3 class="panel-title">Quản lý danh mục</h3>
                 <div style="top: 8px;position: absolute; right: 40px;" class="pull-right">
-                    <button type="button" class="btn btn-primary waves-effect waves-light" onclick="Category.loadfrmAdd() "><i class="fa fa-plus"></i> Thêm mới</button>
-                    <button type="button" class="btn btn-danger waves-effect waves-light" onclick="Category.onmultidelete() "><i class="fa fa-trash-o"></i> Xóa nhiều</button>
+                    <a href="/admin/category/create" class="btn btn-primary waves-effect waves-light"><i class="fa fa-plus"></i> Thêm mới</a>
                 </div>
             </div>
             <div class="panel-body">

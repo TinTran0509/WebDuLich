@@ -27,7 +27,7 @@ namespace Web.Areas.Admin.Controllers
         [Authorize(Roles = "Index")]
         public ActionResult ListData(int pageIndex)
         {
-            var category = categoryRepository.GetAll().Where(x => x.LinkSeo.Equals("lien-he")).FirstOrDefault();
+            var category = categoryRepository.GetAll().FirstOrDefault();
             var model = category.News;
             var totalAdv = model.Count();
             model = model.Skip((pageIndex - 1) * 20).Take(20).OrderByDescending(x => x.CreatedDate).ToList();
@@ -58,42 +58,7 @@ namespace Web.Areas.Admin.Controllers
         {
             try
             {
-                int categoryId = 0;
-                var category = categoryRepository.GetAll().Where(x => x.LinkSeo.Equals("lien-he")).FirstOrDefault();
-                if(category != null)
-                {
-                    categoryId = category.ID;
-                    var news = newsRepository.GetAll()
-                   .Where(x => x.CategoryId == categoryId && x.MetaTitle.Equals(model.MetaTitle.Trim())).FirstOrDefault();
-                    if (news != null && news.ID != model.ID)
-                    {
-                        return Json(new
-                        {
-                            IsSuccess = false,
-                            Messenger = "Tiêu đề bài viết đã tồn tại",
-                        }, JsonRequestBehavior.AllowGet);
-                    }
-                }
-                else
-                {
-                    return Json(new
-                    {
-                        IsSuccess = false,
-                        Messenger = "Đã có lỗi xảy ra. Vui lòng thử lại sau",
-                    }, JsonRequestBehavior.AllowGet);
-                }
-                if (string.IsNullOrEmpty(model.Contents))
-                {
-                    return Json(new
-                    {
-                        IsSuccess = false,
-                        Messenger = "Vui lòng thêm nội dung bài viết",
-                    }, JsonRequestBehavior.AllowGet);
-                }
-                model.Type = 0;
-                model.CategoryId = categoryId;
-                model.CreatedBy =  User.ID;
-                newsRepository.Add(model);
+                
                 return Json(new
                 {
                     Close = close,
@@ -126,26 +91,7 @@ namespace Web.Areas.Admin.Controllers
         {
             try
             { 
-                var news = newsRepository.GetAll()
-                    .Where(x=>x.CategoryId == model.CategoryId && x.MetaTitle.Equals(model.MetaTitle.Trim())).FirstOrDefault();
-                if (news != null && news.ID != model.ID)
-                {
-                    return Json(new
-                    {
-                        IsSuccess = false,
-                        Messenger = "Tiêu đề bài viết đã tồn tại",
-                    }, JsonRequestBehavior.AllowGet);
-                }
-               
-                if (string.IsNullOrEmpty(model.Contents))
-                {
-                    return Json(new
-                    {
-                        IsSuccess = true,
-                        Messenger = "Vui lòng thêm nội dung bài viết",
-                    }, JsonRequestBehavior.AllowGet);
-                }
-                model.ModifiedBy = User.ID;
+                 
                 newsRepository.Edit(model);
                 return Json(new {
                     IsSuccess = true,

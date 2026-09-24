@@ -21,16 +21,10 @@ namespace Web.Model
         }
     
         public int ID { get; set; }
-        public string Name { get; set; }
-        public string LinkSeo { get; set; }
         public Nullable<int> ParentID { get; set; }
         public Nullable<int> Ordering { get; set; }
         public Nullable<int> Type { get; set; }
-        public Nullable<int> Level { get; set; }
         public string Image { get; set; }
-        public Nullable<int> Position { get; set; }
-        public Nullable<bool> IsSearch { get; set; }
-        public string LangCode { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<News> News { get; set; }

@@ -294,9 +294,6 @@
   <data name="DanhXung" xml:space="preserve">
     <value>Danh xưng</value>
   </data>
-  <data name="Summary" xml:space="preserve">
-    <value>Tóm tắt</value>
-  </data>
   <data name="Gallery" xml:space="preserve">
     <value>Thư viện ảnh</value>
   </data>
@@ -305,5 +302,35 @@
   </data>
   <data name="OurExpert" xml:space="preserve">
     <value>Chuyên gia của chúng tôi</value>
+  </data>
+  <data name="Summary" xml:space="preserve">
+    <value>Tóm tắt</value>
+  </data>
+  <data name="TitlePage" xml:space="preserve">
+    <value>Pasosea - Chuyên gia du lịch châu Á</value>
+  </data>
+  <data name="BookingSuccess" xml:space="preserve">
+    <value>Đặt tour thành công</value>
+  </data>
+  <data name="BookingFailed" xml:space="preserve">
+    <value>Booking tour thất bại</value>
+  </data>
+  <data name="Package" xml:space="preserve">
+    <value>Gói</value>
+  </data>
+  <data name="Plus" xml:space="preserve">
+    <value>Cao cấp</value>
+  </data>
+  <data name="Star" xml:space="preserve">
+    <value>Sao</value>
+  </data>
+  <data name="NumberPas" xml:space="preserve">
+    <value>Số lượng hành khách</value>
+  </data>
+  <data name="MessageSelectPack" xml:space="preserve">
+    <value>Vui lòng chọn gói.</value>
+  </data>
+  <data name="MessageSelectDate" xml:space="preserve">
+    <value>Vui lòng chọn ngày lớn hơn ngày hiện tại.</value>
   </data>
 </root>

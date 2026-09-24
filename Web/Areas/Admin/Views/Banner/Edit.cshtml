@@ -12,44 +12,52 @@
         padding-top: 5px;
     }
 
-        .check-radio input {
-            display: none;
-        }
+    .check-radio input {
+        display: none;
+    }
 
-        .check-radio span {
-            position: relative;
-            padding-left: 28px;
-            font-weight: 500;
-        }
+    .check-radio span {
+        position: relative;
+        padding-left: 28px;
+        font-weight: 500;
+    }
 
-            .check-radio span::before {
-                content: "";
-                position: absolute;
-                left: 0;
-                top: 50%;
-                transform: translateY(-50%);
-                width: 18px;
-                height: 18px;
-                border: 1px solid #999;
-                border-radius: 3px; /* ô vuông giống checkbox */
-                background: #fff;
-            }
+    .check-radio span::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 18px;
+        height: 18px;
+        border: 1px solid #999;
+        border-radius: 3px; /* ô vuông giống checkbox */
+        background: #fff;
+    }
 
-        .check-radio input:checked + span::before {
-            background: #007bff;
-            border-color: #007bff;
-        }
+    .check-radio input:checked + span::before {
+        background: #007bff;
+        border-color: #007bff;
+    }
 
-        .check-radio input:checked + span::after {
-            content: "✓";
-            position: absolute;
-            left: 4px;
-            top: 50%;
-            transform: translateY(-55%);
-            color: white;
-            font-size: 13px;
-            font-weight: bold;
-        }
+    .check-radio input:checked + span::after {
+        content: "✓";
+        position: absolute;
+        left: 4px;
+        top: 50%;
+        transform: translateY(-55%);
+        color: white;
+        font-size: 13px;
+        font-weight: bold;
+    }
+    #loadImg .fa-times {
+        font-size: 18px
+    }
+
+    #loadImg a {
+        color: red;
+        margin-left: 10px;
+    }
 </style>
 <script src="~/AppJs/banner.js"></script>
 @model Web.Model.CustomModel.BannerCreateViewModel
@@ -88,10 +96,15 @@
             <label class="col-md-1 control-label">Ảnh <span class="asterisk"> (*)</span></label>
             <div class="col-md-10">
                 <div class="col-md-2">
-                    @{ Html.RenderAction("UploadImage", "UploadFile", new { controlName = "Image" });}
+                    @{ Html.RenderAction("UploadImage", "UploadImages", new { controlName = "Image" });}
                 </div>
-                <img style="width:150px" src="@Model.Image" id="prevImages">
-                <span class="error" id="spImg"></span>
+                <div id="loadImg">
+                    <div style="margin-bottom:2px">
+                        <img style="width:150px;" src="@Model.Image" /><a href="#" data-img="@Model.Image" title="Xóa" onclick="deleteImage(this)"><i class="fa fa-times"></i></a>
+                    </div>
+                </div>
+                @*<img style="width:150px" src="@Model.Image" id="prevImages">
+                <span class="error" id="spImg"></span>*@
             </div>
         </div>
         <ul class="nav nav-tabs lang-tabs">

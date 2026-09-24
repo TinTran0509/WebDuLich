@@ -14,20 +14,7 @@ namespace Web.Repository.Entity
        
         public void Add(News model)
         {
-            object[] parameters =
-            {
-                new SqlParameter("@CategoryId", model.CategoryId),
-                new SqlParameter("@MetaTitle", (object)model.MetaTitle??DBNull.Value),
-                new SqlParameter("@LinkSeo", model.LinkSeo),
-                new SqlParameter("@Image",(object)model.Image??DBNull.Value),
-                new SqlParameter("@Description",(object)model.Description??DBNull.Value),
-                new SqlParameter("@CreatedBy", model.CreatedBy),
-                new SqlParameter("@Contents", model.Contents),
-                new SqlParameter("@Status", (object)model.Status??DBNull.Value),
-                new SqlParameter("@Tags",(object)model.Tags??DBNull.Value),
-                new SqlParameter("@Type", model.Type),
-            };
-            context.Database.ExecuteSqlCommand("Sp_News_Insert @CategoryId,@MetaTitle,@LinkSeo,@Image,@Description,@CreatedBy,@Contents,@Status,@Tags,@Type", parameters);
+             
         }
 
         public IEnumerable<ListNews> ListAll(string keyWord, int status)
@@ -53,20 +40,7 @@ namespace Web.Repository.Entity
 
         public void Edit(News model)
         { 
-            object[] parameters =
-            {
-                new SqlParameter("@ID", model.ID),
-                new SqlParameter("@CategoryId", model.CategoryId),
-                new SqlParameter("@MetaTitle", model.MetaTitle),
-                new SqlParameter("@LinkSeo", model.LinkSeo),
-                new SqlParameter("@Image", (object)model.Image??DBNull.Value),
-                new SqlParameter("@Description", (object)model.Description??DBNull.Value),
-                new SqlParameter("@ModifiedBy", 2),
-                new SqlParameter("@Contents", model.Contents),
-                new SqlParameter("@Status", (object)model.Status??DBNull.Value),
-                new SqlParameter("@Tags",(object)model.Tags??DBNull.Value)
-            };
-            context.Database.ExecuteSqlCommand("Sp_News_Update @ID,@CategoryId,@MetaTitle,@LinkSeo,@Image,@Description,@ModifiedBy,@Contents,@Status,@Tags", parameters);
+              
         }
 
         public News FindByTitle(string title)

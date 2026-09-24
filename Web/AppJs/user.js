@@ -73,7 +73,7 @@
         },
         loadfrmUserTrans: function (id) {
             sessionStorage.setItem('USERID', id);
-            modal.Render("/Admin/User/Translate/" + id, "Thông tin", "modal-lg");
+            modal.Render("/Admin/User/Translate/" + id, "Thông tin mô tả", "modal-lg");
         },
         addRowTrans: function () {
             if ($('#tbl-trans input').length) {

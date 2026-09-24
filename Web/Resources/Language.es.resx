@@ -139,7 +139,7 @@
     <value>Experto en viajes por Asia</value>
   </data>
   <data name="WhyChooses" xml:space="preserve">
-    <value>¿Por qué Paso Sea Tour?</value>
+    <value>¿Por qué Paso Sea Tours?</value>
   </data>
   <data name="ChuyenGiaDuLich" xml:space="preserve">
     <value>El mejor especialista en viajes de alta calidad por Asia.</value>
@@ -308,5 +308,29 @@
   </data>
   <data name="TitlePage" xml:space="preserve">
     <value>Pasosea - Experto en viajes por Asia</value>
+  </data>
+  <data name="BookingSuccess" xml:space="preserve">
+    <value>Éxito en la reserva del tour</value>
+  </data>
+  <data name="BookingFailed" xml:space="preserve">
+    <value>Error al reservar el tour</value>
+  </data>
+  <data name="Package" xml:space="preserve">
+    <value>Paquete</value>
+  </data>
+  <data name="Plus" xml:space="preserve">
+    <value>Más</value>
+  </data>
+  <data name="Star" xml:space="preserve">
+    <value>estrella</value>
+  </data>
+  <data name="NumberPas" xml:space="preserve">
+    <value>Número de pasajeros</value>
+  </data>
+  <data name="MessageSelectPack" xml:space="preserve">
+    <value>Seleccione un paquete.</value>
+  </data>
+  <data name="MessageSelectDate" xml:space="preserve">
+    <value>Por favor, seleccione una fecha posterior a la fecha actual.</value>
   </data>
 </root>

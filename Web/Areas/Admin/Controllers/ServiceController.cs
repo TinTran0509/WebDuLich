@@ -41,31 +41,6 @@ namespace Web.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Add()
         { 
-            var categories = new List<Category>();
-            var category = categoryRepository.GetAll().FirstOrDefault(x => x.LinkSeo.Equals("dich-vu"));
-            if(category != null)
-            {
-                categories.Add(category);
-                var lstChild1 = categoryRepository.GetAll().Where(g => g.ParentID == category.ID).OrderBy(g => g.Ordering).ToList();
-                if (lstChild1.Count > 0)
-                {
-                    foreach (var tblCate in lstChild1)
-                    {
-                        tblCate.DisplayOrder = tblCate.Ordering + "";
-                        categories.Add(tblCate);
-                        var lstChild = categoryRepository.GetAll().Where(g => g.ParentID == tblCate.ID).OrderBy(g => g.Ordering).ToList();
-                        if (lstChild.Count > 0)
-                        {
-                            foreach (var item in lstChild)
-                            {
-                                item.DisplayOrder = "&nbsp&nbsp" + tblCate.Ordering + "." + item.Ordering;
-                                categories.Add(item);
-                            }
-                        }
-                    }
-                }
-            } 
-            TempData["Categories"] = categories;
             return View();
         }
 
@@ -76,33 +51,7 @@ namespace Web.Areas.Admin.Controllers
         {
             try
             {
-                var news = newsRepository.GetAll()
-                 .Where(x => x.Type == 2 && x.MetaTitle.Trim().Equals(model.MetaTitle.Trim()));
-                if (news.Any())
-                {
-                    return Json(new
-                    {
-                        IsSuccess = false,
-                        Messenger = "Tiêu đề dịch vụ đã tồn tại",
-                    }, JsonRequestBehavior.AllowGet);
-                }
-                if (string.IsNullOrEmpty(model.Image))
-                {
-                    return Json(new
-                    {
-                        IsSuccess = false,
-                        Messenger = "Vui lòng thêm ảnh",
-                    }, JsonRequestBehavior.AllowGet);
-                }
-             
-                if (string.IsNullOrEmpty(model.Contents))
-                {
-                    return Json(new
-                    {
-                        IsSuccess = false,
-                        Messenger = "Vui lòng thêm nội dung dịch vụ",
-                    }, JsonRequestBehavior.AllowGet);
-                }
+                
                 model.Type = 2; 
                 model.CreatedBy =  User.ID;
                 newsRepository.Add(model);
@@ -127,31 +76,7 @@ namespace Web.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            var categories = new List<Category>();
-            var category = categoryRepository.GetAll().FirstOrDefault(x => x.LinkSeo.Equals("dich-vu"));
-            if (category != null)
-            {
-                categories.Add(category);
-                var lstChild1 = categoryRepository.GetAll().Where(g => g.ParentID == category.ID).OrderBy(g => g.Ordering).ToList();
-                if (lstChild1.Count > 0)
-                {
-                    foreach (var tblCate in lstChild1)
-                    {
-                        tblCate.DisplayOrder = tblCate.Ordering + "";
-                        categories.Add(tblCate);
-                        var lstChild = categoryRepository.GetAll().Where(g => g.ParentID == tblCate.ID).OrderBy(g => g.Ordering).ToList();
-                        if (lstChild.Count > 0)
-                        {
-                            foreach (var item in lstChild)
-                            {
-                                item.DisplayOrder = "&nbsp&nbsp" + tblCate.Ordering + "." + item.Ordering;
-                                categories.Add(item);
-                            }
-                        }
-                    }
-                }
-            }
-            TempData["Categories"] = categories;
+             
             var obj = newsRepository.Find(id);
             return View(obj);
         }
@@ -163,34 +88,7 @@ namespace Web.Areas.Admin.Controllers
         {
             try
             {
-                var news = newsRepository.GetAll()
-                   .Where(x => x.CategoryId == model.CategoryId && x.MetaTitle.Trim().Equals(model.MetaTitle.Trim())).FirstOrDefault();
-                if (news != null && news.ID != model.ID)
-                {
-                    return Json(new
-                    {
-                        IsSuccess = false,
-                        Messenger = "Tiêu đề dịch vụ đã tồn tại",
-                    }, JsonRequestBehavior.AllowGet);
-                }
-
-                if (string.IsNullOrEmpty(model.Image))
-                {
-                    return Json(new
-                    {
-                        IsSuccess = false,
-                        Messenger = "Vui lòng thêm ảnh",
-                    }, JsonRequestBehavior.AllowGet);
-                } 
-               
-                if (string.IsNullOrEmpty(model.Contents))
-                {
-                    return Json(new
-                    {
-                        IsSuccess = true,
-                        Messenger = "Vui lòng thêm nội dung dịch vụ",
-                    }, JsonRequestBehavior.AllowGet);
-                }
+                 
                 model.ModifiedBy = User.ID;
                 newsRepository.Edit(model);
                 return Json(new {

@@ -25,7 +25,10 @@
                     group = "";
                 }
                 <tr class="@group">
-                    <td><img src="@item.Image" style="width: 50px;" /></td>
+                    @if (id != item.LocationID)
+                    {
+                        <td style="vertical-align: middle;" rowspan="2"><img src="@item.Image" style="width: 60px;" /></td>
+                    } 
                     <td>@item.Name</td>
                     <td>@HelperString.TruncateByWord(HelperString.StripHTML(HttpUtility.HtmlDecode(item.Description)), 100)</td>
                     <td>@item.LangName</td>

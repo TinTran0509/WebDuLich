@@ -33,52 +33,37 @@ namespace Web.Areas.Admin.Controllers
                     else
                     {
                         fname = file.FileName;
-                    } 
+                    }
 
-                    fname = Path.Combine(Server.MapPath("~/Upload/Images/"), fname);
-                    file.SaveAs(fname);
-                    string fileOptimize = string.Empty;
-                    ResizeAndCompress(fname, fileOptimize, 500);
-                    file.SaveAs(fileOptimize);
+                    string fPath = Path.Combine(Server.MapPath("~/Upload/Images/"), fname);
+                    file.SaveAs(fPath);
+                    //string fileOptimize = Path.Combine(Server.MapPath("~/Upload/ImageOptimize/"), fname);
+                      
+                    //byte[] data = CompressJpg(fPath, 70);
+
+                    //System.IO.File.WriteAllBytes(fileOptimize, data);
+
+                    //file.SaveAs(fileOptimize);
                     return "/Upload/Images/" + file.FileName;
                 }
             }
             return "";
         }
 
-        public static void ResizeAndCompress(string sourcePath, string outputPath, int height, long quality = 80)
+        public static byte[] CompressJpg(string filePath, long quality)
         {
-            using (var source = Image.FromFile(sourcePath))
+            using (var image = Image.FromFile(filePath))
+            using (var ms = new MemoryStream())
             {
-                int width = (int)(source.Width * ((float)height / source.Height));
+                var encoder = ImageCodecInfo.GetImageEncoders().First(x => x.MimeType == "image/jpeg");
 
-                using (var bitmap = new Bitmap(width, height))
+                using (var encoderParams = new EncoderParameters(1))
                 {
-                    using (var graphics = Graphics.FromImage(bitmap))
-                    {
-                        graphics.CompositingQuality = CompositingQuality.HighQuality;
-
-                        graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
-
-                        graphics.SmoothingMode = SmoothingMode.HighQuality;
-
-                        graphics.DrawImage(source, 0, 0, width, height);
-                    }
-
-                    var encoder = GetJpegEncoder();
-
-                    using (var parameters = new EncoderParameters(1))
-                    {
-                        parameters.Param[0] = new EncoderParameter(Encoder.Quality, quality);
-                        bitmap.Save(outputPath, encoder, parameters);
-                    }
-                }
+                    encoderParams.Param[0] = new EncoderParameter(Encoder.Quality,quality);
+                    image.Save(ms,encoder,encoderParams);
+                } 
+                return ms.ToArray();
             }
-        }
-
-        private static ImageCodecInfo GetJpegEncoder()
-        {
-            return ImageCodecInfo.GetImageEncoders().First(x => x.MimeType == "image/jpeg");
-        }
+        }  
     }
 }

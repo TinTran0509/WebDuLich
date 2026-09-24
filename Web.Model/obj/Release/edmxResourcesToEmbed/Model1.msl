@@ -16,23 +16,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Categories">
-      <EntityTypeMapping TypeName="WebDuLichModel.Category">
-        <MappingFragment StoreEntitySet="Category">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="LinkSeo" ColumnName="LinkSeo" />
-          <ScalarProperty Name="ParentID" ColumnName="ParentID" />
-          <ScalarProperty Name="Ordering" ColumnName="Ordering" />
-          <ScalarProperty Name="Type" ColumnName="Type" />
-          <ScalarProperty Name="Level" ColumnName="Level" />
-          <ScalarProperty Name="Image" ColumnName="Image" />
-          <ScalarProperty Name="Position" ColumnName="Position" />
-          <ScalarProperty Name="IsSearch" ColumnName="IsSearch" />
-          <ScalarProperty Name="LangCode" ColumnName="LangCode" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Contacts">
       <EntityTypeMapping TypeName="WebDuLichModel.Contact">
         <MappingFragment StoreEntitySet="Contact">
@@ -51,26 +34,6 @@
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Contents" ColumnName="Contents" />
           <ScalarProperty Name="Language" ColumnName="Language" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="News">
-      <EntityTypeMapping TypeName="WebDuLichModel.News">
-        <MappingFragment StoreEntitySet="News">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-          <ScalarProperty Name="MetaTitle" ColumnName="MetaTitle" />
-          <ScalarProperty Name="LinkSeo" ColumnName="LinkSeo" />
-          <ScalarProperty Name="Image" ColumnName="Image" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-          <ScalarProperty Name="Contents" ColumnName="Contents" />
-          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="Tags" ColumnName="Tags" />
-          <ScalarProperty Name="Type" ColumnName="Type" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -477,12 +440,104 @@
           <ScalarProperty Name="CountryID" ColumnName="CountryID" />
           <ScalarProperty Name="DayNumber" ColumnName="DayNumber" />
           <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="PriceWeekend" ColumnName="PriceWeekend" />
           <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="Type" ColumnName="Type" />
           <ScalarProperty Name="MenuID" ColumnName="MenuID" />
           <ScalarProperty Name="Active" ColumnName="Active" />
           <ScalarProperty Name="Image" ColumnName="Image" />
           <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="News">
+      <EntityTypeMapping TypeName="WebDuLichModel.News">
+        <MappingFragment StoreEntitySet="News">
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bookings">
+      <EntityTypeMapping TypeName="WebDuLichModel.Booking">
+        <MappingFragment StoreEntitySet="Booking">
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="DepartureCity" ColumnName="DepartureCity" />
+          <ScalarProperty Name="Language" ColumnName="Language" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="EstimatedTotal" ColumnName="EstimatedTotal" />
+          <ScalarProperty Name="Passenger" ColumnName="Passenger" />
+          <ScalarProperty Name="ArrivalDate" ColumnName="ArrivalDate" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NewsTrans">
+      <EntityTypeMapping TypeName="WebDuLichModel.NewsTran">
+        <MappingFragment StoreEntitySet="NewsTrans">
+          <ScalarProperty Name="NewsID" ColumnName="NewsID" />
+          <ScalarProperty Name="LangCode" ColumnName="LangCode" />
+          <ScalarProperty Name="Contents" ColumnName="Contents" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="LinkSeo" ColumnName="LinkSeo" />
+          <ScalarProperty Name="MetaTitle" ColumnName="MetaTitle" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="WebDuLichModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Ordering" ColumnName="Ordering" />
+          <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CategoryTrans">
+      <EntityTypeMapping TypeName="WebDuLichModel.CategoryTran">
+        <MappingFragment StoreEntitySet="CategoryTrans">
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="LangCode" ColumnName="LangCode" />
+          <ScalarProperty Name="LinkSeo" ColumnName="LinkSeo" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Packages">
+      <EntityTypeMapping TypeName="WebDuLichModel.Package">
+        <MappingFragment StoreEntitySet="Package">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Ordering" ColumnName="Ordering" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Package_Price">
+      <EntityTypeMapping TypeName="WebDuLichModel.Package_Price">
+        <MappingFragment StoreEntitySet="Package_Price">
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="PackageID" ColumnName="PackageID" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Pax_To" ColumnName="Pax_To" />
+          <ScalarProperty Name="Pax_From" ColumnName="Pax_From" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>

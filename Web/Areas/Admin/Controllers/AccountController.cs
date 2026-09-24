@@ -45,7 +45,7 @@ namespace Web.Areas.Admin.Controllers
             {
                 Session["Messenger"] = new Notified { Value = EnumNotifield.Error, Messenger = "Bạn chưa nhập tên đăng nhập hoặc mật khẩu nhập vào không đúng!" };
                 return View("/Areas/Admin/Views/Account/Login.cshtml");
-            }
+            } 
             var user = _userRepository.GetAll().FirstOrDefault(u => u.Password == HelperEncryptor.Md5Hash(obj.Password) && u.UserName == obj.UserName);
             if (user != null)
             {

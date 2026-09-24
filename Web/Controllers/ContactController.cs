@@ -19,7 +19,7 @@ namespace Web.Controllers
         // GET: Contact
         public ActionResult Index()
         {
-            var category = categoryRepository.GetAll().Where(x => x.LinkSeo.Equals("lien-he")).FirstOrDefault();
+            var category = categoryRepository.GetAll().FirstOrDefault();
             var model = category.News;
             return View(model);
         }  

@@ -88,7 +88,7 @@ namespace Web.Repository.Entity
                 using (var conn = new SqlConnection(_connectString))
                 {
                     StringBuilder sb = new StringBuilder();
-                    sb.Append("SELECT ut.*,l.LangName AS Language FROM UserTrans ut ");
+                    sb.Append("SELECT ut.*,l.LangName FROM UserTrans ut ");
                     sb.Append("JOIN tbl_Languages l ON ut.LangCode = l.LangCode ");
                     sb.Append("WHERE ut.UserID = @UserID ");
                     sb.Append("ORDER BY ut.ID");

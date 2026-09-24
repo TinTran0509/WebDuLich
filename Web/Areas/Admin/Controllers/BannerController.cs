@@ -18,11 +18,11 @@ namespace Web.Areas.Admin.Controllers
 {
     public class BannerController : BaseController
     {
-        readonly IBannerRepository bannerRepository = new BannerRepository();
-        readonly IMenuRepository menuRepository = new MenuRepository();
-        readonly ILanguageRepository languageRepository = new LanguageRepository();
-        readonly IMenuTransRepository menuTransRepository = new MenuTransRepository(); 
-        readonly IBannerTransRepository bannerTransRepository = new BannerTransRepository();
+        private readonly IBannerRepository bannerRepository = new BannerRepository();
+        private readonly IMenuRepository menuRepository = new MenuRepository();
+        private readonly ILanguageRepository languageRepository = new LanguageRepository();
+        private readonly IMenuTransRepository menuTransRepository = new MenuTransRepository(); 
+        private readonly IBannerTransRepository bannerTransRepository = new BannerTransRepository();
         //
 
         [Authorize(Roles = "Index")]
@@ -48,8 +48,9 @@ namespace Web.Areas.Admin.Controllers
                 viewContent = RenderViewToString("~/Areas/Admin/Views/Banner/_ListData.cshtml", bannerModels),
                 totalPages = Math.Ceiling(((double)total / Webconfig.RowLimit)),
             }, JsonRequestBehavior.AllowGet);
-        }  
-         
+        }
+
+        [Authorize(Roles = "Add")]
         [HttpGet]
         public ActionResult Create()
         {
@@ -211,8 +212,15 @@ namespace Web.Areas.Admin.Controllers
         public ActionResult Edit(BannerCreateViewModel model)
         {
             try
-            { 
-                List<BannerTran> lstBannerTrans = bannerTransRepository.GetAll().Where(x => x.BannerID == model.ID).ToList();
+            {  
+                if (string.IsNullOrEmpty(model.Image))
+                {
+                    return Json(new
+                    {
+                        IsSuccess = false,
+                        Messenger = "Vui lòng chọn ảnh",
+                    }, JsonRequestBehavior.AllowGet);
+                }
 
                 List<BannerTran> bannerTrans = new List<BannerTran>();
                 foreach (var lang in model.Languages)

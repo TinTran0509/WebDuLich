@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using Web.BaseSecurity;
 using Web.Core;
 using Web.Model;
+using Web.Model.CustomModel;
 using Web.Model.Domain;
 using Web.Repository;
 using Web.Repository.Entity;
@@ -16,9 +17,11 @@ namespace Web.Areas.Admin.Controllers
 {
     public class CategoryController : BaseController
     {
-        ICategoryRepository categoryRepository = new CategoryRepository(); 
-        INewsRepository newsRepository = new NewsRepository();
-        // GET: Menu
+        private readonly ICategoryRepository categoryRepository = new CategoryRepository();
+        private readonly ILanguageRepository languageRepository = new LanguageRepository();
+        private readonly INewsRepository newsRepository = new NewsRepository();
+
+        // GET: Category
         [Authorize(Roles = "Index")]
         public ActionResult Index()
         {
@@ -28,116 +31,101 @@ namespace Web.Areas.Admin.Controllers
         [Authorize(Roles = "Index")]
         public ActionResult ListData(int page)
         {
-            var categories = new List<Category>();
-            var lstCategories = categoryRepository.GetAll().OrderBy(x=>x.Ordering).ToList();
-            var lstParents = lstCategories.Where(g => g.ParentID == 0).OrderBy(g => g.Ordering).ToList();
-            if (lstParents.Count > 0)
+            List<CategoryModel> categoryModels = new List<CategoryModel>();
+            var categories = categoryRepository.GetAll().OrderBy(x=>x.Ordering).ToList();
+            foreach (var item in categories)
             {
-                foreach (var tblCate in lstParents)
-                {
-                    tblCate.DisplayOrder = tblCate.Ordering + "";
-                    categories.Add(tblCate);
-                    var lstChild = lstCategories.Where(g => g.ParentID == tblCate.ID).OrderBy(g => g.Ordering).ToList();
-                    if (lstChild.Count > 0)
-                    {
-                        foreach (var item in lstChild)
-                        {
-                            item.DisplayOrder = "&nbsp&nbsp" + tblCate.Ordering + "." + item.Ordering;
-                            categories.Add(item);
-                            var lstChild3 = lstCategories.Where(g => g.ParentID == item.ID).OrderBy(g => g.Ordering).ToList();
-                            if (lstChild3.Count > 0)
-                            {
-                                foreach (var item3 in lstChild3)
-                                {
-                                    item3.DisplayOrder = "&nbsp&nbsp &nbsp&nbsp" + item.DisplayOrder + "." + item3.Ordering;
-                                    categories.Add(item3);
-                                }
-                            }
-                        }
-                    }
-                }
+                List<CategoryModel> bannerTrans = categoryRepository.GetCategoryTranByCategoryID(item.ID).ToList();
+                categoryModels.AddRange(bannerTrans);
             }
-            else
-            {
-                categories.AddRange(lstCategories);
-            }
+            var total = 0; 
             return Json(new
             {
-                viewContent = RenderViewToString("~/Areas/Admin/Views/Category/_ListData.cshtml", categories)
+                viewContent = RenderViewToString("~/Areas/Admin/Views/Category/_ListData.cshtml", categoryModels),
+                totalPages = Math.Ceiling(((double)total / Webconfig.RowLimit)),
             }, JsonRequestBehavior.AllowGet);
         }
 
         [Authorize(Roles = "Add")]
-        public ActionResult Add()
+        public ActionResult Create()
         {
-            var categories = new List<Category>();
-            var lstCategories = categoryRepository.GetAll().OrderBy(x => x.Ordering).ToList();
-            var lstParents = lstCategories.Where(g => g.ParentID == 0).OrderBy(g => g.Ordering).ToList();
-            if (lstParents.Count > 0)
+            tbl_Languages language = languageRepository.GetAll().FirstOrDefault(x => x.IsDefault);
+            
+            List<tbl_Languages> tbl_Languages = languageRepository.GetByActive().ToList();
+            List<CategoryLanguageViewModel> categoriesLanguageViewModels = new List<CategoryLanguageViewModel>();
+            foreach (var lang in tbl_Languages)
             {
-                foreach (var tblCate in lstParents)
+                CategoryLanguageViewModel categoryLanguageViewModel = new CategoryLanguageViewModel
                 {
-                    tblCate.DisplayOrder = tblCate.Ordering + "";
-                    categories.Add(tblCate);
-                    var lstChild = lstCategories.Where(g => g.ParentID == tblCate.ID).OrderBy(g => g.Ordering).ToList();
-                    if (lstChild.Count > 0)
-                    {
-                        foreach (var item in lstChild)
-                        {
-                            item.DisplayOrder = "&nbsp&nbsp" + tblCate.Ordering + "." + item.Ordering;
-                            categories.Add(item);
-                            var lstChild3 = lstCategories.Where(g => g.ParentID == item.ID).OrderBy(g => g.Ordering).ToList();
-                            if (lstChild3.Count > 0)
-                            {
-                                foreach (var item3 in lstChild3)
-                                {
-                                    item3.DisplayOrder = "&nbsp&nbsp &nbsp&nbsp" + item.DisplayOrder + "." + item3.Ordering;
-                                    categories.Add(item3);
-                                }
-                            }
-                        }
-                    }
-                }
+                    LangCode = lang.LangCode,
+                    LangName = lang.LangName
+                };
+                categoriesLanguageViewModels.Add(categoryLanguageViewModel);
             }
-            else
+            var model = new CategoryCreateViewModel
             {
-                categories.AddRange(lstCategories);
-            }
-            TempData["Categories"] = categories;
-            return Json(RenderViewToString("~/Areas/Admin/Views/Category/_Create.cshtml"), JsonRequestBehavior.AllowGet);
+                Languages = categoriesLanguageViewModels
+            };
+
+            return View(model);
         }
 
         [Authorize(Roles = "Add")]
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Add(Category model)
+        public ActionResult Create(CategoryCreateViewModel model)
         {
             try
-            {
-                var obj = categoryRepository.GetAll().FirstOrDefault(x => x.Name.Trim() == model.Name.Trim());
+            {   
+                List<CategoryTran> categoriesTrans = new List<CategoryTran>();
 
-                if (obj != null)
+                foreach (var lang in model.Languages)
                 {
-                    return Json(new { IsSuccess = false, Messenger = "Tên danh mục đã tồn tại" }, JsonRequestBehavior.AllowGet);
+                    if (string.IsNullOrEmpty(lang.Name))
+                    {
+                        return Json(new
+                        {
+                            IsSuccess = false,
+                            Messenger = "Vui lòng thêm tên " + lang.LangName,
+                        }, JsonRequestBehavior.AllowGet);
+                    }
+
+                    CategoryTran categoryTranAdd = new CategoryTran
+                    {
+                        Name = lang.Name,
+                        LinkSeo = HelperString.RenderLinkSeo(lang.Name),
+                        LangCode = lang.LangCode 
+                    };
+
+                    categoriesTrans.Add(categoryTranAdd);
                 }
 
-                string linkSeo = "\\" + model.LinkSeo;
+                Category category = new Category
+                {
+                    Ordering = model.Ordering 
+                };
 
-                if (model.ParentID == 0)
+                int id = categoryRepository.Add(category);
+
+                foreach (var item in categoriesTrans)
                 {
-                    model.Level = 1;
-                }   
-                else
-                {
-                    var parent = categoryRepository.GetAll().FirstOrDefault(x => x.ID == model.ParentID);
-                    model.Level = parent != null ? parent.Level + 1 : 0;
+                    item.CategoryID = id;
+                    categoryRepository.AddTrans(item);
                 }
-                categoryRepository.Add(model);
-                return Json(new { IsSuccess = true, Messenger = "Thêm mới thành công" }, JsonRequestBehavior.AllowGet);
+
+                return Json(new
+                {
+                    IsSuccess = true,
+                    Messenger = "Thêm mới thành công",
+                }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception)
             {
-                return Json(new { IsSuccess = false, Messenger = "Thêm mới thất bại" }, JsonRequestBehavior.AllowGet);
+                return Json(new
+                {
+                    IsSuccess = false,
+                    Messenger = string.Format("Thêm mới thất bại")
+                }, JsonRequestBehavior.AllowGet);
             }
         }
 
@@ -145,107 +133,95 @@ namespace Web.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            var categories = new List<Category>();
-            var lstCategories = categoryRepository.GetAll().OrderBy(x => x.Ordering).ToList();
-            var lstParents = lstCategories.Where(g => g.ParentID == 0).OrderBy(g => g.Ordering).ToList();
-            if (lstParents.Count > 0)
+            List<tbl_Languages> tbl_Languages = languageRepository.GetByActive().ToList();
+            tbl_Languages tbl_Language = tbl_Languages.FirstOrDefault(x => x.IsDefault);
+            
+            List<CategoryTran> categoriesTrans = categoryRepository.GetAllTrans().Where(x => x.CategoryID == id).ToList();
+
+            Category category = categoryRepository.Find(id);
+
+            List<CategoryLanguageViewModel> categoriesLanguageViewModels = new List<CategoryLanguageViewModel>();
+            foreach (var lang in tbl_Languages)
             {
-                foreach (var tblCate in lstParents)
+                CategoryTran categoryTran_Edit = categoriesTrans.FirstOrDefault(m => m.LangCode == lang.LangCode);
+
+                if (categoryTran_Edit != null)
                 {
-                    tblCate.DisplayOrder = tblCate.Ordering + "";
-                    categories.Add(tblCate);
-                    var lstChild = lstCategories.Where(g => g.ParentID == tblCate.ID).OrderBy(g => g.Ordering).ToList();
-                    if (lstChild.Count > 0)
+                    CategoryLanguageViewModel categoryLanguageViewModel = new CategoryLanguageViewModel
                     {
-                        foreach (var item in lstChild)
-                        {
-                            item.DisplayOrder = "&nbsp&nbsp" + tblCate.Ordering + "." + item.Ordering;
-                            categories.Add(item);
-                            var lstChild3 = lstCategories.Where(g => g.ParentID == item.ID).OrderBy(g => g.Ordering).ToList();
-                            if (lstChild3.Count > 0)
-                            {
-                                foreach (var item3 in lstChild3)
-                                {
-                                    item3.DisplayOrder = "&nbsp&nbsp &nbsp&nbsp" + item.DisplayOrder + "." + item3.Ordering;
-                                    categories.Add(item3);
-                                }
-                            }
-                        }
-                    }
+                        ID = categoryTran_Edit.ID,
+                        LangCode = lang.LangCode,
+                        LangName = lang.LangName,
+                        Name = categoryTran_Edit.Name 
+                    };
+                    categoriesLanguageViewModels.Add(categoryLanguageViewModel);
                 }
             }
-            else
+            var model = new CategoryCreateViewModel
             {
-                categories.AddRange(lstCategories);
-            }
-            TempData["Categories"] = categories;
-            var obj = categoryRepository.Find(id);
-            return Json(RenderViewToString("~/Areas/Admin/Views/Category/_Edit.cshtml", obj), JsonRequestBehavior.AllowGet);
+                ID = id,
+                Ordering = (int)category.Ordering, 
+                Languages = categoriesLanguageViewModels
+            };
+
+            return View(model);
         }
 
         [Authorize(Roles = "Edit")]
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Edit(Category model)
+        public ActionResult Edit(CategoryCreateViewModel model)
         {
             try
-            {
-                string linkSeo = "\\" + model.LinkSeo;
-                if (model.ParentID == 0)
+            { 
+                List<CategoryTran> categoriesTrans = new List<CategoryTran>();
+
+                foreach (var lang in model.Languages)
                 {
-                    model.Level = 1;
-                } 
-                else
-                {
-                    var parent = categoryRepository.GetAll().FirstOrDefault(x=>x.ID == model.ParentID);
-                    model.Level = parent != null ? parent.Level + 1 : 0;
+                    if (string.IsNullOrEmpty(lang.Name))
+                    {
+                        return Json(new
+                        {
+                            IsSuccess = false,
+                            Messenger = "Vui lòng thêm tên " + lang.LangName,
+                        }, JsonRequestBehavior.AllowGet);
+                    }
+
+                    CategoryTran categoryTranEdit = new CategoryTran
+                    {
+                        ID = lang.ID,
+                        Name = lang.Name,
+                        LinkSeo = HelperString.RenderLinkSeo(lang.Name) 
+                    };
+                    categoriesTrans.Add(categoryTranEdit);
                 }
-                var obj = categoryRepository.GetAll().FirstOrDefault(x => x.Name.Trim() == model.Name.Trim() && x.ID != model.ID);
-                if (obj != null)
+
+                Category category = new Category();
+                category.ID = model.ID;
+                category.Ordering = model.Ordering; 
+
+                categoryRepository.Edit(category);
+
+                foreach (var item in categoriesTrans)
                 {
-                    return Json(new { IsSuccess = false, Messenger = "Tên danh mục đã tồn tại" }, JsonRequestBehavior.AllowGet);
+                    categoryRepository.EditTrans(item);
                 }
-            
-                categoryRepository.Edit(model);
-                return Json(new { IsSuccess = true, Messenger = "Cập nhật thành công" }, JsonRequestBehavior.AllowGet);
+
+                return Json(new
+                {
+                    IsSuccess = true,
+                    Messenger = "Cập nhật thành công",
+                }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception)
             {
-                return Json(new { IsSuccess = false, Messenger = "Cập nhật thất bại" }, JsonRequestBehavior.AllowGet);
-            }
-        }
-
-        [Authorize(Roles = "Edit")]
-        [HttpPost]
-        public ActionResult UpdatePosition(string value)
-        {
-            var arrValue = value.Split('|');
-            foreach (var item in arrValue)
-            {
-                var id = item.Split(':')[0];
-                var pos = item.Split(':')[1];
-                var obj = categoryRepository.Find(Convert.ToInt32(id));
-                obj.Ordering = Convert.ToInt32(pos);
-                try
+                return Json(new
                 {
-                    categoryRepository.Edit(obj);
-
-                }
-                catch (Exception)
-                {
-                    return Json(new
-                    {
-                        IsSuccess = false,
-                        Messenger = string.Format("Cập nhật vị trí thất bại")
-                    }, JsonRequestBehavior.AllowGet);
-                }
+                    IsSuccess = false,
+                    Messenger = string.Format("Cập nhật thất bại")
+                }, JsonRequestBehavior.AllowGet);
             }
-            return Json(new
-            {
-                IsSuccess = true,
-                Messenger = "Cập nhật vị trí thành công",
-            }, JsonRequestBehavior.AllowGet);
-        }
+        } 
 
         [Authorize(Roles = "Delete")]
         public ActionResult Delete(int id)
@@ -256,19 +232,10 @@ namespace Web.Areas.Admin.Controllers
                
                 if (cate != null)
                 {
-                    var child = categoryRepository.GetAll().Where(x => x.ParentID == cate.ID);
-                    if (child.Any())
+                    var news = newsRepository.GetAll().Where(x => x.CategoryId == cate.ID);
+                    if (news.Any())
                     {
-                        return Json(new { IsSuccess = false, Messenger = "Danh mục đang chứa danh mục con - Xóa danh mục con trước khi xóa Danh mục này" }, JsonRequestBehavior.AllowGet);
-                    }
-                     
-                    else
-                    {
-                        var news = newsRepository.GetAll().Where(x => x.CategoryId == cate.ID);
-                        if (news.Any())
-                        {
-                            return Json(new { IsSuccess = false, Messenger = "Danh mục đang chứa Tin tức - Xóa Tin tức trước khi xóa Danh mục này" }, JsonRequestBehavior.AllowGet);
-                        }
+                        return Json(new { IsSuccess = false, Messenger = "Danh mục đang được tham chiếu tới bảng Tin tức" }, JsonRequestBehavior.AllowGet);
                     }
                 }
                
@@ -279,31 +246,6 @@ namespace Web.Areas.Admin.Controllers
             {
                 return Json(new { IsSuccess = false, Messenger = "Xóa thất bại" }, JsonRequestBehavior.AllowGet);
             }
-        }
-
-        [Authorize(Roles = "Delete")]
-        [HttpPost]
-        public ActionResult DeleteAll(string lstid)
-        {
-            var arrid = lstid.Split(',');
-            var count = 0;
-           
-            foreach (var item in arrid)
-            {
-                try
-                {
-                    categoryRepository.Delete(Convert.ToInt32(item));
-                    count++;
-                }
-                catch (Exception)
-                {
-                    continue;
-                }
-            }
-            return Json(new
-            {
-                Messenger = string.Format("Xóa thành công {0} danh mục", count),
-            }, JsonRequestBehavior.AllowGet);
-        }
+        } 
     }
 }

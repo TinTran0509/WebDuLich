@@ -56,7 +56,7 @@
             });
         },
         loadfrmAdd: function () {
-            modal.Render("/Admin/Word/Add", "Thêm mới quốc gia", "modal-lg");
+            modal.Render("/Admin/Word/Add", "Thêm mới từ khóa phiên dịch", "modal-lg");
         },
         onAddSuccess: function (res) {
             if (res.IsSuccess == true) {
@@ -69,7 +69,7 @@
             $("#loading").hide();
         },
         loadfrmEdit: function (id) {
-            modal.Render("/Admin/Word/Edit/" + id, "Cập nhật quốc gia", "modal-lg");
+            modal.Render("/Admin/Word/Edit/" + id, "Cập nhật từ khóa phiên dịch", "modal-lg");
         },
         onEditSuccess: function (res) {
             if (res.IsSuccess == true) {

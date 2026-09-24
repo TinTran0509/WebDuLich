@@ -32,51 +32,21 @@
                 self.loadData(self.pageIndex);
                 $("#loading").hide();
             });
-        },
-        active: function (id) {
-            $("#loading").show();
-            var self = this;
-            swal({
-                title: "Thay đổi trạng thái?",
-                text: "",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Có",
-                cancelButtonText: "không",
-            }, function (isConfirm) {
-                if (isConfirm) {
-                    AjaxService.POST("/Admin/Category/ChangeStatus", { id: id }, function (res) {
-                        self.pageIndex = 1;
-                        self.loadData(self.pageIndex);
-                        alertmsg.success(res.Messenger);
-                    });
-                }
-                $("#loading").hide();
-            });
-        },
-        loadfrmAdd: function () {
-            modal.Render("/Admin/Category/Add", "Thêm mới danh mục", "modal-lg");
-        },
+        },  
         onAddSuccess: function (res) {
             if (res.IsSuccess == true) {
                 alertmsg.success(res.Messenger);
-                Category.loadData(1);
+                location.href = "/admin/category";
                 modal.hide();
             } else {
                 alertmsg.error(res.Messenger);
             }
             $("#loading").hide();
-        },
-        loadfrmEdit: function (id) {
-            modal.Render("/Admin/Category/Edit/" + id, "Cập nhật danh mục", "modal-lg");
-        },
+        }, 
         onEditSuccess: function (res) {
             if (res.IsSuccess == true) {
                 alertmsg.success(res.Messenger);
-                let page = $('.pagination .active a').text();
-                $('.pagination .active a').trigger('click');
-                Category.loadData(parseInt(page));
+                location.href = "/admin/category";
                 modal.hide();
             } else {
                 alertmsg.error(res.Messenger);

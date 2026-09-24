@@ -1,0 +1,97 @@
+﻿@using Web.Model
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<script src="~/AppJs/category.js"></script>
+@model Web.Model.CustomModel.CategoryCreateViewModel
+@using (Ajax.BeginForm("Edit", "Category", null,
+    new AjaxOptions
+    {
+        HttpMethod = "POST",
+        OnSuccess = "Category.onEditSuccess"
+    },
+    new { @id = "frmData", @class = "form-horizontal" }))
+{
+    @Html.HiddenFor(x => x.ID) 
+    <div class="article-create">
+        <div class="form-group">
+            <div class="col-md-2 text-left">
+                <a href="/admin/category" class=""><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay trở lại</a>
+            </div>
+            <div class="col-md-6">
+                <h4>Cập nhật danh mục</h4>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Thứ tự <span class="asterisk">(*)</span></label>
+            <div class="col-md-2">
+                @Html.TextBoxFor(model => model.Ordering, new { @class = "form-control txtnumber", @type = "number" })
+            </div>
+        </div>
+        <ul class="nav nav-tabs lang-tabs">
+            @for (int i = 0; i < Model.Languages.Count; i++)
+            {
+                <li class="@(i == 0 ? "active" : "")">
+                    <a href="#lang-@Model.Languages[i].LangCode"
+                       data-toggle="tab">
+                        @Model.Languages[i].LangName
+                    </a>
+                </li>
+            }
+        </ul>
+        <div class="tab-content">
+            @for (int i = 0; i < Model.Languages.Count; i++)
+            {
+                var lang = Model.Languages[i];
+                <div id="lang-@lang.LangCode"
+                     class="tab-pane @(i == 0 ? "active" : "")">
+                    <div class="form-group">
+                        <label>Tên danh mục <span class="asterisk">(*)</span></label>
+                        @Html.TextBoxFor(m => m.Languages[i].Name, new { @class = "form-control" })
+                    </div>
+                    @Html.HiddenFor(m => m.Languages[i].ID)
+                    @Html.HiddenFor(m => m.Languages[i].LangCode)
+                    @Html.HiddenFor(m => m.Languages[i].LangName)
+                </div>
+            }
+        </div>
+        <div class="form-group">
+            <div class="col-md-2 text-right"><a href="/admin/category" class=""><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay trở lại</a></div>
+            <div class="col-md-7 text-center">
+                <button type="submit" class="btn btn-primary waves-effect waves-light">Cập nhật</button>
+            </div>
+        </div>
+    </div>
+}
+<script>
+    $(document).ready(function () {
+        $('#Title').on('change', function () {
+            let link = $('#Title').val();
+            let linkSeo = RemoveMarkStr(link);
+            $('#LinkSeo').val(linkSeo);
+        });
+        $("#frmData").validate({
+            rules:
+            {
+                Ordering:
+                {
+                    required: true
+                }
+            },
+            messages:
+            {
+                Ordering:
+                {
+                    required: "Vui lòng nhập thứ tự"
+                }
+            },
+            highlight: function (element) {
+                jQuery(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+            },
+            success: function (element) {
+                jQuery(element).closest('.form-group').removeClass('has-error');
+            }
+        });
+
+    });
+</script>

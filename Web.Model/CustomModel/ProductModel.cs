@@ -18,6 +18,7 @@ namespace Web.Model.CustomModel
         public int Type { get; set; }
         public string Size { get; set; }
         public double Price { get; set; }
+        public double PriceWeekend { get; set; }
         public int TotalCount { get; set; }
         public string Countries { get; set; }
         public string LocationID { get; set; }

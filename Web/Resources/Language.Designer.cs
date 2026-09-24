@@ -115,11 +115,29 @@ namespace Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Booking tour failed.
+        /// </summary>
+        public static string BookingFailed {
+            get {
+                return ResourceManager.GetString("BookingFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Guaranteed departure booking.
         /// </summary>
         public static string BookingNow {
             get {
                 return ResourceManager.GetString("BookingNow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Booking tour success.
+        /// </summary>
+        public static string BookingSuccess {
+            get {
+                return ResourceManager.GetString("BookingSuccess", resourceCulture);
             }
         }
         
@@ -313,6 +331,24 @@ namespace Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please select a date later than the current date..
+        /// </summary>
+        public static string MessageSelectDate {
+            get {
+                return ResourceManager.GetString("MessageSelectDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select a package..
+        /// </summary>
+        public static string MessageSelectPack {
+            get {
+                return ResourceManager.GetString("MessageSelectPack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
         public static string Name {
@@ -358,11 +394,29 @@ namespace Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Number of passengers.
+        /// </summary>
+        public static string NumberPas {
+            get {
+                return ResourceManager.GetString("NumberPas", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Our expert.
         /// </summary>
         public static string OurExpert {
             get {
                 return ResourceManager.GetString("OurExpert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Package.
+        /// </summary>
+        public static string Package {
+            get {
+                return ResourceManager.GetString("Package", resourceCulture);
             }
         }
         
@@ -399,6 +453,15 @@ namespace Web.Resources {
         public static string PlaceTel {
             get {
                 return ResourceManager.GetString("PlaceTel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Plus.
+        /// </summary>
+        public static string Plus {
+            get {
+                return ResourceManager.GetString("Plus", resourceCulture);
             }
         }
         
@@ -480,6 +543,15 @@ namespace Web.Resources {
         public static string SpeedSupportDesc {
             get {
                 return ResourceManager.GetString("SpeedSupportDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to star.
+        /// </summary>
+        public static string Star {
+            get {
+                return ResourceManager.GetString("Star", resourceCulture);
             }
         }
         
@@ -583,7 +655,7 @@ namespace Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Why Paso Sea Tour?.
+        ///   Looks up a localized string similar to Why Paso Sea Tours?.
         /// </summary>
         public static string WhyChooses {
             get {

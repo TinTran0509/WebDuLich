@@ -1,0 +1,95 @@
+﻿@{
+    ViewBag.Title = "Quản lý gói dịch vụ";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    var lstAction = (List<int>)HttpContext.Current.Session["Action"];
+    List<Package_Price> packages3 = (List<Package_Price>)TempData["Package3"];
+    List<Package_Price> packages4 = (List<Package_Price>)TempData["Package4"];
+    List<Package_Price> packages5 = (List<Package_Price>)TempData["Package5"];
+    List<Package_Price> packages6 = (List<Package_Price>)TempData["Package6"];
+}
+@using Web.Model
+@using Web.Model.CustomModel
+<script src="~/AppJs/package.js"></script>
+<style>
+    .text-bold {
+        font-weight: bold;
+        width: 130px;
+        vertical-align: middle !important;
+    }
+    table, th, td {
+        border: 1px solid #ddd;
+        border-collapse: collapse;
+    }
+    .package-price {
+        width:80%;
+        display: inline-block
+    }
+    .unit{
+        display: inline-block
+    }
+</style>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Bảng giá gói dịch vụ</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td style="opacity:0">Gói 5 sao</td>
+                                    <td class="text-bold">1 pax</td>
+                                    <td class="text-bold">2 pax</td>
+                                    <td class="text-bold">3 - 4 pax</td>
+                                    <td class="text-bold">5 - 9 pax</td>
+                                    <td class="text-bold">10 - 20 pax</td>
+                                </tr>
+                                <tr id="package-3">
+                                    <td class="text-bold">Gói 3 sao</td>
+                                    @foreach (var item in packages3)
+                                    {
+                                        <td><input data-pax="@item.Pax_From-@item.Pax_To" class="package-price form-control" value="@item.Price" />&nbsp;<span class="unit">$</span></td>
+                                    } 
+                                </tr>
+                                <tr id="package-4">
+                                    <td class="text-bold">Gói 4 sao</td>
+                                    @foreach (var item in packages4)
+                                    {
+                                        <td><input data-pax="@item.Pax_From-@item.Pax_To" class="package-price form-control" value="@item.Price" />&nbsp;<span class="unit">$</span></td>
+                                    }
+                                </tr>
+                                <tr id="package-5">
+                                    <td data-package="3" class="text-bold">Gói 5 sao</td>
+                                    @foreach (var item in packages5)
+                                    {
+                                        <td><input data-pax="@item.Pax_From-@item.Pax_To" class="package-price form-control" value="@item.Price" />&nbsp;<span class="unit">$</span></td>
+                                    }
+                                </tr>
+                                <tr id="package-6">
+                                    <td data-package="4" class="text-bold">Gói Plus</td>
+                                    @foreach (var item in packages6)
+                                    {
+                                        <td><input data-pax="@item.Pax_From-@item.Pax_To" class="package-price form-control" value="@item.Price" />&nbsp;<span class="unit">$</span></td>
+                                    }
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-12 text-center">
+                        <button type="button" class="btn btn-primary waves-effect waves-light" onclick="Package.saveprice()">Lưu lại</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+        $(document).ready(function () {
+            $('.package-price').on("keypress", function (event) {
+                return event.charCode >= 48 && event.charCode <= 57
+            })
+        });
+ </script>

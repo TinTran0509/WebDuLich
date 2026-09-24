@@ -18,10 +18,8 @@ namespace Web.Controllers
         ICategoryRepository categoryRepository = new CategoryRepository();
         // GET: News
         public ActionResult Index()
-        {
-            var category = categoryRepository.GetAll().Where(x => x.LinkSeo.Equals("tin-tuc")).FirstOrDefault();
-            var model = category.News.ToList();
-            return View(model);
+        { 
+            return View();
         }
          
         public ActionResult LoadData(int pageIndex, int pageSize)
@@ -39,14 +37,13 @@ namespace Web.Controllers
 
         public ActionResult Detail(string linkseo)
         { 
-           var news = newsRepository.GetAll().FirstOrDefault(x=>x.LinkSeo.Equals(linkseo) && x.Type == 1); 
+           var news = newsRepository.GetAll().FirstOrDefault(); 
             string title = "", description = "", urlImage = "";
             List<News> relateds = new List<News>();
             List<News> lstNews = new List<News>();
             if (news != null)
             {
-                relateds = newsRepository.GetAll().Where(x => x.CategoryId == news.CategoryId && x.ID != news.ID).ToList();
-                title = news.MetaTitle;
+                relateds = newsRepository.GetAll().Where(x => x.CategoryId == news.CategoryId && x.ID != news.ID).ToList(); 
                 lstNews = newsRepository.GetAll().Where(x=>x.ID != news.ID && (x.Type == 1 || x.Type ==2)).OrderByDescending(x=>x.CreatedDate).ToList();
             }
              

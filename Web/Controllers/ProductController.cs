@@ -21,7 +21,8 @@ namespace Web.Controllers
         private readonly ILocationRepository locationRepository = new LocationRepository();
         private readonly IWordRepository wordRepository = new WordRepository();
         private readonly IMenuTransRepository menuTransRepository = new MenuTransRepository();
-        private readonly IUserRepository userRepository = new UserRepository();  
+        private readonly IUserRepository userRepository = new UserRepository();
+        private readonly IPackageRepository _packageRepository = new PackageRepository();
 
         public ActionResult Index(string linkseo)
         {
@@ -90,32 +91,7 @@ namespace Web.Controllers
 
                 TempData["Relates"] = productTransRepository.GetRelate(model.ProductID, model.MenuID, model.LangCode, 3);
 
-                ViewBag.EstimatedPrice = wordRepository.GetValueByKey("EstimatedPrice", model.LangCode);
-
-                var basePrice = model.Price;
-                var year = DateTime.Now.Year; 
-
-                DateTime startDate = new DateTime(year, 1, 1);
-                DateTime endDate = new DateTime(year, 12, 31);
-                 
-                Dictionary<string, string> data = new Dictionary<string, string>();
-
-                for (DateTime date = startDate; date <= endDate; date = date.AddDays(1))
-                {  
-                    decimal price = (decimal)basePrice;
-
-                    if (date.DayOfWeek == DayOfWeek.Saturday ||
-                        date.DayOfWeek == DayOfWeek.Sunday)
-                    {
-                        price *= 1.05m; // tăng 5%
-                    }
-
-                    data.Add(date.ToString("yyyy-MM-dd"), "USD " + price.ToString("0.##")); 
-                }
-
-                string jsonPrice = JsonConvert.SerializeObject(data); 
-
-                ViewBag.DatePrice = jsonPrice;
+                ViewBag.EstimatedPrice = wordRepository.GetValueByKey("EstimatedPrice", model.LangCode); 
             }
             ViewBag.Destination = Resources.Language.Destination;
             ViewBag.Duration = Resources.Language.Duration;
@@ -132,6 +108,9 @@ namespace Web.Controllers
             ViewBag.Nigths = Resources.Language.Nigths;
             ViewBag.From = Resources.Language.From;
             ViewBag.Detail = Resources.Language.Detail; 
+            ViewBag.Star = Resources.Language.Star;
+            ViewBag.Package = Resources.Language.Package;
+            ViewBag.Plus = Resources.Language.Plus;
 
             return View(model);
         } 

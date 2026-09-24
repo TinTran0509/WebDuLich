@@ -74,7 +74,7 @@ namespace Web.Controllers
             ViewBag.Description = Resources.Language.Description;
             ViewBag.GroupTrip = wordRepository.GetValueByKey("GroupTrip", langCode);  
             ViewBag.CustomizedTrips = wordRepository.GetValueByKey("CustomizedTrips", langCode);
-            ViewBag.Price = Resources.Language.Price;
+            //ViewBag.Price = Resources.Language.Price;
             ViewBag.Days = Resources.Language.Days;
             ViewBag.Nigths = Resources.Language.Nigths;
             ViewBag.Detail = Resources.Language.Detail;

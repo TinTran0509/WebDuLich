@@ -14,23 +14,6 @@
     <Property Name="CreatedDate" Type="DateTime" Precision="3" />
     <Property Name="LangCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
   </EntityType>
-  <EntityType Name="Category">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="LinkSeo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="ParentID" Type="Int32" />
-    <Property Name="Ordering" Type="Int32" />
-    <Property Name="Type" Type="Int32" />
-    <Property Name="Level" Type="Int32" />
-    <Property Name="Image" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-    <Property Name="Position" Type="Int32" />
-    <Property Name="IsSearch" Type="Boolean" />
-    <Property Name="LangCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="News" Relationship="Self.FK__News__CategoryId__6B24EA82" FromRole="Category" ToRole="News" />
-  </EntityType>
   <EntityType Name="Contact">
     <Key>
       <PropertyRef Name="ID" />
@@ -49,26 +32,6 @@
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Language" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
-  </EntityType>
-  <EntityType Name="News">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="CategoryId" Type="Int32" Nullable="false" />
-    <Property Name="MetaTitle" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="LinkSeo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-    <Property Name="Image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="CreatedBy" Type="Int32" />
-    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
-    <Property Name="ModifiedBy" Type="Int32" />
-    <Property Name="Contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="Status" Type="Int32" />
-    <Property Name="Tags" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="Type" Type="Int32" />
-    <NavigationProperty Name="Category" Relationship="Self.FK__News__CategoryId__6B24EA82" FromRole="News" ToRole="Category" />
   </EntityType>
   <EntityType Name="Slider">
     <Key>
@@ -140,33 +103,15 @@
     <Property Name="GroupUserID" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="isAdmin" Type="Boolean" Nullable="false" />
   </EntityType>
-  <Association Name="FK__News__CategoryId__6B24EA82">
-    <End Role="Category" Type="Self.Category" Multiplicity="1" />
-    <End Role="News" Type="Self.News" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Category">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="News">
-        <PropertyRef Name="CategoryId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="WebDuLichEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="AdminMenus" EntityType="Self.AdminMenu" />
-    <EntitySet Name="Categories" EntityType="Self.Category" />
     <EntitySet Name="Contacts" EntityType="Self.Contact" />
     <EntitySet Name="Headers" EntityType="Self.Header" />
-    <EntitySet Name="News" EntityType="Self.News" />
     <EntitySet Name="Sliders" EntityType="Self.Slider" />
     <EntitySet Name="tbl_GroupUser" EntityType="Self.tbl_GroupUser" />
     <EntitySet Name="tbl_Login" EntityType="Self.tbl_Login" />
     <EntitySet Name="tbl_PageElement" EntityType="Self.tbl_PageElement" />
     <EntitySet Name="UserAdmins" EntityType="Self.UserAdmin" />
-    <AssociationSet Name="FK__News__CategoryId__6B24EA82" Association="Self.FK__News__CategoryId__6B24EA82">
-      <End Role="Category" EntitySet="Categories" />
-      <End Role="News" EntitySet="News" />
-    </AssociationSet>
     <FunctionImport Name="Sp_Category_Update">
       <Parameter Name="ID" Mode="In" Type="Int32" />
       <Parameter Name="Name" Mode="In" Type="String" />
@@ -234,6 +179,17 @@
     <EntitySet Name="Words" EntityType="WebDuLichModel.Word" />
     <EntitySet Name="WordTrans" EntityType="WebDuLichModel.WordTran" />
     <EntitySet Name="Products" EntityType="WebDuLichModel.Product" />
+    <EntitySet Name="News" EntityType="WebDuLichModel.News" />
+    <EntitySet Name="Bookings" EntityType="WebDuLichModel.Booking" />
+    <EntitySet Name="NewsTrans" EntityType="WebDuLichModel.NewsTran" />
+    <EntitySet Name="Categories" EntityType="WebDuLichModel.Category" />
+    <EntitySet Name="CategoryTrans" EntityType="WebDuLichModel.CategoryTran" />
+    <AssociationSet Name="FK__News__CategoryId__6B24EA82" Association="WebDuLichModel.FK__News__CategoryId__6B24EA82">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="News" EntitySet="News" />
+    </AssociationSet>
+    <EntitySet Name="Packages" EntityType="WebDuLichModel.Package" />
+    <EntitySet Name="Package_Price" EntityType="WebDuLichModel.Package_Price" />
   </EntityContainer>
   <ComplexType Name="Sp_News_GetByLinkSeo_Result">
     <Property Type="Int32" Name="ID" Nullable="false" />
@@ -531,6 +487,7 @@
     <Property Name="MenuID" Type="Int32" Nullable="false" />
     <Property Name="Type" Type="Int32" Nullable="false" />
     <Property Name="Price" Type="Double" />
+    <Property Name="PriceWeekend" Type="Double" />
     <Property Name="Size" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="DayNumber" Type="Int32" />
     <Property Name="CountryID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
@@ -538,5 +495,103 @@
     <Property Name="HotelID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="NumberStar" Type="Int32" />
     <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="News">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryId" Type="Int32" Nullable="false" />
+    <Property Name="Image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="Type" Type="Int32" />
+    <NavigationProperty Name="Category" Relationship="WebDuLichModel.FK__News__CategoryId__6B24EA82" FromRole="News" ToRole="Category" />
+  </EntityType>
+  <EntityType Name="Booking">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ArrivalDate" Type="DateTime" Precision="0" />
+    <Property Name="Passenger" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="EstimatedTotal" Type="Double" />
+    <Property Name="Title" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Tel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Language" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DepartureCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Notes" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NewsTran">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MetaTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="LinkSeo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LangCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="NewsID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParentID" Type="Int32" />
+    <Property Name="Ordering" Type="Int32" />
+    <Property Name="Type" Type="Int32" />
+    <Property Name="Image" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="News" Relationship="WebDuLichModel.FK__News__CategoryId__6B24EA82" FromRole="Category" ToRole="News" />
+  </EntityType>
+  <EntityType Name="CategoryTran">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="LinkSeo" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="LangCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="CategoryID" Type="Int32" />
+  </EntityType>
+  <Association Name="FK__News__CategoryId__6B24EA82">
+    <End Type="WebDuLichModel.Category" Role="Category" Multiplicity="1" />
+    <End Type="WebDuLichModel.News" Role="News" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="News">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Package">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Ordering" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Package_Price">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Pax_From" Type="Int32" />
+    <Property Name="Pax_To" Type="Int32" />
+    <Property Name="Price" Type="Double" />
+    <Property Name="PackageID" Type="Int32" Nullable="false" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
   </EntityType>
 </Schema>

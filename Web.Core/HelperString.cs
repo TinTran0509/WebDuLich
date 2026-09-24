@@ -55,6 +55,7 @@ namespace Web.Core
             output = output.Replace(".", "-");
             output = output.Replace("/", "-");
             output = output.Replace("%", "");
+            output = output.Replace(":", "-");
             const RegexOptions options = RegexOptions.None;
             var regex = new Regex("[-]{2,}", options);
             output = regex.Replace(output, "-");

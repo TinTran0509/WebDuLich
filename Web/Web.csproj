@@ -212,6 +212,7 @@
     <Compile Include="App_Start\SubDomainRoute.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\PackageController.cs" />
     <Compile Include="Areas\Admin\Controllers\WordController.cs" />
     <Compile Include="Areas\Admin\Controllers\HotelController.cs" />
     <Compile Include="Areas\Admin\Controllers\LocationController.cs" />
@@ -246,6 +247,7 @@
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminMenuController.cs" />
     <Compile Include="Commons\CommonConstant.cs" />
+    <Compile Include="Commons\ImageHelper.cs" />
     <Compile Include="Commons\UserLogin.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
@@ -260,6 +262,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ImageUploadResult.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\OrderInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -282,10 +285,11 @@
     <Compile Include="Webconfig.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AppJs\package.js" />
     <Content Include="AppJs\word.js" />
     <Content Include="AppJs\hotel.js" />
     <Content Include="AppJs\location.js" />
-    <Content Include="AppJs\product.js" />
+    <Content Include="AppJs\product.123.js" />
     <Content Include="AppJs\menuhome.js" />
     <Content Include="AppJs\introduction.js" />
     <Content Include="AppJs\theme.js" />
@@ -298,7 +302,6 @@
     <Content Include="AppJs\contact.js" />
     <Content Include="AppJs\about.js" />
     <Content Include="AppJs\service.js" />
-    <Content Include="AppJs\productHome.js" />
     <Content Include="AppJs\tag.js" />
     <Content Include="AppJs\logo.js" />
     <Content Include="AppJs\order.js" />
@@ -7283,14 +7286,14 @@
     <Content Include="Content\plugins\ckfinder\skins\v1\skin.js" />
     <Content Include="Content\plugins\ckfinder\skins\v1\uipanel.css" />
     <Content Include="Content\plugins\ckfinder\translations.txt" />
-    <Content Include="Content\wp-content\cache\min\1\3bd1988a8f8f931afbade934ba862982.css" />
-    <Content Include="Content\wp-content\cache\min\1\4ed8e6663474054eb8b525ec645f777c.css" />
+    <Content Include="Content\wp-content\cache\min\1\3bd1988a8f8f931afbade934ba862984.css" />
+    <Content Include="Content\wp-content\cache\min\1\4ed8e6663474054eb8b525ec645f777d.css" />
     <Content Include="Content\wp-content\cache\min\1\76686706d598f3ee79257f6d82aec818.css" />
     <Content Include="Content\wp-content\cache\min\1\7a137b4fc4e466cd1738b14b1c45e129.css" />
     <Content Include="Content\wp-content\cache\min\1\b3cc7b830b61ea5124836173c8edf6c6.css" />
     <Content Include="Content\wp-content\cache\min\1\ba4c7f674a421cf82626d14eb1c2907e.css" />
     <Content Include="Content\wp-content\cache\min\1\c95e768007a6fc750edeefbf8ae1ec98.css" />
-    <Content Include="Content\wp-content\cache\min\1\de98cdc926905b066490eaee7b490e2f.css" />
+    <Content Include="Content\wp-content\cache\min\1\de98cdc926905b066490eaee7b490e2h.css" />
     <Content Include="Content\wp-content\cache\min\1\embed3f68.js" />
     <Content Include="Content\wp-content\cache\min\1\wp-content\themes\ocanus\js\accordionc1ca.js" />
     <Content Include="Content\wp-content\cache\min\1\wp-content\themes\ocanus\js\basee7a7.js" />
@@ -10223,7 +10226,7 @@
     <Content Include="Content\wp-content\themes\ocanus\images\media\x.png" />
     <Content Include="Content\wp-content\themes\ocanus\images\media\youtube.png" />
     <Content Include="Content\wp-content\themes\ocanus\js\base8a54.js" />
-    <Content Include="Content\wp-content\themes\ocanus\js\booking8d1e.js" />
+    <Content Include="Content\wp-content\themes\ocanus\js\booking8d1g.js" />
     <Content Include="Content\wp-content\themes\ocanus\js\datepicker15c9.js" />
     <Content Include="Content\wp-content\themes\ocanus\js\loading20b9.js" />
     <Content Include="Content\wp-content\themes\ocanus\js\script0040.js" />
@@ -11785,14 +11788,13 @@
     <Content Include="Areas\Admin\Views\GroupUser\_PermissionCatNews.cshtml" />
     <Content Include="Areas\Admin\Views\Header\Add.cshtml" />
     <Content Include="Areas\Admin\Views\UploadFile\UploadImage.cshtml" />
-    <Content Include="Areas\Admin\Views\Category\_Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Category\_Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Category\_ListData.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
     <Content Include="Areas\Admin\Views\News\Add.cshtml" />
     <Content Include="Areas\Admin\Views\News\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\News\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\News\ListData.cshtml" />
+    <Content Include="Areas\Admin\Views\News\_ListData.cshtml" />
     <Content Include="Areas\Admin\Views\UploadVideo\UploadVideo.cshtml" />
     <Content Include="Areas\Admin\Views\Order\_ListData.cshtml" />
     <Content Include="Areas\Admin\Views\Order\Index.cshtml" />
@@ -11834,7 +11836,7 @@
     <Content Include="Content\plugins\ckeditor\skins\moono-lisa\dev\icons32.svg" />
     <Content Include="Content\plugins\ckeditor\skins\moono-lisa\dev\locations.json" />
     <Content Include="Content\plugins\ckeditor\skins\moono-lisa\readme.md" />
-    <Content Include="Areas\Admin\Views\UploadImages\UploadImages.cshtml" />
+    <Content Include="Areas\Admin\Views\UploadImages\UploadImage.cshtml" />
     <Content Include="Areas\Admin\Views\Order\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_LayoutLogin2.cshtml" />
     <Content Include="Content\Admin\libs\bootstrap\dist\css\bootstrap-grid.css.map" />
@@ -17348,6 +17350,11 @@
     <Content Include="Areas\Admin\Views\Word\_Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Word\_ListData.cshtml" />
     <Content Include="Areas\Admin\Views\Word\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Package\_Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Package\_Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Package\_ListData.cshtml" />
+    <Content Include="Areas\Admin\Views\Package\Index.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Images\IconFile\ExcelIcon.png" />
@@ -17505,6 +17512,7 @@
     <Content Include="Views\Booking\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutBooking.cshtml" />
     <Content Include="Views\Shared\_LayoutList.cshtml" />
+    <Content Include="Views\Shared\_LayoutPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -17513,7 +17521,9 @@
     <Folder Include="Images\Post\files\" />
     <Folder Include="Images\Post\flash\" />
     <Folder Include="Images\Post\_thumbs\Files\" />
+    <Folder Include="Upload\ImageOptimize\" />
     <Folder Include="Upload\Images\images\" />
+    <Folder Include="Upload\Temp\" />
     <Folder Include="Upload\_thumbs\Images\" />
   </ItemGroup>
   <ItemGroup>

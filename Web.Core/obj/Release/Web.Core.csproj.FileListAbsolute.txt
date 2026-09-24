@@ -4,3 +4,9 @@ G:\BearShop\Web.Core\obj\Release\Web.Core.csproj.AssemblyReference.cache
 G:\BearShop\Web.Core\obj\Release\Web.Core.csproj.CoreCompileInputs.cache
 G:\BearShop\Web.Core\obj\Release\Web.Core.dll
 G:\BearShop\Web.Core\obj\Release\Web.Core.pdb
+D:\WebDuLich\Lummia\Web\Web.Core\bin\Release\Web.Core.dll
+D:\WebDuLich\Lummia\Web\Web.Core\bin\Release\Web.Core.pdb
+D:\WebDuLich\Lummia\Web\Web.Core\obj\Release\Web.Core.csproj.AssemblyReference.cache
+D:\WebDuLich\Lummia\Web\Web.Core\obj\Release\Web.Core.csproj.CoreCompileInputs.cache
+D:\WebDuLich\Lummia\Web\Web.Core\obj\Release\Web.Core.dll
+D:\WebDuLich\Lummia\Web\Web.Core\obj\Release\Web.Core.pdb

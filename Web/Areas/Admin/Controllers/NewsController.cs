@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 using Web.BaseSecurity;
 using Web.Core;
 using Web.Model;
+using Web.Model.CustomModel;
 using Web.Model.Domain;
 using Web.Repository;
 using Web.Repository.Entity;
@@ -27,14 +29,20 @@ namespace Web.Areas.Admin.Controllers
         [Authorize(Roles = "Index")]
         public ActionResult ListData(string keyWord, int pageIndex)
         {
-            var category = categoryRepository.GetAll().Where(x => x.LinkSeo.Equals("tin-tuc")).FirstOrDefault();
-            var model = category.News; 
-            var totalAdv = model.Count();
-            model = model.Skip((pageIndex - 1) * 20).Take(20).OrderByDescending(x => x.CreatedDate).ToList();
+            List<NewsModel> newsModels = new List<NewsModel>();
+            var news = newsRepository.GetAll().OrderByDescending(x=>x.CreatedDate).ToList();
+            var total = news.Count;
+
+            news = news.Skip((pageIndex - 1) * Webconfig.RowLimit).Take(Webconfig.RowLimit).ToList();
+            foreach (var item in news)
+            {
+                //List<ProductModel> productTrans = productTransRepository.GetByProductID(item.ID).ToList();
+                //productModels.AddRange(productTrans);
+            }
             return Json(new
             {
-                viewContent = RenderViewToString("~/Areas/Admin/Views/News/ListData.cshtml", model),
-                totalPages = Math.Ceiling(((double)totalAdv / 20)),
+                viewContent = RenderViewToString("~/Areas/Admin/Views/News/ListData.cshtml", newsModels),
+                totalPages = Math.Ceiling(((double)total / 20)),
             }, JsonRequestBehavior.AllowGet);
         }
 
@@ -58,51 +66,8 @@ namespace Web.Areas.Admin.Controllers
         {
             try
             {
-                int categoryId = 0;
-                var category = categoryRepository.GetAll().Where(x => x.LinkSeo.Equals("tin-tuc")).FirstOrDefault();
-                if (category != null)
-                {
-                    categoryId = category.ID;
-                    var news = newsRepository.GetAll()
-                  .Where(x => x.CategoryId == categoryId && x.MetaTitle.Trim().Equals(model.MetaTitle.Trim()));
-                    if (news.Any())
-                    {
-                        return Json(new
-                        {
-                            IsSuccess = false,
-                            Messenger = "Tiêu đề tin tức đã tồn tại",
-                        }, JsonRequestBehavior.AllowGet);
-                    }
-                }
-                else
-                {
-                    return Json(new
-                    {
-                        IsSuccess = false,
-                        Messenger = "Đã có lỗi xảy ra. Vui lòng thử lại sau",
-                    }, JsonRequestBehavior.AllowGet);
-                }
-                if (string.IsNullOrEmpty(model.Image))
-                {
-                    return Json(new
-                    {
-                        IsSuccess = false,
-                        Messenger = "Vui lòng thêm ảnh",
-                    }, JsonRequestBehavior.AllowGet);
-                }
-             
-                if (string.IsNullOrEmpty(model.Contents))
-                {
-                    return Json(new
-                    {
-                        IsSuccess = false,
-                        Messenger = "Vui lòng thêm nội dung tin tức",
-                    }, JsonRequestBehavior.AllowGet);
-                }
-                model.Type = 1;
-                model.CategoryId = categoryId;
-                model.CreatedBy =  User.ID;
-                newsRepository.Add(model);
+                 
+                 
                 return Json(new
                 {
                     Close = close,
@@ -135,34 +100,7 @@ namespace Web.Areas.Admin.Controllers
         {
             try
             {
-                var news = newsRepository.GetAll()
-                   .Where(x => x.CategoryId == model.CategoryId && x.MetaTitle.Trim().Equals(model.MetaTitle.Trim())).FirstOrDefault();
-                if (news != null && news.ID != model.ID)
-                {
-                    return Json(new
-                    {
-                        IsSuccess = false,
-                        Messenger = "Tiêu đề tin tức đã tồn tại",
-                    }, JsonRequestBehavior.AllowGet);
-                }
-
-                if (string.IsNullOrEmpty(model.Image))
-                {
-                    return Json(new
-                    {
-                        IsSuccess = false,
-                        Messenger = "Vui lòng thêm ảnh",
-                    }, JsonRequestBehavior.AllowGet);
-                } 
-               
-                if (string.IsNullOrEmpty(model.Contents))
-                {
-                    return Json(new
-                    {
-                        IsSuccess = true,
-                        Messenger = "Vui lòng thêm nội dung tin tức",
-                    }, JsonRequestBehavior.AllowGet);
-                }
+                
                 model.ModifiedBy = User.ID;
                 newsRepository.Edit(model);
                 return Json(new {

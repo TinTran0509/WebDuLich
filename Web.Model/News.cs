@@ -16,17 +16,12 @@ namespace Web.Model
     {
         public int ID { get; set; }
         public int CategoryId { get; set; }
-        public string MetaTitle { get; set; }
-        public string LinkSeo { get; set; }
         public string Image { get; set; }
-        public string Description { get; set; }
         public Nullable<int> CreatedBy { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
         public Nullable<int> ModifiedBy { get; set; }
-        public string Contents { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public Nullable<int> Status { get; set; }
-        public string Tags { get; set; }
         public Nullable<int> Type { get; set; }
     
         public virtual Category Category { get; set; }

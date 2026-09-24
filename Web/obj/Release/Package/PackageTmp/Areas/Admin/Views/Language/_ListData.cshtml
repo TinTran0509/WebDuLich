@@ -43,13 +43,10 @@
                     @item.Ordering
                 </td>
                 <td style="vertical-align: middle;">@Html.Raw((bool)item.Active ? "<span style='color:green'>Active</span>" : "<span style='color:red'>Inactive</span>")</td>
-                <td style="vertical-align: middle;">@Html.Raw((bool)item.IsDefault ? "<span style='color:green'>Có</span>" : "<span style='color:red'>Không</span>")</td>
+                <td style="vertical-align: middle;">@Html.Raw((bool)item.IsDefault ? "<span style='color:green'>Yes</span>" : "<span style='color:red'>No</span>")</td>
                 <td style="vertical-align: middle;">
                     <div class="btn-list pull-right mr5">
                         <a href="#" class="btn btn-primary btn-bordered" onclick="Language.loadfrmEdit(@item.ID) " title="Sửa"><i class=" glyphicon glyphicon-pencil"></i></a>
-                        @*<a href="#" class="btn btn-success btn-bordered" onclick="Language.active(@item.ID) " title="@((bool)item.Active ? "Vô hiệu" : "Kích hoạt" )">
-                            <i class="fa fa-power-off"></i>
-                        </a>*@
                         <a href="#" class="btn btn-danger btn-bordered" onclick="Language.ondelete(@item.ID) " title="Xóa">
                             <i class="glyphicon glyphicon-trash"></i>
                         </a>

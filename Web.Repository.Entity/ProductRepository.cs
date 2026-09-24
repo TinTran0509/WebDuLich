@@ -71,6 +71,7 @@ namespace Web.Repository.Entity
                     parameters.Add("Active", obj.Active);
                     parameters.Add("Type", obj.Type);
                     parameters.Add("Price", obj.Price);
+                    parameters.Add("PriceWeekend", obj.PriceWeekend);
                     parameters.Add("Size", obj.Size);
                     parameters.Add("DayNumber", obj.DayNumber);
                     parameters.Add("CountryID", obj.CountryID);

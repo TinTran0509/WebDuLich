@@ -54,16 +54,10 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nvarchar" MaxLength="255" />
-    <Property Name="LinkSeo" Type="nvarchar" MaxLength="255" />
     <Property Name="ParentID" Type="int" />
     <Property Name="Ordering" Type="int" />
     <Property Name="Type" Type="int" />
-    <Property Name="Level" Type="int" />
     <Property Name="Image" Type="varchar" MaxLength="250" />
-    <Property Name="Position" Type="int" />
-    <Property Name="IsSearch" Type="bit" />
-    <Property Name="LangCode" Type="varchar" MaxLength="10" />
   </EntityType>
   <EntityType Name="Contact">
     <Key>
@@ -202,17 +196,12 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CategoryId" Type="int" Nullable="false" />
-    <Property Name="MetaTitle" Type="nvarchar" MaxLength="255" Nullable="false" />
-    <Property Name="LinkSeo" Type="varchar" MaxLength="250" />
     <Property Name="Image" Type="varchar" MaxLength="255" />
-    <Property Name="Description" Type="nvarchar" MaxLength="500" />
     <Property Name="CreatedBy" Type="int" />
     <Property Name="ModifiedDate" Type="datetime" />
     <Property Name="ModifiedBy" Type="int" />
-    <Property Name="Contents" Type="nvarchar(max)" Nullable="false" />
     <Property Name="CreatedDate" Type="datetime" Nullable="false" />
     <Property Name="Status" Type="int" />
-    <Property Name="Tags" Type="nvarchar" MaxLength="500" />
     <Property Name="Type" Type="int" />
   </EntityType>
   <EntityType Name="Product">
@@ -226,6 +215,7 @@
     <Property Name="MenuID" Type="int" Nullable="false" />
     <Property Name="Type" Type="int" Nullable="false" />
     <Property Name="Price" Type="float" />
+    <Property Name="PriceWeekend" Type="float" />
     <Property Name="Size" Type="varchar" MaxLength="50" />
     <Property Name="DayNumber" Type="int" />
     <Property Name="CountryID" Type="varchar" MaxLength="100" />
@@ -410,18 +400,66 @@
     <Property Name="LangCode" Type="varchar" MaxLength="5" Nullable="false" />
     <Property Name="WordID" Type="int" Nullable="false" />
   </EntityType>
-  <Association Name="FK__News__CategoryId__6B24EA82">
-    <End Role="Category" Type="Self.Category" Multiplicity="1" />
-    <End Role="News" Type="Self.News" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Category">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="News">
-        <PropertyRef Name="CategoryId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
+  <EntityType Name="Booking">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ArrivalDate" Type="date" />
+    <Property Name="Passenger" Type="nvarchar" MaxLength="150" />
+    <Property Name="EstimatedTotal" Type="float" />
+    <Property Name="Title" Type="varchar" MaxLength="10" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Tel" Type="varchar" MaxLength="20" />
+    <Property Name="Email" Type="varchar" MaxLength="150" />
+    <Property Name="Language" Type="nvarchar" MaxLength="50" />
+    <Property Name="DepartureCity" Type="nvarchar" MaxLength="50" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="500" />
+    <Property Name="ProductID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CategoryTrans">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="150" />
+    <Property Name="LinkSeo" Type="varchar" MaxLength="150" />
+    <Property Name="LangCode" Type="varchar" MaxLength="10" />
+    <Property Name="CategoryID" Type="int" />
+  </EntityType>
+  <EntityType Name="NewsTrans">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MetaTitle" Type="nvarchar" MaxLength="250" />
+    <Property Name="LinkSeo" Type="varchar" MaxLength="250" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="Contents" Type="nvarchar(max)" />
+    <Property Name="LangCode" Type="varchar" MaxLength="10" />
+    <Property Name="NewsID" Type="int" />
+  </EntityType>
+  <EntityType Name="Package">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Ordering" Type="int" />
+    <Property Name="Description" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="Package_Price">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Pax_From" Type="int" />
+    <Property Name="Pax_To" Type="int" />
+    <Property Name="Price" Type="float" />
+    <Property Name="PackageID" Type="int" Nullable="false" />
+    <Property Name="ProductID" Type="int" Nullable="false" />
+  </EntityType>
   <Function Name="Sp_News_GetByLinkSeo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="LinkSeo" Type="varchar" Mode="In" />
   </Function>
@@ -487,9 +525,10 @@
     <EntitySet Name="UserTrans" EntityType="Self.UserTrans" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Word" EntityType="Self.Word" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="WordTrans" EntityType="Self.WordTrans" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__News__CategoryId__6B24EA82" Association="Self.FK__News__CategoryId__6B24EA82">
-      <End Role="Category" EntitySet="Category" />
-      <End Role="News" EntitySet="News" />
-    </AssociationSet>
+    <EntitySet Name="Booking" EntityType="Self.Booking" Schema="zokhfcqf_pasosea" store:Type="Tables" />
+    <EntitySet Name="CategoryTrans" EntityType="Self.CategoryTrans" Schema="zokhfcqf_pasosea" store:Type="Tables" />
+    <EntitySet Name="NewsTrans" EntityType="Self.NewsTrans" Schema="zokhfcqf_pasosea" store:Type="Tables" />
+    <EntitySet Name="Package" EntityType="Self.Package" Schema="zokhfcqf_pasosea" store:Type="Tables" />
+    <EntitySet Name="Package_Price" EntityType="Self.Package_Price" Schema="zokhfcqf_pasosea" store:Type="Tables" />
   </EntityContainer>
 </Schema>

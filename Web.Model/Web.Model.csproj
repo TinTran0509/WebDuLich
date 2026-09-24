@@ -88,7 +88,13 @@
     <Compile Include="BannerTran.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Booking.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Category.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CategoryTran.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Contact.cs">
@@ -100,6 +106,12 @@
     <Compile Include="CountryTran.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="CustomModel\NewsModel.cs" />
+    <Compile Include="CustomModel\NewsLanguageViewModel.cs" />
+    <Compile Include="CustomModel\NewsCreateViewModel.cs" />
+    <Compile Include="CustomModel\CategoryModel.cs" />
+    <Compile Include="CustomModel\CategoryLanguageViewModel.cs" />
+    <Compile Include="CustomModel\CategoryCreateViewModel.cs" />
     <Compile Include="CustomModel\WordViewModel.cs" />
     <Compile Include="CustomModel\WordLanguageViewModel.cs" />
     <Compile Include="CustomModel\WordCreateViewModel.cs" />
@@ -192,6 +204,15 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="News.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NewsTran.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Package.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Package_Price.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Product.cs">

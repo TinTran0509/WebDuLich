@@ -139,7 +139,7 @@
     <value>Asian travel expert</value>
   </data>
   <data name="WhyChooses" xml:space="preserve">
-    <value>Why Paso Sea Tour?</value>
+    <value>Why Paso Sea Tours?</value>
   </data>
   <data name="ChuyenGiaDuLich" xml:space="preserve">
     <value>The leading specialist in high-quality travel to Asia.</value>
@@ -308,5 +308,29 @@
   </data>
   <data name="TitlePage" xml:space="preserve">
     <value>Pasosea - Asia Travel Expert</value>
+  </data>
+  <data name="BookingSuccess" xml:space="preserve">
+    <value>Booking tour success</value>
+  </data>
+  <data name="BookingFailed" xml:space="preserve">
+    <value>Booking tour failed</value>
+  </data>
+  <data name="Package" xml:space="preserve">
+    <value>Package</value>
+  </data>
+  <data name="Plus" xml:space="preserve">
+    <value>Plus</value>
+  </data>
+  <data name="Star" xml:space="preserve">
+    <value>star</value>
+  </data>
+  <data name="NumberPas" xml:space="preserve">
+    <value>Number of passengers</value>
+  </data>
+  <data name="MessageSelectPack" xml:space="preserve">
+    <value>Please select a package.</value>
+  </data>
+  <data name="MessageSelectDate" xml:space="preserve">
+    <value>Please select a date later than the current date.</value>
   </data>
 </root>

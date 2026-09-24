@@ -28,10 +28,8 @@ namespace Web.Model
         }
     
         public virtual DbSet<AdminMenu> AdminMenus { get; set; }
-        public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Contact> Contacts { get; set; }
         public virtual DbSet<Header> Headers { get; set; }
-        public virtual DbSet<News> News { get; set; }
         public virtual DbSet<Slider> Sliders { get; set; }
         public virtual DbSet<tbl_GroupUser> tbl_GroupUser { get; set; }
         public virtual DbSet<tbl_Login> tbl_Login { get; set; }
@@ -61,6 +59,13 @@ namespace Web.Model
         public virtual DbSet<Word> Words { get; set; }
         public virtual DbSet<WordTran> WordTrans { get; set; }
         public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<News> News { get; set; }
+        public virtual DbSet<Booking> Bookings { get; set; }
+        public virtual DbSet<NewsTran> NewsTrans { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<CategoryTran> CategoryTrans { get; set; }
+        public virtual DbSet<Package> Packages { get; set; }
+        public virtual DbSet<Package_Price> Package_Price { get; set; }
     
         public virtual int Sp_Category_Update(Nullable<int> iD, string name, string linkSeo, Nullable<int> parentID, Nullable<int> ordering, Nullable<int> type, Nullable<int> level, string icon, Nullable<int> position, Nullable<bool> isSearch, string pathway)
         {

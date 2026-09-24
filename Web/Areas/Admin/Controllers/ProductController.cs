@@ -1,5 +1,4 @@
-﻿using Excel.Log.Logger;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -30,6 +29,7 @@ namespace Web.Areas.Admin.Controllers
         readonly ILocationRepository locationRepository = new LocationRepository();
         readonly ICountryRepository countryRepository = new CountryRepository();
         readonly IHotelRepository hotelRepository = new HotelRepository();
+        readonly IPackageRepository _packageRepository = new PackageRepository();
         //
 
         [Authorize(Roles = "Index")]
@@ -43,13 +43,15 @@ namespace Web.Areas.Admin.Controllers
         {
             List<ProductModel> productModels = new List<ProductModel>();    
             var products = productRepository.GetAll().ToList();
+            var total = products.Count;
+
+            products = products.Skip((page - 1) * Webconfig.RowLimit).Take(Webconfig.RowLimit).ToList();
             foreach (var item in products)
             { 
                 List<ProductModel> productTrans = productTransRepository.GetByProductID(item.ID).ToList();
                 productModels.AddRange(productTrans);
-            }
-            var total = 0;
-            //model = model.Skip((page - 1) * Webconfig.RowLimit).Take(Webconfig.RowLimit).ToList();
+            } 
+          
             return Json(new
             {
                 viewContent = RenderViewToString("~/Areas/Admin/Views/Product/_ListData.cshtml", productModels),
@@ -69,8 +71,7 @@ namespace Web.Areas.Admin.Controllers
                 //TempData["Location"] = locationRepository.GetAllLocationTrans().Where(x => x.LangCode.Equals(language.LangCode)).ToList();
 
                 TempData["CountryTrans"] = countryRepository.GetCountryTranByLangCode(language.LangCode).ToList();
-
-                TempData["Hotels"] = hotelRepository.GetAllHotelTrans().Where(x => x.LangCode.Equals(language.LangCode)).ToList();
+                 
             } 
 
             List<tbl_Languages> tbl_Languages = languageRepository.GetByActive().ToList();
@@ -96,10 +97,10 @@ namespace Web.Areas.Admin.Controllers
         [Authorize(Roles = "Add")]
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Add(ProductCreateViewModel model)
+        public ActionResult Add(ProductCreateViewModel model, string Package_Price)
         {
             try
-            {
+            { 
                 if (string.IsNullOrEmpty(model.ProductCode))
                 {
                     return Json(new
@@ -190,7 +191,7 @@ namespace Web.Areas.Admin.Controllers
                     };
 
                     productTrans.Add(bannerTranAdd);
-                }
+                } 
 
                 Product product = new Product
                 {
@@ -198,13 +199,10 @@ namespace Web.Areas.Admin.Controllers
                     Image = model.Image,
                     MenuID = model.MenuID,
                     Type = model.Type,
-                    Price = model.Price,
                     Size = model.Size,
                     CountryID = model.CountryID != null ? string.Join(",", model.CountryID) : null,
                     LocationID = model.LocationID != null ? string.Join(",", model.LocationID) : null,
-                    HotelID = model.HotelID != null ? string.Join(",", model.HotelID) : null,
                     DayNumber = model.DayNumber,
-                    NumberStar = model.NumberStar,
                     Active = true
                 };
 
@@ -216,13 +214,29 @@ namespace Web.Areas.Admin.Controllers
                     productTransRepository.Add(item);
                 }
 
+                List<Package_Price> package_Prices = new List<Package_Price>();
+                JavaScriptSerializer json = new JavaScriptSerializer();
+
+                if (!string.IsNullOrEmpty(Package_Price))
+                {
+                    package_Prices = json.Deserialize<List<Package_Price>>(Package_Price);
+                }
+
+                foreach (Package_Price package in package_Prices)
+                {
+                    if (package.Price == null)
+                        package.Price = 0;
+                    package.ProductID = id;
+                    _packageRepository.AddPackagePrice(package);
+                }
+
                 return Json(new
                 {
                     IsSuccess = true,
                     Messenger = "Thêm mới thành công",
                 }, JsonRequestBehavior.AllowGet);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return Json(new
                 {
@@ -245,9 +259,7 @@ namespace Web.Areas.Admin.Controllers
             TempData["Location"] = locationRepository.GetAllLocationTrans().Where(x => x.LangCode.Equals(tbl_Language.LangCode)).ToList();
              
             TempData["CountryTrans"] = countryRepository.GetCountryTranByLangCode(tbl_Language.LangCode).ToList();
-
-            TempData["Hotels"] = hotelRepository.GetAllHotelTrans().Where(x => x.LangCode.Equals(tbl_Language.LangCode)).ToList();
-
+             
             List<ProductTran> lstProductTrans = productTransRepository.GetAll().Where(x => x.ProductID == id).ToList();
               
             List<ProductLanguageViewModel> productLanguageViewModels = new List<ProductLanguageViewModel>();
@@ -278,11 +290,9 @@ namespace Web.Areas.Admin.Controllers
                 MenuID = product.MenuID,
                 Active = product.Active,
                 Image = product.Image,
-                Price = product.Price != null ? (double)product.Price : 0,
                 Size = product.Size,
                 DayNumber = product.DayNumber != null ? (int)product.DayNumber : 0, 
                 CreatedDate = product.CreatedDate,
-                NumberStar = product.NumberStar != null ? (int)product.NumberStar : 0,
                 Languages = productLanguageViewModels
             };
             if (!string.IsNullOrEmpty(product.CountryID))
@@ -333,13 +343,20 @@ namespace Web.Areas.Admin.Controllers
                     ViewBag.SelectedHotels = sHotelTransIDs;
                 }
             }
+
+            List<Package_Price> package_Prices = _packageRepository.GetAllPackagePrice().Where(x=>x.ProductID == id).ToList();
+            TempData["Package3"] = package_Prices.Where(x => x.PackageID == 3).ToList();
+            TempData["Package4"] = package_Prices.Where(x => x.PackageID == 4).ToList();
+            TempData["Package5"] = package_Prices.Where(x => x.PackageID == 5).ToList();
+            TempData["Package6"] = package_Prices.Where(x => x.PackageID == 6).ToList();
+
             return View(model);
         }
 
         [Authorize(Roles = "Edit")]
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Edit(ProductCreateViewModel model)
+        public ActionResult Edit(ProductCreateViewModel model, string Package_Price)
         {
             try
             {
@@ -388,7 +405,7 @@ namespace Web.Areas.Admin.Controllers
                         Contents = lang.Contents
                     };
                     productTrans.Add(productTranEdit);
-                } 
+                }
 
                 Product product = new Product
                 {
@@ -398,16 +415,28 @@ namespace Web.Areas.Admin.Controllers
                     MenuID = model.MenuID,
                     Active = true,
                     Type = model.Type,
-                    Price = model.Price,
                     Size = model.Size,
                     DayNumber = model.DayNumber,
                     CountryID =  model.CountryID != null ? string.Join(",", model.CountryID) : null,
-                    LocationID = model.LocationID != null ? string.Join(",", model.LocationID) : null,
-                    HotelID = model.HotelID != null ? string.Join(",", model.HotelID) : null,
-                    NumberStar = model.NumberStar
+                    LocationID = model.LocationID != null ? string.Join(",", model.LocationID) : null
                 };
 
                 productRepository.Edit(product, productTrans);
+
+                List<Package_Price> package_Prices = new List<Package_Price>();
+                JavaScriptSerializer json = new JavaScriptSerializer();
+
+                if (!string.IsNullOrEmpty(Package_Price))
+                {
+                    package_Prices = json.Deserialize<List<Package_Price>>(Package_Price);
+                }
+
+                foreach (Package_Price package in package_Prices)
+                {
+                    if (package.Price == null)
+                        package.Price = 0;
+                    _packageRepository.UpdatePackagePrice(package);
+                }
 
                 return Json(new
                 {

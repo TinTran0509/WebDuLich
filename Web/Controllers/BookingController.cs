@@ -22,10 +22,13 @@ namespace Web.Controllers
         private readonly IProductTransRepository productTransRepository = new ProductTransRepository();
         private readonly ILocationRepository locationRepository = new LocationRepository();
         private readonly IWordRepository wordRepository = new WordRepository();
-        // GET: News
+        private readonly IPackageRepository _packageRepository = new PackageRepository(); 
+
+        // GET: Booking
         public ActionResult Index()
         { 
             string productId = Request.QueryString["tour_id"];
+            string date = Request.QueryString["date"];
             int id = 0;
             int.TryParse(productId, out id);
 
@@ -33,11 +36,15 @@ namespace Web.Controllers
 
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(model.Culture);
 
+            ViewBag.TitlePage = Resources.Language.BookingNow;
+            ViewBag.Url = "https://www.pasoseatours.com/" + model.LinkSeo;
+            ViewBag.SelectedDate = date;
             ViewBag.BookingNow = Resources.Language.BookingNow;
             ViewBag.HomePage = Resources.Language.HomePage;
             ViewBag.ThankYouRequest = Resources.Language.ThankYouRequest;
             ViewBag.Note = Resources.Language.Note;//Passenger
             ViewBag.ArrivalDate = Resources.Language.ArrivalDate;
+            ViewBag.GuideLang = Resources.Language.GuideLang;
             ViewBag.Days = Resources.Language.Days;
             ViewBag.Nigths = Resources.Language.Nigths;
             ViewBag.Itinerary = Resources.Language.Itinerary;
@@ -64,6 +71,7 @@ namespace Web.Controllers
             ViewBag.NotesAnd = Resources.Language.NotesAnd;
             ViewBag.PlaceNotes = Resources.Language.PlaceNotes;
             ViewBag.YCBaoGia = Resources.Language.YCBaoGia;
+            ViewBag.Title = wordRepository.GetValueByKey("Title", model.LangCode);
 
             string sLocation = string.Empty;
             string startPoint = string.Empty;
@@ -86,7 +94,31 @@ namespace Web.Controllers
                 ViewBag.TourType = Resources.Language.Private;
             ViewBag.StartPoint = startPoint;
             ViewBag.Location = sLocation;
+            ViewBag.BookingSuccess = Resources.Language.BookingSuccess;
+            ViewBag.Star = Resources.Language.Star;
+            ViewBag.Package = Resources.Language.Package;
+            ViewBag.Plus = Resources.Language.Plus;
+            ViewBag.NumberPas = Resources.Language.NumberPas;
+ 
+            List<Package_Price> package_Prices = _packageRepository.GetAllPackagePrice().Where(x=>x.ProductID == model.ProductID).ToList();
+           
+            string json = JsonConvert.SerializeObject(package_Prices);
+
+            ViewBag.MessageSelectPackage = Resources.Language.MessageSelectPack;
+            ViewBag.MessageSelectDate = Resources.Language.MessageSelectDate;
+
+            ViewBag.JsonPackage = json;
+
             return View(model);
-        }  
+        } 
+
+        public ActionResult RequestBooking(string form_start_time)
+        {
+            return Json(new
+            {
+                success = true,
+                message = Resources.Language.BookingSuccess,
+            }, JsonRequestBehavior.AllowGet);
+        }
     }
 }

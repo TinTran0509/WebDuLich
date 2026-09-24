@@ -16,12 +16,7 @@
         <div class="row">
             <!-- 9 item -->
             @foreach (var item in prodGroups)
-            {
-                string star = "★";
-                for (int i = 1; i < item.NumberStar; i++)
-                {
-                    star += "★";
-                }
+            { 
                 int night = item.DayNumber - 1;
                 <div class="col-sm-6 col-lg-4 mb-30">
                     <div class="bg-color-fffdfb box-shadow-1 position-relative h-100 pb-115">
@@ -55,15 +50,15 @@
                         </div>
 
                         <div class="position-absolute left-0 right-0 bottom-18 ml-20 mr-20">
-                            <div class="fsz-18 color-ffa534 text-right">
-                                @star
-                            </div>
+                            @*<div class="fsz-18 color-ffa534 text-right">
+                                ★★★★★
+                            </div>*@
                             <hr class="mt-10 mb-15">
                             <div class="d-flex justify-content-between">
                                 <div>
-                                    <span>@ViewBag.Price</span>
+                                    <span></span>
                                     <span class="fsz-18 fw-700 color-111">
-                                        USD @item.Price
+                                        @*USD @item.Price*@
                                     </span>
                                 </div>
                                 <div>
@@ -127,9 +122,9 @@
                             </div>
                         </div> 
                         <div class="position-absolute left-0 right-0 bottom-18 ml-20 mr-20">
-                            <div class="fsz-18 color-ffa534 text-right">
+                            @*<div class="fsz-18 color-ffa534 text-right">
                                 ★★★★
-                            </div>
+                            </div>*@
                             <hr class="mt-10 mb-15">
                             <div class="d-flex justify-content-between">
                                 <div>
