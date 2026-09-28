@@ -99,7 +99,7 @@ namespace Web.Repository.Entity
                 using (var conn = new SqlConnection(_connectString))
                 {
                     StringBuilder sb = new StringBuilder();
-                    sb.Append("SELECT i.Image, it.Title, it. Description,it. Contents FROM IntroductionTrans it ");
+                    sb.Append("SELECT i.Image ,i.Thumbnail, i.UrlVideo, it.Title, it. Description,it. Contents FROM IntroductionTrans it ");
                     sb.Append("JOIN Introduction i ON i.ID = it.IntroductionID "); 
                     sb.Append("WHERE it.LangCode = @LangCode");
 

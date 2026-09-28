@@ -10,7 +10,9 @@ namespace Web.Model.CustomModel
     public class IntroductionViewModel : IntroductionTran
     {
         public string Image { get; set; }
-        public string LangName { get; set; }  
+        public string LangName { get; set; }
+        public string Thumbnail { get; set; }
+        public string UrlVideo { get; set; }
         public int TotalCount { get; set; }
     }
 }

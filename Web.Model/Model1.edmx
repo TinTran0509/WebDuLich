@@ -127,6 +127,8 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Image" Type="varchar" MaxLength="250" />
+          <Property Name="Thumbnail" Type="varchar" MaxLength="250" />
+          <Property Name="UrlVideo" Type="varchar" MaxLength="250" />
           <Property Name="CreatedDate" Type="datetime" />
         </EntityType>
         <EntityType Name="IntroductionTrans">
@@ -140,6 +142,16 @@
           <Property Name="Description" Type="nvarchar" MaxLength="500" />
           <Property Name="Contents" Type="nvarchar(max)" />
           <Property Name="IntroductionID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Itinerary">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Day" Type="nvarchar" MaxLength="150" />
+          <Property Name="Contents" Type="nvarchar(max)" />
+          <Property Name="LangCode" Type="varchar" MaxLength="5" />
+          <Property Name="ProductID" Type="int" />
         </EntityType>
         <EntityType Name="Location">
           <Key>
@@ -509,6 +521,7 @@
           <EntitySet Name="HotelTrans" EntityType="Self.HotelTrans" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Introduction" EntityType="Self.Introduction" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="IntroductionTrans" EntityType="Self.IntroductionTrans" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Itinerary" EntityType="Self.Itinerary" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LocationTrans" EntityType="Self.LocationTrans" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
@@ -707,7 +720,6 @@
           <EntitySet Name="BannerTrans" EntityType="WebDuLichModel.BannerTran" />
           <EntitySet Name="Banners" EntityType="WebDuLichModel.Banner" />
           <EntitySet Name="ProductTrans" EntityType="WebDuLichModel.ProductTran" />
-          <EntitySet Name="Introductions" EntityType="WebDuLichModel.Introduction" />
           <EntitySet Name="IntroductionTrans" EntityType="WebDuLichModel.IntroductionTran" />
           <EntitySet Name="LocationTrans" EntityType="WebDuLichModel.LocationTran" />
           <EntitySet Name="Hotels" EntityType="WebDuLichModel.Hotel" />
@@ -720,16 +732,18 @@
           <EntitySet Name="WordTrans" EntityType="WebDuLichModel.WordTran" />
           <EntitySet Name="Products" EntityType="WebDuLichModel.Product" />
           <EntitySet Name="News" EntityType="WebDuLichModel.News" />
-          <EntitySet Name="Bookings" EntityType="WebDuLichModel.Booking" />
-          <EntitySet Name="NewsTrans" EntityType="WebDuLichModel.NewsTran" />
           <EntitySet Name="Categories" EntityType="WebDuLichModel.Category" />
-          <EntitySet Name="CategoryTrans" EntityType="WebDuLichModel.CategoryTran" />
           <AssociationSet Name="FK__News__CategoryId__6B24EA82" Association="WebDuLichModel.FK__News__CategoryId__6B24EA82">
             <End Role="Category" EntitySet="Categories" />
             <End Role="News" EntitySet="News" />
           </AssociationSet>
+          <EntitySet Name="Bookings" EntityType="WebDuLichModel.Booking" />
+          <EntitySet Name="NewsTrans" EntityType="WebDuLichModel.NewsTran" />
           <EntitySet Name="Packages" EntityType="WebDuLichModel.Package" />
           <EntitySet Name="Package_Price" EntityType="WebDuLichModel.Package_Price" />
+          <EntitySet Name="CategoryTrans" EntityType="WebDuLichModel.CategoryTran" />
+          <EntitySet Name="Introductions" EntityType="WebDuLichModel.Introduction" />
+          <EntitySet Name="Itineraries" EntityType="WebDuLichModel.Itinerary" />
         </EntityContainer>
         <ComplexType Name="Sp_News_GetByLinkSeo_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
@@ -909,14 +923,6 @@
           <Property Name="LangCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="ProductID" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="Introduction">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Image" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
-        </EntityType>
         <EntityType Name="IntroductionTran">
           <Key>
             <PropertyRef Name="ID" />
@@ -1051,6 +1057,29 @@
           <Property Name="Type" Type="Int32" />
           <NavigationProperty Name="Category" Relationship="WebDuLichModel.FK__News__CategoryId__6B24EA82" FromRole="News" ToRole="Category" />
         </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParentID" Type="Int32" />
+          <Property Name="Ordering" Type="Int32" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="Image" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="News" Relationship="WebDuLichModel.FK__News__CategoryId__6B24EA82" FromRole="Category" ToRole="News" />
+        </EntityType>
+        <Association Name="FK__News__CategoryId__6B24EA82">
+          <End Type="WebDuLichModel.Category" Role="Category" Multiplicity="1" />
+          <End Type="WebDuLichModel.News" Role="News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="News">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityType Name="Booking">
           <Key>
             <PropertyRef Name="ID" />
@@ -1081,39 +1110,6 @@
           <Property Name="LangCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="NewsID" Type="Int32" />
         </EntityType>
-        <EntityType Name="Category">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ParentID" Type="Int32" />
-          <Property Name="Ordering" Type="Int32" />
-          <Property Name="Type" Type="Int32" />
-          <Property Name="Image" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="News" Relationship="WebDuLichModel.FK__News__CategoryId__6B24EA82" FromRole="Category" ToRole="News" />
-        </EntityType>
-        <EntityType Name="CategoryTran">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="LinkSeo" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="LangCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="CategoryID" Type="Int32" />
-        </EntityType>
-        <Association Name="FK__News__CategoryId__6B24EA82">
-          <End Type="WebDuLichModel.Category" Role="Category" Multiplicity="1" />
-          <End Type="WebDuLichModel.News" Role="News" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Category">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="News">
-              <PropertyRef Name="CategoryId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Package">
           <Key>
             <PropertyRef Name="ID" />
@@ -1133,6 +1129,36 @@
           <Property Name="Price" Type="Double" />
           <Property Name="PackageID" Type="Int32" Nullable="false" />
           <Property Name="ProductID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CategoryTran">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="LinkSeo" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="LangCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Introduction">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Image" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Thumbnail" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="UrlVideo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Itinerary">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Day" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LangCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="ProductID" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1451,15 +1477,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Introductions">
-            <EntityTypeMapping TypeName="WebDuLichModel.Introduction">
-              <MappingFragment StoreEntitySet="Introduction">
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="IntroductionTrans">
             <EntityTypeMapping TypeName="WebDuLichModel.IntroductionTran">
               <MappingFragment StoreEntitySet="IntroductionTrans">
@@ -1605,6 +1622,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="WebDuLichModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Ordering" ColumnName="Ordering" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Bookings">
             <EntityTypeMapping TypeName="WebDuLichModel.Booking">
               <MappingFragment StoreEntitySet="Booking">
@@ -1637,28 +1665,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Categories">
-            <EntityTypeMapping TypeName="WebDuLichModel.Category">
-              <MappingFragment StoreEntitySet="Category">
-                <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="Ordering" ColumnName="Ordering" />
-                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CategoryTrans">
-            <EntityTypeMapping TypeName="WebDuLichModel.CategoryTran">
-              <MappingFragment StoreEntitySet="CategoryTrans">
-                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
-                <ScalarProperty Name="LangCode" ColumnName="LangCode" />
-                <ScalarProperty Name="LinkSeo" ColumnName="LinkSeo" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Packages">
             <EntityTypeMapping TypeName="WebDuLichModel.Package">
               <MappingFragment StoreEntitySet="Package">
@@ -1681,7 +1687,40 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          <EntitySetMapping Name="CategoryTrans">
+            <EntityTypeMapping TypeName="WebDuLichModel.CategoryTran">
+              <MappingFragment StoreEntitySet="CategoryTrans">
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="LangCode" ColumnName="LangCode" />
+                <ScalarProperty Name="LinkSeo" ColumnName="LinkSeo" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Introductions">
+            <EntityTypeMapping TypeName="WebDuLichModel.Introduction">
+              <MappingFragment StoreEntitySet="Introduction">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UrlVideo" ColumnName="UrlVideo" />
+                <ScalarProperty Name="Thumbnail" ColumnName="Thumbnail" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Itineraries">
+            <EntityTypeMapping TypeName="WebDuLichModel.Itinerary">
+              <MappingFragment StoreEntitySet="Itinerary">
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="LangCode" ColumnName="LangCode" />
+                <ScalarProperty Name="Contents" ColumnName="Contents" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

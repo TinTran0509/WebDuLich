@@ -122,6 +122,7 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Image" Type="varchar" MaxLength="250" />
+    <Property Name="UrlVideo" Type="varchar" MaxLength="250" />
     <Property Name="CreatedDate" Type="datetime" />
   </EntityType>
   <EntityType Name="IntroductionTrans">

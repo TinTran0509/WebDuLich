@@ -41,31 +41,41 @@ namespace Web.Areas.Admin.Controllers
                     file.SaveAs(fTemp);
 
                     // Resize file temp với kích thước 1600
-                    string fileResize = Path.Combine(Server.MapPath("~/Upload/Images/"), fname);
+                    string fileCompress = Path.Combine(Server.MapPath("~/Upload/Images/"), fname);
+                      
+                    byte[] original = System.IO.File.ReadAllBytes(fTemp);
 
-                    //using (var image = Image.FromStream(file.InputStream))
-                    //{
-                    //    SaveResizeJpg(image, fileResize, 1600, 80);
-                    //}
+                    byte[] compressed = CompressImage(original, 80);
 
-                    //System.IO.File.Delete(fTemp);
+                    System.IO.File.WriteAllBytes(fileCompress, compressed);
 
-                    using (var stream = ResizeAndCompressJpg(file.InputStream,1920,80))
-                    {  
-                        //string path = Server.MapPath("~/Uploads/" + fileName);
+                    System.IO.File.Delete(fTemp);
 
-                        using (var fileStream = System.IO.File.Create(fileResize))
-                        {
-                            stream.CopyTo(fileStream);
-                        }
-                    }
-                     
-                    //ResizeAndCompress(fTemp, fileResize, 1600);
-                    //file.SaveAs(fileResize);
                     return "/Upload/Images/" + file.FileName;
                 }
             }
             return "";
+        }
+
+        public static byte[] CompressImage(byte[] imageBytes, long quality)
+        {
+            using (var input = new MemoryStream(imageBytes))
+            using (var image = Image.FromStream(input))
+            using (var output = new MemoryStream())
+            {
+                ImageCodecInfo jpgEncoder = ImageCodecInfo.GetImageEncoders().First(c => c.FormatID == ImageFormat.Jpeg.Guid);
+
+                var encoderParams = new EncoderParameters(1);
+
+                encoderParams.Param[0] = new EncoderParameter(
+                    System.Drawing.Imaging.Encoder.Quality,
+                    quality
+                );
+
+            image.Save(output, jpgEncoder, encoderParams);
+
+                return output.ToArray();
+            }
         }
 
         [HttpGet]

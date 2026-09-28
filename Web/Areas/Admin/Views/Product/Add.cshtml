@@ -72,9 +72,9 @@
 
     .unit {
         display: inline-block
-    }
+    } 
 </style>
-<script src="~/AppJs/product.123.js"></script>
+<script src="~/AppJs/product.js"></script>
 @model Web.Model.CustomModel.ProductCreateViewModel
 @using (Ajax.BeginForm("Add", "Product", null,
     new AjaxOptions
@@ -112,7 +112,7 @@
         <div class="form-group">
             <label class="col-md-2 control-label">Số lượng người</label>
             <div class="col-md-3">
-                @Html.TextBoxFor(model => model.Size, new { @class = "form-control", @PlaceHolder= "10 - 20" })
+                @Html.TextBoxFor(model => model.Size, new { @class = "form-control", @PlaceHolder = "10 - 20" })
             </div>
         </div>
         <div class="form-group">
@@ -253,7 +253,7 @@
                     @Html.HiddenFor(m => m.Languages[i].LangName)
                 </div>
             }
-        </div>
+        </div> 
         <div class="form-group">
             <div class="col-md-2 text-right"><a href="/admin/product" class=""><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay trở lại</a></div>
             <div class="col-md-7 text-center">
@@ -261,10 +261,10 @@
             </div>
         </div>
     </div>
-}
+} 
 <script src="~/Content/plugins/ckeditor/ckeditor.js"></script>
 <script src="~/Content/plugins/ckfinder/ckfinder.js"></script>
-<script>
+<script> 
     function getValueTopic(ckb) {
         $('#MenuID').val(ckb);
     }

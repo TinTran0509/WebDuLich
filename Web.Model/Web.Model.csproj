@@ -173,6 +173,9 @@
     <Compile Include="IntroductionTran.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Itinerary.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Location.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

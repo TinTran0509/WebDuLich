@@ -110,12 +110,21 @@ namespace Web.Repository.Entity
                 connection.Open();
                 using (var tran = connection.BeginTransaction())
                 {
-                    string sqlMenu = $"DELETE FROM Product WHERE ID = @ID";
-                    DynamicParameters parameters = new DynamicParameters();
-                    parameters.Add("ID", id);
+                    string sqlPackage = $"DELETE FROM Package_Price WHERE ProductID = @ProductID";
+                    DynamicParameters parameters1 = new DynamicParameters();
+                    parameters1.Add("ProductID", id);
                     connection.Execute(
-                        sqlMenu,
-                        parameters,
+                        sqlPackage,
+                        parameters1,
+                        commandType: CommandType.Text,
+                        transaction: tran);
+
+                    string sqlProd = $"DELETE FROM Product WHERE ID = @ID";
+                    DynamicParameters parameters2 = new DynamicParameters();
+                    parameters2.Add("ID", id);
+                    connection.Execute(
+                        sqlProd,
+                        parameters2,
                         commandType: CommandType.Text,
                         transaction: tran);
 

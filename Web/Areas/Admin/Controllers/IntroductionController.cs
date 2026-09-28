@@ -163,6 +163,8 @@ namespace Web.Areas.Admin.Controllers
             {
                 ID = id, 
                 Image = introduction.Image,
+                Thumbnail = introduction.Thumbnail,
+                UrlVideo = introduction.UrlVideo,
                 Languages = introductionLanguageViewModels
             };
 
@@ -202,6 +204,8 @@ namespace Web.Areas.Admin.Controllers
                 Introduction introduction = new Introduction();
                 introduction.ID = model.ID;
                 introduction.Image = model.Image;
+                introduction.Thumbnail = model.Thumbnail;
+                introduction.UrlVideo = model.UrlVideo;
 
                 introductionRepository.Edit(introduction);
 

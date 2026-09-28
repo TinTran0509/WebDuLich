@@ -14,5 +14,6 @@ namespace Web.Repository
         Introduction Find(int id);
         int Add(Introduction obj);
         void Edit(Introduction obj);
+        void UpdateVideo(int id);
     }
 }

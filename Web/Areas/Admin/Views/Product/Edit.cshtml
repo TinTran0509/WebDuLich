@@ -83,7 +83,7 @@
         display: inline-block
     }
 </style>
-<script src="~/AppJs/product.123.js"></script>
+<script src="~/AppJs/product.js"></script>
 @model Web.Model.CustomModel.ProductCreateViewModel
 @using (Ajax.BeginForm("Edit", "Product", null,
                 new AjaxOptions
@@ -212,30 +212,78 @@
                         </tr>
                         <tr id="package-3">
                             <td class="text-bold">Gói 3 sao</td>
-                            @foreach (var item in packages3)
+                            @if (packages3.Any())
                             {
-                                <td><input data-id="@item.ID" data-pax="@item.Pax_From-@item.Pax_To" class="package-price form-control" value="@item.Price" />&nbsp;<span class="unit">$</span></td>
+                                foreach (var item in packages3)
+                                {
+                                    <td><input data-id="@item.ID" data-pax="@item.Pax_From-@item.Pax_To" class="package-price form-control" value="@item.Price" />&nbsp;<span class="unit">$</span></td>
+                                }
+                            }
+                            else
+                            {
+                                <td><input data-id="0" data-pax="1-2" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="3-4" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="5-6" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="7-8" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="9-10" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="11-20" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
                             }
                         </tr>
                         <tr id="package-4">
                             <td class="text-bold">Gói 4 sao</td>
-                            @foreach (var item in packages4)
+                            @if (packages4.Any())
                             {
-                                <td><input data-id="@item.ID" data-pax="@item.Pax_From-@item.Pax_To" class="package-price form-control" value="@item.Price" />&nbsp;<span class="unit">$</span></td>
+                                foreach (var item in packages4)
+                                {
+                                    <td><input data-id="@item.ID" data-pax="@item.Pax_From-@item.Pax_To" class="package-price form-control" value="@item.Price" />&nbsp;<span class="unit">$</span></td>
+                                }
+                            }
+                            else
+                            {
+                                <td><input data-id="0" data-pax="1-2" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="3-4" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="5-6" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="7-8" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="9-10" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="11-20" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
                             }
                         </tr>
                         <tr id="package-5">
                             <td data-package="3" class="text-bold">Gói 5 sao</td>
-                            @foreach (var item in packages5)
+                            @if (packages5.Any())
                             {
-                                <td><input data-id="@item.ID" data-pax="@item.Pax_From-@item.Pax_To" class="package-price form-control" value="@item.Price" />&nbsp;<span class="unit">$</span></td>
+                                foreach (var item in packages5)
+                                {
+                                    <td><input data-id="@item.ID" data-pax="@item.Pax_From-@item.Pax_To" class="package-price form-control" value="@item.Price" />&nbsp;<span class="unit">$</span></td>
+                                }
+                            }
+                            else
+                            {
+                                <td><input data-id="0" data-pax="1-2" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="3-4" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="5-6" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="7-8" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="9-10" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="11-20" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
                             }
                         </tr>
                         <tr id="package-6">
                             <td data-package="4" class="text-bold">Gói Plus</td>
-                            @foreach (var item in packages6)
+                            @if (packages6.Any())
                             {
-                                <td><input data-id="@item.ID" data-pax="@item.Pax_From-@item.Pax_To" class="package-price form-control" value="@item.Price" />&nbsp;<span class="unit">$</span></td>
+                                foreach (var item in packages6)
+                                {
+                                    <td><input data-id="@item.ID" data-pax="@item.Pax_From-@item.Pax_To" class="package-price form-control" value="@item.Price" />&nbsp;<span class="unit">$</span></td>
+                                }
+                            }
+                            else
+                            {
+                                <td><input data-id="0" data-pax="1-2" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="3-4" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="5-6" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="7-8" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="9-10" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="11-20" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
                             }
                         </tr>
                     </tbody>

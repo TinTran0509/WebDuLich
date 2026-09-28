@@ -13,7 +13,7 @@
         locations += locations.Equals("") ? item.Name : "<span class='fw-400 ml-5 mr-5'>➙</span>" + item.Name;
     }
 
-    List<ProductModel> relates = (List<ProductModel>)TempData["Relates"]; 
+    List<ProductModel> relates = (List<ProductModel>)TempData["Relates"];
 }
 
 <div class="page-banner">
@@ -61,7 +61,6 @@
 
 <div class="pt-60 sm-pt-50 pb-50 text-center" id="overview">
     <div class="container">
-        @*<div class="mw-680 center-block">*@
         <div class="align-items-center">
             @Html.Raw(Model.Contents)
         </div>
@@ -99,14 +98,6 @@
                         @ViewBag.LangName
                     </div>
                 </div>
-                @*<div class="col-6 col-md-3 col-lg-20">
-                    <div class="d-inline-block pb-5 bb-bd1e2d bw-2">
-                        Hotel
-                    </div>
-                    <div class="fw-700 fsz-22 pt-10 color-ffa534 ls-02">
-                        ★★★★★
-                    </div>
-                </div>*@
                 <div class="col-6 col-md-3 col-lg-20">
                     <div class="d-inline-block pb-5 bb-bd1e2d bw-2">
                         @ViewBag.TourTypeDes
@@ -121,15 +112,6 @@
                     </div>
                     <div class="fw-700 fsz-22 pt-10">@Model.Size</div>
                 </div>
-
-                @*<div class="col-6 col-md-3 col-lg-20">
-                        <div class="d-inline-block pb-5 bb-bd1e2d bw-2">
-                            @ViewBag.Price
-                        </div>
-                        <div class="fw-700 fsz-22 pt-10">
-                            USD @Model.Price
-                        </div>
-                    </div>*@
             </div>
         </div>
         <div class="text-center pt-40">
@@ -173,11 +155,211 @@
             <div class="swiper-button-next right--60"></div>
         </div>
     </div>
-</div>
+</div>  
 
 <div class="pt-45" id="itinerary">
     <div class="container">
-
+        <h2 class="section-title text-center mt-0">
+            <span>
+                <font dir="auto" style="vertical-align: inherit"><font dir="auto" style="vertical-align: inherit">@ViewBag.Itinerary</font></font>
+            </span>
+        </h2> 
+        <div class="center-block pt-30">
+            <div class="oc-accordion oc-itinerary">
+                <div class="item">
+                    <h3 class="item-title">
+                        <font dir="auto" style="vertical-align: inherit"><font dir="auto" style="vertical-align: inherit"> Ngày 1: Đến Tokyo </font></font>
+                    </h3>
+                    <div class="item-content" style="display: none">
+                        <p></p>
+                        <p>
+                            <font dir="auto" style="vertical-align: inherit"><font dir="auto" style="vertical-align: inherit">Đến sân bay Tokyo. </font></font><br /><font dir="auto" style="vertical-align: inherit">
+                                <font dir="auto" style="vertical-align: inherit">
+                                    Di chuyển đến khách sạn ở Tokyo để làm thủ tục nhận phòng.
+                                </font>
+                            </font>
+                        </p>
+                        <p></p>
+                        <p>
+                            <font dir="auto" style="vertical-align: inherit">
+                                <font dir="auto" style="vertical-align: inherit">
+                                    Bữa ăn: Chỗ ở không bao gồm bữa ăn
+                                </font>
+                            </font>
+                        </p>
+                    </div>
+                </div>
+                <div class="item">
+                    <h3 class="item-title">
+                        <font dir="auto" style="vertical-align: inherit"><font dir="auto" style="vertical-align: inherit"> Ngày 2: Tokyo - Tham quan </font></font>
+                    </h3>
+                    <div class="item-content">
+                        <p></p>
+                        <p>
+                            Desayuno en el hotel<br />
+                            08:20 Reunión en el lobby de la Planta Baja / Piso 1 de la torre principal The Main<br />
+                            Visita en grupo de Tokio de media jornada con un guía de habla española; conoceremos
+                            Santuario Meiji, dedicado al ex-emperador Mutsuhito Plaza del Palacio Imperial (No entrarán
+                            en el recinto del palacio) Templo Senso-ji &amp; Calle Nakamise con hileras de tiendas de
+                            recuerdos<br />
+                            13:00 El tour termina en Ginza. Tarde libre.
+                        </p>
+                        <p></p>
+                        <p>Comidas: Desayuno</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <h3 class="item-title">
+                        <font dir="auto" style="vertical-align: inherit"><font dir="auto" style="vertical-align: inherit"> Ngày 3: Tokyo - Hakone </font></font>
+                    </h3>
+                    <div class="item-content">
+                        <p></p>
+                        <p>
+                            Desayuno en el hotel<br />
+                            07:50 Reunión en el vestíbulo del hotel<br />
+                            Excursión en grupo de día completo a Hakone, acompañados por un guía que domina el español.
+                            Durante la excursión visitaremos el lago Ashi, donde daremos un encantador paseo en barco, y
+                            el valle de Owakudani. En los días despejados, podremos admirar el majestuoso monte Fuji
+                            tanto desde el Lago Ashi como desde el Valle Owakudani. Terminaremos el día con una visita
+                            al Museo al Aire Libre de Hakone.
+                        </p>
+                        <p></p>
+                        <p>Comidas: Desayuno</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <h3 class="item-title">
+                        <font dir="auto" style="vertical-align: inherit">
+                            <font dir="auto" style="vertical-align: inherit">
+                                Ngày 4: Tokyo - Kyoto - Nara
+                            </font>
+                        </font>
+                    </h3>
+                    <div class="item-content">
+                        <p></p>
+                        <p>
+                            Desayuno en el hotel<br />
+                            08:00 Encuentro en el vestíbulo y traslado a la estación de Tokio con un asistente que
+                            domina el español.<br />
+                            09:21 Salida de Tokio hacia Kioto en el tren bala Nozomi #215.<br />
+                            11:32 Llegada a la estación de Kioto, donde será recibido por un guía que domina el
+                            español.<br />
+                            Nota: Los horarios de los trenes están sujetos a cambios. El almuerzo no está incluido en la
+                            excursión.
+                        </p>
+                        <p>
+                            Inicio de la excursión en grupo a Nara.<br />
+                            En Nara, visitaremos
+                        </p>
+                        <ul>
+                            <li>
+                                Templo Todai-ji: Visite el imponente Templo Todai-ji, conocido por su colosal estatua de
+                                Buda y su impresionante arquitectura.
+                            </li>
+                            <li>
+                                Parque de Nara: Explore el encantador Parque de Nara, famoso por los ciervos que
+                                deambulan libremente y que proporcionan una experiencia única de interacción con la
+                                naturaleza.
+                            </li>
+                        </ul>
+                        <p>En Kioto, visitaremos</p>
+                        <ul>
+                            <li>
+                                Gion: Conozca el tradicional barrio de Gion, famoso por sus casas de té y la presencia
+                                de geishas, que ofrecen una visión de la cultura y tradición japonesas.
+                            </li>
+                        </ul>
+                        <p>18:30-19:00 Llegada al hotel en Kioto y check-in.</p>
+                        <p></p>
+                        <p>Comidas: Desayuno</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <h3 class="item-title">
+                        <font dir="auto" style="vertical-align: inherit"><font dir="auto" style="vertical-align: inherit"> Ngày 5: Kyoto - Tham quan </font></font>
+                    </h3>
+                    <div class="item-content">
+                        <p></p>
+                        <p>
+                            Desayuno en el hotel<br />
+                            08:20 Reunión en el vestíbulo del hotel<br />
+                            Excursión en grupo de día completo por Kioto con un guía que domina el español:
+                        </p>
+                        <ul>
+                            <li>
+                                Templo Sanjusangendo: Explore este notable templo, famoso por sus mil estatuas de
+                                Kannon, el dios de la misericordia.
+                            </li>
+                            <li>
+                                Santuario Fushimi Inari: Visite este emblemático santuario, conocido por sus miles de
+                                torii rojos que forman impresionantes pasillos.
+                            </li>
+                            <li>
+                                Templo Kinkaku-ji (Templo Dorado): Admire el impresionante Kinkaku-ji, un templo
+                                cubierto de pan de oro que se refleja en un sereno lago.
+                            </li>
+                            <li>
+                                Templo Tenryu-ji: Visite este templo histórico, famoso por su hermoso jardín japonés.
+                            </li>
+                            <li>
+                                Arboleda de bambú de Sagano: Pasee por la encantadora Arboleda de bambú de Arashiyama,
+                                una experiencia tranquila y fascinante.
+                            </li>
+                        </ul>
+                        <p>
+                            Almuerzo en un restaurante.<br />
+                            17:30 Regreso al hotel.
+                        </p>
+                        <p></p>
+                        <p>Comidas: Desayuno, Almuerzo</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <h3 class="item-title">
+                        <font dir="auto" style="vertical-align: inherit"><font dir="auto" style="vertical-align: inherit"> Ngày 6: Kyoto - Ngày tự do </font></font>
+                    </h3>
+                    <div class="item-content">
+                        <p></p>
+                        <p>
+                            Desayuno en el hotel<br />
+                            Día libre
+                        </p>
+                        <p></p>
+                        <p>Comidas: Desayuno</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <h3 class="item-title">
+                        <font dir="auto" style="vertical-align: inherit">
+                            <font dir="auto" style="vertical-align: inherit">Ngày 7: Kyoto - Kanazawa - Tham quan</font>
+                        </font>
+                    </h3>
+                    <div class="item-content">
+                        <p></p>
+                        <p>
+                            Desayuno en el hotel.<br />
+                            08:00 Encuentro en el lobby con un guía de habla hispana y traslado a Kanazawa en autobús
+                            privado (dependiendo del número de pasajeros, podría ser una furgoneta).<br />
+                            12:00 Llegada a Kanazawa.<br />
+                            Visita de día completo en grupo a Kanazawa, donde conocerán:
+                        </p>
+                        <ul>
+                            <li>
+                                Mercado Omicho: Mercado animado con venta de pescados, mariscos, vegetales y mucho más.
+                            </li>
+                            <li>Barrio Higashichaya: Barrio tradicional conocido por sus casas de té antiguas.</li>
+                            <li>
+                                Jardín Kenrokuen: Uno de los jardines más famosos de Japón, considerado un ejemplo
+                                perfecto de jardín paisajístico japonés.
+                            </li>
+                        </ul>
+                        <p>17:00-17:30 Traslado al hotel en Kanazawa y check-in</p>
+                        <p></p>
+                        <p>Comidas: Desayuno</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="pt-30">
@@ -201,12 +383,7 @@
         </h2>
         <div class="row">
             @foreach (var item in relates)
-            {
-                //string starMore = "★";
-                //for (int i = 1; i < item.NumberStar; i++)
-                //{
-                //    starMore += "★";
-                //}
+            { 
                 int night = item.DayNumber - 1;
                 <div class="col-sm-6 col-lg-4 mb-30">
                     <div class="bg-color-fffdfb box-shadow-1 position-relative h-100 pb-115">
@@ -239,8 +416,8 @@
                         </div>
                         <div class="position-absolute left-0 right-0 bottom-18 ml-20 mr-20">
                             @*<div class="fsz-18 color-ffa534 text-right">
-                                @starMore
-                            </div>*@
+                                    @starMore
+                                </div>*@
                             <hr class="mt-10 mb-15">
                             <div class="d-flex justify-content-between">
                                 <div>

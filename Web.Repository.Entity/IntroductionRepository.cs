@@ -53,12 +53,39 @@ namespace Web.Repository.Entity
                 {
                     StringBuilder sb = new StringBuilder();
                     sb.Append("UPDATE Introduction ");
-                    sb.Append("SET Image = @Image "); 
+                    sb.Append("SET Image = @Image, Thumbnail = @Thumbnail, UrlVideo = @UrlVideo "); 
                     sb.Append("WHERE ID = @ID");
 
                     DynamicParameters parameters = new DynamicParameters();
                     parameters.Add("ID", obj.ID);
-                    parameters.Add("Image", obj.Image); 
+                    parameters.Add("Image", obj.Image);
+                    parameters.Add("Thumbnail", obj.Thumbnail);
+                    parameters.Add("UrlVideo", obj.UrlVideo);
+                    conn.Execute(sb.ToString(),
+                        parameters,
+                        commandType: CommandType.Text);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void UpdateVideo(int id)
+        {
+            try
+            {
+                using (var conn = new SqlConnection(_connectString))
+                {
+                    StringBuilder sb = new StringBuilder();
+                    sb.Append("UPDATE Introduction ");
+                    sb.Append("SET UrlVideo = @UrlVideo ");
+                    sb.Append("WHERE ID = @ID");
+
+                    DynamicParameters parameters = new DynamicParameters();
+                    parameters.Add("ID", id);
+                    parameters.Add("UrlVideo", null);
                     conn.Execute(sb.ToString(),
                         parameters,
                         commandType: CommandType.Text);
@@ -82,7 +109,7 @@ namespace Web.Repository.Entity
                 using (var conn = new SqlConnection(_connectString))
                 {
                     StringBuilder sb = new StringBuilder();
-                    sb.Append("SELECT i.ID, i.Image, it.Title, it. Description,it. Contents,it.IntroductionID, l.LangName FROM IntroductionTrans it ");
+                    sb.Append("SELECT i.ID, i.Image, i.Thumbnail, it.Title, it. Description,it. Contents,it.IntroductionID, l.LangName FROM IntroductionTrans it ");
                     sb.Append("JOIN Introduction i ON i.ID = it.IntroductionID ");
                     sb.Append("JOIN tbl_Languages l ON l.LangCode = it.LangCode");
 

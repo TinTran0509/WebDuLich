@@ -50,7 +50,7 @@
     <Compile Include="IWordRepository.cs" />
     <Compile Include="IHotelRepository.cs" />
     <Compile Include="ILocationRepository.cs" />
-    <Compile Include="IntroductionTransRepository.cs" />
+    <Compile Include="IIntroductionTransRepository.cs" />
     <Compile Include="IProductTransRepository.cs" />
     <Compile Include="IProductRepository.cs" />
     <Compile Include="ICountryRepository.cs" />

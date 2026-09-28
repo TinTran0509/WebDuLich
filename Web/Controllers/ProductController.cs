@@ -111,6 +111,7 @@ namespace Web.Controllers
             ViewBag.Star = Resources.Language.Star;
             ViewBag.Package = Resources.Language.Package;
             ViewBag.Plus = Resources.Language.Plus;
+            ViewBag.Itinerary = Resources.Language.Itinerary;
 
             return View(model);
         } 

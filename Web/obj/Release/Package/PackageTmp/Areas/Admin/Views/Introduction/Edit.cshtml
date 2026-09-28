@@ -51,6 +51,11 @@
             font-size: 13px;
             font-weight: bold;
         }
+    .del-video {  
+        margin-left: 5px;
+        font-size: 20px;
+        color: red
+    }
 </style>
 @model  Web.Model.CustomModel.IntroductionCreateViewModel
 <script src="~/AppJs/introduction.js"></script>
@@ -67,7 +72,7 @@
     <div class="article-create">
         <div class="form-group">
             <div class="col-md-2 text-left">
-                <a href="/admin/roduct" class=""><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay trở lại</a>
+                <a href="/admin/introduction" class=""><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay trở lại</a>
             </div>
             <div class="col-md-6">
                 <h4>Cập nhật sản phẩm</h4>
@@ -83,6 +88,53 @@
                 <span class="error" id="spImg"></span>
             </div>
         </div>
+        @*<div class="form-group">
+                <label class="col-md-1 control-label">Video <span class="asterisk"> (*)</span></label>
+                <div class="col-md-10 pull-right">
+                    <div class="radio radio-info radio-inline" onclick="$('.indirect').hide(); $('.direct').show();">
+                            <input type="radio" id="direct" value="1" name="Type">
+                            <label for="direct"> Trực tiếp </label>
+                        </div>
+                    <div class="radio radio-info radio-inline" onclick="$('.indirect').show(); $('.direct').hide();">
+                        <input type="radio" id="indirect" value="2" name="Type" checked="">
+                        <label for="indirect"> Youtube </label>
+                    </div>
+                </div>
+            </div>*@
+        <div class="form-group direct">
+            <label class="col-md-1 control-label">Video <span class="asterisk"> (*)</span></label>
+            <div class="col-md-10 pull-right">
+                <input type="file" id="btn-upload-video" class="btn btn-success btn-flat browser-image hidden" value="Chọn file văn bản">
+                @if (Model.UrlVideo == null)
+                {
+                    <div class="upload-ajax">
+                        <a href="javascript:void(0)" type="button" id="Upload" class="btn btn-info" onclick="$('#btn-upload-video').click()"><i class="md-file-upload"></i> Upload video </a>
+                        <i class="ion-loading-a loading-ajax" style="display: none;"></i>
+                    </div>
+                }
+                <div id="fileupload" class="fileupload">
+                    <video width="320" height="240" controls>
+                        <source id="s-video" src="@Model.UrlVideo" type="video/mp4">
+                    </video>
+                    @if (Model.UrlVideo != null)
+                    {
+                        <div style="display: inline-block; position: absolute;">
+                            <a href="#" class="del-video" data-path="@Model.UrlVideo" title="Xóa" onclick="deleteVideo(this)"><i class="fa fa-times"></i></a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        @*<div class="form-group indirect">
+                <label class="col-md-2 control-label">Url</label>
+                <div class="col-md-10">
+                    <input type="text" id="urlyoutube" name="Url" class="form-control" placeholder="https://www.youtube.com/watch?v=id" />
+                    <div class="wrap-thumb-video" id="iframeyoutube">
+                        @Html.HiddenFor(g => g.Images)
+                        <img id="imgyoutube" src="/Content/Admin/assets/ckeditor/plugins/image/images/noimage.png" width="320" height="240" />
+                    </div>
+                </div>
+            </div>*@
         <ul class="nav nav-tabs lang-tabs">
             @for (int i = 0; i < Model.Languages.Count; i++)
             {
@@ -125,17 +177,48 @@
             </div>
         </div>
     </div>
-
+    <input type="hidden" id="indirect" value="2" name="Type">
+    <input type="hidden" id="indirect" value="1" name="PageElementId">
+    @Html.HiddenFor(g => g.UrlVideo)
 }
 <script src="~/Content/plugins/ckeditor/ckeditor.js"></script>
 <script src="~/Content/plugins/ckfinder/ckfinder.js"></script>
 <script>
+    function deleteVideo(vdeo)
+    {
+        let id = $('#ID').val();
+        let fullPath = $(vdeo).data('path');
+        let fName = fullPath.split('/')[4];
+        AjaxService.POST("/Admin/Video/Delete", { id: id, fPath: fName }, function (res) {
+            if (res.status)
+            {
+               /* document.querySelector('#s-video').setAttribute('src','')*/
+                location.reload();
+            }
+            alert(res.msg);
+        });
+    }
+
     $(document).ready(function () {
         $('#Title').on('blur', function () {
             let link = $('#Title').val();
             let linkSeo = RemoveMarkStr(link);
             $('#LinkSeo').val(linkSeo);
         })
+        $("#frmData #urlyoutube").change(function () {
+            var img = jYoutube($(this).val(), 320);
+            $("#frmData #imgyoutube").attr('src', img);
+            $("#frmData #Images").val(img);
+            $("#frmData #Url").val($("#urlyoutube").val());
+        });
+        $("#btn-upload-video").uploadvideo(".loading-ajax", function (res) {
+            var htmlvideo = '<video width="320" height="240" controls>\
+        <source src="' + res.file.FileName + '" type="video/mp4">\
+    </video>';
+            $("#fileupload").html(htmlvideo);
+            $("#UrlVideo").val(res.file.FileName);
+            $(".loading-ajax").hide();
+        });
     });
     $('.article-description').each(function () {
         var textareaId = $(this).attr('id');
@@ -165,4 +248,21 @@
             filebrowserFlashUploadUrl: '/Scripts/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Flash'
         });
     })
+    function jYoutube(url, size) {
+        if (url === null) { return ""; }
+
+        size = (size === null) ? "big" : size;
+        var vid;
+        var results;
+
+        results = url.match("[\?&]v=([^&#]*)");
+
+        vid = (results === null) ? url : results[1];
+
+        if (size == "small") {
+            return "http://img.youtube.com/vi/" + vid + "/2.jpg";
+        } else {
+            return "http://img.youtube.com/vi/" + vid + "/0.jpg";
+        }
+    }
 </script>

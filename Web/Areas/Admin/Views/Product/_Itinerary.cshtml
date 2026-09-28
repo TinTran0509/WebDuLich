@@ -1,0 +1,224 @@
+﻿@using Web.Model.CustomModel
+
+<style>
+    .day-item {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+
+    .language-tabs {
+        display: flex;
+        gap: 5px;
+        margin-bottom: 10px;
+    }
+
+    .lang-tab {
+        border: 1px solid #ddd;
+        background: #f5f5f5;
+        padding: 8px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .lang-tab.active {
+        background: #1976d2;
+        color: white;
+        border-color: #1976d2;
+    }
+    .day-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .btn-delete-day {
+        background: #dc3545;
+        color: white;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .btn-delete-day:hover {
+        background: #bb2d3b;
+    }
+    .destination{margin-bottom:5px}
+</style>
+
+@using (Ajax.BeginForm("Add", "Product", null,
+    new AjaxOptions
+    {
+        HttpMethod = "POST",
+        OnSuccess = "Product.onAddSuccess"
+    },
+    new { @id = "frmData", @class = "form-horizontal" }))
+ { 
+    <div id="days"></div>
+
+    <button type="button" class="btn btn-primary waves-effect waves-light" onclick="addDay()">
+        <i class="glyphicon glyphicon-plus"></i>&nbsp;Thêm ngày
+    </button>
+    <div class="form-group">
+        <div class="text-center">
+            <button onclick="getData()" type="button" class="btn btn-primary waves-effect waves-light">Lưu lại</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+        </div>
+    </div>
+ }
+
+<script>
+    let days = [];
+    let dayIndex = 0;
+    const languages = [
+        {
+            code: 'vi',
+            name: 'Tiếng Việt'
+        },
+        {
+            code: 'en',
+            name: 'English'
+        },
+        {
+            code: 'es',
+            name: 'Español'
+        }
+    ];
+    function addDay() {
+        dayIndex++;
+        const dayId = dayIndex;
+        const day = document.createElement('div');
+        day.className = 'day-item';
+        day.dataset.day = dayId;
+        day.innerHTML =
+           `<div class="day-header">
+            <label>Ngày ${dayId}:</label>
+            <button type="button"
+                class="btn btn-delete-day"
+                onclick="removeDay(${dayId})">
+            Xóa ngày
+        </button>
+            </div>
+            <div class="language-tabs">
+            ${languages.map(lang => `
+                <button
+                    type="button"
+                    class="btn lang-tab ${lang.code === 'vi' ? 'active' : ''}"
+                    data-lang="${lang.code}">
+                    ${lang.name}
+                </button>`).join('')}
+        </div>
+        <input type="text" id="day-${dayId}" class="form-control destination" placeholder = "Điểm đến"/>
+        <textarea id="editor-${dayId}"></textarea>`;
+
+        document.getElementById('days').appendChild(day);
+
+        // Data của ngày
+        const dayData = {
+            day: dayId,
+            currentLanguage: 'vi',
+            contents: {
+                vi: '',
+                en: '',
+                es: ''
+            },
+            editor: null
+        };
+
+        days.push(dayData);
+
+        // Tạo CKEditor
+        ClassicEditor.create(document.getElementById(`editor-${dayId}`), {
+                    toolbar: [
+                    'heading',
+                    '|',
+                    'bold',
+                    'italic',
+                    'underline',
+                    'link',
+                    'bulletedList',
+                    'numberedList',
+                    '|',
+                    'blockQuote',
+                    'insertTable',
+                    'undo',
+                    'redo'
+                    ]
+                }
+            )
+            .then(function (editor) {
+                dayData.editor = editor;
+                setupLanguageTabs(day, dayData);
+            })
+            .catch(function (error) {
+                console.error(error);
+            });
+    }
+
+    function setupLanguageTabs(dayElement, dayData) {
+        const tabs = dayElement.querySelectorAll('.lang-tab');
+        tabs.forEach(function (tab) {
+            tab.addEventListener('click', function () {
+                dayData.contents[dayData.currentLanguage] = dayData.editor.getData();
+                const newLanguage = this.dataset.lang;
+                dayData.currentLanguage = newLanguage;
+                dayData.editor.setData(
+                    dayData.contents[newLanguage]
+                );
+                tabs.forEach(function (item) {
+                    item.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+    }
+
+    function removeDay(dayId) { 
+        if (!confirm('Bạn có chắc muốn xóa ngày này?')) {
+            return;
+        }
+        const index = days.findIndex(x => x.day === dayId); 
+        if (index === -1) {
+            return;
+        } 
+        const dayData = days[index]; 
+        if (dayData.editor) { 
+            dayData.editor.destroy()
+                .then(function () {
+
+                    console.log('Editor destroyed:', dayId);
+
+                })
+                .catch(function (error) {
+
+                    console.error(error);
+
+                });
+        } 
+        const dayElement = document.querySelector(`[data-day="${dayId}"]`);
+
+        if (dayElement) {
+            dayElement.remove();
+        }
+         
+        days.splice(index, 1);
+    }
+
+    function getData() {
+        days.forEach(function (day) {
+            day.contents[day.currentLanguage] = day.editor.getData();
+        });
+        const result = days.map(function (day) {
+            return {
+                day: day.day,
+                vi: day.contents.vi,
+                en: day.contents.en,
+                es: day.contents.es
+            };
+        });
+        console.log(result);
+        return result;
+    }
+</script>

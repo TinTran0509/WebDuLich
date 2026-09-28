@@ -127,6 +127,10 @@ namespace Web.Controllers
         {
             string langCode = (string)Session["LangCode"];
             IntroductionViewModel introduction = introductionTransRepository.GetByLangCode(langCode);
+            if (introduction != null && string.IsNullOrEmpty(introduction.Thumbnail))
+            {
+                introduction.Thumbnail = "/Content/images/logo.jpg";
+            }
             return PartialView(introduction);
         }
 

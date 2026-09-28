@@ -43,15 +43,18 @@
                     {
                         <td rowspan="2">
                             <div class="btn-list pull-right mr5">
+                                <a href="#" class="btn btn-primary btn-bordered" onclick="Product.loadfrmAddItinerary(@item.ProductID) " title="Thêm lịch trình">
+                                    <i class="glyphicon glyphicon-plus"></i>
+                                </a>
                                 @if (lstAction != null && lstAction.Contains((int)EnumHelper.Action.Edit))
                                 {
-                                    <a href="/admin/product/edit?id=@item.ProductID" class="btn btn-primary btn-bordered" title="Sửa">
+                                    <a style="margin-top:2px" href="/admin/product/edit?id=@item.ProductID" class="btn btn-primary btn-bordered" title="Sửa">
                                         <i class="glyphicon glyphicon-pencil"></i>
                                     </a>
                                 }
                                 @if (lstAction != null && lstAction.Contains((int)EnumHelper.Action.Delete))
                                 {
-                                    <a href="#" class="btn btn-danger btn-bordered" onclick="Product.ondelete(@item.ID) " title="Xóa">
+                                    <a style="margin-top:2px" href="#" class="btn btn-danger btn-bordered" onclick="Product.ondelete(@item.ID) " title="Xóa">
                                         <i class="glyphicon glyphicon-trash"></i>
                                     </a>
                                 }

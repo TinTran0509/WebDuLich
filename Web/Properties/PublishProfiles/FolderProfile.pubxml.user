@@ -8,7 +8,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <_NewBackgroundProfile>False</_NewBackgroundProfile>
     <_PublishTargetUrl>D:\WebDuLich\Publish</_PublishTargetUrl>
-    <History>False|2026-09-24T12:32:44.4371985Z;True|2026-09-22T09:48:46.0607755+07:00;True|2025-04-10T21:20:09.3786329+07:00;True|2025-04-10T18:03:04.4951430+07:00;True|2025-04-03T19:17:07.6374298+07:00;True|2025-04-02T23:34:18.5319691+07:00;True|2025-04-02T20:55:51.6091434+07:00;True|2025-04-01T15:22:35.8083904+07:00;True|2025-03-31T16:24:29.6568477+07:00;True|2025-03-29T22:28:09.9370512+07:00;True|2025-03-29T10:28:15.9484777+07:00;True|2025-03-29T10:08:52.3331530+07:00;True|2025-03-28T21:34:52.5235011+07:00;True|2025-03-28T16:50:57.1386543+07:00;</History>
+    <History>True|2026-09-27T03:50:49.4710776Z;True|2026-09-25T08:10:57.4892154+07:00;False|2026-09-24T19:32:44.4371985+07:00;True|2026-09-22T09:48:46.0607755+07:00;True|2025-04-10T21:20:09.3786329+07:00;True|2025-04-10T18:03:04.4951430+07:00;True|2025-04-03T19:17:07.6374298+07:00;True|2025-04-02T23:34:18.5319691+07:00;True|2025-04-02T20:55:51.6091434+07:00;True|2025-04-01T15:22:35.8083904+07:00;True|2025-03-31T16:24:29.6568477+07:00;True|2025-03-29T22:28:09.9370512+07:00;True|2025-03-29T10:28:15.9484777+07:00;True|2025-03-29T10:08:52.3331530+07:00;True|2025-03-28T21:34:52.5235011+07:00;True|2025-03-28T16:50:57.1386543+07:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
@@ -436,16 +436,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/21/2019 11:47:07</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Introduction/Add.cshtml">
-      <publishTime>08/31/2026 09:03:25</publishTime>
+      <publishTime>09/25/2026 10:37:06</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Introduction/Edit.cshtml">
-      <publishTime>09/02/2026 16:11:46</publishTime>
+      <publishTime>09/27/2026 10:38:55</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Introduction/Index.cshtml">
       <publishTime>08/31/2026 10:04:16</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Introduction/_ListData.cshtml">
-      <publishTime>09/15/2026 12:01:20</publishTime>
+      <publishTime>09/26/2026 21:49:40</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Language/Index.cshtml">
       <publishTime>08/24/2026 10:52:21</publishTime>
@@ -565,7 +565,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/25/2025 19:27:33</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Product/Edit.cshtml">
-      <publishTime>09/24/2026 21:45:19</publishTime>
+      <publishTime>09/25/2026 08:03:42</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Product/Index.cshtml">
       <publishTime>09/24/2026 20:53:49</publishTime>
@@ -985,7 +985,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/15/2019 21:30:54</publishTime>
     </File>
     <File Include="bin/en/Web.resources.dll">
-      <publishTime>09/24/2026 22:35:48</publishTime>
+      <publishTime>09/27/2026 10:49:46</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>09/15/2019 21:30:54</publishTime>
@@ -1006,7 +1006,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/15/2019 21:30:54</publishTime>
     </File>
     <File Include="bin/es/Web.resources.dll">
-      <publishTime>09/24/2026 22:35:49</publishTime>
+      <publishTime>09/27/2026 10:49:46</publishTime>
     </File>
     <File Include="bin/Excel.dll">
       <publishTime>09/15/2019 21:30:54</publishTime>
@@ -1138,43 +1138,43 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/15/2019 21:30:54</publishTime>
     </File>
     <File Include="bin/vi/Web.resources.dll">
-      <publishTime>09/24/2026 22:35:49</publishTime>
+      <publishTime>09/27/2026 10:49:47</publishTime>
     </File>
     <File Include="bin/Web.Core.dll">
-      <publishTime>09/24/2026 17:31:59</publishTime>
+      <publishTime>09/26/2026 16:55:32</publishTime>
     </File>
     <File Include="bin/Web.Core.pdb">
-      <publishTime>09/24/2026 17:31:59</publishTime>
+      <publishTime>09/26/2026 16:55:32</publishTime>
     </File>
     <File Include="bin/Web.dll">
-      <publishTime>09/24/2026 22:35:48</publishTime>
+      <publishTime>09/27/2026 10:49:46</publishTime>
     </File>
     <File Include="bin/Web.Model.dll">
-      <publishTime>09/24/2026 17:31:59</publishTime>
+      <publishTime>09/26/2026 21:37:16</publishTime>
     </File>
     <File Include="bin/Web.Model.dll.config">
       <publishTime>03/24/2025 11:24:06</publishTime>
     </File>
     <File Include="bin/Web.Model.pdb">
-      <publishTime>09/24/2026 17:31:59</publishTime>
+      <publishTime>09/26/2026 21:37:16</publishTime>
     </File>
     <File Include="bin/Web.pdb">
-      <publishTime>09/24/2026 22:35:48</publishTime>
+      <publishTime>09/27/2026 10:49:46</publishTime>
     </File>
     <File Include="bin/Web.Repository.dll">
-      <publishTime>09/24/2026 22:35:46</publishTime>
+      <publishTime>09/27/2026 10:49:42</publishTime>
     </File>
     <File Include="bin/Web.Repository.Entity.dll">
-      <publishTime>09/24/2026 22:35:46</publishTime>
+      <publishTime>09/27/2026 10:49:43</publishTime>
     </File>
     <File Include="bin/Web.Repository.Entity.dll.config">
       <publishTime>08/25/2026 09:13:25</publishTime>
     </File>
     <File Include="bin/Web.Repository.Entity.pdb">
-      <publishTime>09/24/2026 22:35:46</publishTime>
+      <publishTime>09/27/2026 10:49:43</publishTime>
     </File>
     <File Include="bin/Web.Repository.pdb">
-      <publishTime>09/24/2026 22:35:46</publishTime>
+      <publishTime>09/27/2026 10:49:42</publishTime>
     </File>
     <File Include="bin/WebActivator.dll">
       <publishTime>09/15/2019 21:30:54</publishTime>
@@ -9743,6 +9743,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Content/images/logo.jpg">
       <publishTime>09/05/2026 20:23:34</publishTime>
+    </File>
+    <File Include="Content/images/noimage.jpg">
+      <publishTime>09/25/2026 11:13:56</publishTime>
     </File>
     <File Include="Content/PagedList.css">
       <publishTime>05/30/2018 15:12:51</publishTime>
@@ -54544,7 +54547,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/11/2019 22:13:41</publishTime>
     </File>
     <File Include="Views/Home/Banner.cshtml">
-      <publishTime>09/02/2026 18:09:51</publishTime>
+      <publishTime>09/26/2026 22:07:17</publishTime>
     </File>
     <File Include="Views/Home/Category.cshtml">
       <publishTime>04/01/2025 08:44:11</publishTime>
@@ -54781,7 +54784,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/15/2019 21:30:54</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>09/24/2026 19:32:39</publishTime>
+      <publishTime>09/27/2026 10:50:13</publishTime>
     </File>
   </ItemGroup>
 </Project>

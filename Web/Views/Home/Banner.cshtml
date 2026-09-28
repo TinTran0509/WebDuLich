@@ -24,12 +24,108 @@
             font-weight: 700;
             letter-spacing: .3px;
         }
+
         .container table, th, td {
             width: 100% !important;
             border: none
         }
+
         .align-items-center table tr td:first-child {
             padding-right: 25px !important
+        }
+        .video-card {
+            width: 100%;
+            max-width: 900px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.12);
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            background: #000;
+            overflow: hidden;
+            aspect-ratio: 16 / 9;
+        }
+
+        .video-wrapper video {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            background: #000;
+        }
+
+        .video-info {
+            padding: 20px;
+        }
+
+        .video-title {
+            margin: 0 0 8px;
+            font-size: 22px;
+            font-weight: 700;
+            color: #222;
+        }
+        
+
+       .video-description {
+            margin: 0;
+            color: #777;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        @@media (max-width: 768px) {
+            .video-card {
+                margin: 15px 0;
+                border-radius: 8px;
+            }
+
+            .video-info {
+                padding: 15px;
+            }
+
+            .video-title {
+                font-size: 18px;
+            }
+
+            .video-description {
+                font-size: 14px;
+            }
+        }
+        /* Vòng tròn Play */ 
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 75px;
+            height: 75px;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 50%;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.35);
+            transition: 0.2s;
+        }
+            /* Tam giác Play */
+            .play-icon::after {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-40%, -50%);
+                width: 0;
+                height: 0;
+                border-top: 13px solid transparent;
+                border-bottom: 13px solid transparent;
+                border-left: 20px solid #222;
+            }
+        /* Hover */ 
+        .video-thumbnail:hover .play-icon {
+            transform: translate(-50%, -50%) scale(1.12);
+            background: #fff;
         }
     </style>
     <div class="page-banner">
@@ -54,19 +150,53 @@
         <div class="banner-des-list">
                 @Html.Raw(Model.Description)
          </div>
-        @*<ul class="banner-text-list">
-            <li>Grupos y viajes privados</li>
-            <li>Agencia directa en Asia</li>
-            <li>México, Argentina, Colombia, EE. UU, Brasil</li>
-        </ul>*@
     </div>
     <div class="pt-45 border-edeae5">
         <div class="container">
-            <div class="row align-items-center">
-                @Html.Raw(Model.Contents)
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="text-right sm-text-center fw-700 fsz-22"> 
+                        <div class="video-card" onclick="playVideo(this)">
+                            <div class="video-wrapper">
+                                <video controls playsinline preload="metadata" poster="@Model.Thumbnail" style="width:100%;">
+                                    <source src="@Model.UrlVideo" type="video/mp4">
+                                </video>
+                                <span onclick="playVideo(this)" class="play-icon"></span>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+                <div class="col-md-7 sm-pt-30">
+                    <div class="lh-180 sm-text-center">
+                        @Html.Raw(Model.Contents)
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    <script>
+        function playVideo(element) {
+            var iconplay = element.querySelector('.play-icon');
+            var video = element.querySelector('video'); 
+            if (!video)
+                return;
+            iconplay.style.display = 'none';  
+            video.style.display = 'block';
+            video.load();
+            video.play().then(function () {
+                console.log('Playing');
+            }).catch(function (error) {
+                console.error('Play error:', error);
+            });
+        }
+        document.querySelectorAll('.video-card').forEach(function (container) {
+            var video = container.querySelector('video');
+            var playIcon = container.querySelector('.play-icon');
+            video.addEventListener('play', function () { playIcon.style.display = 'none'; });
+            video.addEventListener('pause', function () { playIcon.style.display = 'block'; });
+            video.addEventListener('ended', function () { playIcon.style.display = 'block'; });
+        });
+    </script>
 }
 
 

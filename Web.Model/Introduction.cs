@@ -16,6 +16,8 @@ namespace Web.Model
     {
         public int ID { get; set; }
         public string Image { get; set; }
+        public string Thumbnail { get; set; }
+        public string UrlVideo { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
     }
 }

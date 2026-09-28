@@ -435,7 +435,15 @@ namespace Web.Areas.Admin.Controllers
                 {
                     if (package.Price == null)
                         package.Price = 0;
-                    _packageRepository.UpdatePackagePrice(package);
+                    if(package.ID == 0)
+                    {
+                        package.ProductID = product.ID;
+                        _packageRepository.AddPackagePrice(package);
+                    }
+                    else
+                    {
+                        _packageRepository.UpdatePackagePrice(package);
+                    } 
                 }
 
                 return Json(new
@@ -497,6 +505,15 @@ namespace Web.Areas.Admin.Controllers
                 }, JsonRequestBehavior.AllowGet); ;
             }
            
+        }
+
+        [HttpGet]
+        public ActionResult AddItinerary(int id)
+        {
+            tbl_Languages language = languageRepository.GetAll().FirstOrDefault(x => x.IsDefault);
+            
+            
+            return Json(RenderViewToString("~/Areas/Admin/Views/Product/_Itinerary.cshtml"), JsonRequestBehavior.AllowGet);
         }
     }
 }

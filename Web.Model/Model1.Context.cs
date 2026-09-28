@@ -47,7 +47,6 @@ namespace Web.Model
         public virtual DbSet<BannerTran> BannerTrans { get; set; }
         public virtual DbSet<Banner> Banners { get; set; }
         public virtual DbSet<ProductTran> ProductTrans { get; set; }
-        public virtual DbSet<Introduction> Introductions { get; set; }
         public virtual DbSet<IntroductionTran> IntroductionTrans { get; set; }
         public virtual DbSet<LocationTran> LocationTrans { get; set; }
         public virtual DbSet<Hotel> Hotels { get; set; }
@@ -60,12 +59,14 @@ namespace Web.Model
         public virtual DbSet<WordTran> WordTrans { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<News> News { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Booking> Bookings { get; set; }
         public virtual DbSet<NewsTran> NewsTrans { get; set; }
-        public virtual DbSet<Category> Categories { get; set; }
-        public virtual DbSet<CategoryTran> CategoryTrans { get; set; }
         public virtual DbSet<Package> Packages { get; set; }
         public virtual DbSet<Package_Price> Package_Price { get; set; }
+        public virtual DbSet<CategoryTran> CategoryTrans { get; set; }
+        public virtual DbSet<Introduction> Introductions { get; set; }
+        public virtual DbSet<Itinerary> Itineraries { get; set; }
     
         public virtual int Sp_Category_Update(Nullable<int> iD, string name, string linkSeo, Nullable<int> parentID, Nullable<int> ordering, Nullable<int> type, Nullable<int> level, string icon, Nullable<int> position, Nullable<bool> isSearch, string pathway)
         {

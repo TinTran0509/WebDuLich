@@ -1,10 +1,11 @@
-﻿using System.Drawing.Drawing2D;
+﻿using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
-using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Linq;
+using static System.Net.WebRequestMethods;
 
 namespace Web.Areas.Admin.Controllers
 {
@@ -35,15 +36,19 @@ namespace Web.Areas.Admin.Controllers
                         fname = file.FileName;
                     }
 
-                    string fPath = Path.Combine(Server.MapPath("~/Upload/Images/"), fname);
-                    file.SaveAs(fPath);
-                    //string fileOptimize = Path.Combine(Server.MapPath("~/Upload/ImageOptimize/"), fname);
-                      
-                    //byte[] data = CompressJpg(fPath, 70);
+                    string fTemp = Path.Combine(Server.MapPath("~/Upload/Temp/"), fname);
+                    file.SaveAs(fTemp);
 
-                    //System.IO.File.WriteAllBytes(fileOptimize, data);
+                    string fileOptimize = Path.Combine(Server.MapPath("~/Upload/Images/"), fname); 
 
-                    //file.SaveAs(fileOptimize);
+                    byte[] original = System.IO.File.ReadAllBytes(fTemp);
+
+                    byte[] compressed = CompressImage(original, 80);
+
+                    System.IO.File.WriteAllBytes(fileOptimize, compressed);
+
+                    System.IO.File.Delete(fTemp);
+
                     return "/Upload/Images/" + file.FileName;
                 }
             }
@@ -64,6 +69,27 @@ namespace Web.Areas.Admin.Controllers
                 } 
                 return ms.ToArray();
             }
-        }  
+        }
+
+        public static byte[] CompressImage(byte[] imageBytes, long quality)
+        {
+            using (var input = new MemoryStream(imageBytes))
+            using (var image = Image.FromStream(input))
+            using (var output = new MemoryStream())
+            {
+                ImageCodecInfo jpgEncoder = ImageCodecInfo.GetImageEncoders().First(c => c.FormatID == ImageFormat.Jpeg.Guid);
+
+                var encoderParams = new EncoderParameters(1);
+
+                encoderParams.Param[0] = new EncoderParameter(
+                    System.Drawing.Imaging.Encoder.Quality,
+                    quality
+                );
+
+                image.Save(output, jpgEncoder, encoderParams);
+
+                return output.ToArray();
+            }
+        }
     }
 }
