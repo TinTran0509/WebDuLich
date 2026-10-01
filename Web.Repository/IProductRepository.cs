@@ -15,6 +15,8 @@ namespace Web.Repository
         Product Find(int id);
         int Add(Product obj); 
         void Edit(Product obj, List<ProductTran> productTrans);
+        void Update(Product obj);
+        void InsertItinerary(int prodId, List<Itinerary> Itineraries);
         void Delete(int id, List<ProductTran> productTrans);  
     }
 }

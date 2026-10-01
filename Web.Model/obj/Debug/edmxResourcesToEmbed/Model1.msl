@@ -299,19 +299,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ProductTrans">
-      <EntityTypeMapping TypeName="WebDuLichModel.ProductTran">
-        <MappingFragment StoreEntitySet="ProductTrans">
-          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
-          <ScalarProperty Name="LangCode" ColumnName="LangCode" />
-          <ScalarProperty Name="Contents" ColumnName="Contents" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="LinkSeo" ColumnName="LinkSeo" />
-          <ScalarProperty Name="Title" ColumnName="Title" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="IntroductionTrans">
       <EntityTypeMapping TypeName="WebDuLichModel.IntroductionTran">
         <MappingFragment StoreEntitySet="IntroductionTrans">
@@ -421,27 +408,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Products">
-      <EntityTypeMapping TypeName="WebDuLichModel.Product">
-        <MappingFragment StoreEntitySet="Product">
-          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-          <ScalarProperty Name="NumberStar" ColumnName="NumberStar" />
-          <ScalarProperty Name="HotelID" ColumnName="HotelID" />
-          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
-          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
-          <ScalarProperty Name="DayNumber" ColumnName="DayNumber" />
-          <ScalarProperty Name="Size" ColumnName="Size" />
-          <ScalarProperty Name="PriceWeekend" ColumnName="PriceWeekend" />
-          <ScalarProperty Name="Price" ColumnName="Price" />
-          <ScalarProperty Name="Type" ColumnName="Type" />
-          <ScalarProperty Name="MenuID" ColumnName="MenuID" />
-          <ScalarProperty Name="Active" ColumnName="Active" />
-          <ScalarProperty Name="Image" ColumnName="Image" />
-          <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="News">
       <EntityTypeMapping TypeName="WebDuLichModel.News">
         <MappingFragment StoreEntitySet="News">
@@ -544,13 +510,49 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="WebDuLichModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="Itineraries" ColumnName="Itineraries" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="NumberStar" ColumnName="NumberStar" />
+          <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="DayNumber" ColumnName="DayNumber" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="PriceWeekend" ColumnName="PriceWeekend" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="ImageItinerary" ColumnName="ImageItinerary" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Itineraries">
       <EntityTypeMapping TypeName="WebDuLichModel.Itinerary">
         <MappingFragment StoreEntitySet="Itinerary">
           <ScalarProperty Name="ProductID" ColumnName="ProductID" />
           <ScalarProperty Name="LangCode" ColumnName="LangCode" />
           <ScalarProperty Name="Contents" ColumnName="Contents" />
-          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductTrans">
+      <EntityTypeMapping TypeName="WebDuLichModel.ProductTran">
+        <MappingFragment StoreEntitySet="ProductTrans">
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="LangCode" ColumnName="LangCode" />
+          <ScalarProperty Name="Contents" ColumnName="Contents" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="LinkSeo" ColumnName="LinkSeo" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>

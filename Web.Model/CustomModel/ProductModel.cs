@@ -9,6 +9,7 @@ namespace Web.Model.CustomModel
     public class ProductModel : ProductTran  
     { 
         public string Image { get; set; }
+        public string ImageItinerary { get; set; }
         public string ProductCode { get; set; }
         public string LangName { get; set; }
         public string Culture { get; set; }
@@ -23,5 +24,6 @@ namespace Web.Model.CustomModel
         public string Countries { get; set; }
         public string LocationID { get; set; }
         public string Locations { get; set; }
+        public string Itineraries { get; set; }
     }
 }

@@ -31,6 +31,7 @@ namespace Web.Repository.Entity
                     DynamicParameters parameters = new DynamicParameters();
                     parameters.Add("ProductCode", obj.ProductCode);
                     parameters.Add("Image", obj.Image);
+                    parameters.Add("ImageItinerary", obj.ImageItinerary);
                     parameters.Add("MenuID", obj.MenuID);
                     parameters.Add("Active", obj.Active);
                     parameters.Add("Type", obj.Type);
@@ -41,6 +42,7 @@ namespace Web.Repository.Entity
                     parameters.Add("LocationID", obj.LocationID);
                     parameters.Add("HotelID", obj.HotelID);
                     parameters.Add("NumberStar", obj.NumberStar);
+                    parameters.Add("Itineraries", obj.Itineraries);
                     parameters.Add("ID", dbType: DbType.Int32, direction: ParameterDirection.Output);
                     conn.Execute("Sp_Product_Insert",
                         parameters,
@@ -67,6 +69,7 @@ namespace Web.Repository.Entity
                     parameters.Add("ID", obj.ID);
                     parameters.Add("ProductCode", obj.ProductCode);
                     parameters.Add("Image", obj.Image);
+                    parameters.Add("ImageItinerary", obj.ImageItinerary);
                     parameters.Add("MenuID", obj.MenuID);
                     parameters.Add("Active", obj.Active);
                     parameters.Add("Type", obj.Type);
@@ -78,6 +81,7 @@ namespace Web.Repository.Entity
                     parameters.Add("LocationID", obj.LocationID);
                     parameters.Add("HotelID", obj.HotelID);
                     parameters.Add("NumberStar", obj.NumberStar);
+                    parameters.Add("Itineraries", obj.Itineraries);
                     connection.Execute("Sp_Product_Update",
                         parameters,
                         commandType: CommandType.StoredProcedure,
@@ -95,6 +99,71 @@ namespace Web.Repository.Entity
                            parametersTrans,
                            commandType: CommandType.StoredProcedure,
                            transaction: tran);
+                    }
+
+                    tran.Commit();
+                }
+                connection.Close();
+            }
+        }
+
+        public void Update(Product obj)
+        {
+            try
+            {
+                using (var conn = new SqlConnection(_connectString))
+                {
+                    StringBuilder sb = new StringBuilder();
+                    sb.Append("UPDATE Product ");
+                    sb.Append("SET ImageItinerary = @ImageItinerary,Itineraries = @Itineraries "); 
+                    sb.Append("WHERE ID = @ID");
+
+                    DynamicParameters parameters = new DynamicParameters();
+                    parameters.Add("ID", obj.ID);
+                    parameters.Add("ImageItinerary", obj.ImageItinerary);
+                    parameters.Add("Itineraries", obj.Itineraries); 
+                    conn.Execute(sb.ToString(),
+                        parameters,
+                        commandType: CommandType.Text);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void InsertItinerary(int prodId, List<Itinerary> Itineraries)
+        {
+            using (var connection = new SqlConnection(_connectString))
+            {
+                connection.Open();
+                using (var tran = connection.BeginTransaction())
+                {
+                    string sqlItinerary = $"DELETE FROM Itinerary WHERE ProductID = @ProductID";
+                    DynamicParameters parameters1 = new DynamicParameters();
+                    parameters1.Add("ProductID", prodId);
+                    connection.Execute(
+                        sqlItinerary,
+                        parameters1,
+                        commandType: CommandType.Text,
+                        transaction: tran); 
+
+                    foreach (var item in Itineraries)
+                    {
+                        StringBuilder sb = new StringBuilder();
+                        sb.Append("INSERT INTO Itinerary (Title ,Contents ,LangCode ,ProductID) ");
+                        sb.Append("VALUES (@Title ,@Contents  ,@LangCode  ,@ProductID) "); 
+
+                        DynamicParameters parameters2 = new DynamicParameters();
+                        parameters2.Add("Title", item.Title);
+                        parameters2.Add("Contents", item.Contents);
+                        parameters2.Add("LangCode", item.LangCode);
+                        parameters2.Add("ProductID", item.ProductID);
+                        connection.Execute(sb.ToString(),
+                            parameters2,
+                            commandType: CommandType.Text,
+                            transaction: tran); 
                     }
 
                     tran.Commit();
@@ -125,6 +194,15 @@ namespace Web.Repository.Entity
                     connection.Execute(
                         sqlProd,
                         parameters2,
+                        commandType: CommandType.Text,
+                        transaction: tran);
+
+                    string sqlItinerary = $"DELETE FROM Itinerary WHERE ProductID = @ProductID";
+                    DynamicParameters parameters3 = new DynamicParameters();
+                    parameters3.Add("ProductID", id);
+                    connection.Execute(
+                        sqlItinerary,
+                        parameters3,
                         commandType: CommandType.Text,
                         transaction: tran);
 

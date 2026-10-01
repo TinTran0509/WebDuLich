@@ -7,13 +7,13 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>@ViewBag.Title</title>
+    <title>@ViewBag.TitlePage</title>
     <link rel="stylesheet" href="~/Content/wp-content/cache/min/1/3bd1988a8f8f931afbade934ba862984.css" media="all" data-minify="1" />
     <meta name="robots" content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large" />
     <link rel="canonical" href="" />
     <meta property="og:locale" content="es_ES" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="@ViewBag.Title" />
+    <meta property="og:title" content="@ViewBag.TitlePage" />
     <meta property="og:url" content="@ViewBag.Url" />
     <meta property="og:site_name" content="Paso sea tour" />
     <meta property="og:updated_time" content="2026-08-07T11:36:27+07:00" />
@@ -21,10 +21,10 @@
     <meta property="og:image:secure_url" content="@ViewBag.Image" />
     <meta property="og:image:width" content="800" />
     <meta property="og:image:height" content="500" />
-    <meta property="og:image:alt" content="@ViewBag.Title" />
+    <meta property="og:image:alt" content="@ViewBag.TitlePage" />
     <meta property="og:image:type" content="image/jpeg" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="@ViewBag.Title" />
+    <meta name="twitter:title" content="@ViewBag.TitlePage" />
     <meta name="twitter:image" content="@ViewBag.Image" />
 
     <style id="wp-img-auto-sizes-contain-inline-css">
@@ -188,21 +188,21 @@
             word-break: normal !important
         }
 
-        .screen-reader-text:focus {
-            background-color: #ddd;
-            clip-path: none;
-            color: #444;
-            display: block;
-            font-size: 1em;
-            height: auto;
-            left: 5px;
-            line-height: normal;
-            padding: 15px 23px 14px;
-            text-decoration: none;
-            top: 5px;
-            width: auto;
-            z-index: 100000
-        }
+            .screen-reader-text:focus {
+                background-color: #ddd;
+                clip-path: none;
+                color: #444;
+                display: block;
+                font-size: 1em;
+                height: auto;
+                left: 5px;
+                line-height: normal;
+                padding: 15px 23px 14px;
+                text-decoration: none;
+                top: 5px;
+                width: auto;
+                z-index: 100000
+            }
 
         html :where(.has-border-color) {
             border-style: solid
@@ -608,13 +608,19 @@
         .has-x-large-font-size {
             font-size: var(--wp--preset--font-size--x-large) !important;
         }
+
         .tour-package hr {
             width: 300px;
             border: 0;
             height: 2px;
             background: linear-gradient( to right, transparent, #bd1e2d, transparent );
         }
-    </style> 
+    </style>
+    <!-- Mới thêm --> 
+    <link rel='stylesheet' id='pikaday-css' href='~/Content/wp-content/themes/ocanus/css/vendors/pikaday15c9.css?ver=fa5f307d9b2e54d3be386f8c75748418' media='all' />
+    <link rel='stylesheet' id='ocanus-booking-css' href='~/Content/wp-content/themes/ocanus/css/booking15c9.css?ver=fa5f307d9b2e54d3be386f8c75748418' media='all' /> 
+    <link rel='stylesheet' id='ocanus-style-css' href='~/Content/wp-content/themes/ocanus/css/style45d6.css?ver=1787371957' media='all' />
+    <!-- Kết thúc mới thêm -->
     <link rel="icon" href="~/Content/images/logo-nobg.png" sizes="32x32" />
     <link rel="icon" href="~/Content/images/logo-nobg.png" sizes="192x192" />
     <noscript>
@@ -777,21 +783,24 @@
                 max-width: none;
             }
         }
+
+        @@media (min-width: 769px) {
+            .frm-booking {
+                width: 60%
+            }
+        }
+
+        .asterisk {
+            color: red;
+        }
+
+        .mb-20 label, .est-price label {
+            float: left !important
+        }
     </style>
 
-    <div id="my-cookie-banner-wrapper" style="display:none;">
-        <div id="my-cookie-banner">
-            <h4>Valoramos su privacidad</h4>
-            <p>Utilizamos cookies para mejorar su experiencia de navegación, ofrecer anuncios o contenidos personalizados y analizar nuestro tráfico. Al hacer clic en &quot;Aceptar todo&quot;, acepta nuestro uso de cookies.</p>
-            <div id="my-cookie-banner-buttons">
-                <button id="cookie-customise">Personalizar</button>
-                <button id="cookie-reject-all">Rechazar todo</button>
-                <button id="cookie-accept-all">Aceptar todo</button>
-            </div>
-        </div>
-    </div>
     <script type="text/javascript">
-        (function () { 
+        (function () {
             let _langcode = document.getElementById('lang-code').value;
             document.getElementById('lang_' + _langcode.toLowerCase()).classList.add("active");
         })();
@@ -898,6 +907,19 @@
         if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
         images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
         if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script>
+    
+    <script id="pikaday-js-js" src="~/Content/wp-content/themes/ocanus/js/vendors/pikaday15c9.js?ver=fa5f307d9b2e54d3be386f8c75748418" type="41ef9af23fb7c804bdd0f747-text/javascript"></script>
+   
+    <script id="ocanus-datepicker-js-extra" type="41ef9af23fb7c804bdd0f747-text/javascript">
+        var ocanus_script = {"current_lang":"lt"};
+        //# sourceURL=ocanus-datepicker-js-extra
+    </script>
+    <script id="ocanus-datepicker-js" src="~/Content/wp-content/themes/ocanus/js/datepicker15c9.js?ver=fa5f307d9b2e54d3be386f8c75748418" type="41ef9af23fb7c804bdd0f747-text/javascript"></script>
+
+    <script id="ocanus-booking-js" src="~/Content/wp-content/themes/ocanus/js/booking8d1g.js?ver=1.2.2" type="41ef9af23fb7c804bdd0f747-text/javascript"></script>
+    <script id="loading-js-js" src="~/Content/wp-content/themes/ocanus/js/loading20b9.js?ver=1.0.2" type="41ef9af23fb7c804bdd0f747-text/javascript"></script>
+    <script src="~/Content/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="41ef9af23fb7c804bdd0f747-|49" defer></script>
+    
     <script data-no-minify="1" async src="~/Content/wp-content/plugins/wp-rocket/assets/js/lazyload/17.5/lazyload.min.js" type="8f09b9d066fed1c56d1c98fb-text/javascript"></script>
     <script src="~/Content/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="8f09b9d066fed1c56d1c98fb-|49" defer></script>
 </body> 

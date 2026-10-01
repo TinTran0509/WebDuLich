@@ -15,7 +15,7 @@ namespace Web.Model
     public partial class Itinerary
     {
         public int ID { get; set; }
-        public string Day { get; set; }
+        public string Title { get; set; }
         public string Contents { get; set; }
         public string LangCode { get; set; }
         public Nullable<int> ProductID { get; set; }

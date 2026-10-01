@@ -8,11 +8,12 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Hình ảnh</th>
                 <th>Mã</th>
+                <th>Hình ảnh</th>
+                <th>Lịch trình</th>
                 <th>Tiêu đề</th>
                 <th>Mô tả</th>
-                <th>Nội dung</th>
+                @*<th>Nội dung</th>*@
                 <th>Ngôn ngữ</th>
                 <th></th>
             </tr>
@@ -28,24 +29,18 @@
                 <tr class="@group">
                     @if (id != item.ProductID)
                     {
-                        <td style="vertical-align: middle;" rowspan="2"><img src="@item.Image" style="width: 50px;" /></td>
-                    }
-                    @if (id != item.ProductID)
-                    {
                         <td style="vertical-align: middle;" rowspan="2">@item.ProductCode</td>
+                        <td style="vertical-align: middle;" rowspan="2"><img src="@item.Image" style="width: 50px;" /></td>
+                        <td style="vertical-align: middle;" rowspan="2"><img src="@item.ImageItinerary" style="width: 50px;" /></td>
                     }
-                    <td>@item.Title</td>
-                    <td>@item.Description</td>
-                    <td>@HelperString.TruncateByWord(HelperString.StripHTML(HttpUtility.HtmlDecode(item.Contents)), 110)</td>
+                    <td>@item.Title</td> 
+                    <td>@HelperString.TruncateByWord(HelperString.StripHTML(HttpUtility.HtmlDecode(item.Description)), 150)</td>
                     <td>@item.LangName</td>
 
                     @if (id != item.ProductID)
                     {
                         <td rowspan="2">
                             <div class="btn-list pull-right mr5">
-                                <a href="#" class="btn btn-primary btn-bordered" onclick="Product.loadfrmAddItinerary(@item.ProductID) " title="Thêm lịch trình">
-                                    <i class="glyphicon glyphicon-plus"></i>
-                                </a>
                                 @if (lstAction != null && lstAction.Contains((int)EnumHelper.Action.Edit))
                                 {
                                     <a style="margin-top:2px" href="/admin/product/edit?id=@item.ProductID" class="btn btn-primary btn-bordered" title="Sửa">

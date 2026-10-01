@@ -17,6 +17,7 @@ namespace Web.Model
         public int ID { get; set; }
         public string ProductCode { get; set; }
         public string Image { get; set; }
+        public string ImageItinerary { get; set; }
         public bool Active { get; set; }
         public int MenuID { get; set; }
         public int Type { get; set; }
@@ -29,5 +30,6 @@ namespace Web.Model
         public string HotelID { get; set; }
         public Nullable<int> NumberStar { get; set; }
         public System.DateTime CreatedDate { get; set; }
+        public string Itineraries { get; set; }
     }
 }

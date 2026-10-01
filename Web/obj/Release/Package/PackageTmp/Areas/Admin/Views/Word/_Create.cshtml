@@ -35,7 +35,7 @@
                 <div class="form-group">
                     <label class="col-md-1 control-label">Dịch<span class="asterisk"> (*)</span></label>
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Languages[i].Value, new { @class = "form-control" })
+                        @Html.TextAreaFor(m => m.Languages[i].Value, new { @class = "form-control", rows = 5, @spellcheck = "false" }) 
                     </div>
                 </div>
                 @Html.HiddenFor(m => m.Languages[i].LangName)

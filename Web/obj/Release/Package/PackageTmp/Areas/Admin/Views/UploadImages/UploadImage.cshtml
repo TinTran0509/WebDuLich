@@ -1,19 +1,19 @@
 ﻿
 <div class="form-inline">
-    <input type="file" id="fileUpload" accept="image/*" name="fileUpload" style="display:none;" />
-    <input type="button" id="btnUpload" value="Thêm ảnh" class="btn btn-success" />
+    <input type="file" id="imageUpload" accept="image/*" name="imageUpload" style="display:none;" />
+    <input type="button" id="btnImageUpload" value="Thêm ảnh" class="btn btn-success" />
 </div>
-<input type="hidden" name="@(ViewBag.ControlName)" id="urlImage" value="@(ViewBag.ControlValue)" />
+<input type="hidden" name="@(ViewBag.ControlName)" id="urlImageUpload" value="@(ViewBag.ControlValue)" />
 
 <script>
         $(function () {
-            $("#urlImage").val($("#prevImages").attr("src"));
-            $('#btnUpload').click(function () {
-                $('#fileUpload').trigger('click');
+            $("#urlImageUpload").val($("#prevImage").attr("src"));
+            $('#btnImageUpload').click(function () {
+                $('#imageUpload').trigger('click');
             });
-            $('#fileUpload').change(function () {
+            $('#imageUpload').change(function () {
                 if (window.FormData !== undefined) {
-                    var fileUpload = $("#fileUpload").get(0);
+                    var fileUpload = $("#imageUpload").get(0);
                     var files = fileUpload.files;
                     var fileData = new FormData();
                     for (var i = 0; i < files.length; i++) {
@@ -30,10 +30,9 @@
                             let container = $('#loadImg');
                             container.empty();
                             container.append('<div style="margin-bottom:2px"><img style="width:150px;" src="' + result + '"/><a href="#" data-img="' + result + '" title="Xóa" onclick="deleteImage(this)"><i class="fa fa-times"></i></a></div>')
-                            $("#urlImage").val(result);
-                            //$("#prevImages").attr("src", result);
-                            //$("#prevImages").css('width','100px')
-                           
+                            $("#urlImageUpload").val(result);  
+                            $("#prevImage").attr("src", result);
+                            $("#prevImage").css('width', '100px')
                         },
                         error: function (err) {
                             alert(err.statusText);

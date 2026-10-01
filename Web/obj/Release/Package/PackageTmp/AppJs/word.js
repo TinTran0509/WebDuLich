@@ -1,11 +1,17 @@
 ﻿var Word = function () {
     return {
         init: function () { 
-           
+            document.getElementById('txtSearch').addEventListener('keydown', function (e) {
+                if (e.key === 'Enter') {
+                    Word.loadData();
+                  /*  e.preventDefault(); document.getElementById('btnSearch').click();*/
+                }
+            });
         },
         loadData: function (page) {
             $("#loading").show();
-            AjaxService.POST("/Admin/Word/ListData", { page: page}, function (res) {
+            let keySearh = $('#txtSearch').val();
+            AjaxService.POST("/Admin/Word/ListData", { keySearh: keySearh, page: page }, function (res) {
                 $("#gridData").html(res.viewContent);
                 $("#loading").hide();
             });

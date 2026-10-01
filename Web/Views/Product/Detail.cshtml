@@ -2,11 +2,12 @@
 @using Web.Model.CustomModel
 @model ProductModel
 @{
-    ViewBag.Title = Model.Title;
+    ViewBag.TitlePage = Model.Title;
     ViewBag.Image = Model.Image;
     ViewBag.Url = Model.LinkSeo;
     Layout = "~/Views/Shared/_LayoutDetail.cshtml";
     List<LocationViewModel> locationTrans = (List<LocationViewModel>)TempData["Locations"];
+    int destinations = locationTrans.Count();
     string locations = "";
     foreach (var item in locationTrans)
     {
@@ -14,9 +15,15 @@
     }
 
     List<ProductModel> relates = (List<ProductModel>)TempData["Relates"];
+    List<Itinerary> itineraries = (List<Itinerary>)TempData["Itineraries"];
 }
-
+ 
+<link href="~/Content/all.min.css" rel="stylesheet" />
+<link href="~/Content/asset/prod_detail.css" rel="stylesheet" />
 <div class="page-banner">
+    <input type="hidden" id="massage_date" value="@ViewBag.MessageSelectDate" />
+    <input type="hidden" id="massage_pack" value="@ViewBag.MessageSelectPackage" />
+    <input type="hidden" id="json-package" value="@ViewBag.JsonPackage" />
     <picture>
         @*<source media="(max-width: 480px)" data-lazy-srcset="@Model.Image">
             <source media="(min-width: 481px)" data-lazy-srcset="@Model.Image">*@
@@ -43,13 +50,13 @@
             <div class="d-flex align-items-center justify-content-between sm-jc-center gap-15">
                 <div class="nav-scroll fw-700 sm-d-none">
                     <a href="#overview" class="d-inline-block color-333 p-10-14 pl-0">
-                        Resumen
+                        @ViewBag.Summary
                     </a>
                     <a href="#highlight" class="d-inline-block color-333 p-10-14 text-decoration-none">
-                        Destacados
+                        @ViewBag.Highlights
                     </a>
                     <a href="#itinerary" class="d-inline-block color-333 p-10-14 text-decoration-none">
-                        Itinerario
+                        @ViewBag.Itinerary
                     </a>
                     <a href="#information" class="d-inline-block color-333 p-10-14 text-decoration-none">
                         Información
@@ -59,70 +66,292 @@
         </div>
     </div>*@
 
-<div class="pt-60 sm-pt-50 pb-50 text-center" id="overview">
+<div class="sm-pt-20 text-center" id="overview">
     <div class="container">
-        <div class="align-items-center">
-            @Html.Raw(Model.Contents)
-        </div>
-        <div class="pt-60 sm-pt-50">
-            <div class="tour-package"><hr /></div>
-            <div>
-                ID @ViewBag.ProductCode
+        @*<div class="align-items-center">
+                @Html.Raw(Model.Contents)
             </div>
-            <div class="fw-700 pt-5">
-                @Model.ProductCode
+            <div class="pt-60 sm-pt-50">
+                <div class="tour-package"><hr /></div>
+                <div>
+                    ID @ViewBag.ProductCode
+                </div>
+                <div class="fw-700 pt-5">
+                    @Model.ProductCode
+                </div>
             </div>
-        </div>
 
-        <div class="pt-30">
-            <p>@ViewBag.Destination</p>
-            <div class="fw-700">
-                @Html.Raw(locations)
-            </div>
-        </div>
-        <div class="mw-1000 center-block">
-            <div class="row justify-content-center row-gap-30 pt-40">
-                <div class="col-6 col-md-3 col-lg-20">
-                    <div class="d-inline-block pb-5 bb-bd1e2d bw-2">
-                        @ViewBag.Duration
-                    </div>
-                    <div class="fw-700 fsz-22 pt-10">
-                        @Model.DayNumber @ViewBag.Days
-                    </div>
-                </div>
-                <div class="col-6 col-md-3 col-lg-20">
-                    <div class="d-inline-block pb-5 bb-bd1e2d bw-2">
-                        @ViewBag.GuideLang
-                    </div>
-                    <div class="fw-700 fsz-22 pt-10">
-                        @ViewBag.LangName
-                    </div>
-                </div>
-                <div class="col-6 col-md-3 col-lg-20">
-                    <div class="d-inline-block pb-5 bb-bd1e2d bw-2">
-                        @ViewBag.TourTypeDes
-                    </div>
-                    <div class="fw-700 fsz-22 pt-10">
-                        @ViewBag.TourType
-                    </div>
-                </div>
-                <div class="col-6 col-md-3 col-lg-20">
-                    <div class="d-inline-block pb-5 bb-bd1e2d bw-2">
-                        @ViewBag.AverageSize
-                    </div>
-                    <div class="fw-700 fsz-22 pt-10">@Model.Size</div>
+            <div class="pt-30">
+                <p>@ViewBag.Destination</p>
+                <div class="fw-700">
+                    @Html.Raw(locations)
                 </div>
             </div>
-        </div>
-        <div class="text-center pt-40">
-            <a href="#" class="btn-style">
-                @ViewBag.SelectDate
-            </a>
+            <div class="mw-1000 center-block">
+                <div class="row justify-content-center row-gap-30 pt-40">
+                    <div class="col-6 col-md-3 col-lg-20">
+                        <div class="d-inline-block pb-5 bb-bd1e2d bw-2">
+                            @ViewBag.Duration
+                        </div>
+                        <div class="fw-700 fsz-22 pt-10">
+                            @Model.DayNumber @ViewBag.Days
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3 col-lg-20">
+                        <div class="d-inline-block pb-5 bb-bd1e2d bw-2">
+                            @ViewBag.GuideLang
+                        </div>
+                        <div class="fw-700 fsz-22 pt-10">
+                            @ViewBag.LangName
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3 col-lg-20">
+                        <div class="d-inline-block pb-5 bb-bd1e2d bw-2">
+                            @ViewBag.TourTypeDes
+                        </div>
+                        <div class="fw-700 fsz-22 pt-10">
+                            @ViewBag.TourType
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3 col-lg-20">
+                        <div class="d-inline-block pb-5 bb-bd1e2d bw-2">
+                            @ViewBag.AverageSize
+                        </div>
+                        <div class="fw-700 fsz-22 pt-10">@Model.Size</div>
+                    </div>
+                </div>
+            </div>*@
+
+        <div class="tour-page">
+            <div class="tour-card">
+                <section class="tour-meta">
+                    <div class="meta-item">
+                        <svg class="meta-icon" xmlns="http://www.w3.org/2000/svg"
+                             width="24"
+                             height="24"
+                             viewBox="0 0 24 24"
+                             fill="none"
+                             stroke="currentColor"
+                             stroke-width="1.8"
+                             stroke-linecap="round"
+                             stroke-linejoin="round">
+                            <!-- Vali -->
+                            <rect x="4" y="7" width="16" height="13" rx="2" />
+                            <path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2" />
+                            <path d="M4 11h16" />
+                            <path d="M9 11v2" />
+                            <path d="M15 11v2" />
+                            <!-- Máy bay -->
+                            <path d="M16 4l2-2" />
+                            <path d="M18 2l2 2" />
+                            <path d="M17 3l-5 5" />
+                        </svg>
+                        <div>
+                            <span>@Model.ProductCode</span>
+                        </div>
+                    </div>
+                    <!-- Destinations -->
+                    <div class="meta-item">
+                        <svg class="meta-icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z" />
+                        </svg>
+                        <div>
+                            <span>@ViewBag.Destinations</span>
+                            <strong>@destinations</strong>
+                        </div>
+                    </div>
+                    <!-- Duration -->
+                    <div class="meta-item">
+                        <svg class="meta-icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="12" cy="12" r="9" />
+                            <path d="M12 7v5l3.5 2" fill="none" stroke="currentColor"
+                                  stroke-width="2" stroke-linecap="round"
+                                  stroke-linejoin="round" />
+                        </svg>
+                        <div>
+                            <span>@ViewBag.Duration</span>
+                            <strong>@Model.DayNumber</strong>
+                        </div>
+                    </div>
+                    <!-- Tour Type -->
+                    <div class="meta-item">
+                        <svg class="meta-icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <!-- Người giữa -->
+                            <circle cx="12" cy="7" r="3" />
+                            <path d="M7 19c0-3 2.2-5 5-5s5 2 5 5" />
+                            <!-- Người trái -->
+                            <circle cx="5" cy="9" r="2" />
+                            <path d="M1.5 19c0-2.5 1.5-4 3.5-4" />
+                            <!-- Người phải -->
+                            <circle cx="19" cy="9" r="2" />
+                            <path d="M22.5 19c0-2.5-1.5-4-3.5-4" />
+                        </svg>
+                        <div>
+                            <span>@ViewBag.TourTypeDes</span>
+                            <strong>@ViewBag.TourType</strong>
+                        </div>
+                    </div>
+                    <!-- Transport -->
+                    <div class="meta-item">
+                        <svg class="bus-icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <rect x="4" y="3" width="16" height="17" rx="3" />
+                            <path d="M6 6h12v5H6z" />
+                            <path d="M4 14h16" />
+                            <circle cx="8" cy="19" r="1.5" />
+                            <circle cx="16" cy="19" r="1.5" />
+                            <path d="M6 12h2" />
+                            <path d="M16 12h2" />
+                        </svg>
+                        <div>
+                            <span>@ViewBag.Transport</span>
+                            <strong>@ViewBag.Private/@ViewBag.Sharing</strong>
+                        </div>
+                    </div>
+                    <!-- Meals -->
+                    <div class="meta-item">
+                        <svg class="meta-icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M7 3v8M4 3v8a3 3 0 0 0 3 3v7M10 3v8" />
+                            <path d="M17 3v18M17 3c2 0 3-1.5 3-4s-1-5-3-5" />
+                        </svg>
+                        <div>
+                            <span>@ViewBag.Meals</span>
+                            <strong>B - L</strong>
+                        </div>
+                    </div>
+                </section> 
+                <p class="intro">
+                    @Model.Description
+                </p> 
+                <section class="content-grid">
+                    <main class="itinerary"> 
+                        <h2 class="section-title text-center mt-0">
+                            <span>@ViewBag.Itinerary</span>
+                        </h2>
+                        <div style="text-align:left" class="oc-accordion oc-itinerary">
+                            @foreach (var item in itineraries)
+                            {
+                                <div class="item">
+                                    <h3 class="item-title">
+                                        <font dir="auto" style="vertical-align: inherit"><font dir="auto" style="vertical-align: inherit">@item.Title</font></font>
+                                    </h3>
+                                    <div class="item-content" style="display: none">
+                                        @Html.Raw(item.Contents)
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                        <div class="included-grid">
+                            <div class="included-box">
+                                <div class="section-title">
+                                    <h2>@ViewBag.Included</h2>
+                                </div>
+                                <ul>
+                                    @Html.Raw(ViewBag.Includeds) 
+                                </ul>
+                            </div>
+                            <div class="included-box excluded">
+                                <div class="section-title">
+                                    <h2>@ViewBag.Excluded</h2>
+                                </div>
+                                <ul>
+                                    @Html.Raw(ViewBag.Excludeds) 
+                                </ul>
+                            </div>
+                            <div class="included-box">
+                                <div class="section-title">
+                                    <h2>@ViewBag.ImportantNot</h2>
+                                </div>
+                                <ul>
+                                    @Html.Raw(ViewBag.ImportantNots) 
+                                </ul>
+                            </div>
+                            <div class="included-box excluded">
+                                <div class="section-title">
+                                    <h2>@ViewBag.Highlights</h2>
+                                </div>
+                                <ul>
+                                    @Html.Raw(ViewBag.HighlightsDetail) 
+                                </ul>
+                            </div>
+                        </div>
+                    </main>
+                    <!--Khu vực bản đồ-->
+                    <aside class="map-card">
+                        <img src="@Model.ImageItinerary" alt="pasoseatours"/>
+                        
+                        @*<svg viewBox="0 0 360 610" class="map-svg" aria-label="Vietnam tour route map">
+                            <rect width="360" height="610" rx="12" fill="#eaf7fb" />
+                            <path d="M178 38
+                   C145 55 138 83 151 111
+                   C158 129 151 145 164 164
+                   C177 183 166 203 178 223
+                   C188 242 181 263 190 283
+                   C201 305 190 327 201 347
+                   C214 369 202 394 214 416
+                   C224 437 214 462 226 484
+                   C237 506 229 532 242 557
+                   C249 571 247 588 234 596
+                   C218 604 201 591 199 574
+                   C197 555 185 542 179 523
+                   C172 502 175 479 163 460
+                   C152 441 158 417 145 397
+                   C133 378 139 355 128 335
+                   C116 313 122 289 111 268
+                   C100 246 108 226 96 206
+                   C85 188 93 165 86 145
+                   C80 126 93 111 89 94
+                   C84 72 102 53 123 43
+                   C143 34 161 31 178 38Z"
+                                  fill="#d9efd8" stroke="#b7d6b7" stroke-width="2" />
+
+                            <path d="M120 91 L168 132 L185 174 L206 260 L224 306 L215 378 L232 507"
+                                  fill="none" stroke="#d17a00" stroke-width="3" stroke-dasharray="8 7" />
+
+                            <g class="pin">
+                                <circle cx="120" cy="91" r="12" />
+                                <circle cx="120" cy="91" r="4" />
+                                <text x="138" y="96">Sapa</text>
+                            </g>
+                            <g class="pin">
+                                <circle cx="168" cy="132" r="12" />
+                                <circle cx="168" cy="132" r="4" />
+                                <text x="184" y="137">Hanoi</text>
+                            </g>
+                            <g class="pin">
+                                <circle cx="202" cy="130" r="12" />
+                                <circle cx="202" cy="130" r="4" />
+                                <text x="218" y="135">Halong</text>
+                            </g>
+                            <g class="pin">
+                                <circle cx="206" cy="260" r="12" />
+                                <circle cx="206" cy="260" r="4" />
+                                <text x="222" y="265">Hue</text>
+                            </g>
+                            <g class="pin">
+                                <circle cx="224" cy="306" r="12" />
+                                <circle cx="224" cy="306" r="4" />
+                                <text x="240" y="311">Da Nang</text>
+                            </g>
+                            <g class="pin">
+                                <circle cx="232" cy="507" r="12" />
+                                <circle cx="232" cy="507" r="4" />
+                                <text x="248" y="512">Ho Chi Minh City</text>
+                            </g>
+
+                            <text x="46" y="344" class="vietnam-label">V I E T N A M</text>
+                            <text x="314" y="42" class="north">N</text>
+                            <path d="M320 75 L312 51 L328 51 Z" fill="#315f91" />
+                        </svg>*@
+                    </aside>
+
+                </section>
+            </div>
         </div>
     </div>
 </div>
 
-<div class="pt-45 bt-edeae5 overflow-hidden" id="highlight">
+<div class="bt-edeae5 overflow-hidden" id="highlight">
     <div class="container">
         <h2 class="section-title text-center mt-0">
             <span>
@@ -155,224 +384,300 @@
             <div class="swiper-button-next right--60"></div>
         </div>
     </div>
-</div>  
+</div>
 
 <div class="pt-45" id="itinerary">
+    <div class="container">
+        <div class="pt-30">
+            <h2 style="display: block;" class="section-title fw-400 text-center">
+                @Html.Raw(ViewBag.EstimatedPrice)
+            </h2>
+        </div>
+        <div class="text-center">
+            <div class="container frm-booking">
+                <form method="POST" id="booking-form" class="js-show-loading-on-submit" action="Detail">
+                    <div class="">
+                        <div class="form-booking">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="item est-price">
+                                        <label>@ViewBag.Package:</label>
+                                        <div class="item-value">
+                                            <select name="package_star" class="package-star">
+                                                <option value=""></option>
+                                                <option value="3">@ViewBag.Package 3 @ViewBag.Star</option>
+                                                <option value="4">@ViewBag.Package 4 @ViewBag.Star</option>
+                                                <option value="5">@ViewBag.Package 5 @ViewBag.Star</option>
+                                                <option value="6">@ViewBag.Package @ViewBag.Plus</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div style="padding-top:20px" class="item est-price">
+                                        <label><span class="asterisk">*</span> @ViewBag.NumberPas:</label>
+                                        <div class="item-value">
+                                            <input id="pax" type="number" name="pax" min="1" max="20" class="inp-pax" required />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="item est-price">
+                                        <label>@ViewBag.TongUocTinh:</label>
+                                        <div class="item-value total-est">
+                                            USD 0
+                                        </div>
+                                    </div>
+                                    <div class="item departure-date est-price pt-40">
+                                        <label><span class="asterisk">*</span> @ViewBag.ArrivalDate:</label>
+                                        <div style="padding-top:4px" class="item-value fcwp-container">
+                                            <input type="text" id="datepicker" name="date_of_sale" class="datepicker" required
+                                                   value="@ViewBag.SelectedDate"
+                                                   placeholder="Seleccionar"
+                                                   data-select="Seleccionar"
+                                                   readonly data-start="" data-end="+2y" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pt-30">
+                        <div class="w-75px h-3px bg-color-bd1e2d center-block mb-30"></div>
+                        <div class="row">
+                            <div class="col-md-3 col-4 mb-20 pr-0">
+                                <label><span class="asterisk">*</span> @ViewBag.DanhXung</label>
+                                <select name="forms_of_address" required>
+                                    <option value="">@ViewBag.Select</option>
+                                    @Html.Raw(ViewBag.Title)
+                                </select>
+                            </div>
+                            <div class="col-md-3 col-8 mb-20">
+                                <label><span class="asterisk">*</span> @ViewBag.Name</label>
+                                <input type="text" name="lm_first_name" required />
+                            </div>
+                            <div class="col-md-6 mb-20">
+                                <label><span class="asterisk">*</span> @ViewBag.LastName (s)</label>
+                                <input type="text" name="lm_last_name" required />
+                            </div>
+                            <div class="col-md-6 mb-20">
+                                <label><span class="asterisk">*</span> Email</label>
+                                <input type="email" name="lm_email" required />
+                            </div>
+                            <div class="col-md-6 mb-20">
+                                <label><span class="asterisk">*</span> WhatsApp/Tel (ej.:  123456789)</label>
+                                <input type="text" name="lm_phone" pattern="[0-9]+" placeholder="* @ViewBag.PlaceTel." required />
+
+                            </div>
+                            <div class="col-md-6 mb-20">
+                                <label><span class="asterisk">*</span> @ViewBag.NgonNguUuTien</label>
+                                <select name="language" required>
+                                    <option value="">@ViewBag.Select</option>
+                                    <option value="0">Português</option>
+                                    <option value="1">Español</option>
+                                    <option value="1">English</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-20">
+                                <label>@ViewBag.DepartureCity</label>
+                                <input type="text" name="departure_city" />
+                            </div>
+                            <div class="col-md-12 mb-20">
+                                <label><span class="asterisk">*</span> @ViewBag.NotesAnd</label>
+                                <textarea name="note" placeholder="* @ViewBag.PlaceNotes" required></textarea>
+                            </div>
+                        </div>
+                        <div id="payment-section"></div>
+                        <div class="text-center pt-15 d-flex justify-content-center align-items-center section-action">
+                            <input type="hidden" id="_wpnonce" name="_wpnonce" value="42b09ed278" />
+                            <input type="hidden" name="_wp_http_referer" value="" />
+                            <input type="hidden" name="action" value="process_booking" />
+                            <input type="hidden" name="type" value="group-tour" />
+                            <input type="hidden" name="tour_id" value="24120" />
+                            <input type="hidden" name="booking_type" value="normal" />
+                            <input type="hidden" name="page_id" value="94879" />
+                            <input type="hidden" name="total_est" class="total-est-input" value="" />
+                            <input type="hidden" name="extra_est" class="extra-est-input" value="" />
+                            <input type="hidden" name="deposit_est" class="deposit-est-input" value="" />
+                            <input type="hidden" name="lang" value="es" />
+                            <input type="text" name="lm_tour" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute; left:-9999px;" />
+                            <input type="hidden" name="form_start_time" value="1787366857">
+                            <input type="hidden" name="utm_source" id="utm_source">
+                            <input type="hidden" name="utm_campaign" id="utm_campaign">
+                            <input type="hidden" name="utm_location" id="utm_location">
+                            <input type="hidden" name="utm_adgroup" id="utm_adgroup">
+                            <input type="hidden" value="@ViewBag.BookingSuccess" id="bookingmessage">
+                            <div class="btn-step btn-step-1">
+                                <button type="submit" class="btn-style btn-has-loading">
+                                    @ViewBag.YCBaoGia <span class="oc-spinner"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div> 
+</div>
+
+@*<div class="pt-45" id="itinerary">
     <div class="container">
         <h2 class="section-title text-center mt-0">
             <span>
                 <font dir="auto" style="vertical-align: inherit"><font dir="auto" style="vertical-align: inherit">@ViewBag.Itinerary</font></font>
             </span>
-        </h2> 
-        <div class="center-block pt-30">
-            <div class="oc-accordion oc-itinerary">
-                <div class="item">
-                    <h3 class="item-title">
-                        <font dir="auto" style="vertical-align: inherit"><font dir="auto" style="vertical-align: inherit"> Ngày 1: Đến Tokyo </font></font>
-                    </h3>
-                    <div class="item-content" style="display: none">
-                        <p></p>
-                        <p>
-                            <font dir="auto" style="vertical-align: inherit"><font dir="auto" style="vertical-align: inherit">Đến sân bay Tokyo. </font></font><br /><font dir="auto" style="vertical-align: inherit">
-                                <font dir="auto" style="vertical-align: inherit">
-                                    Di chuyển đến khách sạn ở Tokyo để làm thủ tục nhận phòng.
-                                </font>
-                            </font>
-                        </p>
-                        <p></p>
-                        <p>
-                            <font dir="auto" style="vertical-align: inherit">
-                                <font dir="auto" style="vertical-align: inherit">
-                                    Bữa ăn: Chỗ ở không bao gồm bữa ăn
-                                </font>
-                            </font>
-                        </p>
+        </h2>
+        <div class="row">
+            <div class="col-md-7">
+                <div class="center-block pt-30">
+                    <div class="oc-accordion oc-itinerary">
+                        @foreach (var item in itineraries)
+                        {
+                            <div class="item">
+                                <h3 class="item-title">
+                                    <font dir="auto" style="vertical-align: inherit"><font dir="auto" style="vertical-align: inherit">@item.Title</font></font>
+                                </h3>
+                                <div class="item-content" style="display: none">
+                                    @Html.Raw(item.Contents)
+                                </div>
+                            </div>
+                        }
                     </div>
                 </div>
-                <div class="item">
-                    <h3 class="item-title">
-                        <font dir="auto" style="vertical-align: inherit"><font dir="auto" style="vertical-align: inherit"> Ngày 2: Tokyo - Tham quan </font></font>
-                    </h3>
-                    <div class="item-content">
-                        <p></p>
-                        <p>
-                            Desayuno en el hotel<br />
-                            08:20 Reunión en el lobby de la Planta Baja / Piso 1 de la torre principal The Main<br />
-                            Visita en grupo de Tokio de media jornada con un guía de habla española; conoceremos
-                            Santuario Meiji, dedicado al ex-emperador Mutsuhito Plaza del Palacio Imperial (No entrarán
-                            en el recinto del palacio) Templo Senso-ji &amp; Calle Nakamise con hileras de tiendas de
-                            recuerdos<br />
-                            13:00 El tour termina en Ginza. Tarde libre.
-                        </p>
-                        <p></p>
-                        <p>Comidas: Desayuno</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <h3 class="item-title">
-                        <font dir="auto" style="vertical-align: inherit"><font dir="auto" style="vertical-align: inherit"> Ngày 3: Tokyo - Hakone </font></font>
-                    </h3>
-                    <div class="item-content">
-                        <p></p>
-                        <p>
-                            Desayuno en el hotel<br />
-                            07:50 Reunión en el vestíbulo del hotel<br />
-                            Excursión en grupo de día completo a Hakone, acompañados por un guía que domina el español.
-                            Durante la excursión visitaremos el lago Ashi, donde daremos un encantador paseo en barco, y
-                            el valle de Owakudani. En los días despejados, podremos admirar el majestuoso monte Fuji
-                            tanto desde el Lago Ashi como desde el Valle Owakudani. Terminaremos el día con una visita
-                            al Museo al Aire Libre de Hakone.
-                        </p>
-                        <p></p>
-                        <p>Comidas: Desayuno</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <h3 class="item-title">
-                        <font dir="auto" style="vertical-align: inherit">
-                            <font dir="auto" style="vertical-align: inherit">
-                                Ngày 4: Tokyo - Kyoto - Nara
-                            </font>
-                        </font>
-                    </h3>
-                    <div class="item-content">
-                        <p></p>
-                        <p>
-                            Desayuno en el hotel<br />
-                            08:00 Encuentro en el vestíbulo y traslado a la estación de Tokio con un asistente que
-                            domina el español.<br />
-                            09:21 Salida de Tokio hacia Kioto en el tren bala Nozomi #215.<br />
-                            11:32 Llegada a la estación de Kioto, donde será recibido por un guía que domina el
-                            español.<br />
-                            Nota: Los horarios de los trenes están sujetos a cambios. El almuerzo no está incluido en la
-                            excursión.
-                        </p>
-                        <p>
-                            Inicio de la excursión en grupo a Nara.<br />
-                            En Nara, visitaremos
-                        </p>
-                        <ul>
-                            <li>
-                                Templo Todai-ji: Visite el imponente Templo Todai-ji, conocido por su colosal estatua de
-                                Buda y su impresionante arquitectura.
-                            </li>
-                            <li>
-                                Parque de Nara: Explore el encantador Parque de Nara, famoso por los ciervos que
-                                deambulan libremente y que proporcionan una experiencia única de interacción con la
-                                naturaleza.
-                            </li>
-                        </ul>
-                        <p>En Kioto, visitaremos</p>
-                        <ul>
-                            <li>
-                                Gion: Conozca el tradicional barrio de Gion, famoso por sus casas de té y la presencia
-                                de geishas, que ofrecen una visión de la cultura y tradición japonesas.
-                            </li>
-                        </ul>
-                        <p>18:30-19:00 Llegada al hotel en Kioto y check-in.</p>
-                        <p></p>
-                        <p>Comidas: Desayuno</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <h3 class="item-title">
-                        <font dir="auto" style="vertical-align: inherit"><font dir="auto" style="vertical-align: inherit"> Ngày 5: Kyoto - Tham quan </font></font>
-                    </h3>
-                    <div class="item-content">
-                        <p></p>
-                        <p>
-                            Desayuno en el hotel<br />
-                            08:20 Reunión en el vestíbulo del hotel<br />
-                            Excursión en grupo de día completo por Kioto con un guía que domina el español:
-                        </p>
-                        <ul>
-                            <li>
-                                Templo Sanjusangendo: Explore este notable templo, famoso por sus mil estatuas de
-                                Kannon, el dios de la misericordia.
-                            </li>
-                            <li>
-                                Santuario Fushimi Inari: Visite este emblemático santuario, conocido por sus miles de
-                                torii rojos que forman impresionantes pasillos.
-                            </li>
-                            <li>
-                                Templo Kinkaku-ji (Templo Dorado): Admire el impresionante Kinkaku-ji, un templo
-                                cubierto de pan de oro que se refleja en un sereno lago.
-                            </li>
-                            <li>
-                                Templo Tenryu-ji: Visite este templo histórico, famoso por su hermoso jardín japonés.
-                            </li>
-                            <li>
-                                Arboleda de bambú de Sagano: Pasee por la encantadora Arboleda de bambú de Arashiyama,
-                                una experiencia tranquila y fascinante.
-                            </li>
-                        </ul>
-                        <p>
-                            Almuerzo en un restaurante.<br />
-                            17:30 Regreso al hotel.
-                        </p>
-                        <p></p>
-                        <p>Comidas: Desayuno, Almuerzo</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <h3 class="item-title">
-                        <font dir="auto" style="vertical-align: inherit"><font dir="auto" style="vertical-align: inherit"> Ngày 6: Kyoto - Ngày tự do </font></font>
-                    </h3>
-                    <div class="item-content">
-                        <p></p>
-                        <p>
-                            Desayuno en el hotel<br />
-                            Día libre
-                        </p>
-                        <p></p>
-                        <p>Comidas: Desayuno</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <h3 class="item-title">
-                        <font dir="auto" style="vertical-align: inherit">
-                            <font dir="auto" style="vertical-align: inherit">Ngày 7: Kyoto - Kanazawa - Tham quan</font>
-                        </font>
-                    </h3>
-                    <div class="item-content">
-                        <p></p>
-                        <p>
-                            Desayuno en el hotel.<br />
-                            08:00 Encuentro en el lobby con un guía de habla hispana y traslado a Kanazawa en autobús
-                            privado (dependiendo del número de pasajeros, podría ser una furgoneta).<br />
-                            12:00 Llegada a Kanazawa.<br />
-                            Visita de día completo en grupo a Kanazawa, donde conocerán:
-                        </p>
-                        <ul>
-                            <li>
-                                Mercado Omicho: Mercado animado con venta de pescados, mariscos, vegetales y mucho más.
-                            </li>
-                            <li>Barrio Higashichaya: Barrio tradicional conocido por sus casas de té antiguas.</li>
-                            <li>
-                                Jardín Kenrokuen: Uno de los jardines más famosos de Japón, considerado un ejemplo
-                                perfecto de jardín paisajístico japonés.
-                            </li>
-                        </ul>
-                        <p>17:00-17:30 Traslado al hotel en Kanazawa y check-in</p>
-                        <p></p>
-                        <p>Comidas: Desayuno</p>
-                    </div>
+            </div>
+            <div class="col-md-5">
+                <div>
+                    <img alt="@ViewBag.Itinerary" src="@Model.ImageItinerary" />
                 </div>
             </div>
         </div>
     </div>
-
     <div class="pt-30">
         <h2 class="section-title fw-400 text-center">
             @Html.Raw(ViewBag.EstimatedPrice)
         </h2>
     </div>
-    <div class="pt-50 text-center">
-        <a href="/booking-tour?tour_id=@Model.ID" class="btn-style btn-redirect-booking">
-            @ViewBag.YeuCauBaoGia
-        </a>
+    <div class="text-center">
+        <div class="container frm-booking">
+            <form method="POST" id="booking-form" class="js-show-loading-on-submit" action="Detail">
+                <div class="">
+                    <div class="form-booking">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="item est-price">
+                                    <label>@ViewBag.Package:</label>
+                                    <div class="item-value">
+                                        <select name="package_star" class="package-star">
+                                            <option value=""></option>
+                                            <option value="3">@ViewBag.Package 3 @ViewBag.Star</option>
+                                            <option value="4">@ViewBag.Package 4 @ViewBag.Star</option>
+                                            <option value="5">@ViewBag.Package 5 @ViewBag.Star</option>
+                                            <option value="6">@ViewBag.Package @ViewBag.Plus</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div style="padding-top:20px" class="item est-price">
+                                    <label><span class="asterisk">*</span> @ViewBag.NumberPas:</label>
+                                    <div class="item-value">
+                                        <input id="pax" type="number" name="pax" min="1" max="20" class="inp-pax" required />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="item est-price">
+                                    <label>@ViewBag.TongUocTinh:</label>
+                                    <div class="item-value total-est">
+                                        USD 0
+                                    </div>
+                                </div>
+                                <div class="item departure-date est-price pt-40">
+                                    <label><span class="asterisk">*</span> @ViewBag.ArrivalDate:</label>
+                                    <div style="padding-top:4px" class="item-value fcwp-container">
+                                        <input type="text" id="datepicker" name="date_of_sale" class="datepicker" required
+                                               value="@ViewBag.SelectedDate"
+                                               placeholder="Seleccionar"
+                                               data-select="Seleccionar"
+                                               readonly data-start="" data-end="+2y" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pt-30">
+                    <div class="w-75px h-3px bg-color-bd1e2d center-block mb-30"></div>
+                    <div class="row">
+                        <div class="col-md-3 col-4 mb-20 pr-0">
+                            <label><span class="asterisk">*</span> @ViewBag.DanhXung</label>
+                            <select name="forms_of_address" required>
+                                <option value="">@ViewBag.Select</option>
+                                @Html.Raw(ViewBag.Title)
+                            </select>
+                        </div>
+                        <div class="col-md-3 col-8 mb-20">
+                            <label><span class="asterisk">*</span> @ViewBag.Name</label>
+                            <input type="text" name="lm_first_name" required />
+                        </div>
+                        <div class="col-md-6 mb-20">
+                            <label><span class="asterisk">*</span> @ViewBag.LastName (s)</label>
+                            <input type="text" name="lm_last_name" required />
+                        </div>
+                        <div class="col-md-6 mb-20">
+                            <label><span class="asterisk">*</span> Email</label>
+                            <input type="email" name="lm_email" required />
+                        </div>
+                        <div class="col-md-6 mb-20">
+                            <label><span class="asterisk">*</span> WhatsApp/Tel (ej.:  123456789)</label>
+                            <input type="text" name="lm_phone" pattern="[0-9]+" placeholder="* @ViewBag.PlaceTel." required />
+
+                        </div>
+                        <div class="col-md-6 mb-20">
+                            <label><span class="asterisk">*</span> @ViewBag.NgonNguUuTien</label>
+                            <select name="language" required>
+                                <option value="">@ViewBag.Select</option>
+                                <option value="0">Português</option>
+                                <option value="1">Español</option>
+                                <option value="1">English</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-20">
+                            <label>@ViewBag.DepartureCity</label>
+                            <input type="text" name="departure_city" />
+                        </div>
+                        <div class="col-md-12 mb-20">
+                            <label><span class="asterisk">*</span> @ViewBag.NotesAnd</label>
+                            <textarea name="note" placeholder="* @ViewBag.PlaceNotes" required></textarea>
+                        </div>
+                    </div>
+                    <div id="payment-section"></div>
+                    <div class="text-center pt-15 d-flex justify-content-center align-items-center section-action">
+                        <input type="hidden" id="_wpnonce" name="_wpnonce" value="42b09ed278" />
+                        <input type="hidden" name="_wp_http_referer" value="" />
+                        <input type="hidden" name="action" value="process_booking" />
+                        <input type="hidden" name="type" value="group-tour" />
+                        <input type="hidden" name="tour_id" value="24120" />
+                        <input type="hidden" name="booking_type" value="normal" />
+                        <input type="hidden" name="page_id" value="94879" />
+                        <input type="hidden" name="total_est" class="total-est-input" value="" />
+                        <input type="hidden" name="extra_est" class="extra-est-input" value="" />
+                        <input type="hidden" name="deposit_est" class="deposit-est-input" value="" />
+                        <input type="hidden" name="lang" value="es" />
+                        <input type="text" name="lm_tour" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute; left:-9999px;" />
+                        <input type="hidden" name="form_start_time" value="1787366857">
+                        <input type="hidden" name="utm_source" id="utm_source">
+                        <input type="hidden" name="utm_campaign" id="utm_campaign">
+                        <input type="hidden" name="utm_location" id="utm_location">
+                        <input type="hidden" name="utm_adgroup" id="utm_adgroup">
+                        <input type="hidden" value="@ViewBag.BookingSuccess" id="bookingmessage">
+                        <div class="btn-step btn-step-1">
+                            <button type="submit" class="btn-style btn-has-loading">
+                                @ViewBag.YCBaoGia <span class="oc-spinner"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
+</div>*@
 
 <div class="pt-60 sm-pt-30 pb-50 sm-pb-25 bt-edeae5 bb-edeae5">
     <div class="container">
@@ -383,7 +688,7 @@
         </h2>
         <div class="row">
             @foreach (var item in relates)
-            { 
+            {
                 int night = item.DayNumber - 1;
                 <div class="col-sm-6 col-lg-4 mb-30">
                     <div class="bg-color-fffdfb box-shadow-1 position-relative h-100 pb-115">

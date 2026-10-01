@@ -15,9 +15,17 @@
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Từ ngữ dịch</h3>
-                <div style="top: 8px;position: absolute; right: 40px;" class="pull-right">
-                    <button type="button" class="btn btn-primary waves-effect waves-light" onclick="Word.loadfrmAdd() "><i class="fa fa-plus"></i> Thêm mới</button> 
+                <h3 class="panel-title">Từ ngữ dịch</h3> 
+                <div class="row" style="margin-bottom:10px">
+                    <div class="col-md-4">
+                        <input type="text" id="txtSearch" class="form-control" placeholder="Nhập từ khóa" /> 
+                    </div>
+                    <div class="col-md-4">
+                        <button id="btnSearch" onclick="Word.loadData()" class="btn btn-primary">Tìm kiếm</button>
+                    </div>
+                    <div class="col-md-4">
+                        <button type="button" class="btn btn-primary waves-effect waves-light" onclick="Word.loadfrmAdd() "><i class="fa fa-plus"></i> Thêm mới</button>
+                    </div> 
                 </div>
             </div>
             <div class="panel-body">

@@ -11,6 +11,7 @@ namespace Web.Model.CustomModel
         public string ProductCode { get; set; }
         public int ID { get; set; }
         public string Image { get; set; }
+        public string ImageItinerary { get; set; }
         public bool Active { get; set; }
         public int MenuID { get; set; }
         public int Type { get; set; }
@@ -19,6 +20,7 @@ namespace Web.Model.CustomModel
         public List<int> CountryID { get; set; } 
         public List<int> LocationID { get; set; }
         public DateTime CreatedDate { get; set; }
+        public string Itineraries { get; set; }
         public List<ProductLanguageViewModel> Languages { get; set; }
     }
 }

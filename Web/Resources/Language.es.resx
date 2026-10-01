@@ -219,9 +219,6 @@
   <data name="ArrivalDate" xml:space="preserve">
     <value>Fecha de llegada</value>
   </data>
-  <data name="Baby" xml:space="preserve">
-    <value>Bebé</value>
-  </data>
   <data name="Child" xml:space="preserve">
     <value>Niño</value>
   </data>
@@ -332,5 +329,26 @@
   </data>
   <data name="MessageSelectDate" xml:space="preserve">
     <value>Por favor, seleccione una fecha posterior a la fecha actual.</value>
+  </data>
+  <data name="Transport" xml:space="preserve">
+    <value>Transporte</value>
+  </data>
+  <data name="Meals" xml:space="preserve">
+    <value>Comidas</value>
+  </data>
+  <data name="Sharing" xml:space="preserve">
+    <value>Intercambio</value>
+  </data>
+  <data name="Destinations" xml:space="preserve">
+    <value>Destinos</value>
+  </data>
+  <data name="Included" xml:space="preserve">
+    <value>Incluida</value>
+  </data>
+  <data name="Excluded" xml:space="preserve">
+    <value>Excluida</value>
+  </data>
+  <data name="ImportantNot" xml:space="preserve">
+    <value>Nota importante</value>
   </data>
 </root>

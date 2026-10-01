@@ -166,7 +166,6 @@
     <EntitySet Name="MenuTrans" EntityType="WebDuLichModel.MenuTran" />
     <EntitySet Name="BannerTrans" EntityType="WebDuLichModel.BannerTran" />
     <EntitySet Name="Banners" EntityType="WebDuLichModel.Banner" />
-    <EntitySet Name="ProductTrans" EntityType="WebDuLichModel.ProductTran" />
     <EntitySet Name="IntroductionTrans" EntityType="WebDuLichModel.IntroductionTran" />
     <EntitySet Name="LocationTrans" EntityType="WebDuLichModel.LocationTran" />
     <EntitySet Name="Hotels" EntityType="WebDuLichModel.Hotel" />
@@ -177,19 +176,21 @@
     <EntitySet Name="Countries" EntityType="WebDuLichModel.Country" />
     <EntitySet Name="Words" EntityType="WebDuLichModel.Word" />
     <EntitySet Name="WordTrans" EntityType="WebDuLichModel.WordTran" />
-    <EntitySet Name="Products" EntityType="WebDuLichModel.Product" />
     <EntitySet Name="News" EntityType="WebDuLichModel.News" />
     <EntitySet Name="Categories" EntityType="WebDuLichModel.Category" />
     <AssociationSet Name="FK__News__CategoryId__6B24EA82" Association="WebDuLichModel.FK__News__CategoryId__6B24EA82">
       <End Role="Category" EntitySet="Categories" />
       <End Role="News" EntitySet="News" />
     </AssociationSet>
-    <EntitySet Name="Introductions" EntityType="WebDuLichModel.Introduction" />
     <EntitySet Name="Bookings" EntityType="WebDuLichModel.Booking" />
     <EntitySet Name="NewsTrans" EntityType="WebDuLichModel.NewsTran" />
     <EntitySet Name="Packages" EntityType="WebDuLichModel.Package" />
     <EntitySet Name="Package_Price" EntityType="WebDuLichModel.Package_Price" />
     <EntitySet Name="CategoryTrans" EntityType="WebDuLichModel.CategoryTran" />
+    <EntitySet Name="Introductions" EntityType="WebDuLichModel.Introduction" />
+    <EntitySet Name="Products" EntityType="WebDuLichModel.Product" />
+    <EntitySet Name="Itineraries" EntityType="WebDuLichModel.Itinerary" />
+    <EntitySet Name="ProductTrans" EntityType="WebDuLichModel.ProductTran" />
   </EntityContainer>
   <ComplexType Name="Sp_News_GetByLinkSeo_Result">
     <Property Type="Int32" Name="ID" Nullable="false" />
@@ -357,18 +358,6 @@
     <Property Name="MenuID" Type="Int32" Nullable="false" />
     <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
   </EntityType>
-  <EntityType Name="ProductTran">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Title" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="LinkSeo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="Contents" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="LangCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="ProductID" Type="Int32" Nullable="false" />
-  </EntityType>
   <EntityType Name="IntroductionTran">
     <Key>
       <PropertyRef Name="ID" />
@@ -468,26 +457,6 @@
     <Property Name="LangCode" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
     <Property Name="WordID" Type="Int32" Nullable="false" />
   </EntityType>
-  <EntityType Name="Product">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ProductCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="Image" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-    <Property Name="Active" Type="Boolean" Nullable="false" />
-    <Property Name="MenuID" Type="Int32" Nullable="false" />
-    <Property Name="Type" Type="Int32" Nullable="false" />
-    <Property Name="Price" Type="Double" />
-    <Property Name="PriceWeekend" Type="Double" />
-    <Property Name="Size" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="DayNumber" Type="Int32" />
-    <Property Name="CountryID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="LocationID" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-    <Property Name="HotelID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="NumberStar" Type="Int32" />
-    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-  </EntityType>
   <EntityType Name="News">
     <Key>
       <PropertyRef Name="ID" />
@@ -526,15 +495,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="Introduction">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Image" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-    <Property Name="UrlVideo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
-  </EntityType>
   <EntityType Name="Booking">
     <Key>
       <PropertyRef Name="ID" />
@@ -594,5 +554,59 @@
     <Property Name="LinkSeo" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
     <Property Name="LangCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="CategoryID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Introduction">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Image" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Thumbnail" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="UrlVideo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Image" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="ImageItinerary" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="MenuID" Type="Int32" Nullable="false" />
+    <Property Name="Type" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Double" />
+    <Property Name="PriceWeekend" Type="Double" />
+    <Property Name="Size" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DayNumber" Type="Int32" />
+    <Property Name="CountryID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="LocationID" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="HotelID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="NumberStar" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Itineraries" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Itinerary">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LangCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="ProductID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ProductTran">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="LinkSeo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LangCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
   </EntityType>
 </Schema>

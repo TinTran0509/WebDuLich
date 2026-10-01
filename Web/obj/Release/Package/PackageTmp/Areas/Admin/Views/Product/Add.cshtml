@@ -4,55 +4,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
     var menus = (List<MenuTran>)TempData["Menus"];
     var countries = (List<Web.Model.CountryTran>)TempData["CountryTrans"];
-}
-<style>
-    .check-radio {
-        display: inline-flex;
-        align-items: center;
-        cursor: pointer;
-        margin-right: 20px;
-        padding-top: 5px;
-    }
-
-        .check-radio input {
-            display: none;
-        }
-
-        .check-radio span {
-            position: relative;
-            padding-left: 28px;
-            font-weight: 500;
-        }
-
-            .check-radio span::before {
-                content: "";
-                position: absolute;
-                left: 0;
-                top: 50%;
-                transform: translateY(-50%);
-                width: 18px;
-                height: 18px;
-                border: 1px solid #999;
-                border-radius: 3px; /* ô vuông giống checkbox */
-                background: #fff;
-            }
-
-        .check-radio input:checked + span::before {
-            background: #007bff;
-            border-color: #007bff;
-        }
-
-        .check-radio input:checked + span::after {
-            content: "✓";
-            position: absolute;
-            left: 4px;
-            top: 50%;
-            transform: translateY(-55%);
-            color: white;
-            font-size: 13px;
-            font-weight: bold;
-        }
-</style>
+} 
 <style>
     .text-bold {
         font-weight: bold;
@@ -68,13 +20,10 @@
     .package-price {
         width: 80%;
         display: inline-block
-    }
-
-    .unit {
-        display: inline-block
-    }
+    } 
 </style>
-<script src="~/AppJs/product.123.js"></script>
+<link href="~/Content/Admin/css/product.css" rel="stylesheet" />
+<script src="~/AppJs/product.js"></script>
 @model Web.Model.CustomModel.ProductCreateViewModel
 @using (Ajax.BeginForm("Add", "Product", null,
     new AjaxOptions
@@ -85,6 +34,7 @@
     new { @id = "frmData", @class = "form-horizontal" }))
 {
     @Html.HiddenFor(x => x.MenuID)
+    @Html.HiddenFor(x => x.Itineraries)
     <div id="countryIds"></div>
     <div id="hotelIds"></div>
     <input type="hidden" name="Package_Price" id="Package_Price" value="" />
@@ -112,7 +62,7 @@
         <div class="form-group">
             <label class="col-md-2 control-label">Số lượng người</label>
             <div class="col-md-3">
-                @Html.TextBoxFor(model => model.Size, new { @class = "form-control", @PlaceHolder= "10 - 20" })
+                @Html.TextBoxFor(model => model.Size, new { @class = "form-control", @PlaceHolder = "10 - 20" })
             </div>
         </div>
         <div class="form-group">
@@ -166,104 +116,145 @@
                 <span class="error" id="spImg"></span>
             </div>
         </div>
-        <div>
-            <label class="col-md-2 control-label">Bảng giá<span class="asterisk"> (*)</span></label>
-            <div class="col-md-10">
-                <table class="table">
-                    <tbody>
-                        <tr>
-                            <td style="opacity:0">Gói 5 sao</td>
-                            <td class="text-bold">1 - 2 pax</td>
-                            <td class="text-bold">3 - 4 pax</td>
-                            <td class="text-bold">5 - 6 pax</td>
-                            <td class="text-bold">7 - 8 pax</td>
-                            <td class="text-bold">9 - 10 pax</td>
-                            <td class="text-bold">11 - 20 pax</td>
-                        </tr>
-                        <tr id="package-3">
-                            <td class="text-bold">Gói 3 sao</td>
-                            <td><input data-id="0" data-pax="1-2" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
-                            <td><input data-id="0" data-pax="3-4" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
-                            <td><input data-id="0" data-pax="5-6" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
-                            <td><input data-id="0" data-pax="7-8" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
-                            <td><input data-id="0" data-pax="9-10" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
-                            <td><input data-id="0" data-pax="11-20" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
-                        </tr>
-                        <tr id="package-4">
-                            <td class="text-bold">Gói 4 sao</td>
-                            <td><input data-id="0" data-pax="1-2" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
-                            <td><input data-id="0" data-pax="3-4" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
-                            <td><input data-id="0" data-pax="5-6" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
-                            <td><input data-id="0" data-pax="7-8" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
-                            <td><input data-id="0" data-pax="9-10" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
-                            <td><input data-id="0" data-pax="11-20" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
-                        </tr>
-                        <tr id="package-5">
-                            <td data-package="3" class="text-bold">Gói 5 sao</td>
-                            <td><input data-id="0" data-pax="1-2" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
-                            <td><input data-id="0" data-pax="3-4" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
-                            <td><input data-id="0" data-pax="5-6" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
-                            <td><input data-id="0" data-pax="7-8" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
-                            <td><input data-id="0" data-pax="9-10" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
-                            <td><input data-id="0" data-pax="11-20" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
-                        </tr>
-                        <tr id="package-6">
-                            <td data-package="4" class="text-bold">Gói Plus</td>
-                            <td><input data-id="0" data-pax="1-2" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
-                            <td><input data-id="0" data-pax="3-4" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
-                            <td><input data-id="0" data-pax="5-6" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
-                            <td><input data-id="0" data-pax="7-8" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
-                            <td><input data-id="0" data-pax="9-10" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
-                            <td><input data-id="0" data-pax="11-20" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
-                        </tr>
-                    </tbody>
-                </table>
+        <div class="info-block">
+            <div class="info-header" onclick="toggleBlock(this)">
+                <span>Bảng giá gói dịch vụ<span class="asterisk"> (*)</span></span> <span class="toggle-icon">▼</span>
+            </div>
+            <div class="info-content">
+                <div class="col-md-12">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td style="opacity:0">Gói 5 sao</td>
+                                <td class="text-bold">1 - 2 pax</td>
+                                <td class="text-bold">3 - 4 pax</td>
+                                <td class="text-bold">5 - 6 pax</td>
+                                <td class="text-bold">7 - 8 pax</td>
+                                <td class="text-bold">9 - 10 pax</td>
+                                <td class="text-bold">11 - 20 pax</td>
+                            </tr>
+                            <tr id="package-3">
+                                <td class="text-bold">Gói 3 sao</td>
+                                <td><input data-id="0" data-pax="1-2" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="3-4" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="5-6" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="7-8" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="9-10" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="11-20" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                            </tr>
+                            <tr id="package-4">
+                                <td class="text-bold">Gói 4 sao</td>
+                                <td><input data-id="0" data-pax="1-2" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="3-4" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="5-6" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="7-8" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="9-10" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="11-20" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                            </tr>
+                            <tr id="package-5">
+                                <td data-package="3" class="text-bold">Gói 5 sao</td>
+                                <td><input data-id="0" data-pax="1-2" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="3-4" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="5-6" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="7-8" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="9-10" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="11-20" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                            </tr>
+                            <tr id="package-6">
+                                <td data-package="4" class="text-bold">Gói Plus</td>
+                                <td><input data-id="0" data-pax="1-2" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="3-4" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="5-6" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="7-8" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="9-10" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="11-20" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-        <ul class="nav nav-tabs lang-tabs">
-            @for (int i = 0; i < Model.Languages.Count; i++)
-            {
-                <li class="@(i == 0 ? "active" : "")">
-                    <a href="#lang-@Model.Languages[i].LangCode"
-                       data-toggle="tab">
-                        @Model.Languages[i].LangName
-                    </a>
-                </li>
-            }
-        </ul>
-        <div class="tab-content">
-            @for (int i = 0; i < Model.Languages.Count; i++)
-            {
-                var lang = Model.Languages[i];
-                <div id="lang-@lang.LangCode"
-                     class="tab-pane @(i == 0 ? "active" : "")">
-                    <div class="form-group">
-                        <label>Tiêu đề</label>
-                        @Html.TextBoxFor(m => m.Languages[i].Title, new { @class = "form-control" })
-                    </div>
-                    <div class="form-group">
-                        <label>Mô tả</label>
-                        @Html.TextBoxFor(m => m.Languages[i].Description, new { @class = "form-control" })
-                    </div>
-                    <div class="form-group">
+        <div class="info-block">
+            <div class="info-header" onclick="toggleBlock(this)">
+                <span>Đa ngôn ngữ</span>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="info-content">
+                <ul class="nav nav-tabs lang-tabs">
+                    @for (int i = 0; i < Model.Languages.Count; i++)
+                    {
+                        <li class="@(i == 0 ? "active" : "")"> 
+                            <a href="#lang-@Model.Languages[i].LangCode"
+                               data-toggle="tab">
+                                @Model.Languages[i].LangName
+                            </a>
+                        </li>
+                    }
+                </ul>
+                <div class="tab-content">
+                    @for (int i = 0; i < Model.Languages.Count; i++)
+                    {
+                        var lang = Model.Languages[i];
+                        <div id="lang-@lang.LangCode"
+                             class="tab-pane @(i == 0 ? "active" : "")">
+                            <div class="form-group">
+                                <label>Tiêu đề</label>
+                                @Html.TextBoxFor(m => m.Languages[i].Title, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                <label>Mô tả</label>
+                                @Html.TextAreaFor(m => m.Languages[i].Description, new { @class = "form-control", rows = 10 })
+                            </div>
+                            @*<div class="form-group">
                         <label>Nội dung<span class="asterisk"> (*)</span></label>
                         @Html.TextAreaFor(m => m.Languages[i].Contents, new { @class = "form-control article-content", rows = 10 })
-                    </div>
-                    @Html.HiddenFor(m => m.Languages[i].LangCode)
-                    @Html.HiddenFor(m => m.Languages[i].LangName)
+                    </div>*@
+                            @Html.HiddenFor(m => m.Languages[i].LangCode)
+                            @Html.HiddenFor(m => m.Languages[i].LangName)
+                        </div>
+                    }
                 </div>
-            }
+            </div>
+        </div> 
+        <div class="info-block">
+            <div class="info-header" onclick="toggleBlock(this)">
+                <span>Thông tin lịch trình di chuyển</span>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="info-content">
+                <div class="form-group">
+                    <label class="col-md-1 control-label">Bản đồ</label>
+                    <div class="col-md-10">
+                        <div class="col-md-2">
+                            @{ Html.RenderAction("UploadImage", "UploadImages", new { controlName = "ImageItinerary" });}
+                        </div>
+                        <img style="width:150px" src="" id="prevImage">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div id="days"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-1 control-label" style="opacity:0">Thêm ngày</label>
+                    <button type="button" class="btn btn-primary waves-effect waves-light" onclick="addDay()">
+                        <i class="glyphicon glyphicon-plus"></i>&nbsp;Thêm ngày
+                    </button>
+                </div>
+            </div>
         </div>
         <div class="form-group">
             <div class="col-md-2 text-right"><a href="/admin/product" class=""><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay trở lại</a></div>
             <div class="col-md-7 text-center">
-                <button type="submit" class="btn btn-primary waves-effect waves-light">Thêm mới</button>
+                <button onclick="getData()" type="button" class="btn btn-primary waves-effect waves-light">Thêm mới</button>
             </div>
         </div>
     </div>
+
+    <input type="hidden" id="ItineraryData" name="ItineraryData" />
 }
-<script src="~/Content/plugins/ckeditor/ckeditor.js"></script>
-<script src="~/Content/plugins/ckfinder/ckfinder.js"></script>
+<script src="~/Content/plugins/ckeditor5/ckeditor.js"></script>
+@*<script src="~/Content/plugins/ckeditor/ckeditor.js"></script>
+    <script src="~/Content/plugins/ckfinder/ckfinder.js"></script>*@
 <script>
     function getValueTopic(ckb) {
         $('#MenuID').val(ckb);
@@ -311,19 +302,205 @@
             }
         });
     });
-    $('.article-content').each(function () {
-        var textareaId = $(this).attr('id');
-        var editor = CKEDITOR.replace(textareaId, {
-            height: '500px',
-            startupFocus: true,
-            language: 'vi',
-            filebrowserBrowseUrl: "/Content/plugins/ckfinder/ckfinder.html",
-            filebrowserImageBrowseUrl: '/Content/plugins/ckfinder/ckfinder.html?Type=Images',
-            filebrowserFlashBrowseUrl: '/Content/plugins/ckfinder/ckfinder.html?Type=Flash',
-            filebrowserUploadUrl: '/Scripts/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Files',
-            filebrowserImageUploadUrl: '/Scripts/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Images',
-            filebrowserFlashUploadUrl: '/Scripts/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Flash'
-        });
-    })
+    //$('.article-content').each(function () {
+    //    var textareaId = $(this).attr('id');
+    //    var editor = CKEDITOR.replace(textareaId, {
+    //        height: '500px',
+    //        startupFocus: true,
+    //        language: 'vi',
+    //        filebrowserBrowseUrl: "/Content/plugins/ckfinder/ckfinder.html",
+    //        filebrowserImageBrowseUrl: '/Content/plugins/ckfinder/ckfinder.html?Type=Images',
+    //        filebrowserFlashBrowseUrl: '/Content/plugins/ckfinder/ckfinder.html?Type=Flash',
+    //        filebrowserUploadUrl: '/Scripts/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Files',
+    //        filebrowserImageUploadUrl: '/Scripts/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Images',
+    //        filebrowserFlashUploadUrl: '/Scripts/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Flash'
+    //    });
+    //})
 
+</script>
+<script>
+    let days = [];
+    let dayIndex = 0;
+    const languages = [
+        {
+            code: 'en',
+            name: 'English'
+        },
+        {
+            code: 'es',
+            name: 'Spain'
+        }
+    ];
+    function addDay() {
+        /*<button type="button" class="btn btn-delete-day" onclick="removeDay(${dayId})">Xóa ngày</button>*/
+        dayIndex++;
+        const dayId = dayIndex;
+        const day = document.createElement('div');
+        day.className = 'day-item';
+        day.dataset.day = dayId;
+        day.innerHTML =
+            `<div class="day-header">
+                <label>Ngày ${dayId}</label>
+            </div>
+            <div class="language-tabs">
+            ${languages.map(lang => `
+                <button type="button" class="btn lang-tab ${lang.code === 'en' ? 'active' : ''}" data-lang="${lang.code}">${lang.name}</button>`).join('')}
+        </div>
+        <input type="text" id="day-${dayId}" class="form-control destination" placeholder = "Ngày ${dayId}:..."/>
+        <textarea id="editor-${dayId}"></textarea>`;
+
+        document.getElementById('days').appendChild(day);
+
+        // Data của ngày
+        const dayData = {
+            day: dayId,
+            currentLanguage: 'en',
+            title: {
+                en: '',
+                es: ''
+            },
+            contents: {
+                en: '',
+                es: ''
+            },
+            editor: null
+        };
+
+        days.push(dayData);
+
+        // Tạo CKEditor
+        ClassicEditor.create(document.getElementById(`editor-${dayId}`), {
+            toolbar: [
+                'heading',
+                '|',
+                'bold',
+                'italic',
+                'underline',
+                'link',
+                'bulletedList',
+                'numberedList',
+                '|',
+                'blockQuote',
+                'insertTable',
+                'undo',
+                'redo'
+            ]
+        }).then(function (editor) {
+            dayData.editor = editor;
+            setupLanguageTabs(day, dayData);
+        }).catch(function (error) {
+            console.error(error);
+        });
+    }
+
+    function setupLanguageTabs(dayElement, dayData) {
+        const tabs = dayElement.querySelectorAll('.lang-tab');
+        const input = dayElement.querySelector('.destination');
+        tabs.forEach(function (tab) {
+            tab.addEventListener('click', function () {
+                // Lưu input của language hiện tại
+                dayData.title[dayData.currentLanguage] = input.value;
+                // Lưu CKEditor hiện tại
+                dayData.contents[dayData.currentLanguage] = dayData.editor.getData();
+                // Language mới
+                const newLanguage = this.dataset.lang;
+                dayData.currentLanguage = newLanguage;
+                // Load input của language mới
+                input.value = dayData.title[newLanguage] || '';
+                // Load CKEditor của language mới
+                dayData.editor.setData(
+                    dayData.contents[newLanguage] || ''
+                );
+                tabs.forEach(function (item) {
+                    item.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+    }
+
+    function removeDay(dayId) {
+        if (!confirm('Bạn có chắc muốn xóa ngày này?')) {
+            return;
+        }
+        const index = days.findIndex(x => x.day === dayId);
+        if (index === -1) {
+            return;
+        }
+        const dayData = days[index];
+        if (dayData.editor) {
+            dayData.editor.destroy()
+                .then(function () {
+                    console.log('Editor destroyed:', dayId);
+                })
+                .catch(function (error) {
+                    console.error(error);
+                });
+        }
+        const dayElement = document.querySelector(`[data-day="${dayId}"]`);
+
+        if (dayElement) {
+            dayIndex = dayIndex - 1;
+            dayElement.remove();
+        }
+
+        days.splice(index, 1);
+    }
+
+    function getData() {
+        days.forEach(function (day) {
+            const input = document.querySelector(`[data-day="${day.day}"] .destination`);
+            // Lưu language hiện tại
+            if (input.value !== '') {
+                day.title[day.currentLanguage] = input.value;
+                day.contents[day.currentLanguage] = day.editor.getData();
+            }
+        });
+
+        const result = days.map(function (day, index) {
+            return {
+                day: index + 1,
+                title: {
+                    en: day.title.en,
+                    es: day.title.es
+                },
+                content: {
+                    en: day.contents.en,
+                    es: day.contents.es
+                }
+            };
+        });
+        let Itineraries = [];
+        const languages = ['en', 'es'];
+
+        for (var i = 0; i < languages.length; i++) {
+            result.map(item => (
+                Itineraries.push(
+                    {
+                        Title: item.title[languages[i]],
+                        Contents: item.content[languages[i]],
+                        LangCode: languages[i],
+                        ProductID: $('#ID').val()
+                    }
+                )
+            )
+            );
+        }
+        $('#ItineraryData').val(JSON.stringify(Itineraries));
+        $('#Itineraries').val(JSON.stringify(result));
+        $('#frmData').submit();
+    }
+
+    function saveSuccess(res) {
+        if (res.IsSuccess == true) {
+            alertmsg.success(res.Messenger);
+            modal.hide();
+        } else {
+            alertmsg.error(res.Messenger);
+        }
+    }
+    function toggleBlock(header) {
+        const block = header.closest('.info-block');
+        block.classList.toggle('collapsed');
+    }
 </script>

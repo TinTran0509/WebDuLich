@@ -56,8 +56,7 @@ namespace Web.Controllers
             ViewBag.Passenger = Resources.Language.Passenger;
             ViewBag.UocTinhTrenNguoi = Resources.Language.UocTinhTrenNguoi;
             ViewBag.Adult = Resources.Language.Adult;
-            ViewBag.Child = Resources.Language.Child;
-            ViewBag.Baby = Resources.Language.Baby;
+            ViewBag.Child = Resources.Language.Child; 
             ViewBag.Select = Resources.Language.Select;
             ViewBag.Continue = Resources.Language.Continue;
             ViewBag.PhuPhi = Resources.Language.PhuPhi;
@@ -110,8 +109,9 @@ namespace Web.Controllers
             ViewBag.JsonPackage = json;
 
             return View(model);
-        } 
+        }
 
+        [HttpPost] 
         public ActionResult RequestBooking(string form_start_time)
         {
             return Json(new

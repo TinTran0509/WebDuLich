@@ -25,11 +25,15 @@ namespace Web.Areas.Admin.Controllers
 
         [Authorize(Roles = "Index")]
         [HttpPost]
-        public ActionResult ListData(int page = 1)
+        public ActionResult ListData(string keySearh, int page = 1)
         {
-            var model = wordRepository.GetAll().OrderBy(x=>x.ID).ToList();
+            var model = wordRepository.GetAll();
+            if (!string.IsNullOrWhiteSpace(keySearh))
+            {
+                model = model.Where(x=>x.KeyName.ToLower().Contains(keySearh.ToLower()));
+            }
             var total = model.Count();
-            model = model.Skip((page - 1) * Webconfig.RowLimit).Take(Webconfig.RowLimit).ToList();
+            model = model.Skip((page - 1) * Webconfig.RowLimit).Take(Webconfig.RowLimit).OrderBy(x => x.KeyName).ToList();
             return Json(new
             {
                 viewContent = RenderViewToString("~/Areas/Admin/Views/Word/_ListData.cshtml", model),

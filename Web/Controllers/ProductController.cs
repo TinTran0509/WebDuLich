@@ -5,7 +5,9 @@ using System.Globalization;
 using System.Linq;
 using System.Threading;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 using Web.BaseSecurity;
 using Web.Model;
 using Web.Model.CustomModel;
@@ -91,7 +93,22 @@ namespace Web.Controllers
 
                 TempData["Relates"] = productTransRepository.GetRelate(model.ProductID, model.MenuID, model.LangCode, 3);
 
-                ViewBag.EstimatedPrice = wordRepository.GetValueByKey("EstimatedPrice", model.LangCode); 
+                ViewBag.EstimatedPrice = wordRepository.GetValueByKey("EstimatedPrice", model.LangCode);
+                ViewBag.Title = wordRepository.GetValueByKey("Title", model.LangCode);
+
+                ViewBag.Includeds = wordRepository.GetValueByKey("Included", model.LangCode);
+                ViewBag.Excludeds = wordRepository.GetValueByKey("Excluded", model.LangCode);
+                ViewBag.ImportantNots = wordRepository.GetValueByKey("ImportantNot", model.LangCode);
+                ViewBag.HighlightsDetail = wordRepository.GetValueByKey("Highlights", model.LangCode);
+
+                List<Itinerary> itineraries = productTransRepository.GetItineraryByProductID(model.ProductID, model.LangCode).ToList();
+                TempData["Itineraries"] = itineraries;
+
+                List<Package_Price> package_Prices = _packageRepository.GetAllPackagePrice().Where(x => x.ProductID == model.ProductID).ToList();
+
+                string json = JsonConvert.SerializeObject(package_Prices);
+
+                ViewBag.JsonPackage = json;
             }
             ViewBag.Destination = Resources.Language.Destination;
             ViewBag.Duration = Resources.Language.Duration;
@@ -100,6 +117,14 @@ namespace Web.Controllers
             ViewBag.GuideLang = Resources.Language.GuideLang;
             ViewBag.ProductCode = Resources.Language.ProductCode;
             ViewBag.TourTypeDes = Resources.Language.TourType;
+            ViewBag.Transport = Resources.Language.Transport;
+            ViewBag.Meals = Resources.Language.Meals;
+            ViewBag.Private = Resources.Language.Private;
+            ViewBag.Sharing = Resources.Language.Sharing;
+            ViewBag.Destinations = Resources.Language.Destinations;
+            ViewBag.Included = Resources.Language.Included;
+            ViewBag.Excluded = Resources.Language.Excluded;
+            ViewBag.ImportantNot = Resources.Language.ImportantNot;
             ViewBag.HomePage = Resources.Language.HomePage;
             ViewBag.SelectDate = Resources.Language.SelectDate;
             ViewBag.YeuCauBaoGia = Resources.Language.YeuCauBaoGia;
@@ -110,10 +135,50 @@ namespace Web.Controllers
             ViewBag.Detail = Resources.Language.Detail; 
             ViewBag.Star = Resources.Language.Star;
             ViewBag.Package = Resources.Language.Package;
-            ViewBag.Plus = Resources.Language.Plus;
+            ViewBag.Plus = Resources.Language.Plus; 
+            ViewBag.Summary = Resources.Language.Summary;
             ViewBag.Itinerary = Resources.Language.Itinerary;
+            ViewBag.Highlights = Resources.Language.Highlights;
+            ViewBag.Package = Resources.Language.Package;
+            ViewBag.Star = Resources.Language.Star;
+            ViewBag.Plus = Resources.Language.Plus;
+            ViewBag.NumberPas = Resources.Language.NumberPas;
+            ViewBag.ArrivalDate = Resources.Language.ArrivalDate;
+            ViewBag.TongUocTinh = Resources.Language.TongUocTinh;
+            ViewBag.DanhXung = Resources.Language.DanhXung;
+            ViewBag.Name = Resources.Language.Name; //LastName
+            ViewBag.LastName = Resources.Language.LastName;
+            ViewBag.PlaceTel = Resources.Language.PlaceTel;
+            ViewBag.NgonNguUuTien = Resources.Language.NgonNguUuTien;
+            ViewBag.DepartureCity = Resources.Language.DepartureCity;
+            ViewBag.NotesAnd = Resources.Language.NotesAnd;
+            ViewBag.PlaceNotes = Resources.Language.PlaceNotes;
+            ViewBag.YCBaoGia = Resources.Language.YCBaoGia;
+
+            ViewBag.MessageSelectPackage = Resources.Language.MessageSelectPack;
+            ViewBag.MessageSelectDate = Resources.Language.MessageSelectDate;
 
             return View(model);
-        } 
+        }
+
+        [HttpPost]
+        public ActionResult Detail(
+            string package_star,
+            int pax,
+            string date_of_sale,
+            string forms_of_address,
+            string lm_first_name,
+            string lm_last_name,
+            string lm_email,
+            string lm_phone,
+            string language
+            )
+        {
+            return Json(new
+            {
+                success = true,
+                message = Resources.Language.BookingSuccess,
+            }, JsonRequestBehavior.AllowGet);
+        }
     }
 }

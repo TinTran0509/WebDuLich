@@ -88,15 +88,6 @@ namespace Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Baby.
-        /// </summary>
-        public static string Baby {
-            get {
-                return ResourceManager.GetString("Baby", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Best price guaranteed.
         /// </summary>
         public static string BestPrice {
@@ -214,6 +205,15 @@ namespace Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Destinations.
+        /// </summary>
+        public static string Destinations {
+            get {
+                return ResourceManager.GetString("Destinations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Detail.
         /// </summary>
         public static string Detail {
@@ -228,6 +228,15 @@ namespace Web.Resources {
         public static string Duration {
             get {
                 return ResourceManager.GetString("Duration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Excluded.
+        /// </summary>
+        public static string Excluded {
+            get {
+                return ResourceManager.GetString("Excluded", resourceCulture);
             }
         }
         
@@ -304,6 +313,24 @@ namespace Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ImportantNot.
+        /// </summary>
+        public static string ImportantNot {
+            get {
+                return ResourceManager.GetString("ImportantNot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Included.
+        /// </summary>
+        public static string Included {
+            get {
+                return ResourceManager.GetString("Included", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Itinerary.
         /// </summary>
         public static string Itinerary {
@@ -327,6 +354,15 @@ namespace Web.Resources {
         public static string LastName {
             get {
                 return ResourceManager.GetString("LastName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Meals.
+        /// </summary>
+        public static string Meals {
+            get {
+                return ResourceManager.GetString("Meals", resourceCulture);
             }
         }
         
@@ -520,6 +556,15 @@ namespace Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sharing.
+        /// </summary>
+        public static string Sharing {
+            get {
+                return ResourceManager.GetString("Sharing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Asian travel expert.
         /// </summary>
         public static string Slogan {
@@ -642,6 +687,15 @@ namespace Web.Resources {
         public static string TourType {
             get {
                 return ResourceManager.GetString("TourType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transport.
+        /// </summary>
+        public static string Transport {
+            get {
+                return ResourceManager.GetString("Transport", resourceCulture);
             }
         }
         

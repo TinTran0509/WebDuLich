@@ -15,8 +15,8 @@ namespace Web
             //routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.MapRoute("TimKiem", "search", new { controller = "Category", action = "Search" }, namespaces: new[] { "Web.Controllers" });
             routes.MapRoute("GioiThieu", "gioi-thieu", new { controller = "About", action = "Index", id = UrlParameter.Optional }, namespaces: new[] { "Web.Controllers" });
-            routes.MapRoute("Booking", "booking-tour", new { controller = "Booking", action = "Index", id = UrlParameter.Optional }, namespaces: new[] { "Web.Controllers" });
-            routes.MapRoute("RequestBooking", "request-booking-tour", new { controller = "Booking", action = "RequestBooking", id = UrlParameter.Optional }, namespaces: new[] { "Web.Controllers" });
+            routes.MapRoute("Booking", "booking-tour", new { controller = "Booking", action = "RequestBooking", id = UrlParameter.Optional }, namespaces: new[] { "Web.Controllers" });
+          
             routes.MapRoute("News", "tin-tuc", new { controller = "News", action = "Index", id = UrlParameter.Optional }, namespaces: new[] { "Web.Controllers" });
             routes.MapRoute("LienHe", "lien-he", new { controller = "Contact", action = "Index", id = UrlParameter.Optional }, namespaces: new[] { "Web.Controllers" });
             routes.MapRoute("ListBlog", "danhsachblog", new { controller = "Blog", action = "LoadData", id = UrlParameter.Optional }, namespaces: new[] { "Web.Controllers" });

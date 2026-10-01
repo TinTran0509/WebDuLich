@@ -46,12 +46,13 @@ namespace Web.Areas.Admin.Controllers
             var total = products.Count;
 
             products = products.Skip((page - 1) * Webconfig.RowLimit).Take(Webconfig.RowLimit).ToList();
+
             foreach (var item in products)
-            { 
+            {
                 List<ProductModel> productTrans = productTransRepository.GetByProductID(item.ID).ToList();
                 productModels.AddRange(productTrans);
-            } 
-          
+            }
+
             return Json(new
             {
                 viewContent = RenderViewToString("~/Areas/Admin/Views/Product/_ListData.cshtml", productModels),
@@ -97,7 +98,7 @@ namespace Web.Areas.Admin.Controllers
         [Authorize(Roles = "Add")]
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Add(ProductCreateViewModel model, string Package_Price)
+        public ActionResult Add(ProductCreateViewModel model, string Package_Price, string ItineraryData)
         {
             try
             { 
@@ -167,19 +168,19 @@ namespace Web.Areas.Admin.Controllers
                         Messenger = "Vui lòng chọn ảnh",
                     }, JsonRequestBehavior.AllowGet);
                 }
-
+                 
                 List<ProductTran> productTrans = new List<ProductTran>();
 
                 foreach (var lang in model.Languages)
                 {
-                    if (string.IsNullOrEmpty(lang.Contents))
-                    {
-                        return Json(new
-                        {
-                            IsSuccess = false,
-                            Messenger = "Vui lòng thêm nội dung " + lang.LangName,
-                        }, JsonRequestBehavior.AllowGet);
-                    } 
+                    //if (string.IsNullOrEmpty(lang.Contents))
+                    //{
+                    //    return Json(new
+                    //    {
+                    //        IsSuccess = false,
+                    //        Messenger = "Vui lòng thêm nội dung " + lang.LangName,
+                    //    }, JsonRequestBehavior.AllowGet);
+                    //}
 
                     ProductTran bannerTranAdd = new ProductTran
                     {
@@ -197,16 +198,31 @@ namespace Web.Areas.Admin.Controllers
                 {
                     ProductCode = model.ProductCode,
                     Image = model.Image,
+                    ImageItinerary = model.ImageItinerary,
                     MenuID = model.MenuID,
                     Type = model.Type,
                     Size = model.Size,
                     CountryID = model.CountryID != null ? string.Join(",", model.CountryID) : null,
                     LocationID = model.LocationID != null ? string.Join(",", model.LocationID) : null,
                     DayNumber = model.DayNumber,
+                    Itineraries = model.Itineraries,
                     Active = true
                 };
 
-                int id = productRepository.Add(product); 
+                int id = productRepository.Add(product);
+
+                List<Itinerary> itinerariesModel = new List<Itinerary>();
+                JavaScriptSerializer json = new JavaScriptSerializer();
+
+                if (!string.IsNullOrEmpty(ItineraryData))
+                {
+                    itinerariesModel = json.Deserialize<List<Itinerary>>(ItineraryData);
+                }
+
+                if (itinerariesModel.Count > 0)
+                {
+                    productRepository.InsertItinerary(id, itinerariesModel);
+                }
 
                 foreach (var item in productTrans)
                 {
@@ -214,8 +230,7 @@ namespace Web.Areas.Admin.Controllers
                     productTransRepository.Add(item);
                 }
 
-                List<Package_Price> package_Prices = new List<Package_Price>();
-                JavaScriptSerializer json = new JavaScriptSerializer();
+                List<Package_Price> package_Prices = new List<Package_Price>(); 
 
                 if (!string.IsNullOrEmpty(Package_Price))
                 {
@@ -290,9 +305,11 @@ namespace Web.Areas.Admin.Controllers
                 MenuID = product.MenuID,
                 Active = product.Active,
                 Image = product.Image,
+                ImageItinerary = product.ImageItinerary,
                 Size = product.Size,
                 DayNumber = product.DayNumber != null ? (int)product.DayNumber : 0, 
                 CreatedDate = product.CreatedDate,
+                Itineraries = product.Itineraries,
                 Languages = productLanguageViewModels
             };
             if (!string.IsNullOrEmpty(product.CountryID))
@@ -356,7 +373,7 @@ namespace Web.Areas.Admin.Controllers
         [Authorize(Roles = "Edit")]
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Edit(ProductCreateViewModel model, string Package_Price)
+        public ActionResult Edit(ProductCreateViewModel model, string Package_Price, string ItineraryData)
         {
             try
             {
@@ -387,14 +404,14 @@ namespace Web.Areas.Admin.Controllers
                 List<ProductTran> productTrans = new List<ProductTran>();
                 foreach (var lang in model.Languages)
                 {
-                    if (string.IsNullOrEmpty(lang.Contents))
-                    {
-                        return Json(new
-                        {
-                            IsSuccess = false,
-                            Messenger = "Vui lòng thêm nội dung " + lang.LangName,
-                        }, JsonRequestBehavior.AllowGet);
-                    }
+                    //if (string.IsNullOrEmpty(lang.Contents))
+                    //{
+                    //    return Json(new
+                    //    {
+                    //        IsSuccess = false,
+                    //        Messenger = "Vui lòng thêm nội dung " + lang.LangName,
+                    //    }, JsonRequestBehavior.AllowGet);
+                    //}
                      
                     ProductTran productTranEdit = new ProductTran
                     {
@@ -412,19 +429,33 @@ namespace Web.Areas.Admin.Controllers
                     ID = model.ID,
                     ProductCode = model.ProductCode,
                     Image = model.Image,
+                    ImageItinerary = model.ImageItinerary,
                     MenuID = model.MenuID,
                     Active = true,
                     Type = model.Type,
                     Size = model.Size,
                     DayNumber = model.DayNumber,
+                    Itineraries = model.Itineraries,
                     CountryID =  model.CountryID != null ? string.Join(",", model.CountryID) : null,
                     LocationID = model.LocationID != null ? string.Join(",", model.LocationID) : null
                 };
 
                 productRepository.Edit(product, productTrans);
 
-                List<Package_Price> package_Prices = new List<Package_Price>();
+                List<Itinerary> itinerariesModel = new List<Itinerary>();
                 JavaScriptSerializer json = new JavaScriptSerializer();
+
+                if (!string.IsNullOrEmpty(ItineraryData))
+                {
+                    itinerariesModel = json.Deserialize<List<Itinerary>>(ItineraryData);
+                }
+
+                if (itinerariesModel.Count > 0)
+                {
+                    productRepository.InsertItinerary(product.ID, itinerariesModel);
+                }
+
+                List<Package_Price> package_Prices = new List<Package_Price>(); 
 
                 if (!string.IsNullOrEmpty(Package_Price))
                 {
@@ -503,17 +534,56 @@ namespace Web.Areas.Admin.Controllers
                 {
                     Messager ="Lấy dữ liệu thất bại"
                 }, JsonRequestBehavior.AllowGet); ;
-            }
-           
+            } 
         }
 
         [HttpGet]
         public ActionResult AddItinerary(int id)
         {
-            tbl_Languages language = languageRepository.GetAll().FirstOrDefault(x => x.IsDefault);
-            
-            
-            return Json(RenderViewToString("~/Areas/Admin/Views/Product/_Itinerary.cshtml"), JsonRequestBehavior.AllowGet);
+            Product product = productRepository.Find(id);
+
+            return Json(RenderViewToString("~/Areas/Admin/Views/Product/_Itinerary.cshtml", product), JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult AddItinerary(int ID, string Itineraries, string ImageItinerary, string ItineraryData)
+        { 
+            try
+            {
+                Product product = new Product();
+                product.ID = ID;
+                product.ImageItinerary = ImageItinerary;
+                product.Itineraries = Itineraries;
+                productRepository.Update(product);
+
+                List<Itinerary> itinerariesModel = new List<Itinerary>();
+                JavaScriptSerializer json = new JavaScriptSerializer();
+
+                if (!string.IsNullOrEmpty(ItineraryData))
+                {
+                    itinerariesModel = json.Deserialize<List<Itinerary>>(ItineraryData);
+                }
+
+                if (itinerariesModel.Count > 0) 
+                {
+                    productRepository.InsertItinerary(product.ID, itinerariesModel);
+                }
+
+                return Json(new
+                {
+                    IsSuccess = true,
+                    Messenger = "Lưu thành công"
+                }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception)
+            {
+                return Json(new
+                {
+                    IsSuccess = false,
+                    Messenger = "Lấy dữ liệu thất bại"
+                }, JsonRequestBehavior.AllowGet);  
+            }
         }
     }
 }

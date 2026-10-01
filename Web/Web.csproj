@@ -1550,6 +1550,7 @@
     <Content Include="Content\Admin\css\bootstrap.min.css" />
     <Content Include="Content\Admin\css\helper.css" />
     <Content Include="Content\Admin\css\material-design-iconic-font.min.css" />
+    <Content Include="Content\Admin\css\product.css" />
     <Content Include="Content\Admin\images\background.jpg" />
     <Content Include="Content\Admin\images\cantho.jpg" />
     <Content Include="Content\Admin\images\staff.png" />
@@ -2504,6 +2505,8 @@
     <Content Include="Content\Admin\login\js\script.js" />
     <Content Include="Content\Admin\login\js\site.js" />
     <Content Include="Content\Admin\login\js\skin.config.js" />
+    <Content Include="Content\asset\all.min.css" />
+    <Content Include="Content\asset\prod_detail.css" />
     <Content Include="Content\asset\stylehome.css" />
     <Content Include="Content\cdn-cgi\l\email-protection.html" />
     <Content Include="Content\cdn-cgi\scripts\5c5dd728\cloudflare-static\email-decode.min.js" />

@@ -69,114 +69,123 @@
 {
     @Html.HiddenFor(x => x.ID)
     @Html.HiddenFor(x => x.CreatedDate)
-    <div class="article-create">
-        <div class="form-group">
-            <div class="col-md-2 text-left">
-                <a href="/admin/introduction" class=""><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay trở lại</a>
-            </div>
-            <div class="col-md-6">
-                <h4>Cập nhật sản phẩm</h4>
-            </div>
+<div class="article-create">
+    <div class="form-group">
+        <div class="col-md-2 text-left">
+            <a href="/admin/introduction" class=""><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay trở lại</a>
         </div>
-        <div class="form-group">
-            <label class="col-md-1 control-label">Ảnh <span class="asterisk"> (*)</span></label>
-            <div class="col-md-10">
-                <div class="col-md-2">
-                    @{ Html.RenderAction("UploadImage", "UploadFile", new { controlName = "Image" });}
-                </div>
-                <img style="width:150px" src="@Model.Image" id="prevImages">
-                <span class="error" id="spImg"></span>
-            </div>
+        <div class="col-md-6">
+            <h4>Cập nhật sản phẩm</h4>
         </div>
-        @*<div class="form-group">
-                <label class="col-md-1 control-label">Video <span class="asterisk"> (*)</span></label>
-                <div class="col-md-10 pull-right">
-                    <div class="radio radio-info radio-inline" onclick="$('.indirect').hide(); $('.direct').show();">
-                            <input type="radio" id="direct" value="1" name="Type">
-                            <label for="direct"> Trực tiếp </label>
-                        </div>
-                    <div class="radio radio-info radio-inline" onclick="$('.indirect').show(); $('.direct').hide();">
-                        <input type="radio" id="indirect" value="2" name="Type" checked="">
-                        <label for="indirect"> Youtube </label>
-                    </div>
-                </div>
-            </div>*@
-        <div class="form-group direct">
+    </div>
+    <div class="form-group">
+        <label class="col-md-1 control-label">Ảnh <span class="asterisk"> (*)</span></label>
+        <div class="col-md-10">
+            <div class="col-md-2">
+                @{ Html.RenderAction("UploadImage", "UploadFile", new { controlName = "Image" });}
+            </div>
+            <img style="width:150px" src="@Model.Image" id="prevImages">
+            <span class="error" id="spImg"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-1 control-label">Thumbnail</label>
+        <div class="col-md-10">
+            <div class="col-md-2">
+                @{ Html.RenderAction("UploadImage", "UploadImages", new { controlName = "Thumbnail" });}
+            </div>
+            <img style="width:150px" src="@Model.Thumbnail" id="prevImage"> 
+        </div>
+    </div>
+    @*<div class="form-group">
             <label class="col-md-1 control-label">Video <span class="asterisk"> (*)</span></label>
             <div class="col-md-10 pull-right">
-                <input type="file" id="btn-upload-video" class="btn btn-success btn-flat browser-image hidden" value="Chọn file văn bản">
-                @if (Model.UrlVideo == null)
-                {
-                    <div class="upload-ajax">
-                        <a href="javascript:void(0)" type="button" id="Upload" class="btn btn-info" onclick="$('#btn-upload-video').click()"><i class="md-file-upload"></i> Upload video </a>
-                        <i class="ion-loading-a loading-ajax" style="display: none;"></i>
+                <div class="radio radio-info radio-inline" onclick="$('.indirect').hide(); $('.direct').show();">
+                        <input type="radio" id="direct" value="1" name="Type">
+                        <label for="direct"> Trực tiếp </label>
                     </div>
-                }
-                <div id="fileupload" class="fileupload">
-                    <video width="320" height="240" controls>
-                        <source id="s-video" src="@Model.UrlVideo" type="video/mp4">
-                    </video>
-                    @if (Model.UrlVideo != null)
-                    {
-                        <div style="display: inline-block; position: absolute;">
-                            <a href="#" class="del-video" data-path="@Model.UrlVideo" title="Xóa" onclick="deleteVideo(this)"><i class="fa fa-times"></i></a>
-                        </div>
-                    }
+                <div class="radio radio-info radio-inline" onclick="$('.indirect').show(); $('.direct').hide();">
+                    <input type="radio" id="indirect" value="2" name="Type" checked="">
+                    <label for="indirect"> Youtube </label>
                 </div>
             </div>
-        </div>
-        @*<div class="form-group indirect">
-                <label class="col-md-2 control-label">Url</label>
-                <div class="col-md-10">
-                    <input type="text" id="urlyoutube" name="Url" class="form-control" placeholder="https://www.youtube.com/watch?v=id" />
-                    <div class="wrap-thumb-video" id="iframeyoutube">
-                        @Html.HiddenFor(g => g.Images)
-                        <img id="imgyoutube" src="/Content/Admin/assets/ckeditor/plugins/image/images/noimage.png" width="320" height="240" />
-                    </div>
-                </div>
-            </div>*@
-        <ul class="nav nav-tabs lang-tabs">
-            @for (int i = 0; i < Model.Languages.Count; i++)
+        </div>*@
+    <div class="form-group direct">
+        <label class="col-md-1 control-label">Video <span class="asterisk"> (*)</span></label>
+        <div class="col-md-10 pull-right">
+            <input type="file" id="btn-upload-video" class="btn btn-success btn-flat browser-image hidden" value="Chọn file văn bản">
+            @if (Model.UrlVideo == null)
             {
-                <li class="@(i == 0 ? "active" : "")">
-                    <a href="#lang-@Model.Languages[i].LangCode"
-                       data-toggle="tab">
-                        @Model.Languages[i].LangName
-                    </a>
-                </li>
-            }
-        </ul>
-        <div class="tab-content">
-            @for (int i = 0; i < Model.Languages.Count; i++)
-            {
-                var lang = Model.Languages[i];
-                <div id="lang-@lang.LangCode"
-                     class="tab-pane @(i == 0 ? "active" : "")">
-                    <div class="form-group">
-                        <label>Tiêu đề</label>
-                        @Html.TextBoxFor(m => m.Languages[i].Title, new { @class = "form-control" })
-                    </div>
-                    <div class="form-group">
-                        <label>Mô tả</label>
-                        @Html.TextAreaFor(m => m.Languages[i].Description, new { @class = "form-control article-description" })
-                    </div>
-                    <div class="form-group">
-                        <label>Nội dung <span class="asterisk"> (*)</span></label>
-                        @Html.TextAreaFor(m => m.Languages[i].Contents, new { @class = "form-control article-content" })
-                    </div>
-                    @Html.HiddenFor(m => m.Languages[i].ID)
-                    @Html.HiddenFor(m => m.Languages[i].LangCode)
-                    @Html.HiddenFor(m => m.Languages[i].LangName)
+                <div class="upload-ajax">
+                    <a href="javascript:void(0)" type="button" id="Upload" class="btn btn-info" onclick="$('#btn-upload-video').click()"><i class="md-file-upload"></i> Upload video </a>
+                    <i class="ion-loading-a loading-ajax" style="display: none;"></i>
                 </div>
             }
-        </div>
-        <div class="form-group">
-            <div class="col-md-2 text-left"><a href="/admin/introduction" class=""><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay trở lại</a></div>
-            <div class="col-md-7 text-center">
-                <button type="submit" class="btn btn-primary waves-effect waves-light">Cập nhật</button>
+            <div id="fileupload" class="fileupload">
+                <video width="320" height="240" controls>
+                    <source id="s-video" src="@Model.UrlVideo" type="video/mp4">
+                </video>
+                @if (Model.UrlVideo != null)
+                {
+                    <div style="display: inline-block; position: absolute;">
+                        <a href="#" class="del-video" data-path="@Model.UrlVideo" title="Xóa" onclick="deleteVideo(this)"><i class="fa fa-times"></i></a>
+                    </div>
+                }
             </div>
         </div>
     </div>
+    @*<div class="form-group indirect">
+            <label class="col-md-2 control-label">Url</label>
+            <div class="col-md-10">
+                <input type="text" id="urlyoutube" name="Url" class="form-control" placeholder="https://www.youtube.com/watch?v=id" />
+                <div class="wrap-thumb-video" id="iframeyoutube">
+                    @Html.HiddenFor(g => g.Images)
+                    <img id="imgyoutube" src="/Content/Admin/assets/ckeditor/plugins/image/images/noimage.png" width="320" height="240" />
+                </div>
+            </div>
+        </div>*@
+    <ul class="nav nav-tabs lang-tabs">
+        @for (int i = 0; i < Model.Languages.Count; i++)
+        {
+            <li class="@(i == 0 ? "active" : "")">
+                <a href="#lang-@Model.Languages[i].LangCode"
+                   data-toggle="tab">
+                    @Model.Languages[i].LangName
+                </a>
+            </li>
+        }
+    </ul>
+    <div class="tab-content">
+        @for (int i = 0; i < Model.Languages.Count; i++)
+        {
+            var lang = Model.Languages[i];
+            <div id="lang-@lang.LangCode"
+                 class="tab-pane @(i == 0 ? "active" : "")">
+                <div class="form-group">
+                    <label>Tiêu đề</label>
+                    @Html.TextBoxFor(m => m.Languages[i].Title, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Mô tả</label>
+                    @Html.TextAreaFor(m => m.Languages[i].Description, new { @class = "form-control article-description" })
+                </div>
+                <div class="form-group">
+                    <label>Nội dung <span class="asterisk"> (*)</span></label>
+                    @Html.TextAreaFor(m => m.Languages[i].Contents, new { @class = "form-control article-content" })
+                </div>
+                @Html.HiddenFor(m => m.Languages[i].ID)
+                @Html.HiddenFor(m => m.Languages[i].LangCode)
+                @Html.HiddenFor(m => m.Languages[i].LangName)
+            </div>
+        }
+    </div>
+    <div class="form-group">
+        <div class="col-md-2 text-left"><a href="/admin/introduction" class=""><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay trở lại</a></div>
+        <div class="col-md-7 text-center">
+            <button type="submit" class="btn btn-primary waves-effect waves-light">Cập nhật</button>
+        </div>
+    </div>
+</div>
     <input type="hidden" id="indirect" value="2" name="Type">
     <input type="hidden" id="indirect" value="1" name="PageElementId">
     @Html.HiddenFor(g => g.UrlVideo)

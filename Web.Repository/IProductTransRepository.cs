@@ -17,6 +17,7 @@ namespace Web.Repository
         IEnumerable<ProductModel> GetByType(int type, string langCode, int productId, int takeRow);
         ProductModel GetByLinkSeo(string linkSeo);
         ProductModel GetByProductTransId(int id);
+        IEnumerable<Itinerary> GetItineraryByProductID(int productID, string langCode);
         IEnumerable<ProductModel> GetRelate(int prodId, int menuId, string langCode,  int takeRow);
     }
 }

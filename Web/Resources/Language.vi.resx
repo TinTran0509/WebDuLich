@@ -219,9 +219,6 @@
   <data name="ArrivalDate" xml:space="preserve">
     <value>Ngày đến</value>
   </data>
-  <data name="Baby" xml:space="preserve">
-    <value>Bú sữa</value>
-  </data>
   <data name="Child" xml:space="preserve">
     <value>Trẻ em</value>
   </data>
@@ -332,5 +329,26 @@
   </data>
   <data name="MessageSelectDate" xml:space="preserve">
     <value>Vui lòng chọn ngày lớn hơn ngày hiện tại.</value>
+  </data>
+  <data name="Transport" xml:space="preserve">
+    <value>Chuyên chở</value>
+  </data>
+  <data name="Meals" xml:space="preserve">
+    <value>Các bữa ăn</value>
+  </data>
+  <data name="Sharing" xml:space="preserve">
+    <value>Chia sẻ</value>
+  </data>
+  <data name="Destinations" xml:space="preserve">
+    <value>Các điểm đến</value>
+  </data>
+  <data name="Included" xml:space="preserve">
+    <value>Bao gồm</value>
+  </data>
+  <data name="Excluded" xml:space="preserve">
+    <value>Bị loại trừ</value>
+  </data>
+  <data name="ImportantNot" xml:space="preserve">
+    <value>Lưu ý quan trọng</value>
   </data>
 </root>
