@@ -3,7 +3,14 @@
     Layout = null;
 }
 @model List<Web.Model.MenuHome>
-
+<style>
+    #menu-espanol li a {
+        color: #660000
+    }
+    #menu-espanol li a:hover {
+        color: #e67e22 !important
+    }
+</style>
 <div class="container">
     <div class="d-flex align-items-center justify-content-between">
         <div style="padding-left:20px" class="d-flex align-items-center gap-70">
@@ -27,19 +34,19 @@
                             var level1 = Model.Where(g => g.ParentID == level0.ID).ToList();
                             if (level1.Count > 0)
                             {
-                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-34239">
+                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children">
                                     <a href="#"><span class="oc-link-inner">@level0.Name</span></a>
                                     <ul class="sub-menu">
                                         @foreach (var item in level1)
                                         {
-                                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-34269"><a href="/@item.LinkSeo"><span class="oc-link-inner">@item.Name</span></a></li>
+                                            <li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="/@item.LangCode.ToLower()/@item.LinkSeo/"><span class="oc-link-inner">@item.Name</span></a></li>
                                         }
                                     </ul>
                                 </li>
                             }
                             else
                             {
-                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-34239">
+                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children">
                                     <a href="#"><span class="oc-link-inner">@level0.Name</span></a>
                                 </li>
                             }

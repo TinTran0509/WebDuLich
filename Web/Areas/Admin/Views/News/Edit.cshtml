@@ -1,146 +1,299 @@
 ﻿@using Web.Model
-@model  News
 @{
-    ViewBag.Title = "Thêm mới tin tức";
+    ViewBag.Title = "Cập nhật blog";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    var categories = (List<CategoryTran>)TempData["Categories"];
 }
-<script src="~/AppJs/news.js?v=1.0.1"></script>
-@using (Ajax.BeginForm("Edit", "News", null,
-                new AjaxOptions
-                {
-                    HttpMethod = "POST",
-                    OnSuccess = "News.onEditSuccess"
-                },
-                new { @id = "frmData", @class = "form-horizontal" }))
-{
-    @Html.HiddenFor(x => x.ID)
-    @Html.HiddenFor(x => x.LinkSeo)
-    @Html.HiddenFor(x => x.CategoryId)
-    <div class="form-group">
-        <label style="opacity:0" class="control-label col-md-1">abc</label>
-        <div class="col-md-11">
-            <span style="font-style:italic">Lưu ý: </span><span>Các trường có dấu (<span style="color:red">*</span>) là yêu cầu bắt buộc nhập thông tin</span>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-md-1">Tiêu đề<span class="asterisk"> *</span></label>
-        <div class="col-md-11">
-            @Html.TextBoxFor(model => model.MetaTitle, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-md-1">Hình ảnh<span class="asterisk"> *</span></label>
-        <div class="col-md-11">
-            <div class="col-md-2">
-                @{ Html.RenderAction("UploadImage", "UploadFile", new { controlName = "Image" });}
-            </div>
-            <img src="@Model.Image" style="width:50px" id="prevImages">
-            <span class="error" id="spImg"></span>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-md-1">Mô tả</label>
-        <div class="col-md-11">
-            @Html.TextAreaFor(model => model.Description, new { @class = "form-control", @rows = "3" })
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-md-1">Nội dung<span class="asterisk"> *</span></label>
-        <div class="col-md-11">
-            @Html.TextAreaFor(model => model.Contents, new { @class = "form-control" })
-            <span class="error" id="spcontent"></span>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="text-center">
-            <a href="/admin/news" class="btn btn-primary"><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay trở lại</a>
-            <button type="submit" onclick="checkEdit()" class="btn btn-primary">Cập nhật</button>
-        </div>
-    </div>
-}
- 
-<script src="~/Content/plugins/jquery-tag-it/js/jquery-ui.min.js"></script>
-    <script src="~/Content/plugins/ckeditor/ckeditor.js"></script>
-    <script src="~/Content/plugins/ckfinder/ckfinder.js"></script>
-<script>
-    $(document).ready(function () {
-        $('#fileUpload').on('change', function () {
-            $('#spImg').text("");
-        })
-        $("#Name").keypress(function (e) {
-            if (e.which === 13) {
-                $("#btnadd").submit();
-                return false;
-            }
-        });
-        $('#CategoryId').val('@Model.CategoryId')
-        $('#MetaTitle').on('blur', function () {
-            let link = $('#MetaTitle').val();
-            let linkSeo = RemoveMarkStr(link);
-            alert(linkSeo);
-            $('#LinkSeo').val(linkSeo);
-        })
-        $("#frmData").validate({
-            rules:
-            {
-                MetaTitle:
-                {
-                    required: true,
-                    maxlength: 250
-                },
-                Desciption:
-                {
-                    required: true,
-                    maxlength: 500
-                },
-                Contents:
-                {
-                    required: true
-                }
-            },
-            messages:
-            {
-                MetaTitle:
-                {
-                    required: "Vui lòng nhập tiêu đề"
-                },
-                Desciption:
-                {
-                    required: "Vui lòng nhập mô tả"
-                },
-                Contents:
-                {
-                    required: "Vui lòng nhập nội dung"
-                }
-            },
-            highlight: function (element) {
-                jQuery(element).closest('.form-group').removeClass('has-success').addClass('has-error');
-            },
-            success: function (element) {
-                jQuery(element).closest('.form-group').removeClass('has-error');
-            }
-        });
-    }) 
-    var editor = CKEDITOR.replace('Contents', {
-        height: '700px',
-        startupFocus: true,
-        language: 'vi',
-        filebrowserBrowseUrl: "/Content/plugins/ckfinder/ckfinder.html",
-        filebrowserImageBrowseUrl: '/Content/plugins/ckfinder/ckfinder.html?Type=Images',
-        filebrowserFlashBrowseUrl: '/Content/plugins/ckfinder/ckfinder.html?Type=Flash',
-        filebrowserUploadUrl: '/Scripts/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Files',
-        filebrowserImageUploadUrl: '/Scripts/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Images',
-        filebrowserFlashUploadUrl: '/Scripts/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Flash'
-    });
-    editor.on('change', function () {
-        $("span[data-valmsg-for=Content]").html('');
-    })
-    function checkEdit() {
-        var messageLength = CKEDITOR.instances['Contents'].getData().replace(/<[^>]*>/gi, '').length;
-        if (!messageLength) {
-            $("#spcontent").text("Vui lòng thêm nội dung bài viết");
-            return false;
-        }
+<style>
+    .text-bold {
+        font-weight: bold;
+        width: 130px;
+        vertical-align: middle !important;
     }
 
-</script>
+    table, th, td {
+        border: 1px solid #ddd;
+        border-collapse: collapse;
+    }
+
+    .package-price {
+        width: 80%;
+        display: inline-block
+    }
+
+    .language-panel {
+        width: 100%;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    /* Tabs */
+
+    .language-tabs-note {
+        display: flex;
+        gap: 5px;
+        padding: 10px 10px 0;
+        background: #f5f6f8;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .language-tab {
+        padding: 9px 18px;
+        border: 1px solid #ddd;
+        border-bottom: none;
+        border-radius: 6px 6px 0 0;
+        background: #e9ecef;
+        color: #555;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+    }
+
+        .language-tab:hover {
+            background: #ddd;
+        }
+
+        .language-tab.active {
+            background: #fff;
+            color: #007bff;
+            border-color: #ddd;
+            font-weight: 600;
+        }
+    /* Content */
+
+    .language-content {
+        padding: 20px;
+    }
+
+    .language-pane {
+        display: none;
+    }
+
+        .language-pane.active {
+            display: block;
+        }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-control:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 0 2px rgba(0, 123, 255, .1);
+    }
+</style>
+<script src="~/AppJs/news.js"></script>
+@model Web.Model.CustomModel.NewsCreateViewModel
+@using (Ajax.BeginForm("Edit", "News", null,
+    new AjaxOptions
+    {
+        HttpMethod = "POST",
+        OnSuccess = "News.onEditSuccess"
+    },
+    new { @id = "frmData", @class = "form-horizontal" }))
+{  
+    <div class="article-create">
+        <div class="form-group">
+            <div class="col-md-2 text-left">
+                <a href="/admin/news" class=""><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay trở lại</a>
+            </div>
+            <div class="col-md-6">
+                <span style="font-size:18px">Chỉnh sửa bài viết</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">Danh mục<span class="asterisk"> (*)</span></label>
+            <div class="col-md-3">
+                <select class="form-control" name="CategoryID" id="CategoryID">
+                    <option value="0">--- Chọn danh mục ---</option>
+                    @foreach (var item in categories)
+                    {
+                        <option value="@item.CategoryID">@item.Name</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">Ảnh bài viết<span class="asterisk"> (*)</span></label>
+            <div class="col-md-10">
+                <div class="col-md-2">
+                    @{ Html.RenderAction("UploadImage", "UploadFile", new { controlName = "Image" });}
+                </div>
+                <img style="width:150px" src="@Model.Image" id="prevImages">
+                <span class="error" id="spImg"></span>
+            </div>
+        </div>
+        <div class="info-content">
+            <ul class="nav nav-tabs lang-tabs">
+                @for (int i = 0; i < Model.Languages.Count; i++)
+                {
+                    <li class="@(i == 0 ? "active" : "")">
+                        <a href="#lang-@Model.Languages[i].LangCode"
+                           data-toggle="tab">
+                            @Model.Languages[i].LangName
+                        </a>
+                    </li>
+                }
+            </ul>
+            <div class="tab-content">
+                @for (int i = 0; i < Model.Languages.Count; i++)
+                {
+                    var lang = Model.Languages[i];
+                    <div id="lang-@lang.LangCode"
+                         class="tab-pane @(i == 0 ? "active" : "")">
+                        <div class="form-group">
+                            <label>Tiêu đề<span class="asterisk"> (*)</span></label>
+                            @Html.TextBoxFor(m => m.Languages[i].Title, new { @class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <label>Mô tả ngắn<span class="asterisk"> (*)</span></label>
+                            @Html.TextAreaFor(m => m.Languages[i].Description, new { @class = "form-control", rows = 5 })
+                        </div>
+                        <div class="form-group">
+                            <label>Nội dung<span class="asterisk"> (*)</span></label>
+                            @Html.TextAreaFor(m => m.Languages[i].Contents, new { @class = "form-control content-note", rows = 10 })
+                        </div>
+                        @Html.HiddenFor(m => m.Languages[i].ID)
+                        @Html.HiddenFor(m => m.Languages[i].LangCode)
+                        @Html.HiddenFor(m => m.Languages[i].LangName)
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-2 text-right"><a href="/admin/news" class=""><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay trở lại</a></div>
+            <div class="col-md-7 text-center">
+                <button type="submit" class="btn btn-primary waves-effect waves-light">Thêm mới</button>
+            </div>
+        </div>
+    </div>
+}
+<script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
+@*<script src="~/Content/plugins/ckeditor5/ckeditor.js"></script>*@
+<script>
+    $(document).ready(function () {
+        $('html, body').animate({ scrollTop: 0 }, 500);
+    });
+    $('#CategoryID').val(@Model.CategoryID);
+    class MyUploadAdapter {
+        constructor(loader) {
+            this.loader = loader;
+        }
+        upload() {
+            return this.loader.file
+                .then(file => {
+
+                    return new Promise((resolve, reject) => {
+
+                        const formData = new FormData();
+
+                        formData.append('upload', file);
+
+                        const xhr = new XMLHttpRequest();
+
+                        xhr.open(
+                            'POST',
+                            '/Admin/News/UploadImage',
+                            true
+                        );
+
+                        xhr.responseType = 'json';
+
+                        xhr.onload = function () {
+
+                            if (xhr.status >= 200 &&
+                                xhr.status < 300) {
+
+                                const response = xhr.response;
+
+                                if (response.uploaded) {
+
+                                    resolve({
+                                        default: response.url
+                                    });
+
+                                } else {
+
+                                    reject(
+                                        response.error?.message ||
+                                        'Upload failed'
+                                    );
+                                }
+
+                            } else {
+
+                                reject(
+                                    'Upload failed: ' +
+                                    xhr.status
+                                );
+                            }
+                        };
+
+                        xhr.onerror = function () {
+                            reject('Upload failed');
+                        };
+
+                        xhr.send(formData);
+                    });
+                });
+        }
+
+        abort() {
+            // Có thể xử lý cancel upload ở đây
+        }
+    }
+    function MyCustomUploadAdapterPlugin(editor) {
+        editor.plugins
+            .get('FileRepository')
+            .createUploadAdapter = function (loader) {
+
+                return new MyUploadAdapter(loader);
+
+            };
+    }
+    const editors = {};
+
+    document.querySelectorAll('.content-note')
+        .forEach(function (textarea) {
+            const type = textarea.dataset.type;
+            const lang = textarea.dataset.lang;
+            if (!editors[type]) {
+                editors[type] = {};
+            }
+            ClassicEditor
+                .create(textarea, {
+                    extraPlugins: [
+                        MyCustomUploadAdapterPlugin
+                    ],
+                    toolbar: [
+                        'heading',
+                        '|',
+                        'bold',
+                        'italic',
+                        'underline',
+                        '|',
+                        'link',
+                        'imageUpload',
+                        '|',
+                        'bulletedList',
+                        'numberedList',
+                        '|',
+                        'outdent',
+                        'indent',
+                        '|',
+                        'insertTable',
+                        'blockQuote',
+                        '|',
+                        'undo',
+                        'redo'
+                    ]
+                })
+                .then(function (editor) {
+                    editors[type][lang] = editor;
+                })
+                .catch(function (error) {
+                    console.error(error);
+                });
+        });
+</script> 

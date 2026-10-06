@@ -351,4 +351,7 @@
   <data name="ImportantNot" xml:space="preserve">
     <value>Nota importante</value>
   </data>
+  <data name="GroupTrip" xml:space="preserve">
+    <value>Viaje en grupo</value>
+  </data>
 </root>

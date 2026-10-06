@@ -18,9 +18,10 @@ namespace Web.Model.CustomModel
         public string Size { get; set; }
         public int DayNumber { get; set; } 
         public List<int> CountryID { get; set; } 
-        public List<int> LocationID { get; set; }
+        public string LocationID { get; set; }
         public DateTime CreatedDate { get; set; }
         public string Itineraries { get; set; }
+        public string ImportantNotes { get; set; }
         public List<ProductLanguageViewModel> Languages { get; set; }
     }
 }

@@ -58,15 +58,28 @@ namespace Web.Model
         public virtual DbSet<WordTran> WordTrans { get; set; }
         public virtual DbSet<News> News { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
-        public virtual DbSet<Booking> Bookings { get; set; }
-        public virtual DbSet<NewsTran> NewsTrans { get; set; }
-        public virtual DbSet<Package> Packages { get; set; }
-        public virtual DbSet<Package_Price> Package_Price { get; set; }
-        public virtual DbSet<CategoryTran> CategoryTrans { get; set; }
         public virtual DbSet<Introduction> Introductions { get; set; }
         public virtual DbSet<Product> Products { get; set; }
-        public virtual DbSet<Itinerary> Itineraries { get; set; }
         public virtual DbSet<ProductTran> ProductTrans { get; set; }
+        public virtual DbSet<ImportantNote> ImportantNotes { get; set; }
+        public virtual DbSet<Booking> Bookings { get; set; }
+        public virtual DbSet<Param> Params { get; set; }
+        public virtual DbSet<SentMail> SentMails { get; set; }
+        public virtual DbSet<Itinerary> Itineraries { get; set; }
+        public virtual DbSet<CategoryTran> CategoryTrans { get; set; }
+        public virtual DbSet<Package_Price> Package_Price { get; set; }
+        public virtual DbSet<AggregatedCounter> AggregatedCounters { get; set; }
+        public virtual DbSet<Counter> Counters { get; set; }
+        public virtual DbSet<Hash> Hashes { get; set; }
+        public virtual DbSet<Job> Jobs { get; set; }
+        public virtual DbSet<JobParameter> JobParameters { get; set; }
+        public virtual DbSet<JobQueue> JobQueues { get; set; }
+        public virtual DbSet<List> Lists { get; set; }
+        public virtual DbSet<Schema> Schemata { get; set; }
+        public virtual DbSet<Server> Servers { get; set; }
+        public virtual DbSet<Set> Sets { get; set; }
+        public virtual DbSet<State> States { get; set; }
+        public virtual DbSet<NewsTran> NewsTrans { get; set; }
     
         public virtual int Sp_Category_Update(Nullable<int> iD, string name, string linkSeo, Nullable<int> parentID, Nullable<int> ordering, Nullable<int> type, Nullable<int> level, string icon, Nullable<int> position, Nullable<bool> isSearch, string pathway)
         {
@@ -135,49 +148,21 @@ namespace Web.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_News_GetByTitle_Result>("Sp_News_GetByTitle", metaTitleParameter);
         }
     
-        public virtual int Sp_News_Insert(Nullable<int> categoryId, string metaTitle, string linkSeo, string image, string description, Nullable<int> createdBy, string contents, Nullable<int> status, string tags, Nullable<int> type)
+        public virtual int Sp_News_Insert(Nullable<int> categoryId, string image, Nullable<int> createdBy, ObjectParameter iD)
         {
             var categoryIdParameter = categoryId.HasValue ?
                 new ObjectParameter("CategoryId", categoryId) :
                 new ObjectParameter("CategoryId", typeof(int));
     
-            var metaTitleParameter = metaTitle != null ?
-                new ObjectParameter("MetaTitle", metaTitle) :
-                new ObjectParameter("MetaTitle", typeof(string));
-    
-            var linkSeoParameter = linkSeo != null ?
-                new ObjectParameter("LinkSeo", linkSeo) :
-                new ObjectParameter("LinkSeo", typeof(string));
-    
             var imageParameter = image != null ?
                 new ObjectParameter("Image", image) :
                 new ObjectParameter("Image", typeof(string));
-    
-            var descriptionParameter = description != null ?
-                new ObjectParameter("Description", description) :
-                new ObjectParameter("Description", typeof(string));
     
             var createdByParameter = createdBy.HasValue ?
                 new ObjectParameter("CreatedBy", createdBy) :
                 new ObjectParameter("CreatedBy", typeof(int));
     
-            var contentsParameter = contents != null ?
-                new ObjectParameter("Contents", contents) :
-                new ObjectParameter("Contents", typeof(string));
-    
-            var statusParameter = status.HasValue ?
-                new ObjectParameter("Status", status) :
-                new ObjectParameter("Status", typeof(int));
-    
-            var tagsParameter = tags != null ?
-                new ObjectParameter("Tags", tags) :
-                new ObjectParameter("Tags", typeof(string));
-    
-            var typeParameter = type.HasValue ?
-                new ObjectParameter("Type", type) :
-                new ObjectParameter("Type", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Sp_News_Insert", categoryIdParameter, metaTitleParameter, linkSeoParameter, imageParameter, descriptionParameter, createdByParameter, contentsParameter, statusParameter, tagsParameter, typeParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Sp_News_Insert", categoryIdParameter, imageParameter, createdByParameter, iD);
         }
     
         public virtual int Sp_News_Update(Nullable<int> iD, Nullable<int> categoryId, string metaTitle, string linkSeo, string image, string description, Nullable<int> modifiedBy, string contents, Nullable<int> status, string tags)

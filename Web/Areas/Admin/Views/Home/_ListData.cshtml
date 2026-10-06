@@ -1,0 +1,50 @@
+﻿@using Web.Model 
+@model IEnumerable<BookingModel> 
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Product Code</th>
+            <th>Title</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Tel</th>
+            <th>Email</th> 
+            <th>Note</th>
+            <th>Created date</th>
+            <th>Status</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            string status = "";
+            if(item.Status == 1)
+            {
+                status = "New";
+            }
+            <tr>
+                <td><a class="prod-code" onclick="Booking.loadfrmProductDetail(@item.ProductID)">@item.ProductCode</a></td>
+                <td>@item.Title</td>
+                <td>@item.FirstName</td>
+                <td>@item.LastName</td>
+                <td>@item.Tel</td>
+                <td>@item.Email</td>
+                <td>@item.Notes</td>
+                <td>@item.CreatedDate</td>
+                <td>@status</td> 
+                <td rowspan="2" style="vertical-align: middle;">
+                    <div class="btn-list pull-right mr5">
+                        <a href="#" class="btn btn-info btn-bordered" onclick="Booking.loadfrmBookingDetail(@item.ID)" title="Chi tiết">
+                            <i class="glyphicon glyphicon-info-sign"></i>
+                        </a>
+                        <a href="#" class="btn btn-danger btn-bordered" onclick="Booking.ondelete(@item.ID)" title="Xóa">
+                            <i class="glyphicon glyphicon-trash"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr> 
+        }
+    </tbody>
+</table> 

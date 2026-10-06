@@ -20,6 +20,6 @@ namespace Web.Model
         public string Description { get; set; }
         public string Contents { get; set; }
         public string LangCode { get; set; }
-        public Nullable<int> NewsID { get; set; }
+        public int NewsID { get; set; }
     }
 }

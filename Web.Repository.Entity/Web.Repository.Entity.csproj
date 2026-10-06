@@ -62,7 +62,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SentMailRepository.cs" />
+    <Compile Include="ParamRepository.cs" />
     <Compile Include="PackageRepository.cs" />
+    <Compile Include="BookingRepository.cs" />
     <Compile Include="WordRepository.cs" />
     <Compile Include="HotelRepository.cs" />
     <Compile Include="LocationRepository.cs" />
@@ -98,10 +101,6 @@
       <Project>{d0436499-f74c-4776-af8c-3e76ad2c8869}</Project>
       <Name>Web.Repository</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

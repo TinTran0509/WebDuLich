@@ -91,8 +91,7 @@ namespace Web.Areas.Admin.Controllers
         {
             try
             { 
-                 
-                newsRepository.Edit(model);
+                  
                 return Json(new {
                     IsSuccess = true,
                     Messenger = "Cập nhật bài viết thành công",

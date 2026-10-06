@@ -49,6 +49,25 @@
     <Property Name="LangCode" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="BannerID" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="Booking">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ArrivalDate" Type="date" />
+    <Property Name="TotalPax" Type="int" />
+    <Property Name="EstimatedTotal" Type="float" />
+    <Property Name="Title" Type="varchar" MaxLength="10" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Tel" Type="varchar" MaxLength="20" />
+    <Property Name="Email" Type="varchar" MaxLength="150" />
+    <Property Name="Language" Type="nvarchar" MaxLength="50" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="500" />
+    <Property Name="Status" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ProductID" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="Category">
     <Key>
       <PropertyRef Name="ID" />
@@ -58,6 +77,16 @@
     <Property Name="Ordering" Type="int" />
     <Property Name="Type" Type="int" />
     <Property Name="Image" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="CategoryTrans">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="150" />
+    <Property Name="LinkSeo" Type="varchar" MaxLength="150" />
+    <Property Name="LangCode" Type="varchar" MaxLength="10" />
+    <Property Name="CategoryID" Type="int" />
   </EntityType>
   <EntityType Name="Contact">
     <Key>
@@ -116,6 +145,16 @@
     <Property Name="LangCode" Type="varchar" MaxLength="10" />
     <Property Name="HotelID" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="ImportantNote">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KeyNote" Type="varchar" MaxLength="10" />
+    <Property Name="Contents" Type="nvarchar(max)" />
+    <Property Name="LangCode" Type="varchar" MaxLength="10" />
+    <Property Name="ProductID" Type="int" />
+  </EntityType>
   <EntityType Name="Introduction">
     <Key>
       <PropertyRef Name="ID" />
@@ -143,6 +182,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Day" Type="int" />
     <Property Name="Title" Type="nvarchar" MaxLength="150" />
     <Property Name="Contents" Type="nvarchar(max)" />
     <Property Name="LangCode" Type="varchar" MaxLength="5" />
@@ -216,6 +256,39 @@
     <Property Name="Status" Type="int" />
     <Property Name="Type" Type="int" />
   </EntityType>
+  <EntityType Name="NewsTrans">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MetaTitle" Type="nvarchar" MaxLength="250" />
+    <Property Name="LinkSeo" Type="varchar" MaxLength="250" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="Contents" Type="nvarchar(max)" />
+    <Property Name="LangCode" Type="varchar" MaxLength="10" />
+    <Property Name="NewsID" Type="int" />
+  </EntityType>
+  <EntityType Name="Package_Price">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Pax_From" Type="int" />
+    <Property Name="Pax_To" Type="int" />
+    <Property Name="Price" Type="float" />
+    <Property Name="PackageID" Type="int" Nullable="false" />
+    <Property Name="ProductID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Param">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KeyName" Type="varchar" MaxLength="50" />
+    <Property Name="Value" Type="nvarchar" MaxLength="250" />
+    <Property Name="Description" Type="nvarchar" MaxLength="250" />
+    <Property Name="CreatedDate" Type="datetime" />
+  </EntityType>
   <EntityType Name="Product">
     <Key>
       <PropertyRef Name="ID" />
@@ -249,6 +322,22 @@
     <Property Name="Contents" Type="nvarchar(max)" />
     <Property Name="LangCode" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="ProductID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SentMail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MailTo" Type="varchar" MaxLength="250" />
+    <Property Name="MailCC" Type="varchar" MaxLength="250" />
+    <Property Name="Subject" Type="nvarchar" MaxLength="150" />
+    <Property Name="Contents" Type="nvarchar" MaxLength="500" />
+    <Property Name="Status" Type="int" />
+    <Property Name="RetryCount" Type="int" />
+    <Property Name="Description" Type="nvarchar" MaxLength="250" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="SentDate" Type="datetime" />
+    <Property Name="BookingID" Type="int" />
   </EntityType>
   <EntityType Name="Slider">
     <Key>
@@ -414,66 +503,139 @@
     <Property Name="LangCode" Type="varchar" MaxLength="5" Nullable="false" />
     <Property Name="WordID" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="Booking">
+  <EntityType Name="AggregatedCounter">
     <Key>
-      <PropertyRef Name="ID" />
+      <PropertyRef Name="Key" />
     </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ArrivalDate" Type="date" />
-    <Property Name="Passenger" Type="nvarchar" MaxLength="150" />
-    <Property Name="EstimatedTotal" Type="float" />
-    <Property Name="Title" Type="varchar" MaxLength="10" />
-    <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
-    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
-    <Property Name="Tel" Type="varchar" MaxLength="20" />
-    <Property Name="Email" Type="varchar" MaxLength="150" />
-    <Property Name="Language" Type="nvarchar" MaxLength="50" />
-    <Property Name="DepartureCity" Type="nvarchar" MaxLength="50" />
-    <Property Name="Notes" Type="nvarchar" MaxLength="500" />
-    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="Key" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Value" Type="bigint" Nullable="false" />
+    <Property Name="ExpireAt" Type="datetime" />
   </EntityType>
-  <EntityType Name="CategoryTrans">
+  <EntityType Name="Counter">
     <Key>
-      <PropertyRef Name="ID" />
+      <PropertyRef Name="Key" />
+      <PropertyRef Name="Id" />
     </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nvarchar" MaxLength="150" />
-    <Property Name="LinkSeo" Type="varchar" MaxLength="150" />
-    <Property Name="LangCode" Type="varchar" MaxLength="10" />
-    <Property Name="CategoryID" Type="int" />
+    <Property Name="Key" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Value" Type="int" Nullable="false" />
+    <Property Name="ExpireAt" Type="datetime" />
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
-  <EntityType Name="NewsTrans">
+  <EntityType Name="Hash">
     <Key>
-      <PropertyRef Name="ID" />
+      <PropertyRef Name="Key" />
+      <PropertyRef Name="Field" />
     </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="MetaTitle" Type="nvarchar" MaxLength="250" />
-    <Property Name="LinkSeo" Type="varchar" MaxLength="250" />
-    <Property Name="Description" Type="nvarchar" MaxLength="500" />
-    <Property Name="Contents" Type="nvarchar(max)" />
-    <Property Name="LangCode" Type="varchar" MaxLength="10" />
-    <Property Name="NewsID" Type="int" />
+    <Property Name="Key" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Field" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Value" Type="nvarchar(max)" />
+    <Property Name="ExpireAt" Type="datetime2" Precision="7" />
   </EntityType>
-  <EntityType Name="Package">
+  <EntityType Name="Job">
     <Key>
-      <PropertyRef Name="ID" />
+      <PropertyRef Name="Id" />
     </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nvarchar" MaxLength="50" />
-    <Property Name="Ordering" Type="int" />
-    <Property Name="Description" Type="nvarchar" MaxLength="250" />
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StateId" Type="bigint" />
+    <Property Name="StateName" Type="nvarchar" MaxLength="20" />
+    <Property Name="InvocationData" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Arguments" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+    <Property Name="ExpireAt" Type="datetime" />
   </EntityType>
-  <EntityType Name="Package_Price">
+  <EntityType Name="JobParameter">
     <Key>
-      <PropertyRef Name="ID" />
+      <PropertyRef Name="JobId" />
+      <PropertyRef Name="Name" />
     </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Pax_From" Type="int" />
-    <Property Name="Pax_To" Type="int" />
-    <Property Name="Price" Type="float" />
-    <Property Name="PackageID" Type="int" Nullable="false" />
-    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="JobId" Type="bigint" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="Value" Type="nvarchar(max)" />
   </EntityType>
+  <EntityType Name="JobQueue">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Queue" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JobId" Type="bigint" Nullable="false" />
+    <Property Name="Queue" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FetchedAt" Type="datetime" />
+  </EntityType>
+  <EntityType Name="List">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Key" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Key" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Value" Type="nvarchar(max)" />
+    <Property Name="ExpireAt" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Schema">
+    <Key>
+      <PropertyRef Name="Version" />
+    </Key>
+    <Property Name="Version" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Server">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Data" Type="nvarchar(max)" />
+    <Property Name="LastHeartbeat" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Set">
+    <Key>
+      <PropertyRef Name="Key" />
+      <PropertyRef Name="Value" />
+    </Key>
+    <Property Name="Key" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Score" Type="float" Nullable="false" />
+    <Property Name="Value" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="ExpireAt" Type="datetime" />
+  </EntityType>
+  <EntityType Name="State">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="JobId" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JobId" Type="bigint" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Reason" Type="nvarchar" MaxLength="100" />
+    <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+    <Property Name="Data" Type="nvarchar(max)" />
+  </EntityType>
+  <Association Name="FK_HangFire_JobParameter_Job">
+    <End Role="Job" Type="Self.Job" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="JobParameter" Type="Self.JobParameter" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Job">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="JobParameter">
+        <PropertyRef Name="JobId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HangFire_State_Job">
+    <End Role="Job" Type="Self.Job" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="State" Type="Self.State" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Job">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="State">
+        <PropertyRef Name="JobId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Function Name="Sp_News_GetByLinkSeo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="LinkSeo" Type="varchar" Mode="In" />
   </Function>
@@ -509,13 +671,16 @@
     <EntitySet Name="AdminMenu" EntityType="Self.AdminMenu" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Banner" EntityType="Self.Banner" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="BannerTrans" EntityType="Self.BannerTrans" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Booking" EntityType="Self.Booking" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CategoryTrans" EntityType="Self.CategoryTrans" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CountryTrans" EntityType="Self.CountryTrans" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Header" EntityType="Self.Header" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Hotel" EntityType="Self.Hotel" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HotelTrans" EntityType="Self.HotelTrans" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ImportantNote" EntityType="Self.ImportantNote" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Introduction" EntityType="Self.Introduction" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="IntroductionTrans" EntityType="Self.IntroductionTrans" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Itinerary" EntityType="Self.Itinerary" Schema="dbo" store:Type="Tables" />
@@ -525,8 +690,12 @@
     <EntitySet Name="MenuHome" EntityType="Self.MenuHome" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MenuTrans" EntityType="Self.MenuTrans" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NewsTrans" EntityType="Self.NewsTrans" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Package_Price" EntityType="Self.Package_Price" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Param" EntityType="Self.Param" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ProductTrans" EntityType="Self.ProductTrans" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SentMail" EntityType="Self.SentMail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Slider" EntityType="Self.Slider" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_GroupUser" EntityType="Self.tbl_GroupUser" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Languages" EntityType="Self.tbl_Languages" Schema="dbo" store:Type="Tables" />
@@ -540,10 +709,24 @@
     <EntitySet Name="UserTrans" EntityType="Self.UserTrans" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Word" EntityType="Self.Word" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="WordTrans" EntityType="Self.WordTrans" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Booking" EntityType="Self.Booking" Schema="zokhfcqf_pasosea" store:Type="Tables" />
-    <EntitySet Name="CategoryTrans" EntityType="Self.CategoryTrans" Schema="zokhfcqf_pasosea" store:Type="Tables" />
-    <EntitySet Name="NewsTrans" EntityType="Self.NewsTrans" Schema="zokhfcqf_pasosea" store:Type="Tables" />
-    <EntitySet Name="Package" EntityType="Self.Package" Schema="zokhfcqf_pasosea" store:Type="Tables" />
-    <EntitySet Name="Package_Price" EntityType="Self.Package_Price" Schema="zokhfcqf_pasosea" store:Type="Tables" />
+    <EntitySet Name="AggregatedCounter" EntityType="Self.AggregatedCounter" Schema="HangFire" store:Type="Tables" />
+    <EntitySet Name="Counter" EntityType="Self.Counter" Schema="HangFire" store:Type="Tables" />
+    <EntitySet Name="Hash" EntityType="Self.Hash" Schema="HangFire" store:Type="Tables" />
+    <EntitySet Name="Job" EntityType="Self.Job" Schema="HangFire" store:Type="Tables" />
+    <EntitySet Name="JobParameter" EntityType="Self.JobParameter" Schema="HangFire" store:Type="Tables" />
+    <EntitySet Name="JobQueue" EntityType="Self.JobQueue" Schema="HangFire" store:Type="Tables" />
+    <EntitySet Name="List" EntityType="Self.List" Schema="HangFire" store:Type="Tables" />
+    <EntitySet Name="Schema" EntityType="Self.Schema" Schema="HangFire" store:Type="Tables" />
+    <EntitySet Name="Server" EntityType="Self.Server" Schema="HangFire" store:Type="Tables" />
+    <EntitySet Name="Set" EntityType="Self.Set" Schema="HangFire" store:Type="Tables" />
+    <EntitySet Name="State" EntityType="Self.State" Schema="HangFire" store:Type="Tables" />
+    <AssociationSet Name="FK_HangFire_JobParameter_Job" Association="Self.FK_HangFire_JobParameter_Job">
+      <End Role="Job" EntitySet="Job" />
+      <End Role="JobParameter" EntitySet="JobParameter" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HangFire_State_Job" Association="Self.FK_HangFire_State_Job">
+      <End Role="Job" EntitySet="Job" />
+      <End Role="State" EntitySet="State" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

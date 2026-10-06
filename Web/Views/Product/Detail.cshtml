@@ -17,7 +17,11 @@
     List<ProductModel> relates = (List<ProductModel>)TempData["Relates"];
     List<Itinerary> itineraries = (List<Itinerary>)TempData["Itineraries"];
 }
- 
+ <style>
+     .not-contents {
+        text-align: left !important
+     }
+ </style>
 <link href="~/Content/all.min.css" rel="stylesheet" />
 <link href="~/Content/asset/prod_detail.css" rel="stylesheet" />
 <div class="page-banner">
@@ -25,8 +29,8 @@
     <input type="hidden" id="massage_pack" value="@ViewBag.MessageSelectPackage" />
     <input type="hidden" id="json-package" value="@ViewBag.JsonPackage" />
     <picture>
-        @*<source media="(max-width: 480px)" data-lazy-srcset="@Model.Image">
-            <source media="(min-width: 481px)" data-lazy-srcset="@Model.Image">*@
+        <source media="(max-width: 480px)" data-lazy-srcset="@Model.Image">
+            <source media="(min-width: 481px)" data-lazy-srcset="@Model.Image">
         <img style="height:200px" src="@Model.Image"
              alt=""
              fetchpriority="high"
@@ -246,33 +250,33 @@
                                 <div class="section-title">
                                     <h2>@ViewBag.Included</h2>
                                 </div>
-                                <ul>
-                                    @Html.Raw(ViewBag.Includeds) 
-                                </ul>
+                                <div class="not-contents">
+                                    @Html.Raw(ViewBag.Includeds)
+                                </div> 
                             </div>
                             <div class="included-box excluded">
                                 <div class="section-title">
                                     <h2>@ViewBag.Excluded</h2>
                                 </div>
-                                <ul>
-                                    @Html.Raw(ViewBag.Excludeds) 
-                                </ul>
+                                <div class="not-contents">
+                                    @Html.Raw(ViewBag.Excludeds)
+                                </div> 
                             </div>
                             <div class="included-box">
                                 <div class="section-title">
                                     <h2>@ViewBag.ImportantNot</h2>
                                 </div>
-                                <ul>
-                                    @Html.Raw(ViewBag.ImportantNots) 
-                                </ul>
+                                <div class="not-contents">
+                                    @Html.Raw(ViewBag.ImportantNots)
+                                </div> 
                             </div>
                             <div class="included-box excluded">
                                 <div class="section-title">
                                     <h2>@ViewBag.Highlights</h2>
                                 </div>
-                                <ul>
-                                    @Html.Raw(ViewBag.HighlightsDetail) 
-                                </ul>
+                                <div class="not-contents">
+                                    @Html.Raw(ViewBag.HighlightsDetail)
+                                </div> 
                             </div>
                         </div>
                     </main>
@@ -344,7 +348,6 @@
                             <path d="M320 75 L312 51 L328 51 Z" fill="#315f91" />
                         </svg>*@
                     </aside>
-
                 </section>
             </div>
         </div>
@@ -471,9 +474,9 @@
                                 <label><span class="asterisk">*</span> @ViewBag.NgonNguUuTien</label>
                                 <select name="language" required>
                                     <option value="">@ViewBag.Select</option>
-                                    <option value="0">Português</option>
-                                    <option value="1">Español</option>
-                                    <option value="1">English</option>
+                                    <option value="Português">Português</option>
+                                    <option value="Español">Español</option>
+                                    <option value="English">English</option>
                                 </select>
                             </div>
                             <div class="col-md-6 mb-20">
@@ -486,24 +489,9 @@
                             </div>
                         </div>
                         <div id="payment-section"></div>
-                        <div class="text-center pt-15 d-flex justify-content-center align-items-center section-action">
-                            <input type="hidden" id="_wpnonce" name="_wpnonce" value="42b09ed278" />
-                            <input type="hidden" name="_wp_http_referer" value="" />
-                            <input type="hidden" name="action" value="process_booking" />
-                            <input type="hidden" name="type" value="group-tour" />
-                            <input type="hidden" name="tour_id" value="24120" />
-                            <input type="hidden" name="booking_type" value="normal" />
-                            <input type="hidden" name="page_id" value="94879" />
-                            <input type="hidden" name="total_est" class="total-est-input" value="" />
-                            <input type="hidden" name="extra_est" class="extra-est-input" value="" />
-                            <input type="hidden" name="deposit_est" class="deposit-est-input" value="" />
-                            <input type="hidden" name="lang" value="es" />
-                            <input type="text" name="lm_tour" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute; left:-9999px;" />
-                            <input type="hidden" name="form_start_time" value="1787366857">
-                            <input type="hidden" name="utm_source" id="utm_source">
-                            <input type="hidden" name="utm_campaign" id="utm_campaign">
-                            <input type="hidden" name="utm_location" id="utm_location">
-                            <input type="hidden" name="utm_adgroup" id="utm_adgroup">
+                        <div class="text-center pt-15 d-flex justify-content-center align-items-center section-action"> 
+                            <input type="hidden" name="total_est" class="total-est-input" value="" /> 
+                            <input type="hidden" name="productid" value="@Model.ProductID" />
                             <input type="hidden" value="@ViewBag.BookingSuccess" id="bookingmessage">
                             <div class="btn-step btn-step-1">
                                 <button type="submit" class="btn-style btn-has-loading">
@@ -744,6 +732,47 @@
         </div>
     </div>
 </div>
-
+<script> 
+    document.getElementById("booking-form").addEventListener("submit", async function (e) {
+        e.preventDefault();
+        const getValue = (name) => {
+            const el = document.querySelector(`[name="${name}"]`);
+            if (!el) {
+                console.error(`Không tìm thấy: [name="${name}"]`); return "";
+            }
+            return el.value;
+        };
+        const booking = {
+            ArrivalDate: getValue("date_of_sale"),
+            TotalPax: getValue("pax"),
+            EstimatedTotal: getValue("total_est"),
+            Title: getValue("forms_of_address"),
+            FirstName: getValue("lm_first_name"),
+            LastName: getValue("lm_last_name"),
+            Tel: getValue("lm_phone"),
+            Email: getValue("lm_email"),
+            Language: getValue("language"),
+            Notes: getValue("note"),
+            ProductID: getValue("productid")
+        }; try {
+            const response = await fetch('/Product/Booking', {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(booking)
+            });
+            const result = await response.json();
+            console.log("Response:", result);
+            if (result.success) {
+                alert(result.message);
+                document.getElementById("booking-form").reset();
+            } else {
+                alert(result.message || "Booking failed");
+            }
+        } catch (error) {
+            console.error("Booking error:", error);
+            alert("Booking error");
+        }
+ });
+</script>
 
 

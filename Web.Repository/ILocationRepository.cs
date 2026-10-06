@@ -20,6 +20,7 @@ namespace Web.Repository
         void Update(LocationTran obj);
         IEnumerable<LocationViewModel> GetByLocationIDs(string locationIDs, string langCode);
         IEnumerable<LocationTran> GetLocationTranByCoutryID(string langCode, string countryIDs);
+        IEnumerable<LocationViewModel> GetForProduct(string locationIDs);
         IEnumerable<LocationViewModel> GetLocationTranByCoutryName(string langCode, string name);
     }
 }

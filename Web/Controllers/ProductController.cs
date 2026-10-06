@@ -19,6 +19,7 @@ namespace Web.Controllers
 {
     public class ProductController : BaseController
     {
+        private readonly IProductRepository productRepository = new ProductRepository();
         private readonly IProductTransRepository productTransRepository = new ProductTransRepository();
         private readonly ILocationRepository locationRepository = new LocationRepository();
         private readonly IWordRepository wordRepository = new WordRepository();
@@ -95,13 +96,8 @@ namespace Web.Controllers
 
                 ViewBag.EstimatedPrice = wordRepository.GetValueByKey("EstimatedPrice", model.LangCode);
                 ViewBag.Title = wordRepository.GetValueByKey("Title", model.LangCode);
-
-                ViewBag.Includeds = wordRepository.GetValueByKey("Included", model.LangCode);
-                ViewBag.Excludeds = wordRepository.GetValueByKey("Excluded", model.LangCode);
-                ViewBag.ImportantNots = wordRepository.GetValueByKey("ImportantNot", model.LangCode);
-                ViewBag.HighlightsDetail = wordRepository.GetValueByKey("Highlights", model.LangCode);
-
-                List<Itinerary> itineraries = productTransRepository.GetItineraryByProductID(model.ProductID, model.LangCode).ToList();
+                 
+                List<Itinerary> itineraries = productTransRepository.GetItineraryByProductIDAndLangCode(model.ProductID, model.LangCode).ToList();
                 TempData["Itineraries"] = itineraries;
 
                 List<Package_Price> package_Prices = _packageRepository.GetAllPackagePrice().Where(x => x.ProductID == model.ProductID).ToList();
@@ -109,6 +105,27 @@ namespace Web.Controllers
                 string json = JsonConvert.SerializeObject(package_Prices);
 
                 ViewBag.JsonPackage = json;
+
+                List<ImportantNote> importantNotes = productRepository.GetAllImportantNote().Where(x => x.ProductID == model.ProductID && x.LangCode == model.LangCode).ToList();
+
+                if (importantNotes.Any())
+                {
+                    ImportantNote inc = importantNotes.FirstOrDefault(x => x.KeyNote == "INCLUDED");
+                    ViewBag.Includeds = inc != null ? inc.Contents : "";
+                    ImportantNote exc = importantNotes.FirstOrDefault(x => x.KeyNote == "EXCLUDED");
+                    ViewBag.Excludeds = exc != null ? exc.Contents : "";
+                    ImportantNote imp = importantNotes.FirstOrDefault(x => x.KeyNote == "IMPORTANT");
+                    ViewBag.ImportantNots = imp != null ? imp.Contents : "";
+                    ImportantNote hig = importantNotes.FirstOrDefault(x => x.KeyNote == "HIGHLIGHTS");
+                    ViewBag.HighlightsDetail = hig != null ? hig.Contents : "";
+                }
+                else
+                {
+                    ViewBag.Includeds = wordRepository.GetValueByKey("Included", model.LangCode);
+                    ViewBag.Excludeds = wordRepository.GetValueByKey("Excluded", model.LangCode);
+                    ViewBag.ImportantNots = wordRepository.GetValueByKey("ImportantNot", model.LangCode);
+                    ViewBag.HighlightsDetail = wordRepository.GetValueByKey("Highlights", model.LangCode);
+                }
             }
             ViewBag.Destination = Resources.Language.Destination;
             ViewBag.Duration = Resources.Language.Duration;
@@ -162,23 +179,36 @@ namespace Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Detail(
-            string package_star,
-            int pax,
-            string date_of_sale,
-            string forms_of_address,
-            string lm_first_name,
-            string lm_last_name,
-            string lm_email,
-            string lm_phone,
-            string language
-            )
+        public ActionResult Booking(Booking booking)
         {
-            return Json(new
+            try
             {
-                success = true,
-                message = Resources.Language.BookingSuccess,
-            }, JsonRequestBehavior.AllowGet);
+                IBookingRepository bookingRepository = new BookingRepository();
+                booking.Status = 1;
+                booking.CreatedDate = DateTime.Now;
+                
+                SentMail sentMail = new SentMail();
+                sentMail.Status = 0;
+                sentMail.CreatedDate = DateTime.Now;
+                sentMail.Subject = "Thông báo khách hàng đặt tour"; 
+
+                bookingRepository.Create(booking, sentMail);
+
+                return Json(new
+                {
+                    success = true,
+                    message = Resources.Language.BookingSuccess,
+                }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception)
+            {
+                return Json(new
+                {
+                    success = false,
+                    message = Resources.Language.BookingFailed,
+                }, JsonRequestBehavior.AllowGet);
+
+            }  
         }
     }
 }

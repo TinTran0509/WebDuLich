@@ -193,7 +193,6 @@ D:\WebDuLich\Web\Web.Repository.Entity\bin\Debug\Dapper.xml
 D:\WebDuLich\Web\Web.Repository.Entity\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
 D:\WebDuLich\Web\Web.Repository.Entity\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 D:\WebDuLich\Web\Web.Repository.Entity\bin\Debug\System.Threading.Tasks.Extensions.xml
-D:\WebDuLich\Lummia\Web\Web.Repository.Entity\bin\Debug\Web.Repository.Entity.dll.config
 D:\WebDuLich\Lummia\Web\Web.Repository.Entity\bin\Debug\Web.Repository.Entity.dll
 D:\WebDuLich\Lummia\Web\Web.Repository.Entity\bin\Debug\Web.Repository.Entity.pdb
 D:\WebDuLich\Lummia\Web\Web.Repository.Entity\bin\Debug\Dapper.dll
@@ -243,7 +242,6 @@ D:\PROJECTMORE\Lummia\Web\Web.Repository.Entity\bin\Debug\Web.Model.dll.config
 D:\PROJECTMORE\Lummia\Web\Web.Repository.Entity\obj\Debug\Web.Repo.21620898.Up2Date
 D:\PROJECTMORE\Lummia\Web\Web.Repository.Entity\obj\Debug\Web.Repository.Entity.dll
 D:\PROJECTMORE\Lummia\Web\Web.Repository.Entity\obj\Debug\Web.Repository.Entity.pdb
-D:\PROJECTMORE\Cailummia\Web.Repository.Entity\bin\Debug\Web.Repository.Entity.dll.config
 D:\PROJECTMORE\Cailummia\Web.Repository.Entity\bin\Debug\Web.Repository.Entity.dll
 D:\PROJECTMORE\Cailummia\Web.Repository.Entity\bin\Debug\Web.Repository.Entity.pdb
 D:\PROJECTMORE\Cailummia\Web.Repository.Entity\bin\Debug\Dapper.dll

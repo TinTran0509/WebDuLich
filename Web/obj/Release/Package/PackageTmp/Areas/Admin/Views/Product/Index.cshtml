@@ -10,18 +10,39 @@
     }
 </style>
 @using Web.Model.CustomModel 
-<script src="~/AppJs/product.js"></script>
+<script src="~/AppJs/product.1234.js"></script>
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">Quản lý sản phẩm</h3>
-                <div style="top: 8px;position: absolute; right: 40px;" class="pull-right">
-                    @if (lstAction != null && lstAction.Contains((int)EnumHelper.Action.Add))
-                    {
-                        <a href="/admin/product/add" class="btn btn-primary waves-effect waves-light"><i class="fa fa-plus"></i> Thêm mới</a> 
-                    }
+                <div class="row" style="margin-bottom:10px">
+                    <div class="col-md-2">
+                        <input type="text" id="txtCode" class="form-control" placeholder="Mã sản phẩm" />
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" id="txtName" class="form-control" placeholder="Tiêu đề sản phẩm" />
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-control" id="type">
+                            <option value="0">--- Chọn loại hình ---</option>
+                            <option value="1">Đi theo nhóm</option>
+                            <option value="2">Đi riêng</option>
+                        </select>
+                    </div>
+                    <div class="col-md-1" style="padding-top: 3px;">
+                        <button id="btnSearch" onclick="Product.loadData(1)" class="btn btn-primary">Tìm kiếm</button>
+                    </div>
+                    <div class="col-md-2" style="text-align: right; padding-top: 3px ">
+                        @if (lstAction != null && lstAction.Contains((int)EnumHelper.Action.Add))
+                        {
+                            <a href="/admin/product/add" class="btn btn-primary waves-effect waves-light"><i class="fa fa-plus"></i> Thêm mới</a>
+                        }
+                    </div>
                 </div>
+                @*<div style="top: 8px;position: absolute; right: 40px;" class="pull-right">
+                    
+                </div>*@
             </div>
             <div class="panel-body">
                 <div class="row">

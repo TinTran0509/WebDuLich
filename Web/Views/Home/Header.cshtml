@@ -22,11 +22,11 @@
         }
 </style>
 @model IEnumerable<Web.Model.tbl_Languages>
-<ul>
+<ul id="h-lang">
     @foreach (var item in Model)
     { 
         <li class="news-item" id="lang_@item.LangCode.ToLower()">
-           <a href="/@item.LangCode.ToLower()/index.html">
+           <a href="/@item.LangCode.ToLower()/">
               <img alt="" src="@item.Icon" /><span>@item.LangName</span>
            </a>
         </li>

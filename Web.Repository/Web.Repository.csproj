@@ -46,7 +46,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ISentMailRepository.cs" />
+    <Compile Include="IParamRepository.cs" />
     <Compile Include="IPackageRepository.cs" />
+    <Compile Include="IBookingRepository.cs" />
     <Compile Include="IWordRepository.cs" />
     <Compile Include="IHotelRepository.cs" />
     <Compile Include="ILocationRepository.cs" />

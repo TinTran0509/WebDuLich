@@ -128,6 +128,84 @@
             background: #fff;
         }
     </style>
+    <style>
+        .about-content { 
+            line-height: 1.4;
+        }
+
+        .about-video {
+            float: left;
+            width: 42%;
+            margin: 0 45px 25px 0;
+        }
+
+        .about-video video {
+            display: block;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            border-radius: 25px;
+        }
+
+        .about-content h2 {
+            margin-top: 0;
+            color: #e8751a;
+            font-style: italic;
+        }
+
+        .about-content p {
+            margin: 0 0 12px;
+        }
+        /* Tablet */
+@@media (min-width: 768px) and (max-width: 991px) {
+
+    .about-video {
+        float: left;
+        width: 45%;
+        margin-right: 30px;
+    }
+
+    .about-content {
+        font-size: 17px;
+        line-height: 1.6;
+    }
+
+    .about-content h2 {
+        font-size: 36px;
+    }
+}
+
+
+/* Mobile */
+@@media (max-width: 767px) {
+
+    .about-video {
+        float: none;
+        width: 100%;
+        margin: 0 0 25px;
+    }
+
+    .about-video video {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        border-radius: 18px;
+    }
+
+    .about-content {
+        font-size: 16px;
+        line-height: 1.6;
+        padding: 0 15px;
+    }
+
+    .about-content h2 {
+        font-size: 30px;
+        line-height: 1.25;
+        margin-bottom: 18px;
+    }
+}
+    </style>
     <div class="page-banner">
         <picture>
             <source media="(max-width: 480px)" data-lazy-srcset="@Model.Image">
@@ -151,11 +229,11 @@
                 @Html.Raw(Model.Description)
          </div>
     </div>
-    <div class="pt-45 border-edeae5">
+    <div class="pt-30 border-edeae5">
         <div class="container">
             <div class="row">
-                <div class="col-md-5">
-                    <div class="text-right sm-text-center fw-700 fsz-22"> 
+                <div class="about-content">
+                    <div class="about-video">
                         <div class="video-card" onclick="playVideo(this)">
                             <div class="video-wrapper">
                                 <video controls playsinline preload="metadata" poster="@Model.Thumbnail" style="width:100%;">
@@ -163,14 +241,29 @@
                                 </video>
                                 <span onclick="playVideo(this)" class="play-icon"></span>
                             </div>
-                        </div> 
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-7 sm-pt-30">
-                    <div class="lh-180 sm-text-center">
+                    <div>
                         @Html.Raw(Model.Contents)
+                    </div> 
+                </div>
+                @*<div class="col-md-5">
+            <div class="text-right sm-text-center fw-700 fsz-22">
+                <div class="video-card" onclick="playVideo(this)">
+                    <div class="video-wrapper">
+                        <video controls playsinline preload="metadata" poster="@Model.Thumbnail" style="width:100%;">
+                            <source src="@Model.UrlVideo" type="video/mp4">
+                        </video>
+                        <span onclick="playVideo(this)" class="play-icon"></span>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="col-md-7 sm-pt-30">
+            <div class="lh-180 sm-text-center">
+                @Html.Raw(Model.Contents)
+            </div>
+        </div>*@
             </div>
         </div>
     </div>

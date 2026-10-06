@@ -1,0 +1,60 @@
+﻿@model Web.Model.Param
+@using (Ajax.BeginForm("Edit", "Param", null,
+    new AjaxOptions
+    {
+        HttpMethod = "POST",
+        OnSuccess = "Param.onAddSuccess"
+    },
+    new { @id = "basicForm", @class = "form-horizontal" }))
+{
+    <div class="form-group">
+        <label class="col-md-2 control-label">Tên tham số <span class="asterisk"> (*)</span></label>
+        <div class="col-md-10">
+            @Html.TextBoxFor(g => g.KeyName, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Giá trị <span class="asterisk"> (*)</span></label>
+        <div class="col-md-10">
+            @Html.TextBoxFor(g => g.Value, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Mô tả </label>
+        <div class="col-sm-10">
+            @Html.TextAreaFor(g => g.Description, new { @class = "form-control", @Rows = "5" })
+        </div>
+    </div>
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary waves-effect waves-light">Cập nhật</button>
+    </div>
+}
+<script>
+    // Basic Form
+    $(document).ready(function () {
+        $("#basicForm").validate({
+            rules:
+            {
+                KeyName:
+                {
+                    required: true
+                },
+                Value:
+                {
+                    required: true
+                }
+            },
+            messages:
+            {
+                Name:
+                {
+                    required: "Nhập tên tham số"
+                },
+                Value:
+                {
+                    required: "Gía trị không để trống"
+                }
+            }
+        });
+    });
+</script>

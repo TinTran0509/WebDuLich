@@ -351,4 +351,7 @@
   <data name="ImportantNot" xml:space="preserve">
     <value>ImportantNot</value>
   </data>
+  <data name="GroupTrip" xml:space="preserve">
+    <value>GroupTrip</value>
+  </data>
 </root>

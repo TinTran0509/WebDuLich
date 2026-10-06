@@ -5,43 +5,58 @@
    
 @{
     var lstAction = (List<int>)HttpContext.Current.Session["Action"];
+    int id = 0, newsID = 0;
 }
 <div class="col-xs-12">
     <table class="table table-sm">
         <thead>
             <tr>
-                <th>Tiêu đề</th>
                 <th>Hình ảnh</th>
+                <th>Tiêu đề</th>
+                <th>Danh mục</th>
                 <th>Mô tả</th>
-                <th>Nội dung</th> 
-                <th>Ngày tạo</th> 
+                <th>Ngày tạo</th>
                 <th>Thao tác</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
+                string group = "group-banner";
+                if (newsID != item.NewsID)
+                {
+                    group = "";
+                }
+                <tr class="@group">
+                    @if (id != item.NewsID)
+                    {
+                        <td rowspan="2"><img style="width:50px" src="@item.Image" /></td>
+                    }
                     <td>@item.MetaTitle</td>
-                    <td><img style="width:50px" src="@item.Image" /></td>
-                    <td>@item.Description</td>
-                    <td>@HelperString.TruncateByWord(HelperString.StripHTML(HttpUtility.HtmlDecode(item.Contents)), 120)</td> 
-                    <td>@string.Format("{0:dd/MM/yyyy HH:mm}",item.CreatedDate)</td>
-                    <td style="width:100px"> 
-                        @if (lstAction != null && lstAction.Contains((int)EnumHelper.Action.Edit))
-                        {
-                            <a href="/Admin/News/Edit/@item.ID" class="btn btn-success btn-bordered" title="Sửa">
-                                <i class="glyphicon glyphicon-pencil"></i>
-                            </a>
-                        }
-                        @if (lstAction != null && lstAction.Contains((int)EnumHelper.Action.Delete))
-                        {
-                            <a href="javascript:void(0)" class="btn btn-danger btn-bordered" onclick="News.handleDeleteItem(@item.ID) " title="Xóa">
-                                <i class="glyphicon glyphicon-trash"></i>
-                            </a>
-                        }
-                    </td>
+                    <td>@item.CategoryName</td>
+                    <td>@HelperString.TruncateByWord(HelperString.StripHTML(HttpUtility.HtmlDecode(item.Description)), 120)</td>
+                    @if (id != item.NewsID)
+                    {
+                        <td rowspan="2">@string.Format("{0:dd/MM/yyyy HH:mm}", item.CreatedDate)</td>
+                        <td rowspan="2" style="width:100px">
+                            @if (lstAction != null && lstAction.Contains((int)EnumHelper.Action.Edit))
+                            {
+                                <a href="/Admin/News/Edit/@item.ID" class="btn btn-success btn-bordered" title="Sửa">
+                                    <i class="glyphicon glyphicon-pencil"></i>
+                                </a>
+                            }
+                            @if (lstAction != null && lstAction.Contains((int)EnumHelper.Action.Delete))
+                            {
+                                <a href="javascript:void(0)" class="btn btn-danger btn-bordered" onclick="News.handleDeleteItem(@item.ID) " title="Xóa">
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </a>
+                            }
+                        </td>
+                    }
+
                 </tr>
+                id = item.ID;
+                newsID = item.NewsID;
             }
         </tbody>
     </table>

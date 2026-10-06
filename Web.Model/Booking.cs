@@ -16,7 +16,7 @@ namespace Web.Model
     {
         public int ID { get; set; }
         public Nullable<System.DateTime> ArrivalDate { get; set; }
-        public string Passenger { get; set; }
+        public Nullable<int> TotalPax { get; set; }
         public Nullable<double> EstimatedTotal { get; set; }
         public string Title { get; set; }
         public string FirstName { get; set; }
@@ -24,8 +24,9 @@ namespace Web.Model
         public string Tel { get; set; }
         public string Email { get; set; }
         public string Language { get; set; }
-        public string DepartureCity { get; set; }
         public string Notes { get; set; }
+        public Nullable<int> Status { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
         public int ProductID { get; set; }
     }
 }

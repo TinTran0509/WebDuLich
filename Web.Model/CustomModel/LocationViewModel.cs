@@ -10,6 +10,7 @@ namespace Web.Model.CustomModel
     public class LocationViewModel : Location
     {
         public string Name { get; set; }
+        public string LangCode { get; set; }
         public string LangName { get; set; }
         public string Description { get; set; } 
         public int LocationID { get; set; }

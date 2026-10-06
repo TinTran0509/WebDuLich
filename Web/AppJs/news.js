@@ -13,8 +13,9 @@
             });
         },
         loadData: function (pageIndex) { 
-            var keyWord = $('#txtSearch').val();
-            $.get("/Admin/News/ListData", { keyWord: keyWord, pageIndex: pageIndex}, function (res) {
+            let title = $('#txtSearch').val();
+            let cateId = 0
+            $.get("/Admin/News/ListData", { title: title, cateId: cateId, pageIndex: pageIndex}, function (res) {
                 $('#loadData').html(res.viewContent);
                 if (res.totalPages > 1) {
                     $('#paginationholder').html('<ul id="pagination" class="pagination-sm"></ul>');
@@ -35,12 +36,8 @@
         onAddSuccess: function (res) {
             if (res.IsSuccess == true) {
                 alertmsg.success(res.Messenger);
-                if (res.Close == "close") {
-                    let url = "/admin/news";
-                    location.href = url;
-                } else {
-                    location.href = "/admin/news/add";
-                }
+                let url = "/admin/news";
+                location.href = url; 
             }
             else {
                 alertmsg.error(res.Messenger);

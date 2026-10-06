@@ -17,6 +17,8 @@ namespace Web.Repository
         void Edit(Product obj, List<ProductTran> productTrans);
         void Update(Product obj);
         void InsertItinerary(int prodId, List<Itinerary> Itineraries);
+        void InsertImportantNote(int prodId, List<ImportantNote> ImportantNotes);
+        IEnumerable<ImportantNote> GetAllImportantNote();
         void Delete(int id, List<ProductTran> productTrans);  
     }
 }

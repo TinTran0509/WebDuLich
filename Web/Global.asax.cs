@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hangfire;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.NetworkInformation;
@@ -13,6 +14,7 @@ using Web.BaseSecurity;
 using Web.Model;
 using Web.Repository;
 using Web.Repository.Entity;
+using Web.Service;
 
 namespace Web
 {
@@ -25,10 +27,10 @@ namespace Web
         {
             Application["Totaluser"] = 0;
             AreaRegistration.RegisterAllAreas();
-            WebApiConfig.Register(GlobalConfiguration.Configuration);
+            WebApiConfig.Register(System.Web.Http.GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);  
+            BundleConfig.RegisterBundles(BundleTable.Bundles); 
         }
         protected void Session_Start()
         {

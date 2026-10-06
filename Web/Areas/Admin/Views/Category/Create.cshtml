@@ -20,13 +20,7 @@
         <div class="col-md-6">
             <h4>Thêm mới danh mục</h4>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-md-2">Thứ tự <span class="asterisk">(*)</span></label>
-        <div class="col-md-2">
-            @Html.TextBoxFor(model => model.Ordering, new { @class = "form-control txtnumber", @type = "number",@Value ="1" })
-        </div>
-    </div>
+    </div> 
     <ul class="nav nav-tabs lang-tabs">
         @for (int i = 0; i < Model.Languages.Count; i++)
         {
@@ -47,11 +41,17 @@
                 <div class="form-group">
                     <label>Tên danh mục <span class="asterisk">(*)</span></label>
                     @Html.TextBoxFor(m => m.Languages[i].Name, new { @class = "form-control" })
-                </div>  
+                </div>
                 @Html.HiddenFor(m => m.Languages[i].LangCode)
                 @Html.HiddenFor(m => m.Languages[i].LangName)
             </div>
         }
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Thứ tự <span class="asterisk">(*)</span></label>
+        <div class="col-md-2">
+            @Html.TextBoxFor(model => model.Ordering, new { @class = "form-control txtnumber", @type = "number", @Value = "1" })
+        </div>
     </div>
     <div class="form-group">
         <div class="col-md-2 text-right"><a href="/admin/category" class=""><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay trở lại</a></div>

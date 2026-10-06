@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json; 
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Security.Policy;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
@@ -39,20 +41,10 @@ namespace Web.Areas.Admin.Controllers
         }
         [Authorize(Roles = "Index")]
         [HttpPost]
-        public ActionResult ListData(int page)
+        public ActionResult ListData(string code, string title, int type, int page)
         {
-            List<ProductModel> productModels = new List<ProductModel>();    
-            var products = productRepository.GetAll().ToList();
-            var total = products.Count;
-
-            products = products.Skip((page - 1) * Webconfig.RowLimit).Take(Webconfig.RowLimit).ToList();
-
-            foreach (var item in products)
-            {
-                List<ProductModel> productTrans = productTransRepository.GetByProductID(item.ID).ToList();
-                productModels.AddRange(productTrans);
-            }
-
+            List<ProductModel> productModels = productTransRepository.GetByPage(code, title, type, page, 20, out int total).ToList();
+             
             return Json(new
             {
                 viewContent = RenderViewToString("~/Areas/Admin/Views/Product/_ListData.cshtml", productModels),
@@ -108,6 +100,7 @@ namespace Web.Areas.Admin.Controllers
                     {
                         IsSuccess = false,
                         Messenger = "Vui lòng nhập mã sản phẩm",
+                        Session = 0
                     }, JsonRequestBehavior.AllowGet);
                 } 
 
@@ -121,6 +114,7 @@ namespace Web.Areas.Admin.Controllers
                     {
                         IsSuccess = false,
                         Messenger = "Mã sản phẩm đã tồn tại",
+                        Session = 0
                     }, JsonRequestBehavior.AllowGet);
                 }
 
@@ -130,15 +124,36 @@ namespace Web.Areas.Admin.Controllers
                     {
                         IsSuccess = false,
                         Messenger = "Vui lòng chọn loại hình",
+                        Session = 70
                     }, JsonRequestBehavior.AllowGet);
                 }
 
-                if (model.CountryID.Count == 0)
+                if (model.CountryID == null)
                 {
                     return Json(new
                     {
                         IsSuccess = false,
                         Messenger = "Vui lòng chọn quốc gia",
+                        Session = 250
+                    }, JsonRequestBehavior.AllowGet);
+                }  
+
+                JavaScriptSerializer json = new JavaScriptSerializer();
+
+                List<LocationModel> locationModels = new List<LocationModel>();
+                if (!string.IsNullOrEmpty(model.LocationID))
+                {
+                    locationModels = json.Deserialize<List<LocationModel>>(model.LocationID);
+                    locationModels = locationModels.OrderBy(x => x.SortOrder).ToList();
+                }
+
+                if (locationModels.Count == 0)
+                {
+                    return Json(new
+                    {
+                        IsSuccess = false,
+                        Messenger = "Vui lòng chọn điểm đến",
+                        Session = 300
                     }, JsonRequestBehavior.AllowGet);
                 }
 
@@ -147,16 +162,8 @@ namespace Web.Areas.Admin.Controllers
                     return Json(new
                     {
                         IsSuccess = false,
-                        Messenger = "Vui lòng chọn chủ đề",
-                    }, JsonRequestBehavior.AllowGet);
-                }
-
-                if (!model.LocationID.Any())
-                {
-                    return Json(new
-                    {
-                        IsSuccess = false,
-                        Messenger = "Vui lòng chọn điểm đến",
+                        Messenger = "Vui lòng chọn menu",
+                        Session = 320
                     }, JsonRequestBehavior.AllowGet);
                 }
 
@@ -166,6 +173,7 @@ namespace Web.Areas.Admin.Controllers
                     {
                         IsSuccess = false,
                         Messenger = "Vui lòng chọn ảnh",
+                        Session = 320
                     }, JsonRequestBehavior.AllowGet);
                 }
                  
@@ -173,16 +181,17 @@ namespace Web.Areas.Admin.Controllers
 
                 foreach (var lang in model.Languages)
                 {
-                    //if (string.IsNullOrEmpty(lang.Contents))
-                    //{
-                    //    return Json(new
-                    //    {
-                    //        IsSuccess = false,
-                    //        Messenger = "Vui lòng thêm nội dung " + lang.LangName,
-                    //    }, JsonRequestBehavior.AllowGet);
-                    //}
+                    if (string.IsNullOrEmpty(lang.Title))
+                    {
+                        return Json(new
+                        {
+                            IsSuccess = false,
+                            Messenger = "Vui lòng thêm tiêu đề " + lang.LangName,
+                            Session = 700
+                        }, JsonRequestBehavior.AllowGet);
+                    }
 
-                    ProductTran bannerTranAdd = new ProductTran
+                    ProductTran productTranAdd = new ProductTran
                     {
                         Title = lang.Title,
                         LinkSeo = HelperString.RenderLinkSeo(lang.Title),
@@ -191,7 +200,7 @@ namespace Web.Areas.Admin.Controllers
                         Contents = lang.Contents
                     };
 
-                    productTrans.Add(bannerTranAdd);
+                    productTrans.Add(productTranAdd);
                 } 
 
                 Product product = new Product
@@ -203,17 +212,16 @@ namespace Web.Areas.Admin.Controllers
                     Type = model.Type,
                     Size = model.Size,
                     CountryID = model.CountryID != null ? string.Join(",", model.CountryID) : null,
-                    LocationID = model.LocationID != null ? string.Join(",", model.LocationID) : null,
+                    LocationID = locationModels.Any() ? string.Join(",", locationModels.Select(x => x.LocationId)) : null,
                     DayNumber = model.DayNumber,
-                    Itineraries = model.Itineraries,
+                    //Itineraries = model.Itineraries,
                     Active = true
                 };
 
                 int id = productRepository.Add(product);
 
                 List<Itinerary> itinerariesModel = new List<Itinerary>();
-                JavaScriptSerializer json = new JavaScriptSerializer();
-
+                 
                 if (!string.IsNullOrEmpty(ItineraryData))
                 {
                     itinerariesModel = json.Deserialize<List<Itinerary>>(ItineraryData);
@@ -229,6 +237,17 @@ namespace Web.Areas.Admin.Controllers
                     item.ProductID = id;
                     productTransRepository.Add(item);
                 }
+
+                List<ImportantNote> importantNotes = new List<ImportantNote>();
+                if (!string.IsNullOrEmpty(model.ImportantNotes))
+                {
+                    importantNotes = json.Deserialize<List<ImportantNote>>(model.ImportantNotes);
+                } 
+
+                if(importantNotes.Count > 0)
+                {
+                    productRepository.InsertImportantNote(id, importantNotes);
+                } 
 
                 List<Package_Price> package_Prices = new List<Package_Price>(); 
 
@@ -251,7 +270,7 @@ namespace Web.Areas.Admin.Controllers
                     Messenger = "Thêm mới thành công",
                 }, JsonRequestBehavior.AllowGet);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return Json(new
                 {
@@ -267,6 +286,7 @@ namespace Web.Areas.Admin.Controllers
             Product product = productRepository.Find(id);
 
             List<tbl_Languages> tbl_Languages = languageRepository.GetByActive().ToList();
+
             tbl_Languages tbl_Language = tbl_Languages.FirstOrDefault(x => x.IsDefault);
 
             TempData["Menus"] = menuTransRepository.GetAll().Where(x => x.ParentID != 0 && x.LangCode.Equals(tbl_Language.LangCode)).ToList();
@@ -295,7 +315,58 @@ namespace Web.Areas.Admin.Controllers
                     };
                     productLanguageViewModels.Add(productLanguageViewModel);
                 }
-            } 
+            }
+
+            JavaScriptSerializer json = new JavaScriptSerializer();
+
+            string sImportantNote = string.Empty;
+            List<ImportantNote> importantNotes = productRepository.GetAllImportantNote().Where(x=>x.ProductID == id).ToList();
+            if(importantNotes.Any())
+            { 
+                sImportantNote = json.Serialize(importantNotes);
+            }
+
+            List<int> listDay = new List<int>();
+            List<Itinerary> itineraries = productTransRepository.GetItineraryByProductID(id).ToList();
+            List<ItineraryModel> itineraryModels = new List<ItineraryModel>();
+            if(itineraries != null)
+            {
+                foreach (var item in itineraries)
+                {
+                    int day = item.Day != null ? (int)item.Day : 0;
+                    ItineraryModel itineraryModel = new ItineraryModel();
+                    itineraryModel.day = day;
+
+                    if (!listDay.Contains(day))
+                    {
+                        List<Itinerary> titls = itineraries.Where(x => x.Day == day).ToList();
+
+                        if (titls != null)
+                        {
+                            itineraryModel.title = new Title
+                            {
+                                en = titls.FirstOrDefault(x => x.LangCode.ToUpper() == "EN") != null ? titls.FirstOrDefault(x => x.LangCode.ToUpper() == "EN").Title : "",
+                                es = titls.FirstOrDefault(x => x.LangCode.ToUpper() == "ES") != null ? titls.FirstOrDefault(x => x.LangCode.ToUpper() == "ES").Title : ""
+                            };
+
+                            itineraryModel.content = new Models.Content
+                            {
+                                en = titls.FirstOrDefault(x => x.LangCode.ToUpper() == "EN") != null ? titls.FirstOrDefault(x => x.LangCode.ToUpper() == "EN").Contents : "",
+                                es = titls.FirstOrDefault(x => x.LangCode.ToUpper() == "ES") != null ? titls.FirstOrDefault(x => x.LangCode.ToUpper() == "ES").Contents : ""
+                            };
+                        }
+                        itineraryModels.Add(itineraryModel);
+                    } 
+
+                    listDay.Add(day);
+                }
+            }
+             
+            string sItineraries = "";
+            if (itineraryModels.Any())
+            {
+                sItineraries = json.Serialize(itineraryModels);
+            }
 
             var model = new ProductCreateViewModel
             {
@@ -309,9 +380,11 @@ namespace Web.Areas.Admin.Controllers
                 Size = product.Size,
                 DayNumber = product.DayNumber != null ? (int)product.DayNumber : 0, 
                 CreatedDate = product.CreatedDate,
-                Itineraries = product.Itineraries,
-                Languages = productLanguageViewModels
+                Itineraries = sItineraries,
+                Languages = productLanguageViewModels,
+                ImportantNotes = sImportantNote
             };
+
             if (!string.IsNullOrEmpty(product.CountryID))
             {
                 List<CountryTran> countryTrans = countryRepository.GetByCountryID(product.CountryID, tbl_Language.LangCode).ToList();
@@ -328,22 +401,20 @@ namespace Web.Areas.Admin.Controllers
                     ViewBag.SelectedCountries = sCountryTransIDs;
                 }
             }
+
+            List<LocationViewModel> locationTrans = new List<LocationViewModel>();
             if (!string.IsNullOrEmpty(product.LocationID))
             {
-                List<LocationViewModel> locationTrans = locationRepository.GetByLocationIDs(product.LocationID, tbl_Language.LangCode).ToList();
-                if (locationTrans != null)
+                List<string> locationIDs = product.LocationID.Split(',').ToList();
+                List<LocationViewModel> _locationTrans = locationRepository.GetByLocationIDs(product.LocationID, tbl_Language.LangCode).ToList();
+                foreach (var item in locationIDs)
                 {
-                    List<int> locationIDs = new List<int>();
-                    string locationTransIDs = string.Empty;
-                    foreach (var item in locationTrans)
-                    {
-                        locationIDs.Add(item.LocationID);
-                        locationTransIDs += !string.IsNullOrEmpty(locationTransIDs) ? ";" + item.ID : item.ID + "";
-                    }
-                    ViewBag.LocationIDs = locationIDs;
-                    ViewBag.SelectedLocation = locationTransIDs;
+                    LocationViewModel locationViewModel = _locationTrans.Where(x => x.LocationID == Convert.ToInt32(item)).FirstOrDefault();
+                    locationTrans.Add(locationViewModel);
                 }
             }
+            TempData["LocationTrans"] = locationTrans;
+
             if (!string.IsNullOrEmpty(product.HotelID))
             {
                 List<HotelTran> hotelTrans = hotelRepository.GetByHotelID(product.HotelID, tbl_Language.LangCode).ToList();
@@ -383,6 +454,7 @@ namespace Web.Areas.Admin.Controllers
                     {
                         IsSuccess = false,
                         Messenger = "Vui lòng nhập mã sản phẩm",
+                        Session = 0
                     }, JsonRequestBehavior.AllowGet);
                 }
 
@@ -396,23 +468,23 @@ namespace Web.Areas.Admin.Controllers
                     {
                         IsSuccess = false,
                         Messenger = "Mã sản phẩm đã tồn tại",
+                        Session = 0
                     }, JsonRequestBehavior.AllowGet);
-                }
-
-                List<ProductTran> lstProductTrans = productTransRepository.GetAll().Where(x => x.ProductID == model.ID).ToList();
+                } 
 
                 List<ProductTran> productTrans = new List<ProductTran>();
                 foreach (var lang in model.Languages)
                 {
-                    //if (string.IsNullOrEmpty(lang.Contents))
-                    //{
-                    //    return Json(new
-                    //    {
-                    //        IsSuccess = false,
-                    //        Messenger = "Vui lòng thêm nội dung " + lang.LangName,
-                    //    }, JsonRequestBehavior.AllowGet);
-                    //}
-                     
+                    if (string.IsNullOrEmpty(lang.Title))
+                    {
+                        return Json(new
+                        {
+                            IsSuccess = false,
+                            Messenger = "Vui lòng thêm tiêu đề " + lang.LangName,
+                            Session = 700
+                        }, JsonRequestBehavior.AllowGet);
+                    }
+
                     ProductTran productTranEdit = new ProductTran
                     {
                         ID = lang.ID, 
@@ -422,6 +494,15 @@ namespace Web.Areas.Admin.Controllers
                         Contents = lang.Contents
                     };
                     productTrans.Add(productTranEdit);
+                }
+
+                JavaScriptSerializer json = new JavaScriptSerializer();
+
+                List<LocationModel> locationModels = new List<LocationModel>();
+                if (!string.IsNullOrEmpty(model.LocationID))
+                { 
+                    locationModels = json.Deserialize<List<LocationModel>>(model.LocationID);
+                    locationModels = locationModels.OrderBy(x=>x.SortOrder).ToList();
                 }
 
                 Product product = new Product
@@ -435,15 +516,14 @@ namespace Web.Areas.Admin.Controllers
                     Type = model.Type,
                     Size = model.Size,
                     DayNumber = model.DayNumber,
-                    Itineraries = model.Itineraries,
+                   // Itineraries = model.Itineraries,
                     CountryID =  model.CountryID != null ? string.Join(",", model.CountryID) : null,
-                    LocationID = model.LocationID != null ? string.Join(",", model.LocationID) : null
+                    LocationID = locationModels.Any() ? string.Join(",", locationModels.Select(x=>x.LocationId)) : null
                 };
 
                 productRepository.Edit(product, productTrans);
 
-                List<Itinerary> itinerariesModel = new List<Itinerary>();
-                JavaScriptSerializer json = new JavaScriptSerializer();
+                List<Itinerary> itinerariesModel = new List<Itinerary>(); 
 
                 if (!string.IsNullOrEmpty(ItineraryData))
                 {
@@ -453,6 +533,17 @@ namespace Web.Areas.Admin.Controllers
                 if (itinerariesModel.Count > 0)
                 {
                     productRepository.InsertItinerary(product.ID, itinerariesModel);
+                }
+
+                List<ImportantNote> importantNotes = new List<ImportantNote>();
+                if (!string.IsNullOrEmpty(model.ImportantNotes))
+                {
+                    importantNotes = json.Deserialize<List<ImportantNote>>(model.ImportantNotes);
+                }
+
+                if (importantNotes.Count > 0)
+                {
+                    productRepository.InsertImportantNote(model.ID, importantNotes);
                 }
 
                 List<Package_Price> package_Prices = new List<Package_Price>(); 
@@ -584,6 +675,99 @@ namespace Web.Areas.Admin.Controllers
                     Messenger = "Lấy dữ liệu thất bại"
                 }, JsonRequestBehavior.AllowGet);  
             }
+        }
+
+        public ActionResult ProductDetail(int id)
+        {
+            Product product = productRepository.Find(id);
+
+            List<tbl_Languages> tbl_Languages = languageRepository.GetByActive().ToList();
+            tbl_Languages tbl_Language = tbl_Languages.FirstOrDefault(x => x.IsDefault);
+  
+            List<ProductTran> lstProductTrans = productTransRepository.GetAll().Where(x => x.ProductID == id).ToList();
+
+            List<ProductLanguageViewModel> productLanguageViewModels = new List<ProductLanguageViewModel>();
+            foreach (var lang in tbl_Languages)
+            {
+                ProductTran productTran_Edit = lstProductTrans.FirstOrDefault(m => m.LangCode == lang.LangCode);
+
+                if (productTran_Edit != null)
+                {
+                    ProductLanguageViewModel productLanguageViewModel = new ProductLanguageViewModel
+                    {
+                        ID = productTran_Edit.ID,
+                        LangCode = lang.LangCode,
+                        LangName = lang.LangName,
+                        Title = productTran_Edit.Title,
+                        Description = productTran_Edit.Description,
+                        Contents = productTran_Edit.Contents,
+                    };
+                    productLanguageViewModels.Add(productLanguageViewModel);
+                }
+            }
+            string sImportantNote = string.Empty;
+            List<ImportantNote> importantNotes = productRepository.GetAllImportantNote().Where(x => x.ProductID == id).ToList();
+            if (importantNotes.Any())
+            {
+                JavaScriptSerializer json = new JavaScriptSerializer();
+                sImportantNote = json.Serialize(importantNotes);
+            }
+            var model = new ProductCreateViewModel
+            {
+                ID = id,
+                ProductCode = product.ProductCode,
+                Type = product.Type,
+                MenuID = product.MenuID,
+                Active = product.Active,
+                Image = product.Image,
+                ImageItinerary = product.ImageItinerary,
+                Size = product.Size,
+                DayNumber = product.DayNumber != null ? (int)product.DayNumber : 0,
+                CreatedDate = product.CreatedDate,
+                Itineraries = product.Itineraries,
+                Languages = productLanguageViewModels,
+                ImportantNotes = sImportantNote
+            };
+            if (!string.IsNullOrEmpty(product.CountryID))
+            {
+                List<CountryTran> countryTrans = countryRepository.GetByCountryID(product.CountryID, tbl_Language.LangCode).ToList();
+                if (countryTrans != null)
+                {
+                    List<int> countryIDs = new List<int>();
+                    string sCountryTransIDs = string.Empty;
+                    foreach (var item in countryTrans)
+                    {
+                        countryIDs.Add(item.CountryID);
+                        sCountryTransIDs += !string.IsNullOrEmpty(sCountryTransIDs) ? ";" + item.ID : item.ID + "";
+                    } 
+                    ViewBag.CountryIDs = countryIDs;
+                    ViewBag.SelectedCountries = sCountryTransIDs;
+                }
+            }
+            if (!string.IsNullOrEmpty(product.LocationID))
+            {
+                string locationEn = string.Empty;
+                string locationEs = string.Empty;
+                List<LocationViewModel> locationTrans = new List<LocationViewModel>();
+                if (!string.IsNullOrEmpty(product.LocationID))
+                {
+                    List<string> locationIDs = product.LocationID.Split(',').ToList();
+                    List<LocationViewModel> _locationTrans = locationRepository.GetByLocationIDs(product.LocationID, tbl_Language.LangCode).ToList();
+                    foreach (var item in locationIDs)
+                    {
+                        LocationViewModel locationViewModel = _locationTrans.Where(x => x.LocationID == Convert.ToInt32(item)).FirstOrDefault();
+                        locationTrans.Add(locationViewModel);
+                    }
+                }
+                TempData["LocationTrans"] = locationTrans;  
+            }
+             
+            List<Package_Price> package_Prices = _packageRepository.GetAllPackagePrice().Where(x => x.ProductID == id).ToList();
+            TempData["Package3"] = package_Prices.Where(x => x.PackageID == 3).ToList();
+            TempData["Package4"] = package_Prices.Where(x => x.PackageID == 4).ToList();
+            TempData["Package5"] = package_Prices.Where(x => x.PackageID == 5).ToList();
+            TempData["Package6"] = package_Prices.Where(x => x.PackageID == 6).ToList();
+            return Json(RenderViewToString("~/Areas/Admin/Views/Product/_ProductDetail.cshtml", model), JsonRequestBehavior.AllowGet);
         }
     }
 }

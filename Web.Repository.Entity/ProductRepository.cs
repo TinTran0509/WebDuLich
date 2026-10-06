@@ -140,36 +140,87 @@ namespace Web.Repository.Entity
                 connection.Open();
                 using (var tran = connection.BeginTransaction())
                 {
-                    string sqlItinerary = $"DELETE FROM Itinerary WHERE ProductID = @ProductID";
+                    try
+                    {
+                        string sqlItinerary = $"DELETE FROM Itinerary WHERE ProductID = @ProductID";
+                        DynamicParameters parameters1 = new DynamicParameters();
+                        parameters1.Add("ProductID", prodId);
+                        connection.Execute(
+                            sqlItinerary,
+                            parameters1,
+                            commandType: CommandType.Text,
+                            transaction: tran);
+
+                        foreach (var item in Itineraries)
+                        {
+                            StringBuilder sb = new StringBuilder();
+                            sb.Append("INSERT INTO Itinerary (Day, Title, Contents, LangCode, ProductID) ");
+                            sb.Append("VALUES (@Day, @Title, @Contents, @LangCode, @ProductID) ");
+
+                            DynamicParameters parameters2 = new DynamicParameters();
+                            parameters2.Add("Day", item.Day);
+                            parameters2.Add("Title", item.Title);
+                            parameters2.Add("Contents", item.Contents);
+                            parameters2.Add("LangCode", item.LangCode);
+                            parameters2.Add("ProductID", prodId);
+                            connection.Execute(sb.ToString(),
+                                parameters2,
+                                commandType: CommandType.Text,
+                                transaction: tran);
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        tran.Rollback();  
+                    } 
+                    tran.Commit();
+                }
+                connection.Close();
+            }
+        }
+
+        public void InsertImportantNote(int prodId, List<ImportantNote> ImportantNotes)
+        {
+            using (var connection = new SqlConnection(_connectString))
+            {
+                connection.Open();
+                using (var tran = connection.BeginTransaction())
+                {
+                    string sqlItinerary = $"DELETE FROM ImportantNote WHERE ProductID = @ProductID";
                     DynamicParameters parameters1 = new DynamicParameters();
                     parameters1.Add("ProductID", prodId);
                     connection.Execute(
                         sqlItinerary,
                         parameters1,
                         commandType: CommandType.Text,
-                        transaction: tran); 
+                        transaction: tran);
 
-                    foreach (var item in Itineraries)
+                    foreach (var item in ImportantNotes)
                     {
                         StringBuilder sb = new StringBuilder();
-                        sb.Append("INSERT INTO Itinerary (Title ,Contents ,LangCode ,ProductID) ");
-                        sb.Append("VALUES (@Title ,@Contents  ,@LangCode  ,@ProductID) "); 
+                        sb.Append("INSERT INTO ImportantNote (KeyNote ,Contents ,LangCode ,ProductID) ");
+                        sb.Append("VALUES (@KeyNote ,@Contents  ,@LangCode  ,@ProductID) ");
 
                         DynamicParameters parameters2 = new DynamicParameters();
-                        parameters2.Add("Title", item.Title);
+                        parameters2.Add("KeyNote", item.KeyNote.ToUpper());
                         parameters2.Add("Contents", item.Contents);
                         parameters2.Add("LangCode", item.LangCode);
-                        parameters2.Add("ProductID", item.ProductID);
+                        parameters2.Add("ProductID", prodId);
                         connection.Execute(sb.ToString(),
                             parameters2,
                             commandType: CommandType.Text,
-                            transaction: tran); 
+                            transaction: tran);
                     }
 
                     tran.Commit();
                 }
                 connection.Close();
             }
+        }
+
+        public IEnumerable<ImportantNote> GetAllImportantNote()
+        {
+            return _entities.ImportantNotes;
         }
 
         public void Delete(int id, List<ProductTran> productTrans)
@@ -203,6 +254,15 @@ namespace Web.Repository.Entity
                     connection.Execute(
                         sqlItinerary,
                         parameters3,
+                        commandType: CommandType.Text,
+                        transaction: tran);
+
+                    string sqlImportant = $"DELETE FROM ImportantNote WHERE ProductID = @ProductID";
+                    DynamicParameters parameters4 = new DynamicParameters();
+                    parameters4.Add("ProductID", id);
+                    connection.Execute(
+                        sqlImportant,
+                        parameters4,
                         commandType: CommandType.Text,
                         transaction: tran);
 

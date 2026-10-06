@@ -89,8 +89,7 @@ namespace Web.Areas.Admin.Controllers
             try
             {
                  
-                model.ModifiedBy = User.ID;
-                newsRepository.Edit(model);
+                model.ModifiedBy = User.ID; 
                 return Json(new {
                     IsSuccess = true,
                     Messenger = "Cập nhật dịch vụ thành công",

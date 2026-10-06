@@ -16,9 +16,8 @@ namespace Web.Areas.Admin.Controllers
 {
     public class HomeController : BaseController
     {
-        readonly IUserAdminRepository _userRepository = new UserAdminRepository();
-        readonly INewsRepository _newsRepository = new NewsRepository();  
-        //readonly IAccessWebsiteReporitory accessWebsiteReporitory = new AccessWebsiteReporitory();
+        private readonly IUserAdminRepository _userRepository = new UserAdminRepository();
+        private readonly IBookingRepository bookingRepository = new BookingRepository(); 
         // GET: /Admin/Home/
         [Authorize]
         public ActionResult Index()
@@ -35,6 +34,26 @@ namespace Web.Areas.Admin.Controllers
             var currentUser = _userRepository.Find(User.ID);
             ViewBag.rowUser = currentUser;  
             return View();
+        }
+
+        [Authorize(Roles = "Index")]
+        [HttpPost]
+        public ActionResult ListData(string keySearch, int status, int page = 1)
+        {
+            int total = 0;
+            var model = bookingRepository.GetByPage(keySearch, status, page, 20, out total).ToList();
+          
+            model = model.Skip((page - 1) * Webconfig.RowLimit).Take(Webconfig.RowLimit).ToList();
+            return Json(new
+            {
+                viewContent = RenderViewToString("~/Areas/Admin/Views/Home/_ListData.cshtml", model),
+                totalPages = Math.Ceiling(((double)total / Webconfig.RowLimit)),
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Edit(int id)
+        {
+            return Json(RenderViewToString("~/Areas/Admin/Views/Home/_ProductDetail.cshtml", null), JsonRequestBehavior.AllowGet);
         }
     }
 }

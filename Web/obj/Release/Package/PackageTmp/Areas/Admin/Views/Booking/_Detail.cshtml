@@ -1,0 +1,78 @@
+﻿@using Web.Model
+@model Booking
+<div class = "form-horizontal">
+    <div class="row">
+        <div class="form-group">
+            <label class="col-md-3 control-label">Ngày khởi hành</label>
+            <div class="col-md-7">
+                @Html.TextBoxFor(g => g.ArrivalDate, new { @class = "form-control", @disabled = "disabled" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">Số người</label>
+            <div class="col-md-7">
+                @Html.TextBoxFor(g => g.TotalPax, new { @class = "form-control", @disabled = "disabled" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">Chi phí uớc tính (USD)</label>
+            <div class="col-md-7">
+                @Html.TextBoxFor(model => model.EstimatedTotal, new { @class = "form-control", @disabled = "disabled" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">Danh xưng</label>
+            <div class="col-md-7">
+                @Html.TextBoxFor(model => model.Title, new { @class = "form-control", @disabled = "disabled" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">Tên tắt</label>
+            <div class="col-md-7">
+                @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control", @disabled = "disabled" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">Tên họ</label>
+            <div class="col-md-7">
+                @Html.TextBoxFor(model => model.LastName, new { @class = "form-control", @disabled = "disabled" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">Điện thoại</label>
+            <div class="col-md-7">
+                @Html.TextBoxFor(model => model.Tel, new { @class = "form-control", @disabled = "disabled" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">Email</label>
+            <div class="col-md-7">
+                @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @disabled = "disabled" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">Ngôn ngữ</label>
+            <div class="col-md-7">
+                @Html.TextBoxFor(model => model.Language, new { @class = "form-control", @disabled = "disabled" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">Ghi chú</label>
+            <div class="col-md-7">
+                @Html.TextAreaFor(model => model.Notes, new { @class = "form-control", @disabled = "disabled",@Rows= "5" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">Thời gian đặt</label>
+            <div class="col-md-7">
+                @Html.TextBoxFor(model => model.CreatedDate, new { @class = "form-control", @disabled = "disabled" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12 text-center">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+

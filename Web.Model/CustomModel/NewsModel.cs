@@ -10,8 +10,8 @@ namespace Web.Model.CustomModel
     public class NewsModel : NewsTran
     {
         public string Image { get; set; }
-        public string LangName { get; set; }
-        public int CategoryID { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public string CategoryName { get; set; }
         public int TotalCount { get; set; }
     }
 }

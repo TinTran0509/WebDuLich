@@ -30,7 +30,6 @@ G:\KhongGianXanhVN\KhongGianXanhVn\Web.Repository.Entity\obj\Release\Web.Reposit
 G:\KhongGianXanhVN\KhongGianXanhVn\Web.Repository.Entity\obj\Release\Web.Repository.Entity.csproj.CopyComplete
 G:\KhongGianXanhVN\KhongGianXanhVn\Web.Repository.Entity\obj\Release\Web.Repository.Entity.dll
 G:\KhongGianXanhVN\KhongGianXanhVn\Web.Repository.Entity\obj\Release\Web.Repository.Entity.pdb
-D:\WebDuLich\Lummia\Web\Web.Repository.Entity\bin\Release\Web.Repository.Entity.dll.config
 D:\WebDuLich\Lummia\Web\Web.Repository.Entity\bin\Release\Web.Repository.Entity.dll
 D:\WebDuLich\Lummia\Web\Web.Repository.Entity\bin\Release\Web.Repository.Entity.pdb
 D:\WebDuLich\Lummia\Web\Web.Repository.Entity\bin\Release\Dapper.dll
@@ -55,7 +54,6 @@ D:\WebDuLich\Lummia\Web\Web.Repository.Entity\obj\Release\Web.Repository.Entity.
 D:\WebDuLich\Lummia\Web\Web.Repository.Entity\obj\Release\Web.Repository.Entity.csproj.CopyComplete
 D:\WebDuLich\Lummia\Web\Web.Repository.Entity\obj\Release\Web.Repository.Entity.dll
 D:\WebDuLich\Lummia\Web\Web.Repository.Entity\obj\Release\Web.Repository.Entity.pdb
-D:\PROJECTMORE\Cailummia\Web.Repository.Entity\bin\Release\Web.Repository.Entity.dll.config
 D:\PROJECTMORE\Cailummia\Web.Repository.Entity\bin\Release\Web.Repository.Entity.dll
 D:\PROJECTMORE\Cailummia\Web.Repository.Entity\bin\Release\Web.Repository.Entity.pdb
 D:\PROJECTMORE\Cailummia\Web.Repository.Entity\bin\Release\Dapper.dll

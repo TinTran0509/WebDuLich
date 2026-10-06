@@ -1,6 +1,6 @@
 ﻿@{
     var lstAction = (List<int>)HttpContext.Current.Session["Action"];
-    int id = 0, bannerID = 0;
+    int id = 0, productID = 0;
 }
 @using Web.Core
 @using Web.Model.CustomModel
@@ -14,7 +14,7 @@
                 <th>Tiêu đề</th>
                 <th>Mô tả</th>
                 @*<th>Nội dung</th>*@
-                <th>Ngôn ngữ</th>
+                <th>Ngày tạo</th>
                 <th></th>
             </tr>
         </thead>
@@ -22,7 +22,7 @@
             @foreach (var item in Model)
             {
                 string group = "group-banner";
-                if(bannerID != item.ProductID)
+                if(productID != item.ProductID)
                 {
                     group = "";
                 }
@@ -33,9 +33,12 @@
                         <td style="vertical-align: middle;" rowspan="2"><img src="@item.Image" style="width: 50px;" /></td>
                         <td style="vertical-align: middle;" rowspan="2"><img src="@item.ImageItinerary" style="width: 50px;" /></td>
                     }
-                    <td>@item.Title</td> 
+                    <td>@item.Title</td>
                     <td>@HelperString.TruncateByWord(HelperString.StripHTML(HttpUtility.HtmlDecode(item.Description)), 150)</td>
-                    <td>@item.LangName</td>
+                    @if (id != item.ProductID)
+                    {
+                        <td rowspan="2">@item.CreatedDate</td>
+                    }
 
                     @if (id != item.ProductID)
                     {
@@ -58,7 +61,7 @@
                     }
                 </tr>
                 id = item.ID;
-                bannerID = item.ProductID;
+                productID = item.ProductID;
             }
         </tbody>
     </table>

@@ -9,14 +9,15 @@ namespace Web.Repository
     {
         IEnumerable<ListNews> ListAll(string keyWord, int status);
         IEnumerable<News> GetAll();
-        void Add(News model);
+        IEnumerable<NewsTran> GetAllNewsTrans();
+        int Add(News model);
+        void AddNewsTrans(NewsTran model);
         void Delete(int newsid);
         News Find(int id);
         News FindByTitle(string title);
         News FindByLinkSeo(string linkseo);
-        void Edit(News model);
-        ListNews Detail(int id);
-        List<ListNews> NewsGetByCategory(string linkseo);
+        void Edit(News obj, List<NewsTran> newsTrans);
+        IEnumerable<NewsModel> GetByPage(string title, int cateId, int pageIndex, int pageSize, out int total);
 
     }
 }

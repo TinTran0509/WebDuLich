@@ -1,12 +1,45 @@
 ﻿@using Web.Model
 @model List<News>
-@{
-    ViewBag.Title = "Hệ thống quản trị";
-    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
-    var rowUser = (UserAdmin)ViewBag.rowUser;
-}
-<div class="row">
-    <div class="col-sm-12">
-        <h4 class="pull-left page-title">Xin chào, @rowUser.FullName !</h4> 
+    @{
+        ViewBag.Title = "Hệ thống quản trị";
+        Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+        var rowUser = (UserAdmin)ViewBag.rowUser;
+    }
+<style>
+    .prod-code{cursor:pointer}
+</style>
+    <script src="~/AppJs/booking.js"></script>
+    <div class="row">
+        <div class="col-sm-12">
+            <h4 class="pull-left page-title">Xin chào, @rowUser.FullName !</h4>
+        </div>
     </div>
-</div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Booking tours</h3>
+                    <div class="row" style="margin-bottom:10px">
+                        <div class="col-md-4">
+                            <input type="text" id="txtSearch" class="form-control" placeholder="Nhập mã sản phẩm" />
+                        </div>
+                        <div class="col-md-4" style="padding-top: 3px;">
+                            <button id="btnSearch" onclick="Booking.loadData(1)" class="btn btn-primary">Tìm kiếm</button>
+                        </div> 
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="table-responsive" id="gridData">
+
+                            </div>
+                            <div class="col-md-12" id="paginationholder">
+                                <ul id="pagination" class="pagination"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -77,7 +77,19 @@
     <Reference Include="Excel">
       <HintPath>..\packages\Excel.dll</HintPath>
     </Reference>
+    <Reference Include="Hangfire.Core, Version=1.8.25.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hangfire.Core.1.8.25\lib\net46\Hangfire.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Hangfire.SqlServer, Version=1.8.25.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hangfire.SqlServer.1.8.25\lib\net451\Hangfire.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.0.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
@@ -93,6 +105,9 @@
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
@@ -209,10 +224,12 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\SubDomainRoute.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\PackageController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ParamController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BookingController.cs" />
     <Compile Include="Areas\Admin\Controllers\VideoController.cs" />
     <Compile Include="Areas\Admin\Controllers\WordController.cs" />
     <Compile Include="Areas\Admin\Controllers\HotelController.cs" />
@@ -249,6 +266,7 @@
     <Compile Include="Areas\Admin\Controllers\AdminMenuController.cs" />
     <Compile Include="Commons\CommonConstant.cs" />
     <Compile Include="Commons\ImageHelper.cs" />
+    <Compile Include="Commons\SendMailHelper.cs" />
     <Compile Include="Commons\UserLogin.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
@@ -264,6 +282,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ImageUploadResult.cs" />
+    <Compile Include="Models\ItineraryModel.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\OrderInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -283,14 +302,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Language.vi.resx</DependentUpon>
     </Compile>
+    <Compile Include="Service\BookingEmailJob.cs" />
+    <Compile Include="Templates\ContentMail.cs" />
     <Compile Include="Webconfig.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AppJs\param.js" />
+    <Content Include="AppJs\booking.js" />
     <Content Include="AppJs\package.js" />
     <Content Include="AppJs\word.js" />
     <Content Include="AppJs\hotel.js" />
     <Content Include="AppJs\location.js" />
-    <Content Include="AppJs\product.js" />
+    <Content Include="AppJs\product.1234.js" />
     <Content Include="AppJs\menuhome.js" />
     <Content Include="AppJs\introduction.js" />
     <Content Include="AppJs\theme.js" />
@@ -7293,14 +7316,13 @@
     <Content Include="Content\plugins\ckfinder\skins\v1\skin.js" />
     <Content Include="Content\plugins\ckfinder\skins\v1\uipanel.css" />
     <Content Include="Content\plugins\ckfinder\translations.txt" />
-    <Content Include="Content\wp-content\cache\min\1\3bd1988a8f8f931afbade934ba862984.css" />
     <Content Include="Content\wp-content\cache\min\1\4ed8e6663474054eb8b525ec645f777d.css" />
     <Content Include="Content\wp-content\cache\min\1\76686706d598f3ee79257f6d82aec818.css" />
     <Content Include="Content\wp-content\cache\min\1\7a137b4fc4e466cd1738b14b1c45e129.css" />
     <Content Include="Content\wp-content\cache\min\1\b3cc7b830b61ea5124836173c8edf6c6.css" />
     <Content Include="Content\wp-content\cache\min\1\ba4c7f674a421cf82626d14eb1c2907e.css" />
     <Content Include="Content\wp-content\cache\min\1\c95e768007a6fc750edeefbf8ae1ec98.css" />
-    <Content Include="Content\wp-content\cache\min\1\de98cdc926905b066490eaee7b490e2h.css" />
+    <Content Include="Content\wp-content\cache\min\1\de98cdc926905b066490eaee7b490e2f.css" />
     <Content Include="Content\wp-content\cache\min\1\embed3f68.js" />
     <Content Include="Content\wp-content\cache\min\1\wp-content\themes\ocanus\js\accordionc1ca.js" />
     <Content Include="Content\wp-content\cache\min\1\wp-content\themes\ocanus\js\basee7a7.js" />
@@ -7323,6 +7345,9 @@
     <Content Include="Content\wp-content\plugins\easy-table-of-contents\vendor\js-cookie\js.cookie.min77e6.js" />
     <Content Include="Content\wp-content\plugins\easy-table-of-contents\vendor\sticky-kit\jquery.sticky-kit.min2c00.js" />
     <Content Include="Content\wp-content\plugins\wp-rocket\assets\js\lazyload\17.5\lazyload.min.js" />
+    <Content Include="Content\wp-content\themes\css\ec645f777d.css" />
+    <Content Include="Content\wp-content\themes\css\main862985.css" />
+    <Content Include="Content\wp-content\themes\css\style45d7.css" />
     <Content Include="Content\wp-content\themes\ocanus\css\base0040.css" />
     <Content Include="Content\wp-content\themes\ocanus\css\base00a2.css" />
     <Content Include="Content\wp-content\themes\ocanus\css\base00c5.css" />
@@ -9186,7 +9211,6 @@
     <Content Include="Content\wp-content\themes\ocanus\css\style4593.css" />
     <Content Include="Content\wp-content\themes\ocanus\css\style45b8.css" />
     <Content Include="Content\wp-content\themes\ocanus\css\style45d1.css" />
-    <Content Include="Content\wp-content\themes\ocanus\css\style45d6.css" />
     <Content Include="Content\wp-content\themes\ocanus\css\style4606.css" />
     <Content Include="Content\wp-content\themes\ocanus\css\style4675.css" />
     <Content Include="Content\wp-content\themes\ocanus\css\style46c7.css" />
@@ -10233,7 +10257,7 @@
     <Content Include="Content\wp-content\themes\ocanus\images\media\x.png" />
     <Content Include="Content\wp-content\themes\ocanus\images\media\youtube.png" />
     <Content Include="Content\wp-content\themes\ocanus\js\base8a54.js" />
-    <Content Include="Content\wp-content\themes\ocanus\js\booking8d1g.js" />
+    <Content Include="Content\wp-content\themes\ocanus\js\booking8d1h.js" />
     <Content Include="Content\wp-content\themes\ocanus\js\datepicker15c9.js" />
     <Content Include="Content\wp-content\themes\ocanus\js\loading20b9.js" />
     <Content Include="Content\wp-content\themes\ocanus\js\script0040.js" />
@@ -12000,11 +12024,14 @@
     <Content Include="Areas\Admin\Views\Word\_ListData.cshtml" />
     <Content Include="Areas\Admin\Views\Word\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Package\_Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Package\_Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Package\_ListData.cshtml" />
-    <Content Include="Areas\Admin\Views\Package\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Product\_Itinerary.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\_ListData.cshtml" />
+    <Content Include="Areas\Admin\Views\Booking\_Detail.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\_ProductDetail.cshtml" />
+    <Content Include="Areas\Admin\Views\Param\_Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Param\_Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Param\_ListData.cshtml" />
+    <Content Include="Areas\Admin\Views\Param\Index.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Images\IconFile\ExcelIcon.png" />
@@ -12159,8 +12186,6 @@
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Product\ListData.cshtml" />
     <Content Include="Views\Home\QuangCao.cshtml" />
-    <Content Include="Views\Booking\Index.cshtml" />
-    <Content Include="Views\Shared\_LayoutBooking.cshtml" />
     <Content Include="Views\Shared\_LayoutList.cshtml" />
     <Content Include="Views\Shared\_LayoutPage.cshtml" />
   </ItemGroup>
@@ -12171,8 +12196,10 @@
     <Folder Include="Images\Post\files\" />
     <Folder Include="Images\Post\flash\" />
     <Folder Include="Images\Post\_thumbs\Files\" />
+    <Folder Include="Upload\Gallery\" />
     <Folder Include="Upload\ImageOptimize\" />
-    <Folder Include="Upload\Images\images\" />
+    <Folder Include="Upload\Images\" />
+    <Folder Include="Upload\Post\" />
     <Folder Include="Upload\Temp\" />
     <Folder Include="Upload\Videos\Introduct\" />
     <Folder Include="Upload\_thumbs\Images\" />

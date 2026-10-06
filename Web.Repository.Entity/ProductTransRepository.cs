@@ -179,7 +179,29 @@ namespace Web.Repository.Entity
             }
         }
 
-        public IEnumerable<Itinerary> GetItineraryByProductID(int productID, string langCode)
+        public IEnumerable<Itinerary> GetItineraryByProductID(int productID)
+        {
+            try
+            {
+                using (var conn = new SqlConnection(_connectString))
+                {
+                    string sql = "SELECT * FROM Itinerary WHERE ProductID = @ProductID";
+
+                    var parameters = new DynamicParameters();
+                    parameters.Add("ProductID", productID); 
+                    return conn.Query<Itinerary>(
+                        sql,
+                        parameters,
+                        commandType: CommandType.Text);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public IEnumerable<Itinerary> GetItineraryByProductIDAndLangCode(int productID, string langCode)
         {
             try
             {
@@ -229,6 +251,34 @@ namespace Web.Repository.Entity
                         sb.ToString(),
                         parameters,
                         commandType: CommandType.Text);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public IEnumerable<ProductModel> GetByPage(string code, string title, int type, int pageIndex, int pageSize, out int total)
+        {
+            try
+            {
+                using (var conn = new SqlConnection(_connectString))
+                {
+                    var parameters = new DynamicParameters();
+                    parameters.Add("Code", code);
+                    parameters.Add("Title", title);
+                    parameters.Add("Type", type);
+                    parameters.Add("PageIndex", pageIndex);
+                    parameters.Add("PageSize", pageSize);
+
+                    IEnumerable<ProductModel> lst = conn.Query<ProductModel>(
+                            "Sp_Product_GetPage",
+                            parameters,
+                            commandType: CommandType.StoredProcedure);
+                    var pageBooking = lst.ToList();
+                    total = pageBooking.Any() ? pageBooking.FirstOrDefault().TotalCount : 0;
+                    return pageBooking;
                 }
             }
             catch (Exception)

@@ -22,7 +22,7 @@ namespace Web.Controllers
         private readonly IProductTransRepository productTransRepository = new ProductTransRepository();
         private readonly ILocationRepository locationRepository = new LocationRepository();
         private readonly IWordRepository wordRepository = new WordRepository();
-        private readonly IPackageRepository _packageRepository = new PackageRepository(); 
+        private readonly IPackageRepository packageRepository = new PackageRepository();  
 
         // GET: Booking
         public ActionResult Index()
@@ -99,7 +99,7 @@ namespace Web.Controllers
             ViewBag.Plus = Resources.Language.Plus;
             ViewBag.NumberPas = Resources.Language.NumberPas;
  
-            List<Package_Price> package_Prices = _packageRepository.GetAllPackagePrice().Where(x=>x.ProductID == model.ProductID).ToList();
+            List<Package_Price> package_Prices = packageRepository.GetAllPackagePrice().Where(x=>x.ProductID == model.ProductID).ToList();
            
             string json = JsonConvert.SerializeObject(package_Prices);
 
@@ -114,6 +114,8 @@ namespace Web.Controllers
         [HttpPost] 
         public ActionResult RequestBooking(string form_start_time)
         {
+            IBookingRepository bookingRepository = new BookingRepository();
+
             return Json(new
             {
                 success = true,

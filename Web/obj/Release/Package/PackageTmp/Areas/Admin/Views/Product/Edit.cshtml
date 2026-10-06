@@ -3,7 +3,7 @@
     ViewBag.Title = "Cập nhật sản phẩm";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
     var menus = (List<MenuTran>)TempData["Menus"];
-    var locations = (List<Web.Model.LocationTran>)TempData["Location"];
+    var locationTrans = (List<Web.Model.CustomModel.LocationViewModel>)TempData["LocationTrans"];
     var countries = (List<Web.Model.CountryTran>)TempData["CountryTrans"];
     var hotels = (List<Web.Model.HotelTran>)TempData["Hotels"];
     List<int> countryIds = ViewBag.CountryIDs;
@@ -13,8 +13,13 @@
     List<Package_Price> packages4 = (List<Package_Price>)TempData["Package4"];
     List<Package_Price> packages5 = (List<Package_Price>)TempData["Package5"];
     List<Package_Price> packages6 = (List<Package_Price>)TempData["Package6"];
-} 
+
+    int locationIndex = 1;
+}
 <style>
+    #ProductCode {
+        width: 230px !important
+    }
     .text-bold {
         font-weight: bold;
         width: 130px;
@@ -29,10 +34,144 @@
     .package-price {
         width: 80%;
         display: inline-block
+    }
+
+    .language-panel {
+        width: 100%;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    /* Tabs */
+
+    .language-tabs-note {
+        display: flex;
+        gap: 5px;
+        padding: 10px 10px 0;
+        background: #f5f6f8;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .language-tab {
+        padding: 9px 18px;
+        border: 1px solid #ddd;
+        border-bottom: none;
+        border-radius: 6px 6px 0 0;
+        background: #e9ecef;
+        color: #555;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+    }
+
+        .language-tab:hover {
+            background: #ddd;
+        }
+
+        .language-tab.active {
+            background: #fff;
+            color: #007bff;
+            border-color: #ddd;
+            font-weight: 600;
+        }
+    /* Content */
+
+    .language-content {
+        padding: 20px;
+    }
+
+    .language-pane {
+        display: none;
+    }
+
+        .language-pane.active {
+            display: block;
+        }
+
+    .form-group {
+        margin-bottom: 15px;
     } 
+
+    .form-control:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 0 2px rgba(0, 123, 255, .1);
+    }
+</style>
+<style>
+    .tour-location {
+        width: 100%;
+        max-width: 650px;
+        background: #fff;
+        padding: 20px;
+        border: 1px solid #e5e7eb;
+        border-radius: 10px;
+    }
+
+    .location-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 15px;
+    }
+
+        .location-header h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+    #btnAddLocation {
+        border: 0;
+        background: #2563eb;
+        color: #fff;
+        padding: 8px 14px;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    .location-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 10px 12px;
+        margin-bottom: 8px;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        background: #f9fafb;
+    }
+
+    .drag {
+        cursor: grab;
+        color: #9ca3af;
+        font-size: 18px;
+    }
+
+    .order {
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #2563eb;
+        color: #fff;
+        border-radius: 50%;
+        font-weight: bold;
+    }
+
+    .location-name {
+        flex: 1;
+    }
+
+    .remove {
+        border: 0;
+        background: transparent;
+        color: #ef4444;
+        font-size: 22px;
+        cursor: pointer;
+    }
 </style>
 <link href="~/Content/Admin/css/product.css" rel="stylesheet" />
-<script src="~/AppJs/product.js"></script>
+<script src="~/AppJs/product.1234.js"></script>
 @model Web.Model.CustomModel.ProductCreateViewModel
 @using (Ajax.BeginForm("Edit", "Product", null,
                 new AjaxOptions
@@ -44,7 +183,8 @@
 {
     @Html.HiddenFor(x => x.ID)
     @Html.HiddenFor(x => x.MenuID)
-    @Html.HiddenFor(x => x.Itineraries) 
+    @Html.HiddenFor(x => x.Itineraries)
+    @Html.HiddenFor(x => x.ImportantNotes)
     <input type="hidden" name="Package_Price" id="Package_Price" value="" />
     <div id="countryIds">
         @if (countryIds != null)
@@ -55,15 +195,7 @@
             }
         }
     </div>
-    <div id="loactionIds">
-        @if (locationIds != null)
-        {
-            foreach (var item in locationIds)
-            {
-                <input type="hidden" name="LocationID" value="@item" />
-            }
-        }
-    </div>
+    @Html.HiddenFor(x => x.LocationID)
     <div class="article-create">
         <div class="form-group">
             <div class="col-md-2 text-left">
@@ -75,7 +207,7 @@
         </div>
         <div class="form-group">
             <label class="col-md-2 control-label">Mã<span class="asterisk"> (*)</span></label>
-            <div class="col-md-2">
+            <div class="col-md-6">
                 @Html.TextBoxFor(model => model.ProductCode, new { @class = "form-control" })
             </div>
         </div>
@@ -113,19 +245,37 @@
                 }
             </div>
         </div>
-        <div class="form-group">
-            <label class="col-md-2 control-label">Điểm đến<span class="asterisk"> (*)</span></label>
-            <div class="col-md-8">
-                <select class="form-control select2" onchange="Product.selectLocationEdit()" multiple id="LocationIDs">
-                    @foreach (var item in locations)
-                    {
-                        <option data-location="@item.LocationID" value="@item.ID">@item.Name</option>
-                    }
-                </select>
+        <div class="info-block">
+            <div class="info-header" onclick="Product.toggleBlock(this)">
+                <span>Điểm đến<span class="asterisk"> (*)</span></span> <span class="toggle-icon">▼</span>
+            </div>
+            <div class="info-content">
+                <div class="tour-location">
+
+                    <div class="location-header">
+                        @*<button type="button" id="btnAddLocation">
+                                + Add Location
+                            </button>*@
+                        <span style="font-style:italic">Nắm ☰ để kéo thả vị trí theo thứ tự</span>
+                    </div>
+                    <div id="locationList">
+                        @foreach (var item in locationTrans)
+                        {
+
+                            <div class="location-item" data-location-id="@item.LocationID">
+                                <span class="drag">☰</span>
+                                <span class="order">@locationIndex</span>
+                                <span class="location-name">@item.Name</span>
+                                <button class="remove">×</button>
+                            </div>
+                            locationIndex++;
+                        }
+                    </div>
+                </div>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-md-2 control-label">Chủ đề <span class="asterisk"> (*)</span></label>
+            <label class="col-md-2 control-label">Menu<span class="asterisk"> (*)</span></label>
             <div class="col-md-10">
                 @foreach (var item in menus)
                 {
@@ -147,7 +297,7 @@
             </div>
         </div>
         <div class="info-block">
-            <div class="info-header" onclick="toggleBlock(this)">
+            <div class="info-header" onclick="Product.toggleBlock(this)">
                 <span>Bảng giá gói dịch vụ<span class="asterisk"> (*)</span></span> <span class="toggle-icon">▼</span>
             </div>
             <div class="info-content">
@@ -156,12 +306,16 @@
                         <tbody>
                             <tr>
                                 <td style="opacity:0">Gói 5 sao</td>
-                                <td class="text-bold">1 - 2 pax</td>
+                                <td class="text-bold">1 pax</td>
+                                <td class="text-bold">2 pax</td>
                                 <td class="text-bold">3 - 4 pax</td>
                                 <td class="text-bold">5 - 6 pax</td>
                                 <td class="text-bold">7 - 8 pax</td>
                                 <td class="text-bold">9 - 10 pax</td>
-                                <td class="text-bold">11 - 20 pax</td>
+                                <td class="text-bold">11 - 15 pax</td>
+                                <td class="text-bold">16 - 22 pax</td>
+                                <td class="text-bold">23 - 35 pax</td>
+                                <td class="text-bold">Trên 35 pax</td>
                             </tr>
                             <tr id="package-3">
                                 <td class="text-bold">Gói 3 sao</td>
@@ -174,12 +328,16 @@
                                 }
                                 else
                                 {
-                                    <td><input data-id="0" data-pax="1-2" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                    <td><input data-id="0" data-pax="1" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                    <td><input data-id="0" data-pax="2" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
                                     <td><input data-id="0" data-pax="3-4" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
                                     <td><input data-id="0" data-pax="5-6" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
                                     <td><input data-id="0" data-pax="7-8" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
                                     <td><input data-id="0" data-pax="9-10" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
-                                    <td><input data-id="0" data-pax="11-20" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                    <td><input data-id="0" data-pax="11-15" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                    <td><input data-id="0" data-pax="16-22" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                    <td><input data-id="0" data-pax="23-35" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                    <td><input data-id="0" data-pax="36-100" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
                                 }
                             </tr>
                             <tr id="package-4">
@@ -193,12 +351,16 @@
                                 }
                                 else
                                 {
-                                    <td><input data-id="0" data-pax="1-2" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                    <td><input data-id="0" data-pax="1" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                    <td><input data-id="0" data-pax="2" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
                                     <td><input data-id="0" data-pax="3-4" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
                                     <td><input data-id="0" data-pax="5-6" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
                                     <td><input data-id="0" data-pax="7-8" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
                                     <td><input data-id="0" data-pax="9-10" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
-                                    <td><input data-id="0" data-pax="11-20" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                    <td><input data-id="0" data-pax="11-15" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                    <td><input data-id="0" data-pax="16-22" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                    <td><input data-id="0" data-pax="23-35" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                    <td><input data-id="0" data-pax="36-100" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
                                 }
                             </tr>
                             <tr id="package-5">
@@ -212,12 +374,16 @@
                                 }
                                 else
                                 {
-                                    <td><input data-id="0" data-pax="1-2" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                    <td><input data-id="0" data-pax="1" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                    <td><input data-id="0" data-pax="2" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
                                     <td><input data-id="0" data-pax="3-4" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
                                     <td><input data-id="0" data-pax="5-6" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
                                     <td><input data-id="0" data-pax="7-8" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
                                     <td><input data-id="0" data-pax="9-10" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
-                                    <td><input data-id="0" data-pax="11-20" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                    <td><input data-id="0" data-pax="11-15" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                    <td><input data-id="0" data-pax="16-22" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                    <td><input data-id="0" data-pax="23-35" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                    <td><input data-id="0" data-pax="36-100" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
                                 }
                             </tr>
                             <tr id="package-6">
@@ -231,21 +397,25 @@
                                 }
                                 else
                                 {
-                                    <td><input data-id="0" data-pax="1-2" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                    <td><input data-id="0" data-pax="1" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                    <td><input data-id="0" data-pax="2" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
                                     <td><input data-id="0" data-pax="3-4" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
                                     <td><input data-id="0" data-pax="5-6" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
                                     <td><input data-id="0" data-pax="7-8" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
                                     <td><input data-id="0" data-pax="9-10" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
-                                    <td><input data-id="0" data-pax="11-20" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                    <td><input data-id="0" data-pax="11-15" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                    <td><input data-id="0" data-pax="16-22" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                    <td><input data-id="0" data-pax="23-35" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                    <td><input data-id="0" data-pax="36-100" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
                                 }
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-        </div> 
+        </div>
         <div class="info-block">
-            <div class="info-header" onclick="toggleBlock(this)">
+            <div class="info-header" onclick="Product.toggleBlock(this)">
                 <span>Đa ngôn ngữ</span>
                 <span class="toggle-icon">▼</span>
             </div>
@@ -276,9 +446,9 @@
                                 @Html.TextAreaFor(m => m.Languages[i].Description, new { @class = "form-control", rows = 10 })
                             </div>
                             @*<div class="form-group">
-                        <label>Nội dung <span class="asterisk"> (*)</span></label>
-                        @Html.TextAreaFor(m => m.Languages[i].Contents, new { @class = "form-control article-content", rows = 10 })
-                    </div>*@
+                                    <label>Nội dung <span class="asterisk"> (*)</span></label>
+                                    @Html.TextAreaFor(m => m.Languages[i].Contents, new { @class = "form-control article-content", rows = 10 })
+                                </div>*@
                             @Html.HiddenFor(m => m.Languages[i].ID)
                             @Html.HiddenFor(m => m.Languages[i].LangCode)
                             @Html.HiddenFor(m => m.Languages[i].LangName)
@@ -286,9 +456,9 @@
                     }
                 </div>
             </div>
-        </div> 
+        </div>
         <div class="info-block">
-            <div class="info-header" onclick="toggleBlock(this)">
+            <div class="info-header" onclick="Product.toggleBlock(this)">
                 <span>Thông tin lịch trình di chuyển</span>
                 <span class="toggle-icon">▼</span>
             </div>
@@ -312,7 +482,111 @@
                     </button>
                 </div>
             </div>
-        </div> 
+        </div>
+        <div class="info-block">
+            <div class="info-header" onclick="Product.toggleBlock(this)">
+                <span>Những điều cần lưu ý</span>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="info-content">
+                <div class="language-panel">
+                    <div class="language-tabs-note">
+                        <button type="button" class="language-tab-inc language-tab active" data-lang="en">English</button>
+                        <button type="button" class="language-tab-inc language-tab" data-lang="es">Spain</button>
+                    </div>
+                    <div class="language-content">
+                        <div class="language-pane-inc language-pane active" data-lang="en">
+                            <div class="form-group">
+                                <label>INCLUDED</label>
+                            </div>
+                            <div class="form-group">
+                                <textarea data-type="included" class="form-control content-note" data-lang="en" rows="5"></textarea>
+                            </div>
+                        </div>
+                        <div class="language-pane-inc language-pane" data-lang="es">
+                            <div class="form-group">
+                                <label>INCLUIDO</label>
+                            </div>
+                            <div class="form-group">
+                                <textarea data-type="included" class="form-control content-note" data-lang="es" rows="5"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="language-panel">
+                    <div class="language-tabs-note">
+                        <button type="button" class="language-tab-exc language-tab active" data-lang="en">English</button>
+                        <button type="button" class="language-tab-exc language-tab" data-lang="es">Spain</button>
+                    </div>
+                    <div class="language-content">
+                        <div class="language-pane-exc language-pane active" data-lang="en">
+                            <div class="form-group">
+                                <label>EXCLUDED</label>
+                            </div>
+                            <div class="form-group">
+                                <textarea data-type="excluded" class="form-control content-note" data-lang="en" rows="5"></textarea>
+                            </div>
+                        </div>
+                        <div class="language-pane-exc language-pane" data-lang="es">
+                            <div class="form-group">
+                                <label>EXCLUIDO</label>
+                            </div>
+                            <div class="form-group">
+                                <textarea data-type="excluded" class="form-control content-note" data-lang="es" nrows="5"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="language-panel">
+                    <div class="language-tabs-note">
+                        <button type="button" class="language-tab-imp language-tab active" data-lang="en">English</button>
+                        <button type="button" class="language-tab-imp language-tab" data-lang="es">Spain</button>
+                    </div>
+                    <div class="language-content">
+                        <div class="language-pane-imp language-pane active" data-lang="en">
+                            <div class="form-group">
+                                <label>IMPORTANT NOT</label>
+                            </div>
+                            <div class="form-group">
+                                <textarea data-type="important" class="form-control content-note" data-lang="en" rows="5"></textarea>
+                            </div>
+                        </div>
+                        <div class="language-pane-imp language-pane" data-lang="es">
+                            <div class="form-group">
+                                <label>NOTA IMPORTANTE</label>
+                            </div>
+                            <div class="form-group">
+                                <textarea data-type="important" class="form-control content-note" data-lang="es" rows="5"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="language-panel">
+                    <div class="language-tabs-note">
+                        <button type="button" class="language-tab-hig language-tab active" data-lang="en">English</button>
+                        <button type="button" class="language-tab-hig language-tab" data-lang="es">Spain</button>
+                    </div>
+                    <div class="language-content">
+                        <div class="language-pane-hig language-pane active" data-lang="en">
+                            <div class="form-group">
+                                <label>HIGHLIGHTS</label>
+                            </div>
+                            <div class="form-group">
+                                <textarea data-type="highlights" class="form-control content-note" data-lang="en" rows="5"></textarea>
+                            </div>
+                        </div>
+                        <div class="language-pane-hig language-pane" data-lang="es">
+                            <div class="form-group">
+                                <label>REFLEJOS</label>
+                            </div>
+                            <div class="form-group">
+                                <textarea data-type="highlights" class="form-control content-note" data-lang="es" rows="5"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="form-group">
             <div class="col-md-2 text-left"><a href="/admin/product" class=""><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay trở lại</a></div>
             <div class="col-md-7 text-center">
@@ -320,11 +594,9 @@
             </div>
         </div>
     </div>
-    <input type="hidden" id="ItineraryData" name="ItineraryData" />
-    <input type="hidden" value="@Model.Itineraries" id="itineraryData" />
+    <input type="hidden" id="ItineraryData" name="ItineraryData" /> 
 }
-@*<script src="~/Content/plugins/ckeditor/ckeditor.js"></script>
-    <script src="~/Content/plugins/ckfinder/ckfinder.js"></script>*@
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.6/Sortable.min.js"></script>
 <script src="~/Content/plugins/ckeditor5/ckeditor.js"></script>
 <script>
     function getValueTopic(ckb) {
@@ -349,8 +621,6 @@
             return countries.includes(this.value);
         });
 
-        var locations = '@ViewBag.SelectedLocation'.split(';');
-        $('#LocationIDs').val(locations).trigger('change');
 
         $("#frmData").validate({
             rules:
@@ -376,20 +646,6 @@
             }
         });
     });
-    //$('.article-content').each(function () {
-    //    var textareaId = $(this).attr('id');
-    //    var editor = CKEDITOR.replace(textareaId, {
-    //        height: '500px',
-    //        startupFocus: true,
-    //        language: 'vi',
-    //        filebrowserBrowseUrl: "/Content/plugins/ckfinder/ckfinder.html",
-    //        filebrowserImageBrowseUrl: '/Content/plugins/ckfinder/ckfinder.html?Type=Images',
-    //        filebrowserFlashBrowseUrl: '/Content/plugins/ckfinder/ckfinder.html?Type=Flash',
-    //        filebrowserUploadUrl: '/Scripts/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Files',
-    //        filebrowserImageUploadUrl: '/Scripts/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Images',
-    //        filebrowserFlashUploadUrl: '/Scripts/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Flash'
-    //    });
-    //})
 </script>
 <script>
     let days = [];
@@ -405,7 +661,6 @@
         }
     ];
     function addDay() {
-        /*<button type="button" class="btn btn-delete-day" onclick="removeDay(${dayId})">Xóa ngày</button>*/
         dayIndex++;
         const dayId = dayIndex;
         const day = document.createElement('div');
@@ -492,35 +747,72 @@
         });
     }
 
-    function removeDay(dayId) {
-        if (!confirm('Bạn có chắc muốn xóa ngày này?')) {
-            return;
-        }
-        const index = days.findIndex(x => x.day === dayId);
-        if (index === -1) {
-            return;
-        }
-        const dayData = days[index];
-        if (dayData.editor) {
-            dayData.editor.destroy()
-                .then(function () {
-                    console.log('Editor destroyed:', dayId);
-                })
-                .catch(function (error) {
-                    console.error(error);
-                });
-        }
-        const dayElement = document.querySelector(`[data-day="${dayId}"]`);
+    const editors = {};
 
-        if (dayElement) {
-            dayIndex = dayIndex - 1;
-            dayElement.remove();
-        }
-
-        days.splice(index, 1);
+    function initEditors() {
+        const promises = [];
+        document.querySelectorAll('.content-note')
+            .forEach(function (textarea) {
+                const type = textarea.dataset.type;
+                const lang = textarea.dataset.lang;
+                if (!editors[type]) {
+                    editors[type] = {};
+                }
+                const promise = ClassicEditor
+                    .create(textarea,
+                        {
+                            toolbar: [
+                                'heading',
+                                '|',
+                                'bold',
+                                'italic',
+                                'underline',
+                                'link',
+                                'bulletedList',
+                                'numberedList',
+                                '|',
+                                'blockQuote',
+                                'insertTable',
+                                'undo',
+                                'redo'
+                            ]
+                        }
+                    )
+                    .then(function (editor) {
+                        editors[type][lang] = editor;
+                    });
+                promises.push(promise);
+            });
+        return Promise.all(promises);
     }
 
-    function getData() {
+    initEditors().then(function () {
+        var _importantNotes = $('#ImportantNotes').val();
+        if (_importantNotes !== '') {
+            var ImportantNoteData = JSON.parse(_importantNotes);
+            let incEn = ImportantNoteData.find(x => x.KeyNote == 'INCLUDED' && x.LangCode == 'EN');
+            editors.included.en.setData(incEn != null ? incEn.Contents : '');
+            let incEs = ImportantNoteData.find(x => x.KeyNote == 'INCLUDED' && x.LangCode == 'ES');
+            editors.included.es.setData(incEs != null ? incEs.Contents : '');
+
+            let excEn = ImportantNoteData.find(x => x.KeyNote == 'EXCLUDED' && x.LangCode == 'EN');
+            editors.excluded.en.setData(excEn != null ? excEn.Contents : '');
+            let excEs = ImportantNoteData.find(x => x.KeyNote == 'EXCLUDED' && x.LangCode == 'ES');
+            editors.excluded.es.setData(excEs != null ? excEs.Contents : '');
+
+            let impEn = ImportantNoteData.find(x => x.KeyNote == 'IMPORTANT' && x.LangCode == 'EN');
+            editors.important.en.setData(impEn != null ? impEn.Contents : '');
+            let impEs = ImportantNoteData.find(x => x.KeyNote == 'IMPORTANT' && x.LangCode == 'ES');
+            editors.important.es.setData(impEs != null ? impEs.Contents : '');
+
+            let higEn = ImportantNoteData.find(x => x.KeyNote == 'HIGHLIGHTS' && x.LangCode == 'EN');
+            editors.highlights.en.setData(higEn != null ? higEn.Contents : '');
+            let higEs = ImportantNoteData.find(x => x.KeyNote == 'HIGHLIGHTS' && x.LangCode == 'ES')
+            editors.highlights.es.setData(higEs != null ? higEs.Contents : '');
+        }
+    });
+
+    function getData() { 
         days.forEach(function (day) {
             const input = document.querySelector(`[data-day="${day.day}"] .destination`);
             // Lưu language hiện tại
@@ -547,9 +839,10 @@
         const languages = ['en', 'es'];
 
         for (var i = 0; i < languages.length; i++) {
-            result.map(item => (
+            result.map(item => ( 
                 Itineraries.push(
                     {
+                        Day: item.day,
                         Title: item.title[languages[i]],
                         Contents: item.content[languages[i]],
                         LangCode: languages[i],
@@ -561,6 +854,86 @@
         }
         $('#ItineraryData').val(JSON.stringify(Itineraries));
         $('#Itineraries').val(JSON.stringify(result));
+
+        const notes = {};
+        Object.keys(editors).forEach(function (type) {
+            notes[type] = {};
+            Object.keys(editors[type]).forEach(function (lang) {
+                notes[type][lang] =
+                    editors[type][lang].getData();
+            });
+        });
+        let importantNotes = [];
+
+        if (notes.included.en != '') {
+            importantNotes.push({
+                KeyNote: 'included',
+                Contents: notes.included.en,
+                LangCode: 'EN'
+            })
+        }
+        if (notes.included.es != '') {
+            importantNotes.push({
+                KeyNote: 'included',
+                Contents: notes.included.es,
+                LangCode: 'ES'
+            })
+        }
+        if (notes.excluded.en != '') {
+            importantNotes.push({
+                KeyNote: 'excluded',
+                Contents: notes.excluded.en,
+                LangCode: 'EN'
+            })
+        }
+        if (notes.excluded.es != '') {
+            importantNotes.push({
+                KeyNote: 'excluded',
+                Contents: notes.excluded.es,
+                LangCode: 'ES'
+            })
+        }
+        if (notes.important.en != '') {
+            importantNotes.push({
+                KeyNote: 'important',
+                Contents: notes.important.en,
+                LangCode: 'EN'
+            })
+        }
+        if (notes.important.es != '') {
+            importantNotes.push({
+                KeyNote: 'important',
+                Contents: notes.important.es,
+                LangCode: 'ES'
+            })
+        }
+        if (notes.highlights.en != '') {
+            importantNotes.push({
+                KeyNote: 'highlights',
+                Contents: notes.highlights.en,
+                LangCode: 'EN'
+            })
+        }
+        if (notes.highlights.es != '') {
+            importantNotes.push({
+                KeyNote: 'highlights',
+                Contents: notes.highlights.es,
+                LangCode: 'ES'
+            })
+        }
+
+        $('#ImportantNotes').val(JSON.stringify(importantNotes));
+
+        var locations = [];
+        $('#locationList .location-item').each(function (index) {
+
+            locations.push({
+                LocationId: $(this).data('location-id'),
+                SortOrder: index + 1
+            });
+        });
+        $('#LocationID').val(JSON.stringify(locations));
+
         $('#frmData').submit();
     }
 
@@ -573,7 +946,7 @@
         }
     }
 
-    const itinerariesData = $('#itineraryData').val();
+    const itinerariesData = $('#Itineraries').val();
     if (itinerariesData != '') {
         const data = JSON.parse(itinerariesData);
         loadDays(data);
@@ -667,8 +1040,23 @@
             });
         dayData.currentLanguage = language;
     }
-    function toggleBlock(header) {
-        const block = header.closest('.info-block');
-        block.classList.toggle('collapsed');
+</script>
+
+<script>
+    new Sortable(document.getElementById('locationList'), {
+        animation: 200,
+        handle: '.drag',
+        onEnd: function () {
+            updateSortOrder();
+        }
+    });
+    function updateSortOrder() {
+        $('#locationList .location-item').each(function (index) {
+            $(this).find('.order').text(index + 1);
+        });
     }
+    $(document).on('click', '.remove', function () {
+        $(this).closest('.location-item').remove();
+        updateSortOrder();
+    });
 </script>

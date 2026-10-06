@@ -37,15 +37,30 @@
         <EntityTypeShape EntityType="WebDuLichModel.News" PointX="3" PointY="1" Width="1.5" />
         <EntityTypeShape EntityType="WebDuLichModel.Category" PointX="0.75" PointY="1.375" Width="1.5" />
         <AssociationConnector Association="WebDuLichModel.FK__News__CategoryId__6B24EA82" />
-        <EntityTypeShape EntityType="WebDuLichModel.Booking" Width="1.5" PointX="17.375" PointY="3.75" />
-        <EntityTypeShape EntityType="WebDuLichModel.NewsTran" Width="1.5" PointX="15.375" PointY="16.75" />
-        <EntityTypeShape EntityType="WebDuLichModel.Package" Width="1.5" PointX="17.375" PointY="8.75" />
-        <EntityTypeShape EntityType="WebDuLichModel.Package_Price" Width="1.5" PointX="11.375" PointY="17.75" />
-        <EntityTypeShape EntityType="WebDuLichModel.CategoryTran" Width="1.5" PointX="17.375" PointY="11.75" />
         <EntityTypeShape EntityType="WebDuLichModel.Introduction" Width="1.5" PointX="5.375" PointY="17.75" />
         <EntityTypeShape EntityType="WebDuLichModel.Product" Width="1.5" PointX="0.75" PointY="17.75" />
-        <EntityTypeShape EntityType="WebDuLichModel.Itinerary" Width="1.5" PointX="17.375" PointY="15.25" />
         <EntityTypeShape EntityType="WebDuLichModel.ProductTran" Width="1.5" PointX="7.375" PointY="18.75" />
+        <EntityTypeShape EntityType="WebDuLichModel.ImportantNote" Width="1.5" PointX="18.375" PointY="0.75" />
+        <EntityTypeShape EntityType="WebDuLichModel.Booking" Width="1.5" PointX="17.375" PointY="3.75" />
+        <EntityTypeShape EntityType="WebDuLichModel.Param" Width="1.5" PointX="17.375" PointY="18.75" />
+        <EntityTypeShape EntityType="WebDuLichModel.SentMail" Width="1.5" PointX="19.375" PointY="3.75" />
+        <EntityTypeShape EntityType="WebDuLichModel.Itinerary" Width="1.5" PointX="17.375" PointY="14.75" />
+        <EntityTypeShape EntityType="WebDuLichModel.CategoryTran" Width="1.5" PointX="17.375" PointY="8.75" />
+        <EntityTypeShape EntityType="WebDuLichModel.Package_Price" Width="1.5" PointX="17.375" PointY="11.75" />
+        <EntityTypeShape EntityType="WebDuLichModel.AggregatedCounter" Width="1.5" PointX="19.375" PointY="11.75" />
+        <EntityTypeShape EntityType="WebDuLichModel.Counter" Width="1.5" PointX="19.375" PointY="14.75" />
+        <EntityTypeShape EntityType="WebDuLichModel.Hash" Width="1.5" PointX="19.375" PointY="17.75" />
+        <EntityTypeShape EntityType="WebDuLichModel.Job" Width="1.5" PointX="11.375" PointY="19.125" />
+        <EntityTypeShape EntityType="WebDuLichModel.JobParameter" Width="1.5" PointX="13.625" PointY="18.125" />
+        <EntityTypeShape EntityType="WebDuLichModel.JobQueue" Width="1.5" PointX="20.375" PointY="0.75" />
+        <EntityTypeShape EntityType="WebDuLichModel.List" Width="1.5" PointX="3.375" PointY="20.75" />
+        <EntityTypeShape EntityType="WebDuLichModel.Schema" Width="1.5" PointX="19.375" PointY="20.75" />
+        <EntityTypeShape EntityType="WebDuLichModel.Server" Width="1.5" PointX="21.375" PointY="3.75" />
+        <EntityTypeShape EntityType="WebDuLichModel.Set" Width="1.5" PointX="21.375" PointY="6.75" />
+        <EntityTypeShape EntityType="WebDuLichModel.State" Width="1.5" PointX="13.625" PointY="20.625" />
+        <AssociationConnector Association="WebDuLichModel.FK_HangFire_JobParameter_Job" />
+        <AssociationConnector Association="WebDuLichModel.FK_HangFire_State_Job" />
+        <EntityTypeShape EntityType="WebDuLichModel.NewsTran" Width="1.5" PointX="21.375" PointY="9.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

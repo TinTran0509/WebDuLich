@@ -268,6 +268,15 @@ namespace Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to GroupTrip.
+        /// </summary>
+        public static string GroupTrip {
+            get {
+                return ResourceManager.GetString("GroupTrip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Guide&apos;s language.
         /// </summary>
         public static string GuideLang {

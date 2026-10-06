@@ -4,8 +4,11 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
     var menus = (List<MenuTran>)TempData["Menus"];
     var countries = (List<Web.Model.CountryTran>)TempData["CountryTrans"];
-} 
+}
 <style>
+    #ProductCode{
+        width:230px !important
+    }
     .text-bold {
         font-weight: bold;
         width: 130px;
@@ -71,40 +74,92 @@
         display: none;
     }
 
-    .language-pane.active {
-        display: block;
-    }
-   
+        .language-pane.active {
+            display: block;
+        }
+
     .form-group {
         margin-bottom: 15px;
-    }
-
-    .form-group label {
-        /* display: block;*/
-        margin-bottom: 6px;
-        font-size: 14px;
-        font-weight: 600;
-        color: #333;
-    }
-
-    .form-control {
-        width: 100%;
-        box-sizing: border-box;
-        padding: 9px 12px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 14px;
-        outline: none;
-    }
-
+    }  
     .form-control:focus {
         border-color: #007bff;
         box-shadow: 0 0 0 2px rgba(0, 123, 255, .1);
     }
+</style>
+<style>
+    .tour-location {
+        width: 100%;
+        max-width: 650px;
+        background: #fff;
+        padding: 20px;
+        border: 1px solid #e5e7eb;
+        border-radius: 10px;
+    }
 
+    .location-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 15px;
+    }
+
+        .location-header h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+    #btnAddLocation {
+        border: 0;
+        background: #2563eb;
+        color: #fff;
+        padding: 8px 14px;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    .location-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 10px 12px;
+        margin-bottom: 8px;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        background: #f9fafb;
+    }
+
+    .drag {
+        cursor: grab;
+        color: #9ca3af;
+        font-size: 18px;
+    }
+
+    .order {
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #2563eb;
+        color: #fff;
+        border-radius: 50%;
+        font-weight: bold;
+    }
+
+    .location-name {
+        flex: 1;
+    }
+
+    .remove {
+        border: 0;
+        background: transparent;
+        color: #ef4444;
+        font-size: 22px;
+        cursor: pointer;
+    }
 </style>
 <link href="~/Content/Admin/css/product.css" rel="stylesheet" />
-<script src="~/AppJs/product.js"></script>
+<script src="~/AppJs/product.1234.js"></script>
 @model Web.Model.CustomModel.ProductCreateViewModel
 @using (Ajax.BeginForm("Add", "Product", null,
     new AjaxOptions
@@ -116,8 +171,9 @@
 {
     @Html.HiddenFor(x => x.MenuID)
     @Html.HiddenFor(x => x.Itineraries)
-    <div id="countryIds"></div>
-    <div id="hotelIds"></div>
+    @Html.HiddenFor(x => x.ImportantNotes)
+    @Html.HiddenFor(x => x.LocationID)
+    <div id="countryIds"></div> 
     <input type="hidden" name="Package_Price" id="Package_Price" value="" />
     <div class="article-create">
         <div class="form-group">
@@ -130,8 +186,8 @@
         </div>
         <div class="form-group">
             <label class="col-md-2 control-label">Mã<span class="asterisk"> (*)</span></label>
-            <div class="col-md-2">
-                @Html.TextBoxFor(model => model.ProductCode, new { @class = "form-control" })
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.ProductCode, new { @class = "form-control"})
             </div>
         </div>
         <div class="form-group">
@@ -149,7 +205,7 @@
         <div class="form-group">
             <label class="col-md-2 control-label">Loại hình<span class="asterisk"> (*)</span></label>
             <div class="col-md-3">
-                <select class="form-control select2" name="Type" id="Type">
+                <select class="form-control" name="Type" id="Type">
                     <option value="0">--- Chọn loại hình ---</option>
                     <option value="1">Đi theo nhóm</option>
                     <option value="2">Đi riêng</option>
@@ -168,15 +224,22 @@
                 }
             </div>
         </div>
-        <div class="form-group">
-            <label class="col-md-2 control-label">Điểm đến<span class="asterisk"> (*)</span></label>
-            <div class="col-md-8">
-                <select class="form-control select2" multiple name="LocationID" id="LocationIDs">
-                </select>
+        <div class="info-block">
+            <div class="info-header" onclick="Product.toggleBlock(this)">
+                <span>Điểm đến<span class="asterisk"> (*)</span></span> <span class="toggle-icon">▼</span>
+            </div>
+            <div class="info-content">
+                <div class="tour-location">
+                    <div class="location-header">
+                        <span style="font-style:italic">Nắm ☰ để kéo thả vị trí theo thứ tự</span>
+                    </div>
+                    <div id="locationList">
+                    </div>
+                </div>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-md-2 control-label">Chủ đề<span class="asterisk"> (*)</span></label>
+            <label class="col-md-2 control-label">Menu<span class="asterisk"> (*)</span></label>
             <div class="col-md-10">
                 @foreach (var item in menus)
                 {
@@ -198,7 +261,7 @@
             </div>
         </div>
         <div class="info-block">
-            <div class="info-header" onclick="toggleBlock(this)">
+            <div class="info-header" onclick="Product.toggleBlock(this)">
                 <span>Bảng giá gói dịch vụ<span class="asterisk"> (*)</span></span> <span class="toggle-icon">▼</span>
             </div>
             <div class="info-content">
@@ -207,48 +270,68 @@
                         <tbody>
                             <tr>
                                 <td style="opacity:0">Gói 5 sao</td>
-                                <td class="text-bold">1 - 2 pax</td>
+                                <td class="text-bold">1 pax</td>
+                                <td class="text-bold">2 pax</td>
                                 <td class="text-bold">3 - 4 pax</td>
                                 <td class="text-bold">5 - 6 pax</td>
                                 <td class="text-bold">7 - 8 pax</td>
                                 <td class="text-bold">9 - 10 pax</td>
-                                <td class="text-bold">11 - 20 pax</td>
+                                <td class="text-bold">11 - 15 pax</td>
+                                <td class="text-bold">16 - 22 pax</td>
+                                <td class="text-bold">23 - 35 pax</td>
+                                <td class="text-bold">Trên 35 pax</td> 
                             </tr>
                             <tr id="package-3">
                                 <td class="text-bold">Gói 3 sao</td>
-                                <td><input data-id="0" data-pax="1-2" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="1" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="2" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
                                 <td><input data-id="0" data-pax="3-4" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
                                 <td><input data-id="0" data-pax="5-6" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
                                 <td><input data-id="0" data-pax="7-8" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
                                 <td><input data-id="0" data-pax="9-10" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
-                                <td><input data-id="0" data-pax="11-20" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="11-15" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="16-22" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="23-35" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="36-100" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
                             </tr>
                             <tr id="package-4">
                                 <td class="text-bold">Gói 4 sao</td>
-                                <td><input data-id="0" data-pax="1-2" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="1" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="2" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
                                 <td><input data-id="0" data-pax="3-4" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
                                 <td><input data-id="0" data-pax="5-6" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
                                 <td><input data-id="0" data-pax="7-8" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
                                 <td><input data-id="0" data-pax="9-10" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
-                                <td><input data-id="0" data-pax="11-20" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="11-15" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="16-22" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="23-35" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="36-100" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
                             </tr>
                             <tr id="package-5">
-                                <td data-package="3" class="text-bold">Gói 5 sao</td>
-                                <td><input data-id="0" data-pax="1-2" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td class="text-bold">Gói 5 sao</td>
+                                <td><input data-id="0" data-pax="1" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="2" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
                                 <td><input data-id="0" data-pax="3-4" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
                                 <td><input data-id="0" data-pax="5-6" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
                                 <td><input data-id="0" data-pax="7-8" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
                                 <td><input data-id="0" data-pax="9-10" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
-                                <td><input data-id="0" data-pax="11-20" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="11-15" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="16-22" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="23-35" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="36-100" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
                             </tr>
                             <tr id="package-6">
-                                <td data-package="4" class="text-bold">Gói Plus</td>
-                                <td><input data-id="0" data-pax="1-2" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td class="text-bold">Gói Plus</td>
+                                <td><input data-id="0" data-pax="1" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="2" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
                                 <td><input data-id="0" data-pax="3-4" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
                                 <td><input data-id="0" data-pax="5-6" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
                                 <td><input data-id="0" data-pax="7-8" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
                                 <td><input data-id="0" data-pax="9-10" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
-                                <td><input data-id="0" data-pax="11-20" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="11-15" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="16-22" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="23-35" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
+                                <td><input data-id="0" data-pax="36-100" class="package-price form-control" value="" />&nbsp;<span class="unit">$</span></td>
                             </tr>
                         </tbody>
                     </table>
@@ -256,7 +339,7 @@
             </div>
         </div>
         <div class="info-block">
-            <div class="info-header" onclick="toggleBlock(this)">
+            <div class="info-header" onclick="Product.toggleBlock(this)">
                 <span>Đa ngôn ngữ</span>
                 <span class="toggle-icon">▼</span>
             </div>
@@ -298,7 +381,7 @@
             </div>
         </div>
         <div class="info-block">
-            <div class="info-header" onclick="toggleBlock(this)">
+            <div class="info-header" onclick="Product.toggleBlock(this)">
                 <span>Thông tin lịch trình di chuyển</span>
                 <span class="toggle-icon">▼</span>
             </div>
@@ -324,7 +407,7 @@
             </div>
         </div>
         <div class="info-block">
-            <div class="info-header" onclick="toggleBlock(this)">
+            <div class="info-header" onclick="Product.toggleBlock(this)">
                 <span>Những điều cần lưu ý</span>
                 <span class="toggle-icon">▼</span>
             </div>
@@ -430,13 +513,13 @@
         <div class="form-group">
             <div class="col-md-2 text-right"><a href="/admin/product" class=""><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay trở lại</a></div>
             <div class="col-md-7 text-center">
-                <button onclick="getDataNote()" type="button" class="btn btn-primary waves-effect waves-light">Thêm mới</button>
                 <button onclick="getData()" type="button" class="btn btn-primary waves-effect waves-light">Thêm mới</button>
             </div>
         </div>
-    </div>                           
-<input type="hidden" id="ItineraryData" name="ItineraryData" />
+    </div>
+    <input type="hidden" id="ItineraryData" name="ItineraryData" />
 }
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.6/Sortable.min.js"></script>
 <script src="~/Content/plugins/ckeditor5/ckeditor.js"></script>
 <script>
     function getValueTopic(ckb) {
@@ -449,41 +532,7 @@
         $('html, body').animate({ scrollTop: 0 }, 500);
         $('.lockchar').on("keypress", function (e) {
             return e.charCode >= 48 && e.charCode <= 57
-        });
-        //$('#Title').on('change', function () {
-        //    let link = $('#Title').val();
-        //    let linkSeo = RemoveMarkStr(link);
-        //    $('#LinkSeo').val(linkSeo);
-        //})
-        $("#frmData").validate({
-            rules:
-            {
-                ProductCode:
-                {
-                    required: true,
-                    maxlength: 10
-                },
-                Price: {
-                    required: true
-                }
-            },
-            messages:
-            {
-                ProductCode:
-                {
-                    required: "Vui lòng nhập mã sản phẩm"
-                },
-                Price: {
-                    required: "Vui lòng nhập giá"
-                }
-            },
-            highlight: function (element) {
-                jQuery(element).closest('.form-group').removeClass('has-success').addClass('has-error');
-            },
-            success: function (element) {
-                jQuery(element).closest('.form-group').removeClass('has-error');
-            }
-        });
+        }); 
     });
 
 </script>
@@ -552,7 +601,8 @@
                 'insertTable',
                 'undo',
                 'redo'
-            ]}).then(function (editor) {
+            ]
+        }).then(function (editor) {
             dayData.editor = editor;
             setupLanguageTabs(day, dayData);
         }).catch(function (error) {
@@ -586,191 +636,8 @@
         });
     }
 
-    function removeDay(dayId) {
-        if (!confirm('Bạn có chắc muốn xóa ngày này?')) {
-            return;
-        }
-        const index = days.findIndex(x => x.day === dayId);
-        if (index === -1) {
-            return;
-        }
-        const dayData = days[index];
-        if (dayData.editor) {
-            dayData.editor.destroy()
-                .then(function () {
-                    console.log('Editor destroyed:', dayId);
-                })
-                .catch(function (error) {
-                    console.error(error);
-                });
-        }
-        const dayElement = document.querySelector(`[data-day="${dayId}"]`);
-
-        if (dayElement) {
-            dayIndex = dayIndex - 1;
-            dayElement.remove();
-        }
-
-        days.splice(index, 1);
-    }
-
-    function getData() {
-        days.forEach(function (day) {
-            const input = document.querySelector(`[data-day="${day.day}"] .destination`);
-            // Lưu language hiện tại
-            if (input.value !== '') {
-                day.title[day.currentLanguage] = input.value;
-                day.contents[day.currentLanguage] = day.editor.getData();
-            }
-        });
-
-        const result = days.map(function (day, index) {
-            return {
-                day: index + 1,
-                title: {
-                    en: day.title.en,
-                    es: day.title.es
-                },
-                content: {
-                    en: day.contents.en,
-                    es: day.contents.es
-                }
-            };
-        });
-        let Itineraries = [];
-        const languages = ['en', 'es'];
-
-        for (var i = 0; i < languages.length; i++) {
-            result.map(item => (
-                Itineraries.push(
-                    {
-                        Title: item.title[languages[i]],
-                        Contents: item.content[languages[i]],
-                        LangCode: languages[i],
-                        ProductID: $('#ID').val()
-                    }
-                )
-            )
-            );
-        }
-        $('#ItineraryData').val(JSON.stringify(Itineraries));
-        $('#Itineraries').val(JSON.stringify(result));
-        $('#frmData').submit();
-    }
-
-    function saveSuccess(res) {
-        if (res.IsSuccess == true) {
-            alertmsg.success(res.Messenger);
-            modal.hide();
-        } else {
-            alertmsg.error(res.Messenger);
-        }
-    }
-    function toggleBlock(header) {
-        const block = header.closest('.info-block');
-        block.classList.toggle('collapsed');
-    }
-
-    document.querySelectorAll('.language-tab-inc').forEach(function (tab) {
-            tab.addEventListener('click', function () {
-            const lang = this.dataset.lang;  
-                document.querySelectorAll('.language-tab-inc').forEach(function (item) {
-                item.classList.remove('active');
-            }); this.classList.add('active'); 
-                document.querySelectorAll('.language-pane-inc').forEach(function (pane) {
-        pane.classList.remove('active');
-        if (pane.dataset.lang === lang) {
-                    pane.classList.add('active');
-                }
-            });
-        });
-    });
-
-    document.querySelectorAll('.language-tab-exc').forEach(function (tab) {
-        tab.addEventListener('click', function () {
-            const lang = this.dataset.lang;
-            document.querySelectorAll('.language-tab-exc').forEach(function (item) {
-                item.classList.remove('active');
-            }); this.classList.add('active');
-            document.querySelectorAll('.language-pane-exc').forEach(function (pane) {
-                pane.classList.remove('active');
-                if (pane.dataset.lang === lang) {
-                    pane.classList.add('active');
-                }
-            });
-        });
-    });
-
-    document.querySelectorAll('.language-tab-imp').forEach(function (tab) {
-        tab.addEventListener('click', function () {
-            const lang = this.dataset.lang;
-            document.querySelectorAll('.language-tab-imp').forEach(function (item) {
-                item.classList.remove('active');
-            }); this.classList.add('active');
-            document.querySelectorAll('.language-pane-imp').forEach(function (pane) {
-                pane.classList.remove('active');
-                if (pane.dataset.lang === lang) {
-                    pane.classList.add('active');
-                }
-            });
-        });
-    });
-
-    document.querySelectorAll('.language-tab-hig').forEach(function (tab) {
-        tab.addEventListener('click', function () {
-            const lang = this.dataset.lang;
-            document.querySelectorAll('.language-tab-hig').forEach(function (item) {
-                item.classList.remove('active');
-            }); this.classList.add('active');
-            document.querySelectorAll('.language-pane-hig').forEach(function (pane) {
-                pane.classList.remove('active');
-                if (pane.dataset.lang === lang) {
-                    pane.classList.add('active');
-                }
-            });
-        });
-    });
-
-    document.querySelectorAll('.language-tab-inc').forEach(function (tab) {
-        tab.addEventListener('click', function () {
-            const lang = this.dataset.lang;
-            document.querySelectorAll('.language-tab-inc').forEach(function (item) {
-                item.classList.remove('active');
-            }); this.classList.add('active');
-            document.querySelectorAll('.language-pane-inc').forEach(function (pane) {
-                pane.classList.remove('active');
-                if (pane.dataset.lang === lang) {
-                    pane.classList.add('active');
-                }
-            });
-        });
-    });
-
-    //document.querySelectorAll('.content-note').forEach(function (textarea) {
-    //    ClassicEditor.create(textarea, {
-    //        toolbar: [
-    //            'heading',
-    //            '|',
-    //            'bold',
-    //            'italic',
-    //            'underline',
-    //            'link',
-    //            'bulletedList',
-    //            'numberedList',
-    //            '|',
-    //            'blockQuote',
-    //            'insertTable',
-    //            'undo',
-    //            'redo'
-    //        ]
-    //    }).then(function (editor) {
-
-    //    }).catch(function (error) {
-    //        console.error(error);
-    //    });
-    //});
-
-    const editors = {}; document.querySelectorAll('.content-note').forEach(function(textarea) {
+    const editors = {};
+    document.querySelectorAll('.content-note').forEach(function (textarea) {
         const type = textarea.dataset.type;
         const lang = textarea.dataset.lang;
         ClassicEditor.create(textarea, {
@@ -794,24 +661,159 @@
                 editors[type] = {};
             }
             editors[type][lang] = editor;
-        }).catch(function (error)
-        {
+        }).catch(function (error) {
             console.error(error);
         });
     });
 
-    // lấy dữ liệu editors.important.en.getData();
-    // đổ dữ liệu editors.included.en.setData('<p>Breakfast included.</p>');
+    function getData() {
+        days.forEach(function (day) {
+            const input = document.querySelector(`[data-day="${day.day}"] .destination`);
+            if (input.value !== '') {
+                day.title[day.currentLanguage] = input.value;
+                day.contents[day.currentLanguage] = day.editor.getData();
+            }
+        });
 
-    function getDataNote() {
-        const result = {};
+        const result = days.map(function (day, index) {
+            return {
+                day: index + 1,
+                title: {
+                    en: day.title.en,
+                    es: day.title.es
+                },
+                content: {
+                    en: day.contents.en,
+                    es: day.contents.es
+                }
+            };
+        });
+        let Itineraries = [];
+        const languages = ['en', 'es'];
+
+        for (var i = 0; i < languages.length; i++) { 
+            result.map(item => ( 
+                Itineraries.push(
+                    {
+                        Day: item.day,
+                        Title: item.title[languages[i]],
+                        Contents: item.content[languages[i]],
+                        LangCode: languages[i],
+                        ProductID: $('#ID').val()
+                    }
+                )
+            )
+            );
+        }
+        $('#ItineraryData').val(JSON.stringify(Itineraries));
+        $('#Itineraries').val(JSON.stringify(result));
+
+        const notes = {};
         Object.keys(editors).forEach(function (type) {
-            result[type] = {};
+            notes[type] = {};
             Object.keys(editors[type]).forEach(function (lang) {
-                result[type][lang] =
-                editors[type][lang].getData();
+                notes[type][lang] =
+                    editors[type][lang].getData();
             });
         });
-        return result;
+        let importantNotes = [];
+
+        if (notes.included.en != '') {
+            importantNotes.push({
+                KeyNote: 'included',
+                Contents: notes.included.en,
+                LangCode: 'EN'
+            })
+        }
+        if (notes.included.es != '') {
+            importantNotes.push({
+                KeyNote: 'included',
+                Contents: notes.included.es,
+                LangCode: 'ES'
+            })
+        }
+        if (notes.excluded.en != '') {
+            importantNotes.push({
+                KeyNote: 'excluded',
+                Contents: notes.excluded.en,
+                LangCode: 'EN'
+            })
+        }
+        if (notes.excluded.es != '') {
+            importantNotes.push({
+                KeyNote: 'excluded',
+                Contents: notes.excluded.es,
+                LangCode: 'ES'
+            })
+        }
+        if (notes.important.en != '') {
+            importantNotes.push({
+                KeyNote: 'important',
+                Contents: notes.important.en,
+                LangCode: 'EN'
+            })
+        }
+        if (notes.important.es != '') {
+            importantNotes.push({
+                KeyNote: 'important',
+                Contents: notes.important.es,
+                LangCode: 'ES'
+            })
+        }
+        if (notes.highlights.en != '') {
+            importantNotes.push({
+                KeyNote: 'highlights',
+                Contents: notes.highlights.en,
+                LangCode: 'EN'
+            })
+        }
+        if (notes.highlights.es != '') {
+            importantNotes.push({
+                KeyNote: 'highlights',
+                Contents: notes.highlights.es,
+                LangCode: 'ES'
+            })
+        }
+
+        $('#ImportantNotes').val(JSON.stringify(importantNotes));
+
+        var locations = [];
+        $('#locationList .location-item').each(function (index) {
+
+            locations.push({
+                LocationId: $(this).data('location-id'),
+                SortOrder: index + 1
+            });
+        });
+        $('#LocationID').val(JSON.stringify(locations));
+        $("#loading").show(); 
+        $('#frmData').submit();
     }
+
+    function saveSuccess(res) {
+        if (res.IsSuccess == true) {
+            alertmsg.success(res.Messenger);
+            modal.hide();
+        } else {
+            alertmsg.error(res.Messenger);
+        }
+    }
+</script>
+<script>
+    new Sortable(document.getElementById('locationList'), {
+        animation: 200,
+        handle: '.drag',
+        onEnd: function () {
+            updateSortOrder();
+        }
+    });
+    function updateSortOrder() {
+        $('#locationList .location-item').each(function (index) {
+            $(this).find('.order').text(index + 1);
+        });
+    }
+    $(document).on('click', '.remove', function () {
+        $(this).closest('.location-item').remove();
+        updateSortOrder();
+    });
 </script>

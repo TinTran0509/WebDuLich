@@ -72,6 +72,7 @@ namespace Web.Controllers
 
             ViewBag.Title = Resources.Language.TitlePage;
             ViewBag.Description = Resources.Language.Description;
+            //ViewBag.GroupTrip = Resources.Language.GroupTrip;
             ViewBag.GroupTrip = wordRepository.GetValueByKey("GroupTrip", langCode);  
             ViewBag.CustomizedTrips = wordRepository.GetValueByKey("CustomizedTrips", langCode);
             //ViewBag.Price = Resources.Language.Price;
@@ -94,9 +95,19 @@ namespace Web.Controllers
         } 
 
         public PartialViewResult Menu()
-        { 
+        {
+            //string langCode = string.Empty;
+            //string path = Request.Url.AbsolutePath;
+            //if(string.IsNullOrEmpty(path) && path.Contains("/"))
+            //{
+            //    var arr = path.Split('/');
+            //    if(arr.Length > 1)
+            //    {
+            //        langCode = arr[1];
+            //    }
+            //}
             string langCode = (string)Session["LangCode"];
-            if(langCode == null)
+            if (string.IsNullOrEmpty(langCode))
             {
                 langCode = "EN";
             } 

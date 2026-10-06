@@ -17,12 +17,7 @@ namespace Web.Repository.Entity
     {
         readonly WebDuLichEntities _entities = new WebDuLichEntities();
         private readonly string _connectString = ConfigurationManager.AppSettings["ConnectionStringBackupSQL"];
-        private const string KeyCache = "PackageImages";
-        public void Add(Package obj)
-        {
-            _entities.Packages.Add(obj);
-            _entities.SaveChanges();
-        }
+        private const string KeyCache = "PackageImages"; 
 
         public void AddPackagePrice(Package_Price obj)
         {
@@ -53,30 +48,7 @@ namespace Web.Repository.Entity
             {
                 throw;
             }
-        }
-
-        public void Delete(int id)
-        {
-            var obj = Find(id);
-            _entities.Packages.Remove(obj);
-            _entities.SaveChanges();
-        }
-
-        public void Edit(Package obj)
-        {
-            _entities.Entry(obj).State = EntityState.Modified;
-            _entities.SaveChanges();
-        }
-
-        public Package Find(int id)
-        {
-            return _entities.Packages.Find(id);
-        }
-
-        public List<Package> GetAll()
-        { 
-            return _entities.Packages.ToList();
-        }
+        } 
 
         public IEnumerable<Package_Price> GetAllPackagePrice()
         {

@@ -179,6 +179,31 @@ namespace Web.Repository.Entity
             }
         }
 
+        public IEnumerable<LocationViewModel> GetForProduct(string locationIDs)
+        {
+            try
+            {
+                using (var conn = new SqlConnection(_connectString))
+                {
+                    StringBuilder sb = new StringBuilder();
+                    sb.Append("SELECT lt.*,l.Image FROM LocationTrans lt ");
+                    sb.Append("JOIN Location l ON l.ID = lt.LocationID ");
+                    sb.Append($"WHERE lt.LocationID IN ({locationIDs})");
+
+                    string sql = sb.ToString();
+                      
+                    return conn.Query<LocationViewModel>(
+                        sql,
+                        null,
+                        commandType: CommandType.Text);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public IEnumerable<LocationTran> GetAllLocationTrans()
         {
             return _entities.LocationTrans;
